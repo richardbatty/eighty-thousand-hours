@@ -1,0 +1,16 @@
+shared: &shared
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  
+development:
+  <<: *shared
+  database: high_impact_careers_development
+  
+test: &test
+  <<: *shared
+  database: high_impact_careers_test
+  timeout: 5000
+
+cucumber:
+  <<: *test
