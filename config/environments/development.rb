@@ -31,3 +31,8 @@ HighImpactCareers::Application.configure do
   # outbound email config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
 end
+
+silence_warnings do
+  require 'pry'
+  IRB = Pry
+end

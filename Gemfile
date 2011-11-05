@@ -19,6 +19,7 @@ group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'growl_notify'
   gem 'heroku' #included for rake db:mirror system calls
+  gem 'pry'
 end
 
 # Gems used only for assets and not required
