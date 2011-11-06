@@ -3,6 +3,7 @@ source 'http://rubygems.org'
 gem 'rails', '3.1.1'
 
 gem 'devise'
+# gem 'omniauth'
 
 gem 'pg'
 
@@ -14,6 +15,9 @@ gem 'thin'
 
 # emails us when the production app fails
 gem 'exception_notification'
+
+# sweet templating language
+gem "haml-rails"
 
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
