@@ -21,13 +21,11 @@
   <div><%= f.label :bio %><br />
   <%= f.text_area :bio %></div>
   
-  <%= f.label :public, 'Make my profile public.' %><br />
-  <%= f.check_box :public %>
+  <div><%= f.check_box :public %>
+  <%= f.label :public, 'Make my profile public.' %></div>
 
-  <%= f.label :pledge do %><br />
-    'I hereby take <a href="/pledge">the pledge</a>.'
-  <%= end %>
-  <%= f.check_box :pledge %>
+  <div><%= f.check_box :pledge %>
+  <%= f.label :pledge, raw('I hereby take <a href="/pledge">the pledge</a>.') %></div>
 
   <div><%= f.submit "Update" %></div>
 <% end %>
