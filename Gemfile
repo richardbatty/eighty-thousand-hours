@@ -42,11 +42,17 @@ gem 'jquery-rails'
 group :development, :test do
   gem 'rspec-rails'
   gem "capybara"
-  gem "rb-fsevent"
   gem 'growl'
+  gem 'growl_notify'
+  gem 'ruby_gntp'
+  gem 'guard'
+  gem 'rb-inotify', :require => false
+  gem 'rb-fsevent', :require => false
+  gem 'rb-fchange', :require => false
   gem "guard-rspec"
   gem 'guard-cucumber'
   gem 'guard-livereload'
+  gem 'guard-spork'
   # gem 'guard-bundler'
   # gem 'guard-coffeescript'
   # gem 'guard-sass'
@@ -57,6 +63,7 @@ group :development, :test do
   # gem 'guard-pow'
   # gem 'guard-jammit'
   gem "cucumber-rails"
+  gem 'jasmine'
 end
 
 group :test do
@@ -65,4 +72,5 @@ group :test do
   # database_cleaner is necessary when database transactions are switched off,
   # in order to test js with selenium
   gem 'database_cleaner'
+  gem 'spork', '~> 0.9.0.rc'
 end
