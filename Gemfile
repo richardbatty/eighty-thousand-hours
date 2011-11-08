@@ -22,6 +22,9 @@ gem "haml-rails"
 # AWESOME!!
 gem 'rails-backbone'
 
+# tranlations and localisations
+gem 'rails-i18n'
+
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'growl_notify'
