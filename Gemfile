@@ -19,6 +19,9 @@ gem 'exception_notification'
 # sweet templating language
 gem "haml-rails"
 
+# AWESOME!!
+gem 'rails-backbone'
+
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'growl_notify'
