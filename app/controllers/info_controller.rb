@@ -19,4 +19,7 @@ class InfoController < ApplicationController
   
   def get_involved
   end
+
+  def volunteer
+  end
 end
