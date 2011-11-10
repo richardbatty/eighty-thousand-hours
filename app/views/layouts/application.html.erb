@@ -1,20 +1,86 @@
 <!DOCTYPE html>
-<html>
+<html xmlns:fb="https://www.facebook.com/2008/fbml">
 <head>
-  <title>HighImpactCareers</title>
-  <%= stylesheet_link_tag    "application" %>
-  <%= javascript_include_tag "application" %>
-  <%= csrf_meta_tags %>
+  <title>High Impact Careers</title>
+
+  <link rel="shortcut icon" href="/favicon.ico" />
+  <link rel="icon" href="/favicon.ico" type="image/ico" />
+
+  <%= render :partial => "/shared/opengraph" %>
+
+  <%= stylesheet_link_tag "highimpact" %>
+
+  <!--[if lt IE 9]>
+  <%= javascript_include_tag "html5" %>
+  <![endif]-->
+
+  <%= csrf_meta_tag %>
+
+  <script type="text/javascript">
+			$(document).ready(function () {  
+        // smooth scrolling on all local links
+				$.localScroll();
+
+
+        // default text in form inputs
+        $(".defaultText").focus(function(srcc)
+        {
+            if ($(this).val() == $(this)[0].title)
+            {
+                $(this).removeClass("defaultTextActive");
+                $(this).val("");
+            }
+        });
+        
+        $(".defaultText").blur(function()
+        {
+            if ($(this).val() == "")
+            {
+                $(this).addClass("defaultTextActive");
+                $(this).val($(this)[0].title);
+            }
+        });
+        
+        $(".defaultText").blur();     
+			});
+			
+		</script>
+
+    <script type="text/javascript">
+    
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-26085122-1']);
+      _gaq.push(['_trackPageview']);
+    
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    
+    </script>
+
 </head>
 <body>
-  <%= render "shared/user_nav" %>
   <% if flash %>
     <% flash.each do |key,value| %>
       <div class="<%= key %>"><%= value %></div>
     <% end %>
   <% end %>
+  
+  <div id="page_container"> 
+      <header>
+       <%= image_tag "hic_header_logo.png" %> 
+       <%= render :partial => "/shared/menu" %>
+      </header>
 
-  <%= yield %>
+      <%= yield %>
 
+      <%= render :partial => "/shared/social_media" %>
+
+      <footer>
+        <%= render :partial => "/shared/footer" %>
+      </footer>
+  </div>
 </body>
 </html>

@@ -1,0 +1,32 @@
+/*$pf: #f62000;*/
+/*$pf: #008080; // Teal*/
+/*$pf: #a50021; // purpley-red*/
+/*$pf: #ff2400; // scarlet*/
+/*$pf: #ffaa00; // gold*/
+
+$magenta_2: #f30064;
+$magenta_1: darken($magenta_2,5%);
+$magenta_0: darken($magenta_2,10%);
+
+$background: #ffffff;
+$body_bg_color: $background;
+$box_color: $background;
+
+$grey_3: #333333;
+$grey_2: #262626;
+$grey_1: #161616;
+$grey_0: #060606;
+
+$text_color: $grey_2; 
+
+// background color of nav bar
+$nav_bar_color: none;
+
+$link_color: $magenta_2;
+$link_hover_color: $magenta_0; 
+$link_visited_color: $magenta_1;
+
+$nav_link_color: $magenta_2;
+$nav_link_hover_color: $link_hover_color;
+$nav_link_visited_color: #efefef;
+

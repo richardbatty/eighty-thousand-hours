@@ -1,0 +1,6 @@
+@mixin box_shadow($color, $hoffset: 0px, $voffset: 0px, $fade: 0px) {
+    -o-box-shadow:      $hoffset $voffset $fade $color;
+    -webkit-box-shadow: $hoffset $voffset $fade $color;
+    -moz-box-shadow:    $hoffset $voffset $fade $color;
+    box-shadow:         $hoffset $voffset $fade $color;
+}

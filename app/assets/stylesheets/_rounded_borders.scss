@@ -1,0 +1,17 @@
+@mixin rounded_borders($color, $width: 5px, $rounding: 5px) { 
+    -moz-border-radius: $rounding $rounding;
+    -webkit-border-radius: $rounding $rounding;
+    -khtml-border-radius: $rounding $rounding;
+    -o-border-radius: $rounding $rounding;
+    border-radius: $rounding $rounding;
+    border: $width $color solid;
+}
+@mixin rounded_borders_top($color, $width: 5px, $rounding: 5px) { 
+    -moz-border-radius: $rounding $rounding 0px 0px;
+    -webkit-border-radius: $rounding $rounding 0px 0px;
+    -khtml-border-radius: $rounding $rounding 0px 0px;
+    -o-border-radius: $rounding $rounding 0px 0px;
+    border-radius: $rounding $rounding 0px 0px;
+    border: $width $color solid;
+}
+

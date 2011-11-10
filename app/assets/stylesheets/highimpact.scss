@@ -1,0 +1,660 @@
+@import "colors";
+@import "fonts";
+@import "rounded_borders";
+@import "box_shadow";
+@import "dimensions";
+/*@import "buttons";*/
+
+@mixin box_style{
+  @include rounded_borders(#ccc, 1px, $dim_border_radius);
+  @include box_shadow(#ccc, 0px, 0px, 5px);
+  background: $box_color; 
+}
+
+@mixin box_style_hover{
+  @include box_shadow(#ccc, 0px, 0px, 10px);
+}
+
+body {
+  font-family: $palatino;
+  margin: 0 auto;
+  text-align: center;
+  width: $dim_page_width;
+  margin-top: $dim_margin_top;
+  margin-bottom: $dim_margin_bottom;
+
+  /* now 1em == 10px */
+  font-size: 62.5%;
+
+  background: #ffffff;
+  color: $text_color;
+}
+
+#page_container {
+  width: $dim_page_width;
+  margin: 0 auto;
+
+  @include box_style;
+  background: $box_color; 
+  background: $body_bg_color;
+}
+
+header {
+  width: 100%;
+  height: $dim_header_height+10px;
+  text-align: center;
+
+  background: #333 url(/images/hic_header_background.png) no-repeat center top;
+
+  border-bottom: 5px solid $magenta_2;
+
+  img {
+    margin-top: 30px;
+    margin-bottom: 20px;
+    // so text is in center
+    margin-left: -70px;
+  }
+}
+
+
+.center {
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+
+#signup_form {
+  color: $text_color;
+
+  .front_page {
+    padding-bottom: 20px;
+    padding-top: 40px;
+    padding-left: 20px;
+    .text {
+      /*font-size: 1.5em;*/
+      /*text-shadow: 0 1px 1px rgba(0.3,0.3,0.3,.3);*/
+    }
+    .email {
+      /*font-size: 1.5em;*/
+      width: 200px;
+    }
+  }
+
+  .get_involved {
+    .text {
+      /*font-size: 1em;*/
+    }
+    .email {
+      /*font-size: 1em;*/
+    }
+    .button {
+      /*font-size: 1em;*/
+    }
+  }
+
+  .text {
+    padding-right: 10px;
+  }
+
+  .email {
+    padding: 7px;
+    margin: 0px;
+    color: $grey_2;
+    display: inline-block;
+    outline: none;
+    text-decoration: none;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    @include rounded_borders(#ccc, 1px, 6px);
+    text-align: center;
+  }
+
+  font: $palatino;
+}
+
+.button {
+  cursor: pointer;
+  display: inline-block;
+  font-size: 1.5em;
+  padding: .5em 2em .5em;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+
+  @include rounded_borders(#ccc, 1px, 6px);
+  @include box_shadow(#ccc, 0px, 0px, 5px);
+  background-color: #fff;
+  /*padding: 20px;*/
+  margin: 10px;
+  text-align: center;
+
+  &:hover {
+    background: #efefef;
+    @include box_shadow(#ccc, 0px, 0px, 2px);
+    cursor: pointer;
+  }
+}
+
+.more-button {
+  position: absolute;
+  font-size: 1.0em;
+  bottom: 20px;
+  left: 60px;
+  z-index: 2;
+}
+
+.submit-button {
+  @include rounded_borders(#ccc, 1px, 6px);
+  @include box_shadow(#ccc, 0px, 0px, 5px);
+  background-color: #fff;
+  padding: 7px 20px;
+  margin: 5px;
+  text-align: center;
+
+  &:hover {
+    background: #efefef;
+    @include box_shadow(#ccc, 0px, 0px, 2px);
+    cursor: pointer;
+  }
+}
+
+.defaultText {
+  color: $grey_2;
+}
+.defaultTextActive {
+  color: #a1a1a1;
+}
+
+
+/* -------------- rails notice ----------- */
+.notice {
+  width: 80%;
+  font-size: 1.4em;
+  line-height: 2em;
+  color: $text_color;
+  background: #fff;
+  margin: 20px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include box_style;
+}
+/* -------------- /rails notice ----------- */
+
+
+/* -------------- body_content ----------- */
+
+.main_points {
+  padding: 20px 15px 7px 15px;
+  font-size: 1.0em;
+
+  .point {
+    padding-bottom: 0.5em;
+  }
+  .bold_point {
+    padding: 0.5em 0em;
+    font-weight:bold;
+    font-size: 1.8em;
+    color: $magenta_2;
+    text-shadow: 0 1px 1px $magenta_0;
+  }
+}
+
+#body_content {
+  color: $text_color;
+  text-align: left;
+  padding-top: 40px;
+  padding-bottom: 20px;
+  background: $body_bg_color;
+  line-height: 2em;
+  font-size: 1.5em;
+  /*text-shadow: 0px 0px 2px #efefef;// rgba(0.3,0.3,0.3,.3);*/
+
+  h1 {
+    padding: 5px 0px;
+    font-size: 2.0em;
+    font-weight: bold;
+    text-align: center;
+  }
+
+  h2 {
+    padding: 5px 0px;
+    padding-top: 10px;
+    font-size: 1.2em;
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(0.3,0.3,0.3,.3);
+  }
+
+  h3 {
+    padding: 0px 0px 5px 0px;
+    font-size: 1.1em;
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(0.3,0.3,0.3,.2);
+  }
+
+  p {
+    padding: 5px 0px;
+  }
+
+  a {
+    color: $link_color;
+    text-decoration: none;
+  }
+
+  /*.button {*/
+    /*a {*/
+    /*color: $text_color;*/
+    /*}*/
+  /*}*/
+  a:hover {
+    color: $link_hover_color;
+    text-decoration: none;
+  }
+
+  a:visited {
+    text-decoration: none;
+  }
+
+  a:visited:hover {
+    color: $link_hover_color;
+    text-decoration: none;
+  }
+}
+
+/* -------------- /body_content ----------- */
+
+
+/* ------------- nav --------------- */
+nav {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  background: $nav_bar_color;
+  width: 100%;
+  text-align: center;
+}
+
+nav ul {
+  text-align: center;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 2em;
+}
+
+nav li ul {
+  display: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: #efefef;
+  padding: 5px 15px 5px 15px;
+  background: $nav_bar_color;
+  margin-left: 1px;
+  white-space: nowrap;
+}
+
+nav ul li a:hover {
+  color: $nav_link_color;
+  background: $nav_bar_color;
+}
+
+nav li:hover ul {
+  display: block;
+  position: absolute;
+}
+
+nav li:hover li {
+  float: none;
+}
+
+/* need a background here if we have drop-down menus */
+nav li:hover a {
+  background: $nav_bar_color;
+}
+
+/* need a background here if we have drop-down menus */
+nav li:hover li a:hover {
+  background: $nav_bar_color;
+}
+
+nav li.selected a {
+  color: $nav_link_color;
+}
+
+nav li.selected a:hover {
+  color: #efefef;
+}
+/* ------------- /nav --------------- */
+
+
+.box_style{
+  @include box_style;
+}
+
+footer {
+  color: #fff;
+  background: #333;
+  border-top: 5px solid $magenta_2;
+  width: 100%;
+  text-align: center;
+
+  .footer_text
+  {
+    font-size: 1.5em;
+    font-weight: normal;
+    padding: 20px;
+    clear: both;
+    margin-left: auto ;
+    margin-right: auto ;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+}
+
+.pf{
+  color: $magenta_2;
+}
+
+
+/*a.button { color: $text_color !important; }*/
+
+ul.like-buttons{
+  margin: 0;
+width: 310px;
+margin-left: auto;
+margin-right: auto;
+  list-style: none;
+text-align: center;
+  padding: 0;
+}
+
+ul.like-buttons li{
+  display: block;
+  float: left;
+}
+li.twitter-like{
+margin-right: 20px;
+}
+
+.like_button_div{
+  margin-left: auto;
+  margin-right: auto;
+  width: 350px;
+text-align: center; height: 50px; background: #fff;
+.tr  {
+  margin-left: auto;
+  margin-right: auto;
+}
+}
+
+
+/* --------- boxes ---------- */
+
+#body_content_left {
+  width: 800px;
+  padding: 0px;
+  margin: 0px;
+  margin-left:auto;
+  margin-right:auto;
+  text-align: left;
+  margin-top: 30px;
+  margin-bottom: 10px;
+
+  .left-box { 
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    /*padding-left: 0px !important;*/
+  }
+  .middle-box{
+    margin-left:  30px !important;
+    margin-right: 30px !important;
+  }
+  .right-box { 
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    /*padding-right: 0px !important;*/
+  }
+
+  .full-width {
+    width: 100% !important;
+    padding: 0px !important;
+  }
+
+  // for rows of divs like on the front page
+  .third-width {
+    width: 203px !important;
+    /*display: inline-block;*/
+    float: left;
+    vertical-align: text-top;
+    text-align: center;
+    line-height: 1.7em;
+    font-size: 0.9em;
+
+    .bold {
+      font-weight: bold;
+      text-align: left;
+    }
+    .h2 {
+      text-align: center;
+    }
+  }
+
+  .height-150 {
+    height: 150px;
+  }
+  .height-170 {
+    height: 170px;
+  }
+  .height-200 {
+    height: 200px;
+  }
+  .height-300 {
+    height: 300px;
+  }
+  .height-400 {
+    height: 400px;
+  }
+  .height-500 {
+    height: 500px;
+  }
+
+  /* these are used for text content */
+  .box {
+    width: 600px;
+    /*font-size: 1.5em;*/
+
+    padding: 20px;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    // for spanning links
+    position:relative;
+
+    @include box_style;
+
+    p {
+      text-decoration: none;
+    }
+
+    &:hover {
+      @include box_style_hover;
+    }
+  }
+}
+
+.box-span {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top:0;
+  left:0;
+  z-index: 1;
+}
+
+
+.what_we_do_box {
+  width: 218px;
+  height: 190px;
+}
+
+
+.what-you-can-do {
+  font-size: 2em;
+}
+
+
+img.float-right{
+  float: right;
+  margin: 15px;
+}
+img.shadow {
+  @include rounded_borders(#ccc, 1px, $dim_border_radius);
+  @include box_shadow(#ccc, 0px, 0px, 5px);
+}
+
+img.fp-box {
+  text-align: center;
+  width: 100%;
+  margin-top: 15px;
+  padding: 0;
+  border: 1px solid #ccc;
+}
+
+
+.large_margin {
+  margin: 20px;
+}
+
+
+/** Style our faq questions **/
+dl.faq{
+	margin-bottom:30px;
+}
+
+/** Make the question itself stand out **/
+dl.faq dt{
+	font-weight:bold;
+	color: $grey_0;
+	padding:25px 0 5px 0;
+	display:block;
+}
+
+/** Add a divisor below the question answer **/
+dl.faq dd{
+	padding-bottom:25px;
+	border-bottom:1px solid #cccccc;
+	display:block;
+}
+
+.magenta{
+  color: $magenta_2;
+}
+
+ul{
+  padding: 10px;
+  padding-left: 25px;
+  li{
+    list-style: disc; color:$text_color;
+    padding: 5px;
+  }
+}
+
+
+ul.magenta-bullets{
+  padding: 10px;
+  padding-left: 25px;
+  li{
+    list-style: disc; color:$magenta_2;
+    padding: 5px;
+    a{
+      color: $text_color !important;
+    }
+    a:hover{
+      color: $link_hover_color !important;
+    }
+  }
+}
+
+.slider_box {
+  margin: 20px;
+  .slider{
+    width: 100%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.calculator {
+  padding-top: 30px;
+}
+
+.calculator-results {
+  @include box_style;
+  text-align: center;
+  font-size: 1.5em;
+  margin: 20px;
+  padding: 20px;
+
+  p { 
+    margin: 10px;
+  }
+}
+
+.emphasise {
+  color: $magenta_0;
+}
+strong {
+  font-weight: bold;
+}
+.bold {
+  font-weight: bold;
+}
+
+
+/* --------- events ----------- */
+.event {
+  .title {
+    font-size: 1.2em;
+    font-weight: bold;
+    padding-bottom: 10px;
+  };
+  .bold {
+    font-weight: bold;
+  }
+}
+/* --------- /events ---------- */
+
+
+.large_email{ 
+  font-size: 1.3em;
+  padding: 10px;
+}
+
+.video_iframe {
+  float: right;
+  @include box_style;
+  padding: 0px;
+  margin: 0px;
+  width: 380px;
+  height: 213px;
+}
+
+
+.box-container {
+  text-align: left;
+}
+
+
+
