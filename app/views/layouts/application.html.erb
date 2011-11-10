@@ -71,10 +71,12 @@
   <div id="page_container"> 
       <header>
        <%= image_tag "hic_header_logo.png" %> 
-       <%= render :partial => "/shared/menu" %>
+       <%= render( {:partial => "/shared/menu"} ) %>
       </header>
 
+      <section id='content'>
       <%= yield %>
+      </section>
 
       <%= render :partial => "/shared/social_media" %>
 

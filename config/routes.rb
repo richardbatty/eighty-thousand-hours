@@ -47,10 +47,17 @@ HighImpactCareers::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
-  root :to => 'info#index'
-  match 'what-you-can-do' => 'info#what_you_can_do'
-
+  
+  root  :to                             => 'info#index'
+  match 'ethical-career'                => 'info#ethical_career'
+  match 'what-you-can-do'               => 'info#what_you_can_do'
+  match 'what-you-can-do/my-donations'  => 'info#my_donations'
+  match 'what-you-can-do/my-career'     => 'info#my_career'
+  match 'what-we-do'                    => 'info#what_we_do'
+  match 'get-involved'                  => 'info#get_involved'
+  match 'volunteer'                     => 'info#volunteer'
+  match 'faq'                           => 'info#faq'
+  match 'get-involved/join'             => 'info#join'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

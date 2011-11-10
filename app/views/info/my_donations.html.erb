@@ -1,0 +1,68 @@
+<%= javascript_tag "donation_calculator.js" %>
+
+<div class="box">
+<p>
+Try playing with the interactive donation calculator to see exactly how many lives you could save if you donated a fraction of your income to the most effective charities.
+</p>
+
+<p>
+It assumes you will work for 40 years, with a linearly increasing income over the period. The coloured area of the graph represents your lifetime earnings. The red area is the fraction you will donate to charity; the green area is what's left over.
+</p>
+</div>
+
+<div class="box calculator">
+<div id="chart-container" style="width: 100%; height: 300px;"></div>
+<div class="slider_box">
+You expect your starting salary to be around <span class="slider_value emphasise" id="starting_salary_value">£20,000</span> a year
+<div class="slider" id="starting_salary_slider"></div>
+</div>
+
+<div class="slider_box">
+By the end of your career you will be earning <span class="slider_value emphasise" id="ending_salary_value">£100,000</span> a year
+<div class="slider" id="ending_salary_slider"></div>
+</div>
+
+<div class="slider_box">
+Each year you'll donate <span class="slider_value emphasise" id="donation_value">10%</span> of your income to charity
+<div class="slider" id="donation_slider"></div>
+</div>
+
+<div class="slider_box">And the result will be...
+</div>
+
+<div class="calculator-results">
+<p>You will save <span class="emphasise"><span id="lives_saved_total">0</span> lives</span> over your career</p>
+<p><span id="lives_per_day"></span>
+</p>
+<p>You will donate a total of <span id="money_donated" class="emphasise">£0</span>
+<br />
+(while keeping <span id="net_money_total">£0</span>...)
+</p>
+</div>
+</div>
+
+<div class="box">
+<h2>How does this calculator work?</h2>
+<p>
+We assume you donate your income to the most effective health charities, as recommended by <a href="http://www.givingwhatwecan.org/">Giving What We Can</a>. </p>
+<p>You can also find similar research from <a target="_blank" title="http://www.givewell.org/" href="http://www.givewell.org/">GiveWell</a>, which we recommend.</p>
+
+<p>
+A donation of £300 to the Stop TB Partnership is enough to prevent a death from tuberculosis. This is the figure we use to calculate how many lives you could save. It means that almost everyone living in a developed country has the power to save an incredible number of lives.
+</p>
+
+<p>
+But there are health charities which are <a href="http://www.givingwhatwecan.org/resources/recommended-charities.php#SCI">even more cost effective</a>. Charities which prevent debilitating tropical diseases can buy someone 30 years of healthy life for only £60. They also significantly improve school attendance and earning power. Try playing around with Giving What We Can’s <a href="http://www.givingwhatwecan.org/resources/what-you-can-achieve.php">'what you can achieve'</a> calculator to see some more figures.
+</p>
+
+<p>
+You might think it’s hard to donate so much of your income to charity, but you might not realise just how rich you are. Giving What We Can's <a href="http://www.givingwhatwecan.org/resources/how-rich-you-are.php">'how rich you are'</a> calculator can give you some concrete numbers.
+</p>
+
+</div>
+
+<div class="center large_margin">
+<a class="button" href="/get-involved">Get involved!</a>
+<a class="button" href="/faq">Questions...?</a>
+</div>
+
