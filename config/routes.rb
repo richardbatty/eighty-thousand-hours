@@ -53,6 +53,7 @@ HighImpactCareers::Application.routes.draw do
   match 'what-you-can-do' => 'info#what_you_can_do'
   match 'what-you-can-do/my-donations' => 'info#my_donations'
   match 'what-you-can-do/my-career' => 'info#my_career'
+  match 'what-we-do' => 'info#what_we_do'
   # See how all your routes lay out with "rake routes"
 
   # This is a legacy wild controller route that's not recommended for RESTful applications.

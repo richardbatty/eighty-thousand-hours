@@ -13,4 +13,7 @@ class InfoController < ApplicationController
 
   def my_career
   end
+
+  def what_we_do
+  end
 end
