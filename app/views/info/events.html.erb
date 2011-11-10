@@ -1,0 +1,50 @@
+<%
+require 'net/http'
+require 'rexml/document'
+
+url = 'http://www.google.com/calendar/feeds/highimpactcareers.org_qcqkfcstjrlomg5qdtf48vag8c%40group.calendar.google.com/public/full?' + @gcal_params
+
+xml_data = Net::HTTP.get_response(URI.parse(url)).body
+
+doc = REXML::Document.new( xml_data )
+
+titles = []
+content = []
+where = []
+startTimes= []
+endTimes = []
+doc.elements.each('feed/entry/title'){ |e| titles << e.text }
+doc.elements.each('feed/entry/content'){ |e| content << e.text }
+doc.elements.each('feed/entry/gd:where'){ |e| where << e.attributes['valueString'] }
+doc.elements.each('feed/entry/gd:when') do |e|
+  startTimes << DateTime.parse(e.attributes['startTime'])
+  endTimes << DateTime.parse(e.attributes['endTime'])
+end
+
+
+# all the arrays are ordered with closest event last, let's reverse them
+titles = titles.reverse
+content = content.reverse
+where = where.reverse
+startTimes = startTimes.reverse
+endTimes = endTimes.reverse
+
+%>
+
+<section id='body_content' class='no_body_content_right'>
+  <h1 id='body_content_title'>Events</h1>
+  <section id='body_content_left'><div class='inner'>
+    <div class="box event">
+      <a href="/events/past-events">Past events</a>
+    </div>
+    <% titles.each_with_index do |title, idx| %>
+      <div class="box event">
+        <div class="title"><%= raw title %></div>
+        <%= raw BlueCloth.new( content[idx] ).to_html %>
+        <p><span class="bold">When:</span> <%= startTimes[idx].strftime("%A %d of %B, %H:%M")  + endTimes[idx].strftime(" - %H:%M") %></p>
+        <p><span class="bold">Where:</span> <%= raw where[idx] %></p>
+      </div>
+    <% end %>
+  </section>
+</section>
+
