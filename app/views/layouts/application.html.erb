@@ -16,49 +16,8 @@
 
   <%= csrf_meta_tag %>
 
-  <script type="text/javascript">
-			$(document).ready(function () {  
-        // smooth scrolling on all local links
-				$.localScroll();
-
-
-        // default text in form inputs
-        $(".defaultText").focus(function(srcc)
-        {
-            if ($(this).val() == $(this)[0].title)
-            {
-                $(this).removeClass("defaultTextActive");
-                $(this).val("");
-            }
-        });
-        
-        $(".defaultText").blur(function()
-        {
-            if ($(this).val() == "")
-            {
-                $(this).addClass("defaultTextActive");
-                $(this).val($(this)[0].title);
-            }
-        });
-        
-        $(".defaultText").blur();     
-			});
-			
-		</script>
-
-    <script type="text/javascript">
-    
-      var _gaq = _gaq || [];
-      _gaq.push(['_setAccount', 'UA-26085122-1']);
-      _gaq.push(['_trackPageview']);
-    
-      (function() {
-        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
-        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
-        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
-      })();
-    
-    </script>
+  <%= javascript_include_tag "misc" %>
+  <%= javascript_include_tag "google-analytics" %>
 
 </head>
 <body>
