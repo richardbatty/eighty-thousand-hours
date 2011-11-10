@@ -40,3 +40,9 @@ end
 Then /^there should be ([0-9]+|no) users?$/ do |count|
   User.count.should == count.to_i
 end
+
+Then /^(?:|I )see my information$/ do
+  page.should have_content("Username: #{@user[:name]}")
+  page.should have_content("Bio: #{@user[:bio]}")
+end
+
