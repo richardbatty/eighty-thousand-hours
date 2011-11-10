@@ -10,4 +10,7 @@ class InfoController < ApplicationController
 
   def my_donations
   end
+
+  def my_career
+  end
 end
