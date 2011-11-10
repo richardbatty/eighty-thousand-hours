@@ -56,10 +56,16 @@ HighImpactCareers::Application.routes.draw do
   match 'what-you-can-do/my-donations'  => 'info#my_donations'
   match 'what-you-can-do/my-career'     => 'info#my_career'
   match 'what-we-do'                    => 'info#what_we_do'
-  match 'get-involved'                  => 'info#get_involved'
   match 'volunteer'                     => 'info#volunteer'
   match 'faq'                           => 'info#faq'
+  match 'get-involved'                  => 'info#get_involved'
   match 'get-involved/join'             => 'info#join'
+  match 'get-involved/volunteer'        => 'info#volunteer'
+  match 'events'                        => 'info#events'
+  match 'events/past-events'            => 'info#past_events'
+  match 'events/orbis-stockpicking-challenge' => 'info#orbis_stockpicking_challenge'
+  match 'career-research'               => 'info#career_research'
+  match 'members'                       => 'info#members'
 
   # See how all your routes lay out with "rake routes"
 
