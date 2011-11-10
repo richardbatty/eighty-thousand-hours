@@ -49,7 +49,7 @@ HighImpactCareers::Application.routes.draw do
   #   end
 
   root :to => 'info#index'
-  match 'what-you-can-do' => 'info#what_you_can_do'
+  match 'info/:action', controller: "info"
 
   # See how all your routes lay out with "rake routes"
 
