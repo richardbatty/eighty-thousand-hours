@@ -6,8 +6,6 @@ user = User.create! name: 'Campaigning Catherine',
                     password:              'letmein',
                     password_confirmation: 'letmein'
 
-user.confirmation_token = nil
-user.confirmed_at = Time.now
-user.save
+user.confirm!
 
 puts 'New user created: ' << user.name
