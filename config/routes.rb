@@ -49,6 +49,7 @@ HighImpactCareers::Application.routes.draw do
   #   end
 
   root :to => 'info#index'
+  match 'what-you-can-do' => 'info#what_you_can_do'
 
   # See how all your routes lay out with "rake routes"
 
