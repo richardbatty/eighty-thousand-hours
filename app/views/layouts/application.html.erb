@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html xmlns:fb="https://www.facebook.com/2008/fbml">
+
 <head>
   <%= page_title %>
 
@@ -8,41 +9,41 @@
 
   <%= render :partial => "/shared/opengraph" %>
 
+  <%= csrf_meta_tag %>
+  <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag "highimpact" %>
 
   <!--[if lt IE 9]>
   <%= javascript_include_tag "html5" %>
   <![endif]-->
 
-  <%= csrf_meta_tag %>
-
-  <%= javascript_include_tag "application" %>
-
 </head>
+
 <body>
   <% if flash %>
     <% flash.each do |key,value| %>
       <div class="<%= key %>"><%= value %></div>
     <% end %>
   <% end %>
-  
+
   <div id="page_container"> 
-      <header>
-       <%= image_tag "hic_header_logo.png" %> 
-       <%= render( {:partial => "/shared/menu"} ) %>
-      </header>
-      
-      <%= render :partial => "/shared/user_nav"%>
+    <header>
+      <%= image_tag "hic_header_logo.png" %> 
+      <%= render( {:partial => "/shared/menu"} ) %>
+    </header>
 
-      <section id='content'>
+    <%= render :partial => "/shared/user_nav"%>
+
+    <section id='content'>
       <%= yield %>
-      </section>
+    </section>
 
-      <%= render :partial => "/shared/social_media" %>
+    <%= render :partial => "/shared/social_media" %>
 
-      <footer>
-        <%= render :partial => "/shared/footer" %>
-      </footer>
+    <footer>
+      <%= render :partial => "/shared/footer" %>
+    </footer>
   </div>
 </body>
 </html>
+
