@@ -47,7 +47,7 @@ HighImpactCareers::Application.routes.draw do
   #     # (app/controllers/admin/products_controller.rb)
   #     resources :products
   #   end
-
+  
   root :to => 'info#index'
   match 'info/:action', controller: "info"
 
