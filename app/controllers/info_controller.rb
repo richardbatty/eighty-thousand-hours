@@ -22,4 +22,10 @@ class InfoController < ApplicationController
 
   def volunteer
   end
+
+  def faq
+  end
+
+  def join
+  end
 end
