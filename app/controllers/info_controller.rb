@@ -16,4 +16,16 @@ class InfoController < ApplicationController
 
   def what_we_do
   end
+  
+  def get_involved
+  end
+
+  def volunteer
+  end
+
+  def faq
+  end
+
+  def join
+  end
 end

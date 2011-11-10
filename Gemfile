@@ -27,7 +27,7 @@ gem 'rails-i18n'
 
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
-  gem 'growl_notify'
+  # gem 'growl_notify'
   gem 'heroku' #included for rake db:mirror system calls
   gem 'pry'
 end
@@ -48,8 +48,8 @@ gem 'jquery-rails'
 group :development, :test do
   gem 'rspec-rails'
   gem "capybara"
-  gem 'growl'
-  gem 'growl_notify'
+  # gem 'growl'
+  # gem 'growl_notify'
   gem 'ruby_gntp'
   gem 'guard'
   gem 'rb-inotify', :require => false
