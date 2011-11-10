@@ -16,4 +16,7 @@ class InfoController < ApplicationController
 
   def what_we_do
   end
+  
+  def get_involved
+  end
 end
