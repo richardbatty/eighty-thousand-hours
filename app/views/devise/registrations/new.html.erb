@@ -20,9 +20,14 @@
   
   <div><%= f.check_box :public %>
   <%= f.label :public, 'Make my profile public.' %></div>
-
-  <div><%= f.check_box :pledge %>
-  <%= f.label :pledge, raw('I hereby take <a href="/pledge">the pledge</a>.') %></div>
+  
+  <fieldset>
+    <legend>The Pledge</legend>
+    <p>I pledge that, over my lifetime, I will dedicate 10% of my time or money, or any combination of the two, to those causes that I believe will do the most good with the resources I give them.  I understand that it is difficult to know the best way of doing good in the world, and so I will choose those cause(s) on the basis of the best evidence that is available to me at the time.  Further, I will deliberately pursue a career that will considerably enhance my ability to further those causes I believe to be best.</p>
+ 
+    <div><%= f.check_box :pledge %>
+    <%= f.label :pledge, raw('I hereby take <a href="/pledge">the pledge</a>.') %></div>
+  </fieldset>
 
   <div><%= f.submit "Sign up" %></div>
 <% end %>
