@@ -1,5 +1,7 @@
 HighImpactCareers::Application.routes.draw do
   devise_for :users
+  
+  resources :users, :only => [:index, :show, :edit, :update]
 
   # The priority is based upon order of creation:
   # first created -> highest priority.
@@ -58,8 +60,6 @@ HighImpactCareers::Application.routes.draw do
   match 'volunteer'                     => 'info#volunteer'
   match 'faq'                           => 'info#faq'
   match 'get-involved/join'             => 'info#join'
-
-  match 'users/:id'                     => 'users#show'
 
   # See how all your routes lay out with "rake routes"
 
