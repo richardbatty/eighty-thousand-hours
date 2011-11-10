@@ -48,7 +48,7 @@ HighImpactCareers::Application.routes.draw do
   #     resources :products
   #   end
   
-  root :to => 'info#index'
+  root  :to                             => 'info#index'
   match 'ethical-career'                => 'info#ethical_career'
   match 'what-you-can-do'               => 'info#what_you_can_do'
   match 'what-you-can-do/my-donations'  => 'info#my_donations'
