@@ -45,8 +45,8 @@ class InfoController < ApplicationController
   end
 
   def past_events
-    # start-min default unix epoch, use tomorrow (instead of today)
-    # to cover our backs
+    # we don't specify a 'start-min' as it defaults to Unix epoch
+    # we set start-max to tomorrow to make sure we catch everything
     @gcal_params = 'orderby=starttime&start-max=' + Date.tomorrow.rfc3339 
     @title = "Past events"
     render :events
