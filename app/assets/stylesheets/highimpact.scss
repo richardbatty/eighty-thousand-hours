@@ -54,6 +54,8 @@ header {
     // so text is in center
     margin-left: -70px;
   }
+
+  position: relative;
 }
 
 
@@ -292,7 +294,7 @@ nav li ul {
 
 nav ul li a {
   text-decoration: none;
-  color: #efefef;
+  color: $nav_link_color;
   padding: 5px 15px 5px 15px;
   background: $nav_bar_color;
   margin-left: 1px;
@@ -300,7 +302,7 @@ nav ul li a {
 }
 
 nav ul li a:hover {
-  color: $nav_link_color;
+  color: $nav_link_hover_color;
   background: $nav_bar_color;
 }
 
@@ -324,11 +326,11 @@ nav li:hover li a:hover {
 }
 
 nav li.selected a {
-  color: $nav_link_color;
+  color: $nav_link_hover_color;
 }
 
 nav li.selected a:hover {
-  color: #efefef;
+  color: $nav_link_hover_color;
 }
 /* ------------- /nav --------------- */
 
@@ -657,4 +659,25 @@ strong {
 }
 
 
+#user_nav
+{
+  position: absolute;
+  right:0;
+  top:0;
+  color: #efefef;
+  padding: 10px;
+  font-size: 14px;
+
+  a {
+    color: $nav_link_color;
+    margin-left: 1px;
+    white-space: nowrap;
+    text-decoration:none;
+  }
+  a:hover {
+    color: $nav_link_hover_color;
+    background: $nav_bar_color;
+    text-decoration:none;
+  }
+}
 
