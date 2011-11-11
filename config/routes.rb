@@ -68,6 +68,7 @@ HighImpactCareers::Application.routes.draw do
   match 'events/orbis-stockpicking-challenge' => 'info#orbis_stockpicking_challenge'
   match 'career-research'               => 'info#career_research'
   match 'members'                       => 'info#members'
+  match 'pledge'                        => 'info#pledge'
 
   # See how all your routes lay out with "rake routes"
 
