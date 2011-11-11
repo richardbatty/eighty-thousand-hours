@@ -494,6 +494,17 @@ text-align: center; height: 50px; background: #fff;
       @include box_style_hover;
     }
   }
+
+  /* for boxes within boxes */
+  .inner-box {
+    @include box_style;
+    margin: 20px;
+    padding: 20px;
+
+    p { 
+      margin: 10px;
+    }
+  }
 }
 
 .box-span {
@@ -603,15 +614,8 @@ ul.magenta-bullets{
 }
 
 .calculator-results {
-  @include box_style;
   text-align: center;
   font-size: 1.5em;
-  margin: 20px;
-  padding: 20px;
-
-  p { 
-    margin: 10px;
-  }
 }
 
 .emphasise {

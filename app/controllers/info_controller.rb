@@ -67,4 +67,8 @@ class InfoController < ApplicationController
   def volunteer
     @title = "Volunteer"
   end
+
+  def pledge
+    @title = "The Pledge"
+  end
 end
