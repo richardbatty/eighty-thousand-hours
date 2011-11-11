@@ -1,17 +1,28 @@
+<%
+  pages = {
+    "Home"            => "/",
+    "Ethical career?" => "/ethical-career",
+    "What you can do" => "/what-you-can-do",
+    "What we do"      => "/what-we-do",
+    "Get involved"    => "/get-involved",
+    "FAQ"             => "/faq",
+    "Events"          => "/events"
+  }
+%>
+
 <nav id='menu' class='menu clearfix'>
   <ul>
-  <li class='first' id='item_0'>
-  <a href="/">Home</a></li>
-<li class='selected' id='item_1'>
-  <a href="/ethical-career">Ethical career?</a></li>
-<li id='item_2'>
-  <a href="/what-you-can-do">What you can do</a></li>
-<li id='item_3'>
-  <a href="/what-we-do">What we do</a></li>
-<li id='item_4'>
-  <a href="/get-involved">Get involved</a></li>
-<li class='last' id='item_5'>
-  <a href="/faq">FAQ</a></li>
-    <li class='last' id='item_7'><a href="/events">Events</a></li>
+    <% pages.each do |title,url| %>
+      <% if title == current_page %>
+        <li class="selected">
+      <% else %>
+        <li>
+      <% end %>
+      <%= link_to title,url %>
+      </li>
+    <% end %>
   </ul>
 </nav>
+
+<p>My title = <%= current_page %></p>
+

@@ -1,29 +1,30 @@
 class InfoController < ApplicationController
   def index
+    @title = "Home"
   end
 
   def what_you_can_do
-    @title = "What You Can Do"
+    @title = "What you can do"
   end
 
   def ethical_career
-    @title = "Ethical Career?"
+    @title = "Ethical career?"
   end
 
   def my_donations
-    @title = "My Donations"
+    @title = "My donations"
   end
 
   def my_career
-    @title = "My Career"
+    @title = "My career"
   end
 
   def what_we_do
-    @title = "What We Do"
+    @title = "What we do"
   end
   
   def get_involved
-    @title = "Get Involved"
+    @title = "Get involved"
   end
 
   def volunteer
@@ -31,7 +32,7 @@ class InfoController < ApplicationController
   end
 
   def faq
-    @title = "F.A.Q."
+    @title = "FAQ"
   end
 
   def join
@@ -47,20 +48,20 @@ class InfoController < ApplicationController
     # start-min default unix epoch, use tomorrow (instead of today)
     # to cover our backs
     @gcal_params = 'orderby=starttime&start-max=' + Date.tomorrow.rfc3339 
-    @title = "Past Events"
+    @title = "Past events"
     render :events
   end
 
   def orbis_stockpicking_challenge
-    @title = "Orbis Stockpicking Challenge"
+    @title = "Orbis stockpicking challenge"
   end
 
   def career_research
-    @title = "Career Research"
+    @title = "Career research"
   end
 
   def members
-    @title = "Member Profiles"
+    @title = "Member profiles"
   end
 
   def volunteer
