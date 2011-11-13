@@ -6,9 +6,7 @@
 //
 //= require jquery
 //= require jquery_ujs
-//= require underscore
-//= require backbone
-//= require backbone_rails_sync
-//= require backbone_datalink
-//= require backbone/high_impact_careers
-//= require_tree .
+//= require jquery-ui-1.8.16.min
+//= require jquery.localscroll-1.2.7-min
+//= require jquery.scrollTo-1.4.2-min
+//= require misc

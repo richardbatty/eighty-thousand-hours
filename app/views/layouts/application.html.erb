@@ -13,6 +13,11 @@
   <%= javascript_include_tag "application" %>
   <%= stylesheet_link_tag "highimpact" %>
 
+  <% if @title == "My donations" %>
+    <%= javascript_include_tag "highcharts.js" %>
+    <%= javascript_include_tag "donation-calculator.js" %>
+  <% end %>
+
   <!--[if lt IE 9]>
   <%= javascript_include_tag "html5" %>
   <![endif]-->
