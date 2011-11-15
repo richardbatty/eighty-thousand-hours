@@ -71,4 +71,8 @@ class InfoController < ApplicationController
   def pledge
     @title = "The Pledge"
   end
+
+  def contact_us
+    @title = "Contact us"
+  end
 end

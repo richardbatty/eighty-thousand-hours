@@ -21,4 +21,6 @@ HighImpactCareers::Application.routes.draw do
   match 'career-research'               => 'info#career_research'
   match 'members'                       => 'info#members'
   match 'pledge'                        => 'info#pledge'
+
+  match 'contact-us'                    => 'info#contact_us'
 end

@@ -661,3 +661,14 @@ strong {
   }
 }
 
+.footer-link
+{
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  a:hover {
+    color: $link_hover_color !important;
+  }
+}
+
