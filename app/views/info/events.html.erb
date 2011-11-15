@@ -31,20 +31,20 @@ endTimes = endTimes.reverse
 
 %>
 
-<section id='body_content' class='no_body_content_right'>
-  <h1 id='body_content_title'>Events</h1>
-  <section id='body_content_left'><div class='inner'>
+<h1>Events</h1>
+  <% titles.each_with_index do |title, idx| %>
     <div class="box event">
-      <a href="/events/past-events">Past events</a>
+      <div class="title"><%= raw title %></div>
+      <%= raw BlueCloth.new( content[idx] ).to_html %>
+      <p><span class="bold">When:</span> <%= startTimes[idx].strftime("%A %d of %B, %H:%M")  + endTimes[idx].strftime(" - %H:%M") %></p>
+      <p><span class="bold">Where:</span> <%= raw where[idx] %></p>
     </div>
-    <% titles.each_with_index do |title, idx| %>
-      <div class="box event">
-        <div class="title"><%= raw title %></div>
-        <%= raw BlueCloth.new( content[idx] ).to_html %>
-        <p><span class="bold">When:</span> <%= startTimes[idx].strftime("%A %d of %B, %H:%M")  + endTimes[idx].strftime(" - %H:%M") %></p>
-        <p><span class="bold">Where:</span> <%= raw where[idx] %></p>
-      </div>
-    <% end %>
-  </section>
-</section>
+  <% end %>
 
+<div class="center large_margin">
+  <% if @title == "Past events" %>
+    <a class="button" href="/events">Back to forthcoming events</a>
+  <% else %>
+    <a class="button" href="/events/past-events">Looking for past events?</a>
+  <% end %>
+</div>
