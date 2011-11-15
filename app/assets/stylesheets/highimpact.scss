@@ -46,9 +46,10 @@ header {
   height: $dim_header_height+10px;
   text-align: center;
 
-  background: #333 url(/assets/header/hic_header_background.png) no-repeat center top;
+  //background: #333 url(/assets/header/hic_header_background.png) no-repeat center top;
+  background: #333;
 
-  border-bottom: 5px solid $magenta_2;
+  border-bottom: 3px solid $magenta_2;
 
   img {
     margin-top: 30px;
@@ -319,7 +320,7 @@ nav li.selected a:hover {
 footer {
   color: #fff;
   background: #333;
-  border-top: 5px solid $magenta_2;
+  border-top: 3px solid $magenta_2;
   width: 100%;
   text-align: center;
 
