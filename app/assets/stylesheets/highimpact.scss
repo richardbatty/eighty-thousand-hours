@@ -20,24 +20,25 @@ body {
   font-family: $palatino;
   margin: 0 auto;
   text-align: center;
-  width: $dim_page_width;
-  margin-top: $dim_margin_top;
-  margin-bottom: $dim_margin_bottom;
+  //width: 100%;//$dim_page_width;
+  //margin-top: $dim_margin_top;
+  //margin-bottom: $dim_margin_bottom;
 
   /* now 1em == 10px */
   font-size: 62.5%;
 
-  background: #ffffff;
+  background: $background;
   color: $text_color;
 }
 
 #page_container {
-  width: $dim_page_width;
   margin: 0 auto;
-
-  @include box_style;
   background: $box_color; 
   background: $body_bg_color;
+
+  // for centered box instead
+  //width: 100%;//$dim_page_width;
+  //@include box_style;
 }
 
 header {
