@@ -1,6 +1,6 @@
-class CreateMemberProfiles < ActiveRecord::Migration
+class CreateProfiles < ActiveRecord::Migration
   def change
-    create_table :member_profiles do |t|
+    create_table :profiles do |t|
       t.string  :background
       t.string  :career_plans
       t.string  :location

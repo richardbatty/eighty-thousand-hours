@@ -1,0 +1,13 @@
+<div class="box">
+  <% @profiles.each do |profile| %>
+    <div class="inner-box">
+      Member name: <%= profile.user[:name] %>
+      <br/>
+      Member email: <%= profile.user[:email] %>
+      <br/>
+      Member background: <%= profile[:background] %>
+      <br/>
+      Member career plan: <%= profile[:career_plans] %>
+    </div>
+  <% end %>
+</div>
