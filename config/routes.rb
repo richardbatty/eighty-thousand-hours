@@ -1,9 +1,14 @@
 HighImpactCareers::Application.routes.draw do
-  devise_for :users
+  devise_for :users do
+    get "login",  :to => "devise/sessions#new"
+    get "logout", :to => "devise/sessions#destroy"
+  end
   
   resources :posts
   resources :profiles, :only => [:new, :create, :show, :index]
- 
+
+  match 'join'                          => 'profiles#new'
+
   root  :to                             => 'info#index'
   match 'ethical-career'                => 'info#ethical_career'
   match 'what-you-can-do'               => 'info#what_you_can_do'

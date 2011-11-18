@@ -22,7 +22,8 @@ class ProfilesController < ApplicationController
       if @user.save
         @profile.user = @user;
         if @profile.save 
-           redirect_to(@profile, :notice => 'Profile was successfully created.')
+          thanks_str = "Thanks " << @user[:name] << ", we've received your application and will be in touch shortly. The email address we have for you is " << @user[:email] << ", if this is incorrect then please contact info@highimpactcareers.org as soon as possible!";
+           redirect_to('/', :notice => thanks_str)
            return
         end
       end
@@ -32,6 +33,6 @@ class ProfilesController < ApplicationController
     # best destroy the user as name/email may change now
     @user.destroy
     @profile.destroy
-    render :action => "new"
+    render :new
   end
 end
