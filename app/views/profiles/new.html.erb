@@ -15,6 +15,13 @@
   </div>
   <% end %>
 
+  <%= fields_for @user do |u| %>
+    <p><%= u.label :name %></p>
+    <p><%= u.text_field :name %></p>
+    <p><%= u.label :email %></p>
+    <p><%= u.text_field :email %></p>
+  <% end %>
+
   <p><%= f.label :background %></p>
   <p><%= f.text_area :background %></p>
 
@@ -22,10 +29,6 @@
   <p><%= f.text_area :career_plans %></p>
  
   <%= fields_for @user do |u| %>
-    <p><%= u.label :name %></p>
-    <p><%= u.text_field :name %></p>
-    <p><%= u.label :email %></p>
-    <p><%= u.text_field :email %></p>
     <p><%= u.label :password %></p>
     <p><%= u.text_field :password %></p>
     <p><%= u.label :password_confirmation %></p>
