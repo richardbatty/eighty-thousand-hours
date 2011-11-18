@@ -13,20 +13,20 @@
 
 ActiveRecord::Schema.define(:version => 20111118133108) do
 
-  create_table "member_profiles", :force => true do |t|
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.boolean  "draft"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "profiles", :force => true do |t|
     t.string   "background"
     t.string   "career_plans"
     t.string   "location"
     t.boolean  "pledge"
     t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.boolean  "draft"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

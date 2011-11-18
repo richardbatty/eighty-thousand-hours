@@ -3,7 +3,7 @@ HighImpactCareers::Application.routes.draw do
   
   resources :posts
   resources :users, :only => [:index, :show]
-  resources :profiles, :only => [:new, :show, :index]
+  resources :profiles, :only => [:new, :create, :show, :index]
  
   root  :to                             => 'info#index'
   match 'ethical-career'                => 'info#ethical_career'
