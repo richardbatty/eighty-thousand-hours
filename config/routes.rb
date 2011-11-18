@@ -2,7 +2,6 @@ HighImpactCareers::Application.routes.draw do
   devise_for :users
   
   resources :posts
-  resources :users, :only => [:index, :show]
   resources :profiles, :only => [:new, :create, :show, :index]
  
   root  :to                             => 'info#index'
@@ -23,9 +22,4 @@ HighImpactCareers::Application.routes.draw do
   match 'pledge'                        => 'info#pledge'
 
   match 'contact-us'                    => 'info#contact_us'
-
-  #match 'members'                       => 'info#members'
-  #match 'members'                       => 'members#index'
-  #match 'members/new'                   => 'members#new'
-
 end
