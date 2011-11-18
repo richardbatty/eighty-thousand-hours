@@ -26,6 +26,9 @@ class CreateProfiles < ActiveRecord::Migration
       # should we display your info on the member profile page?
       t.boolean :show_info, :default => true
 
+      # has this profile been confirmed by an admin?
+      t.boolean :confirmed, :default => false
+
       # a Profile belongs_to a User
       t.references :user
 

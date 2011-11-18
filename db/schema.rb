@@ -24,8 +24,13 @@ ActiveRecord::Schema.define(:version => 20111118133108) do
   create_table "profiles", :force => true do |t|
     t.string   "background"
     t.string   "career_plans"
+    t.string   "inspiration"
+    t.string   "interesting_fact"
     t.string   "location"
-    t.boolean  "pledge"
+    t.string   "organisation_role"
+    t.boolean  "show_name",         :default => true
+    t.boolean  "show_info",         :default => true
+    t.boolean  "confirmed",         :default => false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

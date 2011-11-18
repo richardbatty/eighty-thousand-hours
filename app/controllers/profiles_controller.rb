@@ -1,10 +1,10 @@
 class ProfilesController < ApplicationController
   def index
-    @profiles = Profile.find( :all, :include => :user )
+    @profiles = Profile.get_all_confirmed
   end
 
   def show
-    @profile = Profile.find( params[:id], :include => :user )
+    @profile = Profile.get_if_confirmed( params[:id] )
   end
 
   def new

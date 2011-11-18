@@ -1,5 +1,6 @@
 <div class="box">
   <div class="inner-box">
+  <% if @profile %>
     Member name: <%= @profile.user[:name] %>
     <br/>
     Member email: <%= @profile.user[:email] %>
@@ -7,5 +8,8 @@
     Member background: <%= @profile[:background] %>
     <br/>
     Member career plan: <%= @profile[:career_plans] %>
+  <% else %>
+    <p>No such profile exists.</p>
+  <% end %>
   </div>
 </div>
