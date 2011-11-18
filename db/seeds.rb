@@ -2,7 +2,7 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
 puts 'SETTING UP ROLES'
-["Admin","Member","Blogger"].each do |r|
+["Admin","Blogger"].each do |r|
   r = Role.create! name: r
   puts 'Created Role: ' << r.name
 end
@@ -31,11 +31,16 @@ puts 'SETTING UP DEFAULT USER LOGIN'
 end
 
 
-puts 'CREATING MEMBER PROFILE'
-
-profile = MemberProfile.create! background: "I'm a lumberjack and I'm ok.",
-                                career_plans: "Work and then die.",
+puts 'CREATING MEMBER PROFILES'
+profile = MemberProfile.create! background: "I love careers, I love ethics, and I love websites. This is great!",
+                                career_plans: "Become King of England.",
                                 location: "Oxford, England:"
 profile.user = User.find_by_name("Member Michael");
+profile.save
+
+profile = MemberProfile.create! background: "I've been blogging about high impact careers since I was 3 years olds.",
+                                career_plans: "I plan to blog myself senseless.",
+                                location: "London, England:"
+profile.user = User.find_by_name("Blogging Billy");
 profile.save
 
