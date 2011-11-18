@@ -1,9 +1,10 @@
-<h2>Create new Member</h2>
+<div class="box">
+<h1>Apply for membership</h1>
  
 <%= form_for @profile do |f| %>
   <% if @profile.errors.any? || @user.errors.any? %>
   <div id="errorExplanation">
-    <h2><%= pluralize(@profile.errors.count + @user.errors.count, "error") %> prohibited this profile from being saved:</h2>
+    <h2><%= pluralize(@profile.errors.count + @user.errors.count, "error") %> prohibited this application from being accepted:</h2>
     <ul>
     <% @profile.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
@@ -35,5 +36,14 @@
     <p><%= u.text_field :password_confirmation %></p>
   <% end %>
 
-  <p><%= f.submit "Apply to join" %></p>
+
+  <div class="inner-box">
+    <h1>The Pledge</h1>
+    <p>
+    <%= pledge %>
+    </p>
+  </div>
+
+  <p><%= f.submit "Take the pledge and apply for membership" %></p>
 <% end %>
+</div>
