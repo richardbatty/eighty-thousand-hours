@@ -37,10 +37,12 @@ profile = MemberProfile.create! background: "I love careers, I love ethics, and 
                                 location: "Oxford, England:"
 profile.user = User.find_by_name("Member Michael");
 profile.save
+puts 'Added profile for Member Michael'
 
 profile = MemberProfile.create! background: "I've been blogging about high impact careers since I was 3 years olds.",
                                 career_plans: "I plan to blog myself senseless.",
                                 location: "London, England:"
 profile.user = User.find_by_name("Blogging Billy");
 profile.save
+puts 'Added profile for Blogging Billy'
 
