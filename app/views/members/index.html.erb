@@ -1,0 +1,13 @@
+<div class="box">
+  <% @members.each do |member| %>
+    <% user = member.user; %>
+    Member name: <%= user[:name] %>
+    <br/>
+    Member email: <%= user[:email] %>
+    <br/>
+    Member background: <%= member[:background] %>
+    <br/>
+    Member career plan: <%= member[:career_plans] %>
+    <br/>
+  <% end %>
+</div>

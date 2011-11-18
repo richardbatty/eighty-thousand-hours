@@ -19,8 +19,10 @@ HighImpactCareers::Application.routes.draw do
   match 'events/past-events'            => 'info#past_events'
   match 'events/orbis-stockpicking-challenge' => 'info#orbis_stockpicking_challenge'
   match 'career-research'               => 'info#career_research'
-  match 'members'                       => 'info#members'
   match 'pledge'                        => 'info#pledge'
 
   match 'contact-us'                    => 'info#contact_us'
+
+  #match 'members'                       => 'info#members'
+  match 'members'                       => 'members#index'
 end
