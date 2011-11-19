@@ -4,4 +4,4 @@
 
 require File.expand_path('../config/application', __FILE__)
 
-HighImpactCareers::Application.load_tasks
+EightyThousandHours::Application.load_tasks

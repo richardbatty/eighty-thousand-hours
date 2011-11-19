@@ -5,11 +5,11 @@ shared: &shared
   
 development:
   <<: *shared
-  database: high-impact-careers-development
+  database: eighty-thousand-hours-development
   
 test: &test
   <<: *shared
-  database: high-impact-careers-test
+  database: eighty-thousand-hours-test
   timeout: 5000
 
 cucumber:

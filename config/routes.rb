@@ -1,4 +1,4 @@
-HighImpactCareers::Application.routes.draw do
+EightyThousandHours::Application.routes.draw do
   devise_for :users
   
   resources :posts
