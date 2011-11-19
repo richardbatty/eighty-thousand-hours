@@ -18,13 +18,12 @@ EightyThousandHours::Application.routes.draw do
   match 'volunteer'                     => 'info#volunteer'
   match 'faq'                           => 'info#faq'
   match 'get-involved'                  => 'info#get_involved'
-  match 'get-involved/join'             => 'info#join'
   match 'get-involved/volunteer'        => 'info#volunteer'
   match 'events'                        => 'info#events'
   match 'events/past-events'            => 'info#past_events'
   match 'events/orbis-stockpicking-challenge' => 'info#orbis_stockpicking_challenge'
   match 'career-research'               => 'info#career_research'
   match 'pledge'                        => 'info#pledge'
-
   match 'contact-us'                    => 'info#contact_us'
+  match 'join'                          => 'info#join'
 end
