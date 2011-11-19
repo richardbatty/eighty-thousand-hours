@@ -1,0 +1,49 @@
+<div class="box">
+<h1>Apply for membership</h1>
+ 
+<%= form_for @profile do |f| %>
+  <% if @profile.errors.any? || @user.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@profile.errors.count + @user.errors.count, "error") %> prohibited this application from being accepted:</h2>
+    <ul>
+    <% @profile.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+
+  <%= fields_for @user do |u| %>
+    <p><%= u.label :name %></p>
+    <p><%= u.text_field :name %></p>
+    <p><%= u.label :email %></p>
+    <p><%= u.text_field :email %></p>
+  <% end %>
+
+  <p><%= f.label :background %></p>
+  <p><%= f.text_area :background %></p>
+
+  <p><%= f.label :career_plans %></p>
+  <p><%= f.text_area :career_plans %></p>
+ 
+  <%= fields_for @user do |u| %>
+    <p><%= u.label :password %></p>
+    <p><%= u.text_field :password %></p>
+    <p><%= u.label :password_confirmation %></p>
+    <p><%= u.text_field :password_confirmation %></p>
+  <% end %>
+
+
+  <div class="inner-box">
+    <h1>The Pledge</h1>
+    <p>
+    <%= pledge %>
+    </p>
+  </div>
+
+  <p><%= f.submit "Take the pledge and apply for membership" %></p>
+<% end %>
+</div>

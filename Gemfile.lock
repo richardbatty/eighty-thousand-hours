@@ -86,6 +86,7 @@ GEM
       factory_girl (~> 2.2.0)
       railties (>= 3.0.0)
     ffi (1.0.9)
+    friendly_id (4.0.0.beta14)
     gherkin (2.6.2)
       json (>= 1.4.6)
     guard (0.8.8)
@@ -264,6 +265,7 @@ DEPENDENCIES
   devise
   exception_notification
   factory_girl_rails
+  friendly_id (~> 4.0.0.beta14)
   guard
   guard-cucumber
   guard-livereload

@@ -1,0 +1,7 @@
+<div class="box">
+  <% @members.each do |member| %>
+    <div class="inner-box">
+      <%= render :partial => '/shared/member', :locals => { :member => member } %>
+    </div>
+  <% end %>
+</div>

@@ -1,9 +1,13 @@
 EightyThousandHours::Application.routes.draw do
-  devise_for :users
+  devise_for :users, :path => 'accounts'
   
   resources :posts
-  resources :users, :only => [:index, :show]
- 
+
+  # using friendly_id for url slugs like members/blogging-billy
+  match 'members/:name'                => 'members#show'
+  # for the rest of the profile routes
+  resources :members, :only            => [:index,:new,:create]
+
   root  :to                             => 'info#index'
   match 'ethical-career'                => 'info#ethical_career'
   match 'what-you-can-do'               => 'info#what_you_can_do'
@@ -19,7 +23,6 @@ EightyThousandHours::Application.routes.draw do
   match 'events/past-events'            => 'info#past_events'
   match 'events/orbis-stockpicking-challenge' => 'info#orbis_stockpicking_challenge'
   match 'career-research'               => 'info#career_research'
-  match 'members'                       => 'info#members'
   match 'pledge'                        => 'info#pledge'
 
   match 'contact-us'                    => 'info#contact_us'
