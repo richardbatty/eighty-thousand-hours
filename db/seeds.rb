@@ -32,21 +32,23 @@ end
 
 
 puts 'CREATING MEMBER PROFILES'
-profile = Profile.create! background: "I am Member Michael. I love careers, I love ethics, and I love websites. This is great!",
-                          career_plans: "Become King of England.",
-                          location: "Oxford, England:"
-puts "Created profile...trying to link to user..."
 user = User.find_by_name("Member Michael");
-user.profile = profile
-user.save
+member = Member.create! background: "I am Member Michael. I love careers, I love ethics, and I love websites. This is great!",
+                          career_plans: "Become King of England.",
+                          location: "Oxford, England:",
+                          user: user
+puts "Created profile...trying to link to user..."
+#user.profile = profile
+#user.save
 puts 'Added profile for Member Michael'
 
-profile = Profile.create! background: "I am Blogging Billy. I've been blogging about high impact careers since I was 3 years olds.",
-                          career_plans: "I plan to blog myself senseless.",
-                          location: "London, England:"
-puts "Created profile...trying to link to user..."
 user = User.find_by_name("Blogging Billy");
-user.profile = profile
-user.save
+member = Member.create! background: "I am Blogging Billy. I've been blogging about high impact careers since I was 3 years olds.",
+                          career_plans: "I plan to blog myself senseless.",
+                          location: "London, England:",
+                          user: user
+puts "Created profile...trying to link to user..."
+#user.profile = profile
+#user.save
 puts 'Added profile for Blogging Billy'
 

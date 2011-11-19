@@ -12,11 +12,14 @@ class DeviseCreateUsers < ActiveRecord::Migration
 
       t.string :name
       t.string :email
+      t.string :slug
     end
 
     add_index :users, :email,                :unique => true
     add_index :users, :reset_password_token, :unique => true
     add_index :users, :confirmation_token,   :unique => true
     add_index :users, :authentication_token, :unique => true
+
+    add_index :users, :slug, :unique => true
   end
 end

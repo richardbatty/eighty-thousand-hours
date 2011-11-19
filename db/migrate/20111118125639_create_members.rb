@@ -1,6 +1,6 @@
-class CreateProfiles < ActiveRecord::Migration
+class CreateMembers < ActiveRecord::Migration
   def change
-    create_table :profiles do |t|
+    create_table :members do |t|
 
       # who are you, condensed life story
       t.string :background
@@ -23,13 +23,13 @@ class CreateProfiles < ActiveRecord::Migration
       # can we list your name on the website?
       t.boolean :show_name, :default => true
 
-      # should we display your info on the member profile page?
+      # should we display your info on the member page?
       t.boolean :show_info, :default => true
 
-      # has this profile been confirmed by an admin?
+      # has this member been confirmed by an admin?
       #t.boolean :confirmed, :default => false
 
-      # a Profile belongs_to a User
+      # a Member belongs_to a User
       t.references :user
 
       t.timestamps

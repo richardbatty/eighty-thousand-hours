@@ -13,15 +13,7 @@
 
 ActiveRecord::Schema.define(:version => 20111118133108) do
 
-  create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.boolean  "draft"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "profiles", :force => true do |t|
+  create_table "members", :force => true do |t|
     t.string   "background"
     t.string   "career_plans"
     t.string   "inspiration"
@@ -31,6 +23,14 @@ ActiveRecord::Schema.define(:version => 20111118133108) do
     t.boolean  "show_name",         :default => true
     t.boolean  "show_info",         :default => true
     t.integer  "user_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.boolean  "draft"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -64,11 +64,13 @@ ActiveRecord::Schema.define(:version => 20111118133108) do
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
+    t.string   "slug"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
+  add_index "users", ["slug"], :name => "index_users_on_slug", :unique => true
 
 end

@@ -1,15 +1,7 @@
 <div class="box">
-  <% @profiles.each do |profile| %>
+  <% @members.each do |member| %>
     <div class="inner-box">
-      Profile ID: <%= profile[:id] %>
-      <br/>
-      Name: <%= profile.user[:name] %>
-      <br/>
-      Email: <%= profile.user[:email] %>
-      <br/>
-      Background: <%= profile[:background] %>
-      <br/>
-      Career plan: <%= profile[:career_plans] %>
+      <%= render :partial => '/shared/member', :locals => { :member => member } %>
     </div>
   <% end %>
 </div>

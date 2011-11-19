@@ -2,9 +2,11 @@ HighImpactCareers::Application.routes.draw do
   devise_for :users, :path => 'accounts'
   
   resources :posts
-  resources :profiles, :only => [:new, :create, :show, :index]
 
-  match 'join'                          => 'profiles#new'
+  # using friendly_id for url slugs like members/blogging-billy
+  match 'members/:name'                => 'members#show'
+  # for the rest of the profile routes
+  resources :members, :only            => [:index,:new,:create]
 
   root  :to                             => 'info#index'
   match 'ethical-career'                => 'info#ethical_career'

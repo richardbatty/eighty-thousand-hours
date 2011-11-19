@@ -7,6 +7,10 @@ gem 'devise'
 
 gem 'pg'
 
+
+# for nice url slugs
+gem 'friendly_id', '~> 4.0.0.beta14'
+
 # markdown
 gem 'bluecloth'
 
