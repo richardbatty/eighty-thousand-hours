@@ -1,20 +1,20 @@
 class ProfilesController < ApplicationController
   def index
-    @profiles = Profile.get_all_confirmed
+    @profiles = Profile.all( :include => :user );
   end
 
   def show
-    @profile = Profile.get_if_confirmed( params[:id] )
+    @profile = Profile.find( params[:id], :include => :user )
   end
 
   def new
-    @profile = Profile.new
     @user    = User.new
+    @profile = @user.build_profile
   end
 
   def create
-    @profile = Profile.new(params[:profile])
     @user =    User.new(params[:user])
+    @profile = @user.build_profile(params[:profile])
 
     # eager evaluation so both @user.errors and @profile.errors
     # get filled if don't pass validations

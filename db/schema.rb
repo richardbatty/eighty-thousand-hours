@@ -30,7 +30,6 @@ ActiveRecord::Schema.define(:version => 20111118133108) do
     t.string   "organisation_role"
     t.boolean  "show_name",         :default => true
     t.boolean  "show_info",         :default => true
-    t.boolean  "confirmed",         :default => false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"

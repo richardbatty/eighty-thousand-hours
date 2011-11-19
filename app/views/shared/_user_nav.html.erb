@@ -1,8 +1,8 @@
 <div id="user_nav">
   <% if user_signed_in? %>
-    <%= link_to current_user.email, "/profiles/#{current_user.id}" %>
-    [<%= link_to "logout", "/logout" %>]
+    <%= link_to current_user.name, "/accounts/edit" %>
+    [<%= link_to "logout", destroy_user_session_path, :method => :delete %>]
   <% else %>
-    [<%= link_to "login", "/login" %>]
+    [<%= link_to "login", new_user_session_path %>]
   <% end %>
 </div>

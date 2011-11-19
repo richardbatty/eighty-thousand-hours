@@ -27,7 +27,7 @@ class CreateProfiles < ActiveRecord::Migration
       t.boolean :show_info, :default => true
 
       # has this profile been confirmed by an admin?
-      t.boolean :confirmed, :default => false
+      #t.boolean :confirmed, :default => false
 
       # a Profile belongs_to a User
       t.references :user

@@ -1,8 +1,5 @@
 HighImpactCareers::Application.routes.draw do
-  devise_for :users do
-    get "login",  :to => "devise/sessions#new"
-    get "logout", :to => "devise/sessions#destroy"
-  end
+  devise_for :users, :path => 'accounts'
   
   resources :posts
   resources :profiles, :only => [:new, :create, :show, :index]
