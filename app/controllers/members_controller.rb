@@ -14,7 +14,7 @@ class MembersController < ApplicationController
   end
 
   def new
-    @user    = User.new
+    @user   = User.new
     @member = @user.build_member
   end
 

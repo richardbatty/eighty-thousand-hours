@@ -17,11 +17,11 @@
   <%= f.password_field :password_confirmation %></div>
 
   <%# this will only display fields if :profile exists %>
-  <%= f.fields_for :profile do |pf| %>
-    <p><%= pf.label :background %></p>
-    <p><%= pf.text_field :background %></p>
-    <p><%= pf.label :career_plans %></p>
-    <p><%= pf.text_field :career_plans %></p>
+  <%= f.fields_for :member do |mf| %>
+    <p><%= mf.label :background %></p>
+    <p><%= mf.text_field :background %></p>
+    <p><%= mf.label :career_plans %></p>
+    <p><%= mf.text_field :career_plans %></p>
   <% end %>
 
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />

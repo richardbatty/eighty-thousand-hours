@@ -20,25 +20,18 @@ body {
   font-family: $palatino;
   margin: 0 auto;
   text-align: center;
-  //width: 100%;//$dim_page_width;
-  //margin-top: $dim_margin_top;
-  //margin-bottom: $dim_margin_bottom;
 
   /* now 1em == 10px */
   font-size: 62.5%;
 
-  background: $background;
   color: $text_color;
+  background: #333;
 }
 
 #page_container {
   margin: 0 auto;
   background: $box_color; 
   background: $body_bg_color;
-
-  // for centered box instead
-  //width: 100%;//$dim_page_width;
-  //@include box_style;
 }
 
 header {
@@ -51,12 +44,49 @@ header {
 
   border-bottom: 3px solid $magenta_2;
 
-  img {
-    margin-top: 30px;
-    margin-bottom: 20px;
-    // so text is in center
-    margin-left: -70px;
+  #header-content
+  {
+    width: $dim_page_width;
+    height: 91px;
+    margin-left: auto;
+    margin-right: auto;
+    padding-top: $dim_page_padding_top;
+
+    #header-logo {
+        float:left;
+        clear: none;
+      height: 91px;
+      width: 106px;
+    }
+    #header-text-and-menu {
+      float:left;
+      clear: none;
+      width: $dim_page_width - 106px;
+      height: 91px;
+
+      img#header-text {
+        float: left;
+        padding-left: 20px;
+        padding-bottom: 10px;
+      }
+
+      img.social_image
+      {
+        padding:0px;
+        margin:0px;
+        width: 20px;
+        height: 20px;
+      }
+    }
   }
+
+  //img {
+  //  float: left;
+  //  /*margin-top: 30px;*/
+  //  /*margin-bottom: 20px;*/
+  //  // so text is in center
+  //  /*margin-left: -170px;*/
+  //}
 
   position: relative;
 }
@@ -164,7 +194,28 @@ header {
   margin-right: auto;
 
   @include box_style;
+
+  @include rounded_borders(#5c5, 1px, $dim_border_radius);
+  @include box_shadow(#5c5, 0px, 0px, 5px);
 }
+
+.alert {
+  width: 80%;
+  font-size: 1.4em;
+  line-height: 2em;
+  color: $text_color;
+  background: #fff;
+  margin: 20px;
+  padding: 20px;
+  margin-left: auto;
+  margin-right: auto;
+
+  @include box_style;
+
+  @include rounded_borders(#c55, 1px, $dim_border_radius);
+  @include box_shadow(#c55, 0px, 0px, 5px);
+}
+
 /* -------------- /rails notice ----------- */
 
 
@@ -244,16 +295,21 @@ header {
 
 /* ------------- nav --------------- */
 nav {
-  font-size: 14px;
+  font-size: 1.5em;
   margin: 0;
   padding: 0;
   background: $nav_bar_color;
   width: 100%;
   text-align: center;
+  /*position: relative;*/
+  /*top: -40px;*/
+  /*left: 75px;*/
+  float: left;
+  padding-left: 20px;
 }
 
 nav ul {
-  text-align: center;
+  text-align: left;
   margin: 0;
   padding: 0;
 }
@@ -273,7 +329,8 @@ nav li ul {
 nav ul li a {
   text-decoration: none;
   color: $nav_link_color;
-  padding: 5px 15px 5px 15px;
+  padding: 0px 15px 0px 15px;
+  padding-left: 0px;
   background: $nav_bar_color;
   margin-left: 1px;
   white-space: nowrap;
@@ -381,7 +438,7 @@ text-align: center; height: 50px; background: #fff;
 /* --------- boxes ---------- */
 
 #content {
-  width: 800px;
+  width: $dim_page_width;
   padding: 0px;
   margin: 0px;
   margin-left:auto;
@@ -641,14 +698,18 @@ strong {
 }
 
 
-#user_nav
+// top right: user login, social buttons
+#interaction
 {
-  position: absolute;
-  right:0;
-  top:0;
+  float: right;
+  text-align: right;
   color: #efefef;
-  padding: 10px;
-  font-size: 14px;
+  padding-right: 10px;
+  font-size: 12px;
+
+  .user-login{
+    padding-bottom: 8px;
+  }
 
   a {
     color: $nav_link_color;

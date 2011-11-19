@@ -1,5 +1,6 @@
 EightyThousandHours::Application.routes.draw do
   devise_for :users, :path => 'accounts'
+  match 'members/new' => 'members#new'
   
   resources :posts
 

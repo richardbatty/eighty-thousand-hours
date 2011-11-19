@@ -1,8 +1,16 @@
-<div id="user_nav">
+<div id="interaction">
+  <div class="user-login">
   <% if user_signed_in? %>
     <%= link_to current_user.name, "/accounts/edit" %>
-    [<%= link_to "logout", destroy_user_session_path, :method => :delete %>]
+    (<%= link_to "Logout", destroy_user_session_path, :method => :delete %>)
   <% else %>
-    [<%= link_to "login", new_user_session_path %>]
+    <%= link_to "Login", new_user_session_path %>
   <% end %>
+  </div>
+
+  <div class="social">
+    <%= image_tag "social/facebook.png", :class => "social_image" %>
+    <%= image_tag "social/twitter.png", :class => "social_image" %>
+    <%= image_tag "social/googleplus.png", :class => "social_image" %>
+  </div>
 </div>

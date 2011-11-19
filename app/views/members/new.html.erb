@@ -1,12 +1,12 @@
 <div class="box">
 <h1>Apply for membership</h1>
  
-<%= form_for @profile do |f| %>
-  <% if @profile.errors.any? || @user.errors.any? %>
+<%= form_for @member do |f| %>
+  <% if @member.errors.any? || @user.errors.any? %>
   <div id="errorExplanation">
-    <h2><%= pluralize(@profile.errors.count + @user.errors.count, "error") %> prohibited this application from being accepted:</h2>
+    <h2><%= pluralize(@member.errors.count + @user.errors.count, "error") %> prohibited this application from being accepted:</h2>
     <ul>
-    <% @profile.errors.full_messages.each do |msg| %>
+    <% @member.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
     <% @user.errors.full_messages.each do |msg| %>
@@ -36,11 +36,10 @@
     <p><%= u.text_field :password_confirmation %></p>
   <% end %>
 
-
   <div class="inner-box">
     <h1>The Pledge</h1>
     <p>
-    <%= pledge %>
+    <%= render :partial => 'shared/pledge' %>
     </p>
   </div>
 

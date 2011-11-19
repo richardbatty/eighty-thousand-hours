@@ -16,14 +16,4 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
 
   has_and_belongs_to_many :roles
-
-
-  def self.get_if_confirmed( id )
-    profile = find( id, :include => :user )
-    if profile[:confirmed]
-      return profile
-    else
-      return nil
-    end
-  end
 end
