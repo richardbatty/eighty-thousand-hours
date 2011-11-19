@@ -20,24 +20,25 @@ body {
   font-family: $palatino;
   margin: 0 auto;
   text-align: center;
-  width: $dim_page_width;
-  margin-top: $dim_margin_top;
-  margin-bottom: $dim_margin_bottom;
+  //width: 100%;//$dim_page_width;
+  //margin-top: $dim_margin_top;
+  //margin-bottom: $dim_margin_bottom;
 
   /* now 1em == 10px */
   font-size: 62.5%;
 
-  background: #ffffff;
+  background: $background;
   color: $text_color;
 }
 
 #page_container {
-  width: $dim_page_width;
   margin: 0 auto;
-
-  @include box_style;
   background: $box_color; 
   background: $body_bg_color;
+
+  // for centered box instead
+  //width: 100%;//$dim_page_width;
+  //@include box_style;
 }
 
 header {
@@ -45,9 +46,10 @@ header {
   height: $dim_header_height+10px;
   text-align: center;
 
-  background: #333 url(/assets/header/hic_header_background.png) no-repeat center top;
+  //background: #333 url(/assets/header/hic_header_background.png) no-repeat center top;
+  background: #333;
 
-  border-bottom: 5px solid $magenta_2;
+  border-bottom: 3px solid $magenta_2;
 
   img {
     margin-top: 30px;
@@ -318,7 +320,7 @@ nav li.selected a:hover {
 footer {
   color: #fff;
   background: #333;
-  border-top: 5px solid $magenta_2;
+  border-top: 3px solid $magenta_2;
   width: 100%;
   text-align: center;
 
