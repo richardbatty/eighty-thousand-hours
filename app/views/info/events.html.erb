@@ -43,8 +43,8 @@ endTimes = endTimes.reverse
 
 <div class="center large_margin">
   <% if @title == "Past events" %>
-    <a class="button" href="/events">Back to forthcoming events</a>
+    <%= button_link 'Back to forthcoming events', '/events' %>
   <% else %>
-    <a class="button" href="/events/past-events">Looking for past events?</a>
+    <%= button_link 'Looking for past events?', '/events/past-events' %>
   <% end %>
 </div>

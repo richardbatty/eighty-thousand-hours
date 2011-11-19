@@ -467,25 +467,6 @@ text-align: center; height: 50px; background: #fff;
     padding: 0px !important;
   }
 
-  // for rows of divs like on the front page
-  .third-width {
-    width: 203px !important;
-    /*display: inline-block;*/
-    float: left;
-    vertical-align: text-top;
-    text-align: center;
-    line-height: 1.7em;
-    font-size: 0.9em;
-
-    .bold {
-      font-weight: bold;
-      text-align: left;
-    }
-    .h2 {
-      text-align: center;
-    }
-  }
-
   .height-150 {
     height: 150px;
   }
@@ -507,12 +488,50 @@ text-align: center; height: 50px; background: #fff;
 
   /* these are used for text content */
   .box {
-    width: 600px;
-    /*font-size: 1.5em;*/
-
-    padding: 20px;
     margin-left: auto;
     margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px;
+
+    // for spanning links
+    position:relative;
+
+    @include box_style;
+
+    p {
+      text-decoration: none;
+    }
+
+    &:hover {
+      @include box_style_hover;
+    }
+
+    // front page
+    &.fp-padding {
+      padding: 10px !important;
+    }
+  }
+
+  // for rows of divs like on the front page
+  .box-third {
+    width: 203px !important;
+    /*display: inline-block;*/
+    float: left;
+    vertical-align: text-top;
+    text-align: center;
+    line-height: 1.7em;
+    font-size: 0.9em;
+
+    .bold {
+      font-weight: bold;
+      text-align: left;
+    }
+    .h2 {
+      text-align: center;
+    }
+
+    padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
 
@@ -529,6 +548,8 @@ text-align: center; height: 50px; background: #fff;
       @include box_style_hover;
     }
   }
+
+
 
   /* for boxes within boxes */
   .inner-box {
