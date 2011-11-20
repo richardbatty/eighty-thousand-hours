@@ -2,7 +2,8 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, :use => :slugged
 
-  has_one :member
+  # dependent means member gets destroyed when user is destroyed
+  has_one :member, :dependent => :destroy
   accepts_nested_attributes_for :member
 
   devise :database_authenticatable, :registerable, :token_authenticatable,
