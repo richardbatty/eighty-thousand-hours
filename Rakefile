@@ -13,8 +13,3 @@ task :run => [:set_development_environment] do
     sh "rails server"
 end
 
-task :push_to_heroku do
-  sh "git push heroku"
-  :set_heroku_config_vars
-end
-
