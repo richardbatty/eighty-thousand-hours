@@ -44,6 +44,11 @@ EightyThousandHours::Application.configure do
     :password             => ENV['SMTP_PASSWORD'],
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
+
+  # only used in development -- real secret hidden in external file
+  if ENV['COOKIE_SECRET'].nil?
+    ENV['COOKIE_SECRET'] = "secretcookiestringfordevelopment"
+  end
 end
 
 silence_warnings do
