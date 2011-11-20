@@ -1,7 +1,8 @@
 <div class="box">
 <h1><%= current_user.name %></h1>
 
-<% if !(current_user.member[:confirmed]) %>
+<% if current_user.member %>
+<% if !(current_user.member.try([:confirmed])) %>
   <div class="inner-box warning">
     <h2>Please note:</h2>
     <p>Your membership is still being reviewed by the <%= org_name %> team.</p>
@@ -12,6 +13,7 @@
     <h2>Public profile</h2>
     <p>See how others view your profile on the <%= link_to "public profile for #{current_user.name}", "/members/#{current_user.slug}" %>.</p>
   </div>
+<% end %>
 <% end %>
 
 
