@@ -1,9 +1,24 @@
 <div class="box">
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
+ 
+<% if !(current_user.member[:confirmed]) %>
+  <div class="inner-box warning">
+    <h2>Please note:</h2>
+    <p>Your membership is still being reviewed by the <%= org_name %> team.</p>
+    <p>If it's been more than a week and we haven't been in touch, please contact <%= link_to 'info@eightythousand.org', 'mailto:info@eightythousand.org' %>.</p>
+  </div>
+<% else %>
+  <div class="inner-box">
+    <h2>Public profile</h2>
+    <p>See how others view your profile on the <%= link_to "public profile for #{current_user.name}", "/members/#{current_user.slug}" %>.</p>
+  </div>
+<% end %>
+
+
+<h2>Your details</h2>
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
-  
+ 
   <div><%= f.label :name %><br />
   <%= f.text_field :name %></div>
 
