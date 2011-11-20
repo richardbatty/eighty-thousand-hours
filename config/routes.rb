@@ -23,7 +23,6 @@ EightyThousandHours::Application.routes.draw do
   match 'events/past-events'            => 'info#past_events'
   match 'events/orbis-stockpicking-challenge' => 'info#orbis_stockpicking_challenge'
   match 'career-research'               => 'info#career_research'
-  match 'pledge'                        => 'info#pledge'
   match 'contact-us'                    => 'info#contact_us'
-  match 'join'                          => 'info#join'
+  match 'the-pledge'                    => 'info#the_pledge'
 end
