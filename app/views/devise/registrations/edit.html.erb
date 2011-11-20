@@ -1,5 +1,6 @@
 <div class="box">
- 
+<h1><%= current_user.name %></h1>
+
 <% if !(current_user.member[:confirmed]) %>
   <div class="inner-box warning">
     <h2>Please note:</h2>
