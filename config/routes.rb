@@ -5,11 +5,12 @@ EightyThousandHours::Application.routes.draw do
   
   resources :posts
 
+  # for creation of a new member profile
+  # NOTE: this has to be before members/:name in routes
+  match 'members/new' => 'members#new'
+
   # using friendly_id for url slugs like members/blogging-billy
   match 'members/:name'                 => 'members#show'
-
-  # for creation of a new member profile
-  match 'members/new' => 'members#new'
 
   # for the rest of the profile routes
   resources :members, :only             => [:index,:new,:create]
