@@ -1,16 +1,11 @@
 class MembersController < ApplicationController
   def index
-    # can't just grab all Users as some may not have members
-    @members = Member.all( :include => :user );
+    @members = Member.all_confirmed
   end
 
   def show
-    @user = User.find_by_slug( params[:name] )
-    if @user
-      @member = @user.member
-    else
-      @error = "We couldn't find a member called '#{params[:name]}', sorry!" 
-    end
+    @slug = params[:name]
+    @member = Member.find_by_slug( @slug )
   end
 
   def new
@@ -28,7 +23,7 @@ class MembersController < ApplicationController
       if @user.save
         @member.user = @user;
         if @member.save 
-          thanks_str = "Thanks " << @user[:name] << ", we've received your application and will be in touch shortly. The email address we have for you is " << @user[:email] << ", if this is incorrect then please contact info@highimpactcareers.org as soon as possible!";
+          thanks_str = "Thanks " << @user[:name] << ", we've received your application and will be in touch shortly. In the meantime please confirm your account by following the link in the email we sent to " << @user[:email] << "."; 
            redirect_to('/', :notice => thanks_str)
            return
         end

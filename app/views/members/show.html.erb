@@ -3,7 +3,9 @@
   <% if @member %>
     <%= render :partial => '/shared/member', :locals => { :member => @member } %>
   <% else %>
-    <p><%= @error %></p>
+    <p>Sorry, we couldn't find a member with the name '<%= @slug %>'.</p>
+    <%= button_link 'List of all members', '/members' %>
   <% end %>
   </div>
 </div>
+

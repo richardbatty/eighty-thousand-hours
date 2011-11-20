@@ -2,13 +2,10 @@
 <h1>Apply for membership</h1>
  
 <%= form_for @member do |f| %>
-  <% if @member.errors.any? || @user.errors.any? %>
+  <% if @user.errors.any? %>
   <div id="errorExplanation">
-    <h2><%= pluralize(@member.errors.count + @user.errors.count, "error") %> prohibited this application from being accepted:</h2>
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this application from being accepted:</h2>
     <ul>
-    <% @member.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
     <% @user.errors.full_messages.each do |msg| %>
       <li><%= msg %></li>
     <% end %>
