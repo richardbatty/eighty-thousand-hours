@@ -21,7 +21,7 @@
 </head>
 
 <body>
-  <div id="page_container"> 
+  <div id="wrapper"> 
     <header>
       <div id="header-content">
         <%= image_tag "header/80kh_logo.png", :id => "header-logo" %> 
@@ -47,10 +47,12 @@
 
     <%# render :partial => "/shared/social_media" %>
 
-    <footer>
-      <%= render :partial => "/shared/footer" %>
-    </footer>
+    <div class="push"><!-- sticky footer --></div>
   </div>
+
+  <footer>
+    <%= render :partial => "/shared/footer" %>
+  </footer>
 </body>
 </html>
 

@@ -16,6 +16,10 @@
   @include box_shadow(#ccc, 0px, 0px, 10px);
 }
 
+html,body {
+  height: 100%;
+}
+
 body {
   font-family: $palatino;
   margin: 0 auto;
@@ -28,10 +32,15 @@ body {
   background: #333;
 }
 
-#page_container {
-  margin: 0 auto;
+#wrapper {
   background: $box_color; 
   background: $body_bg_color;
+
+  // for sticky footer
+  min-height: 100%; 
+  height: auto !important;
+  height: 100%;
+  margin: 0 auto (-($dim_footer_height + $dim_top_and_tail_border_width));
 }
 
 header {
@@ -42,7 +51,7 @@ header {
   //background: #333 url(/assets/header/hic_header_background.png) no-repeat center top;
   background: #333;
 
-  border-bottom: 3px solid $magenta_2;
+  border-bottom: $dim_top_and_tail_border_width solid $magenta_2;
 
   #header-content
   {
@@ -377,7 +386,7 @@ nav li.selected a:hover {
 footer {
   color: #fff;
   background: #333;
-  border-top: 3px solid $magenta_2;
+  border-top: $dim_top_and_tail_border_width solid $magenta_2;
   width: 100%;
   text-align: center;
 
@@ -396,6 +405,10 @@ footer {
     }
   }
 
+}
+
+footer, .push {
+  height: $dim_footer_height;
 }
 
 .pf{
