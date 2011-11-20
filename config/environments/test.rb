@@ -39,4 +39,9 @@ EightyThousandHours::Application.configure do
   
   # outbound email config
   config.action_mailer.default_url_options = { :host => 'localhost:3000' }
+
+  # only used in development -- real secret hidden in external file
+  if ENV['COOKIE_SECRET'].nil?
+    ENV['COOKIE_SECRET'] = "secretcookiestringfortesting"*5
+  end
 end

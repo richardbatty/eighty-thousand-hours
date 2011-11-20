@@ -39,7 +39,7 @@ EightyThousandHours::Application.configure do
 
   # only used in development -- real secret hidden in external file
   if ENV['COOKIE_SECRET'].nil?
-    ENV['COOKIE_SECRET'] = "secretcookiestringfordevelopment"
+    ENV['COOKIE_SECRET'] = "secretcookiestringfordevelopment"*5
   end
 end
 
