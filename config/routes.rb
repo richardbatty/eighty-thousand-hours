@@ -1,13 +1,18 @@
 EightyThousandHours::Application.routes.draw do
   devise_for :users, :path => 'accounts'
-  match 'members/new' => 'members#new'
+
+  match 'accounts/admin'                => 'users#admin'
   
   resources :posts
 
   # using friendly_id for url slugs like members/blogging-billy
-  match 'members/:name'                => 'members#show'
+  match 'members/:name'                 => 'members#show'
+
+  # for creation of a new member profile
+  match 'members/new' => 'members#new'
+
   # for the rest of the profile routes
-  resources :members, :only            => [:index,:new,:create]
+  resources :members, :only             => [:index,:new,:create]
 
   root  :to                             => 'info#index'
   match 'ethical-career'                => 'info#ethical_career'
