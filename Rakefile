@@ -5,3 +5,16 @@
 require File.expand_path('../config/application', __FILE__)
 
 EightyThousandHours::Application.load_tasks
+
+secret_path = '/Users/rjs/.80000hours_secrets.rb'
+require secret_path if File.exists?( secret_path ) 
+
+task :run => [:set_development_environment] do
+    sh "rails server"
+end
+
+task :push_to_heroku do
+  sh "git push heroku"
+  :set_heroku_config_vars
+end
+
