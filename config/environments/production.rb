@@ -15,6 +15,7 @@ EightyThousandHours::Application.configure do
   config.assets.compress = true
 
   # Don't fallback to assets pipeline if a precompiled asset is missed
+  # NOTE: required for Heroku (as of Nov. 2011, with Rails 3.1)
   config.assets.compile = true
 
   # Generate digests for assets URLs
