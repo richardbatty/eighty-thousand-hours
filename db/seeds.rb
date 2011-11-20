@@ -11,6 +11,7 @@ puts 'SETTING UP DEFAULT USER LOGIN'
 [
   { :name => "Campaigner Cat", :email => "cc@eg.com" },
   { :name => "Member Michael", :email => "mm@eg.com" },
+  { :name => "Unconfirmed Ug", :email => "uu@eg.com" },
   { :name => "Blogging Billy", :email => "bb@eg.com", :roles => ["Blogger"] },
   { :name => "Admin Anthonio", :email => "aa@eg.com", :roles => ["Admin"] }
 ].each do |u|
@@ -34,7 +35,8 @@ end
 puts 'CREATING MEMBER PROFILES'
 member = Member.create! background: "I am Member Michael. I love careers, I love ethics, and I love websites. This is great!",
                           career_plans: "Become King of England.",
-                          location: "Oxford, England:"
+                          location: "Oxford, England",
+                          confirmed: true
 puts "Created profile...trying to link to user..."
 user = User.find_by_name("Member Michael");
 user.member = member
@@ -43,11 +45,20 @@ puts 'Added profile for Member Michael'
 
 member = Member.create! background: "I am Blogging Billy. I've been blogging about high impact careers since I was 3 years olds.",
                           career_plans: "I plan to blog myself senseless.",
-                          location: "London, England:",
-                          user: user
+                          location: "London, England",
+                          confirmed: true
 puts "Created profile...trying to link to user..."
 user = User.find_by_name("Blogging Billy");
 user.member = member
 user.save
 puts 'Added profile for Blogging Billy'
+
+member = Member.create! background: "I am Unconfirmed Ug. I am not confirmed. Please love me.",
+                          career_plans: "To be confirmed...",
+                          location: "Alpha Centauri"
+puts "Created profile...trying to link to user..."
+user = User.find_by_name("Unconfirmed Ug");
+user.member = member
+user.save
+puts 'Added profile for Unconfirmed Ug'
 
