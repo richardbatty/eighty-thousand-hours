@@ -5,10 +5,15 @@ class Member < ActiveRecord::Base
 
   # paperclip avatars on S3
   has_attached_file :avatar, 
-                    :styles => { :medium => "300x300>", :thumb => "100x100>" },
+                    :styles => { :large => "300x300", :medium => "200x200>", :small => "100x100", :thumb => "75x75>" },
                     :storage => :s3,
-                    :s3_credentials => "#{Rails.root}/config/s3.yml",
+                    :s3_credentials => S3_CREDENTIALS, # set in initializers/s3.rb
                     :path => "/profiles/:style/:id/:filename"
+
+  validates_attachment_size :avatar, :less_than => 2.megabytes,
+                            :unless => Proc.new {|m| m[:image].nil?}
+  validates_attachment_content_type :avater, :content_type=>['image/jpeg', 'image/png', 'image/gif'],
+                                    :unless => Proc.new {|m| m[:image].nil?}
 
   # a Member is always tied to a User 
   belongs_to :user
