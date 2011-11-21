@@ -1,6 +1,24 @@
 <div class="box">
-  <% @users.each do |user| %>
-    <%= link_to user[:name], user_path( user ) %>
-    <br/>
-  <% end %>
+  <table>
+    <% @users.each do |user| %>
+    <tr>
+      <td><%= user.name %></td>
+      <td><%= user.email %></td>
+      <td><% '•' if user.confirmed_at.nil? %></td>
+      <td>
+        <% if user.member %>
+          <% if !user.member.confirmed %>
+          <%= link_to '✔ confirm', user_path(user),
+            {:confirm => "Definitely confirm #{user.name} as a member?", :confirmed => true },
+                      :method => :put %>
+          <% end %>
+        <% end %>
+      </td>
+      <td><%= link_to '✘ delete', user_path(user),
+                      :confirm => "You sure you want to delete #{user.name}?",
+                      :method => :delete %>
+      </td>
+    </tr>
+    <% end %>
+  </table>
 </div>

@@ -1,7 +1,6 @@
 EightyThousandHours::Application.routes.draw do
   devise_for :users, :path => 'accounts'
-
-  match 'accounts/admin'                => 'users#admin'
+  resources  :users, :path => 'accounts', :only => [:index, :show, :destroy]
   
   resources :posts
 
