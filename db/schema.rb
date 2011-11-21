@@ -35,12 +35,16 @@ ActiveRecord::Schema.define(:version => 20111121175211) do
     t.string   "interesting_fact"
     t.string   "location"
     t.string   "organisation_role"
-    t.boolean  "show_name",         :default => true
-    t.boolean  "show_info",         :default => true
-    t.boolean  "confirmed",         :default => false
+    t.boolean  "show_name",           :default => true
+    t.boolean  "show_info",           :default => true
+    t.boolean  "confirmed",           :default => false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
   end
 
   create_table "posts", :force => true do |t|
