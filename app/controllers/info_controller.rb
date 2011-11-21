@@ -91,4 +91,8 @@ class InfoController < ApplicationController
   def blog
     @title = "Blog"
   end
+  
+  def press
+    @title = "Press"
+  end
 end
