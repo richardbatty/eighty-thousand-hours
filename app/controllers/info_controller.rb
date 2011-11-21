@@ -87,4 +87,8 @@ class InfoController < ApplicationController
   def show_your_support
     @title = "Show your support"
   end
+
+  def blog
+    @title = "Blog"
+  end
 end

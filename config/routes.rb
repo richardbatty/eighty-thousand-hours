@@ -28,4 +28,6 @@ EightyThousandHours::Application.routes.draw do
   match 'help'                          => 'info#help'
   match 'find-out-more'                 => 'info#find_out_more'
   match 'show-your-support'             => 'info#show_your_support'
+  match 'blog'                          => 'info#blog'
 end
+

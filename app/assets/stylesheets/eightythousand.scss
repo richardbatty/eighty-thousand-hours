@@ -969,3 +969,12 @@ strong {
 /*input:focus, textarea:focus {*/
     /*border:1px solid #97d6eb;*/
 /*}*/
+
+.blog-entry {
+  .attribution {
+    margin-top: 10px;
+    border-top: 1px solid #ccc;
+    font-style: italic;
+  }
+}
+
