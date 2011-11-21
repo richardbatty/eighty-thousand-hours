@@ -5,10 +5,11 @@ class Member < ActiveRecord::Base
 
   # paperclip avatars on S3
   has_attached_file :avatar, 
-                    :styles => { :large => "300x300", :medium => "200x200>", :small => "100x100", :thumb => "75x75>" },
+                    :styles => { :large => "300x300", :medium => "200x200>", :small => "96x96", :thumb => "64x64" },
                     :storage => :s3,
                     :s3_credentials => S3_CREDENTIALS, # set in initializers/s3.rb
-                    :path => "/profiles/:style/:id/:filename"
+                    :path => "/profiles/:style/:id/:filename",
+                    :default_url => "/assets/profiles/avatar_default_96x96.png"
 
   validates_attachment_size :avatar, :less_than => 2.megabytes,
                             :unless => Proc.new {|m| m[:image].nil?}
