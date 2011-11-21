@@ -101,6 +101,12 @@ header {
   }
 
   position: relative;
+
+
+  background: -webkit-radial-gradient( center 130%, #555, #333 300px);
+  background: -moz-radial-gradient(    center 130%, #555, #333 300px);
+  background: -o-radial-gradient(      center 130%, #555, #333 300px);
+  background: -ms-radial-gradient(     center 130%, #555, #333 300px);
 }
 
 
