@@ -40,8 +40,11 @@
     <p><%= mf.text_field :background %></p>
     <p><%= mf.label :career_plans %></p>
     <p><%= mf.text_field :career_plans %></p>
-  <% end %>
 
+    <p><%= mf.label :avatar %></p>
+    <p><%= mf.file_field :avatar %></p>
+  <% end %>
+  
   <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
   <%= f.password_field :current_password %></div>
   <div><%= f.submit "Update" %></div>

@@ -3,3 +3,5 @@ Name: <%= member.name %>
 Background: <%= member.background %>
 <br/>
 Career plan: <%= member.career_plans %>
+<br/>
+<%= link_to image_tag(member.avatar.url(:small)), member.avatar.url %>
