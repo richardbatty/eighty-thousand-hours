@@ -883,3 +883,19 @@ strong {
   }
 }
 
+.fb-like-box-small
+{
+  height: 63px;
+}
+.fb-like-box-large
+{
+  /*height: 400px;*/
+  padding: 15px;
+  width: 292px;
+  margin: 20px;
+  margin-left:auto;
+  margin-right:auto;
+  @include rounded_borders(#ccc, 1px, 6px);
+  @include box_shadow(#ccc, 0px, 0px, 5px);
+}
+

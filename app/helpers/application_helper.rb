@@ -1,9 +1,9 @@
 module ApplicationHelper
   def org_name(words=false)
     if words
-      "80,000 Hours"
-    else
       "Eighty Thousand Hours"
+    else
+      "80,000 Hours"
     end
   end
 

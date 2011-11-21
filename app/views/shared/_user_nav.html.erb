@@ -5,9 +5,10 @@
     (<%= link_to "Logout", destroy_user_session_path, :method => :delete %>)
     | <%= link_to "Help", "/support" %>
   <% else %>
-    <%= link_to "Login", new_user_session_path %> | 
-    <%= link_to "Join", "/the-pldege" %> |
-    <%= link_to "Help", "/help" %>
+    <%= link_to "Login", new_user_session_path %>
+    | <%= link_to "Join", "/the-pldege" %>
+    | <%= link_to "Help", "/help" %>
+    | <%= link_to "Show Your Support", "/show-your-support" %>
   <% end %>
   </div>
 
