@@ -5,12 +5,8 @@
   %div.box.blog
     %div.title= post.title
     %p= post.body
-    %p= post.draft
-  %script{:type =>"text/javascript"}
-    window.disqus_no_style = true;
-    $.getScript("http://disqus.com/forums/eightythousand/count.js")
 
-  = link_to 'Show', post
+  = link_to 'Show', post#disqus_thread
   \|
   = link_to 'Edit', edit_post_path(post)
   \|
@@ -20,3 +16,4 @@
 %br
 
 = link_to 'New Post', new_post_path
+
