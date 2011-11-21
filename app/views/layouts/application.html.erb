@@ -26,13 +26,12 @@
   <div id="wrapper"> 
     <header>
       <div id="header-content">
-        <%= image_tag "header/80kh_logo.png", :id => "header-logo" %> 
-        <div id="header-text-and-menu">
-          <%= image_tag "header/80kh_text.png", :id => "header-text" %> 
+        <div id="header-logo-and-nav">
+          <%= image_tag "header/80kh_header_logo.png", :id => "header-logo" %> 
           <%= render :partial => "/shared/user_nav"%>
-          <%= render :partial => "/shared/menu",
-                     :locals => {:current_page => @title} %>
         </div>
+        <%= render :partial => "/shared/menu",
+                   :locals => {:current_page => @title} %>
 
       <% if @title == 'Home' %>
         <%= render :partial => '/shared/home' %>
