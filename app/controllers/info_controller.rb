@@ -83,4 +83,8 @@ class InfoController < ApplicationController
   def find_out_more
     @title = "Find out more"
   end
+  
+  def show_your_support
+    @title = "Show your support"
+  end
 end

@@ -27,4 +27,5 @@ EightyThousandHours::Application.routes.draw do
   match 'the-pledge'                    => 'info#the_pledge'
   match 'help'                          => 'info#help'
   match 'find-out-more'                 => 'info#find_out_more'
+  match 'show-your-support'             => 'info#show_your_support'
 end
