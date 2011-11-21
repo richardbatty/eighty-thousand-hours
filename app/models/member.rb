@@ -1,16 +1,14 @@
 class Member < ActiveRecord::Base
-  attr_accessible :background, :career_plans, :location, :user, :confirmed
+  attr_accessible :background, :career_plans, :location, :user, :confirmed, :avatar
 
   validates_presence_of :background, :career_plans
 
   # paperclip avatars on S3
-  has_attached_file :avatar, :styles => { :medium => "300x300>", :thumb => "100x100>" },
+  has_attached_file :avatar, 
+                    :styles => { :medium => "300x300>", :thumb => "100x100>" },
                     :storage => :s3,
-                    :s3_credentials => { :access_key_id     => ENV['S3_ACCESS'],
-                                         :secret_access_key => ENV['S3_SECRET'] },
-                    :path => ":attachment/:id/:style.:extension",
-                    :bucket => 'eighty-thousand-hours',
-                    :default_url => '/images/missing_:style.jpg'
+                    :s3_credentials => "#{Rails.root}/config/s3.yml",
+                    :path => "/profiles/:style/:id/:filename"
 
   # a Member is always tied to a User 
   belongs_to :user
