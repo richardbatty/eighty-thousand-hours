@@ -31,15 +31,14 @@ endTimes = endTimes.reverse
 
 %>
 
-<h1>Events</h1>
-  <% titles.each_with_index do |title, idx| %>
-    <div class="box event">
-      <div class="title"><%= raw title %></div>
-      <%= raw BlueCloth.new( content[idx] ).to_html %>
-      <p><span class="bold">When:</span> <%= startTimes[idx].strftime("%A %d of %B, %H:%M")  + endTimes[idx].strftime(" - %H:%M") %></p>
-      <p><span class="bold">Where:</span> <%= raw where[idx] %></p>
-    </div>
-  <% end %>
+<% titles.each_with_index do |title, idx| %>
+  <div class="box event">
+    <div class="title"><%= raw title %></div>
+    <%= raw BlueCloth.new( content[idx] ).to_html %>
+    <p><span class="bold">When:</span> <%= startTimes[idx].strftime("%A %d of %B, %H:%M")  + endTimes[idx].strftime(" - %H:%M") %></p>
+    <p><span class="bold">Where:</span> <%= raw where[idx] %></p>
+  </div>
+<% end %>
 
 <div class="center large_margin">
   <% if @title == "Past events" %>
