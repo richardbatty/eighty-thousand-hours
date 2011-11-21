@@ -1,15 +1,14 @@
 %p#notice= notice
 
-%p
-  %b Title:
-  = @post.title
-%p
-  %b Body:
-  = @post.body
-%p
-  %b Draft:
-  = @post.draft
-
+%div.box.blog
+  %div.title= @post.title
+  %p
+    %b= @post.body
+  
 = link_to 'Edit', edit_post_path(@post)
 \|
 = link_to 'Back', posts_path
+
+%script{:type =>"text/javascript"}
+  window.disqus_no_style = true;
+  $.getScript("http://disqus.com/forums/eightythousand/embed.js")
