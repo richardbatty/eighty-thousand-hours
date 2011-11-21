@@ -29,34 +29,40 @@ body {
   font-size: 62.5%;
 
   color: $text_color;
-  background: #333;
+  background: $body_bg_color;
 }
 
 #wrapper {
   background: $box_color; 
   background: $body_bg_color;
 
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
   // for sticky footer
   min-height: 100%; 
   height: auto !important;
   height: 100%;
   margin: 0 auto (-($dim_footer_height + $dim_top_and_tail_border_width));
+
+  /*width: $dim_page_width;*/
 }
 
 header {
-  width: 100%;
-  height: $dim_header_height+10px;
+  /*width: 100%;*/
+  margin-left:auto;
+  margin-right:auto;
+  /*height: $dim_header_height+10px;*/
   text-align: center;
 
   //background: #333 url(/assets/header/hic_header_background.png) no-repeat center top;
-  background: #333;
+  background: $header_bg_color;
 
   border-bottom: $dim_top_and_tail_border_width solid $magenta_2;
 
   #header-content
   {
     width: $dim_page_width;
-    height: 91px;
+    /*height: 91px;*/
     margin-left: auto;
     margin-right: auto;
     padding-top: $dim_page_padding_top;
@@ -87,15 +93,11 @@ header {
         height: 20px;
       }
     }
-  }
 
-  //img {
-  //  float: left;
-  //  /*margin-top: 30px;*/
-  //  /*margin-bottom: 20px;*/
-  //  // so text is in center
-  //  /*margin-left: -170px;*/
-  //}
+    a {
+      text-decoration: none;
+    }
+  }
 
   position: relative;
 }
@@ -138,6 +140,17 @@ header {
   font: $palatino;
 }
 
+.find-out-more {
+  cursor: pointer;
+  display: inline-block;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+  text-align: center;
+
+  &:hover {
+    @include box_shadow(#ccc, 0px, 0px, 5px);
+    cursor: pointer;
+  }
+}
 .button {
   cursor: pointer;
   display: inline-block;
@@ -153,8 +166,7 @@ header {
   text-align: center;
 
   &:hover {
-    background: #efefef;
-    @include box_shadow(#ccc, 0px, 0px, 2px);
+    @include box_shadow(#ccc, 0px, 0px, 0px);
     cursor: pointer;
   }
 }
@@ -176,8 +188,8 @@ header {
   text-align: center;
 
   &:hover {
-    background: #efefef;
-    @include box_shadow(#ccc, 0px, 0px, 2px);
+    /*background: #efefef;*/
+    @include box_shadow(#ccc, 0px, 0px, 0px);
     cursor: pointer;
   }
 }
@@ -230,36 +242,81 @@ header {
 
 /* -------------- content ----------- */
 
-.main_points {
-  padding: 20px 15px 7px 15px;
-  font-size: 1.0em;
-
-  .point {
-    padding-bottom: 0.5em;
-  }
-  .bold_point {
-    padding: 0.5em 0em;
-    font-weight:bold;
-    font-size: 1.8em;
-    color: $magenta_2;
-    text-shadow: 0 1px 1px $magenta_0;
-  }
+.fp-splash-container {
+  padding-top: 10px;
+  padding-bottom: 10px;
 }
 
+.fp-splash {
+  float: left;
+  color: #efefef;
+
+  width: 60%;
+  .slogan {
+    font-size: 28px;
+    text-align: left;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
+  }
+  .call-to-action {
+    font-size: 18px;
+    text-align: left;
+    font-weight: normal;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    line-height: 1.4em;
+  }
+}
+  .find-out-more {
+    font-size: 26px;
+    float: right;
+    display: inline;
+    padding: 15px;
+    padding-left: 20px;
+    padding-right: 20px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 60px;
+    margin-right: 80px;
+    margin-bottom: 30px;
+    color: #ffffff;
+    background: $magenta_2;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
+  }
+
+  .break {
+    width: 100%;
+    border-bottom: 1px solid #ccc;
+    height: 0px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
 #content {
+
   color: $text_color;
+  background: $content_bg_color;
   text-align: left;
-  padding-top: 40px;
-  padding-bottom: 20px;
-  background: $body_bg_color;
   line-height: 2em;
   font-size: 1.5em;
+  width: $dim_page_width;
+  padding: 0px;
+  margin: 0px;
+  margin-left:auto;
+  margin-right:auto;
 
   h1 {
     padding: 5px 0px;
     font-size: 2.0em;
     font-weight: bold;
-    text-align: center;
+    /*text-align: center;*/
   }
 
   h2 {
@@ -290,6 +347,7 @@ header {
   }
 
   a:visited {
+    color: $link_visited_color;
     text-decoration: none;
   }
 
@@ -297,175 +355,13 @@ header {
     color: $link_hover_color;
     text-decoration: none;
   }
-}
-
-/* -------------- /content ----------- */
-
-
-/* ------------- nav --------------- */
-nav {
-  font-size: 1.5em;
-  margin: 0;
-  padding: 0;
-  background: $nav_bar_color;
-  width: 100%;
-  text-align: center;
-  /*position: relative;*/
-  /*top: -40px;*/
-  /*left: 75px;*/
-  float: left;
-  padding-left: 20px;
-}
-
-nav ul {
-  text-align: left;
-  margin: 0;
-  padding: 0;
-}
-
-nav ul li {
-  display: inline;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  height: 2em;
-}
-
-nav li ul {
-  display: none;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: $nav_link_color;
-  padding: 0px 15px 0px 15px;
-  padding-left: 0px;
-  background: $nav_bar_color;
-  margin-left: 1px;
-  white-space: nowrap;
-}
-
-nav ul li a:hover {
-  color: $nav_link_hover_color;
-  background: $nav_bar_color;
-}
-
-nav li:hover ul {
-  display: block;
-  position: absolute;
-}
-
-nav li:hover li {
-  float: none;
-}
-
-/* need a background here if we have drop-down menus */
-nav li:hover a {
-  background: $nav_bar_color;
-}
-
-/* need a background here if we have drop-down menus */
-nav li:hover li a:hover {
-  background: $nav_bar_color;
-}
-
-nav li.selected a {
-  color: $nav_link_hover_color;
-}
-
-nav li.selected a:hover {
-  color: $nav_link_hover_color;
-}
-/* ------------- /nav --------------- */
-
-
-.box_style{
-  @include box_style;
-}
-
-footer {
-  color: #fff;
-  background: #333;
-  border-top: $dim_top_and_tail_border_width solid $magenta_2;
-  width: 100%;
-  text-align: center;
-
-  .footer_text
-  {
-    font-size: 1.5em;
-    font-weight: normal;
-    padding: 20px;
-    clear: both;
-    margin-left: auto ;
-    margin-right: auto ;
-
-    a {
-      color: #fff;
-      text-decoration: none;
-    }
-  }
-
-}
-
-footer, .push {
-  height: $dim_footer_height;
-}
-
-.pf{
-  color: $magenta_2;
-}
-
-
-/*a.button { color: $text_color !important; }*/
-
-ul.like-buttons{
-  margin: 0;
-width: 310px;
-margin-left: auto;
-margin-right: auto;
-  list-style: none;
-text-align: center;
-  padding: 0;
-}
-
-ul.like-buttons li{
-  display: block;
-  float: left;
-}
-li.twitter-like{
-margin-right: 20px;
-}
-
-.like_button_div{
-  margin-left: auto;
-  margin-right: auto;
-  width: 350px;
-text-align: center; height: 50px; background: #fff;
-.tr  {
-  margin-left: auto;
-  margin-right: auto;
-}
-}
-
-
-/* --------- boxes ---------- */
-
-#content {
-  width: $dim_page_width;
-  padding: 0px;
-  margin: 0px;
-  margin-left:auto;
-  margin-right:auto;
-  text-align: left;
-  margin-top: 30px;
-  margin-bottom: 10px;
 
   .left-box { 
     margin-left: 0px !important;
     margin-right: 0px !important;
     /*padding-left: 0px !important;*/
   }
-  .middle-box{
+  .middle-box {
     margin-left:  30px !important;
     margin-right: 30px !important;
   }
@@ -562,8 +458,41 @@ text-align: center; height: 50px; background: #fff;
     }
   }
 
+  .box-half {
+    width: 40% !important;
+    margin: 10px;
+    /*display: inline-block;*/
+    float: left;
+    vertical-align: text-top;
+    text-align: left;
+    line-height: 1.7em;
+    font-size: 0.9em;
 
+    .bold {
+      font-weight: bold;
+      text-align: left;
+    }
+    .h2 {
+      text-align: left;
+    }
 
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    // for spanning links
+    position:relative;
+
+    @include box_style;
+
+    p {
+      text-decoration: none;
+    }
+
+    &:hover {
+      @include box_style_hover;
+    }
+  }
   /* for boxes within boxes */
   .inner-box {
     @include box_style;
@@ -575,6 +504,158 @@ text-align: center; height: 50px; background: #fff;
     }
   }
 }
+/* -------------- /content ----------- */
+
+
+/* ------------- nav --------------- */
+nav {
+  font-size: 1.5em;
+  margin: 0;
+  padding: 0;
+  background: $nav_bar_color;
+  width: 100%;
+  text-align: center;
+  /*position: relative;*/
+  /*top: -40px;*/
+  /*left: 75px;*/
+  float: left;
+  padding-left: 20px;
+}
+
+nav ul {
+  text-align: left;
+  margin: 0;
+  padding: 0;
+}
+
+nav ul li {
+  display: inline;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  height: 2em;
+}
+
+nav li ul {
+  display: none;
+}
+
+nav ul li a {
+  text-decoration: none;
+  color: $nav_link_color;
+  padding: 0px 15px 0px 15px;
+  padding-left: 0px;
+  background: $nav_bar_color;
+  margin-left: 1px;
+  white-space: nowrap;
+}
+
+nav ul li a:hover {
+  color: $nav_link_hover_color;
+  background: $nav_bar_color;
+}
+
+nav li:hover ul {
+  display: block;
+  position: absolute;
+}
+
+nav li:hover li {
+  float: none;
+}
+
+/* need a background here if we have drop-down menus */
+nav li:hover a {
+  background: $nav_bar_color;
+}
+
+/* need a background here if we have drop-down menus */
+nav li:hover li a:hover {
+  background: $nav_bar_color;
+}
+
+nav li.selected a {
+  color: $nav_link_hover_color;
+}
+
+nav li.selected a:hover {
+  color: $nav_link_hover_color;
+}
+/* ------------- /nav --------------- */
+
+
+.box_style{
+  @include box_style;
+}
+
+footer {
+  color: #fff;
+  background: $footer_bg_color;
+  border-top: $dim_top_and_tail_border_width solid $magenta_2;
+  text-align: center;
+  /*width: $dim_page_width;*/
+  margin-left: auto;
+  margin-right: auto;
+
+  .footer_text
+  {
+    font-size: 1.5em;
+    font-weight: normal;
+    padding: 20px;
+    clear: both;
+    margin-left: auto ;
+    margin-right: auto ;
+
+    a {
+      color: #fff;
+      text-decoration: none;
+    }
+  }
+
+}
+
+footer, .push {
+  height: $dim_footer_height;
+}
+
+.pf{
+  color: $magenta_2;
+}
+
+
+/*a.button { color: $text_color !important; }*/
+
+ul.like-buttons{
+  margin: 0;
+  width: 310px;
+  margin-left: auto;
+  margin-right: auto;
+  list-style: none;
+  text-align: center;
+  padding: 0;
+}
+
+ul.like-buttons li{
+  display: block;
+  float: left;
+}
+li.twitter-like{
+  margin-right: 20px;
+}
+
+.like_button_div{
+  margin-left: auto;
+  margin-right: auto;
+  width: 350px;
+  text-align: center; height: 50px; background: #fff;
+  .tr  {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+
+/* --------- boxes ---------- */
 
 .box-span {
   position: absolute;
@@ -735,8 +816,8 @@ strong {
   @include box_style;
   padding: 0px;
   margin: 0px;
-  width: 380px;
-  height: 213px;
+  /*width: 380px;*/
+  /*height: 213px;*/
 }
 
 

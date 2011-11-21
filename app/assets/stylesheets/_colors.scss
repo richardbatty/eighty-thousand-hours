@@ -7,15 +7,23 @@
 $magenta_2: #f30064;
 $magenta_1: darken($magenta_2,5%);
 $magenta_0: darken($magenta_2,10%);
+$magenta_3: lighten($magenta_2,10%);
 
-$background: #ffffff;
-$body_bg_color: $background;
-$box_color: $background;
-
+$grey_4: #efefef;
 $grey_3: #333333;
 $grey_2: #262626;
 $grey_1: #161616;
 $grey_0: #060606;
+
+$white: #ffffff;
+
+$body_bg_color:   $white;
+$content_bg_color:   $white;
+
+$box_color: $white;
+
+$header_bg_color: $grey_3;
+$footer_bg_color: $header_bg_color;
 
 $text_color: $grey_2; 
 
@@ -23,8 +31,8 @@ $text_color: $grey_2;
 $nav_bar_color: none;
 
 $link_color: $magenta_2;
-$link_hover_color: $magenta_0; 
-$link_visited_color: $magenta_1;
+$link_hover_color: $magenta_3; 
+$link_visited_color: $magenta_3;
 
 $nav_link_color: #efefef;
 $nav_link_hover_color: $magenta_2;
