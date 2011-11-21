@@ -1,34 +1,28 @@
-<div class="box-containe">
-  <div class="box-half">
-<h2>Join our mailing list</h2>
-<%= render :partial => 'shared/mailing_list', :locals => { :text => "", :width => "180px" } %>
-
-<div class="break"></div>
-
-<div class="fp-text">
-<h2>Current debate:</h2>
-<p>Can a banker do more good than an aid worker?</p>
+<div class="box-half left-box">
+  <h2>Join our mailing list</h2>
+  <%= render :partial => 'shared/mailing_list', :locals => { :text => "", :width => "180px" } %>
+  
+  <div class="break"></div>
+  
+  <div class="fp-text">
+  <h2>Current debate:</h2>
+  <p>Can a banker do more good than an aid worker?</p>
+  </div>
+  <div class="video_iframe">
+    <iframe src="http://player.vimeo.com/video/29954976?byline=0&amp;portrait=0" width="350" height="196" frameborder="0"></iframe>
+  </div>
+  <%= button_link 'Questions?', '/faq' %>
 </div>
-<div class="video_iframe">
-  <iframe src="http://player.vimeo.com/video/29954976?byline=0&amp;portrait=0" width="310" height="173" frameborder="0"></iframe>
-</div>
-<%= button_link 'Questions?', '/faq' %>
-</div>
 
-<div class="box-half">
+
+<div class="box-half right-box">
   <div class="fp-text">
     Our members are actively pursuing careers which will allow them to do the most good.
   </div>
-<div class="break"></div>
-  <img src="/assets/profiles/avatar_default_96x96.png" />
-  <img src="/assets/profiles/avatar_default_96x96.png" />
-  <img src="/assets/profiles/avatar_default_96x96.png" />
-  <img src="/assets/profiles/avatar_default_96x96.png" />
-  <img src="/assets/profiles/avatar_default_96x96.png" />
-  <img src="/assets/profiles/avatar_default_96x96.png" />
-  <img src="/assets/profiles/avatar_default_96x96.png" />
-  <img src="/assets/profiles/avatar_default_96x96.png" />
-  <img src="/assets/profiles/avatar_default_96x96.png" />
+  <div class="break"></div>
+  <div class="center">
+    <% 9.times do %>
+      <img class="fp-profile-image" src="/assets/profiles/avatar_default_96x96.png" />
+    <% end %>
+  </div>
 </div>
-</div>
-

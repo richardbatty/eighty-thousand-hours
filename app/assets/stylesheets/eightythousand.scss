@@ -270,35 +270,42 @@ header {
     line-height: 1.4em;
   }
 }
-  .find-out-more {
-    font-size: 26px;
-    float: right;
-    display: inline;
-    padding: 15px;
-    padding-left: 20px;
-    padding-right: 20px;
-    text-align: center;
-    font-weight: bold;
-    margin-top: 60px;
-    margin-right: 80px;
-    margin-bottom: 30px;
-    color: #ffffff;
-    background: $magenta_2;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -o-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -khtml-border-radius: 10px;
-    border-radius: 10px;
-  }
 
-  .break {
-    width: 100%;
-    border-bottom: 1px solid #ccc;
-    height: 0px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-  }
+.fp-profile-image {
+  margin: 5px;
+  @include rounded_borders(#ccc, 1px, $dim_border_radius);
+  @include box_shadow(#ccc, 0px, 0px, 5px);
+}
+
+.find-out-more {
+  font-size: 26px;
+  float: right;
+  display: inline;
+  padding: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 60px;
+  margin-right: 80px;
+  margin-bottom: 30px;
+  color: #ffffff;
+  background: $magenta_2;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.break {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  height: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 #content {
 
   color: $text_color;
@@ -311,6 +318,8 @@ header {
   margin: 0px;
   margin-left:auto;
   margin-right:auto;
+
+  padding-top: 10px;
 
   h1 {
     padding: 5px 0px;
@@ -424,7 +433,7 @@ header {
 
   // for rows of divs like on the front page
   .box-third {
-    width: 203px !important;
+    width: 195px !important;
     /*display: inline-block;*/
     float: left;
     vertical-align: text-top;
@@ -459,8 +468,7 @@ header {
   }
 
   .box-half {
-    width: 40% !important;
-    margin: 10px;
+    width: 44% !important;
     /*display: inline-block;*/
     float: left;
     vertical-align: text-top;
@@ -476,14 +484,14 @@ header {
       text-align: left;
     }
 
-    padding: 20px;
+    padding: 15px;
     margin-top: 20px;
     margin-bottom: 20px;
 
     // for spanning links
     position:relative;
 
-    @include box_style;
+      @include box_style;
 
     p {
       text-decoration: none;
@@ -492,7 +500,14 @@ header {
     &:hover {
       @include box_style_hover;
     }
+
   }
+    .left-box{
+      margin-right: 10px !important;
+    }
+    .right-box{
+        margin-left: 10px !important;
+    }
   /* for boxes within boxes */
   .inner-box {
     @include box_style;
@@ -593,9 +608,9 @@ footer {
   background: $footer_bg_color;
   border-top: $dim_top_and_tail_border_width solid $magenta_2;
   text-align: center;
-  /*width: $dim_page_width;*/
   margin-left: auto;
   margin-right: auto;
+  margin-top: 10px;
 
   .footer_text
   {
@@ -812,7 +827,6 @@ strong {
 }
 
 .video_iframe {
-  float: right;
   @include box_style;
   padding: 0px;
   margin: 0px;
