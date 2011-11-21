@@ -75,4 +75,8 @@ class InfoController < ApplicationController
   def contact_us
     @title = "Contact us"
   end
+
+  def help
+    @title = "Help"
+  end
 end

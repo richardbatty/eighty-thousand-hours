@@ -30,4 +30,5 @@ EightyThousandHours::Application.routes.draw do
   match 'career-research'               => 'info#career_research'
   match 'contact-us'                    => 'info#contact_us'
   match 'the-pledge'                    => 'info#the_pledge'
+  match 'help'                          => 'info#help'
 end
