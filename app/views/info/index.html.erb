@@ -12,12 +12,8 @@
     <div class="point">...or reducing your earning potential.</div>
   </div>
 
-  <div id="signup_form" class="center">
-    <form action="http://highimpactcareers.us2.list-manage2.com/subscribe/post?u=aba12f58bbe8075560abdc5b7&amp;id=43bc1ae55c" method="post" id="mc-embedded-subscribe-form" class="validate new_mailing_list_email front_page">
-      <span class="text">Enter your email for more information:</span>
-      <input type="email" name="EMAIL" class="defaultText email" title="email@address.com" id="mce-EMAIL" />
-      <input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="submit-button" />
-    </form>
+  <div class="center">
+    <%= render :partial => 'shared/mailing_list', :locals => { :text => "Enter your email for more information", :width => "350px" } %>
   </div>
 </div>
 

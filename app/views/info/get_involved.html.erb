@@ -1,11 +1,5 @@
 <div class="box">
-<div id="signup_form">
-<form action="http://highimpactcareers.us2.list-manage2.com/subscribe/post?u=aba12f58bbe8075560abdc5b7&amp;id=43bc1ae55c" method="post" id="mc-embedded-subscribe-form" class="validate new_mailing_list_email get_involved">
-        <span class="text">Join our mailing list: </span>
-	<input type="email" name="EMAIL" class="defaultText email" title="email@address.com" id="mce-EMAIL" />
-	<input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="submit-button" />
-</form>
-</div>
+  <%= render :partial => 'shared/mailing_list', :locals => { :text => "Join our mailing list: ", :width => "300px" } %>
 </div>
 
 <div class="box">
