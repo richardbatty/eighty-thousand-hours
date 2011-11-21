@@ -3,14 +3,17 @@
   <% if user_signed_in? %>
     <%= link_to current_user.name, "/accounts/edit" %>
     (<%= link_to "Logout", destroy_user_session_path, :method => :delete %>)
+    | <%= link_to "Help", "/support" %>
   <% else %>
-    <%= link_to "Login", new_user_session_path %>
+    <%= link_to "Login", new_user_session_path %> | 
+    <%= link_to "Join", "/the-pldege" %> |
+    <%= link_to "Help", "/help" %>
   <% end %>
   </div>
 
   <div class="social">
     <%= link_to image_tag( "social/facebook.png", :class => "social_image" ),   "https://www.facebook.com/pages/80000-Hours/196210360460710" %>
     <%= link_to image_tag( "social/twitter.png", :class => "social_image" ),    "https://twitter.com/80000Hours" %>
-    <%= link_to image_tag( "social/googleplus.png", :class => "social_image" ), "https://plus.google.com/105296499458344309465" %>
+    <%# link_to image_tag( "social/googleplus.png", :class => "social_image" ), "https://plus.google.com/105296499458344309465" %>
   </div>
 </div>

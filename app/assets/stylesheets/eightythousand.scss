@@ -66,6 +66,7 @@ header {
     margin-left: auto;
     margin-right: auto;
     padding-top: $dim_page_padding_top;
+    padding-bottom: 20px;
 
     #header-logo {
         float:left;
@@ -243,8 +244,7 @@ header {
 /* -------------- content ----------- */
 
 .fp-splash-container {
-  padding-top: 10px;
-  padding-bottom: 10px;
+  padding-top: 20px;
 }
 
 .fp-splash {
