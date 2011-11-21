@@ -36,8 +36,6 @@ body {
   background: $box_color; 
   background: $body_bg_color;
 
-  border-left: 1px solid #ccc;
-  border-right: 1px solid #ccc;
   // for sticky footer
   min-height: 100%; 
   height: auto !important;
@@ -307,8 +305,8 @@ header {
   margin-top: 10px;
   margin-bottom: 10px;
 }
-#content {
 
+#content {
   color: $text_color;
   background: $content_bg_color;
   text-align: left;
