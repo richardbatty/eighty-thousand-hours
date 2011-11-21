@@ -1,6 +1,10 @@
 module ApplicationHelper
-  def org_name
-    "80,000 Hours"
+  def org_name(words=false)
+    if words
+      "80,000 Hours"
+    else
+      "Eighty Thousand Hours"
+    end
   end
 
   def button_link( text, path, klass = nil )
