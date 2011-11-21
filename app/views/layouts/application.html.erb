@@ -33,6 +33,11 @@
           <%= render :partial => "/shared/menu",
                      :locals => {:current_page => @title} %>
         </div>
+
+      <% if @title == 'Home' %>
+        <%= render :partial => '/shared/home' %>
+      <% end %>
+      <div style="clear: both;"></div>
       </div>
     </header>
 
@@ -43,8 +48,8 @@
       <% end %>
     <% end %>
 
-
-      <%= yield %>
+     <%= yield %>
+      <div style="clear: both;"></div>
     </section>
 
     <%# render :partial => "/shared/social_media" %>

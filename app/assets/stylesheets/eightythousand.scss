@@ -29,37 +29,44 @@ body {
   font-size: 62.5%;
 
   color: $text_color;
-  background: #333;
+  background: $body_bg_color;
 }
 
 #wrapper {
   background: $box_color; 
   background: $body_bg_color;
 
+  border-left: 1px solid #ccc;
+  border-right: 1px solid #ccc;
   // for sticky footer
   min-height: 100%; 
   height: auto !important;
   height: 100%;
   margin: 0 auto (-($dim_footer_height + $dim_top_and_tail_border_width));
+
+  /*width: $dim_page_width;*/
 }
 
 header {
-  width: 100%;
-  height: $dim_header_height+10px;
+  /*width: 100%;*/
+  margin-left:auto;
+  margin-right:auto;
+  /*height: $dim_header_height+10px;*/
   text-align: center;
 
   //background: #333 url(/assets/header/hic_header_background.png) no-repeat center top;
-  background: #333;
+  background: $header_bg_color;
 
   border-bottom: $dim_top_and_tail_border_width solid $magenta_2;
 
   #header-content
   {
     width: $dim_page_width;
-    height: 91px;
+    /*height: 91px;*/
     margin-left: auto;
     margin-right: auto;
     padding-top: $dim_page_padding_top;
+    padding-bottom: 20px;
 
     #header-logo {
         float:left;
@@ -87,17 +94,19 @@ header {
         height: 20px;
       }
     }
+
+    a {
+      text-decoration: none;
+    }
   }
 
-  //img {
-  //  float: left;
-  //  /*margin-top: 30px;*/
-  //  /*margin-bottom: 20px;*/
-  //  // so text is in center
-  //  /*margin-left: -170px;*/
-  //}
-
   position: relative;
+
+
+  background: -webkit-radial-gradient( center 130%, #555, #333 300px);
+  background: -moz-radial-gradient(    center 130%, #555, #333 300px);
+  background: -o-radial-gradient(      center 130%, #555, #333 300px);
+  background: -ms-radial-gradient(     center 130%, #555, #333 300px);
 }
 
 
@@ -138,6 +147,17 @@ header {
   font: $palatino;
 }
 
+.find-out-more {
+  cursor: pointer;
+  display: inline-block;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+  text-align: center;
+
+  &:hover {
+    @include box_shadow(#ccc, 0px, 0px, 5px);
+    cursor: pointer;
+  }
+}
 .button {
   cursor: pointer;
   display: inline-block;
@@ -153,8 +173,7 @@ header {
   text-align: center;
 
   &:hover {
-    background: #efefef;
-    @include box_shadow(#ccc, 0px, 0px, 2px);
+    @include box_shadow(#ccc, 0px, 0px, 0px);
     cursor: pointer;
   }
 }
@@ -176,8 +195,8 @@ header {
   text-align: center;
 
   &:hover {
-    background: #efefef;
-    @include box_shadow(#ccc, 0px, 0px, 2px);
+    /*background: #efefef;*/
+    @include box_shadow(#ccc, 0px, 0px, 0px);
     cursor: pointer;
   }
 }
@@ -230,36 +249,89 @@ header {
 
 /* -------------- content ----------- */
 
-.main_points {
-  padding: 20px 15px 7px 15px;
-  font-size: 1.0em;
+.fp-splash-container {
+  padding-top: 20px;
+}
 
-  .point {
-    padding-bottom: 0.5em;
+.fp-splash {
+  float: left;
+  color: #efefef;
+
+  width: 60%;
+  .slogan {
+    font-size: 28px;
+    text-align: left;
+    font-weight: bold;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 20px;
   }
-  .bold_point {
-    padding: 0.5em 0em;
-    font-weight:bold;
-    font-size: 1.8em;
-    color: $magenta_2;
-    text-shadow: 0 1px 1px $magenta_0;
+  .call-to-action {
+    font-size: 18px;
+    text-align: left;
+    font-weight: normal;
+    margin-left: 20px;
+    margin-right: 20px;
+    margin-top: 10px;
+    line-height: 1.4em;
   }
 }
 
+.fp-profile-image {
+  margin: 5px;
+  @include rounded_borders(#ccc, 1px, $dim_border_radius);
+  @include box_shadow(#ccc, 0px, 0px, 5px);
+}
+
+.find-out-more {
+  font-size: 26px;
+  float: right;
+  display: inline;
+  padding: 15px;
+  padding-left: 20px;
+  padding-right: 20px;
+  text-align: center;
+  font-weight: bold;
+  margin-top: 60px;
+  margin-right: 80px;
+  margin-bottom: 30px;
+  color: #ffffff;
+  background: $magenta_2;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px;
+  -o-border-radius: 10px;
+  -ms-border-radius: 10px;
+  -khtml-border-radius: 10px;
+  border-radius: 10px;
+}
+
+.break {
+  width: 100%;
+  border-bottom: 1px solid #ccc;
+  height: 0px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
 #content {
+
   color: $text_color;
+  background: $content_bg_color;
   text-align: left;
-  padding-top: 40px;
-  padding-bottom: 20px;
-  background: $body_bg_color;
   line-height: 2em;
   font-size: 1.5em;
+  width: $dim_page_width;
+  padding: 0px;
+  margin: 0px;
+  margin-left:auto;
+  margin-right:auto;
+
+  padding-top: 10px;
 
   h1 {
     padding: 5px 0px;
     font-size: 2.0em;
     font-weight: bold;
-    text-align: center;
+    /*text-align: center;*/
   }
 
   h2 {
@@ -290,6 +362,7 @@ header {
   }
 
   a:visited {
+    color: $link_visited_color;
     text-decoration: none;
   }
 
@@ -297,8 +370,161 @@ header {
     color: $link_hover_color;
     text-decoration: none;
   }
-}
 
+  .left-box { 
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    /*padding-left: 0px !important;*/
+  }
+  .middle-box {
+    margin-left:  30px !important;
+    margin-right: 30px !important;
+  }
+  .right-box { 
+    margin-left: 0px !important;
+    margin-right: 0px !important;
+    /*padding-right: 0px !important;*/
+  }
+
+  .full-width {
+    width: 100% !important;
+    padding: 0px !important;
+  }
+
+  .height-150 {
+    height: 150px;
+  }
+  .height-170 {
+    height: 170px;
+  }
+  .height-200 {
+    height: 200px;
+  }
+  .height-300 {
+    height: 300px;
+  }
+  .height-400 {
+    height: 400px;
+  }
+  .height-500 {
+    height: 500px;
+  }
+
+  /* these are used for text content */
+  .box {
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 20px;
+    margin-bottom: 20px;
+    padding: 30px;
+
+    // for spanning links
+    position:relative;
+
+    @include box_style;
+
+    p {
+      text-decoration: none;
+    }
+
+    &:hover {
+      @include box_style_hover;
+    }
+
+    // front page
+    &.fp-padding {
+      padding: 10px !important;
+    }
+  }
+
+  // for rows of divs like on the front page
+  .box-third {
+    width: 195px !important;
+    /*display: inline-block;*/
+    float: left;
+    vertical-align: text-top;
+    text-align: center;
+    line-height: 1.7em;
+    font-size: 0.9em;
+
+    .bold {
+      font-weight: bold;
+      text-align: left;
+    }
+    .h2 {
+      text-align: center;
+    }
+
+    padding: 20px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    // for spanning links
+    position:relative;
+
+    @include box_style;
+
+    p {
+      text-decoration: none;
+    }
+
+    &:hover {
+      @include box_style_hover;
+    }
+  }
+
+  .box-half {
+    width: 44% !important;
+    /*display: inline-block;*/
+    float: left;
+    vertical-align: text-top;
+    text-align: left;
+    line-height: 1.7em;
+    font-size: 0.9em;
+
+    .bold {
+      font-weight: bold;
+      text-align: left;
+    }
+    .h2 {
+      text-align: left;
+    }
+
+    padding: 15px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+
+    // for spanning links
+    position:relative;
+
+      @include box_style;
+
+    p {
+      text-decoration: none;
+    }
+
+    &:hover {
+      @include box_style_hover;
+    }
+
+  }
+    .left-box{
+      margin-right: 10px !important;
+    }
+    .right-box{
+        margin-left: 10px !important;
+    }
+  /* for boxes within boxes */
+  .inner-box {
+    @include box_style;
+    margin: 20px;
+    padding: 20px;
+
+    p { 
+      margin: 10px;
+    }
+  }
+}
 /* -------------- /content ----------- */
 
 
@@ -385,10 +611,12 @@ nav li.selected a:hover {
 
 footer {
   color: #fff;
-  background: #333;
+  background: $footer_bg_color;
   border-top: $dim_top_and_tail_border_width solid $magenta_2;
-  width: 100%;
   text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+  margin-top: 10px;
 
   .footer_text
   {
@@ -420,11 +648,11 @@ footer, .push {
 
 ul.like-buttons{
   margin: 0;
-width: 310px;
-margin-left: auto;
-margin-right: auto;
+  width: 310px;
+  margin-left: auto;
+  margin-right: auto;
   list-style: none;
-text-align: center;
+  text-align: center;
   padding: 0;
 }
 
@@ -433,148 +661,22 @@ ul.like-buttons li{
   float: left;
 }
 li.twitter-like{
-margin-right: 20px;
+  margin-right: 20px;
 }
 
 .like_button_div{
   margin-left: auto;
   margin-right: auto;
   width: 350px;
-text-align: center; height: 50px; background: #fff;
-.tr  {
-  margin-left: auto;
-  margin-right: auto;
-}
+  text-align: center; height: 50px; background: #fff;
+  .tr  {
+    margin-left: auto;
+    margin-right: auto;
+  }
 }
 
 
 /* --------- boxes ---------- */
-
-#content {
-  width: $dim_page_width;
-  padding: 0px;
-  margin: 0px;
-  margin-left:auto;
-  margin-right:auto;
-  text-align: left;
-  margin-top: 30px;
-  margin-bottom: 10px;
-
-  .left-box { 
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-    /*padding-left: 0px !important;*/
-  }
-  .middle-box{
-    margin-left:  30px !important;
-    margin-right: 30px !important;
-  }
-  .right-box { 
-    margin-left: 0px !important;
-    margin-right: 0px !important;
-    /*padding-right: 0px !important;*/
-  }
-
-  .full-width {
-    width: 100% !important;
-    padding: 0px !important;
-  }
-
-  .height-150 {
-    height: 150px;
-  }
-  .height-170 {
-    height: 170px;
-  }
-  .height-200 {
-    height: 200px;
-  }
-  .height-300 {
-    height: 300px;
-  }
-  .height-400 {
-    height: 400px;
-  }
-  .height-500 {
-    height: 500px;
-  }
-
-  /* these are used for text content */
-  .box {
-    margin-left: auto;
-    margin-right: auto;
-    margin-top: 20px;
-    margin-bottom: 20px;
-    padding: 30px;
-
-    // for spanning links
-    position:relative;
-
-    @include box_style;
-
-    p {
-      text-decoration: none;
-    }
-
-    &:hover {
-      @include box_style_hover;
-    }
-
-    // front page
-    &.fp-padding {
-      padding: 10px !important;
-    }
-  }
-
-  // for rows of divs like on the front page
-  .box-third {
-    width: 203px !important;
-    /*display: inline-block;*/
-    float: left;
-    vertical-align: text-top;
-    text-align: center;
-    line-height: 1.7em;
-    font-size: 0.9em;
-
-    .bold {
-      font-weight: bold;
-      text-align: left;
-    }
-    .h2 {
-      text-align: center;
-    }
-
-    padding: 20px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-
-    // for spanning links
-    position:relative;
-
-    @include box_style;
-
-    p {
-      text-decoration: none;
-    }
-
-    &:hover {
-      @include box_style_hover;
-    }
-  }
-
-
-
-  /* for boxes within boxes */
-  .inner-box {
-    @include box_style;
-    margin: 20px;
-    padding: 20px;
-
-    p { 
-      margin: 10px;
-    }
-  }
-}
 
 .box-span {
   position: absolute;
@@ -731,12 +833,11 @@ strong {
 }
 
 .video_iframe {
-  float: right;
   @include box_style;
   padding: 0px;
   margin: 0px;
-  width: 380px;
-  height: 213px;
+  /*width: 380px;*/
+  /*height: 213px;*/
 }
 
 
