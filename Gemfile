@@ -10,6 +10,8 @@ gem 'pg'
 # for nice url slugs
 gem 'friendly_id', '~> 4.0.0.beta14'
 
+# authorisation
+gem 'cancan'
 
 # for uploading profile pictures
 gem 'aws-s3'
