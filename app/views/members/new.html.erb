@@ -26,6 +26,9 @@
   <p><%= f.label :career_plans %></p>
   <p><%= f.text_area :career_plans %></p>
  
+  <p><%= f.label :avatar %></p>
+  <p><%= f.file_field :avatar %></p>
+
   <%= fields_for @user do |u| %>
     <p><%= u.label :password %></p>
     <p><%= u.text_field :password %></p>
