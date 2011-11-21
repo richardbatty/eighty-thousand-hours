@@ -5,10 +5,22 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find_by_id( params[:id] )
+    @user = User.find( params[:id] )
   end
 
-  def admin
-    @users = User.all
+  def destroy
+    user = User.find( params[:id] )
+    name = user.name
+    if user.destroy
+      flash[:notice] = "Deleted #{name}"
+    else
+      flash[:error] = "Failed to delete #{name}!"
+    end
+    redirect_to users_path
+  end
+
+  def confirm_member
+    user = User.find( params[:id] )
+    user.member.confirmed = true
   end
 end
