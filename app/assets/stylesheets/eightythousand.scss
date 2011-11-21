@@ -109,36 +109,107 @@ header {
   text-align: center;
 }
 
-#signup_form {
+.mailing-list-form {
   color: $text_color;
+  font: $palatino;
 
-  .front_page {
+  &.front-page {
     padding-bottom: 20px;
-    padding-top: 40px;
-    padding-left: 20px;
+
     .email {
-      width: 200px;
+      width: 220px;
+      padding: 7px;
+      margin: 0px;
+      color: $grey_2;
+      display: inline-block;
+      outline: none;
+      text-decoration: none;
+      text-shadow: 0 1px 1px rgba(0,0,0,.3);
+      @include rounded_borders(#ccc, 1px, 6px);
+      text-align: center;
+    }
+    .submit-button {
+      @include rounded_borders(#ccc, 1px, 6px);
+      @include box_shadow(#ccc, 0px, 0px, 5px);
+      background-color: #fff;
+      padding: 7px 20px;
+      margin: 5px;
+      text-align: center;
+
+      &:hover {
+        /*background: #efefef;*/
+        @include box_shadow(#ccc, 0px, 0px, 0px);
+        cursor: pointer;
+      }
     }
   }
 
-  .text {
-    padding-right: 10px;
-  }
+  &.get-involved {
+    padding-bottom: 20px;
 
-  .email {
-    padding: 7px;
-    margin: 0px;
-    color: $grey_2;
-    display: inline-block;
-    outline: none;
-    text-decoration: none;
-    text-shadow: 0 1px 1px rgba(0,0,0,.3);
-    @include rounded_borders(#ccc, 1px, 6px);
-    text-align: center;
-  }
+    label{ display:block; }
+    .email {
+      width: 280px;
+      padding: 10px;
+      margin: 0px;
+      color: $grey_2;
+      display: inline-block;
+      outline: none;
+      text-decoration: none;
+      text-shadow: 0 1px 1px rgba(0,0,0,.3);
+      @include rounded_borders(#ccc, 1px, 6px);
+      text-align: center;
+    }
+    .submit-button {
+      @include rounded_borders(#ccc, 1px, 6px);
+      @include box_shadow(#ccc, 0px, 0px, 5px);
+      background-color: #fff;
+      padding: 7px 20px;
+      margin: 5px;
+      text-align: center;
 
-  font: $palatino;
+      &:hover {
+        /*background: #efefef;*/
+        @include box_shadow(#ccc, 0px, 0px, 0px);
+        cursor: pointer;
+      }
+    }
+  }
+  &.header {
+  float:left;
+    .email {
+      width: 100px;
+      .text {
+        padding-right: 5px;
+      }
+
+      .email {
+        /*padding: 2px;*/
+        margin: 0px;
+        color: $grey_2;
+        display: inline-block;
+        outline: none;
+        text-decoration: none;
+        /*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
+        /*@include rounded_borders(#ccc, 1px, 6px);*/
+        text-align: center;
+      }
+    }
+    .submit-button {
+      @include rounded_borders(#ccc, 1px, 3px);
+      @include box_shadow(#ccc, 0px, 0px, 5px);
+      background-color: #fff;
+      text-align: center;
+      color: #555;
+      &:hover {
+        /*background: #efefef;*/
+        @include box_shadow(#ccc, 0px, 0px, 0px);
+        cursor: pointer;
+      }
+    }
+  }
 }
+
 
 .find-out-more {
   cursor: pointer;
@@ -177,21 +248,6 @@ header {
   bottom: 20px;
   left: 60px;
   z-index: 2;
-}
-
-.submit-button {
-  @include rounded_borders(#ccc, 1px, 6px);
-  @include box_shadow(#ccc, 0px, 0px, 5px);
-  background-color: #fff;
-  padding: 7px 20px;
-  margin: 5px;
-  text-align: center;
-
-  &:hover {
-    /*background: #efefef;*/
-    @include box_shadow(#ccc, 0px, 0px, 0px);
-    cursor: pointer;
-  }
 }
 
 .defaultText {
@@ -890,3 +946,28 @@ strong {
   @include box_shadow(#ccc, 0px, 0px, 5px);
 }
 
+
+/*[> Centre the form within the page <]*/
+/*form {*/
+    /*margin:0 auto;*/
+    /*width:459px;*/
+/*}*/
+
+/*[> Style the text boxes <]*/
+/*input, textarea {*/
+    /*background:#fff;*/
+    /*border:1px solid #dedede;*/
+    /*padding:10px;*/
+    /*margin-top:3px;*/
+    /*font-size:0.9em;*/
+    /*color:#3a3a3a;*/
+    /*border-radius:5px;*/
+    /*-moz-border-radius:5px;*/
+    /*-webkit-border-radius:5px;*/
+/*}*/
+/*textarea {*/
+	/*height:213px;*/
+/*}*/
+/*input:focus, textarea:focus {*/
+    /*border:1px solid #97d6eb;*/
+/*}*/
