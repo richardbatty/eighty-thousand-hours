@@ -1,29 +1,100 @@
+<% if false %>
 <%
   pages = {
-    "Home"            => "/",
-    "Ethical career?" => "/ethical-career",
-    "What you can do" => "/what-you-can-do",
-    "What we do"      => "/what-we-do",
-    "Get involved"    => "/get-involved",
-    "FAQ"             => "/faq",
-    "Events"          => "/events",
-    #"Blog"            => "/posts",  
-    "Blog"            => "/blog",  
-    "Press"           => "/press"
+    #"Home"            => "/",
+    #"Ethical career?" => "/ethical-career",
+    #"What you can do" => "/what-you-can-do",
+    #"What we do"      => "/what-we-do",
+    #"Get involved"    => "/get-involved",
+    #"FAQ"             => "/faq",
+    #"Events"          => "/events",
+    ##"Blog"            => "/posts",  
+    #"Blog"            => "/blog",  
+    #"Press"           => "/press"
+
+    "Home" => {"Home" => "/"},
+    "Our Community" =>
+    {
+      "Our Community" => "/members",
+      "Our members" => "/members",
+      "Meet the team" => "/meet-the-team",
+      "Events" => "/events"
+    },
+
+    "Your Career" =>
+    {
+      "Your Career" => "/career-research",
+      "Current debate" => "/banker-vs-doctor",
+      "Careers info"   => "/career-research",
+      "Coming soon!"   => "/coming-soon"
+    },
+
+    "Membership" =>
+    {
+      "Membership" => "/the-pledge",
+      "Why join?" => "/find-out-more",
+      "Join now"  => "/the-pledge"
+    },
+    "Blog" => {"Blog" => "/blog"},
+    "Press" =>
+    {
+      "Press" => "/press",
+      "Media Centre" => "/press",
+      "Our press coverage" => "/press-coverage"
+    }
   }
 %>
 
 <nav id='menu' class='menu clearfix'>
   <ul>
-    <% pages.each do |title,url| %>
-      <% if title == current_page %>
+    <% pages.each do |title| %>
+      <% title[1].each do |name,url| %>
+        <% if name == current_page %>
         <li class="selected">
-      <% else %>
+        <% else %>
         <li>
+        <% end %>
+          <%= link_to name,url %>
+        </li>
       <% end %>
-      <%= link_to title,url %>
-      </li>
     <% end %>
   </ul>
 </nav>
+<% end %>
 
+<nav class='clearfix'>
+<ul id='nav'>
+    <li><a href="/">Home</a></li>
+    <li>
+      <a href="/members">Our Community</a>
+      <ul>
+        <li><a href="/members">Our members</a></li>
+        <li><a href="/meet-the-team">Meet the team</a></li>
+        <li><a href="/events">Events</a></li>
+      </ul>
+    </li>
+    <li>
+      <a href="/career-research">Your Career</a>
+      <ul>
+        <li><a href="/banker-vs-doctor">Current debate</a></li>
+        <li><a href="/career-research">Careers info</a></li> 
+        <li><a href="/coming-soon">Coming soon!</a></li>  
+      </ul>
+    </li>
+    <li>
+      <a href="/find-out-more">Membership</a>
+      <ul>
+        <li><a href="/find-out-more">Why join?</a></li>
+        <li><a href="/the-pledge">Join now</a></li>
+      </ul>
+    </li>
+    <li><a href="/blog">Blog</a></li>
+    <li>
+      <a href="/press">Press</a>
+      <ul>
+        <li><a href="/press">Media Centre</a></li>
+        <li><a href="/press-coverage">Our press coverage</a></li>
+      </ul>
+    </li>
+</ul>
+</nav>

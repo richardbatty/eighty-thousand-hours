@@ -49,7 +49,7 @@ header {
   /*width: 100%;*/
   margin-left:auto;
   margin-right:auto;
-  /*height: $dim_header_height+10px;*/
+  height: auto;//$dim_header_height+10px;
   text-align: center;
 
   //background: #333 url(/assets/header/hic_header_background.png) no-repeat center top;
@@ -309,23 +309,25 @@ header {
   float: left;
   color: #efefef;
 
-  width: 55%;
+  width: 75%;
   .slogan {
-    font-size: 28px;
+    font-size: 48px;
     text-align: left;
     font-weight: bold;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 20px;
+    color: #fff;
   }
   .call-to-action {
-    font-size: 18px;
+    font-size: 26px;
     text-align: left;
     font-weight: normal;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 10px;
     line-height: 1.4em;
+    color: #efefef;
   }
 }
 
@@ -344,8 +346,8 @@ header {
   padding-right: 20px;
   text-align: center;
   font-weight: bold;
-  margin-top: 50px;
-  margin-right: 180px;
+  margin-top: 90px;
+  margin-right: 0px;
   margin-bottom: 30px;
   color: #ffffff;
   background: $magenta_2;
@@ -576,87 +578,92 @@ header {
       margin: 10px;
     }
   }
+  /* for the press page */
+  .press-contact {
+    width: 275px;
+    margin-left: 0px;
+  }
 }
 /* -------------- /content ----------- */
 
 
 /* ------------- nav --------------- */
-nav {
-  font-size: 1.4em;
-  margin: 0;
-  padding: 0;
-  background: $nav_bar_color;
-  text-align: center;
-  /*float: center;*/
-  /*padding: 15px;*/
-  @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
-  margin-left: auto;
-  margin-right: auto;
-  width: 100%;
-}
-
-nav ul {
-  text-align: left;
-  margin: 0;
-  padding: 0;
-  padding: 15px;
-}
-
-nav ul li {
-  display: inline;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  height: 2em;
-  padding-left: 12px;
-  padding-right: 12px;
-}
-
-nav li ul {
-  display: none;
-}
-
-nav ul li a {
-  text-decoration: none;
-  color: $nav_link_color;
-  padding: 0px 15px 0px 15px;
-  padding-left: 0px;
-  background: $nav_bar_color;
-  margin-left: 1px;
-  white-space: nowrap;
-}
-
-nav ul li a:hover {
-  color: $nav_link_hover_color;
-  background: $nav_bar_color;
-}
-
-nav li:hover ul {
-  display: block;
-  position: absolute;
-}
-
-nav li:hover li {
-  float: none;
-}
-
-/* need a background here if we have drop-down menus */
-nav li:hover a {
-  background: $nav_bar_color;
-}
-
-/* need a background here if we have drop-down menus */
-nav li:hover li a:hover {
-  background: $nav_bar_color;
-}
-
-nav li.selected a {
-  color: $nav_link_hover_color;
-}
-
-nav li.selected a:hover {
-  color: $nav_link_hover_color;
-}
+//nav {
+//  font-size: 1.4em;
+//  margin: 0;
+//  padding: 0;
+//  background: $nav_bar_color;
+//  text-align: center;
+//  /*float: center;*/
+//  /*padding: 15px;*/
+//  @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
+//  margin-left: auto;
+//  margin-right: auto;
+//  width: 100%;
+//}
+//
+//nav ul {
+//  text-align: left;
+//  margin: 0;
+//  padding: 0;
+//  padding: 15px;
+//}
+//
+//nav ul li {
+//  display: inline;
+//  list-style: none;
+//  padding: 0;
+//  margin: 0;
+//  height: 2em;
+//  padding-left: 12px;
+//  padding-right: 12px;
+//}
+//
+//nav li ul {
+//  display: none;
+//}
+//
+//nav ul li a {
+//  text-decoration: none;
+//  color: $nav_link_color;
+//  padding: 0px 15px 0px 15px;
+//  padding-left: 0px;
+//  background: $nav_bar_color;
+//  margin-left: 1px;
+//  white-space: nowrap;
+//}
+//
+//nav ul li a:hover {
+//  color: $nav_link_hover_color;
+//  background: $nav_bar_color;
+//}
+//
+//nav li:hover ul {
+//  display: block;
+//  position: absolute;
+//}
+//
+//nav li:hover li {
+//  float: none;
+//}
+//
+///* need a background here if we have drop-down menus */
+//nav li:hover a {
+//  background: $nav_bar_color;
+//}
+//
+///* need a background here if we have drop-down menus */
+//nav li:hover li a:hover {
+//  background: $nav_bar_color;
+//}
+//
+//nav li.selected a {
+//  color: $nav_link_hover_color;
+//}
+//
+//nav li.selected a:hover {
+//  color: $nav_link_hover_color;
+//}
 /* ------------- /nav --------------- */
 
 
@@ -959,8 +966,7 @@ strong {
 {
   /*[> Centre the form within the page <]*/
   form {
-      margin:0 auto;
-      width:600px;
+      margin-left: 30px;
   }
   
   /*[> Style the text boxes <]*/
@@ -1015,4 +1021,104 @@ strong {
     font-weight: normal;
     color: lighten($text_color,50%);
   }
+}
+
+#nav {
+  font-size: 1.4em;
+  margin: 0;
+  padding: 0;
+  background: $nav_bar_color;
+  text-align: left;
+  @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
+
+  width: 100%;
+  height: 35px;
+	margin: 0;
+	padding: 7px 6px 0;
+	line-height: 100%;
+}
+
+#nav li {
+	margin: 0 5px;
+	padding: 0 0 8px;
+	float: left;
+	position: relative;
+	list-style: none;
+  z-index: 10;
+}
+/* main level link */
+#nav a {
+  color: $nav_link_color;
+	text-decoration: none;
+	display: block;
+	padding:  8px 20px;
+	margin: 0;
+}
+/* main level link hover */
+#nav .current a, #nav li:hover > a {
+  color: $nav_link_hover_color;
+}
+/* sub levels link hover */
+#nav ul li:hover a, #nav li:hover li a {
+	background: none;
+	border: none;
+}
+#nav ul a:hover {
+  background: #333 !important; //[> for non-css3 browsers <]
+	/*text-shadow: 0 1px 1px rgba(0, 0, 0, .1);*/
+  color: $nav_link_hover_color !important;
+}
+/* level 2 list */
+#nav ul {
+	background: #111; /* for non-css3 browsers */
+
+	display: none;
+	margin: 0;
+	padding: 0;
+	width: 185px;
+	position: absolute;
+	top: 35px;
+	left: 0;
+	border: solid 1px #555;
+}
+/* dropdown */
+#nav li:hover > ul {
+	display: block;
+}
+#nav ul li {
+	float: none;
+	margin: 0;
+	padding: 0;
+	border-bottom: solid 1px #555;
+}
+#nav ul a {
+	font-weight: normal;
+}
+/* level 3+ list */
+#nav ul ul {
+	left: 181px;
+	top: -3px;
+}
+/* rounded corners for first and last child */
+#nav ul li:first-child > a {
+}
+#nav ul li:last-child > a {
+}
+/* clearfix */
+#nav:after {
+	content: ".";
+	display: block;
+	clear: both;
+	visibility: hidden;
+	line-height: 0;
+	height: 0;
+}
+#nav {
+	display: inline-block;
+}
+html[xmlns] #nav {
+	display: block;
+}
+* html #nav {
+	height: 1%;
 }
