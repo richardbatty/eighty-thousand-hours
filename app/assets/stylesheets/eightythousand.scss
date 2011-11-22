@@ -66,17 +66,13 @@ header {
     padding-top: $dim_page_padding_top;
 
     #header-logo-and-login {
-      #interaction{ float:right;}
-      #header-logo { float:left; clear: none; }
+      #header-logo { 
+        float:left; clear: none;
+        padding-left: 5px;
+      }
       clear: none;
       width: $dim_page_width;
       padding-bottom: 30px;
-
-      img#header-text {
-        float: left;
-        padding-left: 20px;
-        padding-bottom: 10px;
-      }
 
       img.social_image
       {
@@ -173,7 +169,7 @@ header {
     }
   }
   &.header {
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     position: relative;
     float:left;
     color: #ccc;
@@ -918,7 +914,7 @@ strong {
   font-size: 12px;
 
   .user-login{
-    padding-bottom: 8px;
+    padding-bottom: 10px;
   }
 
   a {
@@ -1032,7 +1028,7 @@ strong {
   @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
 
   /*float: right;*/
-  width: 94%;
+  width: 95%;
   height: 35px;
 	margin: 0;
 	padding: 7px 6px 0;
@@ -1057,7 +1053,7 @@ strong {
 	display: block;
 	padding:  8px 20px;
 	margin: 0;
-  padding-right: 55px;
+  padding-right: 45px;
 }
 /* main level link hover */
 #nav .current a, #nav li:hover > a {
