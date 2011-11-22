@@ -1,0 +1,21 @@
+<%# Input locals:   
+        :member instance of Member model
+%>
+<div class="member-profile-condensed">
+  <% if member.avatar? %>
+  <div class="avatar">
+    <%= link_to image_tag(member.avatar.url(avatar_size)), member.avatar.url %>
+  </div>
+  <% end %>
+
+  <% if member.name %>
+  <div class="name">
+    <%= link_to member.name, "/members/#{member.slug}" %>
+    <% if member.location? %>
+      <span class="location">
+       &nbsp;  <%= member.location %>
+      </span>
+    <% end %>
+  </div>
+  <% end %>
+</div>

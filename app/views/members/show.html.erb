@@ -1,7 +1,7 @@
 <div class="box">
   <div class="inner-box">
   <% if @member %>
-    <%= render :partial => '/shared/member', :locals => { :member => @member, :show_avatar => true, :avatar_size => :small, :link_name => false, :condensed => false  } %>
+    <%= render :partial => '/shared/member', :locals => { :member => @member } %>
   <% else %>
     <p>Sorry! That profile hasn't been completed yet... check back soon!</p>
     <%= button_link 'List of all members with profiles', '/members' %>
