@@ -31,4 +31,5 @@ EightyThousandHours::Application.routes.draw do
   match 'show-your-support'             => 'info#show_your_support'
   match 'blog'                          => 'info#blog'
   match 'press'                         => 'info#press'
+  match 'join'                          => 'info#join'
 end

@@ -98,4 +98,8 @@ class InfoController < ApplicationController
   def press
     @title = "Press"
   end
+
+  def join
+    @title = "Join"
+  end
 end
