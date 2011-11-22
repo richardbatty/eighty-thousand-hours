@@ -6,7 +6,7 @@ class InfoController < ApplicationController
     #@members = Member.get_random( 6 )
 
     begin
-      @members = Member.find( [28,27,26,24,38,43] )
+      @members = Member.find( [28,27,26,24,38,43].randomize )
     rescue
       @members = Member.get_random( 6 )
     end
