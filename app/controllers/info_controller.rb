@@ -79,10 +79,6 @@ class InfoController < ApplicationController
     @title = "Contact us"
   end
 
-  def help
-    @title = "Help"
-  end
-
   def find_out_more
     @title = "Find out more"
   end
@@ -109,5 +105,9 @@ class InfoController < ApplicationController
 
   def coming_soon
     @title = "Coming soon!"
+  end
+
+  def career_profiles
+    @title = "Career profiles"
   end
 end
