@@ -309,23 +309,25 @@ header {
   float: left;
   color: #efefef;
 
-  width: 55%;
+  width: 75%;
   .slogan {
-    font-size: 28px;
+    font-size: 48px;
     text-align: left;
     font-weight: bold;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 20px;
+    color: #fff;
   }
   .call-to-action {
-    font-size: 18px;
+    font-size: 26px;
     text-align: left;
     font-weight: normal;
     margin-left: 20px;
     margin-right: 20px;
     margin-top: 10px;
     line-height: 1.4em;
+    color: #efefef;
   }
 }
 
@@ -344,8 +346,8 @@ header {
   padding-right: 20px;
   text-align: center;
   font-weight: bold;
-  margin-top: 50px;
-  margin-right: 180px;
+  margin-top: 90px;
+  margin-right: 0px;
   margin-bottom: 30px;
   color: #ffffff;
   background: $magenta_2;
