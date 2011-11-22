@@ -122,4 +122,8 @@ class InfoController < ApplicationController
   def op_ed
     @title = "Banker vs Aid Worker: Op-Ed"
   end
+
+  def q_and_a
+    @title = "Banker vs Aid Worker: Q & A"
+  end
 end

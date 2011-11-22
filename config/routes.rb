@@ -17,7 +17,6 @@ EightyThousandHours::Application.routes.draw do
   match 'what-you-can-do/my-career'     => 'info#my_career'
   match 'what-we-do'                    => 'info#what_we_do'
   match 'volunteer'                     => 'info#volunteer'
-  match 'faq'                           => 'info#faq'
   match 'get-involved'                  => 'info#get_involved'
   match 'get-involved/volunteer'        => 'info#volunteer'
   match 'events'                        => 'info#events'
@@ -34,6 +33,8 @@ EightyThousandHours::Application.routes.draw do
   match 'coming-soon'                   => 'info#coming_soon'
   match 'career-profiles'               => 'info#career_profiles'
   match 'meet-the-team'                 => 'info#meet_the_team'
-  match 'op-ed'                         => 'info#op_ed'
   match 'banker-vs-aid-worker'          => 'info#banker_vs_aid_worker'
+  match 'banker-vs-aid-worker/op-ed'    => 'info#op_ed'
+  match 'banker-vs-aid-worker/q-and-a'  => 'info#q_and_a'
+  match 'faq'                           => 'info#faq'
 end
