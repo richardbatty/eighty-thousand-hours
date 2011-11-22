@@ -21,14 +21,18 @@
     <p><%= u.text_field :email %></p>
   <% end %>
 
+  <% if false %>
   <p><%= f.label :background %></p>
   <p><%= f.text_area :background %></p>
+  <% end %>
 
   <p><%= f.label :career_plans %></p>
   <p><%= f.text_area :career_plans %></p>
  
+  <% if false %>
   <p><%= f.label :avatar %></p>
   <p><%= f.file_field :avatar %></p>
+  <% end %>
 
   <%= fields_for @user do |u| %>
     <p><%= u.label :password %></p>

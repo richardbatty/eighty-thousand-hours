@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111121175211) do
+ActiveRecord::Schema.define(:version => 20111122052101) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -29,12 +29,12 @@ ActiveRecord::Schema.define(:version => 20111121175211) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "members", :force => true do |t|
-    t.string   "background"
-    t.string   "career_plans"
-    t.string   "inspiration"
-    t.string   "interesting_fact"
+    t.text     "background"
+    t.text     "career_plans"
+    t.text     "inspiration"
+    t.text     "interesting_fact"
     t.string   "location"
-    t.string   "organisation_role"
+    t.text     "organisation_role"
     t.boolean  "show_name",           :default => true
     t.boolean  "show_info",           :default => true
     t.boolean  "confirmed",           :default => false
