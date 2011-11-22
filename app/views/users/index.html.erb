@@ -1,24 +1,10 @@
 <div class="box">
-  <table>
-    <% @users.each do |user| %>
-    <tr>
-      <td><%= user.name %></td>
-      <td><%= user.email %></td>
-      <td><% '•' if user.confirmed_at.nil? %></td>
-      <td>
-        <% if user.member %>
-          <% if !user.member.confirmed %>
-          <%= link_to '✔ confirm', user_path(user),
-            {:confirm => "Definitely confirm #{user.name} as a member?", :confirmed => true },
-                      :method => :put %>
-          <% end %>
-        <% end %>
-      </td>
-      <td><%= link_to '✘ delete', user_path(user),
-                      :confirm => "You sure you want to delete #{user.name}?",
-                      :method => :delete %>
-      </td>
-    </tr>
-    <% end %>
-  </table>
+  <div class="center"><h1>Our Members</h1></div>
+  <% @users.each do |user| %>
+    <%= render :partial => '/shared/member_condensed', :locals => { :member => user.member } %>
+  <% end %>
+
+  <div class="center">
+  <%= button_link 'Inspired? Interested in becoming a member?', '/join' %>
+  </div>
 </div>

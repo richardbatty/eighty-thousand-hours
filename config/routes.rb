@@ -8,8 +8,8 @@ EightyThousandHours::Application.routes.draw do
   # for the rest of the profile routes
   match 'join'          => 'members#new'
   match 'members/:name' => 'members#show'
-  resources :members
-
+  resources :users, :path => "members"
+  
   root  :to                             => 'info#index'
   match 'ethical-career'                => 'info#banker_vs_aid_worker'
   match 'what-you-can-do'               => 'info#what_you_can_do'
