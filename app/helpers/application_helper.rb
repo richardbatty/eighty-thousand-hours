@@ -12,4 +12,8 @@ module ApplicationHelper
       link_to  text, path, :class => (klass ? "button " + klass : "button")
     end
   end
+
+  def markdown( text )
+    raw(BlueCloth.new(text).to_html)
+  end
 end

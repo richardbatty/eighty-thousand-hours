@@ -30,35 +30,35 @@
     <% if member.background? %>
     <div class="background">
       <h2>Background</h2>
-      <%= member.background %>
+      <%= markdown member.background %>
     </div>
     <% end %>
 
     <% if member.career_plans? %>
     <div class="career-plans">
       <h2>Career plans</h2>
-      <%= member.career_plans %>
+      <%= markdown member.career_plans %>
     </div>
     <% end %>
 
     <% if member.inspiration? %>
     <div class="inspiration">
       <h2>Inspiration</h2>
-      <%= member.inspiration %>
+      <%= markdown member.inspiration %>
     </div>
     <% end %>
 
     <% if member.organisation_role? %>
     <div class="organisation-role">
       <h2>Role in <%= org_name %></h2>
-      <%= member.organisation_role %>
+      <%= markdown member.organisation_role %>
     </div>
     <% end %>
 
     <% if member.interesting_fact? %>
     <div class="interesting-fact">
       <h2>Interesting fact</h2>
-      <%= member.interesting_fact %>
+      <%= markdown member.interesting_fact %>
     </div>
     <% end %>
   <% end %>
