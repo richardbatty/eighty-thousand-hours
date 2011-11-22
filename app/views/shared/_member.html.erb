@@ -11,14 +11,14 @@
   </div>
   <% end %>
 
-  <% if member.name %>
+  <% if member.name? %>
   <div class="name">
     <% if link_name %>
        <%= link_to member.name, "/members/#{member.slug}" %>
     <% else %>
        <%= member.name %>
     <% end %>
-    <% if member.location %>
+    <% if member.location? %>
       <span class="location">
        &nbsp;  <%= member.location %>
       </span>
@@ -27,28 +27,28 @@
   <% end %>
 
   <% if !condensed %>
-    <% if member.background %>
+    <% if member.background? %>
     <div class="background">
       <h2>Background</h2>
       <%= member.background %>
     </div>
     <% end %>
 
-    <% if member.career_plans %>
+    <% if member.career_plans? %>
     <div class="career-plans">
       <h2>Career plans</h2>
       <%= member.career_plans %>
     </div>
     <% end %>
 
-    <% if member.inspiration %>
+    <% if member.inspiration? %>
     <div class="inspiration">
       <h2>Inspiration</h2>
       <%= member.inspiration %>
     </div>
     <% end %>
 
-    <% if member.organisation_role %>
+    <% if member.organisation_role? %>
     <div class="organisation-role">
       <h2>Role in <%= org_name %></h2>
       <%= member.organisation_role %>
