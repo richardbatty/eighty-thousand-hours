@@ -1,7 +1,7 @@
 <div class="box">
   <div class="inner-box">
   <% if @member %>
-    <%= render :partial => '/shared/member', :locals => { :member => @member } %>
+    <%= render :partial => '/shared/member', :locals => { :member => @member, :show_avatar => true, :link_name => false, :condensed => false  } %>
   <% else %>
     <p>Sorry, we couldn't find a member with the name '<%= @slug %>'.</p>
     <%= button_link 'List of all members', '/members' %>
