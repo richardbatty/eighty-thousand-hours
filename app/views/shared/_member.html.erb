@@ -7,8 +7,7 @@
 
   <% if member.name %>
   <div class="name">
-    <%= member.name %>
-    <% if member.location %>
+     <%= link_to member.name, "/members/#{member.slug}" %>    <% if member.location %>
       <span class="location">
        &nbsp;  <%= member.location %>
       </span>

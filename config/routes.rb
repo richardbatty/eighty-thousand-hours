@@ -6,6 +6,8 @@ EightyThousandHours::Application.routes.draw do
   resources :posts
 
   # for the rest of the profile routes
+  match 'members/:name' => 'members#show'
+
   resources :members
 
   root  :to                             => 'info#index'
