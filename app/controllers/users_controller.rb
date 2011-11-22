@@ -1,7 +1,7 @@
 class UsersController < ApplicationController
   #TODO all of these should only be accessible by Admins
   def index
-    @users = User.with_member.confirmed.shuffle
+    @users = User.membership_confirmed.shuffle
   end
 
   def show
