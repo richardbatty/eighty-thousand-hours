@@ -1,5 +1,5 @@
-  <div class="alert">
 <% if @user.errors.any? %>
+  <div class="alert">
   <div id="errorExplanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this application from being accepted:</h2>
     <ul>
@@ -8,10 +8,8 @@
     <% end %>
     </ul>
   </div>
-  <% end %>
 </div>
-
-
+<% end %>
 
 <div class="box">
 <h2>Join our community</h2>
@@ -70,13 +68,14 @@ community, so if you are interested or have any questions, <%= link_to "contact 
   <p><%= f.text_area :career_plans %></p>
 
   
-<div class="inner-box">
-  <h1>The Pledge</h1>
-  <p>
-  <%= render :partial => 'shared/pledge' %>
-  </p>
-</div>
-
+  <div class="inner-box">
+    <h1>The Pledge</h1>
+    <p>
+    <%= render :partial => 'shared/pledge' %>
+    </p>
+    <div class="center">
+    </div>
+  </div>
 
   <div class="center">
     <%= f.submit "Take the pledge and apply for membership", :class=>"button" %>
