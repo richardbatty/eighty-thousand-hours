@@ -1,6 +1,4 @@
 <div id="interaction">
-  <%= render :partial => 'shared/mailing_list', :locals => { :text => "Stay updated: ", :klass => "header", :button_text=>"Go" } %>
-
   <div class="user-login">
   <% if user_signed_in? %>
     <%= link_to current_user.name, "/accounts/edit" %>
@@ -19,4 +17,6 @@
     <%= link_to image_tag( "social/twitter.png", :class => "social_image" ),    "https://twitter.com/80000Hours" %>
     <%# link_to image_tag( "social/googleplus.png", :class => "social_image" ), "https://plus.google.com/105296499458344309465" %>
   </div>
+
+  <%= render :partial => 'shared/mailing_list', :locals => { :text => "Stay updated: ", :klass => "header", :button_text=>"Go" } %>
 </div>
