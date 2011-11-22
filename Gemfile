@@ -37,6 +37,8 @@ gem 'rails-i18n'
 
 gem 'activeadmin'
 
+gem 'meta_search'
+
 gem 'exception_notification'
 
 group :development do
