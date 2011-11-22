@@ -1020,8 +1020,8 @@ strong {
   .avatar {
     float: right;
     @include box_shadow(#ccc, 0px, 0px, 5px);
-    height: 96px;
-    width: 96px;
+    height: 100px;
+    width: 100px;
     margin: 10px;
   }
 
@@ -1037,6 +1037,37 @@ strong {
     color: lighten($text_color,50%);
   }
 }
+.member-profile-condensed {
+  height: 70px;
+  width: 70%;
+  @include box_style;
+  padding: 20px;
+  margin-top: 30px;
+  margin-bottom: 30px;
+  margin-left: auto;
+  margin-right: auto;
+
+
+  .avatar {
+    float: right;
+    @include box_shadow(#ccc, 0px, 0px, 5px);
+    height: 64px;
+    width: 64px;
+    margin: 5px;
+  }
+
+  .name {
+    font-size: 1.3em;
+    font-weight: bold;
+    padding-bottom: 5px;
+  }
+  .location {
+    font-size: 1.0em;
+    font-weight: normal;
+    color: lighten($text_color,50%);
+  }
+}
+
 
 #nav {
   font-size: 1.5em;

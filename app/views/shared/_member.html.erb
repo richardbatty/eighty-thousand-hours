@@ -4,7 +4,7 @@
 <div class="member-profile">
   <% if member.avatar? %>
   <div class="avatar">
-    <%= link_to image_tag(member.avatar.url(avatar_size)), member.avatar.url %>
+    <%= link_to image_tag(member.avatar.url(:medium)), member.avatar.url %>
   </div>
   <% end %>
 

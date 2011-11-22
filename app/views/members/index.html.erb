@@ -1,10 +1,10 @@
 <div class="box">
   <% @members.each do |member| %>
-    <div class="inner-box">
-      <%= render :partial => '/shared/member_condensed', :locals => { :member => member } %>
-    </div>
+    <%= render :partial => '/shared/member_condensed', :locals => { :member => member } %>
   <% end %>
 
+  <div class="center">
   <%= button_link 'Inspired? Interested in becoming a member?', '/join' %>
+  </div>
 </div>
 
