@@ -1077,7 +1077,7 @@ strong {
   @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
 
   /*float: right;*/
-  width: 95%;
+  width: 75%;
   height: 32px;
 	margin: 0;
 	padding: 0px 0px 0;
@@ -1103,7 +1103,7 @@ strong {
 	display: block;
 	padding:  8px 20px;
 	margin: 0;
-  padding-right: 45px;
+  padding-right: 0px;
 }
 /* main level link hover */
 #nav .current a, #nav li:hover > a {
