@@ -41,6 +41,20 @@
     </div>
     <% end %>
 
+    <% if member.inspiration %>
+    <div class="inspiration">
+      <h2>Inspiration</h2>
+      <%= member.inspiration %>
+    </div>
+    <% end %>
+
+    <% if member.organisation_role %>
+    <div class="organisation-role">
+      <h2>Role in <%= org_name %></h2>
+      <%= member.organisation_role %>
+    </div>
+    <% end %>
+
     <% if member.interesting_fact %>
     <div class="interesting-fact">
       <h2>Interesting fact</h2>
