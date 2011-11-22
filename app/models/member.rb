@@ -22,10 +22,7 @@ class Member < ActiveRecord::Base
   # now we can access @member.name, @member.email
   delegate :name, :name=, :email, :email=, :slug, :to => :user
 
-  def self.all_confirmed
-    all( :include => :user,
-         :conditions => "confirmed IS true" );
-  end
+  scope :confirmed, where(:confirmed => true).joins(:user).includes(:user)
 
   def self.find_by_slug( name )
     @user = User.find_by_slug( name )

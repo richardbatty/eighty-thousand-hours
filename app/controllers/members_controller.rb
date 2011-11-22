@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   def index
-    @members = Member.all_confirmed
+    @members = Member.confirmed
   end
 
   def show
