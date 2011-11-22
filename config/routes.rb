@@ -11,7 +11,7 @@ EightyThousandHours::Application.routes.draw do
   resources :members
 
   root  :to                             => 'info#index'
-  match 'ethical-career'                => 'info#ethical_career'
+  match 'ethical-career'                => 'info#banker_vs_aid_worker'
   match 'what-you-can-do'               => 'info#what_you_can_do'
   match 'what-you-can-do/my-donations'  => 'info#my_donations'
   match 'what-you-can-do/my-career'     => 'info#my_career'
