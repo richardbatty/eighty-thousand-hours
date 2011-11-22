@@ -1,5 +1,10 @@
-<p>Welcome <%= @resource.email %>!</p>
+<p>Thanks for your application to join <%= org_name %>!</p>
 
-<p>You can confirm your account through the link below:</p>
+<p>We'll be in touch shortly, but in the meantime you should confirm your account by clicking the following link:</p>
 
 <p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+
+<p>If that didn't work, try copying and pasting the following into your browser:</p>
+<p>
+<%= link_to confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
+</p>

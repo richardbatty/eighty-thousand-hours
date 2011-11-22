@@ -1,0 +1,65 @@
+---
+post: true
+
+title:
+  Estimation is the best we have
+
+date: 9th November 2011
+
+body: |
+  This argument seems common to many debates:
+  
+  _‘Proposal P arrogantly assumes that it is possible to measure X, when really
+  X is hard to measure and perhaps even changes depending on other factors.
+  Therefore we shouldn’t do P’._
+  
+  This could make sense if X wasn’t especially integral to the goal. For
+  instance if the proposal were to measure short distances by triangulation
+  with nearby objects, a reasonable criticism would be that the angles are hard
+  to measure, relative to measuring the distance directly. But this argument is
+  commonly used in situations where optimizing X is the whole point of the
+  activity, or a large part of it.
+  
+  Criticism of cost-benefit approaches to doing good provides a prime example.
+  A common argument is that it’s just not possible to tell if you are
+  increasing net welfare, or by how much. The critic concludes then that a
+  different strategy is better, for instance some sort of intuitive adherence
+  to strict behavioural rules.
+  
+  But if what we fundamentally think matters most is increasing welfare, or at
+  least reducing extreme suffering, then the extreme difficulty of doing the
+  associated mathematics perfectly should not warrant abandoning the goal. One
+  should always be better off putting the reduced effort one is willing to
+  contribute into what accuracy it buys, rather than throwing it away on a
+  strategy that is more random with regard to one’s goal.
+  
+  A CEO would sound ridiculous making this argument to his shareholders: ‘You
+  guys are being ridiculous. It’s just not possible to know which actions will
+  increase the value of the company exactly how much. Why don’t we try to make
+  sure that all of our meetings end on time instead?’
+  
+  In general, when optimizing X somehow is integral to the goal, the argument
+  must fail. If the point is to make X as close to three as possible for
+  instance, no matter how bad your best estimate is of what X will be under
+  different conditions, you can’t do better by ignoring X altogether. If you
+  had a non-estimating-X strategy which you anticipated would do better than
+  your best estimate in getting a good value of X, then you in fact believe
+  yourself to have a better estimating-X strategy.
+  
+  Probabilistic risk assessment is claimed by some to be impossibly difficult.
+  People are often wrong, and may fail to think of certain contingencies in
+  advance. So if we want to know how prepared to be for a nuclear war for
+  instance, we should do something qualitative with scenarios and the like.
+  This could be a defensible position. Perhaps intuitions can better implicitly
+  assess probabilities via some other activity than explicitly thinking about
+  them.  However I have not heard this claim accompanied by any motivating
+  evidence. And if it were true, it would likely make sense to convert the
+  qualitative assessments into quantitative ones and aggregate them with
+  information from other sources, rather than disregarding quantitative
+  assessments all together.
+
+author: >
+  Katja Grace is a PhD candidate studying probability at Carnegie Mellon
+  University, and a former research fellow at the Singularity Institute for
+  Artificial Intelligence. 'Estimation' was originally published on her blog,
+  <a href="http://meteuphoric.wordpress.com/">Meteuphoric</a>.

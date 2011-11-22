@@ -17,7 +17,7 @@
 <% end %>
 
 
-<h2>Your details</h2>
+<div class="profile-form">
 
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
   <%= devise_error_messages! %>
@@ -37,17 +37,22 @@
   <%# this will only display fields if :profile exists %>
   <%= f.fields_for :member do |mf| %>
     <p><%= mf.label :background %></p>
-    <p><%= mf.text_field :background %></p>
+    <p><%= mf.text_area :background %></p>
     <p><%= mf.label :career_plans %></p>
-    <p><%= mf.text_field :career_plans %></p>
+    <p><%= mf.text_area :career_plans %></p>
 
     <p><%= mf.label :avatar %></p>
     <p><%= mf.file_field :avatar %></p>
   <% end %>
   
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
   <%= f.password_field :current_password %></div>
-  <div><%= f.submit "Update" %></div>
+
+  <br/>
+  <div>
+    <%= f.submit "Save changes", :class=>"button" %>
+  </div>
 <% end %>
 <%= link_to "Back", :back %>
+</div>
 </div>
