@@ -106,4 +106,8 @@ class InfoController < ApplicationController
   def coming_soon
     @title = "Coming soon!"
   end
+
+  def career_profiles
+    @title = "Career profiles"
+  end
 end
