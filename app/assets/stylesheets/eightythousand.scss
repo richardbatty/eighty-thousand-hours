@@ -64,11 +64,10 @@ header {
     margin-left: auto;
     margin-right: auto;
     padding-top: $dim_page_padding_top;
-    padding-bottom: 20px;
 
-    #header-logo { float:left; clear: none; }
     #header-logo-and-login {
       #interaction{ float:right;}
+      #header-logo { float:left; clear: none; }
       clear: none;
       width: $dim_page_width;
       padding-bottom: 30px;
@@ -301,7 +300,7 @@ header {
 /* -------------- content ----------- */
 
 .fp-splash-container {
-  padding-top: 20px;
+  padding-top: 10px;
 }
 
 .fp-splash {
@@ -1025,21 +1024,22 @@ strong {
 }
 
 #nav {
-  font-size: 1.4em;
+  font-size: 1.5em;
   margin: 0;
   padding: 0;
   background: $nav_bar_color;
   text-align: left;
   @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
 
-  float: right;
-  width: 72%;
+  /*float: right;*/
+  width: 94%;
   height: 35px;
 	margin: 0;
 	padding: 7px 6px 0;
-  margin-right: 10px;
-  margin-top: 45px;
+  margin: 10px auto;
+  margin-top: 20px;
 	line-height: 100%;
+  padding-left: 40px;
 }
 
 #nav li {
@@ -1057,6 +1057,7 @@ strong {
 	display: block;
 	padding:  8px 20px;
 	margin: 0;
+  padding-right: 55px;
 }
 /* main level link hover */
 #nav .current a, #nav li:hover > a {
