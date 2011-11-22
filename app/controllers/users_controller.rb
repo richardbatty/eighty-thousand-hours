@@ -5,7 +5,8 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.find( params[:id] )
+    @user = User.with_member.find(params[:id])
+    # @member = Member.find_by_slug( @slug )
   end
 
   def destroy
