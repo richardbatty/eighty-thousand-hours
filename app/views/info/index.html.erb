@@ -26,8 +26,12 @@
   </div>
   <div class="break"></div>
   <div class="center">
-    <% 9.times do %>
-      <img class="fp-profile-image" src="/assets/profiles/avatar_default_96x96.png" />
+    <% @members.each do |m| %>
+      <% if m.avatar %>
+        <%= link_to image_tag(m.avatar.url(:small), :class=>"fp-profile-image"),
+                    "/members/#{m.slug}"
+        %>
+      <% end %>
     <% end %>
   </div>
 </div>
