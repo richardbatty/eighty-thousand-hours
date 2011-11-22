@@ -66,13 +66,11 @@ header {
     padding-top: $dim_page_padding_top;
     padding-bottom: 20px;
 
+    #header-logo { float:left; clear: none; }
     #header-logo-and-login {
-      #header-logo { float:left; clear: none; }
       #interaction{ float:right;}
-      float:left;
       clear: none;
       width: $dim_page_width;
-      padding-top: 20px;
       padding-bottom: 30px;
 
       img#header-text {
@@ -87,7 +85,7 @@ header {
         margin:0px;
         width: 20px;
         height: 20px;
-        padding-right: 5px;
+        padding-right: 3px;
       }
     }
 
@@ -176,12 +174,12 @@ header {
     }
   }
   &.header {
-    padding-right: 5px;
+    padding-bottom: 5px;
     position: relative;
-    top: -2px;
     float:left;
+    color: #ccc;
     .email {
-      width: 130px;
+      width: 110px;
       .text {
         padding-right: 5px;
       }
@@ -203,9 +201,10 @@ header {
       @include box_shadow(#ccc, 0px, 0px, 5px);
       background-color: #fff;
       text-align: center;
-      color: #555;
+      color: $magenta_2;
       &:hover {
         /*background: #efefef;*/
+        color: #555;
         @include box_shadow(#ccc, 0px, 0px, 0px);
         cursor: pointer;
       }
@@ -1033,10 +1032,13 @@ strong {
   text-align: left;
   @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
 
-  width: 100%;
+  float: right;
+  width: 72%;
   height: 35px;
 	margin: 0;
 	padding: 7px 6px 0;
+  margin-right: 10px;
+  margin-top: 45px;
 	line-height: 100%;
 }
 
