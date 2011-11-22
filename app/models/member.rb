@@ -20,7 +20,7 @@ class Member < ActiveRecord::Base
   belongs_to :user
 
   # now we can access @member.name, @member.email
-  delegate :name, :name=, :email, :email=, :to => :user
+  delegate :name, :name=, :email, :email=, :slug, :to => :user
 
   def self.all_confirmed
     all( :include => :user,
@@ -35,6 +35,10 @@ class Member < ActiveRecord::Base
       #@error = "We couldn't find a member called '#{params[:name]}', sorry!" 
       return nil
     end
+  end
+
+  def self.get_random( num )
+    limit(num)
   end
 end
 

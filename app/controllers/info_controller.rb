@@ -1,6 +1,9 @@
 class InfoController < ApplicationController
   def index
     @title = "Home"
+
+    # for profile photos on front page
+    @members = Member.get_random( 6 )
   end
 
   def what_you_can_do
