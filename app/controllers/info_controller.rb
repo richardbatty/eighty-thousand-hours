@@ -114,4 +114,12 @@ class InfoController < ApplicationController
   def meet_the_team
     @title = "Meet the team"
   end
+
+  def banker_vs_aid_worker
+    @title = "Banker vs Aid Worker"
+  end
+
+  def op_ed
+    @title = "Banker vs Aid Worker: Op-Ed"
+  end
 end
