@@ -1,4 +1,6 @@
 <div id="interaction">
+  <%= render :partial => 'shared/mailing_list', :locals => { :text => "Stay updated: ", :klass => "header", :button_text=>"Go" } %>
+
   <div class="user-login">
   <% if user_signed_in? %>
     <%= link_to current_user.name, "/accounts/edit" %>
@@ -11,7 +13,6 @@
   <% end %>
   </div>
 
-  <%= render :partial => 'shared/mailing_list', :locals => { :text => "Stay updated: ", :klass => "header", :button_text=>"Go" } %>
 
   <div class="social">
     <%= link_to image_tag( "social/facebook.png", :class => "social_image" ),   "https://www.facebook.com/pages/80000-Hours/196210360460710" %>
