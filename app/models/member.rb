@@ -1,5 +1,7 @@
 class Member < ActiveRecord::Base
-  attr_accessible :background, :career_plans, :location, :user, :confirmed, :avatar
+  attr_accessible :background, :career_plans, :location, :user,
+                  :confirmed, :avatar, :inspiration, :interesting_fact,
+                  :location, :organisation_role
 
   validates_presence_of :career_plans
 
