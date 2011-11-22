@@ -7,7 +7,7 @@
   <% blog_post = YAML.load_file(path+item) %>
 
   <% if blog_post["post"] %>
-  <div class="box blog-entry">
+  <div id="<%= blog_post["title"].downcase.downcase.sub(/^\s+|\s+$/,'').gsub(/\s+/,'-') %>" class="box blog-entry">
     <h1><%= blog_post["title"] %></h1>
     <h2><%= blog_post["date"] %></h2>
     <%= raw(BlueCloth.new(blog_post["body"]).to_html) %>
