@@ -33,6 +33,19 @@ ActiveAdmin::Dashboards.build do
   #   section "Recent Posts", :priority => 10
   #   section "Recent User", :priority => 1
   #
-  # Will render the "Recent Users" then the "Recent Posts" sections on the dashboard.
+  section "Unconfirmed Members" do
+    ul do
+      Member.unconfirmed.map do |member|
+        li link_to(member.id, admin_member_path(member))
+      end
+    end
+  end
 
+  section "Members Without a User (dodgy)" do
+    ul do
+      Member.where(:user_id => nil).map do |member|
+        li link_to(member.name, edit_admin_member_path(member))
+      end
+    end
+  end
 end
