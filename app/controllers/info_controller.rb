@@ -118,6 +118,8 @@ class InfoController < ApplicationController
   
   def meet_the_team
     @title = "Meet the team"
+    ids = [13,24,26,27,29,46,47,49,51]
+    @team = Member.find( ids ).shuffle
   end
 
   def banker_vs_aid_worker

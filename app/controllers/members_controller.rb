@@ -1,6 +1,6 @@
 class MembersController < ApplicationController
   def index
-    @members = Member.confirmed
+    @members = Member.confirmed.shuffle
   end
 
   def show
