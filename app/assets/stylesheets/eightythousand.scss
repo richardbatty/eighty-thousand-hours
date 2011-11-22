@@ -315,7 +315,7 @@ header {
     text-align: left;
     font-weight: bold;
     margin-right: 20px;
-    margin-top: 20px;
+    margin-top: 10px;
     color: #fff;
   }
   .call-to-action {
@@ -1073,7 +1073,7 @@ strong {
   margin: 0;
   padding: 0;
   background: $nav_bar_color;
-  text-align: center;
+  text-align: left;
   @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
 
   /*float: right;*/
@@ -1083,6 +1083,7 @@ strong {
 	padding: 0px 0px 0;
   margin: 10px auto;
   margin-top: 20px;
+  margin-bottom: 20px;
 	line-height: 100%;
   padding-left: 40px;
 }
