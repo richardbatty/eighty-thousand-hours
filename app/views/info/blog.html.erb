@@ -1,3 +1,16 @@
+<div id="sidenav" class="box" style="
+    float: right;
+    left: 350px;
+    width: 250px;
+">
+  <ul>
+    <li><%= link_to 'William Crouch of 80,000 Hours featured on the Today Programme with Ian Hislop', '/blog#william-crouch-of-80,000-hours-featured-on-the-today-programme-with-ian-hislop' %></li>
+    <li><%= link_to 'The Best Causes', '/blog#the-best-causes' %></li>
+    <li><%= link_to 'Estimation is the best we have', '/blog#estimation-is-the-best-we-have' %></li>
+    <li><%= link_to 'Our Worst Subjects', '/blog#our-worst-subjects' %></li>
+    <li><%= link_to 'Welcome to the Blog...', '/blog#welcome-to-the-blog...' %></li>
+  </ul>
+</div>
 <% path = "#{Rails.root}/app/views/info/blog/" %>
 <%# Dir.foreach(path).reverse_each do |item| %>
 <% sorted = Dir.foreach(path).sort_by {|string| string.downcase.scan(/([a-z]+|\d+)/).flatten.collect {|s| s.match(/\d/) ? s.to_i : s } } %>
@@ -7,7 +20,7 @@
   <% blog_post = YAML.load_file(path+item) %>
 
   <% if blog_post["post"] %>
-  <div id="<%= blog_post["title"].downcase.downcase.sub(/^\s+|\s+$/,'').gsub(/\s+/,'-') %>" class="box blog-entry">
+  <div id="<%= blog_post["title"].downcase.sub(/^\s+|\s+$/,'').gsub(/\s+/,'-') %>" class="box blog-entry">
     <h1><%= blog_post["title"] %></h1>
     <h2><%= blog_post["date"] %></h2>
     <%= raw(BlueCloth.new(blog_post["body"]).to_html) %>
