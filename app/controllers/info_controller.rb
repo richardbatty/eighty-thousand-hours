@@ -3,7 +3,13 @@ class InfoController < ApplicationController
     @title = "Home"
 
     # for profile photos on front page
-    @members = Member.get_random( 6 )
+    #@members = Member.get_random( 6 )
+
+    begin
+      @members = Member.find( [28,27,26,24,38,43] )
+    rescue
+      @members = Member.get_random( 6 )
+    end
   end
 
   def what_you_can_do
