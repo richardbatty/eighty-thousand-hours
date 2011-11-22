@@ -1,7 +1,7 @@
 class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, :use => :slugged
-
+  
   # dependent means member gets destroyed when user is destroyed
   has_one :member, :dependent => :destroy
   accepts_nested_attributes_for :member
@@ -17,4 +17,9 @@ class User < ActiveRecord::Base
   validates_confirmation_of :password
 
   has_and_belongs_to_many :roles
+  
+  def has_role?(symbol)
+    roles.map {|r| r.name.downcase.to_sym }
+         .include? symbol.downcase.to_sym
+  end
 end
