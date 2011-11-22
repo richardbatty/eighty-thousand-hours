@@ -38,7 +38,9 @@ class Member < ActiveRecord::Base
   end
 
   def self.get_random( num )
-    limit(num)
+    all( :include => :user,
+         :conditions => "confirmed IS true",
+         :limit => num)
   end
 end
 
