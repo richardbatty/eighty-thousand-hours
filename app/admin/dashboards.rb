@@ -34,9 +34,12 @@ ActiveAdmin::Dashboards.build do
   #   section "Recent User", :priority => 1
   #
   section "Unconfirmed Members" do
-    ul do
+    table do
       Member.unconfirmed.map do |member|
-        li link_to(member.id, admin_member_path(member))
+        tr do
+          td link_to("#{member.id}: #{member.name}", admin_member_path(member))
+          td button_to("Confirm", confirm_admin_member_path(member), :method => :put)
+        end
       end
     end
   end
