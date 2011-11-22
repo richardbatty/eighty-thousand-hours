@@ -66,13 +66,14 @@ header {
     padding-top: $dim_page_padding_top;
     padding-bottom: 20px;
 
-    #header-logo-and-nav {
+    #header-logo-and-login {
       #header-logo { float:left; clear: none; }
       #interaction{ float:right;}
       float:left;
       clear: none;
       width: $dim_page_width;
-      padding-bottom: 20px;
+      padding-top: 20px;
+      padding-bottom: 30px;
 
       img#header-text {
         float: left;
@@ -581,20 +582,24 @@ header {
 
 /* ------------- nav --------------- */
 nav {
-  font-size: 1.5em;
+  font-size: 1.4em;
   margin: 0;
   padding: 0;
   background: $nav_bar_color;
   text-align: center;
-  float: left;
-  padding: 10px;
+  /*float: center;*/
+  /*padding: 15px;*/
   @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
+  margin-left: auto;
+  margin-right: auto;
+  width: 100%;
 }
 
 nav ul {
   text-align: left;
   margin: 0;
   padding: 0;
+  padding: 15px;
 }
 
 nav ul li {
@@ -603,7 +608,8 @@ nav ul li {
   padding: 0;
   margin: 0;
   height: 2em;
-  padding-left: 10px;
+  padding-left: 12px;
+  padding-right: 12px;
 }
 
 nav li ul {
