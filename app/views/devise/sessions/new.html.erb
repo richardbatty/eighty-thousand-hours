@@ -1,7 +1,8 @@
 <div class="box">
-<h2>Login</h2>
 
+<div class="profile-form">
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <h2>Login</h2>
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
@@ -12,8 +13,9 @@
     <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
   <% end -%>
 
-  <div><%= f.submit "Sign in" %></div>
+  <div><%= f.submit "Sign in", :class=>"button" %></div>
 <% end %>
 
 <%# render :partial => "devise/shared/links" %>
+</div>
 </div>

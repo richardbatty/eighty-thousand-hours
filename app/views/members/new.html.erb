@@ -1,7 +1,8 @@
 <div class="box">
-<h1>Apply for membership</h1>
  
+<div class="profile-form">
 <%= form_for @member do |f| %>
+  <h1>Apply for membership</h1>
   <% if @user.errors.any? %>
   <div id="errorExplanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this application from being accepted:</h2>
@@ -31,9 +32,9 @@
 
   <%= fields_for @user do |u| %>
     <p><%= u.label :password %></p>
-    <p><%= u.text_field :password %></p>
+    <p><%= u.password_field :password %></p>
     <p><%= u.label :password_confirmation %></p>
-    <p><%= u.text_field :password_confirmation %></p>
+    <p><%= u.password_field :password_confirmation %></p>
   <% end %>
 
   <div class="inner-box">
@@ -43,6 +44,9 @@
     </p>
   </div>
 
-  <p><%= f.submit "Take the pledge and apply for membership" %></p>
+  <div class="center">
+    <%= f.submit "Take the pledge and apply for membership", :class=>"button" %>
+  </div>
 <% end %>
+</div>
 </div>
