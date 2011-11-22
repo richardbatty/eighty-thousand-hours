@@ -11,7 +11,7 @@
   </div>
   <% end %>
 
-  <% if member.name? %>
+  <% if member.name %>
   <div class="name">
     <% if link_name %>
        <%= link_to member.name, "/members/#{member.slug}" %>
