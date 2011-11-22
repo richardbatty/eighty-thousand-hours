@@ -45,21 +45,12 @@ community, so if you are interested or have any questions, <%= link_to "contact 
     <p><%= u.text_field :name %></p>
     <p><%= u.label :email %></p>
     <p><%= u.text_field :email %></p>
+    <p><%= f.label :location %></p>
+    <p><%= f.text_field :location %></p>
     <p><%= u.label :password %></p>
     <p><%= u.password_field :password %></p>
     <p><%= u.label :password_confirmation %></p>
     <p><%= u.password_field :password_confirmation %></p>
-  <% end %>
-
-  <% if false %>
-  <p><%= f.label :background %></p>
-  <p><%= f.text_area :background %></p>
-  <% end %>
-
- 
-  <% if false %>
-  <p><%= f.label :avatar %></p>
-  <p><%= f.file_field :avatar %></p>
   <% end %>
 
   <div class="inner-box">
@@ -69,7 +60,7 @@ community, so if you are interested or have any questions, <%= link_to "contact 
     </p>
   </div>
 
-  <p><%= f.label :career_plans  %></p>
+  <p>How do you intend to fulfil the pledge?</p>
   <p><%= f.text_area :career_plans %></p>
 
   <div class="center">
