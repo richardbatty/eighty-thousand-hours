@@ -15,14 +15,23 @@
   </div>
   <% end %>
 
+  <% if member.background %>
+  <div class="background">
+    <h2>Background</h2>
+    <%= member.background %>
+  </div>
+  <% end %>
+
   <% if member.career_plans %>
   <div class="career-plans">
+    <h2>Career plans</h2>
     <%= member.career_plans %>
   </div>
   <% end %>
 
   <% if member.interesting_fact %>
   <div class="interesting-fact">
+    <h2>Interesting fact</h2>
     <%= member.interesting_fact %>
   </div>
   <% end %>
