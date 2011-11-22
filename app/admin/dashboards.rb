@@ -36,7 +36,7 @@ ActiveAdmin::Dashboards.build do
   section "Unconfirmed Members" do
     ul do
       Member.unconfirmed.map do |member|
-        li link_to(member.name, admin_member_path(member))
+        li link_to(member.id, admin_member_path(member))
       end
     end
   end
