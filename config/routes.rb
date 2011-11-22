@@ -7,7 +7,6 @@ EightyThousandHours::Application.routes.draw do
 
   # for the rest of the profile routes
   match 'join'          => 'users#new', :as => :join
-  match 'members/:name' => 'members#show'
   resources :users, :path => "members"
   
   root  :to                             => 'info#index'
