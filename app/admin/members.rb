@@ -1,4 +1,5 @@
 ActiveAdmin.register Member do
+  scope :confirmed
   # show do
   #   attributes_table do
   #     tbody do
