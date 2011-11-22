@@ -113,9 +113,9 @@ header {
   color: $text_color;
   font: $palatino;
 
-  &.front-page {
+  &.standard {
     .email {
-      width: 220px;
+      width: 320px;
       padding: 7px;
       margin: 0px;
       color: $grey_2;

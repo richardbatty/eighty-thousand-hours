@@ -33,4 +33,5 @@ EightyThousandHours::Application.routes.draw do
   match 'press'                         => 'info#press'
   match 'join'                          => 'info#join'
   match 'application-faq'               => 'info#application_faq'
+  match 'coming-soon'                   => 'info#coming_soon'
 end

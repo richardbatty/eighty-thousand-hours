@@ -106,4 +106,8 @@ class InfoController < ApplicationController
   def application_faq
     @title = "Application FAQ"
   end
+
+  def coming_soon
+    @title = "Coming soon!"
+  end
 end
