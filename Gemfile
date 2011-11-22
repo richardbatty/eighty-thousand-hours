@@ -37,6 +37,8 @@ gem 'rails-i18n'
 
 gem 'activeadmin'
 
+gem 'exception_notification'
+
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   # gem 'growl_notify'

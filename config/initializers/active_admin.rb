@@ -67,8 +67,7 @@ ActiveAdmin.setup do |config|
   #
   # Default:
   config.logout_link_method = :delete
-
-
+  
   # == Admin Comments
   #
   # Admin comments allow you to add comments to any model for admin use

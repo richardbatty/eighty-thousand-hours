@@ -75,4 +75,9 @@ EightyThousandHours::Application.configure do
     :password             => ENV['SMTP_PASSWORD'],
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
+    
+    config.middleware.use ExceptionNotifier,
+      :email_prefix => "[Error at eightythousand.org] ",
+      :sender_address => %{"noreply80000" <eighty.thousand@gmail.com>},
+      :exception_recipients => %w{powermoveguru@gmail.com}
 end

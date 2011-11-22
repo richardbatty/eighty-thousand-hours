@@ -30,4 +30,3 @@ EightyThousandHours::Application.routes.draw do
   match 'blog'                          => 'info#blog'
   match 'press'                         => 'info#press'
 end
-
