@@ -1014,6 +1014,7 @@ strong {
     @include box_shadow(#ccc, 0px, 0px, 5px);
     height: 96px;
     width: 96px;
+    margin: 10px;
   }
 
   .name {
