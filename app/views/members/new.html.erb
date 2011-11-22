@@ -1,3 +1,18 @@
+  <div class="alert">
+<% if @user.errors.any? %>
+  <div id="errorExplanation">
+    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this application from being accepted:</h2>
+    <ul>
+    <% @user.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+  <% end %>
+</div>
+
+
+
 <div class="box">
 <h2>Join our community</h2>
 <p>
@@ -22,23 +37,21 @@ We like to talk to people who are interested in joining the <%= org_name %>
 community, so if you are interested or have any questions, <%= link_to "contact one of our members", "/contact-us" %>.
 </p>
 
-<div class="large_margin">
+<div class="center large_margin">
 <a class="button" href="/application-faq">Questions about the pledge?</a>
 </div>
 
-<h2>Apply for membership</h2>
+<div class="break"></div>
+
+<br/>
+<br/>
+<div class="center">
+<h1>Apply for membership</h1>
+</div>
+<br/>
+
 <div class="profile-form">
 <%= form_for @member do |f| %>
-  <% if @user.errors.any? %>
-  <div id="errorExplanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this application from being accepted:</h2>
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
-  </div>
-  <% end %>
 
   <%= fields_for @user do |u| %>
     <p><%= u.label :name %></p>
@@ -53,15 +66,17 @@ community, so if you are interested or have any questions, <%= link_to "contact 
     <p><%= u.password_field :password_confirmation %></p>
   <% end %>
 
-  <div class="inner-box">
-    <h1>The Pledge</h1>
-    <p>
-    <%= render :partial => 'shared/pledge' %>
-    </p>
-  </div>
-
-  <p>How do you intend to fulfil the pledge?</p>
+  <p>How do you intend to fulfil the pledge? What are your career plans?</p>
   <p><%= f.text_area :career_plans %></p>
+
+  
+<div class="inner-box">
+  <h1>The Pledge</h1>
+  <p>
+  <%= render :partial => 'shared/pledge' %>
+  </p>
+</div>
+
 
   <div class="center">
     <%= f.submit "Take the pledge and apply for membership", :class=>"button" %>
