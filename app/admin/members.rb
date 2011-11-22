@@ -21,13 +21,29 @@ ActiveAdmin.register Member do
   #   member.user.nil? ? "NO USER" : member.name
   # end
   
+  index do
+    column :id
+    column :avatar do |member|
+      image_tag member.avatar.url(:thumb)
+    end
+    column :name do |member|
+      member.user ? member.name : "NO USER"
+    end
+    column :location
+    column :organisation_role
+    column "Show Name?", :show_name
+    column "Show Info?", :show_info
+    column "Confirmed?", :confirmed
+    column :created_at
+    default_actions
+  end
+  
   member_action :confirm, :method => :put do
     member = Member.find(params[:id])
     member.confirmed = true
     member.save
     redirect_to admin_member_path(member), :notice => "Member confirmed!"
   end
-  
   
   form do |f|
     f.inputs "Details" do
