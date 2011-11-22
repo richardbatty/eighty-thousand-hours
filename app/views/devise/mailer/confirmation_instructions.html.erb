@@ -2,9 +2,10 @@
 
 <p>We'll be in touch shortly, but in the meantime you should confirm your account by clicking the following link:</p>
 
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %></p>
+<% conf_url = confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
+<p><%= link_to 'Confirm my account', conf_url %></p>
 
 <p>If that didn't work, try copying and pasting the following into your browser:</p>
 <p>
-<%= link_to confirmation_url(@resource, :confirmation_token => @resource.confirmation_token) %>
+<%= conf_url %>
 </p>
