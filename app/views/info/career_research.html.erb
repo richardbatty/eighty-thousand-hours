@@ -1,11 +1,20 @@
 <div class="box">
+  <p>
+  We'll have lots of content going up over the next few days. Leave your email address to be notified of updates.
+  </p>
+  <p>
+  <%= render :partial => 'shared/mailing_list', :locals => { :text => "Stay updated: ", :klass => "standard" } %>
+  </p>
+</div>
+
+<div class="box">
 There are lots of different ways to have a high-impact ethical career. Some focus on giving. Others make a big difference because of the work they do.
 </div>
 
 <div class="box">
 <h2>Research</h2>
 <ul>
-<li><%= link_to "Articles", "/coming-soon" %></li>
+<li><%= link_to "Articles", "/blog#high-impact-science" %></li>
 <li>Example Careers</li>
   <ul>
     <li><%= link_to "Scientist", "/career-profiles#Scientist" %></li>

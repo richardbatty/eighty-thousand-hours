@@ -1,7 +1,7 @@
 <div class="box">
   <% @members.each do |member| %>
     <div class="inner-box">
-      <%= render :partial => '/shared/member', :locals => { :member => member } %>
+      <%= render :partial => '/shared/member', :locals => { :member => member, :show_avatar => true, :avatar_size => :thumb, :link_name => true, :condensed => true  } %>
     </div>
   <% end %>
 

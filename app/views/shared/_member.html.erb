@@ -1,13 +1,24 @@
+<%# Input locals:   
+        :member instance of Member model
+        :link_name (bool) specifies whether we want linked name
+        :show_avatar (bool) specifies whether we want to display avatar
+        :condensed (bool) specifies whether we want just name, location, optional image, or full profile
+%>
 <div class="member-profile">
-  <% if member.avatar %>
+  <% if member.avatar && show_avatar %>
   <div class="avatar">
-    <%= link_to image_tag(member.avatar.url(:small)), member.avatar.url %>
+    <%= link_to image_tag(member.avatar.url(avatar_size)), member.avatar.url %>
   </div>
   <% end %>
 
   <% if member.name %>
   <div class="name">
-     <%= link_to member.name, "/members/#{member.slug}" %>    <% if member.location %>
+    <% if link_name %>
+       <%= link_to member.name, "/members/#{member.slug}" %>
+    <% else %>
+       <%= member.name %>
+    <% end %>
+    <% if member.location %>
       <span class="location">
        &nbsp;  <%= member.location %>
       </span>
@@ -15,24 +26,26 @@
   </div>
   <% end %>
 
-  <% if member.background %>
-  <div class="background">
-    <h2>Background</h2>
-    <%= member.background %>
-  </div>
-  <% end %>
+  <% if !condensed %>
+    <% if member.background %>
+    <div class="background">
+      <h2>Background</h2>
+      <%= member.background %>
+    </div>
+    <% end %>
 
-  <% if member.career_plans %>
-  <div class="career-plans">
-    <h2>Career plans</h2>
-    <%= member.career_plans %>
-  </div>
-  <% end %>
+    <% if member.career_plans %>
+    <div class="career-plans">
+      <h2>Career plans</h2>
+      <%= member.career_plans %>
+    </div>
+    <% end %>
 
-  <% if member.interesting_fact %>
-  <div class="interesting-fact">
-    <h2>Interesting fact</h2>
-    <%= member.interesting_fact %>
-  </div>
+    <% if member.interesting_fact %>
+    <div class="interesting-fact">
+      <h2>Interesting fact</h2>
+      <%= member.interesting_fact %>
+    </div>
+    <% end %>
   <% end %>
 </div>
