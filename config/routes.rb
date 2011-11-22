@@ -32,4 +32,5 @@ EightyThousandHours::Application.routes.draw do
   match 'blog'                          => 'info#blog'
   match 'press'                         => 'info#press'
   match 'join'                          => 'info#join'
+  match 'application-faq'               => 'info#application_faq'
 end

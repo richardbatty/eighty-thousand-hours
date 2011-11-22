@@ -102,4 +102,8 @@ class InfoController < ApplicationController
   def join
     @title = "Join"
   end
+
+  def application_faq
+    @title = "Application FAQ"
+  end
 end
