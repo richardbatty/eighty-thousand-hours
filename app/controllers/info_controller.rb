@@ -4,7 +4,8 @@ class InfoController < ApplicationController
 
     # for profile photos on front page
     begin
-      @members = Member.find( [28,27,26,24,38,43] ).shuffle
+      ids = [28,27,26,24,38,43,44,45,14,25]
+      @members = Member.find( (ids.shuffle)[0..5] ).shuffle
     rescue
       @members = Member.get_random( 6 )
     end
