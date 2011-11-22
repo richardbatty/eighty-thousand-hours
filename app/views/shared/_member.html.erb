@@ -5,7 +5,7 @@
         :condensed (bool) specifies whether we want just name, location, optional image, or full profile
 %>
 <div class="member-profile">
-  <% if member.avatar && show_avatar %>
+  <% if member.avatar? && show_avatar && !condensed %>
   <div class="avatar">
     <%= link_to image_tag(member.avatar.url(avatar_size)), member.avatar.url %>
   </div>

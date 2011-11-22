@@ -1006,7 +1006,7 @@ strong {
 
 
 .member-profile {
-  min-height: 110px;
+  /*min-height: 110px;*/
   .avatar {
     float: right;
     @include box_shadow(#ccc, 0px, 0px, 5px);

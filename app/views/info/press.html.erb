@@ -1,4 +1,4 @@
-<div class="box">
+<div class="box-half left-box">
   <h1>Media Room</h1>
   <h2>'High Impact Ethical Careers'</h2>
   <p><%= org_name %> is an organisation which supports and guides people who are pursuing careers which will allow them to do the most good in the world.
@@ -13,20 +13,47 @@
   <h2>Contact Us</h2>
     <div class="leftcolumn vcard inner-box press-contact">
       <span class="fn"><strong>Tom Rowlands</strong></span><br />
-      <span class="role green"><em>Press Contact</em></span><br />
+      <span class="role green"><em>Prss contact</em></span><br />
       <span class="tel">+44 1865 589 180</span><br />
       <a class="email" href="mailto:press@eightythousand.org">press@eightythousand.org</a><br />
-      <span class="street-address">Oxford Uehiro Centre for Practical Ethics<br />
-      Suite 8, Littlegate House<br />
-      St Ebbes Street<br />
-      Oxford<br />
-      OX1 1PT</span>
+      <span class="street-address">oxford uehiro centre for practical ethics<br />
+      suite 8, littlegate house<br />
+      st ebbes street<br />
+      oxford<br />
+      ox1 1pt</span>
     </div>
   </section>
-  <p>
-    Whether you have a question about <%= org_name %>, or you'd like more
-    information about our community, then we'd love to hear from you.  Email us
-    at <a href="mailto:info@eightythousand.org">info@eightythousand.org</a>.
-    <%= button_link 'Download Our Press Release', '/pdf/Press%20Release.pdf' %>
-  </p>
+<div class="break"></div>
+<h1>Possible media angles</h1>
+<ul>
+<li>Banker vs. Doctor</li>
+</ul>
+</div>
+
+
+<div class="box-half right-box">
+<h1>Press coverage</h1>
+We’ve been featured on Radio 4’s Today programme, and on BBC Online.
+<ul>
+  <li>BBC news story: <a href="http://www.bbc.co.uk/news/education-15820786">"Banking 'can be an ethical career choice'"</a></li>
+  <li>BBC Radio 4: <a href="http://www.bbc.co.uk/iplayer/b006qj9z/console">Today programme with Ian Hislop (around 2:45:00 onwards)</a></li>
+</ul>
+
+<div class="center">
+<a href="http://www.bbc.co.uk/iplayer/b006qj9z/console">
+<%= image_tag "/assets/blog/todayprog.png", :class=>"shadow" %>
+</a>
+</div>
+
+
+<div class="break"></div>
+<h1>Download our press release</h1>
+<%= button_link 'Press release', '/pdf/press%20release.pdf' %>
+
+<div class="break"></div>
+<h1>Download our logos</h1>
+<%= link_to image_tag( "/assets/press/eighty_thousand_hours_logo_bw.png", :class=>"shadow"), "/assets/press/eighty_thousand_hours_logo_bw.png"  %>
+<%= link_to image_tag( "/assets/press/eighty_thousand_hours_logo_color.png", :class=>"shadow"), "/assets/press/eighty_thousand_hours_logo_color.png"  %>
+
+
 </div>
