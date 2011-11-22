@@ -12,8 +12,13 @@
   with your opinion to <a href="mailto:questions@eightythousand.org">questions@eightythousand.org</a>.
   </p>
   <%= button_link 'Questions?', '/faq' %>
-</div>
 
+  <div class="break"></div>
+
+  <h2>What’s new?</h2>
+  <%= org_name %> featured on Radio 4's Today Programme.
+  <br/><a href="/blog">Check out our blog post!</a>
+</div>
 
 <div class="box-half right-box">
   <div class="fp-text">
@@ -34,8 +39,10 @@
     Explore our site for exciting new ideas on ethical career choices and join our growing community of people who make a real difference.
     </p>
   </div>
+
   <div class="break"></div>
-    <h2>Meet our members!</h2>
+
+  <h2>Meet our members!</h2>
   <div class="center">
     <% @members.each do |m| %>
       <% if m.avatar && m.user %>
