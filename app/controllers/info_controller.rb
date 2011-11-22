@@ -110,4 +110,8 @@ class InfoController < ApplicationController
   def career_profiles
     @title = "Career profiles"
   end
+  
+  def meet_the_team
+    @title = "Meet the team"
+  end
 end
