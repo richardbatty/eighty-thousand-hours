@@ -1,8 +1,30 @@
 <div class="box">
- 
+<h2>Join our community</h2>
+<p>
+People in the <%= org_name %> community have a variety of career ambitions, such as:
+</p>
+<ul>
+  <li>Donating money through professional philanthropy</li>
+  <li>Conducting ground-breaking research</li>
+  <li>Inspiring others to do good</li>
+</ul>
+
+<p>
+They have all promised to use at least 10%
+of their time or money to support the most effective causes.  They also aim to
+pursue a career that increases the amount of good that they can do with the
+time or money that they give. If you'd like to join us and help others with
+your career, then <%= link_to "chat to us", "/contact-us" %> or fill in the form below.
+</p>
+
+<p>
+We like to talk to people who are interested in joining the <%= org_name %> 
+community, so if you are interested or have any questions, <%= link_to "contact one of our members", "/contact-us" %>.
+</p>
+
+<h2>Apply for membership</h2>
 <div class="profile-form">
 <%= form_for @member do |f| %>
-  <h1>Apply for membership</h1>
   <% if @user.errors.any? %>
   <div id="errorExplanation">
     <h2><%= pluralize(@user.errors.count, "error") %> prohibited this application from being accepted:</h2>
@@ -19,26 +41,21 @@
     <p><%= u.text_field :name %></p>
     <p><%= u.label :email %></p>
     <p><%= u.text_field :email %></p>
-  <% end %>
-
-  <% if true %>
-  <p><%= f.label :background %></p>
-  <p><%= f.text_area :background %></p>
-  <% end %>
-
-  <p><%= f.label :career_plans %></p>
-  <p><%= f.text_area :career_plans %></p>
- 
-  <% if false %>
-  <p><%= f.label :avatar %></p>
-  <p><%= f.file_field :avatar %></p>
-  <% end %>
-
-  <%= fields_for @user do |u| %>
     <p><%= u.label :password %></p>
     <p><%= u.password_field :password %></p>
     <p><%= u.label :password_confirmation %></p>
     <p><%= u.password_field :password_confirmation %></p>
+  <% end %>
+
+  <% if false %>
+  <p><%= f.label :background %></p>
+  <p><%= f.text_area :background %></p>
+  <% end %>
+
+ 
+  <% if false %>
+  <p><%= f.label :avatar %></p>
+  <p><%= f.file_field :avatar %></p>
   <% end %>
 
   <div class="inner-box">
@@ -47,6 +64,9 @@
     <%= render :partial => 'shared/pledge' %>
     </p>
   </div>
+
+  <p><%= f.label :career_plans  %></p>
+  <p><%= f.text_area :career_plans %></p>
 
   <div class="center">
     <%= f.submit "Take the pledge and apply for membership", :class=>"button" %>

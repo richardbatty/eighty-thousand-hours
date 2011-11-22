@@ -1,7 +1,7 @@
 class Member < ActiveRecord::Base
   attr_accessible :background, :career_plans, :location, :user, :confirmed, :avatar
 
-  validates_presence_of :background, :career_plans
+  validates_presence_of :career_plans
 
   # paperclip avatars on S3
   has_attached_file :avatar, 

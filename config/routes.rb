@@ -6,7 +6,7 @@ EightyThousandHours::Application.routes.draw do
   resources :posts
 
   # for the rest of the profile routes
-  match 'members/new'   => 'members#new'
+  match 'join'          => 'members#new'
   match 'members/:name' => 'members#show'
   resources :members
 
@@ -30,7 +30,6 @@ EightyThousandHours::Application.routes.draw do
   match 'show-your-support'             => 'info#show_your_support'
   match 'blog'                          => 'info#blog'
   match 'press'                         => 'info#press'
-  match 'join'                          => 'info#join'
   match 'application-faq'               => 'info#application_faq'
   match 'coming-soon'                   => 'info#coming_soon'
   match 'career-profiles'               => 'info#career_profiles'
