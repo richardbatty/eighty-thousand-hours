@@ -6,7 +6,7 @@ EightyThousandHours::Application.routes.draw do
   resources :posts
 
   # for the rest of the profile routes
-  match 'join'          => 'members#new'
+  match 'join'          => 'users#new', :as => :join
   match 'members/:name' => 'members#show'
   resources :users, :path => "members"
   

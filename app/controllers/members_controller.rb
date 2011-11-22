@@ -16,7 +16,7 @@ class MembersController < ApplicationController
   def create
     @user =    User.new(params[:user])
     @member = @user.build_member(params[:member])
-
+    puts "This method is being called!"
     # eager evaluation so both @user.errors and @member.errors
     # get filled if don't pass validations
     if @user.valid? & @member.valid?
