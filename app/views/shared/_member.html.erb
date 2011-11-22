@@ -1,7 +1,30 @@
-Name: <%= member.name %>
-<br/>
-Background: <%= member.background %>
-<br/>
-Career plan: <%= member.career_plans %>
-<br/>
-<%= link_to image_tag(member.avatar.url(:small)), member.avatar.url %>
+<div class="member-profile">
+  <% if member.avatar %>
+  <div class="avatar">
+    <%= link_to image_tag(member.avatar.url(:small)), member.avatar.url %>
+  </div>
+  <% end %>
+
+  <% if member.name %>
+  <div class="name">
+    <%= member.name %>
+    <% if member.location %>
+      <span class="location">
+       &nbsp;  <%= member.location %>
+      </span>
+    <% end %>
+  </div>
+  <% end %>
+
+  <% if member.career_plans %>
+  <div class="career-plans">
+    <%= member.career_plans %>
+  </div>
+  <% end %>
+
+  <% if member.interesting_fact %>
+  <div class="interesting-fact">
+    <%= member.interesting_fact %>
+  </div>
+  <% end %>
+</div>
