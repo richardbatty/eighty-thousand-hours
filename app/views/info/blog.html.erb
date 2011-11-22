@@ -1,5 +1,7 @@
 <% path = "#{Rails.root}/app/views/info/blog/" %>
-<% Dir.foreach(path).reverse_each do |item| %>
+<%# Dir.foreach(path).reverse_each do |item| %>
+<% sorted = Dir.foreach(path).sort_by {|string| string.downcase.scan(/([a-z]+|\d+)/).flatten.collect {|s| s.match(/\d/) ? s.to_i : s } } %>
+<% sorted.reverse_each do |item| %>
   <% next if item == '.' or item == '..' %>
   <% # do work on real items %>
   <% blog_post = YAML.load_file(path+item) %>
