@@ -304,7 +304,7 @@ header {
   float: left;
   color: #efefef;
 
-  width: 60%;
+  width: 50%;
   .slogan {
     font-size: 28px;
     text-align: left;
@@ -339,8 +339,8 @@ header {
   padding-right: 20px;
   text-align: center;
   font-weight: bold;
-  margin-top: 60px;
-  margin-right: 80px;
+  margin-top: 50px;
+  margin-right: 180px;
   margin-bottom: 30px;
   color: #ffffff;
   background: $magenta_2;
@@ -486,7 +486,7 @@ header {
 
   // for rows of divs like on the front page
   .box-third {
-    width: 195px !important;
+    width: 250px !important;
     /*display: inline-block;*/
     float: left;
     vertical-align: text-top;
@@ -537,7 +537,7 @@ header {
       text-align: left;
     }
 
-    padding: 15px;
+    padding: 20px;
     margin-top: 20px;
     margin-bottom: 20px;
 
@@ -879,10 +879,10 @@ strong {
 
 .video_iframe {
   @include box_style;
-  padding: 0px;
-  margin: 0px;
-  /*width: 380px;*/
-  /*height: 213px;*/
+  padding: 0px !important;
+  margin: 0px !important;
+  width: 415px;
+  height: 233px;
 }
 
 
