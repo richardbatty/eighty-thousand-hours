@@ -19,6 +19,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   
   scope :with_member, joins(:member).includes(:member)
+  scope :confirmed,   with_member.where(:members => {:confirmed => true})
   
   def has_role?(symbol)
     roles.map {|r| r.name.downcase.to_sym }
