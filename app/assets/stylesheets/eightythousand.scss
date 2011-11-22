@@ -172,16 +172,16 @@ header {
     padding-bottom: 10px;
     position: relative;
     float:left;
-    color: #ccc;
+    color: #efefef;
     label {
-      font-size: 1.6em;
+      font-size: 1.4em;
     }
     .text {
       padding-right: 5px;
     }
     .email {
-      font-size: 1.2em;
-      /*padding: 2px;*/
+      width: 150px;
+      font-size: 1.0em;
       margin: 0px;
       color: $grey_2;
       display: inline-block;
@@ -190,10 +190,12 @@ header {
       /*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
       /*@include rounded_borders(#ccc, 1px, 6px);*/
       text-align: center;
-      height: 20px;
+      height: 15px;
+      @include rounded_borders(#ccc, 1px, 3px);
     }
     .submit-button {
-      font-size: 1.2em;
+      font-size: 1.0em;
+      height: 21px;
       @include rounded_borders(#ccc, 1px, 3px);
       @include box_shadow(#ccc, 0px, 0px, 5px);
       background-color: #fff;
