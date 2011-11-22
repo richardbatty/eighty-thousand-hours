@@ -27,7 +27,7 @@
   <div class="break"></div>
   <div class="center">
     <% @members.each do |m| %>
-      <% if m.avatar %>
+      <% if m.avatar && m.user %>
         <%= link_to image_tag(m.avatar.url(:small), :class=>"fp-profile-image"),
                     "/members/#{m.slug}"
         %>
