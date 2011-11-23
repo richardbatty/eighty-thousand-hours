@@ -1,9 +1,7 @@
 class Member < ActiveRecord::Base
   attr_accessible :background, :career_plans, :location,
                   :confirmed, :avatar, :inspiration, :interesting_fact,
-                  :location, :organisation_role
-
-  validates_presence_of :career_plans
+                  :location, :organisation_role, :pledge
 
   # paperclip avatars on S3
   has_attached_file :avatar, 
@@ -19,6 +17,8 @@ class Member < ActiveRecord::Base
                                     :unless => Proc.new {|m| m[:image].nil?}
   
   validates_presence_of :background, :career_plans
+  validates_acceptance_of :pledge
+
   # a Member is always tied to a User 
   belongs_to :user
 
