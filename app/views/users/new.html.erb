@@ -57,7 +57,7 @@ community, so if you are interested or have any questions, <%= link_to "contact 
   <% end %>
   
   <%= field_set_tag "Profile" do %>
-    <%= fields_for :member do |m| %>
+    <%= u.fields_for :member do |m| %>
       <p><%= m.label :inspiration %></p>
       <p><%= m.text_area :inspiration %></p>
       <p><%= m.label :background %></p>
