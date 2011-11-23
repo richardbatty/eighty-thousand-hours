@@ -2,10 +2,9 @@
 
 - @posts.each do |post|
   %div.box.blog-entry
-    %div{:id => "#{post.title}"}= post.title
-    %p= post.body
-    %h1= post.title
-    %h2= post.date
+    %div{:id => "#{post.title}"}
+      %h1= post.title
+    %h2= post.created_at.strftime("%B %d, %Y")
     #{markdown post.body}
     %div.attribution #{markdown post.author}
     = link_to '0 Comments', post_url(post, :anchor => "disqus_thread")
