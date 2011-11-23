@@ -24,7 +24,7 @@
     <h1><%= blog_post["title"] %></h1>
     <h2><%= blog_post["date"] %></h2>
     <%= raw(BlueCloth.new(blog_post["body"]).to_html) %>
-    <div class="attribution"><%= raw(blog_post["author"]) %></div>
+    <div class="attribution"><%= raw(BlueCloth.new(blog_post["author"]).to_html) %></div>
   </div>
   <% end %>
 <% end %>

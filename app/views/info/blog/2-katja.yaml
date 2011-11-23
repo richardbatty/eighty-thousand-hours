@@ -4,6 +4,12 @@ post: true
 title:
   Estimation is the best we have
 
+author: |
+  Katja Grace is a PhD candidate studying probability at Carnegie Mellon
+  University, and a former research fellow at the Singularity Institute for
+  Artificial Intelligence. 'Estimation' was originally published on her blog,
+  [Meteuphoric](http://meteuphoric.wordpress.com/).
+
 date: 9th November 2011
 
 body: |
@@ -58,8 +64,3 @@ body: |
   information from other sources, rather than disregarding quantitative
   assessments all together.
 
-author: >
-  Katja Grace is a PhD candidate studying probability at Carnegie Mellon
-  University, and a former research fellow at the Singularity Institute for
-  Artificial Intelligence. 'Estimation' was originally published on her blog,
-  <a href="http://meteuphoric.wordpress.com/">Meteuphoric</a>.
