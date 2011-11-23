@@ -137,4 +137,8 @@ class InfoController < ApplicationController
   def inspiring_others
     @title = "Inspiring others"
   end
+
+  def giving_more
+    @title = "Giving more"
+  end
 end
