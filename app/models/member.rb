@@ -17,7 +17,8 @@ class Member < ActiveRecord::Base
                             :unless => Proc.new {|m| m[:image].nil?}
   validates_attachment_content_type :avater, :content_type=>['image/jpeg', 'image/png', 'image/gif'],
                                     :unless => Proc.new {|m| m[:image].nil?}
-
+  
+  validates_presence_of :background, :career_plans
   # a Member is always tied to a User 
   belongs_to :user
 
