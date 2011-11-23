@@ -5,6 +5,9 @@ EightyThousandHours::Application.routes.draw do
   
   resources :posts
 
+  resources :supporters, :only => [:new, :create], :path => 'show-your-support'
+  match 'show-your-support' => 'supporters#new'
+
   # for the rest of the profile routes
   match 'join'          => 'users#new', :as => :join
   resources :users, :path => "members"
@@ -25,7 +28,7 @@ EightyThousandHours::Application.routes.draw do
   match 'contact-us'                    => 'info#contact_us'
   match 'the-pledge'                    => 'info#the_pledge'
   match 'find-out-more'                 => 'info#find_out_more'
-  match 'show-your-support'             => 'info#show_your_support'
+  #match 'show-your-support'             => 'info#show_your_support'
   match 'blog'                          => 'info#blog'
   match 'press'                         => 'info#press'
   match 'application-faq'               => 'info#application_faq'
