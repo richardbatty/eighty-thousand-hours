@@ -28,7 +28,6 @@ EightyThousandHours::Application.routes.draw do
   match 'contact-us'                    => 'info#contact_us'
   match 'the-pledge'                    => 'info#the_pledge'
   match 'find-out-more'                 => 'info#find_out_more'
-  #match 'show-your-support'             => 'info#show_your_support'
   match 'press'                         => 'info#press'
   match 'application-faq'               => 'info#application_faq'
   match 'coming-soon'                   => 'info#coming_soon'
