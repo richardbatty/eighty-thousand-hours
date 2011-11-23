@@ -86,6 +86,9 @@ community, so if you are interested or have any questions, <%= link_to "contact 
     <%= render :partial => 'shared/pledge' %>
     </p>
     <div class="center">
+      <%= u.fields_for :member do |m| %>
+        <p><%= m.check_box 'pledge' %> I hereby accept the pledge.</p>
+      <% end %>
     </div>
   </div>
   
