@@ -49,24 +49,36 @@ community, so if you are interested or have any questions, <%= link_to "contact 
 <br/>
 
 <div class="profile-form">
-<%= form_for @user.member, :url => users_path do |f| %>
-
-  <%= fields_for @user do |u| %>
+<%= form_for @user do |u| %>
+  <%= field_set_tag "Account" do %>
     <p><%= u.label :name %></p>
     <p><%= u.text_field :name %></p>
     <p><%= u.label :email %></p>
-    <p><%= u.text_field :email %></p>
-    <p><%= f.label :location %></p>
-    <p><%= f.text_field :location %></p>
+    <p><%= u.email_field :email %></p>
     <p><%= u.label :password %></p>
     <p><%= u.password_field :password %></p>
     <p><%= u.label :password_confirmation %></p>
     <p><%= u.password_field :password_confirmation %></p>
   <% end %>
-
+  
+  <%= field_set_tag "Profile" do %>
+    <%= fields_for :member do |m| %>
+      <p><%= m.label :inspiration %></p>
+      <p><%= m.text_area :inspiration %></p>
+      <p><%= m.label :background %></p>
+      <p><%= m.text_area :background %></p>
+      <p><%= m.label :career_plans %></p>
+      <p><%= m.text_area :career_plans %></p>
+      <p><%= m.label :interesting_fact %></p>
+      <p><%= m.text_area :interesting_fact %></p>
+      <p><%= m.label :location %></p>
+      <p><%= m.text_field :location %></p>
+      <p><%= m.label :avatar %></p>
+      <p><%= m.file_field :avatar %></p>
+    <% end %>
+  <% end %>
+  
   <p>How do you intend to fulfil the pledge? What are your career plans?</p>
-  <p><%= f.text_area :career_plans %></p>
-
   
   <div class="inner-box">
     <h1>The Pledge</h1>
@@ -76,9 +88,9 @@ community, so if you are interested or have any questions, <%= link_to "contact 
     <div class="center">
     </div>
   </div>
-
+  
   <div class="center">
-    <%= f.submit "Take the pledge and apply for membership", :class=>"button" %>
+    <%= u.submit "Take the pledge and apply for membership", :class=>"button" %>
   </div>
 <% end %>
 </div>
