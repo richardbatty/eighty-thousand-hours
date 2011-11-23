@@ -7,18 +7,7 @@
     %p= post.body
     = link_to '0 Comments', post_url(post, :anchor => "disqus_thread")
   
-  
-  = link_to 'Read', post #disqus_thread
-  - if can? :update, post
-    \|
-    = link_to 'Edit', edit_post_path(post)
-  - if can? :destroy, post
-    \|
-    = link_to 'Destroy', post, :confirm => 'Are you sure?', :method => :delete
-
 %br
 %br
-
-= link_to 'New Post', new_post_path
 
 %div= render :partial => "disqus_count"
