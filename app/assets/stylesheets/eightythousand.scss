@@ -1053,3 +1053,17 @@ html[xmlns] #nav {
 * html #nav {
 	height: 1%;
 }
+
+
+
+
+.faq {
+  .question {
+    h2 {
+      &:hover {
+        color: $magenta_2;
+      }
+    }
+  }
+}
+
