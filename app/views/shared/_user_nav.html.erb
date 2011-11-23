@@ -6,7 +6,7 @@
     <% if current_user.has_role? :admin %>
     | <%= link_to "Admin", admin_dashboard_path %>
     <% end %>
-    | <%= link_to "Help", "/support" %>
+    | <%= link_to "Help", "/contact-us" %>
   <% else %>
     <%= link_to "Login", new_user_session_path %>
     | <%= link_to "Contact Us", "/contact-us" %>
