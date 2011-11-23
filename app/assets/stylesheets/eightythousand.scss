@@ -104,6 +104,47 @@ header {
   text-align: center;
 }
 
+// Form styling
+form {
+  input, textarea {
+    background:#fff;
+    border:1px solid #dedede;
+    padding:10px;
+    /*margin-top:-3px;*/
+    font-size:0.9em;
+    color:#3a3a3a;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+  }
+  textarea {
+    height:213px;
+    width: 95%;;
+  }
+  input:focus, textarea:focus {
+    border:1px solid $magenta_2;
+  }
+
+  .button {
+    border: 1px solid lighten($magenta_2,10%) !important;
+    min-width: 200px;
+    @include box_shadow($magenta_2, 0px, 0px, 6px);
+
+    &:hover {
+      @include box_shadow($magenta_2, 0px, 0px, 1px);
+    }
+  }
+}
+
+.blog-entry {
+  .attribution {
+    margin-top: 10px;
+    border-top: 1px solid #ccc;
+    font-style: italic;
+  }
+}
+
+
 .mailing-list-form {
   color: $text_color;
   font: $palatino;
@@ -137,37 +178,6 @@ header {
     }
   }
 
-  &.get-involved {
-    padding-bottom: 20px;
-
-    label{ display:block; }
-    .email {
-      width: 280px;
-      padding: 10px;
-      margin: 0px;
-      color: $grey_2;
-      display: inline-block;
-      outline: none;
-      text-decoration: none;
-      text-shadow: 0 1px 1px rgba(0,0,0,.3);
-      @include rounded_borders(#ccc, 1px, 6px);
-      text-align: center;
-    }
-    .submit-button {
-      @include rounded_borders(#ccc, 1px, 6px);
-      @include box_shadow(#ccc, 0px, 0px, 5px);
-      background-color: #fff;
-      padding: 7px 20px;
-      margin: 5px;
-      text-align: center;
-
-      &:hover {
-        /*background: #efefef;*/
-        @include box_shadow(#ccc, 0px, 0px, 0px);
-        cursor: pointer;
-      }
-    }
-  }
   &.header {
     margin-top: 20px;
     padding-bottom: 10px;
@@ -196,13 +206,17 @@ header {
       @include rounded_borders(#ccc, 1px, 3px);
     }
     .submit-button {
-      font-size: 1.0em;
-      height: 21px;
+      font-size: 1.0em !important;
+      height: 21px !important;
       @include rounded_borders(#ccc, 1px, 3px);
       @include box_shadow(#ccc, 0px, 0px, 5px);
       background-color: #fff;
-      text-align: center;
+      text-align: center !important;
       color: $magenta_2;
+      padding: 3px !important;
+      padding-left: 4px !important;
+      padding-right: 4px !important;
+
       &:hover {
         /*background: #efefef;*/
         color: #555;
@@ -967,54 +981,6 @@ strong {
   @include box_shadow(#ccc, 0px, 0px, 5px);
 }
 
-
-.profile-form
-{
-  /*[> Centre the form within the page <]*/
-  form {
-
-    margin-left: 40px;
-    margin-right: 40px;
-  }
-  
-  /*[> Style the text boxes <]*/
-  input, textarea {
-      background:#fff;
-      border:1px solid #dedede;
-      padding:10px;
-      margin-top:3px;
-      font-size:0.9em;
-      color:#3a3a3a;
-      border-radius:5px;
-      -moz-border-radius:5px;
-      -webkit-border-radius:5px;
-  }
-  textarea {
-    height:213px;
-    width: 97%;;
-  }
-  input:focus, textarea:focus {
-      border:1px solid $magenta_2;
-  }
-
-  .button {
-    border: 1px solid lighten($magenta_2,10%) !important;
-    min-width: 200px;
-      @include box_shadow($magenta_2, 0px, 0px, 6px);
-
-    &:hover {
-      @include box_shadow($magenta_2, 0px, 0px, 1px);
-    }
-  }
-}
-
-.blog-entry {
-  .attribution {
-    margin-top: 10px;
-    border-top: 1px solid #ccc;
-    font-style: italic;
-  }
-}
 
 
 .member-profile {

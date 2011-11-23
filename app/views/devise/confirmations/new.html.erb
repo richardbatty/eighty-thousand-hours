@@ -7,7 +7,7 @@
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
 
-  <div><%= f.submit "Resend confirmation instructions" %></div>
+  <div><%= f.submit "Resend confirmation instructions", :class => "button" %></div>
 <% end %>
 
 <%= render :partial => "devise/shared/links" %>
