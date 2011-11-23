@@ -5,7 +5,8 @@ $ ->
 $ ->
   $("a[rel=twipsy]").twipsy live: true
 $ ->
-  $("a[rel=popover]").popover offset: 10
+  $("a[rel=popover]").popover(offset: 10)
+    .click (e) -> e.preventDefault
 $ ->
   $(".topbar-wrapper").dropdown()
 $ ->

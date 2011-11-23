@@ -1,7 +1,7 @@
 class Member < ActiveRecord::Base
   attr_accessible :background, :career_plans, :location,
                   :confirmed, :avatar, :inspiration, :interesting_fact,
-                  :location, :organisation_role
+                  :location, :organisation_role, :phone
 
   validates_presence_of :career_plans
 
@@ -36,4 +36,3 @@ class Member < ActiveRecord::Base
          :limit => num)
   end
 end
-
