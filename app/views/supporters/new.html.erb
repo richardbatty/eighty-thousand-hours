@@ -1,0 +1,46 @@
+<% if @supporter.errors.any? %>
+  <div class="alert">
+  <div id="errorExplanation">
+    <h2><%= pluralize(@supporter.errors.count, "error") %> stopped your signature from being accepted:</h2>
+    <ul>
+    <% @supporter.errors.full_messages.each do |msg| %>
+      <li><%= msg %></li>
+    <% end %>
+    </ul>
+  </div>
+</div>
+<% end %>
+
+
+
+<div class="box">
+  <div class="center"><h2>Show your support for <%= org_name %> by signing our petition</h2></div>
+    <div class="inner-box">
+      <p>
+      <%= org_name %> aims at encouraging people to pursue a career with a
+      high ethical impact, and to give a portion of their time or money
+      towards helping others. Providing extensive research on career choice
+      and the best causes to fund, <%= org_name %> ensures its members think
+      carefully about where and for whom their contribution can make the
+      greatest difference.
+      </p>
+      
+      <p>
+      I agree with these objectives and hereby express my support for the
+      ideas that those, who are able to, pledge to give at least 10% of
+      their working time or income to the causes shown to most benefit
+      others, and that making the most difference is far more important than
+      simply making a difference.”
+      </p>
+    </div>
+
+  <div class="center">
+  <%= form_for @supporter do |s| %>
+    <p><%= s.label :name %> <%= s.text_field :name %></p>
+    <p><%= s.label :email %> <%= s.email_field :email %></p>
+    <p><%= s.check_box :dont_email_me %> I don't want to receive updates</p>
+    <p><%= s.check_box :anonymous %> I don't want my name shown</p>
+    <%= s.submit "Sign our petition", :class=>"button" %>
+  <% end %>
+  </div>
+</div>
