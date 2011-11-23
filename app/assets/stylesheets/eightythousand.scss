@@ -16,7 +16,7 @@
   @include box_shadow(#ccc, 0px, 0px, 10px);
 }
 
-html,body {
+html, body {
   height: 100%;
 }
 
@@ -393,14 +393,14 @@ header {
     font-weight: bold;
     text-shadow: 0 1px 1px rgba(0.3,0.3,0.3,.3);
   }
-
+  
   h3 {
     padding: 0px 0px 5px 0px;
     font-size: 1.1em;
     font-weight: bold;
     text-shadow: 0 1px 1px rgba(0.3,0.3,0.3,.2);
   }
-
+  
   p {
     padding: 5px 0px;
   }
@@ -778,11 +778,9 @@ img.fp-box {
   border: 1px solid #ccc;
 }
 
-
 .large_margin {
   margin: 20px;
 }
-
 
 /** Style our faq questions **/
 dl.faq{
@@ -1174,4 +1172,3 @@ html[xmlns] #nav {
 * html #nav {
 	height: 1%;
 }
-
