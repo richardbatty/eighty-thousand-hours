@@ -3,8 +3,6 @@ class Member < ActiveRecord::Base
                   :confirmed, :avatar, :inspiration, :interesting_fact,
                   :location, :organisation_role, :phone, :pledge
 
-  validates_presence_of :career_plans
-  
   # paperclip avatars on S3
   has_attached_file :avatar, 
                     :styles => { :medium => "200x200", :small => "100x100>", :thumb => "64x64" },

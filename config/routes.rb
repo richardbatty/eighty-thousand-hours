@@ -3,7 +3,10 @@ EightyThousandHours::Application.routes.draw do
 
   devise_for :users, :path => 'accounts'
   
-  resources :posts, :only => [:index, :show]
+  resources :posts, :path => 'blog', :only => [:index, :show]
+
+  resources :supporters, :only => [:new, :create], :path => 'show-your-support'
+  match 'show-your-support' => 'supporters#new'
 
   # override /members/new as /join
   match 'join'          => 'users#new', :as => :join
@@ -25,7 +28,7 @@ EightyThousandHours::Application.routes.draw do
   match 'contact-us'                    => 'info#contact_us'
   match 'the-pledge'                    => 'info#the_pledge'
   match 'find-out-more'                 => 'info#find_out_more'
-  match 'show-your-support'             => 'info#show_your_support'
+  #match 'show-your-support'             => 'info#show_your_support'
   match 'press'                         => 'info#press'
   match 'application-faq'               => 'info#application_faq'
   match 'coming-soon'                   => 'info#coming_soon'
