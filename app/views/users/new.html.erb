@@ -68,12 +68,10 @@ community, so if you are interested or have any questions, <%= link_to "contact 
       <p><%= m.text_area :interesting_fact %></p>
       <p><%= m.label :location, "Location (optional)"%></p>
       <p><%= m.text_field :location %></p>
-      <p>
-        <%= m.label :phone, "Phone number" %>
-        <%= m.phone_field :phone %>
-        <a href="#" rel='popover' data-content="We'd like to call you to talk about your membership, and will never release your number to any external party or display it on the site." data-original-title="Let's talk.">Why?</a>
-      </p>
-      <p><%= m.label :avatar %></p>
+      <p><%= m.label :phone, "Phone number (optional)" %></p>
+      <p><%= m.phone_field :phone %></p>
+        <!--<a href="#" rel='popover' data-content="We'd like to call you to talk about your membership, and will never release your number to any external party or display it on the site." data-original-title="Let's talk.">Why?</a>-->
+      <p><%= m.label :avatar, "Profile picture (optional)" %></p>
       <p><%= m.file_field :avatar %></p>
     <% end %>
   <% end %>
