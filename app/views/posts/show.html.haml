@@ -1,12 +1,11 @@
-%p#notice= notice
-
-%div.box.blog
-  %div.title= @post.title
-  %p
-    %b= @post.body
-
+.box.blog-entry
+  %h1= @post.title
+  %h2= @post.created_at
+  = markdown @post.body
+  .attribution= markdown @post.author
+  
 = link_to 'Back', posts_path
 
-%div#disqus_thread
+#disqus_thread
 
-%div= render :partial => "disqus_embed"
+= render :partial => "disqus_embed"
