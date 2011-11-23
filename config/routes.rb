@@ -3,12 +3,12 @@ EightyThousandHours::Application.routes.draw do
 
   devise_for :users, :path => 'accounts'
   
-  resources :posts
+  resources :posts, :only => [:index, :show]
 
   resources :supporters, :only => [:new, :create], :path => 'show-your-support'
   match 'show-your-support' => 'supporters#new'
 
-  # for the rest of the profile routes
+  # override /members/new as /join
   match 'join'          => 'users#new', :as => :join
   resources :users, :path => "members"
   
