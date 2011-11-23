@@ -41,6 +41,9 @@ gem 'meta_search'
 
 gem 'exception_notification'
 
+# great css lib, with a sprinkle of js.
+gem 'twitter-bootstrap-rails'
+
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   # gem 'growl_notify'
