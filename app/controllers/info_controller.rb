@@ -133,4 +133,8 @@ class InfoController < ApplicationController
   def q_and_a
     @title = "Banker vs Aid Worker: Q & A"
   end
+
+  def inspiring_others
+    @title = "Inspiring others"
+  end
 end

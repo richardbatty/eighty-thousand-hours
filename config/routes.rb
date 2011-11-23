@@ -36,4 +36,5 @@ EightyThousandHours::Application.routes.draw do
   match 'banker-vs-aid-worker/op-ed'    => 'info#op_ed'
   match 'banker-vs-aid-worker/q-and-a'  => 'info#q_and_a'
   match 'faq'                           => 'info#faq'
+  match 'inspiring-others'              => 'info#inspiring_others'
 end
