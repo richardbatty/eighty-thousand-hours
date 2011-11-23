@@ -1,6 +1,7 @@
 .box.blog-entry
-  %h1= @post.title
-  %h2= @post.created_at
+  %div{:id => "#{@post.title}"}
+    %h1= @post.title
+  %h2= @post.created_at.strftime("%B %d, %Y")
   = markdown @post.body
   .attribution= markdown @post.author
   
