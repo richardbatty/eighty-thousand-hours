@@ -1,7 +1,8 @@
 class Member < ActiveRecord::Base
   attr_accessible :background, :career_plans, :location,
                   :confirmed, :avatar, :inspiration, :interesting_fact,
-                  :location, :organisation_role, :phone, :pledge
+                  :location, :organisation_role, :phone, :pledge,
+                  :show_name, :show_info
 
   # paperclip avatars on S3
   has_attached_file :avatar, 

@@ -56,8 +56,8 @@ community, so if you are interested or have any questions, <%= link_to "contact 
     <p><%= u.password_field :password_confirmation %></p>
   <% end %>
   
-  <%= field_set_tag "Profile" do %>
-    <%= u.fields_for :member do |m| %>
+  <%= u.fields_for :member do |m| %>
+    <%= field_set_tag "Profile" do %>
       <p><%= m.label :background %></p>
       <p><%= m.text_area :background %></p>
       <p><%= m.label :career_plans %></p>
@@ -73,6 +73,17 @@ community, so if you are interested or have any questions, <%= link_to "contact 
         <!--<a href="#" rel='popover' data-content="We'd like to call you to talk about your membership, and will never release your number to any external party or display it on the site." data-original-title="Let's talk.">Why?</a>-->
       <p><%= m.label :avatar, "Profile picture (optional)" %></p>
       <p><%= m.file_field :avatar %></p>
+    <% end %>
+    
+    <%= field_set_tag "Privacy" do %>
+      <p>
+        <%= m.check_box :show_name %>
+        <%= m.label :show_name, "Display my name on the site" %>
+      </p>
+      <p>
+        <%= m.check_box :show_info %>
+        <%= m.label :show_info, "Display my profile on the site" %>
+      </p>
     <% end %>
   <% end %>
   
