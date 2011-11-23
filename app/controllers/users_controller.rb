@@ -21,8 +21,8 @@ class UsersController < ApplicationController
   end
 
   def new
-    @user   = User.new
-    @member = @user.build_member
+    @user = User.new
+    @user.build_member
   end
   
   def create
@@ -49,4 +49,3 @@ class UsersController < ApplicationController
     render :new
   end
 end
-

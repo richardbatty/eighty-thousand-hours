@@ -49,7 +49,7 @@ community, so if you are interested or have any questions, <%= link_to "contact 
 <br/>
 
 <div class="profile-form">
-<%= form_for @member, :url => users_path do |f| %>
+<%= form_for @user.member, :url => users_path do |f| %>
 
   <%= fields_for @user do |u| %>
     <p><%= u.label :name %></p>

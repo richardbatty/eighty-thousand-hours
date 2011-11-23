@@ -24,19 +24,10 @@ class Member < ActiveRecord::Base
   # now we can access @member.name, @member.email
   delegate :name, :name=, :email, :email=, :slug, :to => :user
   
+  #useful nested scopes
   scope :with_user, joins(:user).includes(:user)
   scope :confirmed,   with_user.where(:confirmed => true)
   scope :unconfirmed, with_user.where(:confirmed => false)
-
-  def self.find_by_slug( name )
-    @user = User.find_by_slug( name )
-    if @user
-      return @member = @user.member
-    else
-      #@error = "We couldn't find a member called '#{params[:name]}', sorry!" 
-      return nil
-    end
-  end
 
   def self.get_random( num )
     all( :include => :user,
