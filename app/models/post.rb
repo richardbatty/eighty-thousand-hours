@@ -14,7 +14,7 @@ class Post < ActiveRecord::Base
 
   # first bit of the article -- used as
   # opengraph description, and on index page
-  def teaser
+  def get_teaser
     return self.teaser if self.teaser?
 
     # if post doesn't have a defined teaser then we try
