@@ -14,6 +14,7 @@ class SupportersController < ApplicationController
       end
       redirect_to root_url, notice: thanks_str
     else
+      @supporters = Supporter.all
       render :new
     end
   end

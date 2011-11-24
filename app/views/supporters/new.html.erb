@@ -15,6 +15,7 @@
 
 <div class="box">
   <div class="center"><h2>Show your support for <%= org_name %> by signing our petition</h2></div>
+  <div class="center"><h2><a href="#petition-signatures"><%= @supporters.size %> signatures so far</h2></a></div>
     <div class="inner-box">
       <p>
       <%= org_name %> aims at encouraging people to pursue a career with a high
@@ -39,19 +40,18 @@
     <p><%= s.label :name %> <%= s.text_field :name %></p>
     <p><%= s.label :email %> <%= s.email_field :email %></p>
     <p><%= s.check_box :dont_email_me %> I don't want to receive updates by email</p>
-    <p><%= s.check_box :anonymous %> I don't want my name to be shown on the petition</p>
     <%= s.submit "Sign our petition", :class=>"button" %>
   <% end %>
   </div>
 </div>
 
 <div class="box petition" id="petition-signatures">
-  <h2><%= @supporters.size %> signatures to date</h2>
+  <div class="center">
+  <h2><%= @supporters.size %> signatures</h2>
   <% @supporters.each_with_index do |s,idx| %>
-    <% name = s.anonymous ? "Anonymous Supporter" : s.name %>
     <div class="signature">
-      <%= idx+1 %>) 
-      <%= name %>
+      <%= idx+1 %>) <%= s.name %>
     </div>
   <% end %>
+  </div>
 </div>
