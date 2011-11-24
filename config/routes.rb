@@ -29,7 +29,7 @@ EightyThousandHours::Application.routes.draw do
   match 'the-pledge'                    => 'info#the_pledge'
   match 'find-out-more'                 => 'info#find_out_more'
   match 'press'                         => 'info#press'
-  match 'application-faq'               => 'info#application_faq'
+  match 'join/questions'                => 'info#application_faq'
   match 'coming-soon'                   => 'info#coming_soon'
   match 'career-profiles'               => 'info#career_profiles'
   match 'meet-the-team'                 => 'info#meet_the_team'
