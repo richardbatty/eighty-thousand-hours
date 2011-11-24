@@ -9,6 +9,7 @@
 </div>
 
 <% @team_profiles.each do |team_name, team_members| %>
+  <% if team_members.size > 0 %>
   <div class="box">
     <div class="center" id="<%= team_name %>">
       <h1><%= team_name %></h1>
@@ -23,6 +24,7 @@
       <a class="button" href="#content">back to top</a>
     </div>
   </div>
+  <% end %>
 <% end %>
 
 <div class="center">
