@@ -1,7 +1,8 @@
 - @posts.each do |post|
   %div.box.blog-entry
     %div{:id => "#{post.title.downcase.gsub(/ /,'-')}"}
-      %h1= post.title
+      %a{:href => post_path(post)}
+        %h1= post.title
     %h2= post.created_at.strftime("%B %d, %Y")
     = markdown post.body
     .attribution= markdown post.author
