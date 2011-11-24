@@ -17,7 +17,7 @@ class PostsController < ApplicationController
     @og_url = post_url( @post )
     @og_desc = @post.get_teaser
     @og_type = "article"
-    @og_title = "Blog: " + @post.title
+    @title = "Blog: " + @post.title
 
     respond_to do |format|
       format.html # show.html.erb

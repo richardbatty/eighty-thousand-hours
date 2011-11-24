@@ -84,10 +84,6 @@ class InfoController < ApplicationController
     @title = "Find out more"
   end
   
-  def show_your_support
-    @title = "Show your support"
-  end
-
   def press
     @title = "Press"
   end
