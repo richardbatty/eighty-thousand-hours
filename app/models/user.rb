@@ -20,6 +20,7 @@ class User < ActiveRecord::Base
   
   scope :with_member, joins(:member).includes(:member)
   scope :membership_confirmed, with_member.where(:members => {:confirmed => true})
+  scope :alphabetical, order("name ASC")
   
   def has_role?(symbol)
     roles.map {|r| r.name.downcase.to_sym }

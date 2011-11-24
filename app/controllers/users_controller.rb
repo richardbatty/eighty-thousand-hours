@@ -6,7 +6,7 @@ class UsersController < ApplicationController
   end
 
   def all
-    @users = User.membership_confirmed
+    @users = User.membership_confirmed.alphabetical
     @all = true
     render :index
   end
