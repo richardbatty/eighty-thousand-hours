@@ -110,7 +110,7 @@ class InfoController < ApplicationController
   
   def meet_the_team
     @title = "Meet the team"
-    @team = Member.on_team
+    @team = Member.on_team.shuffle
   end
 
   def banker_vs_aid_worker
