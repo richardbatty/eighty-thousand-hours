@@ -10,6 +10,7 @@ EightyThousandHours::Application.routes.draw do
 
   # override /members/new as /join
   match 'join'          => 'users#new', :as => :join
+  match 'members/all'   => 'users#all', :as => :all
   resources :users, :path => "members"
   
   root  :to                             => 'info#index'

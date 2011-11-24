@@ -1,6 +1,14 @@
 class UsersController < ApplicationController
   def index
-    @users = User.membership_confirmed.shuffle
+    # display num_to_show random members
+    num_to_show = 5
+    @users = User.membership_confirmed.shuffle[0..(num_to_show-1)]
+  end
+
+  def all
+    @users = User.membership_confirmed
+    @all = true
+    render :index
   end
 
   def show
