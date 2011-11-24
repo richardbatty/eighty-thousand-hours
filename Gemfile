@@ -44,6 +44,9 @@ gem 'exception_notification'
 # great css lib, with a sprinkle of js.
 gem 'twitter-bootstrap-rails'
 
+# lightbox gem
+gem 'fancybox-rails'
+
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   # gem 'growl_notify'
