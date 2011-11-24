@@ -110,7 +110,15 @@ class InfoController < ApplicationController
   
   def meet_the_team
     @title = "Meet the team"
-    @team = Member.on_team.shuffle
+    @team_profiles = {
+      "President" => Member.on_team.where(      :team_role_id => TeamRole.find_by_name("President").id ),
+      "CEO" => Member.on_team.where(            :team_role_id => TeamRole.find_by_name("CEO").id ),
+      "Research" => Member.on_team.where(       :team_role_id => TeamRole.find_by_name("Research").id ),
+      "Community" => Member.on_team.where(      :team_role_id => TeamRole.find_by_name("Community").id ),
+      "Communications" => Member.on_team.where( :team_role_id => TeamRole.find_by_name("Communications").id ),
+      "Fundraising" => Member.on_team.where(    :team_role_id => TeamRole.find_by_name("Fundraising").id ),
+      "Tech" => Member.on_team.where(           :team_role_id => TeamRole.find_by_name("Tech").id )
+    }
   end
 
   def banker_vs_aid_worker

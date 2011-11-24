@@ -2,7 +2,7 @@ class Member < ActiveRecord::Base
   attr_accessible :background, :career_plans, :location,
                   :confirmed, :avatar, :inspiration, :interesting_fact,
                   :location, :organisation_role, :phone, :pledge,
-                  :show_name, :show_info, :on_team, :team_role_id
+                  :show_name, :show_info, :on_team, :team_role, :team_role_id
 
   # paperclip avatars on S3
   has_attached_file :avatar, 
@@ -28,7 +28,7 @@ class Member < ActiveRecord::Base
 
   # now we can access @member.name, @member.email
   delegate :name, :name=, :email, :email=, :slug, :to => :user
-  
+
   #useful nested scopes
   scope :with_user, joins(:user).includes(:user)
   scope :confirmed,   with_user.where(:confirmed => true)
