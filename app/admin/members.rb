@@ -36,6 +36,7 @@ ActiveAdmin.register Member do
     column "Show Info?", :show_info
     column "Confirmed?", :confirmed
     column "On team?",   :on_team
+    column "Team role",  :team_role
     column :created_at
     default_actions
   end
