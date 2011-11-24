@@ -6,6 +6,7 @@ ActiveAdmin.register Post do
     f.inputs "Details" do
       f.inputs :title,
                :body,
+               :teaser,
                :author,
                :created_at,
                :draft
