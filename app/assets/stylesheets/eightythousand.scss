@@ -238,13 +238,13 @@ form {
     }
     .submit-button {
       font-size: 1.0em !important;
-      height: 21px !important;
+      height: 23px !important;
       @include rounded_borders(#ccc, 1px, 3px);
       @include box_shadow(#ccc, 0px, 0px, 5px);
       background-color: #fff;
       text-align: center !important;
       color: $magenta_2;
-      padding: 3px !important;
+      padding: 2px !important;
       padding-left: 4px !important;
       padding-right: 4px !important;
 
