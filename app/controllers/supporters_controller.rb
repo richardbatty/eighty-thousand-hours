@@ -1,5 +1,6 @@
 class SupportersController < ApplicationController
   def new
+    @supporters = Supporter.all
     @supporter = Supporter.new
   end
   

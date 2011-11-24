@@ -29,8 +29,8 @@
       I agree with these objectives and hereby express my support for the ideas
       that those, who are able to, pledge to give at least 10% of their working
       time or income to the causes they believe on the basis of evidence to
-      among those that most help others, and that making the most difference is
-      far more important than simply making a difference.
+      be among those that most help others. I support the idea of making
+      the <span class="bold">most</span> difference.
       </p>
     </div>
 
@@ -43,4 +43,15 @@
     <%= s.submit "Sign our petition", :class=>"button" %>
   <% end %>
   </div>
+</div>
+
+<div class="box petition" id="petition-signatures">
+  <h2><%= @supporters.size %> signatures to date</h2>
+  <% @supporters.each_with_index do |s,idx| %>
+    <% name = s.anonymous ? "Anonymous Supporter" : s.name %>
+    <div class="signature">
+      <%= idx+1 %>) 
+      <%= name %>
+    </div>
+  <% end %>
 </div>
