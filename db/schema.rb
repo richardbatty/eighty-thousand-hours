@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111124134402) do
+ActiveRecord::Schema.define(:version => 20111124155615) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -46,6 +46,7 @@ ActiveRecord::Schema.define(:version => 20111124134402) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "phone"
+    t.boolean  "on_team",             :default => false
   end
 
   create_table "posts", :force => true do |t|

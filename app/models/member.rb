@@ -1,7 +1,8 @@
 class Member < ActiveRecord::Base
   attr_accessible :background, :career_plans, :location,
                   :confirmed, :avatar, :inspiration, :interesting_fact,
-                  :location, :organisation_role, :phone, :pledge
+                  :location, :organisation_role, :phone, :pledge,
+                  :on_team
 
   # paperclip avatars on S3
   has_attached_file :avatar, 
@@ -29,6 +30,7 @@ class Member < ActiveRecord::Base
   scope :with_user, joins(:user).includes(:user)
   scope :confirmed,   with_user.where(:confirmed => true)
   scope :unconfirmed, with_user.where(:confirmed => false)
+  scope :on_team, confirmed.where(:on_team => true)
 
   def self.get_random( num )
     all( :include => :user,

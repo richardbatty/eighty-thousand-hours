@@ -35,6 +35,7 @@ ActiveAdmin.register Member do
     column "Show Name?", :show_name
     column "Show Info?", :show_info
     column "Confirmed?", :confirmed
+    column "On team?",   :on_team
     column :created_at
     default_actions
   end
@@ -58,6 +59,7 @@ ActiveAdmin.register Member do
                :show_name,
                :show_info,
                :confirmed,
+               :on_team,
                :avatar
       f.buttons
     end
