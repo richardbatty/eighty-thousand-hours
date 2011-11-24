@@ -14,6 +14,10 @@ class PostsController < ApplicationController
   # GET /posts/1.json
   def show
     @post = Post.find(params[:id])
+    @og_url = post_url( @post )
+    @og_desc = @post.teaser
+    @og_type = "article"
+    @og_title = "Blog: " + @post.title
 
     respond_to do |format|
       format.html # show.html.erb

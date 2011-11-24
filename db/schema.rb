@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111124123444) do
+ActiveRecord::Schema.define(:version => 20111124134402) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -56,6 +56,7 @@ ActiveRecord::Schema.define(:version => 20111124123444) do
     t.datetime "updated_at"
     t.string   "author"
     t.string   "slug"
+    t.text     "teaser"
   end
 
   add_index "posts", ["slug"], :name => "index_posts_on_slug", :unique => true

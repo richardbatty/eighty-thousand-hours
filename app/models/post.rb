@@ -11,4 +11,22 @@ class Post < ActiveRecord::Base
   def to_param
     "#{self.id}-#{self.friendly_id}"
   end
+
+  # first bit of the article -- used as
+  # opengraph description, and on index page
+  def teaser
+    return self.teaser if self.teaser?
+
+    # if post doesn't have a defined teaser then we try
+    # to create one by grabbing the first couple of sentences
+
+    # note that this fails in a lot of edge cases
+    # http://stackoverflow.com/questions/1714657/find-some-sentences
+    # failure cases so far:
+    #   * sentence ends with ?
+    #   * sentence contains URL www.blah.com
+    #   * markdown should be stripped out
+    sentences = self.body.split(".")
+    sentences[0] + ". " + sentences[1] + "..."
+  end
 end

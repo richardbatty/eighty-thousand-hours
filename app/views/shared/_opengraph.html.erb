@@ -1,8 +1,25 @@
     <!-- for facebook open graph -->
-    <meta property="og:title" content="<%= org_name %>"/>
-    <meta property="og:type" content="non_profit"/>
-    <meta property="og:url" content="http://eightythousand.org/"/>
+    <% if @og_title %>
+      <meta property="og:title" content="<%= org_name %> <%= @og_title %>"/>
+    <% else %>
+      <meta property="og:title" content="<%= org_name %>"/>
+    <% end %>
+    <% if @og_type %>
+      <meta property="og:type" content="<%= @og_type %>"/>
+    <% else %>
+      <meta property="og:type" content="non_profit"/>
+    <% end %>
+    <% if @og_url %>
+      <meta property="og:url" content="<%= @og_url %>"/>
+    <% else %>
+      <meta property="og:url" content="http://eightythousand.org/"/>
+    <% end %>
     <meta property="og:image" content="http://eightythousand.org/assets/opengraph/logo.png"/>
     <meta property="og:site_name" content="80,000 Hours" />
     <meta property="fb:admins" content="36804805"/>
-    <meta property="og:description" content="<%= org_name %> is an organisation which supports and guides people who are pursuing careers which will allow them to do the most good in the world. Can a banker do more good than a doctor?"/>
+
+    <% if @og_desc %>
+      <meta property="og:description" content="<%= @og_desc %>"/>
+    <% else %>
+      <meta property="og:description" content="<%= org_name %> is an organisation which supports and guides people who are pursuing careers which will allow them to do the most good in the world. Can a banker do more good than a doctor?"/>
+    <% end %>

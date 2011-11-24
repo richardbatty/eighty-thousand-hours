@@ -4,7 +4,7 @@
       %a{:href => post_path(post)}
         %h1= post.title
     %h2= post.created_at.strftime("%B %d, %Y")
-    = markdown post.body
+    = markdown post.teaser
     .attribution= markdown post.author
 
     = link_to 'Comments', post_url(post, :anchor => "disqus_thread")
