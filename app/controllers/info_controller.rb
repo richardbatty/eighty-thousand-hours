@@ -31,10 +31,6 @@ class InfoController < ApplicationController
     @title = "What we do"
   end
   
-  def get_involved
-    @title = "Get involved"
-  end
-
   def volunteer
     @title = "Volunteer"
   end

@@ -61,7 +61,7 @@ EightyThousandHours::Application.configure do
   
   
   # outbound email config
-  config.action_mailer.default_url_options = { :host => 'eightythousand.org' }
+  config.action_mailer.default_url_options = { :host => '80000hours.org' }
   config.action_mailer.perform_deliveries = true
   config.action_mailer.raise_delivery_errors = false
   config.action_mailer.default :charset => "utf-8"
@@ -77,7 +77,7 @@ EightyThousandHours::Application.configure do
     :enable_starttls_auto => true  }
     
     config.middleware.use ExceptionNotifier,
-      :email_prefix => "[Error at eightythousand.org] ",
+      :email_prefix => "[Error at 80000hours.org] ",
       :sender_address => %{"noreply80000" <eighty.thousand@gmail.com>},
       :exception_recipients => %w{powermoveguru@gmail.com robbie.shade@gmail.com folcon@gmail.com}
 end

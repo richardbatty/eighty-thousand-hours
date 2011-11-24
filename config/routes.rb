@@ -20,8 +20,6 @@ EightyThousandHours::Application.routes.draw do
   match 'what-you-can-do/my-career'     => 'info#my_career'
   match 'what-we-do'                    => 'info#what_we_do'
   match 'volunteer'                     => 'info#volunteer'
-  match 'get-involved'                  => 'info#get_involved'
-  match 'get-involved/volunteer'        => 'info#volunteer'
   match 'events'                        => 'info#events'
   match 'events/past-events'            => 'info#past_events'
   match 'events/orbis-stockpicking-challenge' => 'info#orbis_stockpicking_challenge'
