@@ -23,6 +23,9 @@ class Member < ActiveRecord::Base
   # a Member is always tied to a User 
   belongs_to :user
 
+  # a Member can have a TeamRole (e.g. Events, Communications)
+  belongs_to :team_role
+
   # now we can access @member.name, @member.email
   delegate :name, :name=, :email, :email=, :slug, :to => :user
   
