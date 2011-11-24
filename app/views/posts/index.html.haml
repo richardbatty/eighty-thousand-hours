@@ -6,8 +6,9 @@
     %h2= post.created_at.strftime("%B %d, %Y")
     = markdown post.get_teaser
 
-    %a{:href => post_path(post)}
-      Read more...
+    .read-more
+      %a{:href => post_path(post)}
+        Read more...
 
     .attribution= markdown post.author
 

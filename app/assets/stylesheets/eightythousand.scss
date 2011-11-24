@@ -149,6 +149,30 @@ form {
     border-top: 1px solid #ccc;
     font-style: italic;
   }
+  
+  .read-more {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    a{
+      @include box_shadow($magenta_2, 0px, 0px, 2px);
+      @include rounded_borders(#ccc, 1px, 6px);
+      padding: 5px;
+
+      &:hover {
+        @include box_shadow(#ccc, 0px, 0px, 1px);
+      }
+    }
+  }
+
+  a {
+    &h1 {
+      color: $text_color;
+
+      &:hover {
+        color: $magenta_2;
+      }
+    }
+  }
 }
 
 
