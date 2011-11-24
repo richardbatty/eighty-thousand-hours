@@ -31,10 +31,4 @@ class Member < ActiveRecord::Base
   scope :confirmed,   with_user.where(:confirmed => true)
   scope :unconfirmed, with_user.where(:confirmed => false)
   scope :on_team, confirmed.where(:on_team => true)
-
-  def self.get_random( num )
-    all( :include => :user,
-         :conditions => "confirmed IS true",
-         :limit => num)
-  end
 end
