@@ -4,7 +4,9 @@
 
 <div class="center">
 <% @team_profiles.each do |team_name, team_members| %>
-  <a class="button" href="#<%= team_name %>"><%= team_name %></a>
+  <% if team_members.size > 0 %>
+    <a class="button" href="#<%= team_name %>"><%= team_name %></a>
+  <% end %>
 <% end %>
 </div>
 
