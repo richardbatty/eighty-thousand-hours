@@ -60,6 +60,7 @@ ActiveAdmin.register Member do
                :show_info,
                :confirmed,
                :on_team,
+               :team_role,
                :avatar
       f.buttons
     end
