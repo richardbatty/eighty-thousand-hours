@@ -21,6 +21,7 @@
   </div>
 
   <div id="disqus_thread">
-    <%= render :partial => "disqus_embed" %>
+    <%= render :partial => "disqus_embed", :locals => { :post_id => @post.id }
+%>
   </div>
 </div>
