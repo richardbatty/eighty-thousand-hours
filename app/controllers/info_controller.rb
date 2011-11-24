@@ -117,7 +117,8 @@ class InfoController < ApplicationController
       "Community" => Member.on_team.where(      :team_role_id => TeamRole.find_by_name("Community").id ),
       "Communications" => Member.on_team.where( :team_role_id => TeamRole.find_by_name("Communications").id ),
       "Fundraising" => Member.on_team.where(    :team_role_id => TeamRole.find_by_name("Fundraising").id ),
-      "Tech" => Member.on_team.where(           :team_role_id => TeamRole.find_by_name("Tech").id )
+      "Tech" => Member.on_team.where(           :team_role_id => TeamRole.find_by_name("Tech").id ),
+      "Other" => Member.on_team.where(          :team_role_id => nil )
     }
   end
 
