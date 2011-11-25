@@ -13,3 +13,6 @@
 //= require jquery.scrollTo-1.4.2-min
 //= require faq_toggle
 //= require misc
+//= require jquery.easing
+//= require fancybox
+//= require fancybox_video
