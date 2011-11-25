@@ -883,7 +883,7 @@ strong {
   padding: 10px;
 }
 
-.video_iframe {
+#video_image {
   @include box_style;
   padding: 0px !important;
   margin: 0px !important;
@@ -891,6 +891,7 @@ strong {
   margin-bottom: 15px !important;
   width: 415px;
   height: 233px;
+  cursor: pointer;
 }
 
 
