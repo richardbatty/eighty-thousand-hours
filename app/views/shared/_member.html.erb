@@ -2,6 +2,13 @@
         :member instance of Member model
 %>
 <div class="member-profile">
+  <% if user_signed_in? && current_user.member == member %>
+    <div class="center">
+    <%= link_to "Edit Your Profile", "/accounts/edit" %>
+    </div>
+    <div class="break"></div>
+  <% end %>
+
   <% if member.avatar? %>
   <div class="avatar">
     <%= link_to image_tag(member.avatar.url(:medium)), member.avatar.url %>
