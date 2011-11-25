@@ -137,10 +137,15 @@ form {
 
   .field_with_errors {
     input, textarea {
-      border: 1px solid #f00 !important;
+      @include rounded_borders(#f00, 2px, 6px);
       @include box_shadow(#fcc, 0px, 0px, 15px);
     }
     display:inline;
+  }
+
+  .required {
+      @include rounded_borders($magenta_2, 0px, 6px);
+      @include box_shadow($magenta_2, 0px, 0px, 5px);
   }
 }
 
