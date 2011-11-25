@@ -10,17 +10,17 @@ EightyThousandHours::Application.routes.draw do
 
   # override /members/new as /join
   match 'join'          => 'users#new', :as => :join
+  match 'members/all'   => 'users#all', :as => :all
   resources :users, :path => "members"
   
   root  :to                             => 'info#index'
   match 'ethical-career'                => 'info#banker_vs_aid_worker'
+  match 'old-ethical-career'            => 'info#ethical_career'
   match 'what-you-can-do'               => 'info#what_you_can_do'
   match 'what-you-can-do/my-donations'  => 'info#my_donations'
   match 'what-you-can-do/my-career'     => 'info#my_career'
   match 'what-we-do'                    => 'info#what_we_do'
   match 'volunteer'                     => 'info#volunteer'
-  match 'get-involved'                  => 'info#get_involved'
-  match 'get-involved/volunteer'        => 'info#volunteer'
   match 'events'                        => 'info#events'
   match 'events/past-events'            => 'info#past_events'
   match 'events/orbis-stockpicking-challenge' => 'info#orbis_stockpicking_challenge'
@@ -28,9 +28,8 @@ EightyThousandHours::Application.routes.draw do
   match 'contact-us'                    => 'info#contact_us'
   match 'the-pledge'                    => 'info#the_pledge'
   match 'find-out-more'                 => 'info#find_out_more'
-  #match 'show-your-support'             => 'info#show_your_support'
   match 'press'                         => 'info#press'
-  match 'application-faq'               => 'info#application_faq'
+  match 'join/questions'                => 'info#application_faq'
   match 'coming-soon'                   => 'info#coming_soon'
   match 'career-profiles'               => 'info#career_profiles'
   match 'meet-the-team'                 => 'info#meet_the_team'

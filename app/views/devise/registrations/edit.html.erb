@@ -11,7 +11,7 @@
   <div class="inner-box warning">
     <h2>Please note:</h2>
     <p>Your membership is still being reviewed by the <%= org_name %> team.</p>
-    <p>If it's been more than a week and we haven't been in touch, please contact <%= link_to 'info@eightythousand.org', 'mailto:info@eightythousand.org' %>.</p>
+    <p>If it's been more than a week and we haven't been in touch, please contact <%= link_to 'info@80000hours.org', 'mailto:info@80000hours.org' %>.</p>
   </div>
 <% end %>
 <% end %>
@@ -27,12 +27,6 @@
 
   <div><%= f.label :email %><br />
   <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-  <%= f.password_field :password %></div>
-
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
 
   <%# this will only display fields if :profile exists %>
   <%= f.fields_for :member do |mf| %>
@@ -54,16 +48,32 @@
     <p><%= mf.label :interesting_fact %></p>
     <p><%= mf.text_area :interesting_fact %></p>
 
-    <p><%= mf.label :avatar %></p>
-    <p><%= mf.file_field :avatar %></p>
-  <% end %>
+    <% member = current_user.member %>
+    <% if member.avatar? %>
+      <p><%= mf.label :avatar, "Current profile picture" %></p>
+      <div class="avatar">
+        <%= link_to image_tag(member.avatar.url(:medium), :class=>"shadow"), member.avatar.url %>
+      </div>
+      <p>Choose new picture: <%= mf.file_field :avatar %></p>
+    <% end %>
+    <% end %>
   
-  <div><%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br/>
-  <%= f.password_field :current_password %></div>
+  <br/>
+  <div><%= f.label :password, "New password (leave blank if no change)" %><br />
+  <%= f.password_field :password %></div>
+
+  <div><%= f.label :password_confirmation, "New password confirmation (leave blank if no change)" %><br />
+  <%= f.password_field :password_confirmation %></div>
+
+  <p><%= f.label :current_password, "Current password (required to make changes)" %></p>
+  <p><%= f.password_field(:current_password,:class=>"required") %></p>
 
   <br/>
+  <br/>
+  <div class="center">
   <div>
     <%= f.submit "Save changes", :class=>"button" %>
+  </div>
   </div>
 <% end %>
 <%# link_to "Back", :back %>

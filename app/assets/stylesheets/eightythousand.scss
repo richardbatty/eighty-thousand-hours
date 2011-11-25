@@ -137,9 +137,15 @@ form {
 
   .field_with_errors {
     input, textarea {
-      border: 1px solid #f00 !important;
+      @include rounded_borders(#f00, 2px, 6px);
       @include box_shadow(#fcc, 0px, 0px, 15px);
     }
+    display:inline;
+  }
+
+  .required {
+      @include rounded_borders($magenta_2, 0px, 6px);
+      @include box_shadow($magenta_2, 0px, 0px, 5px);
   }
 }
 
@@ -148,6 +154,30 @@ form {
     margin-top: 10px;
     border-top: 1px solid #ccc;
     font-style: italic;
+  }
+  
+  .read-more {
+    margin-top: 10px;
+    margin-bottom: 15px;
+    a{
+      @include box_shadow($magenta_2, 0px, 0px, 2px);
+      @include rounded_borders(#ccc, 1px, 6px);
+      padding: 5px;
+
+      &:hover {
+        @include box_shadow(#ccc, 0px, 0px, 1px);
+      }
+    }
+  }
+
+  a {
+    &h1 {
+      color: $text_color;
+
+      &:hover {
+        color: $magenta_2;
+      }
+    }
   }
 }
 
@@ -189,7 +219,7 @@ form {
     margin-top: 20px;
     padding-bottom: 10px;
     position: relative;
-    float:left;
+    float:right;
     color: #efefef;
     label {
       font-size: 1.5em;
@@ -214,13 +244,13 @@ form {
     }
     .submit-button {
       font-size: 1.0em !important;
-      height: 21px !important;
+      height: 23px !important;
       @include rounded_borders(#ccc, 1px, 3px);
       @include box_shadow(#ccc, 0px, 0px, 5px);
       background-color: #fff;
       text-align: center !important;
       color: $magenta_2;
-      padding: 3px !important;
+      padding: 2px !important;
       padding-left: 4px !important;
       padding-right: 4px !important;
 
@@ -265,6 +295,27 @@ form {
     cursor: pointer;
   }
 }
+.small-button {
+  cursor: pointer;
+  display: inline-block;
+  /*padding: .5em 2em .5em;*/
+  margin-left: .5em;
+  margin-right: .5em;
+  padding-left: .5em;
+  padding-right: .5em;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+
+  @include rounded_borders(#ccc, 1px, 6px);
+  @include box_shadow(#ccc, 0px, 0px, 5px);
+  background-color: #fff;
+  /*padding: 20px;*/
+  text-align: center;
+
+  &:hover {
+    @include box_shadow(#ccc, 0px, 0px, 0px);
+    cursor: pointer;
+  }
+}
 
 .more-button {
   position: absolute;
@@ -283,7 +334,7 @@ form {
 
 
 /* -------------- rails notice ----------- */
-.notice {
+.notice, #error_explanation {
   width: 80%;
   font-size: 1.4em;
   line-height: 2em;
@@ -1072,5 +1123,11 @@ html[xmlns] #nav {
       }
     }
   }
+  .more {
+        color: $link_color;
+      &:hover {
+        color: $link_hover_color;
+      }
+    }
 }
 

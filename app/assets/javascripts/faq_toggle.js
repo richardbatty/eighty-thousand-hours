@@ -6,9 +6,11 @@ faq = {
                 });
 	},
 
+
 	toggle : function(elt) {
 		$(elt).toggleClass('active');
 		$(elt).siblings('.answer').slideToggle('fast');
+    $(elt).children('.more').toggle();
 	}
 }
 

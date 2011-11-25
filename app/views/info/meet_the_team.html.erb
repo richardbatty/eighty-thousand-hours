@@ -1,13 +1,35 @@
-<div class="box">
-  <div class="center"><h1>The <%= org_name %> Team</h1></div>
-  <% @team.each do |member| %>
-  <div class="inner-box">
-    <%= render :partial => '/shared/member', :locals => { :member => member } %>
-  </div>
-  <% end %>
+<div class="center">
+  <h1>The <%= org_name %> Team</h1>
 </div>
 
-  <div class="center">
-  <%= button_link 'Inspired? Interested in becoming a member?', '/join' %>
+<div class="center">
+<% @team_profiles.each do |team_name, team_members| %>
+  <% if team_members.size > 0 %>
+    <a class="button" href="#<%= team_name %>"><%= team_name %></a>
+  <% end %>
+<% end %>
+</div>
+
+<% @team_profiles.each do |team_name, team_members| %>
+  <% if team_members.size > 0 %>
+  <div class="box">
+    <div class="center" id="<%= team_name %>">
+      <h1><%= team_name %></h1>
+    </div>
+    <% team_members.each do |member| %>
+      <div class="inner-box">
+        <%= render :partial => '/shared/member', :locals => { :member => member } %>
+      </div>
+    <% end %>
+
+    <div class="center">
+      <a class="button" href="#content">back to top</a>
+    </div>
   </div>
+  <% end %>
+<% end %>
+
+<div class="center">
+  <%= button_link 'Inspired? Interested in becoming a member?', '/join' %>
+</div>
 

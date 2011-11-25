@@ -2,7 +2,7 @@ class Member < ActiveRecord::Base
   attr_accessible :background, :career_plans, :location,
                   :confirmed, :avatar, :inspiration, :interesting_fact,
                   :location, :organisation_role, :phone, :pledge,
-                  :show_name, :show_info
+                  :show_name, :show_info, :on_team, :team_role, :team_role_id
 
   # paperclip avatars on S3
   has_attached_file :avatar, 
@@ -23,17 +23,15 @@ class Member < ActiveRecord::Base
   # a Member is always tied to a User 
   belongs_to :user
 
+  # a Member can have a TeamRole (e.g. Events, Communications)
+  belongs_to :team_role
+
   # now we can access @member.name, @member.email
   delegate :name, :name=, :email, :email=, :slug, :to => :user
-  
+
   #useful nested scopes
   scope :with_user, joins(:user).includes(:user)
   scope :confirmed,   with_user.where(:confirmed => true)
   scope :unconfirmed, with_user.where(:confirmed => false)
-
-  def self.get_random( num )
-    all( :include => :user,
-         :conditions => "confirmed IS true",
-         :limit => num)
-  end
+  scope :on_team, confirmed.where(:on_team => true)
 end

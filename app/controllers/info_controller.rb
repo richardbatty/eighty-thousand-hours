@@ -7,7 +7,7 @@ class InfoController < ApplicationController
       ids = [28,27,26,24,38,43,44,45,14,25]
       @members = Member.find( (ids.shuffle)[0..5] ).shuffle
     rescue
-      @members = Member.get_random( 6 )
+      @members = Member.all.limit( 6 )
     end
   end
 
@@ -31,10 +31,6 @@ class InfoController < ApplicationController
     @title = "What we do"
   end
   
-  def get_involved
-    @title = "Get involved"
-  end
-
   def volunteer
     @title = "Volunteer"
   end
@@ -88,10 +84,6 @@ class InfoController < ApplicationController
     @title = "Find out more"
   end
   
-  def show_your_support
-    @title = "Show your support"
-  end
-
   def press
     @title = "Press"
   end
@@ -114,8 +106,16 @@ class InfoController < ApplicationController
   
   def meet_the_team
     @title = "Meet the team"
-    ids = [13,24,26,27,29,46,47,49,51]
-    @team = Member.find( ids ).shuffle
+    @team_profiles = {
+      "President" => Member.on_team.where(      :team_role_id => TeamRole.find_by_name("President").id ),
+      "CEO" => Member.on_team.where(            :team_role_id => TeamRole.find_by_name("CEO").id ),
+      "Research" => Member.on_team.where(       :team_role_id => TeamRole.find_by_name("Research").id ),
+      "Community" => Member.on_team.where(      :team_role_id => TeamRole.find_by_name("Community").id ),
+      "Communications" => Member.on_team.where( :team_role_id => TeamRole.find_by_name("Communications").id ),
+      "Fundraising" => Member.on_team.where(    :team_role_id => TeamRole.find_by_name("Fundraising").id ),
+      "Tech" => Member.on_team.where(           :team_role_id => TeamRole.find_by_name("Tech").id ),
+      "Other" => Member.on_team.where(          :team_role_id => nil )
+    }
   end
 
   def banker_vs_aid_worker
