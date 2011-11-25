@@ -140,6 +140,7 @@ form {
       border: 1px solid #f00 !important;
       @include box_shadow(#fcc, 0px, 0px, 15px);
     }
+    display:inline;
   }
 }
 
@@ -307,7 +308,7 @@ form {
 
 
 /* -------------- rails notice ----------- */
-.notice {
+.notice, #error_explanation {
   width: 80%;
   font-size: 1.4em;
   line-height: 2em;
