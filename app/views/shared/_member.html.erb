@@ -4,7 +4,7 @@
 <div class="member-profile">
   <% if user_signed_in? && current_user.member == member %>
     <div class="center">
-    <%= link_to "Edit Your Profile", "/accounts/edit" %>
+      <%= link_to "Edit Your Profile", "/accounts/edit", :class=>"small-button" %>
     </div>
     <div class="break"></div>
   <% end %>

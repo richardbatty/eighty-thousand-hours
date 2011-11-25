@@ -16,6 +16,10 @@
        &nbsp;  <%= member.location %>
       </span>
     <% end %>
+
+    <% if user_signed_in? && current_user.member == member %>
+      <%= link_to "edit", "/accounts/edit", :class=>"small-button" %>
+    <% end %>
   </div>
   <% end %>
 </div>

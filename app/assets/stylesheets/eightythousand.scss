@@ -290,6 +290,27 @@ form {
     cursor: pointer;
   }
 }
+.small-button {
+  cursor: pointer;
+  display: inline-block;
+  /*padding: .5em 2em .5em;*/
+  margin-left: .5em;
+  margin-right: .5em;
+  padding-left: .5em;
+  padding-right: .5em;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+
+  @include rounded_borders(#ccc, 1px, 6px);
+  @include box_shadow(#ccc, 0px, 0px, 5px);
+  background-color: #fff;
+  /*padding: 20px;*/
+  text-align: center;
+
+  &:hover {
+    @include box_shadow(#ccc, 0px, 0px, 0px);
+    cursor: pointer;
+  }
+}
 
 .more-button {
   position: absolute;
