@@ -1,4 +1,7 @@
 ActiveAdmin.register Post do
+  menu :if => proc{ can?(:manage, Post) }
+  controller.authorize_resource
+  
   scope :draft
   scope :published
   

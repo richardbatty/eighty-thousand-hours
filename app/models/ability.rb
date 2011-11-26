@@ -17,10 +17,14 @@ class Ability
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     user ||= User.new # guest user (not logged in)
     if user.has_role? :admin
+      can :access, :admin
       can :manage, :all
     elsif user.has_role? :blogger
-      can :manage, Post, :user_id => user.id
+      can :access, :admin
+      # can :manage, Post, :user_id => user.id
+      can :manage, Post
       # can :read, :all
+    else
       can :read, Post, :published => true
     end
   end

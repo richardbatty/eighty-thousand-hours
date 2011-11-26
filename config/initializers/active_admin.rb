@@ -38,8 +38,8 @@ ActiveAdmin.setup do |config|
   # This setting changes the method which Active Admin calls
   # within the controller.
   config.authentication_method = :authorize_admin!
-
-
+  
+  
   # == Current User
   #
   # Active Admin will associate actions with the current

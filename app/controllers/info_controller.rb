@@ -10,7 +10,7 @@ class InfoController < ApplicationController
       @members = Member.limit( 6 )
     end
   end
-
+  
   def what_you_can_do
     @title = "What you can do"
   end

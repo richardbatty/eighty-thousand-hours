@@ -4,7 +4,7 @@
     <%= link_to current_user.name, user_path(current_user) %>
     (<%= link_to "Edit Profile", "/accounts/edit" %>)
     | <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-    <% if current_user.has_role? :admin %>
+    <% if can? :access, :admin %>
     | <%= link_to "Admin", admin_dashboard_path %>
     <% end %>
     | <%= link_to "Help", "/contact-us" %>

@@ -7,6 +7,6 @@ class ApplicationController < ActionController::Base
   
   def authorize_admin!
     authenticate_user!
-    raise CanCan::AccessDenied unless current_user.has_role? :admin
+    raise CanCan::AccessDenied unless can? :access, :admin
   end
 end

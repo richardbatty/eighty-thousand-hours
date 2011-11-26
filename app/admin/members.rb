@@ -1,4 +1,7 @@
 ActiveAdmin.register Member do
+  menu :if => proc{ can?(:manage, Member) }     
+  controller.authorize_resource
+  
   scope :confirmed
   # show do
   #   attributes_table do
