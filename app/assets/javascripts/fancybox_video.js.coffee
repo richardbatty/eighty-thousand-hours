@@ -29,10 +29,10 @@ $ ->
     titleFormat : null
     titleFromAlt : false
     
-    transitionIn : 'elastic', # 'elastic', 'fade' or 'none'
+    transitionIn : 'fade', # 'elastic', 'fade' or 'none'
     transitionOut : 'fade', # 'elastic', 'fade' or 'none'
     
-    speedIn : 300
+    speedIn : 1500
     speedOut : 300
     
     changeSpeed : 300
@@ -74,8 +74,8 @@ $ ->
         opacity: 0.3
         css:
           'background-color': '#000'
-  
-  iframe = '<iframe src="http://player.vimeo.com/video/29954976?byline=0&amp;portrait=0&amp;autoplay=1" width="640" height="360" frameborder="0"></iframe>'
+
+  iframe = '<iframe src="http://player.vimeo.com/video/32787159?byline=0&amp;portrait=0&amp;autoplay=1" width="640" height="360" frameborder="0"></iframe>'
   
   $('#video_image').click ->
     $.fancybox iframe, options_fancybox_1_3
