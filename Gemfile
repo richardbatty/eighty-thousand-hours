@@ -41,9 +41,6 @@ gem 'meta_search'
 
 gem 'exception_notification'
 
-# great css lib, with a sprinkle of js.
-gem 'twitter-bootstrap-rails'
-
 # lightbox gem
 gem 'fancybox-rails'
 

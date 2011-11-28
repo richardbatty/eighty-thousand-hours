@@ -32,7 +32,7 @@ $ ->
     transitionIn : 'fade', # 'elastic', 'fade' or 'none'
     transitionOut : 'fade', # 'elastic', 'fade' or 'none'
     
-    speedIn : 1500
+    speedIn : 300
     speedOut : 300
     
     changeSpeed : 300
