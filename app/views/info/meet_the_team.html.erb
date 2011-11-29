@@ -17,7 +17,7 @@
       <h1><%= team_name %></h1>
     </div>
     <% team_members.each do |member| %>
-      <div class="inner-box">
+      <div class="box">
         <%= render :partial => '/shared/member', :locals => { :member => member } %>
       </div>
     <% end %>

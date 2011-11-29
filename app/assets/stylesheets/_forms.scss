@@ -1,0 +1,134 @@
+form {
+  input, textarea {
+    background:#fff;
+    border:1px solid #dedede;
+    padding:10px;
+    /*margin-top:-3px;*/
+    font-size:0.9em;
+    color:#3a3a3a;
+    border-radius:5px;
+    -moz-border-radius:5px;
+    -webkit-border-radius:5px;
+  }
+  textarea {
+    height:213px;
+    width: 95%;;
+  }
+  input:focus, textarea:focus {
+    border:1px solid $magenta_2;
+  }
+
+  .button {
+    border: 1px solid lighten($magenta_2,10%) !important;
+    min-width: 200px;
+    @include box_shadow($magenta_2, 0px, 0px, 6px);
+
+    &:hover {
+      @include box_shadow($magenta_2, 0px, 0px, 1px);
+    }
+  }
+
+  .field_with_errors {
+    input, textarea {
+      @include rounded_borders(#f00, 2px, 6px);
+      @include box_shadow(#fcc, 0px, 0px, 15px);
+    }
+    display:inline;
+  }
+
+  .required {
+    @include rounded_borders($magenta_2, 0px, 6px);
+    @include box_shadow($magenta_2, 0px, 0px, 5px);
+  }
+}
+
+
+.mailing-list-form {
+  color: $text_color;
+
+  &.standard {
+    .email {
+      width: 320px;
+      padding: 7px;
+      margin: 0px;
+      color: $grey_2;
+      display: inline-block;
+      outline: none;
+      text-decoration: none;
+      text-shadow: 0 1px 1px rgba(0,0,0,.3);
+      @include rounded_borders(#ccc, 1px, 6px);
+      text-align: center;
+    }
+    .submit-button {
+      @include rounded_borders(#ccc, 1px, 6px);
+      @include box_shadow(#ccc, 0px, 0px, 5px);
+      background-color: #fff;
+      padding: 7px 20px;
+      margin: 5px;
+      text-align: center;
+
+      &:hover {
+        /*background: #efefef;*/
+        @include box_shadow(#ccc, 0px, 0px, 0px);
+        cursor: pointer;
+      }
+    }
+  }
+
+  &.header {
+    margin-top: 20px;
+    padding-bottom: 10px;
+    position: relative;
+    float:right;
+    color: #efefef;
+    label {
+      font-size: 1.5em;
+    }
+    .text {
+      padding-right: 5px;
+    }
+    .email {
+      width: 150px;
+      font-size: 1.0em;
+      margin: 0px;
+      color: $grey_2;
+      padding: 3px;
+      display: inline-block;
+      outline: none;
+      text-decoration: none;
+      /*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
+      /*@include rounded_borders(#ccc, 1px, 6px);*/
+      text-align: center;
+      height: 15px;
+      @include rounded_borders(#ccc, 1px, 3px);
+    }
+    .submit-button {
+      font-size: 1.0em !important;
+      height: 23px !important;
+      @include rounded_borders(#ccc, 1px, 3px);
+      @include box_shadow(#ccc, 0px, 0px, 5px);
+      background-color: #fff;
+      text-align: center !important;
+      color: $magenta_2;
+      padding: 2px !important;
+      padding-left: 4px !important;
+      padding-right: 4px !important;
+
+      &:hover {
+        /*background: #efefef;*/
+        color: #555;
+        @include box_shadow(#ccc, 0px, 0px, 0px);
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.defaultText {
+  color: $grey_2;
+}
+.defaultTextActive {
+  color: #a1a1a1;
+}
+
+

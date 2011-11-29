@@ -4,7 +4,7 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
  *= require reset
- *= require 960/text.css
+ *= require text.css
  *= require 960/960.css
  *= require jqueryui 
  *= require eightythousand 

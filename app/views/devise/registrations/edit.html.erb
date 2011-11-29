@@ -3,12 +3,12 @@
 
 <% if current_user.member %>
 <% if current_user.member.confirmed %>
-  <div class="inner-box">
+  <div class="box">
     <h2>Public profile</h2>
     <p>See how others view your profile on the <%= link_to "public profile for #{current_user.name}", "/members/#{current_user.slug}" %>.</p>
   </div>
 <% else %>
-  <div class="inner-box warning">
+  <div class="box warning">
     <h2>Please note:</h2>
     <p>Your membership is still being reviewed by the <%= org_name %> team.</p>
     <p>If it's been more than a week and we haven't been in touch, please contact <%= link_to 'info@80000hours.org', 'mailto:info@80000hours.org' %>.</p>
