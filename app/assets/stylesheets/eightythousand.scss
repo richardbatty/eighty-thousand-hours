@@ -148,14 +148,6 @@ header {
   }
 }
 
-.more-button {
-  position: absolute;
-  font-size: 1.0em;
-  bottom: 20px;
-  left: 60px;
-  z-index: 2;
-}
-
 
 /* -------------- rails notice ----------- */
 .notice, #error_explanation {
@@ -300,6 +292,10 @@ header {
 
     &:hover {
       @include box_style_hover;
+    }
+
+    &.height_150 {
+      height: 150px;
     }
   }
 }
