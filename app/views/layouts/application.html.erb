@@ -1,33 +1,33 @@
 <!DOCTYPE html>
 <html xmlns:fb="https://www.facebook.com/2008/fbml">
+  <head>
+    <%= page_title %>
 
-<head>
-  <%= page_title %>
+    <link rel="shortcut icon" href="/favicon.ico" />
+    <link rel="icon" href="/favicon.ico" type="image/ico" />
 
-  <link rel="shortcut icon" href="/favicon.ico" />
-  <link rel="icon" href="/favicon.ico" type="image/ico" />
+    <%= render :partial => "/shared/opengraph" %>
 
-  <%= render :partial => "/shared/opengraph" %>
+    <%= csrf_meta_tag %>
+    <%= stylesheet_link_tag "application" %>
 
-  <%= csrf_meta_tag %>
-  <%= stylesheet_link_tag "application" %>
+    <%= javascript_include_tag "application" %>
 
-  <%= javascript_include_tag "application" %>
+    <!--[if lt IE 9]>
+    <%= javascript_include_tag "html5" %>
+    <![endif]-->
 
-  <!--[if lt IE 9]>
-  <%= javascript_include_tag "html5" %>
-  <![endif]-->
+    <%= render :partial => "/shared/google_analytics" %>
+  </head>
 
-  <%= render :partial => "/shared/google_analytics" %>
-</head>
-
-<body>
-  <div id="wrapper"> 
-    <header>
+  <body>
+    <div id="wrapper"> 
+      <header>
       <div id="header-content">
 
         <div id="header-logo-and-login">
-          <%= link_to image_tag( "header/80kh_rect_logo_no_border.png", :id => "header-logo" ), "/" %> 
+          <%= link_to image_tag( "header/80kh_rect_logo_no_border.png",
+                                 :id => "header-logo" ), "/" %> 
           <%= render :partial => "/shared/user_nav"%>
         </div>
         <div style="clear: both;"></div>
@@ -35,31 +35,31 @@
         <%= render :partial => "/shared/menu",
                    :locals => {:current_page => @title} %>
 
-      <% if @title == 'Home' %>
-        <%= render :partial => '/shared/home' %>
-      <% end %>
-      <div style="clear: both;"></div>
+        <% if @title == 'Home' %>
+          <%= render :partial => '/shared/home' %>
+        <% end %>
+        <div style="clear: both;"></div>
       </div>
-    </header>
+      </header>
 
-    <section id='content'>
-    <% if flash %>
-      <% flash.each do |key,value| %>
-        <div class="<%= key %>"><%= value %></div>
-      <% end %>
-    <% end %>
+      <section id="content" class="container_12">
+        <% if flash %>
+          <% flash.each do |key,value| %>
+            <div class="<%= key %>"><%= value %></div>
+          <% end %>
+        <% end %>
 
-     <%= yield %>
-      <div style="clear: both;"></div>
-    </section>
+        <%= yield %>
+        <div style="clear: both;"></div>
+      </section>
 
-    <%= render :partial => "/shared/social_media" %>
-    <div class="push"><!-- sticky footer --></div>
-  </div>
+      <%= render :partial => "/shared/social_media" %>
+      <div class="push"><!-- sticky footer --></div>
+    </div>
 
-  <footer>
-    <%= render :partial => "/shared/footer" %>
-  </footer>
-</body>
+    <footer>
+      <%= render :partial => "/shared/footer" %>
+    </footer>
+  </body>
 </html>
 

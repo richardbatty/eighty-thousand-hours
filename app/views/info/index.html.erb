@@ -1,60 +1,64 @@
-<div class="box-half left-box">
-  <div class="fp-text">
-  <h2>Hot topic: Banker vs Aid Worker</h2>
-  <p><span class="bold">Seen us on the BBC?</span> Interested in our argument? Let us know what you think!</p>
-  <p>Here are <%= link_to "our reasons", "/banker-vs-aid-worker/op-ed" %> for why becoming a banker might be the more ethical career choice:</p>
+<div class="grid_6">
+  <div class="box">
+    <div class="fp-text">
+      <h2>Hot topic: Banker vs Aid Worker</h2>
+      <p><span class="bold">Seen us on the BBC?</span> Interested in our argument? Let us know what you think!</p>
+      <p>Here are <%= link_to "our reasons", "/banker-vs-aid-worker/op-ed" %> for why becoming a banker might be the more ethical career choice:</p>
+    </div>
+    <%= image_tag asset_path('front_page/video_image.png'), id: 'video_image' %>
+    <p>
+    Not convinced? Find answers to your objections below or send us an e-mail
+    with your opinion to <a href="mailto:info@80000hours.org">info@80000hours.org</a>.
+    </p>
+    <%= button_link 'Questions?', '/banker-vs-aid-worker/q-and-a' %>
+
+    <div class="break"></div>
+
+    <h2>What’s new?</h2>
+    <p>
+    Our most recent article: <a href="/blog">William Crouch of 80,000 Hours featured on the Today Programme with Ian Hislop</a>
+    </p>
+    <a href="/blog">
+      <img src="/assets/blog/hislop.png" class="float-left shadow" style="height:85px"/>&nbsp;
+      <img src="/assets/blog/willcrouch.png" class="float-left shadow" style="height:85px"/>&nbsp;
+
+      <img src="/assets/blog/todayprog.png" class="float-left shadow" style="height:85px"/>
+    </a>
   </div>
-  <%= image_tag asset_path('front_page/video_image.png'), id: 'video_image' %>
-  <p>
-  Not convinced? Find answers to your objections below or send us an e-mail
-  with your opinion to <a href="mailto:info@80000hours.org">info@80000hours.org</a>.
-  </p>
-  <%= button_link 'Questions?', '/banker-vs-aid-worker/q-and-a' %>
-
-  <div class="break"></div>
-
-  <h2>What’s new?</h2>
-  <p>
-  Our most recent article: <a href="/blog">William Crouch of 80,000 Hours featured on the Today Programme with Ian Hislop</a>
-  </p>
-  <a href="/blog">
-  <img src="/assets/blog/hislop.png" class="float-left shadow" style="height:85px"/>&nbsp;
-  <img src="/assets/blog/willcrouch.png" class="float-left shadow" style="height:85px"/>&nbsp;
-
-  <img src="/assets/blog/todayprog.png" class="float-left shadow" style="height:85px"/>
-  </a>
 </div>
 
-<div class="box-half right-box">
-  <div class="fp-text">
-    <h2>Why eighty thousand?</h2>
-    <p>
-    80,000 hours is the average amount of time in your life that you will spend working.
-    </p>
+<div class="grid_6">
+  <div class="box">
+    <div class="fp-text">
+      <h2>Why eighty thousand?</h2>
+      <p>
+      80,000 hours is the average amount of time in your life that you will spend working.
+      </p>
 
-    <p>
-    <span class="bold">That's a big opportunity.</span>
-    <br/>
-    A career can be more than just a job. Making the most of your eighty thousand hours means you'll benefit not only yourself but thousands of others, too. 
-    </p>
+      <p>
+      <span class="bold">That's a big opportunity.</span>
+      <br/>
+      A career can be more than just a job. Making the most of your eighty thousand hours means you'll benefit not only yourself but thousands of others, too. 
+      </p>
 
-    <p>
-    <span class="bold">We can help you do this!</span>
-    <br/>
-    Explore our site for exciting new ideas on ethical career choices and join our growing community of people who make a real difference.
-    </p>
-  </div>
+      <p>
+      <span class="bold">We can help you do this!</span>
+      <br/>
+      Explore our site for exciting new ideas on ethical career choices and join our growing community of people who make a real difference.
+      </p>
+    </div>
 
-  <div class="break"></div>
+    <div class="break"></div>
 
-  <h2>Meet our members!</h2>
-  <div class="center">
-    <% @members.each do |m| %>
-      <% if m.avatar && m.user %>
-        <%= link_to image_tag(m.avatar.url(:small), :class=>"fp-profile-image"),
-                    "/members/#{m.slug}"
-        %>
+    <h2>Meet our members!</h2>
+    <div class="center">
+      <% @members.each do |m| %>
+        <% if m.avatar && m.user %>
+          <%= link_to image_tag(m.avatar.url(:small), :class=>"fp-profile-image"),
+            "/members/#{m.slug}"
+          %>
+        <% end %>
       <% end %>
-    <% end %>
+    </div>
   </div>
 </div>
