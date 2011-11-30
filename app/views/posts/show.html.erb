@@ -11,10 +11,7 @@
     <%= markdown @post.author %>
   </div>
 
-  <a name="fb_share"></a> 
-  <script src="http://static.ak.fbcdn.net/connect.php/js/FB.Share" 
-    type="text/javascript">
-  </script>
+  <fb:like href="<%= request.url %>" send="true" width="450" show_faces="true"></fb:like>
 
   <div>
   <%= link_to 'View all blog posts', posts_path %>
