@@ -1,3 +1,4 @@
+
 - @posts.each do |post|
   %div.box.blog-entry
     %div{:id => "#{post.title.downcase.gsub(/ /,'-')}"}
@@ -12,7 +13,8 @@
 
     .attribution= markdown post.author
 
-    = link_to 'Comments', post_url(post, :anchor => "disqus_thread")
+    %a{"href" => "#{post_url(post)}#disqus_thread",
+       "data-disqus-identifier" => "blog-post-#{post.id}" }
     %div= render :partial => "disqus_count", :locals => { :post_id => post.id }
 %br
 %br
