@@ -39,4 +39,7 @@ EightyThousandHours::Application.routes.draw do
   match 'faq'                           => 'info#faq'
   match 'inspiring-others'              => 'info#inspiring_others'
   match 'giving-more'                   => 'info#giving_more'
+
+  # catch any other page requests and route them to our custom error page
+  match '*path'                         => 'errors#error404'
 end
