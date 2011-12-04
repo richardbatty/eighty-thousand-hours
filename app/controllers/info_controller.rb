@@ -106,16 +106,13 @@ class InfoController < ApplicationController
   
   def meet_the_team
     @title = "Meet the team"
-    @team_profiles = {
-      "President" => Member.on_team.where(      :team_role_id => TeamRole.find_by_name("President").id ),
-      "CEO" => Member.on_team.where(            :team_role_id => TeamRole.find_by_name("CEO").id ),
-      "Research" => Member.on_team.where(       :team_role_id => TeamRole.find_by_name("Research").id ),
-      "Community" => Member.on_team.where(      :team_role_id => TeamRole.find_by_name("Community").id ),
-      "Communications" => Member.on_team.where( :team_role_id => TeamRole.find_by_name("Communications").id ),
-      "Fundraising" => Member.on_team.where(    :team_role_id => TeamRole.find_by_name("Fundraising").id ),
-      "Tech" => Member.on_team.where(           :team_role_id => TeamRole.find_by_name("Tech").id ),
-      "Other" => Member.on_team.where(          :team_role_id => nil )
-    }
+    team_roles = %w[president managing_director research community
+                    communications fundraising tech other]
+    @team_profiles = team_roles.inject({}) do |profiles, role|
+      role = role.humanize.titleize
+      profiles[role] = Member.with_team_role(role)
+      profiles
+    end
   end
 
   def banker_vs_aid_worker
