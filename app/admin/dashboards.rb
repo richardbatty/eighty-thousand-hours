@@ -41,29 +41,29 @@ ActiveAdmin::Dashboards.build do
   #   section "Recent User", :priority => 1
   #
   # if can? :manage, Member
-    section "Unconfirmed Members (#{Member.unconfirmed.count})" do
-      table do
-        Member.unconfirmed.map do |member|
-          tr do
-            td link_to("#{member.id}: #{member.name}", admin_member_path(member))
-            td button_to("Confirm", confirm_admin_member_path(member), :method => :put)
-          end
-        end
-      end
-    end
-  
-    section "Members Without a User (dodgy)" do
-      ul do
-        Member.where(:user_id => nil).map do |member|
-          li link_to(member.name, edit_admin_member_path(member))
-        end
-      end
-    end
+  #   section "Unconfirmed Members (#{Member.unconfirmed.count})" do
+  #     table do
+  #       Member.unconfirmed.map do |member|
+  #         tr do
+  #           td link_to("#{member.id}: #{member.name}", admin_member_path(member))
+  #           td button_to("Confirm", confirm_admin_member_path(member), :method => :put)
+  #         end
+  #       end
+  #     end
+  #   end
+  # 
+  #   section "Members Without a User (dodgy)" do
+  #     ul do
+  #       Member.where(:user_id => nil).map do |member|
+  #         li link_to(member.name, edit_admin_member_path(member))
+  #       end
+  #     end
+  #   end
+  # # end
+  # 
+  # section "Unpublished Posts (#{Post.draft.count})" do
+  #   Post.draft.map do |post|
+  #     li link_to(post.name, edit_admin_member_path(member))
+  #   end
   # end
-  
-  section "Unpublished Posts (#{Post.draft.count})" do
-    Post.draft.map do |post|
-      li link_to(post.name, edit_admin_member_path(member))
-    end
-  end
 end
