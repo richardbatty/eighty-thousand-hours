@@ -1,66 +1,51 @@
 class PagesController < ApplicationController
+  before_filter :get_user, :only => [:index,:new,:edit]
+  before_filter :accessible_roles, :only => [:new, :edit, :show, :update, :create]
+  load_and_authorize_resource :only => [:show,:new,:destroy,:edit,:update]
+ 
   def index
     @pages = Page.all
-   
-    respond_to do |format|
-      format.html  # index.html.erb
-      format.json  { render :json => @pages }
-    end
-  end
-  def show
-    @page = Page.find(params[:id])
-   
-    respond_to do |format|
-      format.html  # show.html.erb
-      format.json  { render :json => @page }
-    end
   end
 
+  def show
+    @page = Page.find(params[:id])
+  end
 
   def edit
     @page = Page.find(params[:id])
   end
+
   def update
     @page = Page.find(params[:id])
    
-    respond_to do |format|
-      if @page.update_attributes(params[:page])
-        format.html  { redirect_to(@page,
-                      :notice => 'Page was successfully updated.') }
-        format.json  { render :json => {}, :status => :ok }
-      else
-        format.html  { render :action => "edit" }
-        format.json  { render :json => @page.errors,
-                      :status => :unprocessable_entity }
-      end
+    if @page.update_attributes(params[:page])
+       redirect_to(@page, :notice => 'Page was successfully updated.')
+    else
+      render :action => "edit"
     end
   end
 
   def new
     @page = Page.new
-   
-    #respond_to do |format|
-    #  format.html  # new.html.erb
-    #  format.json  { render :json => @page }
-    #end
   end
   
   def create
     @page = Page.new(params[:page])
    
-    respond_to do |format|
-      if @page.save
-        format.html  { redirect_to(@page,
-                      :notice => 'Page was successfully created.') }
-        format.json  { render :json => @page,
-                      :status => :created, :location => @page }
-      else
-        format.html  { render :action => "new" }
-        format.json  { render :json => @page.errors,
-                      :status => :unprocessable_entity }
-      end
+    if @page.save
+       redirect_to(@page, :notice => 'Page was successfully created.')
+    else
+      render :action => "new"
     end
   end
+
+  def accessible_roles
+    @accessible_roles = Role.accessible_by(current_ability,:read)
+  end
+  def get_user
+    @current_user = current_user
+  end
+
   #def index
   #  @pages = Page.all
   #  #render :show

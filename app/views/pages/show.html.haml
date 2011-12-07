@@ -1,8 +1,7 @@
-%p#notice= notice
-
-%h1= markdown @page.title
 .page_content= markdown @page.body
 
-= link_to 'Edit', edit_page_path(@page)
-\|
-= link_to 'Back', pages_path
+- if can? :update, @page
+  .admin-button
+    = link_to 'Edit', edit_page_path(@page)
+  .admin-button
+    = link_to 'List all pages', pages_path

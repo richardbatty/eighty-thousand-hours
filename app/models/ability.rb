@@ -24,7 +24,10 @@ class Ability
       # can :manage, Post, :user_id => user.id
       can :manage, Post
       # can :read, :all
+    elsif user.has_role? :web_admin
+      can :manage, Page
     else
+      can :read, Page
       can :read, Post, :published => true
     end
   end

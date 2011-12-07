@@ -53,7 +53,6 @@ ActiveRecord::Schema.define(:version => 20111207115236) do
   create_table "pages", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.string   "author"
     t.string   "slug"
     t.datetime "created_at"
     t.datetime "updated_at"
