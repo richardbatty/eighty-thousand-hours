@@ -2,8 +2,9 @@
 
 = markdown @page.body
 
-.box-half.right-box
-  %h2 Meet our members!
-  - @members.each do |m|
-    - if m.avatar && m.user
-      = link_to image_tag(m.avatar.url(:small), :class=>"fp-profile-image"),"/members/#{m.slug}"
+.grid_6
+  .box
+    %h2 Meet our members!
+    - @members.each do |m|
+      - if m.avatar && m.user
+        = link_to image_tag(m.avatar.url(:small), :class=>"fp-profile-image"),"/members/#{m.slug}"
