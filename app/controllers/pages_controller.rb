@@ -1,20 +1,82 @@
 class PagesController < ApplicationController
   def index
-    @title,@body = getContent( "home" )
-    render :show
+    @pages = Page.all
+   
+    respond_to do |format|
+      format.html  # index.html.erb
+      format.json  { render :json => @pages }
+    end
   end
-
   def show
-    @title,@body = getContent(params[:page_slug])
+    @page = Page.find(params[:id])
+   
+    respond_to do |format|
+      format.html  # show.html.erb
+      format.json  { render :json => @page }
+    end
   end
 
-  private
-  def getContent( slug )
-    page = Page.find_by_slug(slug)
-    title = page.title
-    body = page.body
-    return [title,body]
+
+  def edit
+    @page = Page.find(params[:id])
   end
+  def update
+    @page = Page.find(params[:id])
+   
+    respond_to do |format|
+      if @page.update_attributes(params[:page])
+        format.html  { redirect_to(@page,
+                      :notice => 'Page was successfully updated.') }
+        format.json  { render :json => {}, :status => :ok }
+      else
+        format.html  { render :action => "edit" }
+        format.json  { render :json => @page.errors,
+                      :status => :unprocessable_entity }
+      end
+    end
+  end
+
+  def new
+    @page = Page.new
+   
+    #respond_to do |format|
+    #  format.html  # new.html.erb
+    #  format.json  { render :json => @page }
+    #end
+  end
+  
+  def create
+    @page = Page.new(params[:page])
+   
+    respond_to do |format|
+      if @page.save
+        format.html  { redirect_to(@page,
+                      :notice => 'Page was successfully created.') }
+        format.json  { render :json => @page,
+                      :status => :created, :location => @page }
+      else
+        format.html  { render :action => "new" }
+        format.json  { render :json => @page.errors,
+                      :status => :unprocessable_entity }
+      end
+    end
+  end
+  #def index
+  #  @pages = Page.all
+  #  #render :show
+  #end
+
+  #def show
+  #  @page = getContent(params[:slug])
+  #  if !@page
+  #    render :error
+  #  end
+  #end
+
+  #private
+  #def getContent( slug )
+  #  page = Page.find_by_slug(slug)
+  #end
 
 
   #def index

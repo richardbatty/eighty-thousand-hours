@@ -4,4 +4,6 @@ class Page < ActiveRecord::Base
 
   # for versioning with paper_trail
   has_paper_trail
+
+  attr_accessible :title,:body
 end
