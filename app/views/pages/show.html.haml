@@ -1,4 +1,7 @@
-.page_content= markdown @page.body
+%div{ :class => @page.show_box ? 'box' : nil }
+  - if @page.show_title
+    %h1= @page.title
+  = markdown @page.body
 
 - if can? :update, @page
   .admin-button
