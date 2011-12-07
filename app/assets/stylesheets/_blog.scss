@@ -1,9 +1,6 @@
 .blog {
   .entry {
-
     .read-more {
-      margin-top: 10px;
-      margin-bottom: 15px;
       a{
         @include box_shadow($magenta_2, 0px, 0px, 2px);
         @include rounded_borders(#ccc, 1px, 6px);
@@ -15,36 +12,57 @@
       }
     }
 
-    a {
-      &h1 {
-        color: $text_color;
+    .title {
+      font-size: 1.4em;
+      font-weight: bold;
+      margin-bottom: 5px;
+
+      a {
+        color: $text_color !important;
 
         &:hover {
-          color: $magenta_2;
+          color: $magenta_2 !important;
         }
       }
     }
+
+    .date {
+      font-size: 1.4em;
+      color: #555;
+      padding-bottom: 5px;
+
+      border-bottom: 1px solid #ccc;
+    }
+    
+    .content {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
   }
-  .sidebar {
+
+  #sidebar {
     float: right;
+    /*position: fixed;*/
+    /*left: 872px;*/
+    /*top: 223px;*/
   }
+
   .attribution {
     margin-top: 10px;
+    margin-bottom: 10px;
     border-top: 1px solid #ccc;
+    border-bottom: 1px solid #ccc;
     font-style: italic;
+
+    p {
+      padding:0px;
+      margin:0px;
+      padding-top: 5px;
+      padding-bottom: 5px;
+    }
   }
-  .title {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-bottom: 10px;
-  };
-  .date {
-    font-size: 1.0em;
-    margin-bottom: 10px;
-  };
   .bold {
     font-weight: bold;
   }
 }
-
 

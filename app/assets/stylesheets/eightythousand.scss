@@ -14,6 +14,7 @@
   @include box_shadow(#ccc, 0px, 0px, 10px);
 }
 
+
 html, body {
   height: 100%;
 }
@@ -23,6 +24,8 @@ body {
 
   color: $text_color;
   background: $body_bg_color;
+
+  line-height: 2.5em;
 }
 
 #wrapper {
@@ -93,8 +96,6 @@ header {
   text-align: center;
 }
 
-@import "blog";
-@import "forms";
 
 .find-out-more {
   cursor: pointer;
@@ -753,3 +754,5 @@ html[xmlns] #nav {
     }
 }
 
+@import "blog";
+@import "forms";
