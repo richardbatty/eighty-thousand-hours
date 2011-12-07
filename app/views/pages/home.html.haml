@@ -1,3 +1,5 @@
+= render :partial => 'admin_box'
+
 = markdown @page.body
 
 .box-half.right-box
@@ -5,9 +7,3 @@
   - @members.each do |m|
     - if m.avatar && m.user
       = link_to image_tag(m.avatar.url(:small), :class=>"fp-profile-image"),"/members/#{m.slug}"
-
-- if can? :update, @page
-  .admin-button
-    = link_to 'Edit', edit_page_path(@page)
-  .admin-button
-    = link_to 'List all pages', pages_path

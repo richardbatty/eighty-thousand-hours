@@ -1,10 +1,5 @@
+= render :partial => 'admin_box'
 %div{ :class => @page.show_box ? 'box' : nil }
   - if @page.show_title
     %h1= @page.title
   = markdown @page.body
-
-- if can? :update, @page
-  .admin-button
-    = link_to 'Edit', edit_page_path(@page)
-  .admin-button
-    = link_to 'List all pages', pages_path
