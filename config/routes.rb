@@ -12,31 +12,24 @@ EightyThousandHours::Application.routes.draw do
   match 'join'          => 'users#new', :as => :join
   match 'members/all'   => 'users#all', :as => :all
   resources :users, :path => "members"
-  
-  root  :to                             => 'info#index'
+
+  # pages which don't live in the database as they can't be
+  # converted to pure Markdown
+  match 'events'             => 'info#events'
+  match 'events/past-events' => 'info#past_events'
+  match 'meet-the-team'      => 'info#meet_the_team'
+ 
+  # pages from old HIC site
   match 'ethical-career'                => 'info#banker_vs_aid_worker'
   match 'old-ethical-career'            => 'info#ethical_career'
   match 'what-you-can-do'               => 'info#what_you_can_do'
   match 'what-you-can-do/my-donations'  => 'info#my_donations'
   match 'what-you-can-do/my-career'     => 'info#my_career'
   match 'what-we-do'                    => 'info#what_we_do'
-  match 'volunteer'                     => 'info#volunteer'
-  match 'events'                        => 'info#events'
-  match 'events/past-events'            => 'info#past_events'
-  match 'events/orbis-stockpicking-challenge' => 'info#orbis_stockpicking_challenge'
-  match 'career-research'               => 'info#career_research'
-  match 'contact-us'                    => 'info#contact_us'
-  match 'the-pledge'                    => 'info#the_pledge'
-  match 'find-out-more'                 => 'info#find_out_more'
-  match 'press'                         => 'info#press'
-  match 'join/questions'                => 'info#application_faq'
-  match 'coming-soon'                   => 'info#coming_soon'
-  match 'career-profiles'               => 'info#career_profiles'
-  match 'meet-the-team'                 => 'info#meet_the_team'
-  match 'banker-vs-aid-worker'          => 'info#banker_vs_aid_worker'
-  match 'banker-vs-aid-worker/op-ed'    => 'info#op_ed'
-  match 'banker-vs-aid-worker/q-and-a'  => 'info#q_and_a'
-  match 'faq'                           => 'info#faq'
-  match 'inspiring-others'              => 'info#inspiring_others'
   match 'giving-more'                   => 'info#giving_more'
+
+  # all other pages are stored as Markdown in the database
+  root :to => 'pages#show', :id => "home"
+  resources :pages
+  resources :pages, :path => '/', :only => [:show]
 end

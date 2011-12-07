@@ -1,0 +1,5 @@
+= render :partial => 'admin_box'
+%div{ :class => @page.show_box ? 'box' : nil }
+  - if @page.show_title
+    %h1= @page.title
+  = markdown @page.body

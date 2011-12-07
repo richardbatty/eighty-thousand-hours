@@ -33,5 +33,9 @@ class Member < ActiveRecord::Base
   scope :with_user, joins(:user).includes(:user)
   scope :confirmed,   with_user.where(:confirmed => true)
   scope :unconfirmed, with_user.where(:confirmed => false)
-  scope :on_team, confirmed.where(:on_team => true)
+  scope :on_team, confirmed.where(:on_team => true).joins(:team_role)
+  
+  def self.with_team_role(role)
+    on_team.where(team_roles: {name: role.to_s.humanize.titleize})
+  end
 end

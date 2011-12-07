@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.1.1'
+gem 'rails', '>= 3.1'
 
 gem 'devise'
 # gem 'omniauth'
@@ -44,6 +44,9 @@ gem 'exception_notification'
 # lightbox gem
 gem 'fancybox-rails'
 
+# for versioning of content
+gem 'paper_trail', '~> 2'
+
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   # gem 'growl_notify'
@@ -68,8 +71,6 @@ gem 'jquery-rails'
 group :development, :test do
   gem 'rspec-rails'
   gem "capybara"
-  # gem 'growl'
-  # gem 'growl_notify'
   gem 'ruby_gntp'
   gem 'guard'
   gem 'rb-inotify', :require => false
