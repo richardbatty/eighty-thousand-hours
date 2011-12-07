@@ -2,14 +2,14 @@
   <div class="fp-text">
   <h2>Hot topic: Banker vs Aid Worker</h2>
   <p><span class="bold">Seen us on the BBC?</span> Interested in our argument? Let us know what you think!</p>
-  <p>Here are <%= link_to "our reasons", "/banker-vs-aid-worker/op-ed" %> for why becoming a banker might be the more ethical career choice:</p>
+  <p>Here are <a href="/banker-vs-aid-worker-op-ed">our reasons</a> for why becoming a banker might be the more ethical career choice:</p>
   </div>
-  <%= image_tag asset_path('front_page/video_image.png'), id: 'video_image' %>
+  <img src="/assets/front_page/video_image.png" id="video_image" />
   <p>
   Not convinced? Find answers to your objections below or send us an e-mail
   with your opinion to <a href="mailto:info@80000hours.org">info@80000hours.org</a>.
   </p>
-  <%= button_link 'Questions?', '/banker-vs-aid-worker/q-and-a' %>
+  <a href='/banker-vs-aid-worker/q-and-a' class='button'>Questions?</a>
 
   <div class="break"></div>
 
@@ -44,9 +44,10 @@
     Explore our site for exciting new ideas on ethical career choices and join our growing community of people who make a real difference.
     </p>
   </div>
+</div>
+HELLO
 
-  <div class="break"></div>
-
+<div class="box-half right-box">
   <h2>Meet our members!</h2>
   <div class="center">
     <% @members.each do |m| %>

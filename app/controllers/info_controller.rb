@@ -1,16 +1,4 @@
 class InfoController < ApplicationController
-  def index
-    @title = "Home"
-
-    # for profile photos on front page
-    begin
-      ids = [28,27,26,24,38,43,44,45,14,25]
-      @members = Member.find( (ids.shuffle)[0..5] ).shuffle
-    rescue
-      @members = Member.limit( 6 )
-    end
-  end
-  
   def events
     @gcal_params = "orderby=starttime&futureevents=true"
     @title = "Events"

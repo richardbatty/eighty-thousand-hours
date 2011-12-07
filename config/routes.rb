@@ -1,6 +1,4 @@
 EightyThousandHours::Application.routes.draw do
-  resources :test_classes
-
   ActiveAdmin.routes(self)
 
   devise_for :users, :path => 'accounts'
@@ -10,7 +8,6 @@ EightyThousandHours::Application.routes.draw do
   resources :supporters, :only => [:new, :create], :path => 'show-your-support'
   match 'show-your-support' => 'supporters#new'
 
-
   # override /members/new as /join
   match 'join'          => 'users#new', :as => :join
   match 'members/all'   => 'users#all', :as => :all
@@ -18,7 +15,6 @@ EightyThousandHours::Application.routes.draw do
 
   # pages which don't live in the database as they can't be
   # converted to pure Markdown
-  root :to                   => 'info#index'
   match 'events'             => 'info#events'
   match 'events/past-events' => 'info#past_events'
   match 'meet-the-team'      => 'info#meet_the_team'
@@ -33,6 +29,7 @@ EightyThousandHours::Application.routes.draw do
   match 'giving-more'                   => 'info#giving_more'
 
   # all other pages are stored as Markdown in the database
+  root :to => 'pages#show', :id => "home"
   resources :pages
   resources :pages, :path => '/', :only => [:show]
 end

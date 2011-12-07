@@ -9,6 +9,20 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find(params[:id])
+    
+    if @page.title == "Home"
+      # for profile photos on front page
+      begin
+        ids = [28,27,26,24,38,43,44,45,14,25]
+        @members = Member.find( (ids.shuffle)[0..5] ).shuffle
+      rescue
+        @members = Member.limit( 6 )
+      end
+
+      render :home
+    end
+
+    #otherwise render show.html...
   end
 
   def edit
