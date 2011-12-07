@@ -1,30 +1,36 @@
 .blog
-  .grid_5.sidebar
-    .box
-      %h2 Latest blog posts:
-      - @posts[0..3].each do |post|
-        .title= post.title
-        .date= post.created_at.strftime("%B %d, %Y")
+  #sidebar
+    .grid_4
+      .box
+        <div id="popularthreads" class="dsq-widget">
+        <h2 class="dsq-widget-title">Popular Posts</h2>
+        <script type="text/javascript" src="http://80000hours.disqus.com/popular_threads_widget.js?num_items=3"></script>
+        </div>
+        <a href="http://disqus.com/">Powered by Disqus</a>
 
-- @posts.each do |post|
-  .grid_7
-    .box.blog-entry
-      %div{:id => "#{post.title.downcase.gsub(/ /,'-')}"}
-        %a{:href => post_path(post)}
-          .title= post.title
-      .date= post.created_at.strftime("%B %d, %Y")
-      = markdown post.get_teaser
+.blog
+  - @posts.each do |post|
+    .grid_8
+      .box
+        .entry
+          .title
+            %a{:href => post_path(post)}
+              = post.title
+          .date= post.created_at.strftime("%B %d, %Y")
 
-      .read-more
-        %a{:href => post_path(post)}
-          Read more...
-
-      .attribution= markdown post.author
-
-      %a{"href" => "#{post_url(post)}#disqus_thread",
-         "data-disqus-identifier" => "blog-post-#{post.id}" }
-      %div= render :partial => "disqus_count", :locals => { :post_id => post.id }
-
-      <fb:like href="#{post_url(post)}" send="false" width="450" show_faces="false"></fb:like>
+          .content
+            = markdown post.get_teaser
+  
+            .read-more
+              %a{:href => post_path(post)}
+                Read more...
+  
+          .attribution= markdown post.author
+  
+          %a{"href" => "#{post_url(post)}#disqus_thread",
+             "data-disqus-identifier" => "blog-post-#{post.id}" }
+          %div= render :partial => "disqus_count", :locals => { :post_id => post.id, :post_title => post.title }
+  
+          <fb:like href="#{post_url(post)}" send="false" width="450" show_faces="false"></fb:like>
 %br
 %br

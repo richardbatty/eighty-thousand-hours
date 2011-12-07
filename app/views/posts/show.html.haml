@@ -1,13 +1,15 @@
 .blog
-  .grid_4.sidebar
-    .box
-      = link_to 'Comments', post_url(@post, :anchor => "disqus_thread")
-      %a{:name=>"fb_share"}
-      %script{:src=>"http://static.ak.fbcdn.net/connect.php/js/FB.Share",:type=>"text/javascript"}
-
-      .attribution
-        = markdown @post.author
-
+  #sidebar
+    .grid_4
+      .box
+        <a href="#disqus_thread">Jump to comments</a>
+        <br/>
+        <br/>
+        <fb:like href="#{post_url(@post)}" send="false" width="250" show_faces="false"></fb:like>
+        <br/>
+      
+        .attribution
+          =markdown ("written by: " + @post.author)
   .grid_8
     .box.entry
       .title
@@ -15,17 +17,16 @@
       .date
         = @post.created_at.strftime("%B %d, %Y")
 
-      .post-body
+      .content
         = markdown @post.body
 
       .attribution
         = markdown @post.author
 
-      %a{:name=>"fb_share"}
-      %script{:src=>"http://static.ak.fbcdn.net/connect.php/js/FB.Share",:type=>"text/javascript"}
-
-      %div 
-        = link_to 'View all blog posts', posts_path
-
       #disqus_thread
-        = render :partial => "disqus_embed", :locals => { :post_id => @post.id }
+        = render :partial => "disqus_embed", :locals => { :post_id => @post.id, :post_title => @post.title }
+  .grid_8 
+    .box.center
+      = link_to 'View all blog posts', posts_path, :class=>"button"
+
+
