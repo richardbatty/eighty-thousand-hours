@@ -1,109 +1,106 @@
 <% if @user.errors.any? %>
   <div class="alert">
-  <div id="errorExplanation">
-    <h2><%= pluralize(@user.errors.count, "error") %> prohibited this application from being accepted:</h2>
-    <ul>
-    <% @user.errors.full_messages.each do |msg| %>
-      <li><%= msg %></li>
-    <% end %>
-    </ul>
+    <div id="errorExplanation">
+      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this application from being accepted:</h2>
+      <ul>
+        <% @user.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
   </div>
-</div>
 <% end %>
 
 <div class="box">
-<h2>Join our community</h2>
-<p>
-People in the <%= org_name %> community have a variety of career ambitions, such as:
-</p>
-<ul>
-  <li>Donating money through professional philanthropy</li>
-  <li>Conducting ground-breaking research</li>
-  <li>Inspiring others to do good</li>
-</ul>
+  <h2>Join our community</h2>
+  <p>
+  People in the <%= org_name %> community have a variety of career ambitions, such as:
+  </p>
+  <ul>
+    <li>Donating money through professional philanthropy</li>
+    <li>Conducting ground-breaking research</li>
+    <li>Inspiring others to do good</li>
+  </ul>
 
-<p>
-They have all promised to use at least 10%
-of their time or money to support the most effective causes.  They also aim to
-pursue a career that increases the amount of good that they can do with the
-time or money that they give. If you'd like to join us and help others with
-your career, then <%= link_to "chat to us", "/contact-us" %> or fill in the form below.
-</p>
+  <p>
+  They have all promised to use at least 10%
+  of their time or money to support the most effective causes.  They also aim to
+  pursue a career that increases the amount of good that they can do with the
+  time or money that they give. If you'd like to join us and help others with
+  your career, then <%= link_to "chat to us", "/contact-us" %> or fill in the form below.
+  </p>
 
-<p>
-We like to talk to people who are interested in joining the <%= org_name %> 
-community, so if you are interested or have any questions, <%= link_to "contact one of our members", "/contact-us" %>.
-</p>
+  <p>
+  We like to talk to people who are interested in joining the <%= org_name %> 
+  community, so if you are interested or have any questions, <%= link_to "contact one of our members", "/contact-us" %>.
+  </p>
 
-<div class="center large_margin">
-<a class="button" href="/application-faq">Questions about the pledge?</a>
-</div>
+  <div class="center large_margin">
+    <a class="button" href="/application-faq">Questions about the pledge?</a>
+  </div>
 
-<hr/>
-
-<h1>Apply for membership</h1>
-<br/>
-<div class="profile-form">
-<%= form_for @user do |u| %>
-  <%= field_set_tag "Account" do %>
-    <p><%= u.label :name %></p>
-    <p><%= u.text_field :name %></p>
-    <p><%= u.label :email %></p>
-    <p><%= u.email_field :email %></p>
-    <p><%= u.label :password %></p>
-    <p><%= u.password_field :password %></p>
-    <p><%= u.label :password_confirmation %></p>
-    <p><%= u.password_field :password_confirmation %></p>
-  <% end %>
-  
-  <%= u.fields_for :member do |m| %>
-    <%= field_set_tag "Profile" do %>
-      <p><%= m.label :background %></p>
-      <p><%= m.text_area :background %></p>
-      <p><%= m.label :career_plans %></p>
-      <p><%= m.text_area :career_plans %></p>
-      <p><%= m.label :inspiration, "Inspiration (optional)" %></p>
-      <p><%= m.text_area :inspiration %></p>
-      <p><%= m.label :interesting_fact, "Interesting fact (optional)" %></p>
-      <p><%= m.text_area :interesting_fact %></p>
-      <p><%= m.label :location, "Location (optional)"%></p>
-      <p><%= m.text_field :location %></p>
-      <p><%= m.label :phone, "Phone number (optional)" %></p>
-      <p><%= m.phone_field :phone %></p>
-        <!--<a href="#" rel='popover' data-content="We'd like to call you to talk about your membership, and will never release your number to any external party or display it on the site." data-original-title="Let's talk.">Why?</a>-->
-      <p><%= m.label :avatar, "Profile picture (optional)" %></p>
-      <p><%= m.file_field :avatar %></p>
-    <% end %>
-    
-    <%= field_set_tag "Privacy" do %>
-      <p>
-        <%= m.check_box :show_name %>
-        <%= m.label :show_name, "Display my name on the site" %>
-      </p>
-      <p>
-        <%= m.check_box :show_info %>
-        <%= m.label :show_info, "Display my profile on the site" %>
-      </p>
-    <% end %>
-  <% end %>
-  
-  <p>How do you intend to fulfil the pledge? What are your career plans?</p>
-  
   <hr/>
-    <h1>The Pledge</h1>
-    <p>
-    <%= render :partial => 'shared/pledge' %>
-    </p>
-    <div class="center">
-      <%= u.fields_for :member do |m| %>
-        <p><%= m.check_box 'pledge' %> I hereby accept the pledge.</p>
+
+  <h1>Apply for membership</h1>
+  <br/>
+  <div class="profile-form">
+    <%= form_for @user do |u| %>
+      <%= field_set_tag "Account" do %>
+        <p><%= u.label :name %></p>
+        <p><%= u.text_field :name %></p>
+        <p><%= u.label :email %></p>
+        <p><%= u.email_field :email %></p>
+        <p><%= u.label :password %></p>
+        <p><%= u.password_field :password %></p>
+        <p><%= u.label :password_confirmation %></p>
+        <p><%= u.password_field :password_confirmation %></p>
       <% end %>
+
+      <%= u.fields_for :member do |m| %>
+        <%= field_set_tag "Profile" do %>
+          <p><%= m.label :background %></p>
+          <p><%= m.text_area :background %></p>
+          <p><%= m.label :career_plans %></p>
+          <p><%= m.text_area :career_plans %></p>
+          <p><%= m.label :inspiration, "Inspiration (optional)" %></p>
+          <p><%= m.text_area :inspiration %></p>
+          <p><%= m.label :interesting_fact, "Interesting fact (optional)" %></p>
+          <p><%= m.text_area :interesting_fact %></p>
+          <p><%= m.label :location, "Location (optional)"%></p>
+          <p><%= m.text_field :location %></p>
+          <p><%= m.label :phone, "Phone number (optional)" %></p>
+          <p><%= m.phone_field :phone %></p>
+          <!--<a href="#" rel='popover' data-content="We'd like to call you to talk about your membership, and will never release your number to any external party or display it on the site." data-original-title="Let's talk.">Why?</a>-->
+          <p><%= m.label :avatar, "Profile picture (optional)" %></p>
+          <p><%= m.file_field :avatar %></p>
+        <% end %>
+
+        <%= field_set_tag "Privacy" do %>
+          <p>
+          <%= m.check_box :show_name %>
+          <%= m.label :show_name, "Display my name on the site" %>
+          </p>
+          <p>
+          <%= m.check_box :show_info %>
+          <%= m.label :show_info, "Display my profile on the site" %>
+          </p>
+        <% end %>
+      <% end %>
+
+      <hr/>
+      <h1>The Pledge</h1>
+      <p>
+      <%= render :partial => 'shared/pledge' %>
+      </p>
+      <div class="center">
+        <%= u.fields_for :member do |m| %>
+          <p><%= m.check_box 'pledge' %> I hereby accept the pledge.</p>
+        <% end %>
+      </div>
     </div>
-  </div>
-  
-  <div class="center">
-    <%= u.submit "Take the pledge and apply for membership", :class=>"button" %>
-  </div>
-<% end %>
-</div>
+
+    <div class="center">
+      <%= u.submit "Take the pledge and apply for membership", :class=>"button" %>
+    </div>
+  <% end %>
 </div>
