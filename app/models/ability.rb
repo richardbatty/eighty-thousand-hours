@@ -24,7 +24,7 @@ class Ability
       # can :manage, Post, :user_id => user.id
       can :manage, Post
       # can :read, :all
-    elsif user.has_role? :web_admin
+    elsif user.has_role? :webeditor
       can :manage, Page
     else
       can :read, Page
