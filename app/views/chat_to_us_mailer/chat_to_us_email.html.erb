@@ -1,0 +1,20 @@
+Chat request from '<%= @name %>'
+===========================================
+
+Someone calling themselves '<%= @name %>' has requested a chat with an 80,000
+Hours member.
+
+Name: <%= @name %>
+Email: <%= @email.nil? ? 'none' : @email %>
+Phone: <%= @phone.nil? ? 'none' : @phone %>
+Skype: <%= @skype.nil? ? 'none' : @skype %>
+Wants to chat about: 
+  [<%= @options[career].nil? ? ' ' : @options[career] %>] Your career
+  [<%= @options[joining].nil? ? ' ' : @options[joining] %>] Joining
+  [<%= @options[questions].nil? ? ' ' : @options[questions] %>] Questions
+  [<%= @options[other].nil? ? ' ' : @options[other] %>] Other
+
+Please put them in touch with an appropriate member!
+
+Thanks!
+
