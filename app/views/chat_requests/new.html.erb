@@ -1,0 +1,42 @@
+<%= form_tag(:controller => "chat_to_us", :action => "create") do %>
+  <div>
+  <%= label_tag(:name, "Your name:") %>
+  <%= text_field_tag(:name) %>
+  </div>
+
+  <div>
+  <%= label_tag(:email, "Email (optional):") %>
+  <%= text_field_tag(:email) %>
+  </div>
+  <div>
+  <%= label_tag(:phone, "Phone (optional):") %>
+  <%= text_field_tag(:phone) %>
+  </div>
+  <div>
+  <%= label_tag(:skype, "Skype (optional):") %>
+  <%= text_field_tag(:skype) %>
+  </div>
+
+  <div>
+  <%= check_box_tag(:options_career) %>
+  <%= label_tag(:options_career, "Your career") %>
+  </div>
+
+  <div>
+  <%= check_box_tag(:options_joining) %>
+  <%= label_tag(:options_joining, "Joining 80,000 Hours") %>
+  </div>
+
+  <div>
+  <%= check_box_tag(:options_questions) %>
+  <%= label_tag(:options_questions, "Questions") %>
+  </div>
+
+  <div>
+  <%= check_box_tag(:options_other) %>
+  <%= label_tag(:options_other, "Other") %>
+  <%= label_tag(:other_text, "Details:") %>
+  <%= text_field_tag(:other_text) %>
+  </div>
+  <%= submit_tag("Submit") %>
+<% end %>

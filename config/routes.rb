@@ -8,6 +8,9 @@ EightyThousandHours::Application.routes.draw do
   resources :supporters, :only => [:new, :create], :path => 'show-your-support'
   match 'show-your-support' => 'supporters#new'
 
+  resources :chat_requests, :only => [:new,:create], :path => 'chat-to-us'
+  match 'chat-to-us' => 'chat_requests#new'
+
   # override /members/new as /join
   match 'join'          => 'users#new', :as => :join
   match 'members/all'   => 'users#all', :as => :all
