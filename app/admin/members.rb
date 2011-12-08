@@ -3,6 +3,7 @@ ActiveAdmin.register Member do
   controller.authorize_resource
   
   scope :confirmed
+  scope :unconfirmed
   # show do
   #   attributes_table do
   #     tbody do
