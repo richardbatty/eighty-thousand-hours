@@ -1,18 +1,21 @@
+
 Chat request from '<%= @name %>'
-===========================================
+================================
 
 Someone calling themselves '<%= @name %>' has requested a chat with an 80,000
 Hours member.
 
 Name: <%= @name %>
-Email: <%= @email.nil? ? 'none' : @email %>
-Phone: <%= @phone.nil? ? 'none' : @phone %>
-Skype: <%= @skype.nil? ? 'none' : @skype %>
-Wants to chat about: 
-  [<%= @options[career].nil? ? ' ' : @options[career] %>] Your career
-  [<%= @options[joining].nil? ? ' ' : @options[joining] %>] Joining
-  [<%= @options[questions].nil? ? ' ' : @options[questions] %>] Questions
-  [<%= @options[other].nil? ? ' ' : @options[other] %>] Other
+Email: <%= @email %>
+Phone: <%= @phone %>
+Skype: <%= @skype %>
+
+<%= @name %> wants to chat about: 
+<% output = { :career    => "✔ Their career",
+              :joining   => "✔ Joining 80,000 Hours",
+              :questions => "✔ Questions about 80,000 Hours",
+              :other     => "✔ Other: #{@options[:other_text]}"} -%>
+<% output.each do |k,v| -%><%= @options[k] == '1' ? "    "+v+"\n" : "" %><% end -%>
 
 Please put them in touch with an appropriate member!
 

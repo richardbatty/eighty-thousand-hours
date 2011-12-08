@@ -18,6 +18,11 @@ form {
     border:1px solid $magenta_2;
   }
 
+  legend {
+    font-weight: bold;
+    font-size: 1.2em;
+  }
+
   .button {
     border: 1px solid lighten($magenta_2,10%) !important;
     min-width: 200px;
