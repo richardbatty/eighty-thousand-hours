@@ -41,6 +41,10 @@ EightyThousandHours::Application.configure do
   if ENV['COOKIE_SECRET'].nil?
     ENV['COOKIE_SECRET'] = "secretcookiestringfordevelopment"*5
   end
+  
+  PAPERCLIP_STORAGE_OPTIONS = {:storage => :s3, 
+                               :s3_credentials => "#{Rails.root}/config/s3.yml",
+                               :path => "/profiles/:style/:id/:filename"}
 end
 
 silence_warnings do

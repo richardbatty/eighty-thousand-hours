@@ -44,4 +44,6 @@ EightyThousandHours::Application.configure do
   if ENV['COOKIE_SECRET'].nil?
     ENV['COOKIE_SECRET'] = "secretcookiestringfortesting"*5
   end
+  
+  PAPERCLIP_STORAGE_OPTIONS = {}
 end
