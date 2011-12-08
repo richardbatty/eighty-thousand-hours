@@ -53,5 +53,11 @@ module EightyThousandHours
     
     # devise instructions said maybe want to do this for Rails 3.1 on Heroku...
     config.assets.initialize_on_precompile = false
+    
+    # generators
+    config.generators do |g|
+      # g.stylesheets         false
+      g.fixture_replacement :factory_girl, dir: "spec/factories"
+    end
   end
 end
