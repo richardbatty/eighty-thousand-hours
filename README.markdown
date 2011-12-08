@@ -1,4 +1,4 @@
-{<img src="https://secure.travis-ci.org/rjshade/eighty-thousand-hours.png" />}[http://travis-ci.org/rjshade/eighty-thousand-hours]
+[![Build Status](https://secure.travis-ci.org/rjshade/eighty-thousand-hours.png)](http://travis-ci.org/rjshade/eighty-thousand-hours)
 
 80,000 Hours
 ============
