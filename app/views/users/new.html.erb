@@ -34,6 +34,13 @@ and we'll contact you soon.
       <div id="errorExplanation">
         <h1><%= pluralize(@user.errors.count, "error") %> prohibited this application from being accepted!</h1>
         Please fill in all the required fields, and make sure to accept the pledge!
+        <ul>
+          <% @user.errors.reverse_each do |field,msg| %>
+            <%# only want to print field if coming from Devise (password, or email). %>
+            <%# otherwise we print our custom error messges as defined in models user and member %>
+            <li><%= (field == :password || field == :email) ? field.to_s.humanize : '' %> <%= msg %></li>
+          <% end %>
+        </ul>
       </div>
     </div>
   <% end %>
@@ -79,7 +86,7 @@ and we'll contact you soon.
     </div>
 
     <div class="center">
-      <%= u.submit "Take the pledge and apply for membership", :class=>"button" %>
+      <%= u.submit "Take the pledge and apply to join 80,000 Hours", :class=>"button" %>
     </div>
   <% end %>
 </div>

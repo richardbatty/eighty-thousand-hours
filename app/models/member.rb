@@ -23,13 +23,12 @@ class Member < ActiveRecord::Base
                                     :unless => Proc.new {|m| m[:image].nil?}
   
   # all application fields are mandatory
-  validates_presence_of :apply_occupation,
-                        :apply_career_plans,
-                        :apply_reasons_for_joining,
-                        :apply_heard_about_us,
-                        :apply_spoken_to_existing_member
-
-  validates_acceptance_of :pledge
+  validates_presence_of :apply_occupation,                :message => "You must tell us what you currently do!"
+  validates_presence_of :apply_career_plans,              :message => "Please give some details about your career plans"
+  validates_presence_of :apply_reasons_for_joining,       :message => "Tell us why you'd like to join 80,000 Hours"
+  validates_presence_of :apply_heard_about_us,            :message => "We'd like to know how you heard about us"
+  validates_presence_of :apply_spoken_to_existing_member, :message => "Do you know an existing member? 'No' is ok!"
+  validates_acceptance_of :pledge,                        :message => "You must accept the 80,000 hours pledge"
 
   # a Member is always tied to a User 
   belongs_to :user

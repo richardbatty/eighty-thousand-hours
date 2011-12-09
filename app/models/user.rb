@@ -12,9 +12,9 @@ class User < ActiveRecord::Base
 
   attr_accessible :name, :email, :password, :password_confirmation, :remember_me, :member_attributes
 
-  validates_presence_of :name
-  validates_uniqueness_of :name, :email, case_sensitive: false
-  validates_confirmation_of :password
+  # note that Devise handles the validation for email and password
+  validates_presence_of   :name,                         :message => "You must tell us your name"
+  validates_uniqueness_of :name,  case_sensitive: false, :message => "That name is already taken!"
 
   has_and_belongs_to_many :roles
   
