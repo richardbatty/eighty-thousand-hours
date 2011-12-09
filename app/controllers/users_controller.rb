@@ -12,7 +12,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.with_member.find(params[:id])
+    @user = User.membership_confirmed.find(params[:id])
   end
 
   def destroy
