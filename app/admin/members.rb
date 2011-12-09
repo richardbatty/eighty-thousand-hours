@@ -13,12 +13,7 @@ ActiveAdmin.register Member do
     column :name do |member|
       member.user ? member.name : "NO USER"
     end
-    column :location
-    column :organisation_role
-    column "Public profile?", :public_profile
     column "Confirmed?",      :confirmed
-    column "On team?",        :on_team
-    column "Team role",       :team_role
     column :created_at
     default_actions
   end
@@ -33,17 +28,31 @@ ActiveAdmin.register Member do
   form do |f|
     f.inputs "Details" do
       f.inputs :user,
+               :apply_occupation,
+               :apply_reasons_for_joining,
+               :apply_heard_about_us,
+               :apply_spoken_to_existing_member,
+               :apply_career_plans,
                :background,
+               :occupation,
+               :organisation,
                :career_plans,
                :inspiration,
-               :interesting_fact,
                :location,
+               :phone,
+               :interesting_fact,
                :organisation_role,
                :public_profile,
                :confirmed,
                :on_team,
                :team_role,
-               :avatar
+               :avatar,
+               :doing_good_influencing,
+               :doing_good_research,
+               :doing_good_prophil,
+               :external_twitter,
+               :external_facebook,
+               :external_linkedin
       f.buttons
     end
   end
