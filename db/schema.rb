@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111209174348) do
+ActiveRecord::Schema.define(:version => 20111209192857) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -35,8 +35,6 @@ ActiveRecord::Schema.define(:version => 20111209174348) do
     t.text     "interesting_fact"
     t.string   "location"
     t.text     "organisation_role"
-    t.boolean  "show_name",                       :default => true
-    t.boolean  "show_info",                       :default => true
     t.boolean  "confirmed",                       :default => false
     t.integer  "user_id"
     t.datetime "created_at"
@@ -61,6 +59,7 @@ ActiveRecord::Schema.define(:version => 20111209174348) do
     t.string   "external_twitter"
     t.string   "external_facebook"
     t.string   "external_linkedin"
+    t.boolean  "public_profile",                  :default => true
   end
 
   create_table "pages", :force => true do |t|
