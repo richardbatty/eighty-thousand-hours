@@ -26,10 +26,37 @@
   </div>
   <% end %>
 
+  <div class="join-date">
+    <p>
+    Member since <%= member.created_at.strftime "%B %Y" %>
+    </p>
+  </div>
+
+  <% if member.organisation? %>
+  <div class="organisation">
+    <h2>Organisation/Company/University</h2>
+    <%= markdown member.organisation %>
+  </div>
+  <% end %>
+
   <% if member.background? %>
   <div class="background">
-    <h2>Background</h2>
+    <h2>Background and interests</h2>
     <%= markdown member.background %>
+  </div>
+  <% end %>
+
+  <% if member.inspiration? %>
+  <div class="inspiration">
+    <h2>My inspiration for joining 80,000 Hours</h2>
+    <%= markdown member.inspiration %>
+  </div>
+  <% end %>
+
+  <% if member.occupation? %>
+  <div class="occupation">
+    <h2>Current job/occupation</h2>
+    <%= markdown member.occupation %>
   </div>
   <% end %>
 
@@ -40,16 +67,26 @@
   </div>
   <% end %>
 
-  <% if member.inspiration? %>
-  <div class="inspiration">
-    <h2>Who introduced you to the idea, what inspired you to join?</h2>
-    <%= markdown member.inspiration %>
+  <% if member.doing_good_influencing? || member.doing_good_research? || member.doing_good_prophil %>
+  <div class="doing-good-options">
+    <h2>Type of Career</h2>
+    <ul>
+    <% if member.doing_good_influencing? %>
+      <li>Influencing others</li>
+    <% end %>
+    <% if member.doing_good_research? %>
+      <li>High impact research</li>
+    <% end %>
+    <% if member.doing_good_prophil? %>
+      <li>Professional philanthropy</li>
+    <% end %>
+    </ul>
   </div>
   <% end %>
 
   <% if member.organisation_role? %>
   <div class="organisation-role">
-    <h2>Role in <%= org_name %></h2>
+    <h2>Role in 80,000 Hours</h2>
     <%= markdown member.organisation_role %>
   </div>
   <% end %>
@@ -58,6 +95,24 @@
   <div class="interesting-fact">
     <h2>Interesting fact</h2>
     <%= markdown member.interesting_fact %>
+  </div>
+  <% end %>
+
+  <% if member.external_twitter? %>
+  <div class="twitter">
+    <a href="<%= member.external_twitter %>">Twitter</a>
+  </div>
+  <% end %>
+
+  <% if member.external_facebook? %>
+  <div class="facebook">
+    <a href="<%= member.external_facebook %>">Facebook</a>
+  </div>
+  <% end %>
+
+  <% if member.external_linkedin? %>
+  <div class="linkedin">
+    <a href="<%= member.external_twitter %>">LinkedIn</a>
   </div>
   <% end %>
 </div>
