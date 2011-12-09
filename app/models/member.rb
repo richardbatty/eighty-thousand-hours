@@ -1,10 +1,12 @@
 class Member < ActiveRecord::Base
+  before_create :seed_profile_from_apply_fields
+
   attr_accessible :background, :career_plans, :location,
                   :confirmed, :avatar, :inspiration, :interesting_fact,
                   :location, :organisation_role, :phone, :pledge,
                   :show_name, :show_info, :on_team, :team_role, :team_role_id,
                   :apply_occupation, :apply_reasons_for_joining,
-                  :apply_heard_about_us, :apply_spoken_to_existing_member,
+                  :apply_heard_about_us, :apply_spoken_to_existing_member, :apply_career_plans,
                   :doing_good_influencing, :doing_good_research, :doing_good_prophil,
                   :external_twitter, :external_facebook, :external_linkedin,
                   :occupation, :organisation
@@ -22,6 +24,7 @@ class Member < ActiveRecord::Base
   
   # all application fields are mandatory
   validates_presence_of :apply_occupation,
+                        :apply_career_plans,
                         :apply_reasons_for_joining,
                         :apply_heard_about_us,
                         :apply_spoken_to_existing_member
@@ -46,4 +49,10 @@ class Member < ActiveRecord::Base
   def self.with_team_role(role)
     on_team.where(team_roles: {name: role.to_s.humanize.titleize})
   end
+
+  private
+    def seed_profile_from_apply_fields
+      self.occupation = self.apply_occupation
+      self.career_plans = self.apply_career_plans
+    end
 end

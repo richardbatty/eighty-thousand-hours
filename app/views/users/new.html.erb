@@ -52,10 +52,16 @@ and we'll contact you soon.
       <%= u.fields_for :member do |m| %>
           <p><%= m.label :apply_occupation, "What do you currently do?" %></p>
           <p><%= m.text_area :apply_occupation %></p>
-          <p><%= m.label :apply_reasons_for_joining, "How do you plan to use your career to fulfil the pledge?" %></p>
+
+          <p><%= m.label :apply_career_plans, "How do you plan to use your career to fulfil the pledge?" %></p>
+          <p><%= m.text_area :apply_career_plans %></p>
+
+          <p><%= m.label :apply_reasons_for_joining, "Why would you like to join 80,000 Hours?" %></p>
           <p><%= m.text_area :apply_reasons_for_joining %></p>
-          <p><%= m.label :apply_heard_about_us, "Why would you like to join 80,000 Hours?" %></p>
+
+          <p><%= m.label :apply_heard_about_us, "Where did you hear about 80,000 Hours?" %></p>
           <p><%= m.text_area :apply_heard_about_us %></p>
+
           <p><%= m.label :apply_spoken_to_existing_member, "Have you spoken to an existing member about 80,000 Hours? If so, who did you speak to and how do you know them?" %></p>
           <p><%= m.text_area :apply_spoken_to_existing_member %></p>
       <% end %>
