@@ -1,50 +1,45 @@
-<% if @user.errors.any? %>
-  <div class="alert">
-    <div id="errorExplanation">
-      <h2><%= pluralize(@user.errors.count, "error") %> prohibited this application from being accepted:</h2>
-      <ul>
-        <% @user.errors.full_messages.each do |msg| %>
-          <li><%= msg %></li>
-        <% end %>
-      </ul>
-    </div>
-  </div>
-<% end %>
-
 <div class="box">
   <%= markdown "
-  ##Join our community
+Join our community
+==================
 
-  People in the 80,000 Hours community have a variety of career ambitions, such as:
+People in the 80,000 Hours community have a variety of career ambitions, such as:
 
   * Inspiring others to do good
   * Campaigning for high-impact causes
   * Conducting ground-breaking research
   * Donating money through professional philanthropy
 
-  They have all taken the 80,000 Hours pledge and promised to use at least
-  10% of their time or income to support the most effective causes. They also
-  aim to pursue a career that increases the amount of good that they can do
-  with the time or income that they give.
+They have all taken the 80,000 Hours pledge and promised to use at least
+10% of their time or income to support the most effective causes. They also
+aim to pursue a career that increases the amount of good that they can do
+with the time or income that they give.
 
-  You can also see some answers to common questions about joining
-  [here](/application-faq).
+You can also see some answers to common questions about joining
+[here](/application-faq).
 
-  We like to hear from people who are interested in joining the 80,000 Hours
-  community, so [contact us](/chat-to-us) if you'd like to talk
-  to us about anything.
+We like to hear from people who are interested in joining the 80,000 Hours
+community, so [contact us](/chat-to-us) if you'd like to talk
+to us about anything.
 
-  If you'd like to join straight away, that's great! Just fill in the form below
-  and we'll contact you soon.
+If you'd like to join straight away, that's great! Just fill in the form below
+and we'll contact you soon.
   " %>
 
   <hr/>
 
-  <h1>Join us!</h1>
-  <br/>
+  <h1 id="application_form">Join us!</h1>
+  <% if @user.errors.any? %>
+    <div class="alert">
+      <div id="errorExplanation">
+        <h1><%= pluralize(@user.errors.count, "error") %> prohibited this application from being accepted!</h1>
+        Please fill in all the required fields, and make sure to accept the pledge!
+      </div>
+    </div>
+  <% end %>
+
   <div class="profile-form">
-    <%= form_for @user do |u| %>
-      <%= field_set_tag "Account" do %>
+    <%= form_for(@user, :url=>"/members#application_form") do |u| %>
         <p><%= u.label :name %></p>
         <p><%= u.text_field :name %></p>
         <p><%= u.label :email %></p>
@@ -53,37 +48,16 @@
         <p><%= u.password_field :password %></p>
         <p><%= u.label :password_confirmation %></p>
         <p><%= u.password_field :password_confirmation %></p>
-      <% end %>
 
       <%= u.fields_for :member do |m| %>
-        <%= field_set_tag "Profile" do %>
-          <p><%= m.label :background %></p>
-          <p><%= m.text_area :background %></p>
-          <p><%= m.label :career_plans %></p>
-          <p><%= m.text_area :career_plans %></p>
-          <p><%= m.label :inspiration, "Inspiration (optional)" %></p>
-          <p><%= m.text_area :inspiration %></p>
-          <p><%= m.label :interesting_fact, "Interesting fact (optional)" %></p>
-          <p><%= m.text_area :interesting_fact %></p>
-          <p><%= m.label :location, "Location (optional)"%></p>
-          <p><%= m.text_field :location %></p>
-          <p><%= m.label :phone, "Phone number (optional)" %></p>
-          <p><%= m.phone_field :phone %></p>
-          <!--<a href="#" rel='popover' data-content="We'd like to call you to talk about your membership, and will never release your number to any external party or display it on the site." data-original-title="Let's talk.">Why?</a>-->
-          <p><%= m.label :avatar, "Profile picture (optional)" %></p>
-          <p><%= m.file_field :avatar %></p>
-        <% end %>
-
-        <%= field_set_tag "Privacy" do %>
-          <p>
-          <%= m.check_box :show_name %>
-          <%= m.label :show_name, "Display my name on the site" %>
-          </p>
-          <p>
-          <%= m.check_box :show_info %>
-          <%= m.label :show_info, "Display my profile on the site" %>
-          </p>
-        <% end %>
+          <p><%= m.label :apply_occupation, "What do you currently do?" %></p>
+          <p><%= m.text_area :apply_occupation %></p>
+          <p><%= m.label :apply_reasons_for_joining, "How do you plan to use your career to fulfil the pledge?" %></p>
+          <p><%= m.text_area :apply_reasons_for_joining %></p>
+          <p><%= m.label :apply_heard_about_us, "Why would you like to join 80,000 Hours?" %></p>
+          <p><%= m.text_area :apply_heard_about_us %></p>
+          <p><%= m.label :apply_spoken_to_existing_member, "Have you spoken to an existing member about 80,000 Hours? If so, who did you speak to and how do you know them?" %></p>
+          <p><%= m.text_area :apply_spoken_to_existing_member %></p>
       <% end %>
 
       <hr/>

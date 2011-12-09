@@ -2,7 +2,12 @@ class Member < ActiveRecord::Base
   attr_accessible :background, :career_plans, :location,
                   :confirmed, :avatar, :inspiration, :interesting_fact,
                   :location, :organisation_role, :phone, :pledge,
-                  :show_name, :show_info, :on_team, :team_role, :team_role_id
+                  :show_name, :show_info, :on_team, :team_role, :team_role_id,
+                  :apply_occupation, :apply_reasons_for_joining,
+                  :apply_heard_about_us, :apply_spoken_to_existing_member,
+                  :doing_good_influencing, :doing_good_research, :doing_good_prophil,
+                  :external_twitter, :external_facebook, :external_linkedin,
+                  :occupation, :organisation
 
   # paperclip avatars on S3
   has_attached_file :avatar, {
@@ -15,7 +20,12 @@ class Member < ActiveRecord::Base
   validates_attachment_content_type :avater, :content_type=>['image/jpeg', 'image/png', 'image/gif'],
                                     :unless => Proc.new {|m| m[:image].nil?}
   
-  validates_presence_of :background, :career_plans
+  # all application fields are mandatory
+  validates_presence_of :apply_occupation,
+                        :apply_reasons_for_joining,
+                        :apply_heard_about_us,
+                        :apply_spoken_to_existing_member
+
   validates_acceptance_of :pledge
 
   # a Member is always tied to a User 
