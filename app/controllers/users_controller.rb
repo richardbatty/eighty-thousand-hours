@@ -36,8 +36,8 @@ class UsersController < ApplicationController
     
     if @user.save
       # redirects should be full url for browser compatibility
-      thanks_str = "Thanks " << @user.name << 
-        ", we've received your application and will be in touch shortly. \
+      thanks_str = "Thank you for your interest in 80,000 Hours, " << @user.name << ". \
+        We've received your application and you'll hear from us soon. \
         In the meantime please confirm your account by following the link \
         in the email we sent to " << @user.email << "."
       redirect_to root_url, notice: thanks_str
