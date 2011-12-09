@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20111207163818) do
+ActiveRecord::Schema.define(:version => 20111209161724) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -35,9 +35,9 @@ ActiveRecord::Schema.define(:version => 20111207163818) do
     t.text     "interesting_fact"
     t.string   "location"
     t.text     "organisation_role"
-    t.boolean  "show_name",           :default => true
-    t.boolean  "show_info",           :default => true
-    t.boolean  "confirmed",           :default => false
+    t.boolean  "show_name",                       :default => true
+    t.boolean  "show_info",                       :default => true
+    t.boolean  "confirmed",                       :default => false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -46,8 +46,21 @@ ActiveRecord::Schema.define(:version => 20111207163818) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "phone"
-    t.boolean  "on_team",             :default => false
+    t.boolean  "on_team",                         :default => false
     t.integer  "team_role_id"
+    t.text     "apply_occupation"
+    t.text     "apply_career_plans"
+    t.text     "apply_reasons_for_joining"
+    t.text     "apply_heard_about_us"
+    t.text     "apply_spoken_to_existing_member"
+    t.string   "organisation"
+    t.text     "occupation"
+    t.boolean  "doing_good_influencing"
+    t.boolean  "doing_good_research"
+    t.boolean  "doing_good_prophil"
+    t.string   "external_twitter"
+    t.string   "external_facebook"
+    t.string   "external_linkedin"
   end
 
   create_table "pages", :force => true do |t|
