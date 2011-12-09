@@ -4,12 +4,12 @@ class Member < ActiveRecord::Base
   attr_accessible :background, :career_plans, :location,
                   :confirmed, :avatar, :inspiration, :interesting_fact,
                   :location, :organisation_role, :phone, :pledge,
-                  :show_name, :show_info, :on_team, :team_role, :team_role_id,
+                  :on_team, :team_role, :team_role_id,
                   :apply_occupation, :apply_reasons_for_joining,
                   :apply_heard_about_us, :apply_spoken_to_existing_member, :apply_career_plans,
                   :doing_good_influencing, :doing_good_research, :doing_good_prophil,
                   :external_twitter, :external_facebook, :external_linkedin,
-                  :occupation, :organisation
+                  :occupation, :organisation, :public_profile
 
   # paperclip avatars on S3
   has_attached_file :avatar, {
