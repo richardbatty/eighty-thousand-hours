@@ -6,6 +6,8 @@ class Charity < ActiveRecord::Base
   
   before_validation :format_website
   
+  has_many :donations
+  
   private
     def format_website
       website = "http://#{website}" if website !~ WEBSITE_REGEXP && "http://#{website}" =~ WEBSITE_REGEXP
