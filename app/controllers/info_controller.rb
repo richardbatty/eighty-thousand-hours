@@ -18,7 +18,7 @@ class InfoController < ApplicationController
                     communications fundraising tech other]
     @team_profiles = team_roles.inject({}) do |profiles, role|
       role = role.humanize.titleize
-      profiles[role] = Member.with_team_role(role)
+      profiles[role] = Member.with_team_role(role).where( :public_profile => :true )
       profiles
     end
   end
