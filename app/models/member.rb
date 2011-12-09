@@ -1,6 +1,4 @@
 class Member < ActiveRecord::Base
-  before_create :seed_profile_from_apply_fields
-
   attr_accessible :background, :career_plans, :location,
                   :confirmed, :avatar, :inspiration, :interesting_fact,
                   :location, :organisation_role, :phone, :pledge,
@@ -48,10 +46,4 @@ class Member < ActiveRecord::Base
   def self.with_team_role(role)
     on_team.where(team_roles: {name: role.to_s.humanize.titleize})
   end
-
-  private
-    def seed_profile_from_apply_fields
-      self.occupation = self.apply_occupation
-      self.career_plans = self.apply_career_plans
-    end
 end
