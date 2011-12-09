@@ -12,36 +12,35 @@
 <% end %>
 
 <div class="box">
-  <h2>Join our community</h2>
-  <p>
-  People in the <%= org_name %> community have a variety of career ambitions, such as:
-  </p>
-  <ul>
-    <li>Donating money through professional philanthropy</li>
-    <li>Conducting ground-breaking research</li>
-    <li>Inspiring others to do good</li>
-  </ul>
+  <%= markdown "
+  ##Join our community
 
-  <p>
-  They have all promised to use at least 10%
-  of their time or money to support the most effective causes.  They also aim to
-  pursue a career that increases the amount of good that they can do with the
-  time or money that they give. If you'd like to join us and help others with
-  your career, then <%= link_to "chat to us", "/chat-to-us" %> or fill in the form below.
-  </p>
+  People in the 80,000 Hours community have a variety of career ambitions, such as:
 
-  <p>
-  We like to talk to people who are interested in joining the <%= org_name %> 
-  community, so if you are interested or have any questions, <%= link_to "contact one of our members", "/chat-to-us" %>.
-  </p>
+  * Inspiring others to do good
+  * Campaigning for high-impact causes
+  * Conducting ground-breaking research
+  * Donating money through professional philanthropy
 
-  <div class="center large_margin">
-    <a class="button" href="/application-faq">Questions about the pledge?</a>
-  </div>
+  They have all taken the 80,000 Hours pledge and promised to use at least
+  10% of their time or income to support the most effective causes. They also
+  aim to pursue a career that increases the amount of good that they can do
+  with the time or income that they give.
+
+  You can also see some answers to common questions about joining
+  [here](/application-faq).
+
+  We like to hear from people who are interested in joining the 80,000 Hours
+  community, so [contact us](/chat-to-us) if you'd like to talk
+  to us about anything.
+
+  If you'd like to join straight away, that's great! Just fill in the form below
+  and we'll contact you soon.
+  " %>
 
   <hr/>
 
-  <h1>Apply for membership</h1>
+  <h1>Join us!</h1>
   <br/>
   <div class="profile-form">
     <%= form_for @user do |u| %>
@@ -94,7 +93,7 @@
       </p>
       <div class="center">
         <%= u.fields_for :member do |m| %>
-          <p><%= m.check_box 'pledge' %> I hereby accept the pledge.</p>
+          <p><%= m.check_box 'pledge' %> I hereby accept the pledge. (<a href="/application-faq">Questions?</a>)</p>
         <% end %>
       </div>
     </div>
