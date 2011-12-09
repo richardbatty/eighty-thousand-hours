@@ -25,17 +25,16 @@ $(document).ready(function () {
   $(".defaultText").blur();     
 });
 
-
 // for the sticky sidebar on the blog pages
 // pretty hacky with fixed left offset...
-window.onscroll = function () {
-  if ($('body').scrollTop() >= 223)
-  {
-    $('#sidebar').css({ position: "fixed", left: 872, top: 0 })
-  }
-  else
-  {
-    $('#sidebar').removeAttr("style")
-  }
-}
+//window.onscroll = function () {
+//  if ($('body').scrollTop() >= 223)
+//  {
+//    $('#sidebar').css({ position: "fixed", left: 872, top: 0 })
+//  }
+//  else
+//  {
+//    $('#sidebar').removeAttr("style")
+//  }
+//}
 
