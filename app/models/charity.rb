@@ -1,8 +1,8 @@
 class Charity < ActiveRecord::Base
   WEBSITE_REGEXP = /^https?:\/\/([^\s:@]+:[^\s:@]*@)?[-[[:alnum:]]]+(\.[-[[:alnum:]]]+)+\.?(:\d{1,5})?([\/?]\S*)?$/iux
   
-  validates :name,    presence: true, uniqueness: true
-  validates :website, presence: true, uniqueness: true, format: WEBSITE_REGEXP
+  validates :name, :website, presence: true, uniqueness: true
+  validates :website, format: WEBSITE_REGEXP
   
   before_validation :format_website
   
