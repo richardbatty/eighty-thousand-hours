@@ -22,7 +22,7 @@ en-GB:
       timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'Your account was not activated yet.'
     sessions:
-      signed_in: 'Signed in successfully.'
+      signed_in: 'Signed in successfully. You can edit your profile by following the link at the top right.'
       signed_out: 'Signed out successfully.'
     passwords:
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
@@ -32,7 +32,7 @@ en-GB:
     confirmations:
       send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
       send_paranoid_instructions: 'If your e-mail exists on our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
-      confirmed: 'Your account was successfully confirmed. You are now signed in.'
+      confirmed: 'Your account was successfully confirmed. You are now signed in, and can begin editing your profile by following the link at the top right.'
     registrations:
       signed_up: 'Welcome! You have signed up successfully.'
       inactive_signed_up: 'Great! You have signed up successfully. However, we could not sign you in because your account is %{reason}.'
