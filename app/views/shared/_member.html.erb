@@ -98,21 +98,32 @@
   </div>
   <% end %>
 
-  <% if member.external_twitter? %>
-  <div class="twitter">
-    <a href="<%= member.external_twitter %>">Twitter</a>
-  </div>
-  <% end %>
+  <% if member.external_twitter? || member.external_facebook? || member.external_linkedin? %>
+    <div class="external">
+      <h2>External links</h2>
+      <% if member.external_twitter? %>
+        <div class="twitter">
+          <a href="<%= member.external_twitter %>">
+            <%= image_tag( "social/twitter.png") %> Twitter
+          </a>
+        </div>
+      <% end %>
 
-  <% if member.external_facebook? %>
-  <div class="facebook">
-    <a href="<%= member.external_facebook %>">Facebook</a>
-  </div>
-  <% end %>
+      <% if member.external_facebook? %>
+        <div class="facebook">
+          <a href="<%= member.external_facebook %>">
+            <%= image_tag( "social/facebook.png") %> Facebook
+          </a>
+        </div>
+      <% end %>
 
-  <% if member.external_linkedin? %>
-  <div class="linkedin">
-    <a href="<%= member.external_twitter %>">LinkedIn</a>
-  </div>
+      <% if member.external_linkedin? %>
+        <div class="linkedin">
+          <a href="<%= member.external_linkedin %>">
+            <%= image_tag( "social/linkedin.png") %> LinkedIn
+          </a>
+        </div>
+      <% end %>
+    </div>
   <% end %>
 </div>
