@@ -30,8 +30,7 @@ class PostsController < ApplicationController
     @posts = Post.published
 
     respond_to do |format|
-      format.html
-      format.rss { render :layout => false } #feed.rss.builder
+      format.rss { render :layout => false } #index.rss.builder
     end
   end
 end
