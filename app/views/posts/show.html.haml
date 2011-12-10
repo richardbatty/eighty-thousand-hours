@@ -21,7 +21,7 @@
         = markdown @post.body
 
       .attribution
-        = markdown @post.author
+        = markdown @post.attribution
 
       #disqus_thread
         = render :partial => "disqus_embed", :locals => { :post_id => @post.id, :post_title => @post.title }
