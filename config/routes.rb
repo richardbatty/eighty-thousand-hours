@@ -2,7 +2,8 @@ EightyThousandHours::Application.routes.draw do
   ActiveAdmin.routes(self)
 
   devise_for :users, :path => 'accounts'
-  
+
+  match '/blog/feed' => 'posts#feed', :as => :feed
   resources :posts, :path => 'blog', :only => [:index, :show]
 
   resources :supporters, :only => [:new, :create], :path => 'show-your-support'
