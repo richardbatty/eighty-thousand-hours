@@ -24,4 +24,14 @@ class PostsController < ApplicationController
       format.json { render json: @post }
     end
   end
+
+  # RSS/Atom feed
+  def feed
+    @posts = Post.published
+
+    respond_to do |format|
+      format.html
+      format.rss { render :layout => false } #feed.rss.builder
+    end
+  end
 end

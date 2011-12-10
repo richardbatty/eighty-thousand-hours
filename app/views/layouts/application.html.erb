@@ -17,6 +17,11 @@
     <%= javascript_include_tag "html5" %>
     <![endif]-->
 
+    <%# display RSS feed link if on blog pages %>
+    <% if params[:controller] == "posts" %>
+      <%= auto_discovery_link_tag(:rss, "http://80000hours.org/blog/") %>
+    <% end %>
+
     <%= render :partial => "/shared/google_analytics" %>
   </head>
 
