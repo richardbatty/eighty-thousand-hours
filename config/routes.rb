@@ -3,8 +3,7 @@ EightyThousandHours::Application.routes.draw do
 
   devise_for :users, :path => 'accounts'
 
-  match '/blog/atom.xml' => 'posts#feed', :as => :feed,
-        :defaults => { :format => 'atom' }
+  match '/blog/feed.atom' => 'posts#feed', :as => :feed, :defaults => { :format => 'atom' }
   resources :posts, :path => 'blog', :only => [:index, :show]
 
   resources :supporters, :only => [:new, :create], :path => 'show-your-support'

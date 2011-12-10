@@ -19,7 +19,7 @@
 
     <%# display RSS feed link if on blog pages %>
     <% if params[:controller] == "posts" %>
-      <%= auto_discovery_link_tag(:atom, "http://80000hours.org/blog/atom.xml") %>
+      <%= auto_discovery_link_tag(:atom, "http://80000hours.org/blog/feed.atom") %>
     <% end %>
 
     <%= render :partial => "/shared/google_analytics" %>
