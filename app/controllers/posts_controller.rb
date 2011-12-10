@@ -1,11 +1,6 @@
 class PostsController < ApplicationController
   def index
     @posts = Post.published
-
-    respond_to do |format|
-      format.html # index.html.erb
-      format.rss { render :layout => false } #index.rss.builder
-    end
   end
 
   def show
@@ -14,5 +9,21 @@ class PostsController < ApplicationController
     @og_desc = @post.get_teaser
     @og_type = "article"
     @title = "Blog: " + @post.title
+  end
+
+  # Atom feed
+  def feed
+    # this will be the name of the feed displayed on the feed reader
+    @title = "80,000 Hours - Blog"
+
+    # the blog posts
+    @posts = Post.published
+
+    # this will be our feed's update timestamp
+    @updated = @posts.first.updated_at unless @posts.empty?
+
+    respond_to do |format|
+      format.atom { render :layout => false } #views/posts/feed.atom.builder
+    end
   end
 end
