@@ -25,7 +25,7 @@
               %a{:href => post_path(post)}
                 Read more...
   
-          .attribution= markdown post.attribution
+          .attribution= markdown post.attribution if post.attribution 
   
           %a{"href" => "#{post_url(post)}#disqus_thread",
              "data-disqus-identifier" => "blog-post-#{post.id}" }
