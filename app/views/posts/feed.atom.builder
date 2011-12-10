@@ -10,9 +10,6 @@ atom_feed :language => 'en-GB' do |feed|
 
       entry.content (markdown post.body), :type => 'html'
 
-      # formatting needed for Google Reader
-      entry.updated(post.updated_at.strftime("%Y-%m-%dT%H:%M:%SZ")) 
-
       entry.author do |author|
         author.name post.author
       end
