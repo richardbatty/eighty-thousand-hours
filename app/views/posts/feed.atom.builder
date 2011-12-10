@@ -1,6 +1,5 @@
 atom_feed :language => 'en-GB' do |feed|
   feed.title @title
-  feed.updated @updated
 
   @posts.each do |post|
     next if post.updated_at.blank?
