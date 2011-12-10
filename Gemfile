@@ -47,6 +47,9 @@ gem 'fancybox-rails'
 # for versioning of content
 gem 'paper_trail', '~> 2'
 
+# blog post pagination
+gem 'will_paginate', '~> 3.0'
+
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   # gem 'growl_notify'
