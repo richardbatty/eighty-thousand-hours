@@ -11,6 +11,7 @@ ActiveAdmin.register Post do
                :body,
                :teaser,
                :author,
+               :attribution,
                :created_at,
                :draft
       f.buttons
