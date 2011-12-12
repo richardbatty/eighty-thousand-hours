@@ -38,7 +38,7 @@
         <%= render :partial => "/shared/menu",
                    :locals => {:current_page => @title} %>
 
-        <% if @page.title == 'Home' %>
+        <% if @page && @page.title == 'Home' %>
           <%= render :partial => '/shared/home' %>
         <% end %>
         <div style="clear: both;"></div>
