@@ -4,4 +4,3 @@ FactoryGirl.define do
     website "http://piratesforpeace.com"
   end
 end
-

@@ -24,11 +24,15 @@ class Ability
       # can :manage, Post, :user_id => user.id
       can :manage, Post
       # can :read, :all
+    elsif user.has_role? :donation_admin
+      can :access, :admin
+      can :manage, Donation
+      can :manage, Charity
     elsif user.has_role? :webeditor
       can :manage, Page
     else
-      can :read, Page
-      can :read, Post, :published => true
     end
+    can :read, Post, :published => true
+    can :read, Page
   end
 end
