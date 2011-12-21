@@ -33,9 +33,11 @@ class Member < ActiveRecord::Base
 
   # a Member can have a TeamRole (e.g. Events, Communications)
   belongs_to :team_role
-
+  
+  has_many :donations
+  
   # now we can access @member.name, @member.email
-  delegate :name, :name=, :email, :email=, :slug, :to => :user
+  delegate :name, :name=, :email, :email=, :slug, :first_name, :to => :user
 
   #useful nested scopes
   scope :with_user, joins(:user).includes(:user)

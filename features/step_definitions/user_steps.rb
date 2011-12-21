@@ -1,6 +1,5 @@
 def sign_in(options = {})
   options = options.reverse_merge user: @user
-  
   visit new_user_session_path
   fill_in("user_email", with: options[:user].email)
   fill_in("user_password", with: options[:user].password)

@@ -3,5 +3,5 @@ Then /^I am sent an email$/ do
 end
 
 Then /^the member should be emailed$/ do
-  last_email.to.should include(@donor.email)
+  last_email.to.should include(@member.email)
 end

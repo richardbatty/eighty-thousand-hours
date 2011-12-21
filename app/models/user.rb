@@ -23,7 +23,11 @@ class User < ActiveRecord::Base
   scope :alphabetical, order("name ASC")
   
   def has_role?(symbol)
-    roles.map {|r| r.name.downcase.to_sym }
-         .include? symbol.downcase.to_sym
+    roles.map {|r| r.name.underscore.to_sym }
+         .include? symbol.to_s.underscore.to_sym
+  end
+  
+  def first_name
+    name.split.first
   end
 end

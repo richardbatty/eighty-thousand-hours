@@ -2,7 +2,7 @@
 # The data can then be loaded with the rake db:seed (or created alongside the db with db:setup).
 
 puts 'SETTING UP ROLES'
-["Admin","Blogger"].each do |r|
+["Admin","Blogger", "DonationAdmin"].each do |r|
   r = Role.create! name: r
   puts 'Created Role: ' << r.name
 end
@@ -13,7 +13,8 @@ puts 'SETTING UP DEFAULT USER LOGIN'
   { :name => "Member Michael", :email => "mm@eg.com" },
   { :name => "Unconfirmed Ug", :email => "uu@eg.com" },
   { :name => "Blogging Billy", :email => "bb@eg.com", :roles => ["Blogger"] },
-  { :name => "Admin Anthonio", :email => "aa@eg.com", :roles => ["Admin"] }
+  { :name => "Admin Anthonio", :email => "aa@eg.com", :roles => ["Admin"] },
+  { :name => "Donation Derek", :email => "dd@eg.com", :roles => ["DonationAdmin"] }
 ].each do |u|
   user = User.create! name:  u[:name],
                       email: u[:email],

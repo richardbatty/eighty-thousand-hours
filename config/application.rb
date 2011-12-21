@@ -38,6 +38,7 @@ module EightyThousandHours
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     config.i18n.default_locale = :'en-GB'
+    config.i18n.locale = :'en-GB'
 
     # Configure the default encoding used in templates for Ruby 1.9.
     config.encoding = "utf-8"
@@ -53,5 +54,11 @@ module EightyThousandHours
     
     # devise instructions said maybe want to do this for Rails 3.1 on Heroku...
     config.assets.initialize_on_precompile = false
+    
+    # generators
+    config.generators do |g|
+      # g.stylesheets         false
+      g.fixture_replacement :factory_girl, dir: "spec/factories"
+    end
   end
 end
