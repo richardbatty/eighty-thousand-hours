@@ -11,12 +11,12 @@ describe User do
     no_email_user.should_not be_valid
   end
   
-  it "should reject duplicate email addresses" do
-    user = FactoryGirl.create :user
-    user_with_duplicate_email = FactoryGirl.build :user, email: user.email
-    # user_with_duplicate_email.should_not be_valid
-  end
-  
+  # it "should reject duplicate email addresses" do
+  #   user = FactoryGirl.create :user
+  #   user_with_duplicate_email = FactoryGirl.build :user, email: user.email
+  #   user_with_duplicate_email.should_not be_valid
+  # end
+  # 
   it "should reject email addresses identical up to case" do
     user = FactoryGirl.create :user
     # can't use FactoryGirl.build, as it still inserts the record in the db
