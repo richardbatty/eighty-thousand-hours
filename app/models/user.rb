@@ -26,4 +26,8 @@ class User < ActiveRecord::Base
     roles.map {|r| r.name.underscore.to_sym }
          .include? symbol.to_s.underscore.to_sym
   end
+  
+  def first_name
+    name.split.first
+  end
 end
