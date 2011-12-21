@@ -82,13 +82,16 @@
           <p><%= mf.text_field :external_linkedin %></p>
 
           <% member = current_user.member %>
-          <% if member.avatar? %>
-            <p><%= mf.label :avatar, "Current profile picture" %></p>
-            <div class="avatar">
+
+          <p><%= mf.label :avatar, "Current profile picture" %></p>
+          <div class="avatar">
+            <% if member.avatar? %>
               <%= link_to image_tag(member.avatar.url(:medium), :class=>"shadow"), member.avatar.url %>
-            </div>
-            <p>Choose new picture: <%= mf.file_field :avatar %></p>
-          <% end %>
+            <% else %>
+              <%= image_tag("avatar_default_96x96.png", :class=>"shadow") %>
+            <% end %>
+          </div>
+          <p>Choose new picture: <%= mf.file_field :avatar %></p>
         <% end %>
 
         <%= field_set_tag "Privacy" do %>
