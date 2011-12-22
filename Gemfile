@@ -54,7 +54,6 @@ group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   # gem 'growl_notify'
   gem 'heroku' #included for rake db:mirror system calls
-  gem 'pry'
 end
 
 # Gems used only for assets and not required
@@ -72,6 +71,7 @@ gem 'jquery-rails'
 # put test-only gems in this group so their generators
 # and rake tasks are available in development mode:
 group :development, :test do
+  gem 'pry'
   gem 'rspec-rails'
   gem "capybara"
   gem 'ruby_gntp'
