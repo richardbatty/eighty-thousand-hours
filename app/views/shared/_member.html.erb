@@ -1,5 +1,6 @@
 <%# Input locals:   
         :member instance of Member model
+        :total  sum of member donations
 %>
 <div class="member-profile">
   <% if user_signed_in? && current_user.member == member %>
@@ -14,7 +15,7 @@
     <%= link_to image_tag(member.avatar.url(:medium)), member.avatar.url %>
   </div>
   <% end %>
-
+  
   <% if member.name %>
   <div class="name">
     <%= member.name %>
@@ -25,7 +26,13 @@
     <% end %>
   </div>
   <% end %>
-
+  
+  <div id="donations">
+    <p>
+      <%= member_donations member.donations.sum(:amount) %>
+    </p>
+  </div>
+  
   <div class="join-date">
     <p>
     Member since <%= member.created_at.strftime "%B %Y" %>
@@ -45,7 +52,7 @@
     <%= markdown member.background %>
   </div>
   <% end %>
-
+  
   <% if member.inspiration? %>
   <div class="inspiration">
     <h2>My inspiration for joining 80,000 Hours</h2>
