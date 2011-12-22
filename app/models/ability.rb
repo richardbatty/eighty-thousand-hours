@@ -19,6 +19,10 @@ class Ability
     if user.has_role? :admin
       can :access, :admin
       can :manage, :all
+    elsif user.has_role? :member_admin
+      can :access, :admin
+      can :manage, User
+      can :manage, Member
     elsif user.has_role? :blogger
       can :access, :admin
       # can :manage, Post, :user_id => user.id
