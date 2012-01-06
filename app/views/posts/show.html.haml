@@ -11,20 +11,21 @@
         .attribution
           =markdown ("written by: " + @post.author) if @post.author
   .grid_8
-    .box.entry
-      .title
-        = @post.title
-      .date
-        = @post.created_at.strftime("%B %d, %Y")
+    .box
+      .entry
+        .title
+          = @post.title
+        .date
+          = @post.created_at.strftime("%B %d, %Y")
 
-      .content
-        = markdown @post.body
+        .content
+          = markdown @post.body
 
-      .attribution
-        = markdown @post.attribution if @post.attribution
+        .attribution
+          = markdown @post.attribution if @post.attribution
 
-      #disqus_thread
-        = render :partial => "disqus_embed", :locals => { :post_id => @post.id, :post_title => @post.title }
+        #disqus_thread
+          = render :partial => "disqus_embed", :locals => { :post_id => @post.id, :post_title => @post.title }
   .grid_8 
     .box.center
       = link_to 'View all blog posts', posts_path, :class=>"button"

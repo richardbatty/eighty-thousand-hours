@@ -1,5 +1,10 @@
 .blog {
   .entry {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-top: 20px;
+    padding-bottom: 20px;
+
     .read-more {
       a{
         @include box_shadow($magenta_2, 0px, 0px, 2px);
@@ -24,6 +29,7 @@
           color: $magenta_2 !important;
         }
       }
+
     }
 
     .date {
@@ -32,12 +38,16 @@
       padding-bottom: 5px;
 
       border-bottom: 1px solid #ccc;
+
     }
     
     .content {
       padding-top: 10px;
       padding-bottom: 10px;
+      font-size: 1.2em;
+      line-height: 2em;
     }
+
   }
 
   #sidebar {
