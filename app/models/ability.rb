@@ -32,7 +32,7 @@ class Ability
       can :access, :admin
       can :manage, Donation
       can :manage, Charity
-    elsif user.has_role? :webeditor
+    elsif user.has_role? :WebEditor
       can :manage, Page
     else
     end
