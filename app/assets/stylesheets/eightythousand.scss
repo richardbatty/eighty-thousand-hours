@@ -625,6 +625,11 @@ strong {
     float: right;
     @include box_shadow(#555, 0px, 0px, 2px);
     height: 64px;
+
+    img {
+      height: 64px;
+      width: 64px;
+    }
   }
 
   .name {
