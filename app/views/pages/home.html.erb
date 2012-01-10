@@ -1,0 +1,28 @@
+<%= render :partial => 'admin_box' %>
+
+<%
+  members_html = "" 
+  @members.each do |m|
+    if m.avatar && m.user
+      members_html += link_to image_tag(m.avatar.url(:small), :class=>"fp-profile-image"),"/members/#{m.slug}"
+    end
+  end
+%>
+
+<%
+  post = Post.last
+  latest_blog_html = "<p>
+                          <div class='title'>
+                            <a href='/#{post_path post}'>#{post.title}</a>
+                          </div>
+                          <div class='attribution'>
+                            by #{post.author} on #{post.created_at.strftime('%B %d, %Y')}
+                          </div>
+                      </p>"
+%>
+
+<% content = @page.body %>
+<% content = content.gsub(/###MEMBERS###/, members_html) %>
+<% content = content.gsub(/###LATEST_BLOG###/, latest_blog_html) %>
+<%= markdown content %>
+
