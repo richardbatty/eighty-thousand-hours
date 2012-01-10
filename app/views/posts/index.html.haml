@@ -2,6 +2,12 @@
   #sidebar
     .grid_4
       .box
+        <h2>Recommended Posts</h2>
+        = markdown @recommended_posts.body
+        - if can? :update, @recommended_posts
+          .button
+            = link_to 'Edit', edit_page_path(@recommended_posts)
+      .box
         <div id="popularthreads" class="dsq-widget">
         <h2 class="dsq-widget-title">Popular Posts</h2>
         <script type="text/javascript" src="http://80000hours.disqus.com/popular_threads_widget.js?num_items=3"></script>
