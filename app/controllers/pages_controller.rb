@@ -14,9 +14,9 @@ class PagesController < ApplicationController
       # for profile photos on front page
       begin
         ids = [28,27,26,24,38,43,44,45,14,25]
-        @members = Member.find( (ids.shuffle)[0..5] ).shuffle
+        @members = Member.find( (ids.shuffle)[0..9] ).shuffle
       rescue
-        @members = Member.limit( 6 )
+        @members = Member.limit( 10 )
       end
 
       render :home
