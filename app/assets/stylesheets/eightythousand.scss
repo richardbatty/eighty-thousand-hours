@@ -226,6 +226,19 @@ header {
   height: 64px;
 }
 
+.read-more {
+  a{
+    @include box_shadow($magenta_2, 0px, 0px, 2px);
+    @include rounded_borders(#ccc, 1px, 6px);
+    padding: 5px;
+
+    &:hover {
+      @include box_shadow(#ccc, 0px, 0px, 1px);
+    }
+  }
+}
+
+
 .find-out-more {
   font-size: 26px;
   float: right;
