@@ -81,11 +81,10 @@ form {
   }
 
   &.header {
-    margin-top: 20px;
-    padding-bottom: 10px;
-    position: relative;
-    float:right;
+    float:left;
     color: #efefef;
+    margin-top: -2px;
+    padding-right: 5px;
     label {
       font-size: 1.5em;
     }
@@ -104,12 +103,12 @@ form {
       /*text-shadow: 0 1px 1px rgba(0,0,0,.3);*/
       /*@include rounded_borders(#ccc, 1px, 6px);*/
       text-align: center;
-      height: 15px;
+      height: 12px;
       @include rounded_borders(#ccc, 1px, 3px);
     }
     .submit-button {
       font-size: 1.0em !important;
-      height: 23px !important;
+      height: 21px !important;
       @include rounded_borders(#ccc, 1px, 3px);
       @include box_shadow(#ccc, 0px, 0px, 5px);
       background-color: #fff;
