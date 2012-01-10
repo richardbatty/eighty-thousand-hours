@@ -17,6 +17,9 @@ EightyThousandHours::Application.routes.draw do
   match 'members/all'   => 'users#all', :as => :all
   resources :users, :path => "members"
 
+  # renamed pages which we don't want to break existing links to
+  match 'banker-vs-aid-worker' => redirect('/professional-philanthropy')
+
   # pages which don't live in the database as they can't be
   # converted to pure Markdown
   match 'events'             => 'info#events'
