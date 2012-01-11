@@ -10,6 +10,13 @@
       
         .attribution
           =markdown ("written by: " + @post.author) if @post.author
+      .box
+        <h2>Other Recommended Posts</h2>
+        = markdown @recommended_posts.body
+        - if can? :update, @recommended_posts
+          .button
+            = link_to 'Edit', edit_page_path(@recommended_posts)
+
   .grid_8
     .box
       .entry

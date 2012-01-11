@@ -10,6 +10,7 @@ class PostsController < ApplicationController
     @og_desc = @post.get_teaser
     @og_type = "article"
     @title = "Blog: " + @post.title
+    @recommended_posts = Page.find('recommended-posts')
   end
 
   # Atom feed
