@@ -27,6 +27,7 @@ class Ability
       can :access, :admin
       # can :manage, Post, :user_id => user.id
       can :manage, Post
+      can :manage, Page, :slug => "recommended-posts"
       # can :read, :all
     elsif user.has_role? :donation_admin
       can :access, :admin
