@@ -13,9 +13,9 @@
   post = Post.last
   latest_blog_html = "<h2>Latest blog post on #{post.created_at.strftime('%B %d, %Y')}</h2>
                       <p>
-                        <a href='/#{post_path post}'>#{post.title}</a> by #{post.author}
+                        <a href='#{post_path post}'>#{post.title}</a> by #{post.author}
                       </p>
-                      <div class='read-more'><a href='/#{post_path post}'>Read more...</a></div>
+                      <div class='read-more'><a href='#{post_path post}'>Read more...</a></div>
                       <br/>
                       "
 
