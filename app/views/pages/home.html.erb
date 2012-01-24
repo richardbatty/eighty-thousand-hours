@@ -17,14 +17,20 @@
 %>
 
 <%
-  post = Post.last
-  latest_blog_html = "<h2>Latest blog post on #{post.created_at.strftime('%B %d, %Y')}</h2>
+  posts = Post.all(:order => "created_at DESC",:limit => 2)
+  latest_blog_html = "<h2>Latest blog posts:</h2></h2>"
+  posts.each do |p|
+    latest_blog_html += "
                       <p>
-                        <a href='#{post_path post}'>#{post.title}</a> by #{post.author}
+                      <strong>#{p.created_at.strftime('%B %d, %Y')}</strong>
+                      <br/>
+                      <a href='#{post_path p}'>#{p.title}</a>
+                      <br/>by #{p.author}
                       </p>
-                      <div class='read-more'><a href='#{post_path post}'>Read more...</a></div>
+                      <div class='read-more'><a href='#{post_path p}'>Read more...</a></div>
                       <br/>
                       "
+  end
 
   latest_twitter_html = "<h2>Tweets</h2>
                           Isn't this a great Twitter account? by <a href='http://www.twitter.com/80000Hours'>@80000Hours</a>"
