@@ -1,9 +1,5 @@
     <!-- for facebook open graph -->
-    <% if @title %>
-      <meta property="og:title" content="<%= org_name %> - <%= @title %>"/>
-    <% else %>
-      <meta property="og:title" content="<%= org_name %>"/>
-    <% end %>
+    <meta property="og:title" content="<%= page_title(false) %>"/>
     <% if @og_type %>
       <meta property="og:type" content="<%= @og_type %>"/>
     <% else %>
