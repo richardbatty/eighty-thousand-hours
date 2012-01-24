@@ -17,6 +17,13 @@
     <% end %>
   <% end %>
 
+  <div class="box">
+    <h2>Markdown</h2>
+    <p>All the text fields can be formatted using the <a href="http://daringfireball.net/projects/markdown/syntax">Markdown syntax</a>. For example:</p>
+    <p>**bold text** == <strong>bold text</strong></p>
+    <p>_italic text_ == <em>italic text</em></p>
+    <p>[a link](http://80000hours.org/) == <a href="http://80000hours.org">a link</a></p>
+  </div>
 
   <div class="profile-form">
     <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
@@ -55,15 +62,16 @@
           <p><%= mf.label :career_plans, "What are your plans for a high impact ethical career? How are you increasing your impact through inspiring others, research, and philanthrophy?" %></p>
           <p><%= mf.text_area :career_plans %></p>
 
-
-          <p>What will be your main method or methods of doing good?</p>
-          <%= field_set_tag "What will be your main method(s) of doing good?" do %>
-            <p><%= mf.label :doing_good_influencing, "Influencing" %></p>
-            <p><%= mf.check_box :doing_good_influencing %></p>
-            <p><%= mf.label :doing_good_research, "Research" %></p>
-            <p><%= mf.check_box :doing_good_research %></p>
-            <p><%= mf.label :doing_good_prophil, "Professional philanthropy" %></p>
-            <p><%= mf.check_box :doing_good_prophil %></p>
+          <p><%= mf.label "What will be your main method(s) of doing good?"  %></p>
+          <%= field_set_tag do %>
+            <%= mf.check_box :doing_good_influencing %>
+            <%= mf.label :doing_good_influencing, "Influencing" %>
+            <br/>
+            <%= mf.check_box :doing_good_research %>
+            <%= mf.label :doing_good_research, "Research" %>
+            <br/>
+            <%= mf.check_box :doing_good_prophil %>
+            <%= mf.label :doing_good_prophil, "Professional philanthropy" %>
           <% end %>
 
           <p><%= mf.label :organisation_role, "What is your role in the 80,000 Hours team? (optional)" %></p>

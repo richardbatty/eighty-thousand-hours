@@ -13,8 +13,8 @@
     = f.label :header_title
     (optional: used in &lt;title&gt; tag)
     = f.text_field :header_title
-    %br
-    = f.label :body
+    %hr
+    = markdown "Use [Markdown syntax](http://daringfireball.net/projects/markdown/syntax) to format text"
     = f.text_area :body
     %br
     = f.label :show_title
