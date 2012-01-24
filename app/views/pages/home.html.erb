@@ -10,6 +10,13 @@
 %>
 
 <%
+  careers_html = "" 
+  @careers.each do |c|
+    careers_html += link_to image_tag( "career_icons/#{c}.jpg", :class=>"fp-profile-image", :alt=>"#{c.humanize}"),"/career-profiles##{c.titleize}"
+  end
+%>
+
+<%
   post = Post.last
   latest_blog_html = "<h2>Latest blog post on #{post.created_at.strftime('%B %d, %Y')}</h2>
                       <p>
@@ -25,6 +32,7 @@
 
 <% content = @page.body %>
 <% content = content.gsub(/###MEMBERS###/, members_html) %>
+<% content = content.gsub(/###CAREERS###/, careers_html) %>
 <% content = content.gsub(/###LATEST_BLOG###/, latest_blog_html) %>
 <% content = content.gsub(/###LATEST_TWITTER###/, latest_twitter_html) %>
 <%= markdown content %>

@@ -19,6 +19,9 @@ class PagesController < ApplicationController
         @members = Member.limit( 5 )
       end
 
+      careers = ["banker","doctor","scientist","train_driver","campaigner","teacher"]#,"worker"]
+      @careers = (careers.shuffle)[0..4]
+
       render :home
     end
 
