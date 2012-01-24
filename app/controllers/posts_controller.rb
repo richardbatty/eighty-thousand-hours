@@ -2,6 +2,7 @@ class PostsController < ApplicationController
   def index
     @posts = Post.published.paginate(:page => params[:page], :per_page => 10)
     @recommended_posts = Page.find('recommended-posts')
+    @title = "Blog"
   end
 
   def show
