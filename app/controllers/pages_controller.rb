@@ -10,6 +10,10 @@ class PagesController < ApplicationController
   def show
     @page = Page.find(params[:id])
     
+    # if we have set a custon header_title then we should use that
+    # otherwise use the page title (which maps to the URL slug)
+    @title = (@page.header_title ? @page.header_title : @page.title )
+
     if @page.title == "Home"
       # for profile photos on front page
       begin
@@ -24,10 +28,6 @@ class PagesController < ApplicationController
 
       render :home
     end
-
-    # if we have set a custon header_title then we should use that
-    # otherwise use the page title (which maps to the URL slug)
-    @title = (@page.header_title ? @page.header_title : @page.title )
 
     #otherwise render show.html...
   end
