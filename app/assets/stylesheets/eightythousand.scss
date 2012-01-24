@@ -769,8 +769,11 @@ html[xmlns] #nav {
     }
 }
 
-i {
+i,em {
   font-style: italic;
+}
+strong {
+  font-style: bold;
 }
 
 @import "blog";
