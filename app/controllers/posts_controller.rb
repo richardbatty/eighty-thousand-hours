@@ -3,6 +3,7 @@ class PostsController < ApplicationController
     @posts = Post.published.paginate(:page => params[:page], :per_page => 10)
     @recommended_posts = Page.find('recommended-posts')
     @title = "Blog"
+    @tags = Post.tag_counts_on(:tags) || []
   end
 
   def show
@@ -12,6 +13,15 @@ class PostsController < ApplicationController
     @og_type = "article"
     @title = "Blog: " + @post.title
     @recommended_posts = Page.find('recommended-posts')
+    @tags = @post.tag_list
+  end
+
+  def tag
+    @heading = "Posts tagged with '#{params[:id]}'"
+    @posts = Post.tagged_with(params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    @tags = Post.tag_counts_on(:tags)
+    @recommended_posts = Page.find('recommended-posts')
+    render :action => 'index'
   end
 
   # Atom feed
