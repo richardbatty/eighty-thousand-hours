@@ -2,6 +2,9 @@ class Post < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, :use => :slugged
 
+  # Alias for <tt>acts_as_taggable_on :tags</tt>:
+  acts_as_taggable
+
   scope :draft,     where(:draft => true).order("created_at DESC")
   scope :published, where(:draft => false).order("created_at DESC")
 

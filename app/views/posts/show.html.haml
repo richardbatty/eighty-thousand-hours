@@ -10,6 +10,14 @@
       
         .attribution
           =markdown ("written by: " + @post.author) if @post.author
+
+      - if @post.tag_counts_on(:tags).size > 0
+        .box
+          %h2
+            Tags
+          .tags
+            - @post.tag_counts_on(:tags).each do |tag| 
+              =link_to tag.name, { :action => :tag, :id => tag.name }
       .box
         <h2>Other Recommended Posts</h2>
         = markdown @recommended_posts.body

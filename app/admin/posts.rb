@@ -13,7 +13,8 @@ ActiveAdmin.register Post do
                :author,
                :attribution,
                :created_at,
-               :draft
+               :draft,
+               :tag_list
       f.buttons
     end
   end
