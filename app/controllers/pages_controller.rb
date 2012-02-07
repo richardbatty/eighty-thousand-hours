@@ -32,6 +32,10 @@ class PagesController < ApplicationController
     #otherwise render show.html...
   end
 
+  def search
+    render :search
+  end
+
   def edit
     @page = Page.find(params[:id])
   end
