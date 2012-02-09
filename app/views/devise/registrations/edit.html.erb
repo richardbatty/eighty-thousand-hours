@@ -107,11 +107,6 @@
           </div>
           <p>Choose new picture: <%= mf.file_field :avatar %></p>
         <% end %>
-
-        <%= field_set_tag "Privacy" do %>
-          <p><%= mf.check_box 'use_pseudonym' %> I don't want my name to be displayed publicly on the site</p>
-          <p>If so, please enter a pseudonym which will be displayed instead: <%= m.text_field 'pseudonym' %></p>
-        <% end %>
       <% end %>
 
       <%= field_set_tag "Change password" do %>
