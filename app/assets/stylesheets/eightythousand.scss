@@ -457,6 +457,14 @@ dl.faq dd{
   color: $magenta_2;
 }
 
+ol{
+  padding: 10px;
+  padding-left: 25px;
+  li{
+    padding: 5px;
+  }
+}
+
 ul{
   padding: 10px;
   padding-left: 25px;
