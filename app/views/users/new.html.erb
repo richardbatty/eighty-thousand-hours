@@ -8,21 +8,12 @@ altruistic goals, give ourselves a way to signal our aims to others, and a way
 of ‘tying ourselves to the mast’ - helping us to live up to our ethical ideals
 in our later life.
 
-Our declaration of intent is as follows:
-
-<div class='box'>
-<strong>I declare that I aim to pursue a career as an effective altruist.</strong>
-
-<p>
-This means that I intend to:
-
-<ul>
-<li>(i) Devote a significant proportion of my time or resources to helping others.</li>
-<li>(ii) Use the time or resources I give as effectively as possible in helping others.</li>
-<li>(iii) Make my career decisions based at least in part on how it enables me to further my altruistic aims.</li>
-</ul>
+Our declaration of intent is as follows:"
+%>
+<div class="box">
+<%= render :partial => 'shared/declaration' %>
 </div>
-
+<%= markdown "
 In addition every member, in joining the 80,000 Hours community, agrees to report on
 their altruistic activities every year.
 
@@ -50,8 +41,14 @@ Please fill out the short form below in order to join.
 
   <div class="profile-form">
     <%= form_for(@user, :url=>"/members#application_form") do |u| %>
-        <p><%= u.label :name %></p>
+        <p><%= u.label :name %> (will be displayed publicly)</p>
         <p><%= u.text_field :name %></p>
+
+        <%= u.fields_for :member do |m| %>
+          <p>Please enter your real name if using a pseudonym above (this will not be displayed publicly)</p>
+          <p><%= m.text_field :real_name %></p>
+        <% end %>
+
         <p><%= u.label :email %></p>
         <p><%= u.email_field :email %></p>
         <p><%= u.label :password %></p>
@@ -60,36 +57,77 @@ Please fill out the short form below in order to join.
         <p><%= u.password_field :password_confirmation %></p>
 
       <%= u.fields_for :member do |m| %>
+          <p><%= m.label :apply_career_plans, "How do you plan to use your career to fulfil the declaration?" %></p>
+          <p><%= m.text_area :apply_career_plans %></p>
+
+          <p><%= m.label "Which high impact activites do you intend to be involved in?"  %></p>
+          <%= field_set_tag do %>
+            <%= m.check_box :doing_good_influencing %>
+            <%= m.label :doing_good_influencing, "Influencing" %>
+            <br/>
+            <%= m.check_box :doing_good_prophil %>
+            <%= m.label :doing_good_prophil, "Philanthropy" %>
+            <br/>
+            <%= m.check_box :doing_good_research %>
+            <%= m.label :doing_good_research, "Research" %>
+            <br/>
+            <%= m.check_box :doing_good_innovating %>
+            <%= m.label :doing_good_innovating, "Innovating" %>
+            <br/>
+            <%= m.check_box :doing_good_improving %>
+            <%= m.label :doing_good_improving, "Improving" %>
+            <br/>
+          <% end %>
+
+          <p><%= m.label :donation_percentage, "How much of your income do you intend to donate to high impact causes over your career?" %></p>
+          <p><%= m.text_area :donation_percentage %></p>
+
+          <p><%= m.label :donation_average_income, "How much do you expect to earn on average through your career?" %></p>
+          <p><%= m.text_area :donation_average_income %></p>
+
+          <p><%= m.label :donation_hic_activity_hours, "How many hours do you intend to spend each week on high impact activities (excluding
+time spent earning money to donate to high impact causes)?
+
+(Give an estimate in hours, e.g. 0-5, 5-10, 10-15, 15-25, 25-35)" %></p>
+          <p><%= m.text_area :donation_hic_activity_hours %></p>
+
           <p><%= m.label :apply_occupation, "What do you currently do?" %></p>
           <p><%= m.text_area :apply_occupation %></p>
 
-          <p><%= m.label :apply_career_plans, "How do you plan to use your career to fulfil the pledge?" %></p>
-          <p><%= m.text_area :apply_career_plans %></p>
-
-          <p><%= m.label :apply_reasons_for_joining, "Why would you like to join 80,000 Hours?" %></p>
-          <p><%= m.text_area :apply_reasons_for_joining %></p>
-
-          <p><%= m.label :apply_heard_about_us, "Where did you hear about 80,000 Hours?" %></p>
-          <p><%= m.text_area :apply_heard_about_us %></p>
-
-          <p><%= m.label :apply_spoken_to_existing_member, "Have you spoken to an existing member about 80,000 Hours? If so, who did you speak to and how do you know them?" %></p>
+          <p><%= m.label :apply_spoken_to_existing_member, "Have you spoken to an existing member about 80,000 Hours? If so, who?" %></p>
           <p><%= m.text_area :apply_spoken_to_existing_member %></p>
+
+          <p><strong>If you hadn't heard about 80,000 Hours:</strong></p>
+          <p><%= m.label :parallel_universe_occupation, "What careeer would you have pursued?" %></p>
+          <p><%= m.text_area :parallel_universe_occupation %></p>
+
+          <p><strong>If you hadn't heard about 80,000 Hours:</strong></p>
+          <p><%= m.label :parallel_universe_donation_percentage, "How much of your income would you have donated to high impact causes (rough estimate)?" %></p>
+          <p><%= m.text_area :parallel_universe_donation_percentage %></p>
+
+          <p><strong>If you hadn't heard about 80,000 Hours:</strong></p>
+          <p><%= m.label :parallel_universe_donation_average_income, "How much would you have expected to earn?" %></p>
+          <p><%= m.text_area :parallel_universe_donation_average_income %></p>
+
+          <p><strong>If you hadn't heard about 80,000 Hours:</strong></p>
+          <p><%= m.label :parallel_universe_donation_hic_activity_hours, "How much time would you have spent on high impact activites?" %></p>
+          <p><%= m.text_area :parallel_universe_donation_hic_activity_hours %></p>
       <% end %>
 
-      <hr/>
-      <h1>The Pledge</h1>
+      <div class="box">
+      <h1>The Declaration</h1>
       <p>
-      <%= render :partial => 'shared/pledge' %>
+      <%= render :partial => 'shared/declaration' %>
       </p>
       <div class="center">
         <%= u.fields_for :member do |m| %>
-          <p><%= m.check_box 'pledge' %> I hereby accept the pledge. (<a href="/application-faq">Questions?</a>)</p>
+          <p><%= m.check_box 'pledge' %> I agree to the declaration of intent</p>
         <% end %>
       </div>
     </div>
 
     <div class="center">
-      <%= u.submit "Take the pledge and apply to join 80,000 Hours", :class=>"button" %>
+      <%= u.submit "Apply to join 80,000 Hours", :class=>"button" %>
     </div>
   <% end %>
 </div>

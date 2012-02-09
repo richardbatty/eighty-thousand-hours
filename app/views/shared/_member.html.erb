@@ -74,7 +74,7 @@
   </div>
   <% end %>
 
-  <% if member.doing_good_influencing? || member.doing_good_research? || member.doing_good_prophil %>
+  <% if member.doing_good_influencing? || member.doing_good_research? || member.doing_good_prophil? || member.doing_good_innovating? || member.doing_good_improving %>
   <div class="doing-good-options">
     <h2>Type of Career</h2>
     <ul>
@@ -86,6 +86,12 @@
     <% end %>
     <% if member.doing_good_prophil? %>
       <li>Professional philanthropy</li>
+    <% end %>
+    <% if member.doing_good_innovating? %>
+      <li>Innovating</li>
+    <% end %>
+    <% if member.doing_good_improving? %>
+      <li>Improving</li>
     <% end %>
     </ul>
   </div>

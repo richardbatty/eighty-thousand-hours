@@ -71,7 +71,13 @@
             <%= mf.label :doing_good_research, "Research" %>
             <br/>
             <%= mf.check_box :doing_good_prophil %>
-            <%= mf.label :doing_good_prophil, "Professional philanthropy" %>
+            <%= mf.label :doing_good_prophil, "Philanthropy" %>
+            <br/>
+            <%= mf.check_box :doing_good_innovating %>
+            <%= mf.label :doing_good_innovating, "Innovating" %>
+            <br/>
+            <%= mf.check_box :doing_good_improving %>
+            <%= mf.label :doing_good_improving, "Improving" %>
           <% end %>
 
           <p><%= mf.label :organisation_role, "What is your role in the 80,000 Hours team? (optional)" %></p>
@@ -103,8 +109,8 @@
         <% end %>
 
         <%= field_set_tag "Privacy" do %>
-          <p><%= mf.label :public_profile, "Display my profile publicly" %></p>
-          <p><%= mf.check_box :public_profile %></p>
+          <p><%= mf.check_box 'use_pseudonym' %> I don't want my name to be displayed publicly on the site</p>
+          <p>If so, please enter a pseudonym which will be displayed instead: <%= m.text_field 'pseudonym' %></p>
         <% end %>
       <% end %>
 
