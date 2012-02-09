@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120131220734) do
+ActiveRecord::Schema.define(:version => 20120209210233) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -53,7 +53,7 @@ ActiveRecord::Schema.define(:version => 20120131220734) do
     t.text     "interesting_fact"
     t.string   "location"
     t.text     "organisation_role"
-    t.boolean  "confirmed",                       :default => false
+    t.boolean  "confirmed",                                     :default => false
     t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -62,7 +62,7 @@ ActiveRecord::Schema.define(:version => 20120131220734) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "phone"
-    t.boolean  "on_team",                         :default => false
+    t.boolean  "on_team",                                       :default => false
     t.integer  "team_role_id"
     t.text     "apply_occupation"
     t.text     "apply_career_plans"
@@ -71,13 +71,23 @@ ActiveRecord::Schema.define(:version => 20120131220734) do
     t.text     "apply_spoken_to_existing_member"
     t.string   "organisation"
     t.text     "occupation"
-    t.boolean  "doing_good_influencing",          :default => false
-    t.boolean  "doing_good_research",             :default => false
-    t.boolean  "doing_good_prophil",              :default => false
+    t.boolean  "doing_good_influencing",                        :default => false
+    t.boolean  "doing_good_research",                           :default => false
+    t.boolean  "doing_good_prophil",                            :default => false
     t.string   "external_twitter"
     t.string   "external_facebook"
     t.string   "external_linkedin"
-    t.boolean  "public_profile",                  :default => true
+    t.boolean  "public_profile",                                :default => true
+    t.string   "real_name"
+    t.string   "donation_percentage"
+    t.string   "donation_average_income"
+    t.string   "donation_hic_activity_hours"
+    t.string   "parallel_universe_donation_percentage"
+    t.string   "parallel_universe_donation_average_income"
+    t.string   "parallel_universe_donation_hic_activity_hours"
+    t.boolean  "doing_good_innovating"
+    t.boolean  "doing_good_improving"
+    t.string   "parallel_universe_occupation"
   end
 
   create_table "pages", :force => true do |t|
