@@ -97,17 +97,6 @@ header {
 }
 
 
-.find-out-more {
-  cursor: pointer;
-  display: inline-block;
-  text-shadow: 0 1px 1px rgba(0,0,0,.3);
-  text-align: center;
-
-  &:hover {
-    @include box_shadow(#ccc, 0px, 0px, 5px);
-    cursor: pointer;
-  }
-}
 .button {
   cursor: pointer;
   display: inline-block;
@@ -192,26 +181,25 @@ header {
 
 .fp-splash-container {
   padding-top: 10px;
+  padding-bottom: 20px;
 }
 
 .fp-splash {
   float: left;
   color: #efefef;
 
-  width: 75%;
+  width: 67%;
   .slogan {
-    font-size: 42px;
+    font-size: 38px;
     text-align: left;
     font-weight: bold;
-    margin-right: 20px;
     margin-top: 10px;
     color: #fff;
   }
   .call-to-action {
-    font-size: 26px;
+    font-size: 24px;
     text-align: left;
     font-weight: normal;
-    margin-right: 20px;
     margin-top: 10px;
     line-height: 1.4em;
     color: #efefef;
@@ -240,15 +228,15 @@ header {
 
 
 .find-out-more {
-  font-size: 26px;
+  font-size: 34px;
   float: right;
-  display: inline;
-  padding: 15px;
-  padding-left: 20px;
-  padding-right: 20px;
+  display: inline block;
+  padding: 25px;
+  padding-left: 25px;
+  padding-right: 25px;
   text-align: center;
   font-weight: bold;
-  margin-top: 85px;
+  margin-top: 35px;
   margin-right: 10px;
   margin-bottom: 30px;
   color: #ffffff;
@@ -259,6 +247,15 @@ header {
   -ms-border-radius: 10px;
   -khtml-border-radius: 10px;
   border-radius: 10px;
+
+  cursor: pointer;
+  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+  text-align: center;
+
+  &:hover {
+    @include box_shadow(#ccc, 0px, 0px, 5px);
+    cursor: pointer;
+  }
 }
 
 #content {
