@@ -664,7 +664,7 @@ strong {
 
 
 #nav {
-  font-size: 1.6em;
+  font-size: 1.5em;
   margin: 0;
   padding: 0;
   background: $nav_bar_color;
@@ -672,7 +672,7 @@ strong {
   @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
 
   /*float: right;*/
-  width: 90%;
+  /*width: 95%;*/
   height: 32px;
 	margin: 0;
 	padding: 0px 0px 0;
@@ -680,7 +680,7 @@ strong {
   margin-top: 20px;
   margin-bottom: 20px;
 	line-height: 100%;
-  padding-left: 40px;
+  padding-left: 20px;
 }
 
 #nav li {
