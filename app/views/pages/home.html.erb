@@ -17,18 +17,22 @@
 %>
 
 <%
-  posts = Post.all(:order => "created_at DESC",:limit => 2)
+  posts = Post.all(:order => "created_at DESC",:limit => 4)
   latest_blog_html = "<h2>Latest blog posts:</h2></h2>"
   posts.each do |p|
     latest_blog_html += "
-                      <p>
+                      <div class='fp-blog-summary'>
+                      <span class='fp-blog-title'>
                       <strong>#{p.created_at.strftime('%B %d, %Y')}</strong>
                       <br/>
                       <a href='#{post_path p}'>#{p.title}</a>
                       <br/>by #{p.author}
-                      </p>
+                      </span>
+                      <span class='fp-blog-read-more'>
                       <div class='read-more'><a href='#{post_path p}'>Read more...</a></div>
-                      <br/>
+                      </span>
+                      </div>
+                      <hr/>
                       "
   end
 
