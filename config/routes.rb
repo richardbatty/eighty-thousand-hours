@@ -7,6 +7,7 @@ EightyThousandHours::Application.routes.draw do
   resources :posts, :path => 'blog', :only => [:index, :show] do
     collection do
       get :tag
+      get :author
     end
   end
 

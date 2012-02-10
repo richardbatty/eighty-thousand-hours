@@ -4,6 +4,9 @@ class PostsController < ApplicationController
     @recommended_posts = Page.find('recommended-posts')
     @title = "Blog"
     @tags = Post.tag_counts_on(:tags) || []
+
+    # When we upgrade to Rails3.2 this becomes Post.select(:author).uniq...
+    @authors = Post.select('DISTINCT author').order('author ASC')
   end
 
   def show
@@ -13,7 +16,23 @@ class PostsController < ApplicationController
     @og_type = "article"
     @title = "Blog: " + @post.title
     @recommended_posts = Page.find('recommended-posts')
+
+    # When we upgrade to Rails3.2 this becomes Post.select(:author).uniq...
+    @authors = Post.select('DISTINCT author').order('author ASC')
+
     @tags = @post.tag_list
+  end
+
+  def author
+    @heading = "Posts by #{params[:id]}"
+    @posts = Post.published.where("author = ?", params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    @recommended_posts = Page.find('recommended-posts')
+    @tags = Post.tag_counts_on(:tags) || []
+
+    # When we upgrade to Rails3.2 this becomes Post.select(:author).uniq...
+    @authors = Post.select('DISTINCT author').order('author ASC')
+
+    render :action => 'index'
   end
 
   def tag
@@ -21,6 +40,10 @@ class PostsController < ApplicationController
     @posts = Post.tagged_with(params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     @tags = Post.tag_counts_on(:tags)
     @recommended_posts = Page.find('recommended-posts')
+
+    # When we upgrade to Rails3.2 this becomes Post.select(:author).uniq...
+    @authors = Post.select('DISTINCT author').order('author ASC')
+
     render :action => 'index'
   end
 

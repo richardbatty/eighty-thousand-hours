@@ -25,6 +25,13 @@
           .button
             = link_to 'Edit', edit_page_path(@recommended_posts)
 
+      .box
+        <h2>Authors</h2>
+        - if @authors
+          - @authors.each do |a|
+            =link_to a.author, { :action => :author, :id => a.author }
+            <br/>
+
   .grid_8
     .box
       .entry
