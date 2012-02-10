@@ -10,7 +10,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find(params[:id])
+    @post = Post.find_by_id(params[:id])
     @og_url = post_url( @post )
     @og_desc = @post.get_teaser
     @og_type = "article"

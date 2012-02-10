@@ -46,6 +46,15 @@
         .attribution
           = markdown @post.attribution if @post.attribution
 
+        more posts by 
+        =link_to @post.author, { :action => :author, :id => @post.author }
+
+        - if @post.tag_counts_on(:tags).size > 0
+          .tags
+            tags:
+            - @post.tag_counts_on(:tags).each do |tag| 
+              =link_to tag.name, { :action => :tag, :id => tag.name }
+  
         #disqus_thread
           = render :partial => "disqus_embed", :locals => { :post_id => @post.id, :post_title => @post.title }
   .grid_8 

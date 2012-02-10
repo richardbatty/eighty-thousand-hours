@@ -53,6 +53,9 @@
   
           .attribution= markdown post.attribution if post.attribution 
 
+          more posts by 
+          =link_to post.author, { :action => :author, :id => post.author }
+
           - if post.tag_counts_on(:tags).size > 0
             .tags
               tags:
