@@ -14,6 +14,7 @@ gem 'friendly_id', '>= 4.0.0.rc2'
 gem 'cancan'
 
 # for uploading profile pictures
+gem 'aws-sdk'
 gem 'aws-s3'
 gem 'paperclip', '~> 2.4'
 
