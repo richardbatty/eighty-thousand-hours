@@ -32,6 +32,10 @@ class PagesController < ApplicationController
     #otherwise render show.html...
   end
 
+  def endorsements
+    @endorsements = Endorsement.order("created_at ASC")
+  end
+
   def search
     render :search
   end

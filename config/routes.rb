@@ -43,6 +43,7 @@ EightyThousandHours::Application.routes.draw do
   # all other pages are stored as Markdown in the database
   root :to => 'pages#show', :id => "home"
   match 'search' => 'pages#search'
+  match 'endorsements' => 'pages#endorsements'
   resources :pages
   resources :pages, :path => '/', :only => [:show]
 end

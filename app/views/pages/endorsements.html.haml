@@ -1,0 +1,10 @@
+.center
+  <br/>
+  <h1>Endorsements for 80,000 Hours</h1>
+
+- @endorsements.each do |e|
+  .box
+    = markdown e.body
+    <hr/>
+    = e.author
+    = markdown e.position
