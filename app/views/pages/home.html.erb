@@ -40,10 +40,23 @@
                           Isn't this a great Twitter account? by <a href='http://www.twitter.com/80000Hours'>@80000Hours</a>"
 %>
 
+<%
+  endorsement = Endorsement.all.shuffle.first
+  endorsement_html = "<h2>Endorsements of 80,000 Hours (<a href='/endorsements'>more</a>)</h2>
+                        #{markdown endorsement.body}
+                        <hr/>
+                        #{endorsement.author}
+                        <br/>
+                        #{markdown endorsement.position}
+                      "
+
+%>
+
 <% content = @page.body %>
 <% content = content.gsub(/###MEMBERS###/, members_html) %>
 <% content = content.gsub(/###CAREERS###/, careers_html) %>
 <% content = content.gsub(/###LATEST_BLOG###/, latest_blog_html) %>
 <% content = content.gsub(/###LATEST_TWITTER###/, latest_twitter_html) %>
+<% content = content.gsub(/###ENDORSEMENT###/, endorsement_html) %>
 <%= markdown content %>
 
