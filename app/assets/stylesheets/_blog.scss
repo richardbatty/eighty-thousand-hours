@@ -127,6 +127,19 @@
     margin-right:.25em;
     vertical-align:-.4em;
   }
+
+  pre {
+    code {
+      font-size: 0.6em;
+     white-space: pre-wrap;
+     white-space: -moz-pre-wrap;
+     white-space: -o-pre-wrap;
+    }
+  }
+
+  img {
+    width: 100%;
+  }
 }
 
 .pagination {
