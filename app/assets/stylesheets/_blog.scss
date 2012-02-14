@@ -94,7 +94,7 @@
 
     text-align: left;
     tr {
-      border-bottom: 1px solid #efefef;
+      border-bottom: 1px solid #ccc;
     }
 
     tr:hover {
@@ -104,13 +104,22 @@
     th {
       padding: 10px;
       font-weight: bold;
-      border-right: 1px solid #efefef;
+      border-right: 1px solid #ccc;
     }
 
     td {
       padding: 10px;
       padding-left: 30px;
-      border-right: 1px solid #efefef;
+      border-right: 1px solid #ccc;
+    }
+
+    // even smaller font in footnote tables
+    &.footnote {
+      td {
+        padding: 10px;
+      }
+      line-height: 1.4em;
+      font-size: 0.6em;
     }
   }
 
@@ -137,9 +146,23 @@
     }
   }
 
-  img {
-    width: 100%;
+
+  .image {
+    padding: 10px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    img {
+      width: 100%;
+    }
+    border: 1px solid #ccc;
+    @include box_shadow(#ccc, 0px, 0px, 2px);
+    @include rounded_borders(#ccc, 1px, 6px);
+
+    .caption {
+      font-size: 0.6em;
+    }
   }
+
 }
 
 .pagination {
