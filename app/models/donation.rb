@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: donations
+#
+#  id         :integer         not null, primary key
+#  amount     :decimal(10, 2)
+#  charity_id :integer
+#  member_id  :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Donation < ActiveRecord::Base
   validates :member, :charity, presence: true
   validates :amount, numericality: { greater_than_or_equal_to: 0.01 }

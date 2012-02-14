@@ -1,3 +1,19 @@
+# == Schema Information
+#
+# Table name: posts
+#
+#  id          :integer         not null, primary key
+#  title       :string(255)
+#  body        :text
+#  draft       :boolean
+#  created_at  :datetime
+#  updated_at  :datetime
+#  attribution :string(255)
+#  slug        :string(255)
+#  teaser      :text
+#  author      :string(255)
+#
+
 class Post < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, :use => :slugged

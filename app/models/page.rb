@@ -1,3 +1,18 @@
+# == Schema Information
+#
+# Table name: pages
+#
+#  id           :integer         not null, primary key
+#  title        :string(255)
+#  body         :text
+#  slug         :string(255)
+#  created_at   :datetime
+#  updated_at   :datetime
+#  show_title   :boolean         default(TRUE)
+#  show_box     :boolean         default(TRUE)
+#  header_title :string(255)
+#
+
 class Page < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, :use => :slugged

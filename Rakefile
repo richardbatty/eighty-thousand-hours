@@ -4,6 +4,9 @@
 
 #require 'rake/dsl_definition'
 
+# db:migrate automatically annotates models
+require 'annotate/tasks'
+
 require File.expand_path('../config/application', __FILE__)
 
 EightyThousandHours::Application.load_tasks

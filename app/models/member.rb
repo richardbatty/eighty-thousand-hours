@@ -1,3 +1,51 @@
+# == Schema Information
+#
+# Table name: members
+#
+#  id                                            :integer         not null, primary key
+#  background                                    :text
+#  career_plans                                  :text
+#  inspiration                                   :text
+#  interesting_fact                              :text
+#  location                                      :string(255)
+#  organisation_role                             :text
+#  confirmed                                     :boolean         default(FALSE)
+#  user_id                                       :integer
+#  created_at                                    :datetime
+#  updated_at                                    :datetime
+#  avatar_file_name                              :string(255)
+#  avatar_content_type                           :string(255)
+#  avatar_file_size                              :integer
+#  avatar_updated_at                             :datetime
+#  phone                                         :string(255)
+#  on_team                                       :boolean         default(FALSE)
+#  team_role_id                                  :integer
+#  apply_occupation                              :text
+#  apply_career_plans                            :text
+#  apply_reasons_for_joining                     :text
+#  apply_heard_about_us                          :text
+#  apply_spoken_to_existing_member               :text
+#  organisation                                  :string(255)
+#  occupation                                    :text
+#  doing_good_influencing                        :boolean         default(FALSE)
+#  doing_good_research                           :boolean         default(FALSE)
+#  doing_good_prophil                            :boolean         default(FALSE)
+#  external_twitter                              :string(255)
+#  external_facebook                             :string(255)
+#  external_linkedin                             :string(255)
+#  public_profile                                :boolean         default(TRUE)
+#  real_name                                     :string(255)
+#  donation_percentage                           :string(255)
+#  donation_average_income                       :string(255)
+#  donation_hic_activity_hours                   :string(255)
+#  parallel_universe_donation_percentage         :string(255)
+#  parallel_universe_donation_average_income     :string(255)
+#  parallel_universe_donation_hic_activity_hours :string(255)
+#  doing_good_innovating                         :boolean
+#  doing_good_improving                          :boolean
+#  parallel_universe_occupation                  :string(255)
+#
+
 class Member < ActiveRecord::Base
   attr_accessible :background, :career_plans, :location,
                   :confirmed, :avatar, :inspiration, :interesting_fact,
