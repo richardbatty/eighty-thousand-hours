@@ -674,32 +674,26 @@ strong {
 
 
 #nav {
-  font-size: 1.5em;
+  font-size: 1.6em;
   margin: 0;
   padding: 0;
   background: $nav_bar_color;
   text-align: left;
   @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
-
-  /*float: right;*/
-  /*width: 95%;*/
   height: 32px;
-	margin: 0;
-	padding: 0px 0px 0;
   margin: 10px auto;
-  margin-top: 20px;
-  margin-bottom: 20px;
 	line-height: 100%;
+  width: 95%;
+  padding-left: 20px;
 }
 
 #nav li {
-	margin: 0 5px;
-	padding: 0 0 8px;
+  margin: 0 5px;
+  padding: 0px;
 	float: left;
 	position: relative;
 	list-style: none;
   z-index: 10;
-  max-width: 180px;
 }
 
 /* main level link */
@@ -709,7 +703,7 @@ strong {
 	display: block;
 	padding:  8px 20px;
 	margin: 0;
-  padding-right: 38px;
+  padding-right: 28px;
 }
 /* main level link hover */
 #nav .current a, #nav li:hover > a {
