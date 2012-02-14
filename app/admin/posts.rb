@@ -4,6 +4,13 @@ ActiveAdmin.register Post do
   
   scope :draft
   scope :published
+
+  index do
+    column :created_at
+    column :title
+    column :author
+    default_actions
+  end
   
   form do |f|
     f.inputs "Details" do
@@ -18,5 +25,4 @@ ActiveAdmin.register Post do
       f.buttons
     end
   end
-  
 end

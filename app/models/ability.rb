@@ -16,24 +16,32 @@ class Ability
     #
     # See the wiki for details: https://github.com/ryanb/cancan/wiki/Defining-Abilities
     user ||= User.new # guest user (not logged in)
+
+    # an Admin can do anything
     if user.has_role? :admin
       can :access, :admin
       can :manage, :all
+
+    # a MemberAdmin can manage all member profiles
     elsif user.has_role? :member_admin
       can :access, :admin
       can :manage, User
       can :manage, Member
-    elsif user.has_role? :blogger
+
+    # a BlogAdmin can manage all blog posts
+    elsif user.has_role? :blog_admin
       can :access, :admin
-      # can :manage, Post, :user_id => user.id
       can :manage, Post
       can :manage, Page, :slug => "recommended-posts"
-      # can :read, :all
+
+    # a DonationAdmin manages donations and charities
     elsif user.has_role? :donation_admin
       can :access, :admin
       can :manage, Donation
       can :manage, Charity
-    elsif user.has_role? :WebEditor
+
+    # a WebAdmin can edit and create site content pages
+    elsif user.has_role? :web_admin
       can :manage, Page
     else
     end
