@@ -236,7 +236,7 @@ header {
 .fp-blog-title {
   display: block;
   float: left;
-  width: 300px ;
+  width: 280px ;
 }
 
 .fp-blog-read-more {
@@ -244,8 +244,8 @@ header {
   display: block;
   margin-top: 40px;
   font-size: 0.8em;
-  padding-left: 10px;
-  width: 95px;
+  /*padding-left: 10px;*/
+  width: 125px;
 }
 
 
@@ -690,7 +690,6 @@ strong {
   margin-top: 20px;
   margin-bottom: 20px;
 	line-height: 100%;
-  padding-left: 20px;
 }
 
 #nav li {
@@ -700,7 +699,9 @@ strong {
 	position: relative;
 	list-style: none;
   z-index: 10;
+  max-width: 180px;
 }
+
 /* main level link */
 #nav a {
   color: $nav_link_color;
