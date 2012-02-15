@@ -19,7 +19,7 @@ gem 'aws-s3'
 gem 'paperclip', '~> 2.4'
 
 # markdown
-gem 'bluecloth'
+gem "maruku", "~> 0.6.0"
 
 # production-ready web server for heroku cedar stack
 gem 'thin'

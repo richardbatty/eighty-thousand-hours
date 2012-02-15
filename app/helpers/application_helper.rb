@@ -14,6 +14,6 @@ module ApplicationHelper
   end
 
   def markdown( text )
-    raw(BlueCloth.new(text).to_html)
+    text.blank? ? "" : raw(Maruku.new(text).to_html)
   end
 end
