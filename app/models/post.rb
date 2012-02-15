@@ -54,15 +54,18 @@ class Post < ActiveRecord::Base
     end
   end
 
-  def update_facebook_likes
-    num_likes = get_facebook_likes
-    self.facebook_likes = num_likes
-    self.save
+  # this is called by Heroku scheduler on a regular basis
+  def self.update_facebook_likes
+    Post.all.each do |p|
+      num_likes = get_facebook_likes p
+      p.facebook_likes = num_likes
+      p.save
+    end
   end
 
   private
 
-  def http_get(domain,path,params)
+  def self.http_get(domain,path,params)
     path = unless params.empty?
       path + "?" + params.collect { |k,v| "#{k}=#{CGI::escape(v.to_s)}" }.join('&')
     else
@@ -71,9 +74,9 @@ class Post < ActiveRecord::Base
     request = Net::HTTP.get(domain, path)
   end
 
-  def get_facebook_likes
+  def self.get_facebook_likes(post)
     params = {
-      :query => 'SELECT like_count FROM link_stat WHERE url = "http://80000hours.org' + "/blog/#{self.id}-#{self.slug}"+ '"',
+      :query => 'SELECT like_count FROM link_stat WHERE url = "http://80000hours.org' + "/blog/#{post.id}-#{post.slug}"+ '"',
       :format => 'json'
     }
 

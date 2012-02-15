@@ -59,9 +59,4 @@ class PostsController < ApplicationController
       format.atom { render :layout => false } #views/posts/feed.atom.builder
     end
   end
-
-  # this is called by Heroku scheduler on a regular basis
-  def update_facebook_likes
-    Post.all.each {|p| p.update_facebook_likes}
-  end
 end
