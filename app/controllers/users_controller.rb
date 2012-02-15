@@ -45,4 +45,11 @@ class UsersController < ApplicationController
       render :new
     end
   end
+
+  def email_list
+    members = Member.confirmed.order("name ASC")
+    @output = ""
+    members.each{|m| @output << "\"" + m.name + "\" <" + m.email + ">, "};
+    authorize! :read, Member
+  end
 end

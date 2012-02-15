@@ -21,31 +21,42 @@ class Ability
     if user.has_role? :admin
       can :access, :admin
       can :manage, :all
+    end
 
     # a MemberAdmin can manage all member profiles
-    elsif user.has_role? :member_admin
+    if user.has_role? :member_admin
       can :access, :admin
       can :manage, User
       can :manage, Member
+    end
+
+    # a MemberViewer can read all member profiles
+    if user.has_role? :member_viewer
+      can :access, :admin
+      can :read, User
+      can :read, Member
+    end
 
     # a BlogAdmin can manage all blog posts
-    elsif user.has_role? :blog_admin
+    if user.has_role? :blog_admin
       can :access, :admin
       can :manage, Post
       can :manage, Page, :slug => "recommended-posts"
+    end
 
     # a DonationAdmin manages donations and charities
-    elsif user.has_role? :donation_admin
+    if user.has_role? :donation_admin
       can :access, :admin
       can :manage, Donation
       can :manage, Charity
+    end
 
     # a WebAdmin can edit and create site content pages
-    elsif user.has_role? :web_admin
+    if user.has_role? :web_admin
       can :manage, Page
       can :manage, Endorsement
-    else
     end
+
     can :read, Post, :published => true
     can :read, Page
   end

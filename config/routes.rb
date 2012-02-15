@@ -20,6 +20,7 @@ EightyThousandHours::Application.routes.draw do
   # override /members/new as /join
   match 'join'          => 'users#new', :as => :join
   match 'members/all'   => 'users#all', :as => :all
+  match 'members/email-list'   => 'users#email_list', :as => :all
   resources :users, :path => "members"
 
   # renamed pages which we don't want to break existing links to
