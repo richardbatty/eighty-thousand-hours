@@ -48,8 +48,13 @@ class UsersController < ApplicationController
 
   def email_list
     members = Member.confirmed.order("name ASC")
-    @output = ""
-    members.each{|m| @output << "\"" + m.name + "\" <" + m.email + ">, "};
+    @confirmed = ""
+    members.each{|m| @confirmed << "\"" + m.name + "\" <" + m.email + ">, "};
+
+    members = Member.unconfirmed.order("name ASC")
+    @unconfirmed = ""
+    members.each{|m| @unconfirmed << "\"" + m.name + "\" <" + m.email + ">, "};
+
     authorize! :read, Member
   end
 end
