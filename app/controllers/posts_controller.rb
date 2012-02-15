@@ -1,12 +1,18 @@
 class PostsController < ApplicationController
-  def index
-    @posts = Post.published.paginate(:page => params[:page], :per_page => 10)
+  def prepare_sidebar
     @recommended_posts = Page.find('recommended-posts')
-    @title = "Blog"
-    @tags = Post.tag_counts_on(:tags) || []
+    @tag_cloud = Post.tag_counts_on(:tags) || []
+    @popular_posts = Post.popular(5)
 
     # When we upgrade to Rails3.2 this becomes Post.select(:author).uniq...
     @authors = Post.select('DISTINCT author').order('author ASC')
+  end
+
+  def index
+    @posts = Post.published.paginate(:page => params[:page], :per_page => 10)
+    @title = "Blog"
+
+    prepare_sidebar
   end
 
   def show
@@ -15,22 +21,16 @@ class PostsController < ApplicationController
     @og_desc = @post.get_teaser
     @og_type = "article"
     @title = "Blog: " + @post.title
-    @recommended_posts = Page.find('recommended-posts')
-
-    # When we upgrade to Rails3.2 this becomes Post.select(:author).uniq...
-    @authors = Post.select('DISTINCT author').order('author ASC')
-
     @tags = @post.tag_list
+
+    prepare_sidebar
   end
 
   def author
     @heading = "Posts by #{params[:id]}"
     @posts = Post.published.where("author = ?", params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
-    @recommended_posts = Page.find('recommended-posts')
-    @tags = Post.tag_counts_on(:tags) || []
 
-    # When we upgrade to Rails3.2 this becomes Post.select(:author).uniq...
-    @authors = Post.select('DISTINCT author').order('author ASC')
+    prepare_sidebar
 
     render :action => 'index'
   end
@@ -38,11 +38,8 @@ class PostsController < ApplicationController
   def tag
     @heading = "Posts tagged with '#{params[:id]}'"
     @posts = Post.tagged_with(params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
-    @tags = Post.tag_counts_on(:tags)
-    @recommended_posts = Page.find('recommended-posts')
 
-    # When we upgrade to Rails3.2 this becomes Post.select(:author).uniq...
-    @authors = Post.select('DISTINCT author').order('author ASC')
+    prepare_sidebar
 
     render :action => 'index'
   end
@@ -61,5 +58,10 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.atom { render :layout => false } #views/posts/feed.atom.builder
     end
+  end
+
+  # this is called by Heroku scheduler on a regular basis
+  def update_facebook_likes
+    Post.all.each {|p| p.update_facebook_likes}
   end
 end

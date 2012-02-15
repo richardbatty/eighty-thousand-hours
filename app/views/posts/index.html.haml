@@ -2,31 +2,13 @@
   #sidebar
     .grid_4
       .box
-        <h2>Recommended Posts</h2>
-        = markdown @recommended_posts.body
-        - if can? :update, @recommended_posts
-          .button
-            = link_to 'Edit', edit_page_path(@recommended_posts)
-
+        = render :partial => "popular_posts"
       .box
-        %h2
-          Tags
-        - tag_cloud(@tags, %w(tag_size1 tag_size2 tag_size3 tag_size4)) do |tag, css_class|
-          =link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class
-
+        = render :partial => "recommended_posts"
       .box
-        <div id="popularthreads" class="dsq-widget">
-        <h2 class="dsq-widget-title">Popular Posts</h2>
-        <script type="text/javascript" src="http://80000hours.disqus.com/popular_threads_widget.js?num_items=3"></script>
-        </div>
-        <a href="http://disqus.com/">Powered by Disqus</a>
-
+        = render :partial => "authors"
       .box
-        <h2>Authors</h2>
-        - if @authors
-          - @authors.each do |a|
-            =link_to a.author, { :action => :author, :id => a.author }
-            <br/>
+        = render :partial => "tag_cloud"
 .blog
   - if @heading
     .grid_8

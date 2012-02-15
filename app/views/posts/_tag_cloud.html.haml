@@ -1,0 +1,5 @@
+%h2
+  Tags
+- tag_cloud(@tag_cloud, %w(tag_size1 tag_size2 tag_size3 tag_size4)) do |tag, css_class|
+  =link_to tag.name, { :action => :tag, :id => tag.name }, :class => css_class
+

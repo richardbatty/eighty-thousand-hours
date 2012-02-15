@@ -1,0 +1,5 @@
+<h2>Recommended Posts</h2>
+= markdown @recommended_posts.body
+- if can? :update, @recommended_posts
+  .button
+    = link_to 'Edit', edit_page_path(@recommended_posts)

@@ -23,6 +23,7 @@ class Post < ActiveRecord::Base
 
   scope :draft,     where(:draft => true).order("created_at DESC")
   scope :published, where(:draft => false).order("created_at DESC")
+  scope :popular, lambda{|n| order("facebook_likes DESC").limit(n)}
 
   # override to_param to specify format of URL
   # now we can call post_path(@post) and get
@@ -46,6 +47,37 @@ class Post < ActiveRecord::Base
     #   * sentence contains URL www.blah.com
     #   * markdown should be stripped out
     sentences = self.body.split(".")
-    sentences[0] + ". " + sentences[1] + "..."
+    if sentences.size >= 2
+      sentences[0] + ". " + sentences[1] + "..."
+    else
+      return self.body
+    end
+  end
+
+  def update_facebook_likes
+    num_likes = get_facebook_likes
+    self.facebook_likes = num_likes
+    self.save
+  end
+
+  private
+
+  def http_get(domain,path,params)
+    path = unless params.empty?
+      path + "?" + params.collect { |k,v| "#{k}=#{CGI::escape(v.to_s)}" }.join('&')
+    else
+      path
+    end
+    request = Net::HTTP.get(domain, path)
+  end
+
+  def get_facebook_likes
+    params = {
+      :query => 'SELECT like_count FROM link_stat WHERE url = "http://80000hours.org' + "/blog/#{self.id}-#{self.slug}"+ '"',
+      :format => 'json'
+    }
+
+    http = http_get('api.facebook.com', '/method/fql.query', params)
+    result = JSON.parse(http)[0]["like_count"]
   end
 end
