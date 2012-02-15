@@ -798,6 +798,13 @@ strong {
   font-style: bold;
 }
 
+sup {
+  vertical-align: baseline;
+  font-size: 0.8em;
+  position: relative;
+  top: -0.4em;
+}
+
 @import "blog";
 @import "forms";
 
