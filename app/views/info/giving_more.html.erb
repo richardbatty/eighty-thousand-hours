@@ -1,6 +1,6 @@
 <div class="box">
 <h1><%= @title %></h1>
-<%= raw( BlueCloth.new("
+<%= markdown "
 You can make a colossal positive impact on lots of people’s lives with your
 donations. If you have a job and you are serious about making the world better,
 then you should think hard about pledging a portion of your income to charity.
@@ -72,7 +72,7 @@ even so, it can be hard to get started. So let’s finish off with a few ways in
   you move to a better paid job – so the global poor share in your pay rise
   too.
 
-").to_html ) %>
+" %>
 </div>
 
 
