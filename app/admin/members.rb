@@ -1,10 +1,10 @@
 ActiveAdmin.register Member do
-  menu :if => proc{ can?(:manage, Member) }     
+  menu :if => proc{ can?(:read, Member) }
   controller.authorize_resource
   
   scope :confirmed
   scope :unconfirmed
-  
+
   index do
     column :id
     column :avatar do |member|
