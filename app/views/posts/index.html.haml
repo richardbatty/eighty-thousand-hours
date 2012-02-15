@@ -16,7 +16,11 @@
         .center
           %h1
             = @heading
-
+  - if will_paginate @posts
+    .grid_8
+      .box
+        .center.pagination
+          = will_paginate @posts
   - @posts.each do |post|
     .grid_8
       .box
