@@ -1,7 +1,8 @@
 <h3>Latest revision: <%= @versions.length %></h3>
 
-<b>Modified att:</b>
-<%= @versions.last.created_at%>
+<% if @versions.length >= 1 %>
+<b>Modified at:</b>
+<%= @versions.last.created_at %>
 <br>
 <b>Author</b>: <%= User.find(@versions.last.whodunnit).name %>
 <% if @versions.length.to_i > 1 %>
@@ -21,4 +22,5 @@
     <br>
   <% end %>
   <%= link_to "Back to current version"%>
+<% end %>
 <% end %>
