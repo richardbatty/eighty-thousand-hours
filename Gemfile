@@ -3,7 +3,6 @@ source 'http://rubygems.org'
 gem 'rails', '>= 3.1'
 
 gem 'devise'
-# gem 'omniauth'
 
 gem 'pg'
 
@@ -56,6 +55,9 @@ gem 'acts-as-taggable-on', '~> 2.2.2'
 
 # handy comments at the top of models
 gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
+
+# embed latest tweets
+gem 'twitter'
 
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
