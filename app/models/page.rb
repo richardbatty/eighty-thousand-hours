@@ -14,6 +14,7 @@
 #
 
 class Page < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
   extend FriendlyId
   friendly_id :title, :use => :slugged
 
@@ -21,4 +22,8 @@ class Page < ActiveRecord::Base
   has_paper_trail
 
   attr_accessible :title,:header_title,:body,:show_title,:show_box
+
+  def admin_permalink
+    page_path(self)
+  end
 end

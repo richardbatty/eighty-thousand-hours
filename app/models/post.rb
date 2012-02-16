@@ -18,6 +18,9 @@ class Post < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, :use => :slugged
 
+  # for versioning with paper_trail
+  has_paper_trail
+
   # Alias for <tt>acts_as_taggable_on :tags</tt>:
   acts_as_taggable
 
