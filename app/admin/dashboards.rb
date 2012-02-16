@@ -9,10 +9,12 @@
 ActiveAdmin::Dashboards.build do
   section "Recently updated content" do
     table_for Version.order('id desc').limit(20) do
-      column "Item" do |v| link_to v.item.title, v.item.admin_permalink end
+      column "View" do |v| link_to "View", page_path(v.item) end
+      column "Edit" do |v| link_to "Edit", admin_page_path(v.item) end
+      column "Title" do |v| link_to v.item.title, page_path(v.item) end
       column "Type" do |v| v.item_type.underscore.humanize end
       column "Modified at" do |v| v.created_at.to_s :long end
-      column "Admin" do |v| link_to User.find(v.whodunnit).email, admin_user_path(User.find(v.whodunnit)) end
+      column "Admin" do |v| link_to User.find(v.whodunnit).name, admin_user_path(User.find(v.whodunnit)) end
     end
   end
   # Define your dashboard sections here. Each block will be

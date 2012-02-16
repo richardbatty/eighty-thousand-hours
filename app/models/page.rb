@@ -22,8 +22,4 @@ class Page < ActiveRecord::Base
   has_paper_trail
 
   attr_accessible :title,:header_title,:body,:show_title,:show_box
-
-  def admin_permalink
-    page_path(self)
-  end
 end

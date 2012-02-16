@@ -1,0 +1,24 @@
+<h3>Latest revision: <%= @versions.length %></h3>
+
+<b>Modified att:</b>
+<%= @versions.last.created_at%>
+<br>
+<b>Author</b>: <%= User.find(@versions.last.whodunnit).name %>
+<% if @versions.length.to_i > 1 %>
+  <% if params[:version] %>
+    <h3>This is revision <%= "#{params[:version]}"%></h3>
+
+    <b>Modified at:</b>
+    <%= @versions[(params[:version].to_i - 1)].created_at %>
+    <br>
+    <b>Edited by</b>:
+    <%= User.find(@versions[(params[:version].to_i - 1)].whodunnit).name %>
+  <% end %>
+  <hr/>
+  <% if params[:version].to_i > 1 || !params[:version] %>
+    <% prev = {:version => (params[:version] || @versions.length).to_i - 1}%>
+    <%= link_to "View revision #{prev[:version]}", prev%>
+    <br>
+  <% end %>
+  <%= link_to "Back to current version"%>
+<% end %>

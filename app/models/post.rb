@@ -15,6 +15,7 @@
 #
 
 class Post < ActiveRecord::Base
+  include Rails.application.routes.url_helpers
   extend FriendlyId
   friendly_id :title, :use => :slugged
 
