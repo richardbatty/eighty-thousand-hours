@@ -66,4 +66,15 @@ ActiveAdmin.register Member do
       f.buttons
     end
   end
+
+  # for History sidebar in show view
+  controller do
+    def show
+        @member = Member.find(params[:id])
+        @versions = @member.versions
+        @member = @member.versions[params[:version].to_i].reify if params[:version]
+        show! #it seems to need this
+    end
+  end
+  sidebar :versions, :partial => "admin/version_sidebar", :only => :show
 end

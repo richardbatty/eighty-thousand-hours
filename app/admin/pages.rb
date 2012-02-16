@@ -26,5 +26,5 @@ ActiveAdmin.register Page do
         show! #it seems to need this
     end
   end
-  sidebar :versionate, :partial => "layouts/version", :only => :show
+  sidebar :versions, :partial => "admin/version_sidebar", :only => :show
 end
