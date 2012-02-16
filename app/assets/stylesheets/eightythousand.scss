@@ -572,7 +572,7 @@ strong {
   font-size: 12px;
 
   .user-login{
-    padding-bottom: 10px;
+    padding-bottom: 0px;
   }
 
   a {
@@ -585,6 +585,12 @@ strong {
     color: $nav_link_hover_color;
     background: $nav_bar_color;
     text-decoration:none;
+  }
+
+  .social {
+    float: right;
+    display:block;
+    height: 30px;
   }
 }
 

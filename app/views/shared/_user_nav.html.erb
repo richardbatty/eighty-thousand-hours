@@ -13,10 +13,34 @@
     | <%= link_to "Contact Us", "/contact-us" %>
     | <%= link_to "Show Your Support", "/show-your-support" %>
   <% end %>
-  | <%= link_to "Search", "/search" %>
   </div>
 
-
+  <!-- Google Custon Search -->
+  <div id="cse-search-form" style="width: 300px;float:right;margin:0px;padding:0px">Loading</div>
+  <script src="http://www.google.co.uk/jsapi" type="text/javascript"></script>
+  <script type="text/javascript"> 
+    google.load('search', '1', {language : 'en'});
+    google.setOnLoadCallback(function() {
+      var customSearchOptions = {};  var customSearchControl = new google.search.CustomSearchControl(
+        '009388358202617850858:rrdhw8ocoye', customSearchOptions);
+      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
+      var options = new google.search.DrawOptions();
+      options.setAutoComplete(true);
+      options.enableSearchboxOnly("http://80000hours.org/search");
+      customSearchControl.draw('cse-search-form', options);
+    }, true);
+  </script>
+  <link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" />
+ <style type="text/css">
+    input.gsc-input {
+      border-color: #D9D9D9;
+    }
+    input.gsc-search-button {
+      border-color: #666666;
+      background-color: #ffffff;
+    }
+  </style>
+  <br/>
   <div class="social">
     <%= render :partial => 'shared/mailing_list', :locals => { :text => "", :klass => "header", :button_text=>"Stay updated" } %>
     <%= link_to image_tag( "social/facebook.png", :class => "social_image" ),   "http://facebook.com/80000Hours" %>
@@ -24,5 +48,4 @@
     <%= link_to image_tag( "social/googleplus.png", :class => "social_image" ), "https://plus.google.com/105296499458344309465" %>
     <%= link_to image_tag( "social/atom.png", :class => "social_image" ),       "http://80000hours.org/blog/feed.atom" %>
   </div>
-
 </div>
