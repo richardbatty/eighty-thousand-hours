@@ -53,6 +53,7 @@ class Ability
 
     # a WebAdmin can edit and create site content pages
     if user.has_role? :web_admin
+      can :access, :admin
       can :manage, Page
       can :manage, Endorsement
     end
