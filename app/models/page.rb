@@ -22,4 +22,9 @@ class Page < ActiveRecord::Base
   has_paper_trail
 
   attr_accessible :title,:header_title,:body,:show_title,:show_box
+
+  # for active admin dashboard
+  def admin_permalink
+    admin_page_path(self)
+  end
 end

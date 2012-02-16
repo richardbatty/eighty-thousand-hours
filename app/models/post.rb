@@ -67,6 +67,11 @@ class Post < ActiveRecord::Base
     end
   end
 
+  # for active admin dashboard
+  def admin_permalink
+    admin_post_path(self)
+  end
+
   private
 
   def self.http_get(domain,path,params)
