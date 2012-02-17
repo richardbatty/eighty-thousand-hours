@@ -5,7 +5,7 @@ ActiveAdmin.register Member do
   scope :confirmed
   scope :unconfirmed
   scope :contacted
-  scope :uncontacted
+  scope :not_contacted
 
   index do
     column :id

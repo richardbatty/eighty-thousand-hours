@@ -67,7 +67,7 @@ class Member < ActiveRecord::Base
   scope :confirmed,   with_user.where(:confirmed => true)
   scope :unconfirmed, with_user.where(:confirmed => false)
   scope :contacted,   with_user.where({:confirmed => false}).where("contacted_date IS NOT NULL")
-  scope :uncontacted, with_user.where({:confirmed => false, :contacted_date => nil})
+  scope :not_contacted, with_user.where({:confirmed => false, :contacted_date => nil})
   scope :on_team, confirmed.where(:on_team => true).joins(:team_role)
   
   def self.with_team_role(role)
