@@ -39,7 +39,6 @@ EightyThousandHours::Application.routes.draw do
   match 'what-you-can-do/my-donations'  => 'info#my_donations'
   match 'what-you-can-do/my-career'     => 'info#my_career'
   match 'what-we-do'                    => 'info#what_we_do'
-  match 'giving-more'                   => 'info#giving_more'
 
   # all other pages are stored as Markdown in the database
   root :to => 'pages#show', :id => "home"
