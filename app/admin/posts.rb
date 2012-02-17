@@ -36,4 +36,9 @@ ActiveAdmin.register Post do
     end
   end
   sidebar :versions, :partial => "admin/version_sidebar", :only => :show
+
+  sidebar :view_on_site, :only => :show do
+    @post = Post.find(params[:id])
+    link_to "View live on site", post_path(@post)
+  end
 end

@@ -5,7 +5,7 @@ class PostsController < ApplicationController
     @popular_posts = Post.popular(5)
 
     # When we upgrade to Rails3.2 this becomes Post.select(:author).uniq...
-    @authors = Post.select('DISTINCT author').order('author ASC')
+    @authors = Post.where(:draft=>false).select('DISTINCT author').order('author ASC')
   end
 
   def index
@@ -17,6 +17,15 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by_id(params[:id])
+    if @post.draft
+      if cannot? :manage, Post
+        # user is not allowed to view drafts
+        # so we redirect to the index
+        flash[:notice] = "Sorry! You've followed a bad link, please <a href='contact-us'>contact support</a>!".html_safe
+        redirect_to :action => 'index'
+      end
+    end
+
     @og_url = post_url( @post )
     @og_desc = @post.get_teaser
     @og_type = "article"
