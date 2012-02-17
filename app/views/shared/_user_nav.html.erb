@@ -15,8 +15,18 @@
   <% end %>
   </div>
 
+  <div class="social">
+    <%= render :partial => 'shared/mailing_list', :locals => { :text => "", :klass => "header", :button_text=>"Stay updated" } %>
+    <%= link_to image_tag( "social/facebook.png", :class => "social_image" ),   "http://facebook.com/80000Hours" %>
+    <%= link_to image_tag( "social/twitter.png", :class => "social_image" ),    "http://twitter.com/80000Hours" %>
+    <%= link_to image_tag( "social/googleplus.png", :class => "social_image" ), "https://plus.google.com/105296499458344309465" %>
+    <%= link_to image_tag( "social/atom.png", :class => "social_image" ),       "http://80000hours.org/blog/feed.atom" %>
+  </div>
+
+  <br/>
   <!-- Google Custon Search -->
-  <div id="cse-search-form" style="width: 300px;float:right;margin:0px;padding:0px">Loading</div>
+  <div>
+  <div id="cse-search-form" style="width: 360px;float:right;margin:0px;padding:0px">Loading</div>
   <script src="http://www.google.co.uk/jsapi" type="text/javascript"></script>
   <script type="text/javascript"> 
     google.load('search', '1', {language : 'en'});
@@ -40,12 +50,5 @@
       background-color: #ffffff;
     }
   </style>
-  <br/>
-  <div class="social">
-    <%= render :partial => 'shared/mailing_list', :locals => { :text => "", :klass => "header", :button_text=>"Stay updated" } %>
-    <%= link_to image_tag( "social/facebook.png", :class => "social_image" ),   "http://facebook.com/80000Hours" %>
-    <%= link_to image_tag( "social/twitter.png", :class => "social_image" ),    "http://twitter.com/80000Hours" %>
-    <%= link_to image_tag( "social/googleplus.png", :class => "social_image" ), "https://plus.google.com/105296499458344309465" %>
-    <%= link_to image_tag( "social/atom.png", :class => "social_image" ),       "http://80000hours.org/blog/feed.atom" %>
   </div>
 </div>
