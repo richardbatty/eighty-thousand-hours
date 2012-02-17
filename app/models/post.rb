@@ -27,7 +27,7 @@ class Post < ActiveRecord::Base
 
   scope :draft,     where(:draft => true).order("created_at DESC")
   scope :published, where(:draft => false).order("created_at DESC")
-  scope :popular, lambda{|n| order("facebook_likes DESC").limit(n)}
+  scope :popular, lambda{|n| where(:draft => false).order("facebook_likes DESC").limit(n)}
 
   # override to_param to specify format of URL
   # now we can call post_path(@post) and get
