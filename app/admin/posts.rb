@@ -9,6 +9,7 @@ ActiveAdmin.register Post do
     column :created_at
     column :title
     column :author
+    column :draft
     default_actions
   end
   
