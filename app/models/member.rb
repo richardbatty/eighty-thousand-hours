@@ -45,10 +45,10 @@ class Member < ActiveRecord::Base
   validates_presence_of :donation_percentage,             :message => "Estimate how much you intend to donate"
   validates_presence_of :donation_average_income,         :message => "Estimate your average annual income"
   validates_presence_of :donation_hic_activity_hours,     :message => "Estimate how much time you will donate to high impact activites"
-  validates_presence_of :parallel_universe_donation_percentage,             :message => "Estimate how much money you would have donated if you hadn't heard about 80,000 Hours"
-  validates_presence_of :parallel_universe_donation_average_income,         :message => "Estimate how much you would have earned if you hadn't heard about 80,000 Hours"
-  validates_presence_of :parallel_universe_donation_hic_activity_hours,     :message => "Estimate how much time you would have donated if you hadn't heard about 80,000 Hours"
-  validates_presence_of :parallel_universe_occupation,                      :message => "Tell us how your career plans have changed after finding out about 80,000 Hours"
+  #validates_presence_of :parallel_universe_donation_percentage,             :message => "Estimate how much money you would have donated if you hadn't heard about 80,000 Hours"
+  #validates_presence_of :parallel_universe_donation_average_income,         :message => "Estimate how much you would have earned if you hadn't heard about 80,000 Hours"
+  #validates_presence_of :parallel_universe_donation_hic_activity_hours,     :message => "Estimate how much time you would have donated if you hadn't heard about 80,000 Hours"
+  #validates_presence_of :parallel_universe_occupation,                      :message => "Tell us how your career plans have changed after finding out about 80,000 Hours"
   validates_acceptance_of :pledge,                        :message => "You must agree to the 80,000 Hours declaration"
 
   # a Member is always tied to a User 

@@ -95,23 +95,7 @@ time spent earning money to donate to high impact causes)?
           <p><%= m.text_area :apply_occupation %></p>
 
           <p><%= m.label :apply_spoken_to_existing_member, "Have you spoken to an existing member about 80,000 Hours? If so, who?" %></p>
-          <p><%= m.text_area :apply_spoken_to_existing_member %></p>
-
-          <p><strong>If you hadn't heard about 80,000 Hours:</strong></p>
-          <p><%= m.label :parallel_universe_occupation, "What careeer would you have pursued?" %></p>
-          <p><%= m.text_area :parallel_universe_occupation %></p>
-
-          <p><strong>If you hadn't heard about 80,000 Hours:</strong></p>
-          <p><%= m.label :parallel_universe_donation_percentage, "How much of your income would you have donated to high impact causes (rough estimate)?" %></p>
-          <p><%= m.text_area :parallel_universe_donation_percentage %></p>
-
-          <p><strong>If you hadn't heard about 80,000 Hours:</strong></p>
-          <p><%= m.label :parallel_universe_donation_average_income, "How much would you have expected to earn?" %></p>
-          <p><%= m.text_area :parallel_universe_donation_average_income %></p>
-
-          <p><strong>If you hadn't heard about 80,000 Hours:</strong></p>
-          <p><%= m.label :parallel_universe_donation_hic_activity_hours, "How much time would you have spent on high impact activites?" %></p>
-          <p><%= m.text_area :parallel_universe_donation_hic_activity_hours %></p>
+          <p><%= m.text_field :apply_spoken_to_existing_member %></p>
       <% end %>
 
       <div class="box">
