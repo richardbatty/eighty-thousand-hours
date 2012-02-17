@@ -22,7 +22,7 @@ class Member < ActiveRecord::Base
                   :parallel_universe_donation_average_income,
                   :parallel_universe_donation_hic_activity_hours,
                   :parallel_universe_occupation,
-                  :real_name
+                  :real_name, :contacted_date, :contacted_by
 
 
   # paperclip avatars on S3
@@ -66,6 +66,8 @@ class Member < ActiveRecord::Base
   scope :with_user, joins(:user).includes(:user)
   scope :confirmed,   with_user.where(:confirmed => true)
   scope :unconfirmed, with_user.where(:confirmed => false)
+  scope :contacted,   with_user.where({:confirmed => false}).where("contacted_date IS NOT NULL")
+  scope :uncontacted, with_user.where({:confirmed => false, :contacted_date => nil})
   scope :on_team, confirmed.where(:on_team => true).joins(:team_role)
   
   def self.with_team_role(role)

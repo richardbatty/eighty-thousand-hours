@@ -4,6 +4,8 @@ ActiveAdmin.register Member do
   
   scope :confirmed
   scope :unconfirmed
+  scope :contacted
+  scope :uncontacted
 
   index do
     column :id
@@ -62,7 +64,9 @@ ActiveAdmin.register Member do
                :doing_good_improving,
                :external_twitter,
                :external_facebook,
-               :external_linkedin
+               :external_linkedin,
+               :contacted_date,
+               :contacted_by
       f.buttons
     end
   end
