@@ -44,6 +44,12 @@ class Ability
       can :manage, Page, :slug => "recommended-posts"
     end
 
+    # a BlogAdmin can manage all blog posts
+    if user.has_role? :endorsement_admin
+      can :access, :admin
+      can :manage, Endorsement
+    end
+
     # a DonationAdmin manages donations and charities
     if user.has_role? :donation_admin
       can :access, :admin
@@ -55,7 +61,6 @@ class Ability
     if user.has_role? :web_admin
       can :access, :admin
       can :manage, Page
-      can :manage, Endorsement
     end
 
     can :read, Post, :published => true
