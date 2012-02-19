@@ -17,7 +17,7 @@
 %>
 
 <%
-  posts = Post.all(:order => "created_at DESC",:limit => 4)
+  posts = Post.published.limit(4)
   latest_blog_html = "<h2>Latest blog posts:</h2>"
   posts.each do |p|
     latest_blog_html += "
