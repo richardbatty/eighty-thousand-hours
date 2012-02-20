@@ -17,22 +17,27 @@ class PostsController < ApplicationController
 
   def show
     @post = Post.find_by_id(params[:id])
-    if @post.draft
-      if cannot? :manage, Post
-        # user is not allowed to view drafts
-        # so we redirect to the index
-        flash[:notice] = "Sorry! You've followed a bad link, please <a href='contact-us'>contact support</a>!".html_safe
-        redirect_to :action => 'index'
+    if @post.nil?
+      flash[:notice] = "Sorry! You've followed a bad link, please <a href='contact-us'>contact support</a> and report the following:<br/> #{params[:controller]} => '#{params[:id]}'".html_safe
+      redirect_to :action => 'index'
+    else
+      if @post.draft
+        if cannot? :manage, Post
+          # user is not allowed to view drafts
+          # so we redirect to the index
+          flash[:notice] = "Sorry! You've followed a bad link, please <a href='contact-us'>contact support</a>!".html_safe
+          redirect_to :action => 'index'
+        end
       end
+
+      @og_url = post_url( @post )
+      @og_desc = @post.get_teaser
+      @og_type = "article"
+      @title = "Blog: " + @post.title
+      @tags = @post.tag_list
+
+      prepare_sidebar
     end
-
-    @og_url = post_url( @post )
-    @og_desc = @post.get_teaser
-    @og_type = "article"
-    @title = "Blog: " + @post.title
-    @tags = @post.tag_list
-
-    prepare_sidebar
   end
 
   def author
