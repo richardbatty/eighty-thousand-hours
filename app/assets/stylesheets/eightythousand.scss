@@ -116,6 +116,11 @@ header {
     cursor: pointer;
   }
 }
+
+.right {
+  float:right;
+}
+
 .small-button {
   cursor: pointer;
   display: inline-block;
@@ -249,7 +254,8 @@ header {
 }
 
 
-.find-out-more {
+.float-right-button {
+  color: #ffffff;
   font-size: 34px;
   float: right;
   display: inline block;
