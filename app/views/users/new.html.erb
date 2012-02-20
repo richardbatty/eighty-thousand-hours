@@ -99,19 +99,20 @@ time spent earning money to donate to high impact causes)?
       <% end %>
 
       <div class="box">
-      <h1>The Declaration</h1>
-      <p>
-      <%= render :partial => 'shared/declaration' %>
-      </p>
-      <div class="center">
-        <%= u.fields_for :member do |m| %>
-          <p><%= m.check_box 'pledge' %> I agree to the declaration of intent</p>
-        <% end %>
+        <h1>The Declaration</h1>
+        <p>
+          <%= render :partial => 'shared/declaration' %>
+        </p>
+        <div class="center">
+          <%= u.fields_for :member do |m| %>
+            <p><%= m.check_box 'pledge' %> I agree to the declaration of intent</p>
+          <% end %>
+        </div>
       </div>
-    </div>
 
     <div class="center">
       <%= u.submit "Apply to join 80,000 Hours", :class=>"button" %>
     </div>
-  <% end %>
+    <% end %>
+  </div>
 </div>
