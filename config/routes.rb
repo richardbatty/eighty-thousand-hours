@@ -44,6 +44,7 @@ EightyThousandHours::Application.routes.draw do
   root :to => 'pages#show', :id => "home"
   match 'search' => 'pages#search'
   match 'endorsements' => 'pages#endorsements'
+  match 'mailing-list' => 'pages#mailing_list'
   resources :pages
   resources :pages, :path => '/', :only => [:show]
 end
