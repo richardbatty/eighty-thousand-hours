@@ -52,6 +52,8 @@
             - @post.tag_counts_on(:tags).each do |tag| 
               =link_to tag.name, { :action => :tag, :id => tag.name }
   
+        = render :partial => "rss"
+        <br/>
         <br/>
         <fb:like href="#{post_url(@post)}" send="false" width="250" show_faces="false"></fb:like>
         <br/>
