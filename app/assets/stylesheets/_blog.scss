@@ -62,15 +62,16 @@
   #sidebar {
     float: right;
 
-    img.rss
-    {
-      padding:0px;
-      margin:0px;
-      width: 20px;
-      height: 20px;
-      padding-right: 3px;
-      vertical-align: middle;
-    }
+   }
+
+  img.rss
+  {
+    padding:0px;
+    margin:0px;
+    width: 20px;
+    height: 20px;
+    padding-right: 5px;
+    margin-bottom: -3px;
   }
 
   .attribution {
