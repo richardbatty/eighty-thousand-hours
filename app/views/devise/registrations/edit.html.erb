@@ -53,7 +53,7 @@
           <p><%= mf.label :background, "What is your background and what are your interests? (optional)" %></p>
           <p><%= mf.text_area :background %></p>
 
-          <p><%= mf.label :inspiration, "What inspired you to join 80,000 Hours? (optional)" %></p>
+          <p><%= mf.label :inspiration, "What inspired you to join 80,000 Hours, and how has discovering 80,000 Hours changed your career decisions? (optional)" %></p>
           <p><%= mf.text_area :inspiration %></p>
 
           <p><%= mf.label :occupation, "What do you currently do? (optional)" %></p>
@@ -64,8 +64,8 @@
 
           <p><%= mf.label "What will be your main method(s) of doing good?"  %></p>
           <%= field_set_tag do %>
-            <%= mf.check_box :doing_good_influencing %>
-            <%= mf.label :doing_good_influencing, "Influencing" %>
+            <%= mf.check_box :doing_good_inspiring %>
+            <%= mf.label :doing_good_inspiring, "Inspiring" %>
             <br/>
             <%= mf.check_box :doing_good_research %>
             <%= mf.label :doing_good_research, "Research" %>

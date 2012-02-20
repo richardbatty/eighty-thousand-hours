@@ -57,7 +57,7 @@ ActiveAdmin.register Member do
                :on_team,
                :team_role,
                :avatar,
-               :doing_good_influencing,
+               :doing_good_inspiring,
                :doing_good_research,
                :doing_good_prophil,
                :doing_good_innovating,

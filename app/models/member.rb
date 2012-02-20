@@ -10,7 +10,7 @@ class Member < ActiveRecord::Base
                   :on_team, :team_role, :team_role_id,
                   :apply_occupation, :apply_reasons_for_joining,
                   :apply_heard_about_us, :apply_spoken_to_existing_member, :apply_career_plans,
-                  :doing_good_influencing, :doing_good_research, :doing_good_prophil,
+                  :doing_good_inspiring, :doing_good_research, :doing_good_prophil,
                   :doing_good_innovating, :doing_good_improving,
                   :external_twitter, :external_facebook, :external_linkedin,
                   :occupation, :organisation, :public_profile,

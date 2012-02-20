@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120217160702) do
+ActiveRecord::Schema.define(:version => 20120220152824) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(:version => 20120217160702) do
     t.text     "apply_spoken_to_existing_member"
     t.string   "organisation"
     t.text     "occupation"
-    t.boolean  "doing_good_influencing",                        :default => false
+    t.boolean  "doing_good_inspiring",                          :default => false
     t.boolean  "doing_good_research",                           :default => false
     t.boolean  "doing_good_prophil",                            :default => false
     t.string   "external_twitter"
