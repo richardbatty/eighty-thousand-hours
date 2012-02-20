@@ -36,10 +36,6 @@ class PagesController < ApplicationController
     @endorsements = Endorsement.order("created_at ASC")
   end
 
-  def search
-    render :search
-  end
-
   def edit
     @page = Page.find(params[:id])
   end
