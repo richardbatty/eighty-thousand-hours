@@ -19,6 +19,8 @@
             - @post.tag_counts_on(:tags).each do |tag| 
               =link_to tag.name, { :action => :tag, :id => tag.name }
       .box
+        = render :partial => "rss"
+      .box
         = render :partial => "popular_posts"
       .box
         = render :partial => "recommended_posts"
