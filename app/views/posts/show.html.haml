@@ -11,13 +11,8 @@
         .attribution
           =markdown ("written by: " + @post.author) if @post.author
 
-      - if @post.tag_counts_on(:tags).size > 0
-        .box
-          %h2
-            Tags for this post
-          .tags
-            - @post.tag_counts_on(:tags).each do |tag| 
-              =link_to tag.name, { :action => :tag, :id => tag.name }
+      .box
+        = render :partial => "post_tags", :locals => { :post => @post, :div_title => "<h2>Tags for this post</h2>".html_safe }
       .box
         = render :partial => "rss"
       .box
@@ -46,12 +41,8 @@
         more posts by 
         =link_to @post.author, { :action => :author, :id => @post.author }
 
-        - if @post.tag_counts_on(:tags).size > 0
-          .tags
-            tags:
-            - @post.tag_counts_on(:tags).each do |tag| 
-              =link_to tag.name, { :action => :tag, :id => tag.name }
-  
+        = render :partial => "post_tags", :locals => { :post => @post, :div_title => "tags:" }
+
         = render :partial => "rss"
         <br/>
         <br/>
