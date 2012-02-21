@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221134228) do
+ActiveRecord::Schema.define(:version => 20120221190804) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -28,33 +28,7 @@ ActiveRecord::Schema.define(:version => 20120221134228) do
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_active_admin_comments_on_resource_type_and_resource_id"
 
-  create_table "charities", :force => true do |t|
-    t.string   "name"
-    t.string   "website"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "donations", :force => true do |t|
-    t.decimal  "amount",     :precision => 10, :scale => 2
-    t.integer  "charity_id"
-    t.integer  "member_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  add_index "donations", ["charity_id"], :name => "index_donations_on_charity_id"
-  add_index "donations", ["member_id"], :name => "index_donations_on_member_id"
-
-  create_table "endorsements", :force => true do |t|
-    t.string   "author"
-    t.string   "position"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
-  create_table "eth_applications", :force => true do |t|
+  create_table "apply_to_80k_forms", :force => true do |t|
     t.integer  "member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -82,6 +56,32 @@ ActiveRecord::Schema.define(:version => 20120221134228) do
     t.boolean  "causes_animal"
     t.boolean  "causes_political"
     t.string   "causes_comment"
+  end
+
+  create_table "charities", :force => true do |t|
+    t.string   "name"
+    t.string   "website"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "donations", :force => true do |t|
+    t.decimal  "amount",     :precision => 10, :scale => 2
+    t.integer  "charity_id"
+    t.integer  "member_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "donations", ["charity_id"], :name => "index_donations_on_charity_id"
+  add_index "donations", ["member_id"], :name => "index_donations_on_member_id"
+
+  create_table "endorsements", :force => true do |t|
+    t.string   "author"
+    t.string   "position"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "members", :force => true do |t|

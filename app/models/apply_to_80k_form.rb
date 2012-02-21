@@ -1,4 +1,4 @@
-class EthApplication < ActiveRecord::Base
+class ApplyTo80kForm < ActiveRecord::Base
   belongs_to :member
 
   attr_accessible :occupation,
