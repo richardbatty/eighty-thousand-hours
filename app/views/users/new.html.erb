@@ -1,3 +1,5 @@
+<%= javascript_include_tag "application-form.js" %>
+
 <div class="box">
   <%= markdown "
 All the members of 80,000 Hours publicly agree to a _declaration of intent_:
@@ -22,7 +24,12 @@ Please fill out the short form below in order to join.
 
   <hr/>
 
-  <h1 id="application_form">Join us!</h1>
+    <br/>
+    <div class="center">
+    <h1 id="application_form">80,000 Hours application</h1>
+    </div>
+    <br/>
+
   <% if @user.errors.any? %>
     <div class="alert">
       <div id="errorExplanation">
@@ -41,11 +48,13 @@ Please fill out the short form below in order to join.
 
   <div class="profile-form">
     <%= form_for(@user, :url=>"/members#application_form") do |u| %>
-        <p><%= u.label :name %> (will be displayed publicly)</p>
+        <div class="box">
+        <h2>Your details</h2>
+        <p><%= u.label :name %> (will be displayed publicly and can be a pseudonym)</p>
         <p><%= u.text_field :name %></p>
 
         <%= u.fields_for :member do |m| %>
-          <p>Please enter your real name if using a pseudonym above (this will not be displayed publicly)</p>
+          <p>Real name if using a pseudonym above (this will not be displayed publicly)</p>
           <p><%= m.text_field :real_name %></p>
         <% end %>
 
@@ -55,12 +64,16 @@ Please fill out the short form below in order to join.
         <p><%= u.password_field :password %></p>
         <p><%= u.label :password_confirmation %></p>
         <p><%= u.password_field :password_confirmation %></p>
+        </div>
 
-      <%= u.fields_for :member do |m| %>
-          <p><%= m.label :apply_career_plans, "How do you plan to use your career to fulfil the declaration?" %></p>
+        <%= u.fields_for :member do |m| %>
+          <div class="box">
+          <h2><%= m.label :apply_career_plans, "How do you plan to use your career to fulfil the declaration?" %></h2>
           <p><%= m.text_area :apply_career_plans %></p>
+          </div>
 
-          <p><%= m.label "Which high impact activites do you intend to be involved in?"  %></p>
+          <div class="box">
+          <h2><%= m.label "Which high impact activites do you intend to be involved in?"  %></h2>
           <%= field_set_tag do %>
             <%= m.check_box :doing_good_inspiring %>
             <%= m.label :doing_good_inspiring, "Inspiring" %>
@@ -78,24 +91,42 @@ Please fill out the short form below in order to join.
             <%= m.label :doing_good_improving, "Improving" %>
             <br/>
           <% end %>
+          </div>
 
-          <p><%= m.label :donation_percentage, "How much of your income do you intend to donate to high impact causes over your career?" %></p>
-          <p><%= m.text_area :donation_percentage %></p>
+          <div class="box">
+          <h2>Donations</h2>
+          <p>I intend to donate around <span class="slider_value emphasise"><span id="user_member_attributes_donation_percentage_display"></span>%</span> of my salary to the high impact causes over my career.
+          <div id="user_member_attributes_donation_percentage_slider"></div>
+          <p><%= m.hidden_field :donation_percentage %></p>
 
-          <p><%= m.label :donation_average_income, "How much do you expect to earn on average through your career?" %></p>
-          <p><%= m.text_area :donation_average_income %></p>
+          <p>Optional comment: <%= m.text_field :donation_percentage_comment %></p>
+          </div>
 
-          <p><%= m.label :donation_hic_activity_hours, "How many hours do you intend to spend each week on high impact activities (excluding
-time spent earning money to donate to high impact causes)?
+          <div class="box">
+          <h2>Earnings</h2>
+          <p>I expect to earn <span class="slider_value emphasise">£<span id="user_member_attributes_donation_average_income_display"></span></span> per year on average over my career.
+          <div id="user_member_attributes_donation_average_income_slider"></div>
+          <p><%= m.hidden_field :donation_average_income %></p>
+          <p>Optional comment: <%= m.text_field :donation_average_income_comment %></p>
+          </div>
 
-(Give an estimate in hours, e.g. 0-5, 5-10, 10-15, 15-25, 25-35)" %></p>
-          <p><%= m.text_area :donation_hic_activity_hours %></p>
+          <div class="box">
+          <h2>Other activities</h2>
+          <p>I intend to spend around <span class="slider_value emphasise"><span id="user_member_attributes_donation_hic_activity_hours_display"></span> hours</span> a week on high impact activites (excluding time spent earning money to donate to high impact causes).
+          <div id="user_member_attributes_donation_hic_activity_hours_slider"></div>
+          <p><%= m.hidden_field :donation_hic_activity_hours %></p>
+          <p>Optional comment: <%= m.text_field :donation_hic_activity_hours_comment %></p>
+          </div>
 
-          <p><%= m.label :apply_occupation, "What do you currently do?" %></p>
+          <div class="box">
+          <h2><%= m.label :apply_occupation, "What do you currently do?" %></h2>
           <p><%= m.text_area :apply_occupation %></p>
+          </div>
 
-          <p><%= m.label :apply_spoken_to_existing_member, "Have you spoken to an existing member about 80,000 Hours? If so, who?" %></p>
+          <div class="box">
+          <h2><%= m.label :apply_spoken_to_existing_member, "Have you spoken to an existing member about 80,000 Hours? If so, who?" %></h2>
           <p><%= m.text_field :apply_spoken_to_existing_member %></p>
+          </div>
       <% end %>
 
       <div class="box">
