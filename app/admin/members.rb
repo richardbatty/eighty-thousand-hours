@@ -15,46 +15,46 @@ ActiveAdmin.register Member do
     column :name do |member|
       member.user ? member.name : "NO USER"
     end
-    column "Confirmed?",      :confirmed
+    column "Confirmed?" do |member|
+      member.confirmed ? "<span class='status ok'>YES</span>".html_safe : "<span class='status error'>No</span> (#{link_to "Confirm", confirm_admin_member_path(member), :method => :put})".html_safe
+    end
     column :created_at
+    column "80k application" do |member|
+      link_to "View 80k application", admin_eth_application_path(member.eth_application)
+    end
+
     default_actions
   end
   
+  # Available at /admin/members/:id/confirm and #confirm_admin_post_path(member)
   member_action :confirm, :method => :put do
     member = Member.find(params[:id])
     member.confirmed = true
     member.save
     redirect_to admin_member_path(member), :notice => "Member confirmed!"
   end
+  member_action :revoke, :method => :put do
+    member = Member.find(params[:id])
+    member.confirmed = false
+    member.save
+    redirect_to admin_member_path(member), :alert => "Membership confirmation revoked!"
+  end
+
+  action_item :only => :show do
+    if !member.confirmed
+      link_to "Confirm member", confirm_admin_member_path(member), :method => :put
+    end
+  end
+  action_item :only => :show do
+    if member.confirmed
+      link_to "Revoke member", revoke_admin_member_path(member), :method => :put
+    end
+  end
   
   form do |f|
     f.inputs "Details" do
       f.inputs :user,
-               :apply_occupation,
-               #:apply_reasons_for_joining,
-               #:apply_heard_about_us,
-               :apply_spoken_to_existing_member,
-               :apply_career_plans,
                :real_name,
-               :donation_percentage,
-               :donation_percentage_comment,
-               :donation_average_income,
-               :donation_average_income_comment,
-               :donation_hic_activity_hours,
-               :donation_hic_activity_hours_comment,
-               :donation_causes_givewell,
-               :donation_causes_gwwc,
-               :donation_causes_xrisk,
-               :donation_causes_meta,
-               :donation_causes_animal,
-               :donation_causes_political,
-               :donation_causes_international,
-               :donation_causes_domestic,
-               :donation_causes_comment,
-               :parallel_universe_donation_percentage,
-               :parallel_universe_donation_average_income,
-               :parallel_universe_donation_hic_activity_hours,
-               :parallel_universe_occupation,
                :background,
                :occupation,
                :organisation,
