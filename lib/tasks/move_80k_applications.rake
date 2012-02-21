@@ -1,5 +1,5 @@
 desc 'migrate 80k application fields to new model eth_application'
-task :projects => :environment do
+task :migrate_80k_application_fields => :environment do
   Member.all.each do |member|
     begin
       default_str = "*** applied before this field was introduced ***"
