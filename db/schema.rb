@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221014054) do
+ActiveRecord::Schema.define(:version => 20120221134228) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -52,6 +52,36 @@ ActiveRecord::Schema.define(:version => 20120221014054) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
+  end
+
+  create_table "eth_applications", :force => true do |t|
+    t.integer  "member_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "occupation"
+    t.text     "career_plans"
+    t.text     "reasons_for_joining"
+    t.text     "spoken_to_existing_member"
+    t.boolean  "doing_good_inspiring"
+    t.boolean  "doing_good_research"
+    t.boolean  "doing_good_prophil"
+    t.boolean  "doing_good_innovating"
+    t.boolean  "doing_good_improving"
+    t.string   "donation_percentage"
+    t.string   "donation_percentage_comment"
+    t.string   "average_income"
+    t.string   "average_income_comment"
+    t.string   "hic_activity_hours"
+    t.string   "hic_activity_hours_comment"
+    t.boolean  "causes_givewell"
+    t.boolean  "causes_gwwc"
+    t.boolean  "causes_international"
+    t.boolean  "causes_xrisk"
+    t.boolean  "causes_meta"
+    t.boolean  "causes_domestic"
+    t.boolean  "causes_animal"
+    t.boolean  "causes_political"
+    t.string   "causes_comment"
   end
 
   create_table "members", :force => true do |t|
@@ -103,12 +133,12 @@ ActiveRecord::Schema.define(:version => 20120221014054) do
     t.string   "donation_hic_activity_hours_comment"
     t.boolean  "donation_causes_givewell"
     t.boolean  "donation_causes_gwwc"
-    t.boolean  "donation_causes_international"
     t.boolean  "donation_causes_xrisk"
     t.boolean  "donation_causes_meta"
-    t.boolean  "donation_causes_domestic"
     t.boolean  "donation_causes_animal"
     t.boolean  "donation_causes_political"
+    t.boolean  "donation_causes_international"
+    t.boolean  "donation_causes_domestic"
     t.string   "donation_causes_comment"
   end
 

@@ -70,6 +70,9 @@ class Member < ActiveRecord::Base
   belongs_to :team_role
   
   has_many :donations
+
+  # dependent means eth_application gets destroyed when member is destroyed
+  has_one :eth_application, :dependent => :destroy
   
   # now we can access @member.name, @member.email
   delegate :name, :name=, :email, :email=, :slug, :first_name, :to => :user
