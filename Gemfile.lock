@@ -294,6 +294,9 @@ GEM
       ffi (~> 1.0.9)
       json_pure
       rubyzip
+    simple_form (1.5.2)
+      actionpack (~> 3.0)
+      activemodel (~> 3.0)
     simple_oauth (0.1.5)
     slop (2.4.4)
     spork (0.9.0)
@@ -374,6 +377,7 @@ DEPENDENCIES
   ruby-debug19
   ruby_gntp
   sass-rails (~> 3.1.4)
+  simple_form
   spork (~> 0.9.0.rc)
   thin
   twitter

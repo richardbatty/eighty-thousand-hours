@@ -59,6 +59,9 @@ gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
 # embed latest tweets
 gem 'twitter'
 
+# easier form building
+gem 'simple_form'
+
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   # gem 'growl_notify'
