@@ -47,8 +47,8 @@ class Member < ActiveRecord::Base
   has_many :donations
 
   # dependent means application_for_80k gets destroyed when member is destroyed
-  has_one :apply_to_80k_form, :dependent => :destroy
-  accepts_nested_attributes_for :apply_to_80k_form
+  has_one :eighty_thousand_application, :dependent => :destroy
+  accepts_nested_attributes_for :eighty_thousand_application
   
   # now we can access @member.name, @member.email
   delegate :name, :name=, :email, :email=, :slug, :first_name, :to => :user

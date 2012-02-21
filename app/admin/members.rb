@@ -20,7 +20,7 @@ ActiveAdmin.register Member do
     end
     column :created_at
     column "80k application" do |member|
-      link_to "View 80k application", admin_apply_to_80k_form_path(member.apply_to_80k_form) unless member.apply_to_80k_form.nil?
+      link_to "View 80k application", admin_eighty_thousand_application_path(member.eighty_thousand_application) unless member.eighty_thousand_application.nil?
     end
 
     default_actions

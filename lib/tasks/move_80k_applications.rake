@@ -1,9 +1,9 @@
-desc 'migrate 80k application fields to new model application_for_80k'
+desc 'migrate 80k application fields to new model EightyThousandApplication'
 task :migrate_80k_application_fields => :environment do
   Member.all.each do |member|
     begin
       default_str = "*** applied before this field was introduced ***"
-      new_80k_app = ApplicationFor80k.new do |e|
+      new_80k_app = EightyThousandApplication.new do |e|
         e.member_id = member.id
 
         # no longer need default text in fields so don't copy it over!

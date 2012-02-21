@@ -1,4 +1,4 @@
-class ApplyTo80kForm < ActiveRecord::Base
+class EightyThousandApplication < ActiveRecord::Base
   belongs_to :member
 
   attr_accessible :occupation,
