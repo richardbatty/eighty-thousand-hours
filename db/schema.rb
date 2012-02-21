@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221011907) do
+ActiveRecord::Schema.define(:version => 20120221014054) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -101,6 +101,15 @@ ActiveRecord::Schema.define(:version => 20120221011907) do
     t.string   "donation_percentage_comment"
     t.string   "donation_average_income_comment"
     t.string   "donation_hic_activity_hours_comment"
+    t.boolean  "donation_causes_givewell"
+    t.boolean  "donation_causes_gwwc"
+    t.boolean  "donation_causes_international"
+    t.boolean  "donation_causes_xrisk"
+    t.boolean  "donation_causes_meta"
+    t.boolean  "donation_causes_domestic"
+    t.boolean  "donation_causes_animal"
+    t.boolean  "donation_causes_political"
+    t.string   "donation_causes_comment"
   end
 
   create_table "pages", :force => true do |t|

@@ -103,6 +103,37 @@ Please fill out the short form below in order to join.
           </div>
 
           <div class="box">
+          <h2><%= m.label "Which causes do you intend to donate to?"  %></h2>
+          <%= field_set_tag do %>
+            <%= m.check_box :donation_causes_givewell %>
+            <%= m.label :donation_causes_givewell, "GiveWell recommended charities" %>
+            <br/>
+            <%= m.check_box :donation_causes_gwwc %>
+            <%= m.label :donation_causes_gwwc, "GWWC recommended charities" %>
+            <br/>
+            <%= m.check_box :donation_causes_political %>
+            <%= m.label :donation_causes_political, "Political charities" %>
+            <br/>
+            <%= m.check_box :donation_causes_animal %>
+            <%= m.label :donation_causes_animal, "Animal charities" %>
+            <br/>
+            <%= m.check_box :donation_causes_xrisk %>
+            <%= m.label :donation_causes_xrisk, "X-risk charities" %>
+            <br/>
+            <%= m.check_box :donation_causes_meta %>
+            <%= m.label :donation_causes_meta, "Meta-philanthropy charities" %>
+            <br/>
+            <%= m.check_box :donation_causes_domestic %>
+            <%= m.label :donation_causes_domestic, "Other domestic charities" %>
+            <br/>
+            <%= m.check_box :donation_causes_international %>
+            <%= m.label :donation_causes_international, "Other international charities" %>
+            <br/>
+            <p>Optional comment: <%= m.text_field :donation_causes_comment %></p>
+          <% end %>
+          </div>
+
+          <div class="box">
           <h2>Earnings</h2>
           <p>I expect to earn <span class="slider_value emphasise">£<span id="user_member_attributes_donation_average_income_display"></span></span> per year on average over my career.
           <div id="user_member_attributes_donation_average_income_slider"></div>
