@@ -27,10 +27,5 @@ class EightyThousandApplication < ActiveRecord::Base
                   :causes_comment,
                   :pledge
 
-  validates_presence_of :occupation,          :message => "You must tell us what you currently do!"
-  validates_presence_of :career_plans,        :message => "Please give some details about your career plans"
-  validates_presence_of :donation_percentage, :message => "Estimate how much you intend to donate"
-  validates_presence_of :average_income,      :message => "Estimate your average annual income"
-  validates_presence_of :hic_activity_hours,  :message => "Estimate how much time you will donate to high impact activites"
-  validates_presence_of :pledge,              :message => "You must agree to the 80,000 Hours declaration"
+  validates_presence_of :pledge, :message => "You must agree to the 80,000 Hours declaration"
 end
