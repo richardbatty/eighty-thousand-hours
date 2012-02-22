@@ -337,6 +337,18 @@ header {
       height: 150px;
     }
   }
+
+  .accordion {
+    h1,h2,h3,h4,h5,h6 {
+      font-weight: bold;
+      a {
+        color: $text_color;
+      }
+      a:hover {
+        color: $link_color;
+      }
+    }
+  }
 }
 /* -------------- /content ----------- */
 
