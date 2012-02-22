@@ -30,104 +30,73 @@ By creating a public profile, you can help inspire new people to join 80k. Seein
   </div>
 
   <div class="profile-form">
-    <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
       <%= devise_error_messages! %>
 
+      <hr/>
+
       <%= field_set_tag "Contact details" do %>
-        <p><%= f.label :name %></p>
-        <p><%= f.text_field :name %></p>
+        <%= f.input :name %>
+        <%= f.input :email %>
 
-        <p><%= f.label :email %></p>
-        <p><%= f.email_field :email %></p>
-
-        <%= f.fields_for :member do |mf| %>
-          <p><%= mf.label :phone %></p>
-          <p><%= mf.phone_field :phone %></p>
+        <%= f.simple_fields_for :member do |mf| %>
+          <%= mf.input :phone %>
         <% end %>
       <% end %>
 
+      <hr/>
+
       <%= f.fields_for :member do |mf| %>
-        <%= field_set_tag "Public profile" do %>
-          <p><%= mf.label :location %></p>
-          <p><%= mf.text_field :location %></p>
+        <%= field_set_tag "Profile fields" do %>
+          <%= mf.input :location %>
+          <%= mf.input :organisation, :label => "Organization/Company/University" %>
+          <%= mf.input :background,   :label => "What is your background and what are your interests?" %>
+          <%= mf.input :inspiration,  :label => "What inspired you to join 80,000 Hours, and how has discovering 80,000 Hours changed your career decisions?" %>
+          <%= mf.input :occupation,   :label => "What do you currently do?" %>
+          <%= mf.input :career_plans, :label => "What are your plans for a high impact ethical career?" %>
 
-          <p><%= mf.label :organisation, "Organization/Company/University" %></p>
-          <p><%= mf.text_field :organisation %></p>
+          <label>What will be your main method(s) of doing good?</label>
+          <div class="check-group">
+            <%= mf.input :doing_good_inspiring,  :label => "Inspiring" %>
+            <%= mf.input :doing_good_improving,  :label => "Improving" %>
+            <%= mf.input :doing_good_prophil,    :label => "Philanthropy" %>
+            <%= mf.input :doing_good_innovating, :label => "Innovating" %>
+            <%= mf.input :doing_good_research,   :label => "Research" %>
+          </div>
 
-          <p><%= mf.label :background, "What is your background and what are your interests? (optional)" %></p>
-          <p><%= mf.text_area :background %></p>
+          <%= mf.input :organisation_role, :label => "What is your role in the 80,000 Hours team?" %>
+          <%= mf.input :interesting_fact,  :label => "Interesting fact (optional)" %>
+          <%= mf.input :external_twitter,  :label => "Twitter page (optional)" %>
+          <%= mf.input :external_facebook, :label => "Facebook page (optional)" %>
+          <%= mf.input :external_linkedin, :label => "LinkedIn page (optional)" %>
 
-          <p><%= mf.label :inspiration, "What inspired you to join 80,000 Hours, and how has discovering 80,000 Hours changed your career decisions? (optional)" %></p>
-          <p><%= mf.text_area :inspiration %></p>
 
-          <p><%= mf.label :occupation, "What do you currently do? (optional)" %></p>
-          <p><%= mf.text_area :occupation %></p>
-
-          <p><%= mf.label :career_plans, "What are your plans for a high impact ethical career? How are you increasing your impact through inspiring others, research, and philanthrophy?" %></p>
-          <p><%= mf.text_area :career_plans %></p>
-
-          <p><%= mf.label "What will be your main method(s) of doing good?"  %></p>
-          <%= field_set_tag do %>
-            <%= mf.check_box :doing_good_inspiring %>
-            <%= mf.label :doing_good_inspiring, "Inspiring" %>
-            <br/>
-            <%= mf.check_box :doing_good_research %>
-            <%= mf.label :doing_good_research, "Research" %>
-            <br/>
-            <%= mf.check_box :doing_good_prophil %>
-            <%= mf.label :doing_good_prophil, "Philanthropy" %>
-            <br/>
-            <%= mf.check_box :doing_good_innovating %>
-            <%= mf.label :doing_good_innovating, "Innovating" %>
-            <br/>
-            <%= mf.check_box :doing_good_improving %>
-            <%= mf.label :doing_good_improving, "Improving" %>
-          <% end %>
-
-          <p><%= mf.label :organisation_role, "What is your role in the 80,000 Hours team? (optional)" %></p>
-          <p><%= mf.text_area :organisation_role %></p>
-
-          <p><%= mf.label :interesting_fact, "Interesting fact (optional)" %></p>
-          <p><%= mf.text_area :interesting_fact %></p>
-
-          <p><%= mf.label :external_twitter, "Twitter page (optional)" %></p>
-          <p><%= mf.text_field :external_twitter %></p>
-
-          <p><%= mf.label :external_facebook, "Facebook page (optional)" %></p>
-          <p><%= mf.text_field :external_facebook %></p>
-
-          <p><%= mf.label :external_linkedin, "LinkedIn page (optional)" %></p>
-          <p><%= mf.text_field :external_linkedin %></p>
-
-          <% member = current_user.member %>
-
-          <p><%= mf.label :avatar, "Current profile picture" %></p>
+          <label>Current profile picture</label>
           <div class="avatar">
+            <% member = current_user.member %>
             <% if member.avatar? %>
               <%= link_to image_tag(member.avatar.url(:medium), :class=>"shadow"), member.avatar.url %>
             <% else %>
               <%= image_tag("profiles/avatar_default_96x96.png", :class=>"shadow") %>
             <% end %>
           </div>
-          <p>Choose new picture: <%= mf.file_field :avatar %></p>
+          <label>Choose new picture:</label> <%= mf.file_field :avatar %>
         <% end %>
       <% end %>
 
-      <%= field_set_tag "Change password" do %>
-        <p><%= f.label :password, "New password (leave blank if no change)" %></p>
-        <p><%= f.password_field :password %></p>
+      <hr/>
 
-        <p><%= f.label :password_confirmation, "New password confirmation (leave blank if no change)" %></p>
-        <p><%= f.password_field :password_confirmation %></p>
+      <%= field_set_tag "Change password" do %>
+        <%= f.input :password, :label => "New password", :placeholder => "optional" %>
+        <%= f.input :password_confirmation, :label => "New password confirmation", :placeholder => "optional" %>
       <% end %>
 
-      <br/>
-      <br/>
-      <p><%= f.label :current_password, "Current password (required to make changes)" %></p>
-      <p><%= f.password_field(:current_password,:class=>"required") %></p>
+      <hr/>
+
+      <%= f.input :current_password, :label => "Current password", :required => true, :placeholder => "required" %>
       <div class="center">
         <div>
-          <%= f.submit "Save changes and display on 80000hours.org/members", :class=>"button" %>
+          <%= f.button :submit, "Save" %>
         </div>
       </div>
     <% end %>
