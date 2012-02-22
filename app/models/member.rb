@@ -10,7 +10,24 @@ class Member < ActiveRecord::Base
                   :external_twitter, :external_facebook, :external_linkedin,
                   :occupation, :organisation, :public_profile,
                   :pseudonym, :use_pseudonym,
-                  :real_name, :contacted_date, :contacted_by
+                  :real_name, :contacted_date, :contacted_by,
+                  :eighty_thousand_application_attributes
+
+  # a Member is always tied to a User 
+  belongs_to :user
+
+  # a Member can have a TeamRole (e.g. Events, Communications)
+  belongs_to :team_role
+
+  # a Member can create lots of donations
+  has_many :donations
+
+  # dependent means application_for_80k gets destroyed when member is destroyed
+  has_one :eighty_thousand_application, :dependent => :destroy
+  accepts_nested_attributes_for :eighty_thousand_application
+
+  # now we can access @member.name, @member.email
+  delegate :name, :name=, :email, :email=, :slug, :first_name, :to => :user
 
   # paperclip avatars on S3
   has_attached_file :avatar, {
@@ -22,36 +39,6 @@ class Member < ActiveRecord::Base
                             :unless => Proc.new {|m| m[:image].nil?}
   validates_attachment_content_type :avater, :content_type=>['image/jpeg', 'image/png', 'image/gif'],
                                     :unless => Proc.new {|m| m[:image].nil?}
-  
-  # all application fields are mandatory
-  #validates_presence_of :apply_occupation,                :message => "You must tell us what you currently do!"
-  #validates_presence_of :apply_career_plans,              :message => "Please give some details about your career plans"
-  #validates_presence_of :apply_reasons_for_joining,       :message => "Tell us why you'd like to join 80,000 Hours"
-  #validates_presence_of :apply_heard_about_us,            :message => "We'd like to know how you heard about us"
-  #validates_presence_of :apply_spoken_to_existing_member, :message => "Do you know an existing member? 'No' is ok!"
-  #validates_presence_of :donation_percentage,             :message => "Estimate how much you intend to donate"
-  #validates_presence_of :donation_average_income,         :message => "Estimate your average annual income"
-  #validates_presence_of :donation_hic_activity_hours,     :message => "Estimate how much time you will donate to high impact activites"
-  #validates_presence_of :parallel_universe_donation_percentage,             :message => "Estimate how much money you would have donated if you hadn't heard about 80,000 Hours"
-  #validates_presence_of :parallel_universe_donation_average_income,         :message => "Estimate how much you would have earned if you hadn't heard about 80,000 Hours"
-  #validates_presence_of :parallel_universe_donation_hic_activity_hours,     :message => "Estimate how much time you would have donated if you hadn't heard about 80,000 Hours"
-  #validates_presence_of :parallel_universe_occupation,                      :message => "Tell us how your career plans have changed after finding out about 80,000 Hours"
-  validates_acceptance_of :pledge,                        :message => "You must agree to the 80,000 Hours declaration"
-
-  # a Member is always tied to a User 
-  belongs_to :user
-
-  # a Member can have a TeamRole (e.g. Events, Communications)
-  belongs_to :team_role
-  
-  has_many :donations
-
-  # dependent means application_for_80k gets destroyed when member is destroyed
-  has_one :eighty_thousand_application, :dependent => :destroy
-  accepts_nested_attributes_for :eighty_thousand_application
-  
-  # now we can access @member.name, @member.email
-  delegate :name, :name=, :email, :email=, :slug, :first_name, :to => :user
 
   #useful nested scopes
   scope :with_user, joins(:user).includes(:user)

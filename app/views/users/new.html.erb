@@ -24,159 +24,137 @@ Some common questions about the declaration are covered in the [declaration FAQ]
 Please fill out the short form below in order to join.
 " %>
 
+<hr/>
+
+<br/>
+<div class="center">
+  <h1 id="application_form">80,000 Hours application</h1>
+</div>
+<br/>
+<% if @user.errors.any? %>
+  <div class="alert">
+    <div id="errorExplanation">
+      <h1><%= pluralize(@user.errors.count, "error") %> prohibited this application from being accepted!</h1>
+      Please fill in all the required fields, and make sure to accept the pledge!
+      <ul>
+        <% @user.errors.reverse_each do |field,msg| %>
+          <%# only want to print field if coming from Devise (password, or email). %>
+          <%# otherwise we print our custom error messges as defined in models user and member %>
+          <li><%= (field == :password || field == :email) ? field.to_s.humanize : '' %> <%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+<% end %>
+
+<div class="profile-form">
+  <%= simple_form_for(@user, :url=>"/members#application_form") do |f| %>
+    <%= f.input :name, :hint => 'Can be a pseudonym, and will be displayed publicly' %>
+    <%= f.simple_fields_for :member do |m| %>
+      <%= m.input :real_name, :hint => 'This will not be displayed publicly'  %>
+    <% end %>
+    <%= f.input :email, :required => :true %>
+    <%= f.input :password, :required => :true %>
+    <%= f.input :password_confirmation, :required => :true %>
+
+    <%= f.simple_fields_for :member do |m| %>
+      <%= m.simple_fields_for :eighty_thousand_application do |e| %>
+        <hr/>
+        <%= e.input :career_plans, :placeholder => "How do you plan to use your career to fulfil the declaration?", :as => :text, :required => :false %>
+
+        <hr/>
+        <label>
+        <p>Which high impact activites do you intend to be involved in?</p>
+        </label>
+        <div class="check-group">
+        <%= e.input :doing_good_inspiring,  :label => "Inspiring" %>
+        <%= e.input :doing_good_improving,  :label => "Improving" %>
+        <%= e.input :doing_good_prophil,    :label => "Philanthropy" %>
+        <%= e.input :doing_good_innovating, :label => "Innovating" %>
+        <%= e.input :doing_good_research,   :label => "Research" %>
+        </div>
+
+        <hr/>
+
+        <div class="slider-container">
+        <label>How much do you expect to donate to the highest impact causes?</label>
+        <div class="slider-group">
+        <p>I intend to donate around <span class="slider_value emphasise"><span id="user_member_attributes_eighty_thousand_application_attributes_donation_percentage_display"></span>%</span> of my salary each year.</p>
+        <div id="user_member_attributes_eighty_thousand_application_attributes_donation_percentage_slider"></div>
+        </div>
+        </div>
+        <%= e.input :donation_percentage, :as => :hidden %>
+        <%= e.input :donation_percentage_comment, :placeholder => "optional", :label => "Comments about donations", :required => false %>
+
+        <hr/>
+
+        <label>
+        <p>Which causes do you intend to donate to?</p>
+        </label>
+        <div class="check-group">
+        <%= e.input :causes_givewell,      :label => "GiveWell recommended charities" %>
+        <%= e.input :causes_gwwc,          :label => "GWWC recommended charities" %>
+        <%= e.input :causes_political,     :label => "Political charities" %>
+        <%= e.input :causes_animal,        :label => "Animal charities" %>
+        <%= e.input :causes_xrisk,         :label => "X-risk charities" %>
+        <%= e.input :causes_meta,          :label => "Meta-philanthropy charities" %>
+        <%= e.input :causes_domestic,      :label => "Other domestic charities" %>
+        <%= e.input :causes_international, :label => "Other international charities" %>
+        </div>
+        <%= e.input :causes_comment, :placeholder => "optional", :label => "Comments about causes", :required => false %>
+
+        <hr/>
+
+        <div class="slider-container">
+        <label>How much do you expect to earn on average per year?  </label>
+        <div class="slider-group">
+        <p>I expect to earn <span class="slider_value emphasise">£<span id="user_member_attributes_eighty_thousand_application_attributes_average_income_display"></span></span> a year on average over my career.</p>
+        <div class="slider" id="user_member_attributes_eighty_thousand_application_attributes_average_income_slider"></div>
+        </div>
+        </div>
+        <%= e.input :average_income, :as => :hidden %>
+        <%= e.input :average_income_comment, :placeholder => "optional", :label => "Comments about earnings", :required => false %>
+
+        <hr/>
+
+        <div class="slider-container">
+        <label>How many hours a week do you expect to spend on high impact activities (excluding earning)?</label>
+        <div class="slider-group">
+        <p>I intend to spend around <span class="slider_value emphasise"><span id="user_member_attributes_eighty_thousand_application_attributes_hic_activity_hours_display"></span> hours</span> 
+           a week on high impact activities.</p>
+        <div class="slider" id="user_member_attributes_eighty_thousand_application_attributes_hic_activity_hours_slider"></div>
+        <%= e.input :hic_activity_hours, :as => :hidden %>
+        </div>
+        </div>
+        <%= e.input :hic_activity_hours_comment, :placeholder => "optional", :label => "Comments about activities", :required => false %>
+
+        <hr/>
+
+        <%= e.input :occupation, :label => "What do you currently do?", :as => :text %>
+
+        <hr/>
+
+        <%= e.input :spoken_to_existing_member, :label => "Have you spoken to an existing member about 80,000 Hours?", :placeholder => "If so, who?", :required => false %>
+      <% end %>
+    <% end %>
+
   <hr/>
 
-    <br/>
-    <div class="center">
-    <h1 id="application_form">80,000 Hours application</h1>
-    </div>
-    <br/>
-
-  <% if @user.errors.any? %>
-    <div class="alert">
-      <div id="errorExplanation">
-        <h1><%= pluralize(@user.errors.count, "error") %> prohibited this application from being accepted!</h1>
-        Please fill in all the required fields, and make sure to accept the pledge!
-        <ul>
-          <% @user.errors.reverse_each do |field,msg| %>
-            <%# only want to print field if coming from Devise (password, or email). %>
-            <%# otherwise we print our custom error messges as defined in models user and member %>
-            <li><%= (field == :password || field == :email) ? field.to_s.humanize : '' %> <%= msg %></li>
-          <% end %>
-        </ul>
-      </div>
-    </div>
-  <% end %>
-
-  <div class="profile-form">
-    <%= form_for(@user, :url=>"/members#application_form") do |u| %>
-        <div class="box">
-        <h2>Your details</h2>
-        <p><%= u.label :name %> (will be displayed publicly and can be a pseudonym)</p>
-        <p><%= u.text_field :name %></p>
-
-        <%= u.fields_for :member do |m| %>
-          <p>Real name if using a pseudonym above (this will not be displayed publicly)</p>
-          <p><%= m.text_field :real_name %></p>
-        <% end %>
-
-        <p><%= u.label :email %></p>
-        <p><%= u.email_field :email %></p>
-        <p><%= u.label :password %></p>
-        <p><%= u.password_field :password %></p>
-        <p><%= u.label :password_confirmation %></p>
-        <p><%= u.password_field :password_confirmation %></p>
-        </div>
-
-        <%= u.fields_for :member do |m| %>
-          <div class="box">
-          <h2><%= m.label :apply_career_plans, "How do you plan to use your career to fulfil the declaration?" %></h2>
-          <p><%= m.text_area :apply_career_plans %></p>
-          </div>
-
-          <div class="box">
-          <h2><%= m.label "Which high impact activites do you intend to be involved in?"  %></h2>
-          <%= field_set_tag do %>
-            <%= m.check_box :doing_good_inspiring %>
-            <%= m.label :doing_good_inspiring, "Inspiring" %>
-            <br/>
-            <%= m.check_box :doing_good_prophil %>
-            <%= m.label :doing_good_prophil, "Philanthropy" %>
-            <br/>
-            <%= m.check_box :doing_good_research %>
-            <%= m.label :doing_good_research, "Research" %>
-            <br/>
-            <%= m.check_box :doing_good_innovating %>
-            <%= m.label :doing_good_innovating, "Innovating" %>
-            <br/>
-            <%= m.check_box :doing_good_improving %>
-            <%= m.label :doing_good_improving, "Improving" %>
-            <br/>
-          <% end %>
-          </div>
-
-          <div class="box">
-          <h2>Donations</h2>
-          <p>I intend to donate around <span class="slider_value emphasise"><span id="user_member_attributes_donation_percentage_display"></span>%</span> of my salary to the high impact causes over my career.
-          <div id="user_member_attributes_donation_percentage_slider"></div>
-          <p><%= m.hidden_field :donation_percentage %></p>
-
-          <p>Optional comment: <%= m.text_field :donation_percentage_comment %></p>
-          </div>
-
-          <div class="box">
-          <h2><%= m.label "Which causes do you intend to donate to?"  %></h2>
-          <%= field_set_tag do %>
-            <%= m.check_box :donation_causes_givewell %>
-            <%= m.label :donation_causes_givewell, "GiveWell recommended charities" %>
-            <br/>
-            <%= m.check_box :donation_causes_gwwc %>
-            <%= m.label :donation_causes_gwwc, "GWWC recommended charities" %>
-            <br/>
-            <%= m.check_box :donation_causes_political %>
-            <%= m.label :donation_causes_political, "Political charities" %>
-            <br/>
-            <%= m.check_box :donation_causes_animal %>
-            <%= m.label :donation_causes_animal, "Animal charities" %>
-            <br/>
-            <%= m.check_box :donation_causes_xrisk %>
-            <%= m.label :donation_causes_xrisk, "X-risk charities" %>
-            <br/>
-            <%= m.check_box :donation_causes_meta %>
-            <%= m.label :donation_causes_meta, "Meta-philanthropy charities" %>
-            <br/>
-            <%= m.check_box :donation_causes_domestic %>
-            <%= m.label :donation_causes_domestic, "Other domestic charities" %>
-            <br/>
-            <%= m.check_box :donation_causes_international %>
-            <%= m.label :donation_causes_international, "Other international charities" %>
-            <br/>
-            <p>Optional comment: <%= m.text_field :donation_causes_comment %></p>
-          <% end %>
-          </div>
-
-          <div class="box">
-          <h2>Earnings</h2>
-          <p>I expect to earn <span class="slider_value emphasise">£<span id="user_member_attributes_donation_average_income_display"></span></span> per year on average over my career.
-          <div id="user_member_attributes_donation_average_income_slider"></div>
-          <p><%= m.hidden_field :donation_average_income %></p>
-          <p>Optional comment: <%= m.text_field :donation_average_income_comment %></p>
-          </div>
-
-          <div class="box">
-          <h2>Other activities</h2>
-          <p>I intend to spend around <span class="slider_value emphasise"><span id="user_member_attributes_donation_hic_activity_hours_display"></span> hours</span> a week on high impact activites (excluding time spent earning money to donate to high impact causes).
-          <div id="user_member_attributes_donation_hic_activity_hours_slider"></div>
-          <p><%= m.hidden_field :donation_hic_activity_hours %></p>
-          <p>Optional comment: <%= m.text_field :donation_hic_activity_hours_comment %></p>
-          </div>
-
-          <div class="box">
-          <h2><%= m.label :apply_occupation, "What do you currently do?" %></h2>
-          <p><%= m.text_area :apply_occupation %></p>
-          </div>
-
-          <div class="box">
-          <h2><%= m.label :apply_spoken_to_existing_member, "Have you spoken to an existing member about 80,000 Hours? If so, who?" %></h2>
-          <p><%= m.text_field :apply_spoken_to_existing_member %></p>
-          </div>
-      <% end %>
-
-      <div class="box">
-        <h1>The Declaration</h1>
-        <p>
-          <%= render :partial => 'shared/declaration' %>
-        </p>
-        <div class="center">
-          <%= u.fields_for :member do |m| %>
-            <p><%= m.check_box 'pledge' %> I agree to the declaration of intent</p>
-          <% end %>
-        </div>
-      </div>
-
-    <div class="center">
-      <%= u.submit "Apply to join 80,000 Hours", :class=>"button" %>
-    </div>
+  <div class="declaration box">
+  <h1>The Declaration</h1>
+  <p>
+    <%= render :partial => 'shared/declaration' %>
+  </p>
+  <%= f.simple_fields_for :member do |m| %>
+    <%= m.simple_fields_for :eighty_thousand_application do |e| %>
+      <%= e.input :pledge, :label => "I agree to the declaration of intent" %>
     <% end %>
+  <% end %>
   </div>
-</div>
+
+  <div class="center">
+  <%= f.button :submit, "Apply to join 80,000 Hours" %>
+  </div>
+
+<% end %>
+

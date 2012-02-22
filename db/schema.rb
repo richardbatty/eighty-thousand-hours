@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221190804) do
+ActiveRecord::Schema.define(:version => 20120221234207) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -74,6 +74,7 @@ ActiveRecord::Schema.define(:version => 20120221190804) do
     t.boolean  "causes_animal"
     t.boolean  "causes_political"
     t.string   "causes_comment"
+    t.boolean  "pledge",                      :default => false
   end
 
   create_table "endorsements", :force => true do |t|
