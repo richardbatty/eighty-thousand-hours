@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120221234207) do
+ActiveRecord::Schema.define(:version => 20120222020725) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -103,11 +103,6 @@ ActiveRecord::Schema.define(:version => 20120221234207) do
     t.string   "phone"
     t.boolean  "on_team",                                       :default => false
     t.integer  "team_role_id"
-    t.text     "apply_occupation"
-    t.text     "apply_career_plans"
-    t.text     "apply_reasons_for_joining"
-    t.text     "apply_heard_about_us"
-    t.text     "apply_spoken_to_existing_member"
     t.string   "organisation"
     t.text     "occupation"
     t.boolean  "doing_good_inspiring",                          :default => false
@@ -118,9 +113,6 @@ ActiveRecord::Schema.define(:version => 20120221234207) do
     t.string   "external_linkedin"
     t.boolean  "public_profile",                                :default => true
     t.string   "real_name"
-    t.string   "donation_percentage"
-    t.string   "donation_average_income"
-    t.string   "donation_hic_activity_hours"
     t.string   "parallel_universe_donation_percentage"
     t.string   "parallel_universe_donation_average_income"
     t.string   "parallel_universe_donation_hic_activity_hours"
@@ -129,18 +121,6 @@ ActiveRecord::Schema.define(:version => 20120221234207) do
     t.string   "parallel_universe_occupation"
     t.datetime "contacted_date"
     t.string   "contacted_by"
-    t.string   "donation_percentage_comment"
-    t.string   "donation_average_income_comment"
-    t.string   "donation_hic_activity_hours_comment"
-    t.boolean  "donation_causes_givewell"
-    t.boolean  "donation_causes_gwwc"
-    t.boolean  "donation_causes_xrisk"
-    t.boolean  "donation_causes_meta"
-    t.boolean  "donation_causes_animal"
-    t.boolean  "donation_causes_political"
-    t.boolean  "donation_causes_international"
-    t.boolean  "donation_causes_domestic"
-    t.string   "donation_causes_comment"
   end
 
   create_table "pages", :force => true do |t|
