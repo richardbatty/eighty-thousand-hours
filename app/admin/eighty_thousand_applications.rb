@@ -1,5 +1,5 @@
 ActiveAdmin.register EightyThousandApplication do
-  menu :if => proc{ can?(:read, Member) }
+  menu :if => proc{ can?(:manage, EightyThousandApplication) }
   controller.authorize_resource
 
   action_item :only => :show do

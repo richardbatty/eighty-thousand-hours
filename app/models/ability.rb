@@ -28,6 +28,7 @@ class Ability
       can :access, :admin
       can :manage, User
       can :manage, Member
+      can :manage, EightyThousandApplication
     end
 
     # a MemberViewer can read all member profiles
