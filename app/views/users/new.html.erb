@@ -69,7 +69,7 @@ Please fill out the short form below in order to join.
     <%= f.simple_fields_for :member do |m| %>
       <%= m.simple_fields_for :eighty_thousand_application do |e| %>
         <hr/>
-        <%= e.input :career_plans, :placeholder => "How do you plan to use your career to fulfil the declaration?", :as => :text, :required => :false %>
+        <%= e.input :career_plans, :placeholder => "How do you plan to use your career to fulfil the declaration?", :as => :text, :required => true %>
 
         <hr/>
         <label>
@@ -140,7 +140,7 @@ Please fill out the short form below in order to join.
 
         <hr/>
 
-        <%= e.input :occupation, :label => "What do you currently do?", :as => :text %>
+        <%= e.input :occupation, :label => "What do you currently do?", :as => :text, :required => true %>
 
         <hr/>
 
