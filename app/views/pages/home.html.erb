@@ -12,7 +12,7 @@
 <%
   careers_html = "" 
   @careers.each do |c|
-    careers_html += link_to image_tag( "career_icons/#{c}.jpg", :class=>"fp-profile-image", :alt=>"#{c.humanize}"),"/career-profiles##{c.titleize}"
+    careers_html += link_to image_tag( "career_icons/#{c}.jpg", :class=>"fp-profile-image", :alt=>"#{c.humanize}"),"/career-profiles##{c.gsub(/_/,'-')}"
   end
 %>
 
