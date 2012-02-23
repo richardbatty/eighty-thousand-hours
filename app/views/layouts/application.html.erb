@@ -35,8 +35,11 @@
         </div>
         <div style="clear: both;"></div>
 
-        <%= render :partial => "/shared/menu",
-                   :locals => {:current_page => @title} %>
+        <div id='nav'>
+        <nav class='clearfix'>
+            <%= render_menu %>
+        </nav>
+        </div>
 
         <% if @page && @page.title == 'Home' %>
           <%= render :partial => '/shared/home' %>

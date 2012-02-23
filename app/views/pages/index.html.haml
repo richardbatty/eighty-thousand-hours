@@ -6,7 +6,6 @@
       %tr
         %th Title
         %th URL
-        %th Body
         %th
         %th
         %th
@@ -15,7 +14,6 @@
         %tr
           %td= page.title
           %td= page.slug
-          %td= page.body[0..20] + '...'
           %td= link_to 'Show', page
           %td= link_to 'Edit', edit_page_path(page)
           %td= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete

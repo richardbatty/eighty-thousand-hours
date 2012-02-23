@@ -691,20 +691,26 @@ strong {
 
 
 #nav {
-  font-size: 1.6em;
-  margin: 0;
-  padding: 0;
-  background: $nav_bar_color;
-  text-align: left;
   @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
   height: 32px;
   margin: 10px auto;
 	line-height: 100%;
+}
+
+#nav ul {
+  font-size: 16px;
+  margin: 0;
+  padding: 0;
+  height: 32px;
   width: 95%;
+  background: $nav_bar_color;
+  text-align: left;
+  /*margin: 10px auto;*/
+	line-height: 100%;
   padding-left: 20px;
 }
 
-#nav li {
+#nav ul li {
   margin: 0 5px;
   padding: 0px;
 	float: left;
@@ -714,64 +720,67 @@ strong {
 }
 
 /* main level link */
-#nav a {
+#nav ul a {
   color: $nav_link_color;
 	text-decoration: none;
 	display: block;
-	padding:  8px 20px;
+  padding:  8px 20px;
 	margin: 0;
   padding-right: 28px;
 }
 /* main level link hover */
-#nav .current a, #nav li:hover > a {
+#nav ul .current a, #nav ul li:hover > a {
   /*background: #333 !important; //[> for non-css3 browsers <]*/
   color: $nav_link_hover_color !important;
 }
+
 /* sub levels link hover */
-#nav ul li:hover a, #nav li:hover li a {
+#nav ul ul li:hover a, #nav ul li:hover li a {
 	background: none;
 	border: none;
 }
-#nav ul a:hover {
+#nav ul ul a:hover {
   background: #333 !important; //[> for non-css3 browsers <]
-	/*text-shadow: 0 1px 1px rgba(0, 0, 0, .1);*/
   color: $nav_link_hover_color !important;
 }
 /* level 2 list */
-#nav ul {
-	background: #111; /* for non-css3 browsers */
-
+#nav ul ul {
 	display: none;
 	margin: 0;
 	padding: 0;
 	width: 185px;
 	position: absolute;
-	top: 32px;
+  top: 32px;
 	left: 0;
-	border: solid 1px #555;
+  /*border: solid 1px #555;*/
 }
 /* dropdown */
-#nav li:hover > ul {
+#nav ul li:hover > ul {
 	display: block;
 }
-#nav ul li {
+
+#nav ul ul li {
 	float: none;
 	margin: 0;
 	padding: 0;
-	border-bottom: solid 1px #555;
+  background: #111;
+  border-bottom: solid 1px #555;
+  border-left: solid 1px #555;
+  border-right: solid 1px #555;
 }
-#nav ul a {
+#nav ul ul a {
+  background: #111;
 	font-weight: normal;
 }
 /* level 3+ list */
-#nav ul ul {
+#nav ul ul ul {
 	left: 181px;
 	top: -3px;
 }
 /* rounded corners for first and last child */
-#nav ul li:first-child > a {
+#nav ul ul li:first-child > a {
 }
-#nav ul li:last-child > a {
+#nav ul ul li:last-child > a {
 }
 /* clearfix */
 #nav:after {
@@ -782,13 +791,13 @@ strong {
 	line-height: 0;
 	height: 0;
 }
-#nav {
+#nav ul{
 	display: inline-block;
 }
-html[xmlns] #nav {
+html[xmlns] #nav ul{
 	display: block;
 }
-* html #nav {
+* html #nav ul{
 	height: 1%;
 }
 
