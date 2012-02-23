@@ -11,7 +11,11 @@ form {
     -webkit-border-radius:5px;
   }
   textarea {
-    height:213px;
+    height: 100px;
+    &.page-edit {
+      width: 95% !important;
+      height: 400px !important;
+    }
   }
   input:focus, textarea:focus {
     border:1px solid $magenta_2;
@@ -144,6 +148,11 @@ form {
 
 .simple_form div.input {
   margin-bottom: 10px;
+}
+
+.simple_form textarea.large {
+  height: 300px;
+  width: 95%;
 }
 
 .simple_form .slider-container {

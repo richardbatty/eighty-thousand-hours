@@ -1,4 +1,6 @@
-= form_for @page do |f|
+= markdown "Use [Markdown syntax](http://daringfireball.net/projects/markdown/syntax) to format text"
+%hr
+= simple_form_for @page do |f|
   -if @page.errors.any?
     #error_explanation
       %h2= "#{pluralize(@page.errors.count, "error")} prohibited this page from being saved:"
@@ -7,20 +9,14 @@
           %li= msg
 
   .field
-    = f.label :title
-    = f.text_field :title
-    %br
-    = f.label :header_title
-    (optional: used in &lt;title&gt; tag)
-    = f.text_field :header_title
+    = f.input :title
+    = f.input :header_title, :hint => "optional: used in <title> tag"
     %hr
-    = markdown "Use [Markdown syntax](http://daringfireball.net/projects/markdown/syntax) to format text"
-    = f.text_area :body
+    = f.input :body, :label => false, :input_html => { :class => 'large' }
     %br
-    = f.label :show_title
-    = f.check_box :show_title
-    %br
-    = f.label :show_box
-    = f.check_box :show_box
-  .actions
-    = f.submit 'Save'
+    = f.label "Page options"
+    .check-group
+      = f.input :show_title, :label => "Display title on page"
+      = f.input :show_box, :label => "Draw box around content"
+    .center
+      = f.button :submit, "Save"
