@@ -1,0 +1,112 @@
+#nav {
+  @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
+  height: 32px;
+  margin: 10px auto;
+  line-height: 100%;
+
+  ul {
+    font-size: 16px;
+    margin: 0;
+    padding: 0;
+    height: 32px;
+    width: 95%;
+    background: $nav_bar_color;
+    text-align: left;
+    /*margin: 10px auto;*/
+    line-height: 100%;
+    padding-left: 20px;
+  }
+
+  ul li {
+    margin: 0 5px;
+    padding: 0px;
+    float: left;
+    position: relative;
+    list-style: none;
+    z-index: 10;
+  }
+
+  /* main level link */
+  ul a {
+    color: $nav_link_color;
+    text-decoration: none;
+    display: block;
+    padding:  8px 20px;
+    margin: 0;
+    padding-right: 28px;
+  }
+  /* main level link hover */
+  ul .current a, ul a:hover, ul li:hover > a {
+    /*background: #333 !important; //[> for non-css3 browsers <]*/
+    color: $nav_link_hover_color !important;
+  }
+
+  /* sub levels link hover */
+  ul ul li:hover a, ul li:hover li a {
+    background: none;
+    border: none;
+  }
+  ul ul a:hover {
+    background: #333 !important; //[> for non-css3 browsers <]
+    color: $nav_link_hover_color !important;
+  }
+  /* level 2 list */
+  ul ul {
+    display: none;
+    margin: 0;
+    padding: 0;
+    width: 185px;
+    position: absolute;
+    top: 32px;
+    left: 0;
+    /*border: solid 1px #555;*/
+  }
+  /* dropdown */
+  ul li:hover > ul {
+    display: block;
+  }
+
+  ul ul li {
+    float: none;
+    margin: 0;
+    padding: 0;
+    background: #111;
+    border-bottom: solid 1px #555;
+    border-left: solid 1px #555;
+    border-right: solid 1px #555;
+  }
+  ul ul a {
+    background: #111;
+    font-weight: normal;
+  }
+  /* level 3+ list */
+  ul ul ul {
+    left: 181px;
+    top: -3px;
+  }
+  /* rounded corners for first and last child */
+  ul ul li:first-child > a {
+  }
+  ul ul li:last-child > a {
+  }
+  /* clearfix */
+  &:after {
+    content: ".";
+    display: block;
+    clear: both;
+    visibility: hidden;
+    line-height: 0;
+    height: 0;
+  }
+  ul{
+    display: inline-block;
+  }
+}
+html[xmlns] #nav ul{
+	display: block;
+}
+* html #nav ul{
+	height: 1%;
+}
+
+
