@@ -20,7 +20,7 @@
     </div>
     <% team_members.each do |member| %>
       <div class="box">
-        <%= render :partial => '/shared/member', :locals => { :member => member } %>
+        <%= render :partial => '/shared/member', :locals => { :member => member, :profile => member.eighty_thousand_hours_profile } %>
       </div>
     <% end %>
 

@@ -19,7 +19,7 @@ class User < ActiveRecord::Base
   has_and_belongs_to_many :roles
   
   scope :with_member, joins(:member).includes(:member)
-  scope :membership_confirmed, with_member.where(:members => {:confirmed => true, :public_profile => true})
+  scope :membership_confirmed, with_member.where(:members => {:confirmed => true,})# :public_profile => true })
   scope :alphabetical, order("name ASC")
   
   def has_role?(symbol)

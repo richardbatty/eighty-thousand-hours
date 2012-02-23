@@ -35,6 +35,7 @@ class Member < ActiveRecord::Base
 
   # now we can access @member.name, @member.email
   delegate :name, :name=, :email, :email=, :slug, :first_name, :to => :user
+  delegate :public_profile, :to => :eighty_thousand_hours_application, :to => :eighty_thousand_hours_application
 
   # paperclip avatars on S3
   has_attached_file :avatar, {
