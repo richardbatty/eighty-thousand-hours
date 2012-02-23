@@ -1,7 +1,8 @@
 <%= javascript_include_tag "application-form.js" %>
 
 <div class="box">
-  <%= markdown "
+
+<%= markdown "
 All the members of 80,000 Hours publicly agree to a _declaration of intent_:
 that is, we all agree to the general aim of pursuing a career as an effective
 altruist, and we each say individually how we’re going to fulfill that aim. By
@@ -12,12 +13,17 @@ in our later life.
 
 Our declaration of intent is as follows:"
 %>
+
 <div class="box">
 <%= render :partial => 'shared/declaration' %>
 </div>
+
 <%= markdown "
++-- {.box}
+##Reporting
 In addition every member, in joining the 80,000 Hours community, agrees to report on
 their altruistic activities every year.
+=--
 
 Some common questions about the declaration are covered in the [declaration FAQ](/faq#declaration) page.
 
@@ -27,10 +33,13 @@ Please fill out the short form below in order to join.
 <hr/>
 
 <br/>
+
 <div class="center">
   <h1 id="application_form">80,000 Hours application</h1>
 </div>
+
 <br/>
+
 <% if @user.errors.any? %>
   <div class="alert">
     <div id="errorExplanation">
@@ -142,20 +151,21 @@ Please fill out the short form below in order to join.
   <hr/>
 
   <div class="declaration box">
-  <h1>The Declaration</h1>
-  <p>
-    <%= render :partial => 'shared/declaration' %>
-  </p>
-  <%= f.simple_fields_for :member do |m| %>
-    <%= m.simple_fields_for :eighty_thousand_application do |e| %>
-      <%= e.input :pledge, :label => "I agree to the declaration of intent" %>
+    <h1>The Declaration</h1>
+    <p>
+      <%= render :partial => 'shared/declaration' %>
+    </p>
+    <%= f.simple_fields_for :member do |m| %>
+      <%= m.simple_fields_for :eighty_thousand_application do |e| %>
+        <%= e.input :pledge, :label => "I agree to the declaration of intent" %>
+      <% end %>
     <% end %>
-  <% end %>
   </div>
 
   <div class="center">
-  <%= f.button :submit, "Apply to join 80,000 Hours" %>
+    <%= f.button :submit, "Apply to join 80,000 Hours" %>
   </div>
 
-<% end %>
+  <% end %>
+</div> <!-- profile form -->  
 
