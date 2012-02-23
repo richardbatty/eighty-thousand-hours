@@ -1,5 +1,5 @@
 <%# Input locals:   
-        :member instance of Member model
+        :member instance of EightyThousandHoursProfile model
         :total  sum of member donations
 %>
 <div class="member-profile">
@@ -16,9 +16,9 @@
   </div>
   <% end %>
   
-  <% if member.name %>
+  <% if profile.name %>
   <div class="name">
-    <%= member.name %>
+    <%= profile.name %>
     <% if member.location? %>
       <span class="location">
        &nbsp;  <%= member.location %>
@@ -35,82 +35,82 @@
   
   <div class="join-date">
     <p>
-    Member since <%= member.created_at.strftime "%B %Y" %>
+    Member since <%= profile.created_at.strftime "%B %Y" %>
     </p>
   </div>
 
-  <% if member.organisation? %>
+  <% if profile.organisation? %>
   <div class="organisation">
     <h2>Organisation/Company/University</h2>
-    <%= markdown member.organisation %>
+    <%= markdown profile.organisation %>
   </div>
   <% end %>
 
-  <% if member.background? %>
+  <% if profile.background? %>
   <div class="background">
     <h2>Background and interests</h2>
-    <%= markdown member.background %>
+    <%= markdown profile.background %>
   </div>
   <% end %>
   
-  <% if member.inspiration? %>
+  <% if profile.inspiration? %>
   <div class="inspiration">
     <h2>My inspiration for joining 80,000 Hours</h2>
-    <%= markdown member.inspiration %>
+    <%= markdown profile.inspiration %>
   </div>
   <% end %>
 
-  <% if member.occupation? %>
+  <% if profile.occupation? %>
   <div class="occupation">
     <h2>Current job/occupation</h2>
-    <%= markdown member.occupation %>
+    <%= markdown profile.occupation %>
   </div>
   <% end %>
 
-  <% if member.career_plans? %>
+  <% if profile.career_plans? %>
   <div class="career-plans">
     <h2>Career plans</h2>
-    <%= markdown member.career_plans %>
+    <%= markdown profile.career_plans %>
   </div>
   <% end %>
 
-  <% if member.doing_good_inspiring? || member.doing_good_research? || member.doing_good_philanthropy? || member.doing_good_prophilanthropy? || member.doing_good_innovating? || member.doing_good_improving %>
+  <% if profile.doing_good_inspiring? || profile.doing_good_research? || profile.doing_good_philanthropy? || profile.doing_good_prophilanthropy? || profile.doing_good_innovating? || profile.doing_good_improving %>
   <div class="doing-good-options">
     <h2>Type of Career</h2>
     <ul>
-    <% if member.doing_good_inspiring? %>
+    <% if profile.doing_good_inspiring? %>
       <li>Inspiring others</li>
     <% end %>
-    <% if member.doing_good_research? %>
+    <% if profile.doing_good_research? %>
       <li>High impact research</li>
     <% end %>
-    <% if member.doing_good_philanthropy? %>
+    <% if profile.doing_good_philanthropy? %>
       <li>Philanthropy</li>
     <% end %>
-    <% if member.doing_good_prophilanthropy? %>
+    <% if profile.doing_good_prophilanthropy? %>
       <li>Professional philanthropy</li>
     <% end %>
-    <% if member.doing_good_innovating? %>
+    <% if profile.doing_good_innovating? %>
       <li>Innovating</li>
     <% end %>
-    <% if member.doing_good_improving? %>
+    <% if profile.doing_good_improving? %>
       <li>Improving</li>
     <% end %>
     </ul>
   </div>
   <% end %>
 
-  <% if member.organisation_role? %>
+  <% if profile.organisation_role? %>
   <div class="organisation-role">
     <h2>Role in 80,000 Hours</h2>
-    <%= markdown member.organisation_role %>
+    <%= markdown profile.organisation_role %>
   </div>
   <% end %>
 
-  <% if member.interesting_fact? %>
+  <% if profile.interesting_fact? %>
   <div class="interesting-fact">
     <h2>Interesting fact</h2>
-    <%= markdown member.interesting_fact %>
+    <%= markdown profile.interesting_fact %>
   </div>
   <% end %>
 

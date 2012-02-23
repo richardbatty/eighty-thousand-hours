@@ -67,7 +67,7 @@ Please fill out the short form below in order to join.
     <%= f.input :password_confirmation, :required => :true %>
 
     <%= f.simple_fields_for :member do |m| %>
-      <%= m.simple_fields_for :eighty_thousand_application do |e| %>
+      <%= m.simple_fields_for :eighty_thousand_hours_application do |e| %>
         <hr/>
         <%= e.input :career_plans, :placeholder => "How do you plan to use your career to fulfil the declaration?", :as => :text, :required => true %>
 
@@ -89,8 +89,8 @@ Please fill out the short form below in order to join.
         <div class="slider-container">
         <label>How much do you expect to donate to the highest impact causes?</label>
         <div class="slider-group">
-        <p>I intend to donate around <span class="slider_value emphasise"><span id="user_member_attributes_eighty_thousand_application_attributes_donation_percentage_display"></span>%</span> of my salary each year.</p>
-        <div id="user_member_attributes_eighty_thousand_application_attributes_donation_percentage_slider"></div>
+        <p>I intend to donate around <span class="slider_value emphasise"><span id="user_member_attributes_eighty_thousand_hours_application_attributes_donation_percentage_display"></span>%</span> of my salary each year.</p>
+        <div id="user_member_attributes_eighty_thousand_hours_application_attributes_donation_percentage_slider"></div>
         </div>
         </div>
         <%= e.input :donation_percentage, :as => :hidden %>
@@ -118,8 +118,8 @@ Please fill out the short form below in order to join.
         <div class="slider-container">
         <label>How much do you expect to earn on average per year?  </label>
         <div class="slider-group">
-        <p>I expect to earn <span class="slider_value emphasise">£<span id="user_member_attributes_eighty_thousand_application_attributes_average_income_display"></span></span> a year on average over my career.</p>
-        <div class="slider" id="user_member_attributes_eighty_thousand_application_attributes_average_income_slider"></div>
+        <p>I expect to earn <span class="slider_value emphasise">£<span id="user_member_attributes_application_attributes_average_income_display"></span></span> a year on average over my career.</p>
+        <div class="slider" id="user_member_attributes_eighty_thousand_hours_application_attributes_average_income_slider"></div>
         </div>
         </div>
         <%= e.input :average_income, :as => :hidden %>
@@ -130,9 +130,9 @@ Please fill out the short form below in order to join.
         <div class="slider-container">
         <label>How many hours a week do you expect to spend on high impact activities (excluding earning)?</label>
         <div class="slider-group">
-        <p>I intend to spend around <span class="slider_value emphasise"><span id="user_member_attributes_eighty_thousand_application_attributes_hic_activity_hours_display"></span> hours</span> 
+        <p>I intend to spend around <span class="slider_value emphasise"><span id="user_member_attributes_eighty_thousand_hours_application_attributes_hic_activity_hours_display"></span> hours</span> 
            a week on high impact activities.</p>
-        <div class="slider" id="user_member_attributes_eighty_thousand_application_attributes_hic_activity_hours_slider"></div>
+        <div class="slider" id="user_member_attributes_eighty_thousand_hours_application_attributes_hic_activity_hours_slider"></div>
         <%= e.input :hic_activity_hours, :as => :hidden %>
         </div>
         </div>
@@ -156,7 +156,7 @@ Please fill out the short form below in order to join.
       <%= render :partial => 'shared/declaration' %>
     </p>
     <%= f.simple_fields_for :member do |m| %>
-      <%= m.simple_fields_for :eighty_thousand_application do |e| %>
+      <%= m.simple_fields_for :eighty_thousand_hours_application do |e| %>
         <%= e.input :pledge, :label => "I agree to the declaration of intent" %>
       <% end %>
     <% end %>

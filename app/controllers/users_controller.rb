@@ -29,7 +29,8 @@ class UsersController < ApplicationController
   def new
     @user = User.new
     @user.build_member
-    @user.member.build_eighty_thousand_application
+    @user.member.build_eighty_thousand_hours_application
+    @user.member.build_eighty_thousand_hours_profile
   end
   
   def create

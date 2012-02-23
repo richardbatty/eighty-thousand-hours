@@ -1,6 +1,6 @@
 <div class="box">
 <% if @user && @user.member %>
-  <%= render :partial => '/shared/member', :locals => { :member => @user.member } %>
+  <%= render :partial => '/shared/member', :locals => { :member => @user.member, :profile => @user.member.eighty_thousand_hours_profile } %>
 <% else %>
   <p>Sorry! That profile hasn't been completed yet... check back soon!</p>
   <%= button_link 'List of all members with profiles', users_path %>

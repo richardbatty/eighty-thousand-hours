@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120223185704) do
+ActiveRecord::Schema.define(:version => 20120223222830) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -46,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20120223185704) do
   add_index "donations", ["charity_id"], :name => "index_donations_on_charity_id"
   add_index "donations", ["member_id"], :name => "index_donations_on_member_id"
 
-  create_table "eighty_thousand_applications", :force => true do |t|
+  create_table "eighty_thousand_hours_applications", :force => true do |t|
     t.integer  "member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -76,6 +76,29 @@ ActiveRecord::Schema.define(:version => 20120223185704) do
     t.string   "causes_comment"
     t.boolean  "pledge",                      :default => false
     t.boolean  "doing_good_prophilanthropy"
+  end
+
+  create_table "eighty_thousand_hours_profiles", :force => true do |t|
+    t.integer  "member_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "inspiration"
+    t.text     "interesting_fact"
+    t.text     "background"
+    t.text     "career_plans"
+    t.text     "occupation"
+    t.text     "organisation_role"
+    t.string   "organisation"
+    t.boolean  "public_profile",             :default => true
+    t.datetime "contacted_date"
+    t.string   "contacted_by"
+    t.boolean  "confirmed",                  :default => false
+    t.boolean  "doing_good_inspiring",       :default => false
+    t.boolean  "doing_good_research",        :default => false
+    t.boolean  "doing_good_philanthropy",    :default => false
+    t.boolean  "doing_good_innovating",      :default => false
+    t.boolean  "doing_good_improving",       :default => false
+    t.boolean  "doing_good_prophilanthropy", :default => false
   end
 
   create_table "endorsements", :force => true do |t|

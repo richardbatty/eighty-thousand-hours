@@ -1,17 +1,20 @@
 class Member < ActiveRecord::Base
   include Rails.application.routes.url_helpers
 
-  attr_accessible :background, :career_plans, :location,
-                  :confirmed, :avatar, :inspiration, :interesting_fact,
-                  :location, :organisation_role, :phone, :pledge,
-                  :on_team, :team_role, :team_role_id,
-                  :doing_good_inspiring, :doing_good_research, :doing_good_philanthropy,
-                  :doing_good_prophilanthropy, :doing_good_innovating, :doing_good_improving,
-                  :external_twitter, :external_facebook, :external_linkedin,
-                  :occupation, :organisation, :public_profile,
-                  :pseudonym, :use_pseudonym,
-                  :real_name, :contacted_date, :contacted_by,
-                  :eighty_thousand_application_attributes
+  attr_accessible :avatar,
+                  :location,
+                  :phone,
+                  :on_team,
+                  :team_role,
+                  :team_role_id,
+                  :external_twitter,
+                  :external_facebook,
+                  :external_linkedin,
+                  :real_name,
+                  :contacted_date,
+                  :contacted_by,
+                  :eighty_thousand_hours_application_attributes,
+                  :eighty_thousand_hours_profile_attributes
 
   # a Member is always tied to a User 
   belongs_to :user
@@ -22,9 +25,13 @@ class Member < ActiveRecord::Base
   # a Member can create lots of donations
   has_many :donations
 
-  # dependent means application_for_80k gets destroyed when member is destroyed
-  has_one :eighty_thousand_application, :dependent => :destroy
-  accepts_nested_attributes_for :eighty_thousand_application
+  # dependent means 80k application gets destroyed when member is destroyed
+  has_one :eighty_thousand_hours_application, :dependent => :destroy
+  accepts_nested_attributes_for :eighty_thousand_hours_application
+
+  # dependent means 80k profile gets destroyed when member is destroyed
+  has_one :eighty_thousand_hours_profile, :dependent => :destroy
+  accepts_nested_attributes_for :eighty_thousand_hours_profile
 
   # now we can access @member.name, @member.email
   delegate :name, :name=, :email, :email=, :slug, :first_name, :to => :user

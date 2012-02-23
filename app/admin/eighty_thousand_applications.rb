@@ -1,10 +1,10 @@
-ActiveAdmin.register EightyThousandApplication do
-  menu :if => proc{ can?(:manage, EightyThousandApplication) }
+ActiveAdmin.register EightyThousandHoursApplication do
+  menu :if => proc{ can?(:manage, EightyThousandHoursApplication) }
   controller.authorize_resource
 
   action_item :only => :show do
-    if !eighty_thousand_application.member.confirmed
-      link_to "Confirm member", confirm_admin_member_path(eighty_thousand_application.member), :method => :put
+    if !eighty_thousand_hours_application.member.confirmed
+      link_to "Confirm member", confirm_admin_member_path(eighty_thousand_hours_application.member), :method => :put
     end
   end
 

@@ -1,4 +1,4 @@
-class EightyThousandApplication < ActiveRecord::Base
+class EightyThousandHoursApplication < ActiveRecord::Base
   belongs_to :member
 
   attr_accessible :occupation,
