@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120222020725) do
+ActiveRecord::Schema.define(:version => 20120223185704) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -56,7 +56,7 @@ ActiveRecord::Schema.define(:version => 20120222020725) do
     t.text     "spoken_to_existing_member"
     t.boolean  "doing_good_inspiring"
     t.boolean  "doing_good_research"
-    t.boolean  "doing_good_prophil"
+    t.boolean  "doing_good_philanthropy"
     t.boolean  "doing_good_innovating"
     t.boolean  "doing_good_improving"
     t.string   "donation_percentage"
@@ -75,6 +75,7 @@ ActiveRecord::Schema.define(:version => 20120222020725) do
     t.boolean  "causes_political"
     t.string   "causes_comment"
     t.boolean  "pledge",                      :default => false
+    t.boolean  "doing_good_prophilanthropy"
   end
 
   create_table "endorsements", :force => true do |t|
@@ -107,7 +108,7 @@ ActiveRecord::Schema.define(:version => 20120222020725) do
     t.text     "occupation"
     t.boolean  "doing_good_inspiring",                          :default => false
     t.boolean  "doing_good_research",                           :default => false
-    t.boolean  "doing_good_prophil",                            :default => false
+    t.boolean  "doing_good_philanthropy",                       :default => false
     t.string   "external_twitter"
     t.string   "external_facebook"
     t.string   "external_linkedin"
@@ -121,6 +122,7 @@ ActiveRecord::Schema.define(:version => 20120222020725) do
     t.string   "parallel_universe_occupation"
     t.datetime "contacted_date"
     t.string   "contacted_by"
+    t.boolean  "doing_good_prophilanthropy",                    :default => false
   end
 
   create_table "pages", :force => true do |t|
