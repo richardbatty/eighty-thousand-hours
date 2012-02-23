@@ -115,11 +115,13 @@ header {
     @include box_shadow(#ccc, 0px, 0px, 0px);
     cursor: pointer;
   }
+
+  &.right {
+    float:right;
+    clear:both;
+  }
 }
 
-.right {
-  float:right;
-}
 
 .small-button {
   cursor: pointer;
