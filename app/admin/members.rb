@@ -4,8 +4,6 @@ ActiveAdmin.register Member do
   
   scope :confirmed
   scope :unconfirmed
-  scope :contacted
-  scope :not_contacted
 
   index do
     column :id
@@ -55,31 +53,16 @@ ActiveAdmin.register Member do
     f.inputs "Details" do
       f.inputs :user,
                :real_name,
-               :background,
-               :occupation,
-               :organisation,
-               :career_plans,
-               :inspiration,
                :location,
                :phone,
-               :interesting_fact,
-               :organisation_role,
                :public_profile,
                :confirmed,
                :on_team,
                :team_role,
                :avatar,
-               :doing_good_inspiring,
-               :doing_good_research,
-               :doing_good_philanthropy,
-               :doing_good_prophilanthropy,
-               :doing_good_innovating,
-               :doing_good_improving,
                :external_twitter,
                :external_facebook,
-               :external_linkedin,
-               :contacted_date,
-               :contacted_by
+               :external_linkedin
       f.buttons
     end
   end
