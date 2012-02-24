@@ -18,7 +18,10 @@ ActiveAdmin.register Member do
     end
     column :created_at
     column "80k application" do |member|
-      link_to "View 80k application", admin_eighty_thousand_hours_application_path(member.eighty_thousand_hours_application) unless member.eighty_thousand_hours_application.nil?
+      link_to "80k application", admin_eighty_thousand_hours_application_path(member.eighty_thousand_hours_application) unless member.eighty_thousand_hours_application.nil?
+    end
+    column "80k profile" do |member|
+      link_to "80k profile", admin_eighty_thousand_hours_profile_path(member.eighty_thousand_hours_profile) unless member.eighty_thousand_hours_profile.nil?
     end
 
     default_actions

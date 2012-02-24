@@ -1,5 +1,7 @@
 ActiveAdmin.register EightyThousandHoursApplication do
-  menu :if => proc{ can?(:manage, EightyThousandHoursApplication) }
+  menu :if => proc{ can?(:manage, EightyThousandHoursApplication) },
+       :label => "80k Applications",
+       :parent => "Members"
   controller.authorize_resource
 
   action_item :only => :show do

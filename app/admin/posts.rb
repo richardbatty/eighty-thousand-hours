@@ -1,5 +1,6 @@
 ActiveAdmin.register Post do
-  menu :if => proc{ can?(:manage, Post) }
+  menu :if => proc{ can?(:manage, Post) },
+       :label => "Blog"
   controller.authorize_resource
   
   scope :draft
