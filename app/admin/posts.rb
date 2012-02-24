@@ -10,7 +10,9 @@ ActiveAdmin.register Post do
     column :created_at
     column :title
     column :author
-    column :draft
+    column :draft do |p|
+      p.draft? ? "<span class='status warn'>draft</span>".html_safe : ""
+    end
     default_actions
   end
   
