@@ -47,41 +47,43 @@ By creating a public profile, you can help inspire new people to join 80k. Seein
       <hr/>
 
       <%= f.fields_for :member do |mf| %>
-        <%= field_set_tag "Profile fields" do %>
-          <%= mf.input :location %>
-          <%= mf.input :organisation, :label => "Organization/Company/University" %>
-          <%= mf.input :background,   :label => "What is your background and what are your interests?" %>
-          <%= mf.input :inspiration,  :label => "What inspired you to join 80,000 Hours, and how has discovering 80,000 Hours changed your career decisions?" %>
-          <%= mf.input :occupation,   :label => "What do you currently do?" %>
-          <%= mf.input :career_plans, :label => "What are your plans for a high impact ethical career?" %>
+        <%= mf.fields_for :eighty_thousand_hours_profile do |ep| %>
+          <%= field_set_tag "Profile fields" do %>
+            <%= mf.input :location %>
+            <%= ep.input :organisation, :label => "Organization/Company/University" %>
+            <%= ep.input :background,   :label => "What is your background and what are your interests?" %>
+            <%= ep.input :inspiration,  :label => "What inspired you to join 80,000 Hours, and how has discovering 80,000 Hours changed your career decisions?" %>
+            <%= ep.input :occupation,   :label => "What do you currently do?" %>
+            <%= ep.input :career_plans, :label => "What are your plans for a high impact ethical career?" %>
 
-          <label>What will be your main method(s) of doing good?</label>
-          <div class="check-group">
-            <%= mf.input :doing_good_inspiring,       :label => "Inspiring" %>
-            <%= mf.input :doing_good_improving,       :label => "Improving" %>
-            <%= mf.input :doing_good_philanthropy,    :label => "Philanthropy" %>
-            <%= mf.input :doing_good_prophilanthropy, :label => "Professional philanthropy" %>
-            <%= mf.input :doing_good_innovating,      :label => "Innovating" %>
-            <%= mf.input :doing_good_research,        :label => "Research" %>
-          </div>
+            <label>What will be your main method(s) of doing good?</label>
+            <div class="check-group">
+              <%= ep.input :doing_good_inspiring,       :label => "Inspiring" %>
+              <%= ep.input :doing_good_improving,       :label => "Improving" %>
+              <%= ep.input :doing_good_philanthropy,    :label => "Philanthropy" %>
+              <%= ep.input :doing_good_prophilanthropy, :label => "Professional philanthropy" %>
+              <%= ep.input :doing_good_innovating,      :label => "Innovating" %>
+              <%= ep.input :doing_good_research,        :label => "Research" %>
+            </div>
 
-          <%= mf.input :organisation_role, :label => "What is your role in the 80,000 Hours team?" %>
-          <%= mf.input :interesting_fact,  :label => "Interesting fact (optional)" %>
-          <%= mf.input :external_twitter,  :label => "Twitter page (optional)", :hint => "full URL e.g. http://twitter.com/JoeBloggs" %>
-          <%= mf.input :external_facebook, :label => "Facebook page (optional)", :hint => "full URL e.g. http://www.facebook.com/JoeBloggs" %>
-          <%= mf.input :external_linkedin, :label => "LinkedIn page (optional)", :hint => "full URL e.g. http://www.linkedin.com/in/JoeBloggs" %>
+            <%= ep.input :organisation_role, :label => "What is your role in the 80,000 Hours team?" %>
+            <%= ep.input :interesting_fact,  :label => "Interesting fact (optional)" %>
+            <%= mf.input :external_twitter,  :label => "Twitter page (optional)", :hint => "full URL e.g. http://twitter.com/JoeBloggs" %>
+            <%= mf.input :external_facebook, :label => "Facebook page (optional)", :hint => "full URL e.g. http://www.facebook.com/JoeBloggs" %>
+            <%= mf.input :external_linkedin, :label => "LinkedIn page (optional)", :hint => "full URL e.g. http://www.linkedin.com/in/JoeBloggs" %>
 
 
-          <label>Current profile picture</label>
-          <div class="avatar">
-            <% member = current_user.member %>
-            <% if member.avatar? %>
-              <%= link_to image_tag(member.avatar.url(:medium), :class=>"shadow"), member.avatar.url %>
-            <% else %>
-              <%= image_tag("profiles/avatar_default_96x96.png", :class=>"shadow") %>
-            <% end %>
-          </div>
-          <label>Choose new picture:</label> <%= mf.file_field :avatar %>
+            <label>Current profile picture</label>
+            <div class="avatar">
+              <% member = current_user.member %>
+              <% if member.avatar? %>
+                <%= link_to image_tag(member.avatar.url(:medium), :class=>"shadow"), member.avatar.url %>
+              <% else %>
+                <%= image_tag("profiles/avatar_default_96x96.png", :class=>"shadow") %>
+              <% end %>
+            </div>
+            <label>Choose new picture:</label> <%= mf.file_field :avatar %>
+          <% end %>
         <% end %>
       <% end %>
 
