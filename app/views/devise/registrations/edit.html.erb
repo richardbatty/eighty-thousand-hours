@@ -34,21 +34,15 @@ By creating a public profile, you can help inspire new people to join 80k. Seein
       <%= devise_error_messages! %>
 
       <hr/>
-
-      <%= field_set_tag "Contact details" do %>
-        <%= f.input :name %>
-        <%= f.input :email %>
-
-        <%= f.simple_fields_for :member do |mf| %>
-          <%= mf.input :phone %>
-        <% end %>
-      <% end %>
-
+      <div class="center">
+      <h2>Note: all data entered below will be publicy visible</h2>
+      </div>
       <hr/>
 
       <%= f.fields_for :member do |mf| %>
         <%= mf.fields_for :eighty_thousand_hours_profile do |ep| %>
           <%= field_set_tag "Profile fields" do %>
+            <%= f.input :name, :disabled => true, :required => false, :hint => "you can't change your name" %>
             <%= mf.input :location %>
             <%= ep.input :organisation, :label => "Organization/Company/University" %>
             <%= ep.input :background,   :label => "What is your background and what are your interests?" %>
@@ -96,7 +90,7 @@ By creating a public profile, you can help inspire new people to join 80k. Seein
 
       <hr/>
 
-      <%= f.input :current_password, :label => "Current password", :required => true, :placeholder => "required" %>
+      <%= f.input :current_password, :label => "Current password", :required => true, :placeholder => "required to update details" %>
       <div class="center">
         <div>
           <%= f.button :submit, "Save" %>
