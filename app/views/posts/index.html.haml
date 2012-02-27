@@ -9,7 +9,7 @@
       - if will_paginate @posts
         .box
           .center.pagination
-              = will_paginate @posts
+            = will_paginate @posts
       - @posts.each do |post|
         .box
           .entry
@@ -49,8 +49,8 @@
       - if will_paginate @posts
         .box
           .center.pagination
-              = will_paginate @posts
-    .span3
+            = will_paginate @posts
+    .span3.sidebar
       .box
         = render :partial => "rss"
       .box
