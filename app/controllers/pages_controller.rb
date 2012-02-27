@@ -44,7 +44,8 @@ class PagesController < ApplicationController
     @page = Page.find(params[:id])
    
     if @page.update_attributes(params[:page])
-       redirect_to(@page, :notice => 'Page was successfully updated.')
+      flash[:"alert-success"] = "Page was successfully updated"
+      redirect_to(@page)
     else
       render :action => "edit"
     end
@@ -58,7 +59,8 @@ class PagesController < ApplicationController
     @page = Page.new(params[:page])
    
     if @page.save
-       redirect_to(@page, :notice => 'Page was successfully created.')
+      flash[:"alert-success"] = 'Page was successfully created'
+      redirect_to(@page)
     else
       render :action => "new"
     end

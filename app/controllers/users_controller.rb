@@ -19,9 +19,9 @@ class UsersController < ApplicationController
     user = User.find( params[:id] )
     name = user.name
     if user.destroy
-      flash[:notice] = "Deleted #{name}"
+      flash[:"alert-success"] = "Deleted #{name}"
     else
-      flash[:error] = "Failed to delete #{name}!"
+      flash[:"alert-error"] = "Failed to delete #{name}!"
     end
     redirect_to users_path
   end
@@ -42,7 +42,8 @@ class UsersController < ApplicationController
         We've received your application and you'll hear from us soon. \
         In the meantime please confirm your account by following the link \
         in the email we sent to " << @user.email << "."
-      redirect_to root_url, notice: thanks_str
+      flash[:"alert-success"] = thanks_str
+      redirect_to root_url
     else
       render :new
     end

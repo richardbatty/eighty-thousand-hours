@@ -14,7 +14,8 @@ class SupportersController < ApplicationController
       if !@supporter.dont_email_me
         thanks_str << "We'll keep you updated..."
       end
-      redirect_to root_url, notice: thanks_str
+      flash[:"alert-success"] = thanks_str
+      redirect_to root_url
     else
       @supporters = Supporter.all
       render :new
