@@ -1,59 +1,56 @@
 .blog
   .row
-    .span8
+    .span7
       - if @heading
-        .grid_8
-          .box
-            .center
-              %h1
-                = @heading
+        .box
+          .center
+            %h1
+              = @heading
       - if will_paginate @posts
-        .grid_8
-          .box
-            .center.pagination
+        .box
+          .center.pagination
               = will_paginate @posts
       - @posts.each do |post|
-        .grid_8
-          .box
-            .entry
-              .title
-                %a{:href => post_path(post)}
-                  = post.title
-              .date= post.created_at.strftime("%B %d, %Y")
+        .box
+          .entry
+            %h2
+              %a{:href => post_path(post)}
+                = post.title
+            %h3
+              = post.created_at.strftime("%B %d, %Y")
 
-              .content
-                = markdown post.get_teaser
+            .content
+              = markdown post.get_teaser
       
-                .read-more
-                  %a{:href => post_path(post), :class=>"btn"}
-                    Read more
+              .read-more
+                %a{:href => post_path(post), :class=>"btn"}
+                  Read more
       
-              .attribution= markdown post.attribution if post.attribution 
+            .attribution= markdown post.attribution if post.attribution 
 
-              %p
-                more posts by 
-                =link_to post.author, { :action => :author, :id => post.author }
+            %p
+              more posts by 
+              =link_to post.author, { :action => :author, :id => post.author }
 
-                - if post.tag_counts_on(:tags).size > 0
-                  .tags
-                    tags:
-                    - post.tag_counts_on(:tags).each do |tag| 
-                      =link_to tag.name, { :action => :tag, :id => tag.name }
+              - if post.tag_counts_on(:tags).size > 0
+                .tags
+                  tags:
+                  - post.tag_counts_on(:tags).each do |tag| 
+                    =link_to tag.name, { :action => :tag, :id => tag.name }
       
-              .comments
-                %a{"href" => "#{post_url(post)}#disqus_thread",
-                   "data-disqus-identifier" => "blog-post-#{post.id}" }
-                %div= render :partial => "disqus_count", :locals => { :post_id => post.id, :post_title => post.title }
+            .comments
+              %a{"href" => "#{post_url(post)}#disqus_thread",
+                 "data-disqus-identifier" => "blog-post-#{post.id}" }
+              %div= render :partial => "disqus_count", :locals => { :post_id => post.id, :post_title => post.title }
       
-              .fblike
-                <fb:like href="#{post_url(post)}" send="false" width="450" show_faces="false"></fb:like>
+            .fblike
+              <fb:like href="#{post_url(post)}" send="false" width="450" show_faces="false"></fb:like>
 
       - if will_paginate @posts
-        .grid_8
-          .box
-            .center.pagination
+        .box
+          .center.pagination
               = will_paginate @posts
-    .span4
+    .span3
       .box
         = render :partial => "rss"
       .box
@@ -64,5 +61,4 @@
         = render :partial => "authors"
       .box
         = render :partial => "tag_cloud"
-
 

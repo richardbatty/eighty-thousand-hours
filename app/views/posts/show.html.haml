@@ -1,6 +1,36 @@
 .blog
-  #sidebar
-    .grid_4
+  .row
+    .span7
+      .box
+        .entry
+          %h2
+            = @post.title
+          %h3
+            = @post.created_at.strftime("%B %d, %Y")
+
+          .content
+            = markdown @post.body
+
+          .attribution
+            = markdown @post.attribution if @post.attribution
+
+          more posts by 
+          =link_to @post.author, { :action => :author, :id => @post.author }
+
+          = render :partial => "post_tags", :locals => { :post => @post, :div_title => "tags:" }
+
+          = render :partial => "rss"
+          <br/>
+          <br/>
+          <fb:like href="#{post_url(@post)}" send="false" width="250" show_faces="false"></fb:like>
+          <br/>
+
+          #disqus_thread
+            = render :partial => "disqus_embed", :locals => { :post_id => @post.id, :post_title => @post.title }
+      .box.center
+        = link_to 'View all blog posts', posts_path, :class=>"btn btn-large"
+
+    .span3
       .box
         <a href="#disqus_thread">Jump to comments</a>
         <br/>
@@ -24,35 +54,4 @@
       .box
         = render :partial => "tag_cloud"
 
-  .grid_8
-    .box
-      .entry
-        .title
-          = @post.title
-        .date
-          = @post.created_at.strftime("%B %d, %Y")
-
-        .content
-          = markdown @post.body
-
-        .attribution
-          = markdown @post.attribution if @post.attribution
-
-        more posts by 
-        =link_to @post.author, { :action => :author, :id => @post.author }
-
-        = render :partial => "post_tags", :locals => { :post => @post, :div_title => "tags:" }
-
-        = render :partial => "rss"
-        <br/>
-        <br/>
-        <fb:like href="#{post_url(@post)}" send="false" width="250" show_faces="false"></fb:like>
-        <br/>
-
-        #disqus_thread
-          = render :partial => "disqus_embed", :locals => { :post_id => @post.id, :post_title => @post.title }
-  .grid_8 
-    .box.center
-      = link_to 'View all blog posts', posts_path, :class=>"button"
-
-
+ 
