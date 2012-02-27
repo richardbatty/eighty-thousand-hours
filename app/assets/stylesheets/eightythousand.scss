@@ -24,8 +24,6 @@ body {
 
   color: $text_color;
   background: $body_bg_color;
-
-  line-height: 2.5em;
 }
 
 #wrapper {
@@ -150,7 +148,6 @@ header {
 .notice, #error_explanation {
   width: 80%;
   font-size: 1.4em;
-  line-height: 2em;
   color: $text_color;
   background: #fff;
   margin: 20px;
@@ -167,7 +164,6 @@ header {
 .alert {
   width: 80%;
   font-size: 1.4em;
-  line-height: 2em;
   color: $text_color;
   background: #fff;
   margin: 20px;
@@ -197,7 +193,7 @@ header {
 
   width: 67%;
   .slogan {
-    font-size: 38px;
+    font-size: 34px;
     text-align: left;
     font-weight: bold;
     margin-top: 10px;
@@ -292,7 +288,7 @@ header {
   color: $text_color;
 
   text-align: left;
-  font-size: 1.8em;
+  font-size: 1.4em;
 
   padding: 0px;
   margin: 0px;
