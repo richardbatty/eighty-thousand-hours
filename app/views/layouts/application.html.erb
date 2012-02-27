@@ -63,22 +63,10 @@
 
       <section id="content">
         <div class="row">
-          <div class="span8">
+          <div class="span10 offset1">
             <%= yield %>
           </div>
-          <div class="span4">
-            <div class="box">
-              <%= render :partial => 'admin_box' %>
-              <hr/>
-              <ul class="nav nav-tabs nav-stacked">
-                <li class="active">
-                  <a href="#">Home</a>
-                </li>
-                <li><a href="#">More career things</a></li>
-                <li><a href="#">Your fantastic career</a></li>
-              </ul>
-            </div>
-          </div>
+        </div>
       </section>
     </div>
 
