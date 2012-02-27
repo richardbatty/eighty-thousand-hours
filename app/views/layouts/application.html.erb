@@ -24,9 +24,8 @@
   </head>
 
   <body>
-    <div id="wrapper"> 
-      <header>
-      <div id="header-content">
+    <header>
+     <div id="header-content">
 
         <div id="header-logo-and-login">
           <%= link_to image_tag( "header/80kh_rect_logo_no_border.png",
@@ -46,22 +45,42 @@
         <% end %>
         <div style="clear: both;"></div>
       </div>
-      </header>
+    </header>
 
-      <section id="content" class="container_12">
-        <% if flash %>
-          <% flash.each do |key,value| %>
-            <div class="<%= key %>"><%= value %></div>
-          <% end %>
-        <% end %>
+    <div class="container">
+      <% if flash %>
+        <div class="row">
+          <div class="span6 offset3">
+            <% flash.each do |key,value| %>
+              <div class="alert <%= key %>">
+                <%= value %>
+                <a class="close" data-dismiss="alert">&times;</a>
+              </div>
+            <% end %>
+          </div>
+        </div>
+      <% end %>
 
-        <%= yield %>
-        <div style="clear: both;"></div>
+      <section id="content">
+        <div class="row">
+          <div class="span8">
+            <%= yield %>
+          </div>
+          <div class="span4">
+            <div class="box">
+              <ul class="nav nav-tabs nav-stacked">
+                <li class="active">
+                  <a href="#">Home</a>
+                </li>
+                <li><a href="#">More career things</a></li>
+                <li><a href="#">Your fantastic career</a></li>
+              </ul>
+            </div>
+          </div>
       </section>
-
-      <%= render :partial => "/shared/social_media" %>
-      <div class="push"><!-- sticky footer --></div>
     </div>
+
+    <%= render :partial => "/shared/social_media" %>
 
     <footer>
       <%= render :partial => "/shared/footer" %>
