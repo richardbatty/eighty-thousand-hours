@@ -2,7 +2,6 @@
 @import "rounded_borders";
 @import "box_shadow";
 @import "dimensions";
-/*@import "buttons";*/
 
 @mixin box_style{
   @include rounded_borders(#ccc, 1px, $dim_border_radius);
@@ -97,89 +96,92 @@ header {
 }
 
 
-.button {
-  cursor: pointer;
-  display: inline-block;
-  font-size: 1.5em;
-  padding: .5em 2em .5em;
-  text-shadow: 0 1px 1px rgba(0,0,0,.3);
-
-  @include rounded_borders(#ccc, 1px, 6px);
-  @include box_shadow(#ccc, 0px, 0px, 5px);
-  background-color: #fff;
-  /*padding: 20px;*/
-  margin: 10px;
-  text-align: center;
-
-  &:hover {
-    @include box_shadow(#ccc, 0px, 0px, 0px);
-    cursor: pointer;
-  }
-
-  &.right {
-    float:right;
-    clear:both;
-  }
-}
-
-
-.small-button {
-  cursor: pointer;
-  display: inline-block;
-  /*padding: .5em 2em .5em;*/
-  margin-left: .5em;
-  margin-right: .5em;
-  padding-left: .5em;
-  padding-right: .5em;
-  text-shadow: 0 1px 1px rgba(0,0,0,.3);
-
-  @include rounded_borders(#ccc, 1px, 6px);
-  @include box_shadow(#ccc, 0px, 0px, 5px);
-  background-color: #fff;
-  /*padding: 20px;*/
-  text-align: center;
-
-  &:hover {
-    @include box_shadow(#ccc, 0px, 0px, 0px);
-    cursor: pointer;
-  }
-}
-
+//.button {
+//  cursor: pointer;
+//  display: inline-block;
+//  font-size: 1.5em;
+//  padding: .5em 2em .5em;
+//  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+//
+//  @include rounded_borders(#ccc, 1px, 6px);
+//  @include box_shadow(#ccc, 0px, 0px, 5px);
+//  background-color: #fff;
+//  /*padding: 20px;*/
+//  margin: 10px;
+//  text-align: center;
+//
+//  &:hover {
+//    @include box_shadow(#ccc, 0px, 0px, 0px);
+//    cursor: pointer;
+//  }
+//
+//  &.right {
+//    float:right;
+//    clear:both;
+//  }
+//}
+//
+//
+//.small-button {
+//  cursor: pointer;
+//  display: inline-block;
+//  /*padding: .5em 2em .5em;*/
+//  margin-left: .5em;
+//  margin-right: .5em;
+//  padding-left: .5em;
+//  padding-right: .5em;
+//  text-shadow: 0 1px 1px rgba(0,0,0,.3);
+//
+//  @include rounded_borders(#ccc, 1px, 6px);
+//  @include box_shadow(#ccc, 0px, 0px, 5px);
+//  background-color: #fff;
+//  /*padding: 20px;*/
+//  text-align: center;
+//
+//  &:hover {
+//    @include box_shadow(#ccc, 0px, 0px, 0px);
+//    cursor: pointer;
+//  }
+//}
+//
 
 /* -------------- rails notice ----------- */
-.notice, #error_explanation {
-  width: 80%;
-  font-size: 1.4em;
-  line-height: 2em;
-  color: $text_color;
-  background: #fff;
-  margin: 20px;
-  padding: 20px;
-  margin-left: auto;
-  margin-right: auto;
-
-  @include box_style;
-
-  @include rounded_borders($magenta_2, 2px, $dim_border_radius);
-  @include box_shadow($magenta_2, 0px, 0px, 5px);
+.alert { 
+  margin: 10px;
 }
+//.notice, #error_explanation {
+//  width: 80%;
+//  font-size: 1.4em;
+//  line-height: 2em;
+//  color: $text_color;
+//  background: #fff;
+//  margin: 20px;
+//  padding: 20px;
+//  margin-left: auto;
+//  margin-right: auto;
+//
+//  @include box_style;
+//
+//  @include rounded_borders($magenta_2, 2px, $dim_border_radius);
+//  @include box_shadow($magenta_2, 0px, 0px, 5px);
+//}
 
-.alert {
-  width: 80%;
-  font-size: 1.4em;
-  line-height: 2em;
-  color: $text_color;
-  background: #fff;
-  margin: 20px;
-  padding: 20px;
-  margin-left: auto;
-  margin-right: auto;
-
-  @include box_style;
-
-  @include rounded_borders(#c55, 2px, $dim_border_radius);
-  @include box_shadow(#c55, 0px, 0px, 5px);
-}
+//.alert {
+//  width: 80%;
+//  font-size: 1.4em;
+//  line-height: 2em;
+//  color: $text_color;
+//  background: #fff;
+//  margin: 20px;
+//  padding: 20px;
+//  margin-left: auto;
+//  margin-right: auto;
+//
+//  @include box_style;
+//
+//  @include rounded_borders(#c55, 2px, $dim_border_radius);
+//  @include box_shadow(#c55, 0px, 0px, 5px);
+//}
 
 /* -------------- /rails notice ----------- */
 
@@ -221,17 +223,17 @@ header {
   height: 64px;
 }
 
-.read-more {
-  a{
-    @include box_shadow($magenta_2, 0px, 0px, 2px);
-    @include rounded_borders(#ccc, 1px, 6px);
-    padding: 5px;
-
-    &:hover {
-      @include box_shadow(#ccc, 0px, 0px, 1px);
-    }
-  }
-}
+//.read-more {
+//  a{
+//    @include box_shadow($magenta_2, 0px, 0px, 2px);
+//    @include rounded_borders(#ccc, 1px, 6px);
+//    padding: 5px;
+//
+//    &:hover {
+//      @include box_shadow(#ccc, 0px, 0px, 1px);
+//    }
+//  }
+//}
 
 .fp-blog-summary {
   font-size: 0.9em;
@@ -487,30 +489,30 @@ ol{
   }
 }
 
-ul{
-  padding: 10px;
-  padding-left: 25px;
-  li{
-    list-style: disc; color:$text_color;
-    padding: 5px;
-  }
-}
-
-
-ul.magenta-bullets{
-  padding: 10px;
-  padding-left: 25px;
-  li{
-    list-style: disc; color:$magenta_2;
-    padding: 5px;
-    a{
-      color: $text_color !important;
-    }
-    a:hover{
-      color: $link_hover_color !important;
-    }
-  }
-}
+//ul{
+//  padding: 10px;
+//  padding-left: 25px;
+//  li{
+//    list-style: disc; color:$text_color;
+//    padding: 5px;
+//  }
+//}
+//
+//
+//ul.magenta-bullets{
+//  padding: 10px;
+//  padding-left: 25px;
+//  li{
+//    list-style: disc; color:$magenta_2;
+//    padding: 5px;
+//    a{
+//      color: $text_color !important;
+//    }
+//    a:hover{
+//      color: $link_hover_color !important;
+//    }
+//  }
+//}
 
 .calculator {
   padding-top: 30px;
@@ -719,8 +721,5 @@ sup {
   top: -0.4em;
 }
 
-@import "blog";
-@import "forms";
-@import "tables";
 @import "nav";
 
