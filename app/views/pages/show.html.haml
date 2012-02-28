@@ -2,8 +2,9 @@
   .span8.offset1
     = render :partial => 'admin_box'
 .row
-  %div{ :class => @page.show_box ? 'box' : nil }
-    - if @page.show_title
-      .page-header
-        %h1= @page.title
-    = markdown @page.body
+  .span10
+    %div{ :class => @page.show_box ? 'box' : nil }
+      - if @page.show_title
+        .page-header
+          %h1= @page.title
+      = markdown @page.body
