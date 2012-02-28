@@ -24,11 +24,19 @@
       more posts by 
       =link_to post.author, { :action => :author, :id => post.author }
 
+    %p
       = render :partial => "post_tags", :locals => { :post => post, :div_title => "tags:" }
 
-      - if !teaser
+    %p
+      = link_to '<i class="icon-list"></i> Take me back to the blog'.html_safe, posts_path
+    %p
+      = link_to '<i class="icon-home"></i> Take me to the homepage'.html_safe, '/'
+
+    - if !teaser
+      %p
         = render :partial => "rss"
 
+      %p
         .fblike
           <fb:like href="#{post_url(post)}" send="false" width="450" show_faces="false"></fb:like>
 
@@ -43,6 +51,8 @@
 
 
     - if !teaser
+      %hr
       .center
-        = link_to 'All blog posts', posts_path, :class=>"btn btn-large"
+        = link_to 'Take me back to the blog', posts_path, :class=>"btn btn-mini"
+        = link_to 'Take me to the homepage', '/', :class=>"btn btn-mini"
 

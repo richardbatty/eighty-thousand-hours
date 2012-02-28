@@ -49,16 +49,16 @@
     font-size: 0.9em;
    }
 
-  img.rss
-  {
-    padding:0px;
-    margin:0px;
-    width: 20px;
-    height: 20px;
-    padding-right: 5px;
-    margin-bottom: -3px;
-  }
-
+   .rss {
+     img
+     {
+       padding:0px;
+       padding-top: 5px;
+       margin:0px;
+       padding-right: 5px;
+       margin-bottom: -3px;
+     }
+   }
 
   .attribution {
     margin-top: 10px;
