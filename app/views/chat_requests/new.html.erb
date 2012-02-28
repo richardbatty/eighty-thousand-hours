@@ -53,9 +53,9 @@
         <%= f.check_box(:options_other) %>
         <%= f.label(:options_other, "Other") %>
       </div>
+    <% end %>
+    <%= field_set_tag "What do you want to chat about? (give some detail)" do %>
       <div>
-        <%= f.label(:other_text, "Details:") %>
-        <br/>
         <%= f.text_area(:other_text) %>
       </div>
     <% end %>
