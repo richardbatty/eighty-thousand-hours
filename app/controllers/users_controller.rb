@@ -13,6 +13,7 @@ class UsersController < ApplicationController
 
   def show
     @user = User.membership_confirmed.find(params[:id])
+    @title = @user.name
   end
 
   def destroy
