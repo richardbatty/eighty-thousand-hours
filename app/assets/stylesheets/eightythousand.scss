@@ -341,8 +341,6 @@ img.shadow {
   @include box_shadow(#ccc, 0px, 0px, 5px);
 }
 
-
-
 .member-profile {
   /*min-height: 110px;*/
   .avatar {
@@ -398,34 +396,20 @@ img.shadow {
   }
 }
 
-.faq {
-  .question {
-    h2 {
-      &:hover {
-        color: $magenta_2;
-      }
-    }
-  }
-  .more {
-        color: $link_color;
-      &:hover {
-        color: $link_hover_color;
-      }
-    }
-}
-
-i,em {
-  font-style: italic;
-}
-strong {
-  font-style: bold;
-}
-
 sup {
   vertical-align: baseline;
   font-size: 0.8em;
   position: relative;
   top: -0.4em;
+}
+
+
+.web-admin-box {
+  color: #262626;
+  background-color: #f2dede;
+  padding: 5px;
+  margin-top: 10px;
+  @include rounded_borders(#b94a48, 1px, 3px);
 }
 
 @import "nav";

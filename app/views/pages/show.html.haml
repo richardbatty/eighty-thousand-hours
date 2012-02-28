@@ -1,4 +1,7 @@
 .row
+  .span8.offset1
+    = render :partial => 'admin_box'
+.row
   %div{ :class => @page.show_box ? 'box' : nil }
     - if @page.show_title
       %h1= @page.title
