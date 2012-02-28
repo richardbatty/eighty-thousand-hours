@@ -167,26 +167,6 @@ header {
 #content {
   color: $text_color;
 
-  a {
-    color: $link_color;
-    text-decoration: none;
-  }
-
-  a:hover {
-    color: $link_hover_color;
-    text-decoration: none;
-  }
-
-  a:visited {
-    color: $link_visited_color;
-    text-decoration: none;
-  }
-
-  a:visited:hover {
-    color: $link_hover_color;
-    text-decoration: none;
-  }
-
   /* these are used for text content */
   .box {
     margin-top: 20px;

@@ -22,9 +22,9 @@
                       <p>
                       <strong>#{p.created_at.strftime('%B %d, %Y')}</strong>
                       <br/>
+                      <a class='btn btn-small right' href='#{post_path p}'>Read more...</a>
                       <a href='#{post_path p}'>#{p.title}</a>
                       <br/>by #{p.author}
-                      <a class='btn right' href='#{post_path p}'>Read more...</a>
                       </p>
                       <hr/>
                       "

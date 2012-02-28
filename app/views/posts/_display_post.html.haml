@@ -13,8 +13,8 @@
         = markdown post.get_teaser
 
         .read-more
-          %a{:href => post_path(post), :class=>"btn"}
-            Read more
+          %a{:href => post_path(post)}
+            Read more...
       - else
         = markdown post.body
 

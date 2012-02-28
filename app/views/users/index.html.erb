@@ -7,13 +7,9 @@
 
   <% if !@all %>
     <div class="center">
-      <%= button_link 'View all members', '/members/all' %>
+      <%= link_to 'View all members', '/members/all', :class => 'btn btn-large' %>
+      <%= link_to 'Interested in becoming a member?', '/join', :class => 'btn btn-large' %>
     </div>
   <% end %>
 </div>
 
-<div class="box">
-  <div class="center">
-  <%= button_link 'Inspired? Interested in becoming a member?', '/join' %>
-  </div>
-</div>
