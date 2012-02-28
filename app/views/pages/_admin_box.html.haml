@@ -1,4 +1,5 @@
 - if can? :update, @page
   .web-admin-box
-    = link_to 'Edit', edit_page_path(@page), :class => 'btn btn-mini'
-    = link_to 'List all pages', pages_path, :class => 'btn btn-mini'
+    = link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_page_path(@page), :class => 'btn btn-small'
+    = link_to '<i class="icon-list"></i> List all pages'.html_safe, pages_path, :class => 'btn btn-small'
+    = link_to '<i class="icon-cog"></i> Admin control panel'.html_safe, '/admin', :class => 'btn btn-small'

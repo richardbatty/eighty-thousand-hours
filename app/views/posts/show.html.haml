@@ -5,15 +5,7 @@
 
     .span3
       .box
-        <a href="#disqus_thread">Jump to comments</a>
-        <br/>
-        <br/>
         <fb:like href="#{post_url(@post)}" send="false" width="250" show_faces="false"></fb:like>
-        <br/>
-      
-        .attribution
-          =markdown ("written by: " + @post.author) if @post.author
-
       .box
         = render :partial => "rss"
       .box
