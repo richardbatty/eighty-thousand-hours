@@ -14,8 +14,13 @@ Skype: <%= @skype %>
 <% output = { :career    => "✔ Their career",
               :joining   => "✔ Joining 80,000 Hours",
               :questions => "✔ Questions about 80,000 Hours",
-              :other     => "✔ Other: #{@options[:other_text]}"} -%>
+              :other     => "✔ Other"} -%>
+
 <% output.each do |k,v| -%><%= @options[k] == '1' ? "    "+v+"\n" : "" %><% end -%>
+
+---- details ----
+<%= @options[:other_text] %>
+-----------------
 
 Please put them in touch with an appropriate member!
 

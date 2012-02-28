@@ -52,8 +52,11 @@
       <div>
         <%= f.check_box(:options_other) %>
         <%= f.label(:options_other, "Other") %>
-        <%= f.label(:other_text, "| Provide details:") %>
-        <%= f.text_field(:other_text) %>
+      </div>
+      <div>
+        <%= f.label(:other_text, "Details:") %>
+        <br/>
+        <%= f.text_area(:other_text) %>
       </div>
     <% end %>
     <%= f.submit 'Submit', :class=>"button" %>
