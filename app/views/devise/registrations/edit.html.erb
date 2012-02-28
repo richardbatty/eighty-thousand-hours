@@ -29,26 +29,27 @@ By creating a public profile, you can help inspire new people to join 80k. Seein
     <p>[a link](http://80000hours.org/) == <a href="http://80000hours.org">a link</a></p>
   </div>
 
-  <div class="profile-form">
-    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put }) do |f| %>
+  <div class="row">
+    <div class="span7 offset1">
+    <%= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}}  ) do |f| %>
       <%= devise_error_messages! %>
 
       <hr/>
       <div class="center">
-      <h2>Note: all data entered below will be publicy visible</h2>
+      <h2>All data entered below will be publicy visible</h2>
       </div>
       <hr/>
 
-      <%= f.fields_for :member do |mf| %>
-        <%= mf.fields_for :eighty_thousand_hours_profile do |ep| %>
+      <%= f.fields_for :member, :defaults=>{:input_html=>{:class=>'span4'}}  do |mf| %>
+        <%= mf.fields_for :eighty_thousand_hours_profile, :defaults=>{:input_html=>{:class=>'span4'}}  do |ep| %>
           <%= field_set_tag "Profile fields" do %>
             <%= f.input :name, :disabled => true, :required => false, :hint => "you can't change your name" %>
             <%= mf.input :location %>
-            <%= ep.input :organisation, :label => "Organization/Company/University" %>
-            <%= ep.input :background,   :label => "What is your background and what are your interests?" %>
-            <%= ep.input :inspiration,  :label => "What inspired you to join 80,000 Hours, and how has discovering 80,000 Hours changed your career decisions?" %>
-            <%= ep.input :occupation,   :label => "What do you currently do?" %>
-            <%= ep.input :career_plans, :label => "What are your plans for a high impact ethical career?" %>
+            <%= ep.input :organisation, :label => "Your organization", :placeholder => "i.e. your current company or university" %>
+            <%= ep.input :background,   :label => "What is your background and what are your interests?", :input_html => {:rows=>'10'}  %>
+            <%= ep.input :inspiration,  :label => "What inspired you to join 80,000 Hours, and how has discovering 80,000 Hours changed your career decisions?", :input_html => {:rows=>'10'}  %>
+            <%= ep.input :occupation,   :label => "What do you currently do?", :input_html => {:rows=>'10'}  %>
+            <%= ep.input :career_plans, :label => "What are your plans for a high impact ethical career?", :input_html => {:rows=>'10'}  %>
 
             <label>What will be your main method(s) of doing good?</label>
             <div class="check-group">
@@ -60,28 +61,24 @@ By creating a public profile, you can help inspire new people to join 80k. Seein
               <%= ep.input :doing_good_research,        :label => "Research" %>
             </div>
 
-            <%= ep.input :organisation_role, :label => "What is your role in the 80,000 Hours team?" %>
-            <%= ep.input :interesting_fact,  :label => "Interesting fact (optional)" %>
+            <%= ep.input :organisation_role, :label => "What is your role in the 80,000 Hours team?", :input_html => {:rows=>'5'}  %>
+            <%= ep.input :interesting_fact,  :label => "Interesting fact (optional)", :input_html => {:rows=>'5'}  %>
             <%= mf.input :external_twitter,  :label => "Twitter page (optional)", :hint => "full URL e.g. http://twitter.com/JoeBloggs" %>
             <%= mf.input :external_facebook, :label => "Facebook page (optional)", :hint => "full URL e.g. http://www.facebook.com/JoeBloggs" %>
             <%= mf.input :external_linkedin, :label => "LinkedIn page (optional)", :hint => "full URL e.g. http://www.linkedin.com/in/JoeBloggs" %>
 
 
-            <label>Current profile picture</label>
-            <div class="avatar">
+            <%= mf.label "Current profile picture" %>
               <% member = current_user.member %>
               <% if member.avatar? %>
-                <%= link_to image_tag(member.avatar.url(:medium), :class=>"shadow"), member.avatar.url %>
+                <%= link_to image_tag(member.avatar.url(:small), :class=>"shadow", :style=>"margin-left:20px;"), member.avatar.url %>
               <% else %>
                 <%= image_tag("profiles/avatar_default_96x96.png", :class=>"shadow") %>
               <% end %>
-            </div>
-            <label>Choose new picture:</label> <%= mf.file_field :avatar %>
+              <%= mf.input :avatar, :label => "Change photo" %>
           <% end %>
         <% end %>
       <% end %>
-
-      <hr/>
 
       <%= field_set_tag "Change password" do %>
         <%= f.input :password, :label => "New password", :placeholder => "optional" %>
@@ -93,9 +90,12 @@ By creating a public profile, you can help inspire new people to join 80k. Seein
       <%= f.input :current_password, :label => "Current password", :required => true, :placeholder => "required to update details" %>
       <div class="center">
         <div>
-          <%= f.button :submit, "Save" %>
+          <%= f.button :submit, "Save profile", :class=>'btn btn-primary btn-large' %>
+          <%= link_to "Cancel", user_path(current_user), :class=>'btn btn-large' %>
         </div>
       </div>
     <% end %>
+  </div>
+  </div>
   </div>
 </div>
