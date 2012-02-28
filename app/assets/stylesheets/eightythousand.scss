@@ -299,7 +299,6 @@ img.shadow {
 }
 
 .member-profile {
-  /*min-height: 110px;*/
   .avatar {
     float: right;
     @include box_shadow(#555, 0px, 0px, 6px);
@@ -314,7 +313,6 @@ img.shadow {
     padding-bottom: 5px;
   }
   .location {
-    font-size: 1.0em;
     font-weight: normal;
     color: lighten($text_color,50%);
   }

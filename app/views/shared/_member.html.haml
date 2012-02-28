@@ -1,0 +1,87 @@
+.member-profile
+  - if user_signed_in? && current_user.member == member
+    .center
+      = link_to "Edit Your Profile", "/accounts/edit", :class=>"btn btn-danger"
+      %hr
+
+  - if profile.name
+    .page-header
+      - if member.avatar?
+        .avatar
+          = link_to image_tag(member.avatar.url(:medium)), member.avatar.url
+      %h1= profile.name
+      - if member.location?
+        %h2.location= member.location
+
+  
+  .donations
+    %p
+      = member_donations member.donations.sum(:amount)
+  
+  %h2 Joined 80,000 Hours
+  = profile.created_at.strftime "%B %Y"
+
+  %hr
+
+  - if profile.organisation?
+    %h2 Organisation/Company/University
+    = markdown profile.organisation
+    %hr
+
+  - if profile.background?
+    %h2 Background and interests
+    = markdown profile.background
+    %hr
+  
+  - if profile.inspiration?
+    %h2 My inspiration for joining 80,000 Hours
+    = markdown profile.inspiration
+    %hr
+
+  - if profile.occupation?
+    %h2 Current job/occupation
+    = markdown profile.occupation
+    %hr
+
+  - if profile.career_plans?
+    %h2 Career plans
+    = markdown profile.career_plans
+    %hr
+
+  - if profile.doing_good_inspiring? || profile.doing_good_research? || profile.doing_good_philanthropy? || profile.doing_good_prophilanthropy? || profile.doing_good_innovating? || profile.doing_good_improving
+    %h2 Type of Career
+    %ul 
+      - if profile.doing_good_inspiring?
+        %li Inspiring others
+      - if profile.doing_good_research?
+        %li High impact research
+      - if profile.doing_good_philanthropy?
+        %li Philanthropy
+      - if profile.doing_good_prophilanthropy?
+        %li Professional philanthropy
+      - if profile.doing_good_innovating?
+        %li Innovating
+      - if profile.doing_good_improving?
+        %li Improving
+    %hr
+
+  - if profile.organisation_role?
+    %h2 Role in 80,000 Hours
+    = markdown profile.organisation_role
+    %hr
+
+  - if profile.interesting_fact?
+    %h2 Interesting fact
+    = markdown profile.interesting_fact
+    %hr
+
+  - if member.external_twitter? || member.external_facebook? || member.external_linkedin?
+    %h2 External links
+    - if member.external_twitter?
+      = link_to image_tag("social/twitter.png") + " Twitter".html_safe, member.external_twitter
+
+    - if member.external_facebook?
+      = link_to image_tag("social/facebook.png") + " Facebook".html_safe, member.external_facebook
+
+    - if member.external_linkedin?
+      = link_to image_tag("social/linkedin.png") + " LinkedIn".html_safe, member.external_linkedin

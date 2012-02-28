@@ -5,6 +5,7 @@
   <p>Sorry! That profile hasn't been completed yet... check back soon!</p>
   <%= button_link 'List of all members with profiles', users_path %>
 <% end %>
-<br/>
-<%= button_link 'View all members', users_path + "/all" %>
+<div class="center">
+<%= link_to 'View all members', users_path + "/all", :class => "btn btn-large" %>
+</div>
 </div>
