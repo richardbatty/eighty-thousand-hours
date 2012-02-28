@@ -2,30 +2,29 @@
 
 <div class="profile-form">
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
+  <p>
   <h2>Login</h2>
-  <div><%= f.label :email %><br />
+  </p>
+  <div><%= f.label :email %>
   <%= f.email_field :email %></div>
 
-  <div><%= f.label :password %><br />
+  <div><%= f.label :password %>
   <%= f.password_field :password %></div>
 
   <% if devise_mapping.rememberable? -%>
-    <div><%= f.check_box :remember_me %> <%= f.label :remember_me %></div>
+    <div><label class="checkbox"><%= f.check_box :remember_me %> Remember me</label></div>
   <% end -%>
 
-  <div><%= f.submit "Sign in", :class=>"button" %></div>
+  <div><%= f.submit "Sign in", :class=>"btn" %></div>
 <% end %>
 <%= render :partial => "devise/shared/links" %>
-
 </div>
 
 <hr/>
-<br/>
 
-<h2 style="padding-left:30px">Not a member?</h2>
-
-<div class="large_margin">
-<a class="button" href="/find-out-more">Find out more</a>
-<a class="button" href="/join">Join now!</a>
-</div>
+<p>
+<h2>Not a member?</h2>
+<a class="btn btn-large" href="/find-out-more">Find out more</a>
+<a class="btn btn-large" href="/join">Join now!</a>
+</p>
 </div>

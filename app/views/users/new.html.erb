@@ -30,17 +30,14 @@ Some common questions about the declaration are covered in the [declaration FAQ]
 Please fill out the short form below in order to join.
 " %>
 
-<hr/>
-
-<br/>
-
-<div class="center">
-  <h1 id="application_form">80,000 Hours application</h1>
 </div>
 
+<div class="span6 offset1">
 <br/>
+<h1 id="application_form">80,000 Hours application</h1>
 
 <% if @user.errors.any? %>
+  <hr/>
   <div class="alert">
     <div id="errorExplanation">
       <h1><%= pluralize(@user.errors.count, "error") %> prohibited this application from being accepted!</h1>
@@ -56,53 +53,61 @@ Please fill out the short form below in order to join.
   </div>
 <% end %>
 
-<div class="profile-form">
-  <%= simple_form_for(@user, :url=>"/members#application_form") do |f| %>
-    <%= f.input :name, :hint => 'Can be a pseudonym, and will be displayed publicly' %>
-    <%= f.simple_fields_for :member do |m| %>
-      <%= m.input :real_name, :hint => 'This will not be displayed publicly'  %>
+<hr/>
+
+<%= simple_form_for @user, :url=>"/members#application_form", :html => { :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span3'}} do |f| %>
+  <%= field_set_tag 'Your details' do %>
+    <%= f.input :name, :hint => 'Will be displayed publicly (can be a pseudonym)', :input_class => 'span3' %>
+    <%= f.simple_fields_for :member,:defaults=>{:input_html=>{:class=>'span3'}} do |m| %>
+      <%= m.input :real_name, :hint => 'This will not be displayed publicly', :placeholder => 'optional'  %>
     <% end %>
-    <%= f.input :email, :required => :true %>
+    <%= f.input :email, :required => :true, :input_html => {:class => 'span3'} %>
     <%= f.input :password, :required => :true %>
-    <%= f.input :password_confirmation, :required => :true %>
+  <% end %>
 
-    <%= f.simple_fields_for :member do |m| %>
-      <%= m.simple_fields_for :eighty_thousand_hours_application do |e| %>
-        <hr/>
-        <%= e.input :career_plans, :placeholder => "How do you plan to use your career to fulfil the declaration?", :as => :text, :required => true %>
+  <%= field_set_tag 'Your plans' do %>
+  <%= f.simple_fields_for :member, :defaults=>{:input_html=>{:class=>'span3'}}   do |m| %>
+    <%= m.simple_fields_for :eighty_thousand_hours_application,:defaults=>{:input_html=>{:class=>'span3'}} do |e| %>
+      <hr/>
+      <%= e.input :career_plans, :placeholder => "How do you plan to use your career to fulfil the declaration?", :as => :text, :required => true, :input_html => {:rows=>'5'} %>
 
-        <hr/>
-        <label>
-        <p>Which high impact activites do you intend to be involved in?</p>
-        </label>
-        <div class="check-group">
+      <hr/>
+
+      <div class="control-group check_boxes">
+      <label>
+      <p>Which high impact activites do you intend to be involved in?</p>
+      </label>
+      <div class="controls">
         <%= e.input :doing_good_inspiring,       :label => "Inspiring" %>
         <%= e.input :doing_good_improving,       :label => "Improving" %>
         <%= e.input :doing_good_philanthropy,    :label => "Philanthropy" %>
         <%= e.input :doing_good_prophilanthropy, :label => "Professional philanthropy" %>
         <%= e.input :doing_good_innovating,      :label => "Innovating" %>
         <%= e.input :doing_good_research,        :label => "Research" %>
-        </div>
+      </div>
+      </div>
 
-        <hr/>
+      <hr/>
 
-        <div class="slider-container">
-        <label>How much do you expect to donate to the highest impact causes?</label>
-        <div class="slider-group">
-        <p>I intend to donate around <span class="slider_value emphasise"><span id="user_member_attributes_eighty_thousand_hours_application_attributes_donation_percentage_display"></span>%</span> of my salary each year.</p>
-        <div id="user_member_attributes_eighty_thousand_hours_application_attributes_donation_percentage_slider"></div>
-        </div>
-        </div>
-        <%= e.input :donation_percentage, :as => :hidden %>
-        <%= e.input :donation_percentage_comment, :placeholder => "optional", :label => "Comments about donations", :required => false %>
+      <div class="slider-container">
+      <label>How much do you expect to donate to the highest impact causes?</label>
+      <div class="slider-group">
+      <p><strong>I intend to donate around <span class="slider_value emphasise"><span id="user_member_attributes_eighty_thousand_hours_application_attributes_donation_percentage_display"></span>%</span> of my salary each year.</strong></p>
+      <div id="user_member_attributes_eighty_thousand_hours_application_attributes_donation_percentage_slider"></div>
+      </div>
+      </div>
+      <%= e.input :donation_percentage, :as => :hidden %>
+      <br/>
+      <%= e.input :donation_percentage_comment, :placeholder => "optional", :label => "Comments about donations", :required => false %>
 
-        <hr/>
+      <hr/>
 
-        <label>
-        <p>Which causes do you intend to donate to?</p>
-        </label>
-        <div class="check-group">
-        <%= e.input :causes_givewell,      :label => "GiveWell recommended charities" %>
+      <div class="control-group check_boxes">
+      <label>
+      Which causes do you intend to donate to?
+      </label>
+      <div class="controls">
+        <%= e.input :causes_givewell,      :label => "GiveWell recommended charities"%>
         <%= e.input :causes_gwwc,          :label => "GWWC recommended charities" %>
         <%= e.input :causes_political,     :label => "Political charities" %>
         <%= e.input :causes_animal,        :label => "Animal charities" %>
@@ -110,62 +115,67 @@ Please fill out the short form below in order to join.
         <%= e.input :causes_meta,          :label => "Meta-philanthropy charities" %>
         <%= e.input :causes_domestic,      :label => "Other domestic charities" %>
         <%= e.input :causes_international, :label => "Other international charities" %>
-        </div>
-        <%= e.input :causes_comment, :placeholder => "optional", :label => "Comments about causes", :required => false %>
+      </div>
+      </div>
+      <br/>
+      <%= e.input :causes_comment, :placeholder => "optional", :label => "Comments about causes", :required => false %>
 
-        <hr/>
+      <hr/>
 
-        <div class="slider-container">
-        <label>How much do you expect to earn on average per year?  </label>
-        <div class="slider-group">
-        <p>I expect to earn <span class="slider_value emphasise">£<span id="user_member_attributes_eighty_thousand_hours_application_attributes_average_income_display"></span></span> a year on average over my career.</p>
-        <div class="slider" id="user_member_attributes_eighty_thousand_hours_application_attributes_average_income_slider"></div>
-        </div>
-        </div>
-        <%= e.input :average_income, :as => :hidden %>
-        <%= e.input :average_income_comment, :placeholder => "optional", :label => "Comments about earnings", :required => false %>
+      <div class="slider-container">
+      <label>How much do you expect to earn on average per year?  </label>
+      <div class="slider-group">
+      <p><strong>I expect to earn <span class="slider_value emphasise">£<span id="user_member_attributes_eighty_thousand_hours_application_attributes_average_income_display"></span></span> a year on average over my career.</strong></p>
+      <div class="slider" id="user_member_attributes_eighty_thousand_hours_application_attributes_average_income_slider"></div>
+      </div>
+      </div>
+      <%= e.input :average_income, :as => :hidden %>
+      <br/>
+      <%= e.input :average_income_comment, :placeholder => "optional", :label => "Comments about earnings", :required => false %>
 
-        <hr/>
+      <hr/>
 
-        <div class="slider-container">
-        <label>How many hours a week do you expect to spend on high impact activities (excluding earning)?</label>
-        <div class="slider-group">
-        <p>I intend to spend around <span class="slider_value emphasise"><span id="user_member_attributes_eighty_thousand_hours_application_attributes_hic_activity_hours_display"></span> hours</span> 
-           a week on high impact activities.</p>
-        <div class="slider" id="user_member_attributes_eighty_thousand_hours_application_attributes_hic_activity_hours_slider"></div>
-        <%= e.input :hic_activity_hours, :as => :hidden %>
-        </div>
-        </div>
-        <%= e.input :hic_activity_hours_comment, :placeholder => "optional", :label => "Comments about activities", :required => false %>
+      <div class="slider-container">
+      <label>How many hours a week do you expect to spend on high impact activities (excluding earning)?</label>
+      <div class="slider-group">
+      <p><strong>I intend to spend around <span class="slider_value emphasise"><span id="user_member_attributes_eighty_thousand_hours_application_attributes_hic_activity_hours_display"></span> hours</span> 
+         a week on high impact activities.</strong></p>
+      <div class="slider" id="user_member_attributes_eighty_thousand_hours_application_attributes_hic_activity_hours_slider"></div>
+      </div>
+      </div>
+      <%= e.input :hic_activity_hours, :as => :hidden %>
+      <br/>
+      <%= e.input :hic_activity_hours_comment, :placeholder => "optional", :label => "Comments about activities", :required => false %>
 
-        <hr/>
+      <hr/>
 
-        <%= e.input :occupation, :label => "What do you currently do?", :as => :text, :required => true %>
+      <%= e.input :occupation, :label => "What do you currently do?", :as => :text, :required => true, :placeholder => "Already in a career? Student?", :input_html => {:rows=>'5'} %>
 
-        <hr/>
+      <hr/>
 
-        <%= e.input :spoken_to_existing_member, :label => "Have you spoken to an existing member about 80,000 Hours?", :placeholder => "If so, who?", :required => false %>
-      <% end %>
+      <%= e.input :spoken_to_existing_member, :label => "Have you spoken to an existing member about 80,000 Hours?", :placeholder => "If so, who?", :required => false, :input_html => {:rows=>'5'}%>
     <% end %>
+    <% end %>
+  <% end %>
 
   <hr/>
 
-  <div class="declaration box">
-    <h1>The Declaration</h1>
-    <p>
-      <%= render :partial => 'shared/declaration' %>
-    </p>
-    <%= f.simple_fields_for :member do |m| %>
-      <%= m.simple_fields_for :eighty_thousand_hours_application do |e| %>
+  <h1>The Declaration</h1>
+  <p>
+    <%= render :partial => 'shared/declaration' %>
+  </p>
+  <%= f.simple_fields_for :member do |m| %>
+    <%= m.simple_fields_for :eighty_thousand_hours_application do |e| %>
+      <div class="control-group check_boxes">
+      <div class="controls">
         <%= e.input :pledge, :label => "I agree to the declaration of intent" %>
-      <% end %>
+      </label>
     <% end %>
-  </div>
-
-  <div class="center">
-    <%= f.button :submit, "Apply to join 80,000 Hours" %>
-  </div>
-
   <% end %>
-</div> <!-- profile form -->  
+
+<%= f.button :submit, "Apply to join 80,000 Hours", :class=> "btn-primary btn-large" %>
+<a class="btn btn-large" href="/">Cancel</a>
+
+<% end %>
+</div>
 

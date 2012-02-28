@@ -18,14 +18,14 @@ class PostsController < ApplicationController
   def show
     @post = Post.find_by_id(params[:id])
     if @post.nil?
-      flash[:notice] = "Sorry! You've followed a bad link, please <a href='contact-us'>contact support</a> and report the following:<br/> #{params[:controller]} => '#{params[:id]}'".html_safe
+      flash[:"alert-error"] = "Sorry! You've followed a bad link, please <a href='contact-us'>contact support</a> and report the following:<br/> #{params[:controller]} => '#{params[:id]}'".html_safe
       redirect_to :action => 'index'
     else
       if @post.draft
         if cannot? :manage, Post
           # user is not allowed to view drafts
           # so we redirect to the index
-          flash[:notice] = "Sorry! You've followed a bad link, please <a href='contact-us'>contact support</a>!".html_safe
+          flash[:"alert-error"] = "Sorry! You've followed a bad link, please <a href='contact-us'>contact support</a>!".html_safe
           redirect_to :action => 'index'
         end
       end

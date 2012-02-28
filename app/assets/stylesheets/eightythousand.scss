@@ -2,7 +2,6 @@
 @import "rounded_borders";
 @import "box_shadow";
 @import "dimensions";
-/*@import "buttons";*/
 
 @mixin box_style{
   @include rounded_borders(#ccc, 1px, $dim_border_radius);
@@ -29,12 +28,6 @@ body {
 #wrapper {
   background: $box_color; 
   background: $body_bg_color;
-
-  // for sticky footer
-  min-height: 100%; 
-  height: auto !important;
-  height: 100%;
-  margin: 0 auto (-($dim_footer_height + $dim_top_and_tail_border_width));
 }
 
 header {
@@ -50,7 +43,6 @@ header {
   #header-content
   {
     width: $dim_page_width;
-    /*height: 91px;*/
     margin-left: auto;
     margin-right: auto;
     padding-top: $dim_page_padding_top;
@@ -71,6 +63,7 @@ header {
         width: 20px;
         height: 20px;
         padding-right: 3px;
+        text-align: middle;
       }
     }
 
@@ -94,94 +87,14 @@ header {
   text-align: center;
 }
 
-
-.button {
-  cursor: pointer;
-  display: inline-block;
-  font-size: 1.5em;
-  padding: .5em 2em .5em;
-  text-shadow: 0 1px 1px rgba(0,0,0,.3);
-
-  @include rounded_borders(#ccc, 1px, 6px);
-  @include box_shadow(#ccc, 0px, 0px, 5px);
-  background-color: #fff;
-  /*padding: 20px;*/
-  margin: 10px;
-  text-align: center;
-
-  &:hover {
-    @include box_shadow(#ccc, 0px, 0px, 0px);
-    cursor: pointer;
-  }
-
-  &.right {
-    float:right;
-    clear:both;
-  }
-}
-
-
-.small-button {
-  cursor: pointer;
-  display: inline-block;
-  /*padding: .5em 2em .5em;*/
-  margin-left: .5em;
-  margin-right: .5em;
-  padding-left: .5em;
-  padding-right: .5em;
-  text-shadow: 0 1px 1px rgba(0,0,0,.3);
-
-  @include rounded_borders(#ccc, 1px, 6px);
-  @include box_shadow(#ccc, 0px, 0px, 5px);
-  background-color: #fff;
-  /*padding: 20px;*/
-  text-align: center;
-
-  &:hover {
-    @include box_shadow(#ccc, 0px, 0px, 0px);
-    cursor: pointer;
-  }
-}
-
-
 /* -------------- rails notice ----------- */
-.notice, #error_explanation {
-  width: 80%;
-  font-size: 1.4em;
-  color: $text_color;
-  background: #fff;
-  margin: 20px;
-  padding: 20px;
-  margin-left: auto;
-  margin-right: auto;
-
-  @include box_style;
-
-  @include rounded_borders($magenta_2, 2px, $dim_border_radius);
-  @include box_shadow($magenta_2, 0px, 0px, 5px);
+.alert { 
+  margin: 10px;
 }
-
-.alert {
-  width: 80%;
-  font-size: 1.4em;
-  color: $text_color;
-  background: #fff;
-  margin: 20px;
-  padding: 20px;
-  margin-left: auto;
-  margin-right: auto;
-
-  @include box_style;
-
-  @include rounded_borders(#c55, 2px, $dim_border_radius);
-  @include box_shadow(#c55, 0px, 0px, 5px);
-}
-
 /* -------------- /rails notice ----------- */
 
 
 /* -------------- content ----------- */
-
 .fp-splash-container {
   padding-top: 10px;
   padding-bottom: 20px;
@@ -207,8 +120,42 @@ header {
     line-height: 1.4em;
     color: #efefef;
   }
-}
 
+}
+.right {
+  float: right;
+}
+  .float-right-button {
+    color: #ffffff;
+    font-size: 34px;
+    float: right;
+    display: inline block;
+    padding: 25px;
+    padding-left: 25px;
+    padding-right: 25px;
+    text-align: center;
+    font-weight: bold;
+    margin-top: 35px;
+    margin-right: 10px;
+    margin-bottom: 30px;
+    color: #ffffff;
+    background: $magenta_2;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
+    -o-border-radius: 10px;
+    -ms-border-radius: 10px;
+    -khtml-border-radius: 10px;
+    border-radius: 10px;
+  
+    cursor: pointer;
+    text-shadow: 0 1px 1px rgba(0,0,0,.3);
+    text-align: center;
+  
+    &:hover {
+      @include box_shadow(#ccc, 0px, 0px, 5px);
+      cursor: pointer;
+    }
+  }
 .fp-profile-image {
   margin: 8px;
   @include rounded_borders(#ccc, 1px, $dim_border_radius);
@@ -217,83 +164,8 @@ header {
   height: 64px;
 }
 
-.read-more {
-  a{
-    @include box_shadow($magenta_2, 0px, 0px, 2px);
-    @include rounded_borders(#ccc, 1px, 6px);
-    padding: 5px;
-
-    &:hover {
-      @include box_shadow(#ccc, 0px, 0px, 1px);
-    }
-  }
-}
-
-.fp-blog-summary {
-  font-size: 0.9em;
-  float: left;
-  clear:both;
-  padding-bottom: 10px;
-}
-
-.fp-blog-title {
-  display: block;
-  float: left;
-  width: 280px ;
-}
-
-.fp-blog-read-more {
-  float: left;
-  display: block;
-  margin-top: 40px;
-  font-size: 0.8em;
-  /*padding-left: 10px;*/
-  width: 125px;
-}
-
-
-.float-right-button {
-  color: #ffffff;
-  font-size: 34px;
-  float: right;
-  display: inline block;
-  padding: 25px;
-  padding-left: 25px;
-  padding-right: 25px;
-  text-align: center;
-  font-weight: bold;
-  margin-top: 35px;
-  margin-right: 10px;
-  margin-bottom: 30px;
-  color: #ffffff;
-  background: $magenta_2;
-  -moz-border-radius: 10px;
-  -webkit-border-radius: 10px;
-  -o-border-radius: 10px;
-  -ms-border-radius: 10px;
-  -khtml-border-radius: 10px;
-  border-radius: 10px;
-
-  cursor: pointer;
-  text-shadow: 0 1px 1px rgba(0,0,0,.3);
-  text-align: center;
-
-  &:hover {
-    @include box_shadow(#ccc, 0px, 0px, 5px);
-    cursor: pointer;
-  }
-}
-
 #content {
   color: $text_color;
-
-  text-align: left;
-  font-size: 1.4em;
-
-  padding: 0px;
-  margin: 0px;
-  margin-left:auto;
-  margin-right:auto;
 
   a {
     color: $link_color;
@@ -376,35 +248,6 @@ footer {
 
 }
 
-footer, .push {
-  height: $dim_footer_height;
-}
-
-.pf{
-  color: $magenta_2;
-}
-
-
-/*a.button { color: $text_color !important; }*/
-
-ul.like-buttons{
-  margin: 0;
-  width: 310px;
-  margin-left: auto;
-  margin-right: auto;
-  list-style: none;
-  text-align: center;
-  padding: 0;
-}
-
-ul.like-buttons li{
-  display: block;
-  float: left;
-}
-li.twitter-like{
-  margin-right: 20px;
-}
-
 .like_button_div{
   margin-left: auto;
   margin-right: auto;
@@ -417,140 +260,11 @@ li.twitter-like{
 }
 
 
-/* --------- boxes ---------- */
-
-.box-span {
-  position: absolute;
-  width: 100%;
-  height: 100%;
-  top:0;
-  left:0;
-  z-index: 1;
-}
-
-
-img.float-right{
-  float: right;
-  margin: 15px;
-}
-
 img.shadow {
   @include rounded_borders(#ccc, 1px, $dim_border_radius);
   @include box_shadow(#ccc, 0px, 0px, 5px);
 }
 
-img.fp-box {
-  text-align: center;
-  width: 100%;
-  margin-top: 15px;
-  padding: 0;
-  border: 1px solid #ccc;
-}
-
-.large_margin {
-  margin: 20px;
-}
-
-/** Style our faq questions **/
-dl.faq{
-	margin-bottom:30px;
-}
-
-/** Make the question itself stand out **/
-dl.faq dt{
-	font-weight:bold;
-	color: $grey_0;
-	padding:25px 0 5px 0;
-	display:block;
-}
-
-/** Add a divisor below the question answer **/
-dl.faq dd{
-	padding-bottom:25px;
-	border-bottom:1px solid #cccccc;
-	display:block;
-}
-
-.magenta{
-  color: $magenta_2;
-}
-
-ol{
-  padding: 10px;
-  padding-left: 25px;
-  li{
-    padding: 5px;
-  }
-}
-
-ul{
-  padding: 10px;
-  padding-left: 25px;
-  li{
-    list-style: disc; color:$text_color;
-    padding: 5px;
-  }
-}
-
-
-ul.magenta-bullets{
-  padding: 10px;
-  padding-left: 25px;
-  li{
-    list-style: disc; color:$magenta_2;
-    padding: 5px;
-    a{
-      color: $text_color !important;
-    }
-    a:hover{
-      color: $link_hover_color !important;
-    }
-  }
-}
-
-.calculator {
-  padding-top: 30px;
-}
-
-.calculator-results {
-  text-align: center;
-  font-size: 1.5em;
-}
-
-.emphasise {
-  color: $magenta_0;
-}
-strong {
-  font-weight: bold;
-}
-.bold {
-  font-weight: bold;
-}
-
-
-
-/* --------- events ----------- */
-.event {
-  .title {
-    font-size: 1.2em;
-    font-weight: bold;
-    padding-bottom: 10px;
-  };
-  .bold {
-    font-weight: bold;
-  }
-}
-/* --------- /events ---------- */
-
-
-.large_email{ 
-  font-size: 1.9em;
-  padding: 10px;
-}
-.medium_email{ 
-  font-size: 1.2em;
-  padding: 10px;
-}
 
 #video_image {
   @include box_style;
@@ -562,7 +276,6 @@ strong {
   height: 233px;
   cursor: pointer;
 }
-
 
 .box-container {
   text-align: left;
@@ -715,8 +428,6 @@ sup {
   top: -0.4em;
 }
 
-@import "blog";
-@import "forms";
-@import "tables";
 @import "nav";
+@import "blog";
 

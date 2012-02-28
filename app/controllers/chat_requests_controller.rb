@@ -6,9 +6,10 @@ class ChatRequestsController < ApplicationController
   def create
     @chat_request = ChatRequest.new(params[:chat_request])
     if @chat_request.save
-      redirect_to('/', :notice => "Thanks! We've received your contact details and we'll be in touch soon!")
+      flash[:"alert-success"] = "Thanks! We've received your contact details and we'll be in touch soon!"
+      redirect_to('/')
     else
-      flash[:alert] = "You must fill all required fields."
+      flash[:"alert-error"] = "You must fill all required fields."
       render 'new'
     end
   end

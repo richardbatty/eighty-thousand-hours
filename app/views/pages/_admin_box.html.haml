@@ -1,6 +1,4 @@
 - if can? :update, @page
   .web-admin-box
-    .button
-      = link_to 'Edit', edit_page_path(@page)
-    .button
-      = link_to 'List all pages', pages_path
+    = link_to 'Edit', edit_page_path(@page), :class => 'btn'
+    = link_to 'List all pages', pages_path, :class => 'btn'
