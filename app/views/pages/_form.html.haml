@@ -1,6 +1,6 @@
 = markdown "Use [Markdown syntax](http://daringfireball.net/projects/markdown/syntax) to format text"
 %hr
-= simple_form_for @page do |f|
+= simple_form_for @page, :html => { :method => :put, :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}}  do |f|
   -if @page.errors.any?
     #error_explanation
       %h2= "#{pluralize(@page.errors.count, "error")} prohibited this page from being saved:"
@@ -12,11 +12,9 @@
     = f.input :title
     = f.input :header_title, :hint => "optional: used in <title> tag"
     %hr
-    = f.input :body, :label => false, :input_html => { :class => 'large' }
-    %br
-    = f.label "Page options"
-    .check-group
-      = f.input :show_title, :label => "Display title on page"
-      = f.input :show_box, :label => "Draw box around content"
+    = f.input :body, :label => false, :input_html => { :rows => '30', :class => 'span8' } 
+    = f.input :show_title, :label => "Display title on page"
+    = f.input :show_box, :label => "Draw box around content"
     .center
-      = f.button :submit, "Save"
+      = f.button :submit, "Save page", :class => 'btn btn-large btn-success'
+      = link_to "Cancel", page_path(@page), :class => 'btn btn-large'
