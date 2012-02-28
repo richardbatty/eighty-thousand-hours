@@ -1,8 +1,14 @@
 - if can? :manage, Page 
   .box
-    %h1 All pages
+    .page-header
+      %h1 All pages
+
+    %p
+      = link_to '<i class="icon-plus-sign icon-white"></i> Create new page'.html_safe, new_page_path, :class => "btn btn-small btn-primary"
+      = link_to '<i class="icon-cog "></i> Go to admin interface'.html_safe, '/admin/pages/', :class => "btn btn-small" 
+
     
-    %table
+    %table.table.table-striped.table-bordered
       %tr
         %th Title
         %th URL
@@ -14,13 +20,10 @@
         %tr
           %td= page.title
           %td= page.slug
-          %td= link_to 'Show', page
-          %td= link_to 'Edit', edit_page_path(page)
-          %td= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete
+          %td= link_to 'Show', page, :class => 'btn btn-small'
+          %td= link_to 'Edit', edit_page_path(page), :class => 'btn btn-small btn-warning'
+          %td= link_to 'Destroy', page, :confirm => 'Are you sure?', :method => :delete, :class => 'btn btn-small btn-danger'
     
-    %br
-    .admin-button
-      = link_to 'New page', new_page_path
 - else
   .box
     %h1 Not authorized...
