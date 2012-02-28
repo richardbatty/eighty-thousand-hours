@@ -11,40 +11,7 @@
           .center.pagination
             = will_paginate @posts
       - @posts.each do |post|
-        .box
-          .entry
-            %h2
-              %a{:href => post_path(post)}
-                = post.title
-            %h3
-              = post.created_at.strftime("%B %d, %Y")
-
-            .content
-              = markdown post.get_teaser
-      
-              .read-more
-                %a{:href => post_path(post), :class=>"btn"}
-                  Read more
-      
-            .attribution= markdown post.attribution if post.attribution 
-
-            %p
-              more posts by 
-              =link_to post.author, { :action => :author, :id => post.author }
-
-              - if post.tag_counts_on(:tags).size > 0
-                .tags
-                  tags:
-                  - post.tag_counts_on(:tags).each do |tag| 
-                    =link_to tag.name, { :action => :tag, :id => tag.name }
-      
-            .comments
-              %a{"href" => "#{post_url(post)}#disqus_thread",
-                 "data-disqus-identifier" => "blog-post-#{post.id}" }
-              %div= render :partial => "disqus_count", :locals => { :post_id => post.id, :post_title => post.title }
-      
-            .fblike
-              <fb:like href="#{post_url(post)}" send="false" width="450" show_faces="false"></fb:like>
+        = render :partial => 'display_post', :locals => { :post => post, :teaser => true }
 
       - if will_paginate @posts
         .box
