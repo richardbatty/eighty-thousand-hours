@@ -7,16 +7,14 @@
             %h1
               = @heading
       - if will_paginate @posts
-        .box
-          .center.pagination
-            = will_paginate @posts
+        .center.pagination
+          = page_navigation_links @posts
       - @posts.each do |post|
         = render :partial => 'display_post', :locals => { :post => post, :teaser => true }
 
       - if will_paginate @posts
-        .box
-          .center.pagination
-            = will_paginate @posts
+        .center.pagination
+          = page_navigation_links @posts
     .span3.sidebar
       .box
         = render :partial => "rss"
