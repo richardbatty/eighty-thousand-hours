@@ -100,7 +100,7 @@ Please fill out the short form below in order to join.
       </div>
       <%= e.input :donation_percentage, :as => :hidden %>
       <br/>
-      <%= e.input :donation_percentage_comment, :placeholder => "optional", :label => "Comments about donations", :required => false %>
+      <%= e.input :donation_percentage_comment, :placeholder => "optional", :label => "Comments about donations", :required => false, :input_html => {:rows=>'5'} %>
 
       <hr/>
 
@@ -120,7 +120,7 @@ Please fill out the short form below in order to join.
       </div>
       </div>
       <br/>
-      <%= e.input :causes_comment, :placeholder => "optional", :label => "Comments about causes", :required => false %>
+      <%= e.input :causes_comment, :placeholder => "optional", :label => "Comments about causes", :required => false, :input_html => {:rows=>'5'} %>
 
       <hr/>
 
@@ -133,7 +133,7 @@ Please fill out the short form below in order to join.
       </div>
       <%= e.input :average_income, :as => :hidden %>
       <br/>
-      <%= e.input :average_income_comment, :placeholder => "optional", :label => "Comments about earnings", :required => false %>
+      <%= e.input :average_income_comment, :placeholder => "optional", :label => "Comments about earnings", :required => false, :input_html => {:rows=>'5'} %>
 
       <hr/>
 
@@ -147,7 +147,7 @@ Please fill out the short form below in order to join.
       </div>
       <%= e.input :hic_activity_hours, :as => :hidden %>
       <br/>
-      <%= e.input :hic_activity_hours_comment, :placeholder => "optional", :label => "Comments about activities", :required => false %>
+      <%= e.input :hic_activity_hours_comment, :placeholder => "optional", :label => "Comments about activities", :required => false, :input_html => {:rows=>'5'} %>
 
       <hr/>
 

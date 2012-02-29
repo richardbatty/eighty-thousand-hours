@@ -36,6 +36,9 @@ class UsersController < ApplicationController
   
   def create
     @user = User.new(params[:user])
+
+    # should we be building this now, here? or after we confirm?
+    @user.member.build_eighty_thousand_hours_profile
     
     if @user.save
       # redirects should be full url for browser compatibility
