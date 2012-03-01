@@ -178,6 +178,19 @@ header {
   .ui-accordion-content {
     a{ color: $link_color; }
   }
+
+  ul.nav.nav-pills.nav-stacked {
+    li.heading, li.heading a{
+      font-weight: bold;
+      color: $text_color;
+    }
+    li.heading a:hover {
+      color: $link_hover_color;
+    }
+    li.heading {
+      border-bottom: 1px solid #ccc;
+    }
+  }
 }
 /* -------------- /content ----------- */
 

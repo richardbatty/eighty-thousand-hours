@@ -35,7 +35,7 @@
     padding-right: 28px;
   }
   /* main level link hover */
-  ul .current a, ul a:hover, ul li:hover > a {
+  ul a.active, ul a:hover, ul li:hover > a {
     /*background: #333 !important; //[> for non-css3 browsers <]*/
     color: $nav_link_hover_color !important;
   }
