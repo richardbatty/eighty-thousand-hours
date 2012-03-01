@@ -36,7 +36,7 @@
 
         <div id='nav'>
         <nav class='clearfix'>
-          <%= draw_menu( Page.top_level_menu ) %>
+          <%= draw_menu( Page.top_level_menu, @page.nil? ? nil : @page.root ) %>
         </nav>
         </div>
 
