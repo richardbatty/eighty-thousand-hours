@@ -2,6 +2,7 @@
   .alert.alert-error.alert-block
     <a class="close" data-dismiss="alert" href="#">&times;</a>
     %h4.alert-heading Admin controls
-    = link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_page_path(@page), :class => 'btn btn-small'
+    = link_to '<i class="icon-edit"></i> Edit this page'.html_safe, edit_page_path(@page), :class => 'btn btn-small'
+    = link_to '<i class="icon-plus-sign"></i> Create new page'.html_safe, new_page_path, :class => 'btn btn-small'
     = link_to '<i class="icon-list"></i> List all pages'.html_safe, pages_path, :class => 'btn btn-small'
     = link_to '<i class="icon-cog"></i> Admin control panel'.html_safe, '/admin', :class => 'btn btn-small'
