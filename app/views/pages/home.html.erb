@@ -2,7 +2,9 @@
   members_html = "" 
   @members.each do |m|
     if m.avatar && m.user
-      members_html += link_to image_tag(m.avatar.url(:small), :class=>"fp-profile-image"),"/members/#{m.slug}"
+      # note: gets processed by markdown so can't have leading spaces
+      members_html += "
+#{link_to image_tag(m.avatar.url(:small), :class=>"fp-profile-image"),"/members/#{m.slug}"}"
     end
   end
 %>
@@ -10,7 +12,9 @@
 <%
   careers_html = "" 
   @careers.each do |c|
-    careers_html += link_to image_tag( "career_icons/#{c}.jpg", :class=>"fp-profile-image", :alt=>"#{c.humanize}"),"/career-profiles##{c.gsub(/_/,'-')}"
+    # note: gets processed by markdown so can't have leading spaces
+    careers_html += "
+#{link_to image_tag( "career_icons/#{c}.jpg", :class=>"fp-profile-image", :alt=>"#{c.humanize}"),"/career-profiles##{c.gsub(/_/,'-')}"}"
   end
 %>
 
