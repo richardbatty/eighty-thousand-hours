@@ -15,11 +15,15 @@ class Page < ActiveRecord::Base
   scope :display_in_menu, where(:menu_display => true)
   scope :top_level_menu, display_in_menu.where(:menu_top_level => true).order('menu_priority DESC')
 
-  def get_menu_link
+  def root
+    parent.nil? ? self : parent.root
+  end
+
+  def get_menu_link(active = false)
     # link that appears in menu structures.
     # if page is 'just_a_link' then we want to link to whatever is stored in
     # body field, otherwise we link to the page slug
-    "<a href='#{(just_a_link? ? body : '/'+slug)}'>#{title}</a>".html_safe
+    ("<a"+ (active ? " class='active'" : "") + " href='#{(just_a_link? ? body : '/'+slug)}'>#{title}</a>").html_safe
   end
 
   # for active admin dashboard
