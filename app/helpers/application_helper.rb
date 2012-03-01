@@ -17,15 +17,6 @@ module ApplicationHelper
     text.blank? ? "" : raw(Maruku.new(text).to_html)
   end
 
-  def render_menu
-    begin
-      menu = Page.find("menu")
-      (markdown menu.body).html_safe unless menu.nil?
-    rescue
-      ""
-    end
-  end
-
   # To render will_paginate links with twitter bootstrap
   class BootstrapLinkRenderer < ::WillPaginate::ActionView::LinkRenderer
     protected
