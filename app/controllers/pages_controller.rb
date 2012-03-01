@@ -12,7 +12,7 @@ class PagesController < ApplicationController
     
     # if we have set a custon header_title then we should use that
     # otherwise use the page title (which maps to the URL slug)
-    @title = (@page.header_title ? @page.header_title : @page.title )
+    @title = ((@page.header_title.to_s == '') ? @page.title : @page.header_title )
 
     if @page.title == "Home"
       # for profile photos on front page
