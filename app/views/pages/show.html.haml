@@ -2,6 +2,20 @@
   .span8.offset1
     = render :partial => 'admin_box'
 .row
-  .span10
+  .span3
+    %div.box
+      - top_level = @page.root
+      %ul.nav.nav-pills.nav-stacked
+        %li.heading
+          = top_level.get_menu_link
+
+        - top_level.children.display_in_menu.each do |c|
+          - if c == @page
+            %li.active
+              = c.get_menu_link
+          - else
+            %li
+              = c.get_menu_link
+  .span7
     %div{ :class => @page.show_box ? 'box' : nil }
       = markdown @page.body
