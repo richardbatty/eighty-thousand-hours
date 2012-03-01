@@ -18,34 +18,38 @@
   posts = Post.published.limit(4)
   latest_blog_html = "<p><h2>Latest blog posts:</h2></p>"
   posts.each do |p|
+    # note: gets processed by markdown so can't have leading spaces
     latest_blog_html += "
-                      <p>
-                      <strong>#{p.created_at.strftime('%B %d, %Y')}</strong>
-                      <br/>
-                      <a class='btn btn-small right' href='#{post_path p}'>Read more...</a>
-                      <a href='#{post_path p}'>#{p.title}</a>
-                      <br/>by #{p.author}
-                      </p>
-                      <hr/>
-                      "
+<p>
+<strong>#{p.created_at.strftime('%B %d, %Y')}</strong>
+<br/>
+<a class='btn btn-small right' href='#{post_path p}'>Read more...</a>
+<a href='#{post_path p}'>#{p.title}</a>
+<br/>by #{p.author}
+</p>
+<hr/>
+"
   end
 %>
 
 <%
   endorsement = Endorsement.all.shuffle.first
-  endorsement_html = "<h2>Endorsements of 80,000 Hours (<a href='/endorsements'>more</a>)</h2>
-                        #{markdown endorsement.body}
-                        <hr/>
-                        #{endorsement.author}
-                        <br/>
-                        #{markdown endorsement.position}
-                      "
+  # note: gets processed by markdown so can't have leading spaces
+  endorsement_html = endorsement.body+"
+
+----
+
+"+endorsement.author+"
+<br/>
+"+endorsement.position+"
+
+[More endorsements...](/endorsements)"
 %>
 
 <% content = @page.body %>
-<% content = content.gsub(/###MEMBERS###/, members_html) %>
-<% content = content.gsub(/###CAREERS###/, careers_html) %>
-<% content = content.gsub(/###LATEST_BLOG###/, latest_blog_html) %>
-<% content = content.gsub(/###ENDORSEMENT###/, endorsement_html) %>
+<% content = content.gsub(/\|\*MEMBERS\*\|/, members_html) %>
+<% content = content.gsub(/\|\*CAREERS\*\|/, careers_html) %>
+<% content = content.gsub(/\|\*LATEST_BLOG\*\|/, latest_blog_html) %>
+<% content = content.gsub(/\|\*ENDORSEMENT\*\|/, endorsement_html) %>
 <%= markdown content %>
 
