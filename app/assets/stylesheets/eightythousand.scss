@@ -165,9 +165,8 @@ header {
     }
   }
 
-  .accordion, .accordion-expand-first {
+  .ui-accordion-header {
     h1,h2,h3,h4,h5,h6 {
-      font-weight: bold;
       a {
         color: $text_color;
       }
@@ -175,6 +174,9 @@ header {
         color: $link_color;
       }
     }
+  }
+  .ui-accordion-content {
+    a{ color: $link_color; }
   }
 }
 /* -------------- /content ----------- */
