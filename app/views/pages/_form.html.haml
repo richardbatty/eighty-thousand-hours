@@ -9,12 +9,25 @@
           %li= msg
 
   .field
-    = f.input :title
-    = f.input :header_title, :hint => "optional: used in <title> tag"
-    %hr
-    = f.input :body, :label => false, :input_html => { :rows => '30', :class => 'span8' } 
-    = f.input :show_title, :label => "Display title on page"
-    = f.input :show_box, :label => "Draw box around content"
+    = field_set_tag "Title" do |s|
+      = f.input :title, :required => true, :hint => 'changing this will break existing links to this page'
+      - if !@page.just_a_link
+        = f.input :header_title, :placeholder => 'optional', :hint => "used in <title> tag"
+
+    = field_set_tag "Content" do |s|
+      = f.input :just_a_link, :label => "Just a link?"
+      - if @page.just_a_link
+        = f.input :body, :label => "Link to:", :as => :string
+      - else
+        = f.input :body, :label => false, :input_html => { :rows => '30', :class => 'span8' }
+        = f.input :show_box, :label => "Box border?"
+
+    = field_set_tag "Menu" do |s|
+      -#= f.association :parent, :as => :select, :label => "Parent page"
+      = f.association :parent, :collection => Page.all(:order => 'title'), :label => "Parent page"
+      = f.input :menu_display,   :label => "Display in menu?"
+      = f.input :menu_top_level, :label => "Top level menu?"
+
     .center
       = f.button :submit, "Save page", :class => 'btn btn-large btn-success'
       = link_to "Cancel", page_path(@page), :class => 'btn btn-large'
