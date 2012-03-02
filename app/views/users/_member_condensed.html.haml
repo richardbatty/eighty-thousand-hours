@@ -1,0 +1,10 @@
+.member-profile-condensed
+  .avatar
+    = link_to image_tag(member.avatar.url(:thumb)), user_path(member.user) 
+  .text
+    .name
+      = link_to member.name, user_path(member.user)
+      - if member.location?
+        %span.location
+          &nbsp;
+          = member.location

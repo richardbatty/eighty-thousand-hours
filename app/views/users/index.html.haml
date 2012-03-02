@@ -1,0 +1,8 @@
+.box
+  %h1= @all ? "Our members" : "Some of our members"
+  - @users.each do |user|
+    = render :partial => 'member_condensed', :locals => { :member => user.member }
+  - if !@all
+    .center
+      = link_to 'View all members', '/members/all', :class => 'btn btn-large'
+      = link_to 'Interested in becoming a member?', '/join', :class => 'btn btn-large'
