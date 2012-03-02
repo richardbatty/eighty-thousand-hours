@@ -239,11 +239,18 @@ footer {
   }
 
   .charity {
-    padding: 10px;
     p{ 
       font-size: 0.8em;
       color: #ccc;
       margin: 0px;
+    }
+    margin-top: 10px;
+    margin-bottom: 30px;
+    a {
+      color: $link_color;
+    }
+    a:hover {
+      color: $link_hover_color;
     }
   }
 }
