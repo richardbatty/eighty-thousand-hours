@@ -10,10 +10,15 @@ class Page < ActiveRecord::Base
   # for versioning with paper_trail
   has_paper_trail
 
-  attr_accessible :title,:header_title,:body,:show_box,:just_a_link,:menu_top_level,:menu_display,:menu_priority,:parent_id
+  attr_accessible :title,:header_title,:body,:show_box,:just_a_link,
+                  :menu_top_level,:menu_display,:menu_priority,:parent_id,:menu_display_in_footer
 
   scope :display_in_menu, where(:menu_display => true)
+  scope :display_in_menu_footer, display_in_menu.where(:menu_display_in_footer => true)
+  scope :top_level, where(:menu_top_level => true)
+
   scope :top_level_menu, display_in_menu.where(:menu_top_level => true).order('menu_priority DESC')
+  scope :top_level_menu_footer, display_in_menu_footer.top_level.order('menu_priority DESC')
 
   def root
     parent.nil? ? self : parent.root

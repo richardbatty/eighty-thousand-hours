@@ -27,6 +27,7 @@
       = f.input :menu_priority, :label => "Menu priority", :hint => "Page with highest priority will appear first in the menu"
       = f.association :parent, :collection => Page.all(:order => 'title'), :label => "Parent page"
       = f.input :menu_display,   :label => "Display in menu?", :as => :boolean
+      = f.input :menu_display_in_footer, :label => "Display in footer?", :as => :boolean
       = f.input :menu_top_level, :label => "Top level menu?", :as => :boolean
 
     .center
