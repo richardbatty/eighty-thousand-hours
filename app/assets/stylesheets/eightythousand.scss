@@ -211,8 +211,8 @@ footer {
   .logo { 
        float:left; clear: none;
        padding: 5px;
-       padding-right: 15px;
-       height: 50px;
+       padding-right: 10px;
+       height: 40px;
   }
 
   a {
@@ -239,10 +239,11 @@ footer {
   }
 
   .charity {
-    padding: 15px;
+    padding: 10px;
     p{ 
       font-size: 0.8em;
       color: #ccc;
+      margin: 0px;
     }
   }
 }
