@@ -362,35 +362,34 @@ img.shadow {
 }
 .member-profile-condensed {
   height: 64px;
-  width: 70%;
-  @include box_style;
-  padding: 10px;
-  margin-top: 30px;
-  margin-bottom: 30px;
-  margin-left: auto;
-  margin-right: auto;
+  padding: 0px;
+  margin: 0px;
 
   .avatar {
-    float: right;
+    float: left;
     @include box_shadow(#555, 0px, 0px, 2px);
-    height: 64px;
+    height: 32px;
+    width: 32px;
+    margin: 3px;
 
     img {
-      height: 64px;
-      width: 64px;
+      height: 32px;
+      width: 32px;
     }
   }
 
-  .name {
-    font-size: 1.3em;
-    font-weight: bold;
-    padding-top: 20px;
-    padding-left: 20px;
-  }
-  .location {
-    font-size: 1.0em;
-    font-weight: normal;
-    color: lighten($text_color,50%);
+  .text {
+    padding:0px;
+    margin: 0px;
+    float: left;
+    padding-left: 10px;
+    font-size: 0.9em;
+    .name {
+      font-weight: bold;
+    }
+    .location {
+      color: lighten($text_color,50%);
+    }
   }
 }
 

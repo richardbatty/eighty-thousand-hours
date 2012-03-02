@@ -1,14 +1,11 @@
 class UsersController < ApplicationController
   def index
-    # display num_to_show random members
-    num_to_show = 5
-    @users = User.membership_confirmed.shuffle[0..(num_to_show-1)]
+    get_grouped_users
   end
 
-  def all
+  def get_grouped_users
     @users = User.membership_confirmed.alphabetical
-    @all = true
-    render :index
+    @grouped_users = @users.group_by{|user| user.name[0].upcase}
   end
 
   def show
@@ -32,6 +29,16 @@ class UsersController < ApplicationController
     @user.build_member
     @user.member.build_eighty_thousand_hours_application
     @user.member.build_eighty_thousand_hours_profile
+  end
+
+  def search
+    @user = User.find_by_name(params[:name])
+    if @user
+      redirect_to user_path(@user)
+    else
+      flash[:"alert-error"] = "Couldn't find #{params[:name]}!"
+      redirect_to :action => :index
+    end
   end
   
   def create

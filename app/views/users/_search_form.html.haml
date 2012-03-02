@@ -1,0 +1,7 @@
+= form_tag('/members/search') do
+  .control-group
+    .controls
+      .input-prepend
+        %span.add-on
+          %i.icon-search
+        = text_field_tag 'name', '', :placeholder => 'search by name',:id=>'inputIcon', :"data-provide"=>"typeahead", :"data-source"=>"#{@users.map{|u| u.name}}"
