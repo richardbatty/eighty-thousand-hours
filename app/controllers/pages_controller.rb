@@ -36,6 +36,17 @@ class PagesController < ApplicationController
     @endorsements = Endorsement.order("created_at ASC")
   end
 
+  def meet_the_team
+    @title = "Meet the team"
+    team_roles = %w[president managing_director research community
+                    communications fundraising tech strategy other]
+    @team_profiles = team_roles.inject({}) do |profiles, role|
+      role = role.humanize.titleize
+      profiles[role] = Member.with_team_role(role)#.where( :public_profile => :true )
+      profiles
+    end
+  end
+
   def edit
     @page = Page.find(params[:id])
   end

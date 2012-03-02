@@ -31,7 +31,6 @@ EightyThousandHours::Application.routes.draw do
   # converted to pure Markdown
   match 'events'             => 'info#events'
   match 'events/past-events' => 'info#past_events'
-  match 'meet-the-team'      => 'info#meet_the_team'
  
   # pages from old HIC site
   match 'ethical-career'                => 'info#banker_vs_aid_worker'
@@ -43,9 +42,10 @@ EightyThousandHours::Application.routes.draw do
 
   # all other pages are stored as Markdown in the database
   root :to => 'pages#show', :id => "home"
-  match 'search' => 'pages#search'
-  match 'endorsements' => 'pages#endorsements'
-  match 'mailing-list' => 'pages#mailing_list'
+  match 'search'        => 'pages#search'
+  match 'endorsements'  => 'pages#endorsements'
+  match 'mailing-list'  => 'pages#mailing_list'
+  match 'meet-the-team' => 'pages#meet_the_team'
   resources :pages
   resources :pages, :path => '/', :only => [:show]
 end
