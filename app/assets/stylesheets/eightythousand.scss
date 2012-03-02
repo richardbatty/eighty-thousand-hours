@@ -218,9 +218,13 @@ footer {
   a {
     color: #cccccc;
   }
+  a:hover {
+    color: $link_color;
+    text-decoration: none;
+  }
   ul {
     float:left;
-    width: 15%;
+    width: 13%;
     padding-top: 30px;
     list-style-type: none;
     li.heading {
