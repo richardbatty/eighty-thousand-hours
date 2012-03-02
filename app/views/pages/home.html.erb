@@ -1,5 +1,5 @@
 <%
-  members_html = "" 
+  members_html = "We have #{@total_members} members worldwide, you can see them all on <a href='/members'>the member list</a>. Some example member profiles:<br/>" 
   @members.each do |m|
     if m.avatar && m.user
       # note: gets processed by markdown so can't have leading spaces

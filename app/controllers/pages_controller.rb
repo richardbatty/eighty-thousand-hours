@@ -26,6 +26,8 @@ class PagesController < ApplicationController
       careers = ["banker","doctor","scientist","train_driver","campaigner","teacher"]#,"worker"]
       @careers = (careers.shuffle)[0..4]
 
+      @total_members = Member.confirmed.size
+
       render :home
     end
 
