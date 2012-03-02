@@ -73,7 +73,28 @@
     <%= render :partial => "/shared/social_media" %>
 
     <footer>
-      <%= render :partial => "/shared/footer" %>
+      <div class="container">
+        <div class"row">
+          <div class="span10 offset1 menu">
+            <%= draw_footer_menu %>
+          </div>
+        </div>
+        <div class"row">
+          <div class="span10 offset1 charity">
+            <%= link_to image_tag( "header/80kh_rect_logo_no_border.png",
+                                   :id => "footer-logo" ), "/" %>
+            <p>
+              80,000 Hours is part of the Centre for Effective Altruism, a charitable
+              company limited by guarantee registered in England and Wales, number
+              7962181.
+            </p>
+            <p>
+              Centre for Effective Altruism, Oxford Uehiro Centre for
+              Practical Ethics, Littlegate House, St Ebbes Street, Oxford OX1 1PT, UK
+            </p>
+          </div>
+        </div>
+      </div>
     </footer>
   </body>
 </html>
