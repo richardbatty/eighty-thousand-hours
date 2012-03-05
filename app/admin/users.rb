@@ -42,7 +42,7 @@ ActiveAdmin.register User do
   end
 
   action_item :only => :show do
-    if !confirmed
+    if !user.confirmed
       link_to "Confirm member", confirm_admin_user_path(user), :method => :put
     end
   end
