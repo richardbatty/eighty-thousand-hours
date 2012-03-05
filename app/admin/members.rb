@@ -58,7 +58,6 @@ ActiveAdmin.register Member do
                :real_name,
                :location,
                :phone,
-               :public_profile,
                :confirmed,
                :on_team,
                :team_role,
