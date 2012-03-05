@@ -1,6 +1,6 @@
 .box
-  - if @user && @user.member
-    = render :partial => 'member', :locals => { :member => @user.member, :profile => @user.member.eighty_thousand_hours_profile }
+  - if @user
+    = render :partial => 'member', :locals => { :member => @user, :profile => @user.eighty_thousand_hours_profile }
   - else
     %p Sorry! That profile hasn't been completed yet... check back soon!
     = button_link 'List of all members with profiles', users_path

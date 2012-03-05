@@ -4,12 +4,12 @@ class UsersController < ApplicationController
   end
 
   def get_grouped_users
-    @users = User.membership_confirmed.alphabetical
+    @users = User.confirmed.alphabetical
     @grouped_users = @users.group_by{|user| user.name[0].upcase}
   end
 
   def show
-    @user = User.membership_confirmed.find(params[:id])
+    @user = User.confirmed.find(params[:id])
     @title = @user.name
   end
 
@@ -39,9 +39,8 @@ class UsersController < ApplicationController
 
   def new
     @user = User.new
-    @user.build_member
-    @user.member.build_eighty_thousand_hours_application
-    @user.member.build_eighty_thousand_hours_profile
+    @user.build_eighty_thousand_hours_application
+    @user.build_eighty_thousand_hours_profile
   end
 
   def search
@@ -58,7 +57,7 @@ class UsersController < ApplicationController
     @user = User.new(params[:user])
 
     # should we be building this now, here? or after we confirm?
-    @user.member.build_eighty_thousand_hours_profile
+    @user.build_eighty_thousand_hours_profile
     
     if @user.save
       # add name to 'show your support'
@@ -78,14 +77,14 @@ class UsersController < ApplicationController
   end
 
   def email_list
-    members = Member.confirmed.order("name ASC")
+    members = User.confirmed.order("name ASC")
     @confirmed = ""
     members.each{|m| @confirmed << "\"" + m.name + "\" <" + m.email + ">, "};
 
-    members = Member.unconfirmed.order("name ASC")
+    members = User.unconfirmed.order("name ASC")
     @unconfirmed = ""
     members.each{|m| @unconfirmed << "\"" + m.name + "\" <" + m.email + ">, "};
 
-    authorize! :read, Member
+    authorize! :read, User
   end
 end

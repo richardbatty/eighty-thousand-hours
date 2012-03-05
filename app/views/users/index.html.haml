@@ -16,7 +16,7 @@
       .page-header{:id => letter}
         %h1=letter
       - users.each do |user|
-        = render :partial => 'member_condensed', :locals => { :member => user.member }
+        = render :partial => 'member_condensed', :locals => { :member => user }
     - count += 1
     = (count % 3 == 0) ? "<div class='clearfix'></div>".html_safe : ""
   .clearfix

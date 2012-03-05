@@ -27,7 +27,6 @@ class Ability
     if user.has_role? :member_admin
       can :access, :admin
       can :manage, User
-      can :manage, Member
       can :manage, EightyThousandHoursApplication
     end
 
@@ -35,7 +34,6 @@ class Ability
     if user.has_role? :member_viewer
       can :access, :admin
       can :read, User
-      can :read, Member
     end
 
     # a BlogAdmin can manage all blog posts

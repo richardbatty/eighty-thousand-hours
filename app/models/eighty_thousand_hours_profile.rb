@@ -1,5 +1,5 @@
 class EightyThousandHoursProfile < ActiveRecord::Base
-  belongs_to :member
+  belongs_to :user
 
   attr_accessible :background,
                   :career_plans,
@@ -22,5 +22,5 @@ class EightyThousandHoursProfile < ActiveRecord::Base
   # now we can access @eighty_thousand_hours_profile.name etc.
   delegate :name, :name=, 
            :location, :location=,
-           :to => :member
+           :to => :user
 end

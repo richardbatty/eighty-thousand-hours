@@ -18,15 +18,15 @@ class PagesController < ApplicationController
       # for profile photos on front page
       begin
         ids = [28,27,26,24,38,43,44,45,14,25,95,86,80,46]
-        @members = Member.find( (ids.shuffle)[0..4] ).shuffle
+        @members = User.find( (ids.shuffle)[0..4] ).shuffle
       rescue
-        @members = Member.limit( 5 )
+        @members = User.limit( 5 )
       end
 
       careers = ["banker","doctor","scientist","train_driver","campaigner","teacher"]#,"worker"]
       @careers = (careers.shuffle)[0..4]
 
-      @total_members = Member.confirmed.size
+      @total_members = User.confirmed.size
 
       render :home
     end
@@ -44,7 +44,7 @@ class PagesController < ApplicationController
                     communications fundraising tech strategy other]
     @team_profiles = team_roles.inject({}) do |profiles, role|
       role = role.humanize.titleize
-      profiles[role] = Member.with_team_role(role)#.where( :public_profile => :true )
+      profiles[role] = User.with_team_role(role)#.where( :public_profile => :true )
       profiles
     end
   end

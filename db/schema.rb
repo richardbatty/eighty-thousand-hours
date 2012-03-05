@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120305142557) do
+ActiveRecord::Schema.define(:version => 20120305160403) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -38,16 +38,16 @@ ActiveRecord::Schema.define(:version => 20120305142557) do
   create_table "donations", :force => true do |t|
     t.decimal  "amount",     :precision => 10, :scale => 2
     t.integer  "charity_id"
-    t.integer  "member_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
   add_index "donations", ["charity_id"], :name => "index_donations_on_charity_id"
-  add_index "donations", ["member_id"], :name => "index_donations_on_member_id"
+  add_index "donations", ["user_id"], :name => "index_donations_on_user_id"
 
   create_table "eighty_thousand_hours_applications", :force => true do |t|
-    t.integer  "member_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "occupation"
@@ -79,7 +79,7 @@ ActiveRecord::Schema.define(:version => 20120305142557) do
   end
 
   create_table "eighty_thousand_hours_profiles", :force => true do |t|
-    t.integer  "member_id"
+    t.integer  "user_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "inspiration"
@@ -210,7 +210,7 @@ ActiveRecord::Schema.define(:version => 20120305142557) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
-    t.string   "encrypted_password",     :limit => 128, :default => "", :null => false
+    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
@@ -227,6 +227,19 @@ ActiveRecord::Schema.define(:version => 20120305142557) do
     t.datetime "updated_at"
     t.string   "name"
     t.string   "slug"
+    t.string   "location"
+    t.boolean  "confirmed",                             :default => false
+    t.string   "avatar_file_name"
+    t.string   "avatar_content_type"
+    t.integer  "avatar_file_size"
+    t.datetime "avatar_updated_at"
+    t.string   "phone"
+    t.boolean  "on_team",                               :default => false
+    t.integer  "team_role_id"
+    t.string   "external_twitter"
+    t.string   "external_facebook"
+    t.string   "external_linkedin"
+    t.string   "real_name"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
