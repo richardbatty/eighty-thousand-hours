@@ -14,21 +14,4 @@ ActiveAdmin.register EightyThousandHoursProfile do
 
     default_actions
   end
-
-  csv do
-    column :member_id
-    column :created_at
-    column :confirmed
-    column :name
-    column :inspiration
-    column :occupation
-    column :organisation
-    column :background
-    column :career_plans
-    column :doing_good_inspiring
-    column :doing_good_research
-    column :doing_good_philanthropy
-    column :doing_good_prophilanthropy
-    column :doing_good_improving
-  end
 end
