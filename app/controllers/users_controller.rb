@@ -48,6 +48,10 @@ class UsersController < ApplicationController
     @user.member.build_eighty_thousand_hours_profile
     
     if @user.save
+      # add name to 'show your support'
+      @supporter = Supporter.new(:name => @user.name, :email => @user.email)
+      @supporter.save
+
       # redirects should be full url for browser compatibility
       thanks_str = "Thank you for your interest in 80,000 Hours, " << @user.name << ". \
         We've received your application and you'll hear from us soon. \
