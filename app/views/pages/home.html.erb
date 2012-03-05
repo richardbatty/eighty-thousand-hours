@@ -36,24 +36,9 @@
   end
 %>
 
-<%
-  endorsement = Endorsement.all.shuffle.first
-  # note: gets processed by markdown so can't have leading spaces
-  endorsement_html = endorsement.body+"
-
-----
-
-"+endorsement.author+"
-<br/>
-"+endorsement.position+"
-
-[More endorsements...](/endorsements)"
-%>
-
 <% content = @page.body %>
 <% content = content.gsub(/\|\*MEMBERS\*\|/, members_html) %>
 <% content = content.gsub(/\|\*CAREERS\*\|/, careers_html) %>
 <% content = content.gsub(/\|\*LATEST_BLOG\*\|/, latest_blog_html) %>
-<% content = content.gsub(/\|\*ENDORSEMENT\*\|/, endorsement_html) %>
 <%= markdown content %>
 
