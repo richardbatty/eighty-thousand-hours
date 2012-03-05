@@ -1,61 +1,46 @@
-<div id="interaction">
-  <div class="user-login">
-  <% if user_signed_in? %>
-    <%= link_to current_user.name, user_path(current_user) %>
-    (<%= link_to "Edit Profile", "/members/edit" %>)
-    | <%= link_to "Logout", destroy_user_session_path, :method => :delete %>
-    <% if can? :access, :admin %>
-    | <%= link_to "Admin", admin_dashboard_path %>
-    <% end %>
-    | <%= link_to "Help", "/contact-us" %>
-  <% else %>
-    <%= link_to "Login", new_user_session_path %>
-    | <%= link_to "Contact Us", "/contact-us" %>
-    | <%= link_to "Show Your Support", "/show-your-support" %>
-    | <%= link_to "Join Mailing List", "/mailing-list" %>
-    <%= link_to image_tag( "social/facebook.png", :class => "social_image" ),   "http://facebook.com/80000Hours" %>
-    <%= link_to image_tag( "social/twitter.png", :class => "social_image" ),    "http://twitter.com/80000Hours" %>
-    <%= link_to image_tag( "social/googleplus.png", :class => "social_image" ), "https://plus.google.com/105296499458344309465" %>
-    <%= link_to image_tag( "social/atom.png", :class => "social_image" ),       "http://80000hours.org/blog/feed.atom" %>
-  <% end %>
+<div class="navbar navbar-fixed-top">
+  <div class="navbar-inner">
+    <div class="container">
+      <div class="row">
+        <div class="span10 offset1">
+          <ul class="nav">
+            <a class="brand" href="#">
+              80,000 Hours
+            </a>
+            <form class="navbar-search" action="/search" method="get" >
+              <input name="q" type="text" class="search-query" placeholder="Search">
+            </form>
+          </ul>
+
+          <ul class="nav pull-right">
+            <% if user_signed_in? %>
+              <li class="dropdown">
+              <a href="#"
+                class="dropdown-toggle"
+                data-toggle="dropdown">
+                <%= current_user.name %>
+                <b class="caret"></b>
+              </a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Account settings</a></li>
+                <li><%= link_to "Edit profile", '/members/edit' %></li>
+                <li><%= link_to "View profile", user_path(current_user) %></li>
+                <% if can? :access, :admin %>
+                  <li><%= link_to "Admin", admin_dashboard_path %></li>
+                <% end %>
+                <li class="divider"></li>
+                <li><%= link_to "Logout", destroy_user_session_path, :method => :delete %></li>
+              </ul>
+              </li>
+            <% else %>
+              <li><%= link_to "Login", new_user_session_path %></li>
+            <% end %>
+            <li><%= link_to "Contact", "/contact-us" %></li>
+          </ul>
+        </div>
+      </div>
+    </div>
   </div>
+</div>
 
-  <%#<div class="social">%>
-    <%# render :partial => 'shared/mailing_list', :locals => { :text => "", :klass => "header", :button_text=>"Stay updated" } %>
-  <%#</div>%>
 
-  <!-- Google Custon Search -->
-  <div class="form-inline" id="cse-search-form">Loading</div>
-  <script src="http://www.google.co.uk/jsapi" type="text/javascript"></script>
-  <script type="text/javascript"> 
-    google.load('search', '1', {language : 'en'});
-    google.setOnLoadCallback(function() {
-      var customSearchOptions = {};  var customSearchControl = new google.search.CustomSearchControl(
-        '009388358202617850858:rrdhw8ocoye', customSearchOptions);
-      customSearchControl.setResultSetSize(google.search.Search.FILTERED_CSE_RESULTSET);
-      var options = new google.search.DrawOptions();
-      options.setAutoComplete(true);
-      options.enableSearchboxOnly("http://80000hours.org/search");
-      customSearchControl.draw('cse-search-form', options);
-    }, true);
-  </script>
-  <link rel="stylesheet" href="http://www.google.com/cse/style/look/default.css" type="text/css" />
-  <style type="text/css">
-    #cse-search-form {
-      width: 360px;height:25px;float:right;margin:0px;padding:0px;
-    }
-    input.gsc-input {
-      border-color: #D9D9D9;
-      height: 25px;
-    }
-    input.gsc-search-button {
-      height: 28px;
-      border-color: #666666;
-      background-color: #ffffff;
-      font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
-    }
-
-  </style>
-  </div>
-
-  <br/>

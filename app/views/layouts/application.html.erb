@@ -31,6 +31,7 @@
           <%= link_to image_tag( "header/80kh_rect_logo_no_border.png",
                                  :id => "header-logo" ), "/" %> 
           <%= render :partial => "/shared/user_nav"%>
+          <%= render :partial => "/shared/header_endorsement"%>
         </div>
         <div style="clear: both;"></div>
 
@@ -43,8 +44,12 @@
         <% if @page && @page.title == 'Home' %>
           <%= render :partial => '/shared/home' %>
         <% end %>
+
         <div style="clear: both;"></div>
+
       </div>
+
+
     </header>
 
     <div class="container">

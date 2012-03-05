@@ -23,6 +23,9 @@ body {
 
   color: $text_color;
   background: $body_bg_color;
+
+  // for bootstrap nav bar
+  padding-top: 40px;
 }
 
 #wrapper {
@@ -34,7 +37,7 @@ header {
   margin-left:auto;
   margin-right:auto;
   height: auto;
-  text-align: center;
+  font-size: 13px;
 
   background: $header_bg_color;
 
@@ -69,6 +72,29 @@ header {
 
     a {
       text-decoration: none;
+    }
+  }
+
+  .endorsement {
+    float: right;
+    width: 60%;
+
+    p {
+      font-size: 13px;
+    }
+    .endorsement-body {
+      color: #efefef;
+    }
+
+    .attribution {
+      padding-right: 60px;
+      .author {
+        font-weight: bold;
+        font-size: 13px;
+      }
+      color: #ddd;
+      font-size: 11px;
+      text-align: right;
     }
   }
 
