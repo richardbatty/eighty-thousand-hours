@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120305160403) do
+ActiveRecord::Schema.define(:version => 20120305160404) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -38,16 +38,17 @@ ActiveRecord::Schema.define(:version => 20120305160403) do
   create_table "donations", :force => true do |t|
     t.decimal  "amount",     :precision => 10, :scale => 2
     t.integer  "charity_id"
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "user_id"
   end
 
   add_index "donations", ["charity_id"], :name => "index_donations_on_charity_id"
-  add_index "donations", ["user_id"], :name => "index_donations_on_user_id"
+  add_index "donations", ["member_id"], :name => "index_donations_on_member_id"
 
   create_table "eighty_thousand_hours_applications", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "occupation"
@@ -76,10 +77,11 @@ ActiveRecord::Schema.define(:version => 20120305160403) do
     t.text     "causes_comment"
     t.boolean  "pledge",                      :default => false
     t.boolean  "doing_good_prophilanthropy"
+    t.integer  "user_id"
   end
 
   create_table "eighty_thousand_hours_profiles", :force => true do |t|
-    t.integer  "user_id"
+    t.integer  "member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "inspiration"
@@ -101,6 +103,7 @@ ActiveRecord::Schema.define(:version => 20120305160403) do
     t.boolean  "doing_good_prophilanthropy", :default => false
     t.text     "skills_knowledge_share"
     t.text     "skills_knowledge_learn"
+    t.integer  "user_id"
   end
 
   create_table "endorsements", :force => true do |t|

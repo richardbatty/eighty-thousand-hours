@@ -4,6 +4,7 @@ class Donation < ActiveRecord::Base
   
   belongs_to :charity
   belongs_to :user
+  belongs_to :member
   
   after_create :send_confirmation_email_to_user
   
