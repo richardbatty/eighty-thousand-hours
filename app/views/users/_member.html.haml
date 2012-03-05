@@ -6,8 +6,8 @@
 
   - if member.name
     .page-header
-      -#.avatar
-        -#= link_to image_tag(member.avatar.url(:medium)), member.avatar.url
+      .avatar
+        = link_to image_tag(member.avatar.url(:medium)), member.avatar.url
       %h1= member.name
       - if member.location?
         %h2.location= member.location
