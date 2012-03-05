@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120305160404) do
+ActiveRecord::Schema.define(:version => 20120305183414) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -38,17 +38,15 @@ ActiveRecord::Schema.define(:version => 20120305160404) do
   create_table "donations", :force => true do |t|
     t.decimal  "amount",     :precision => 10, :scale => 2
     t.integer  "charity_id"
-    t.integer  "member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
   end
 
   add_index "donations", ["charity_id"], :name => "index_donations_on_charity_id"
-  add_index "donations", ["member_id"], :name => "index_donations_on_member_id"
+  add_index "donations", ["user_id"], :name => "index_donations_on_user_id"
 
   create_table "eighty_thousand_hours_applications", :force => true do |t|
-    t.integer  "member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "occupation"
@@ -81,7 +79,6 @@ ActiveRecord::Schema.define(:version => 20120305160404) do
   end
 
   create_table "eighty_thousand_hours_profiles", :force => true do |t|
-    t.integer  "member_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "inspiration"
@@ -112,25 +109,6 @@ ActiveRecord::Schema.define(:version => 20120305160404) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-  end
-
-  create_table "members", :force => true do |t|
-    t.string   "location"
-    t.boolean  "confirmed",           :default => false
-    t.integer  "user_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "avatar_file_name"
-    t.string   "avatar_content_type"
-    t.integer  "avatar_file_size"
-    t.datetime "avatar_updated_at"
-    t.string   "phone"
-    t.boolean  "on_team",             :default => false
-    t.integer  "team_role_id"
-    t.string   "external_twitter"
-    t.string   "external_facebook"
-    t.string   "external_linkedin"
-    t.string   "real_name"
   end
 
   create_table "pages", :force => true do |t|
