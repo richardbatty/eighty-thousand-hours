@@ -28,7 +28,7 @@ function initialise_slider( name, range, min, max, step, start, display )
 }
 
 $(document).ready(function() {
-  initialise_slider("#user_member_attributes_eighty_thousand_hours_application_attributes_donation_percentage", "min", 10, 100, 5, 20);
-  initialise_slider("#user_member_attributes_eighty_thousand_hours_application_attributes_hic_activity_hours", "min", 0, 40, 5, 5);
-  initialise_slider("#user_member_attributes_eighty_thousand_hours_application_attributes_average_income", "min", 10000, 5000000, 1000, 100000, function(x){ return x.formatMoney(0,'.',','); } );
+  initialise_slider("#user_eighty_thousand_hours_application_attributes_donation_percentage", "min", 10, 100, 5, 20);
+  initialise_slider("#user_eighty_thousand_hours_application_attributes_hic_activity_hours", "min", 0, 40, 5, 5);
+  initialise_slider("#user_eighty_thousand_hours_application_attributes_average_income", "min", 10000, 5000000, 1000, 100000, function(x){ return x.formatMoney(0,'.',','); } );
 });
