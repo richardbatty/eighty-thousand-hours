@@ -1,6 +1,6 @@
 class EightyThousandHoursApplication < ActiveRecord::Base
   belongs_to :user
-  belongs_to :member
+  #belongs_to :member
 
   attr_accessible :occupation,
                   :career_plans,

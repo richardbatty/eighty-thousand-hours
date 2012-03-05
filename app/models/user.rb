@@ -10,7 +10,7 @@ class User < ActiveRecord::Base
   has_one :eighty_thousand_hours_profile, :dependent => :destroy
   accepts_nested_attributes_for :eighty_thousand_hours_profile
 
-  has_one :member
+  #has_one :member
 
   devise :database_authenticatable, :registerable, :token_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable,
