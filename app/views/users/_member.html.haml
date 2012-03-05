@@ -1,7 +1,7 @@
 .member-profile
   - if user_signed_in? && current_user.member == member
     .center
-      = link_to "Edit Your Profile", '/accounts/edit', :class=>"btn btn-success"
+      = link_to "Edit Your Profile", '/members/edit', :class=>"btn btn-success"
       %hr
 
   - if profile.name

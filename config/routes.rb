@@ -22,6 +22,7 @@ EightyThousandHours::Application.routes.draw do
   match 'members/all'        => 'users#all', :as => :all
   match 'members/email-list' => 'users#email_list', :as => :all
   match 'members/search'     => 'users#search'
+  match 'members/edit'       => 'users#edit'
   resources :users, :path    => "members"
 
   # renamed pages which we don't want to break existing links to

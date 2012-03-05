@@ -15,7 +15,9 @@ class EightyThousandHoursProfile < ActiveRecord::Base
                   :doing_good_prophilanthropy,
                   :doing_good_innovating,
                   :doing_good_improving,
-                  :public_profile
+                  :public_profile,
+                  :skills_knowledge_share,
+                  :skills_knowledge_learn
 
   # now we can access @eighty_thousand_hours_profile.name etc.
   delegate :name, :name=, 

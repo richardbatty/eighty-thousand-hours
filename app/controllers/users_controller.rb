@@ -24,6 +24,19 @@ class UsersController < ApplicationController
     redirect_to users_path
   end
 
+  def edit
+    @user = current_user
+  end
+
+  def update
+    if current_user.update_attributes(params[:user])
+      flash[:"alert-success"] = "Your profile was successfully updated"
+      redirect_to(current_user)
+    else
+      render :action => "edit"
+    end
+  end
+
   def new
     @user = User.new
     @user.build_member
