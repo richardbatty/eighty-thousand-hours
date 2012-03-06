@@ -3,7 +3,7 @@
     = render :partial => 'admin_box'
 .row
   - if @page.sidebar?
-    .span3
+    .span2
       .box.sidebar
         - top_level = @page.root
         %ul.nav.nav-pills.nav-stacked
@@ -19,9 +19,9 @@
                 = c.get_menu_link
 
   - if @page.sidebar?
-    .span9
+    .span8
       %div{ :class => @page.show_box ? 'box left-border' : nil }
         = markdown @page.body
   -else
-    .span12
+    .span10
       = markdown @page.body
