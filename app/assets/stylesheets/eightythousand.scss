@@ -121,7 +121,10 @@ header {
 
 /* -------------- content ----------- */
 .fp-splash {
-  h1,h3 {
+  h1 {
+    color: #ffffff;
+  }
+  h3 {
     color: #efefef;
   }
   padding-bottom: 20px;
