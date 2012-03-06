@@ -3,16 +3,11 @@
     <div class="container">
       <div class="row">
         <div class="span10 offset1">
-          <ul class="nav">
-            <a class="brand" href="#">
-              80,000 Hours
-            </a>
+
+          <ul class="nav pull-right">
             <form class="navbar-search" action="/search" method="get" >
               <input name="q" type="text" class="search-query" placeholder="Search">
             </form>
-          </ul>
-
-          <ul class="nav pull-right">
             <% if user_signed_in? %>
               <li class="dropdown">
               <a href="#"
@@ -36,6 +31,7 @@
               <li><%= link_to "Login", new_user_session_path %></li>
             <% end %>
             <li><%= link_to "Contact", "/contact-us" %></li>
+
           </ul>
         </div>
       </div>
