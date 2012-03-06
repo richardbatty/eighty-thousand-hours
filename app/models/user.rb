@@ -81,6 +81,10 @@ class User < ActiveRecord::Base
   scope :contacted,   where({:confirmed => false}).where("contacted_date IS NOT NULL")
   scope :not_contacted, where({:confirmed => false, :contacted_date => nil})
   scope :on_team, confirmed.where(:on_team => true).joins(:team_role)
+
+  def external_links?
+    external_twitter? || external_linkedin? || external_facebook?
+  end
   
   def self.with_team_role(role)
     on_team.where(team_roles: {name: role.to_s.humanize.titleize})

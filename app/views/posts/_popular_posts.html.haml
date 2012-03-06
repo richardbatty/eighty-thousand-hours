@@ -1,6 +1,6 @@
-<h2>Popular posts</h2>
+%h2 Popular posts
 - @popular_posts.each do |p|
   %p
     = link_to p.title, post_path(p)
+    %br
     = "by #{p.author}"
-  <hr/>

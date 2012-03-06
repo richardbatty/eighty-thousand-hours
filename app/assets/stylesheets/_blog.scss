@@ -2,8 +2,10 @@
   .entry {
     padding-left: 20px;
     padding-right: 20px;
-    padding-top: 20px;
-    padding-bottom: 20px;
+    padding-top: 10px;
+    padding-bottom: 30px;
+
+    /*border-right: 1px solid #efefef;*/
 
     h1,h2,h3,h4,h5,h6 {
       font-weight: bold;
@@ -25,7 +27,7 @@
       border-bottom: 1px solid #ccc;
 
     }
-    
+
     .content {
       padding-top: 10px;
       padding-bottom: 10px;
@@ -45,20 +47,16 @@
     }
   }
 
-  .sidebar {
-    font-size: 0.9em;
-   }
-
-   .rss {
-     img
-     {
-       padding:0px;
-       padding-top: 5px;
-       margin:0px;
-       padding-right: 5px;
-       margin-bottom: -3px;
-     }
-   }
+  .rss {
+    img
+    {
+      padding:0px;
+      padding-top: 5px;
+      margin:0px;
+      padding-right: 5px;
+      margin-bottom: -3px;
+    }
+  }
 
   .attribution {
     margin-top: 10px;

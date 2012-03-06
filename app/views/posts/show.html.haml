@@ -1,20 +1,21 @@
 .blog
   .row
-    .span7
-      = render :partial => 'display_post', :locals => { :post => @post, :teaser => false }
-
     .span3
-      .box
+      .sidebar.tight
+        <a href="/blog">back to blog index</a>
+        %hr
         <fb:like href="#{post_url(@post)}" send="false" width="250" show_faces="false"></fb:like>
-      .box
         = render :partial => "rss"
-      .box
+        %hr
         = render :partial => "popular_posts"
-      .box
+        %hr
         = render :partial => "recommended_posts"
-      .box
+        %hr
         = render :partial => "authors"
-      .box
+        %hr
         = render :partial => "tag_cloud"
 
+    .span7
+      .box.left-border
+        = render :partial => 'display_post', :locals => { :post => @post, :teaser => false }
  

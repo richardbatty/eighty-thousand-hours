@@ -2,8 +2,10 @@ source 'http://rubygems.org'
 
 gem 'rails', '>= 3.1'
 
+# user login
 gem 'devise'
 
+# postgresql
 gem 'pg'
 
 # for nice url slugs
@@ -29,17 +31,11 @@ gem 'exception_notification'
 # sweet templating language
 gem "haml-rails"
 
-# AWESOME!!
-gem 'rails-backbone'
-
 # tranlations and localisations
 gem 'rails-i18n'
 
+# admin pages
 gem 'activeadmin'
-
-gem 'meta_search'
-
-gem 'exception_notification'
 
 # lightbox gem
 gem 'fancybox-rails'
@@ -53,9 +49,6 @@ gem 'will_paginate', '~> 3.0'
 # tags for blog posts
 gem 'acts-as-taggable-on', '~> 2.2.2'
 
-# handy comments at the top of models
-gem 'annotate', :git => 'git://github.com/ctran/annotate_models.git'
-
 # embed latest tweets
 gem 'twitter'
 
@@ -63,11 +56,10 @@ gem 'twitter'
 gem 'simple_form'
 
 # twitter bootstrap for Rails 3.x
-gem "twitter-bootstrap-rails", "~> 2.0.3"
+gem "twitter-bootstrap-rails"
 
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
-  # gem 'growl_notify'
   gem 'heroku' #included for rake db:mirror system calls
 end
 
@@ -98,15 +90,6 @@ group :development, :test do
   gem 'guard-cucumber'
   gem 'guard-livereload'
   gem 'guard-spork'
-  # gem 'guard-bundler'
-  # gem 'guard-coffeescript'
-  # gem 'guard-sass'
-  # gem 'guard-uglify'
-  # gem 'guard-jasmine-headless-webkit'
-  # gem 'guard-rails-assets'
-  # gem 'guard-sprockets'
-  # gem 'guard-pow'
-  # gem 'guard-jammit'
   gem "cucumber-rails"
   gem 'jasmine'
 end

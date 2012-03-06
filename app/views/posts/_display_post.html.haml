@@ -1,58 +1,61 @@
-.box
-  .entry
-    %h3
-      %a{:href => post_path(post)}
-        = post.title
-    %h4
-      = post.author + ", " + post.created_at.strftime("%B %d, %Y")
+.entry
+  %h3
+    %a{:href => post_path(post)}
+      = post.title
+  %h4
+    = post.author + ", " + post.created_at.strftime("%B %d, %Y")
 
-    %hr
+  %hr
 
-    .content
-      - if teaser
-        = markdown post.get_teaser
+  .content
+    - if teaser
+      = markdown post.get_teaser
 
-        .read-more
-          %a{:href => post_path(post)}
-            Read more...
-      - else
-        = markdown post.body
+      .read-more
+        %a{:href => post_path(post)}
+          <i class="icon-align-left"></i>
+          Read more...
+    - else
+      = markdown post.body
 
-    .attribution= markdown post.attribution if post.attribution 
+  .attribution= markdown post.attribution if post.attribution 
 
-    %p
-      more posts by 
-      =link_to post.author, { :action => :author, :id => post.author }
+  %p
+    more posts by 
+    =link_to post.author, { :action => :author, :id => post.author }
 
-    %p
-      = render :partial => "post_tags", :locals => { :post => post, :div_title => "tags:" }
+  %p
+    = render :partial => "post_tags", :locals => { :post => post, :div_title => "tags:" }
 
+  - if !teaser
     %p
       = link_to '<i class="icon-list"></i> Take me back to the blog'.html_safe, posts_path
     %p
       = link_to '<i class="icon-home"></i> Take me to the homepage'.html_safe, '/'
 
-    - if !teaser
+  - if !teaser
+    %p
+      = render :partial => "rss"
+
+    %p
+      .fblike
+        <fb:like href="#{post_url(post)}" send="false" width="450" show_faces="false"></fb:like>
+
+  .comments
+    - if teaser
+      %a{"href" => "#{post_url(post)}#disqus_thread",
+         "data-disqus-identifier" => "blog-post-#{post.id}" }
+      %div= render :partial => "disqus_count", :locals => { :post_id => post.id, :post_title => post.title }
+    - else
+      #disqus_thread
+        = render :partial => "disqus_embed", :locals => { :post_id => @post.id, :post_title => @post.title }
+
+
+  - if !teaser
+    %hr
+    .center
       %p
-        = render :partial => "rss"
-
+        = link_to '<i class="icon-list"></i> Take me back to the blog'.html_safe, posts_path
       %p
-        .fblike
-          <fb:like href="#{post_url(post)}" send="false" width="450" show_faces="false"></fb:like>
-
-    .comments
-      - if teaser
-        %a{"href" => "#{post_url(post)}#disqus_thread",
-           "data-disqus-identifier" => "blog-post-#{post.id}" }
-        %div= render :partial => "disqus_count", :locals => { :post_id => post.id, :post_title => post.title }
-      - else
-        #disqus_thread
-          = render :partial => "disqus_embed", :locals => { :post_id => @post.id, :post_title => @post.title }
-
-
-    - if !teaser
-      %hr
-      .center
-        = link_to 'Take me back to the blog', posts_path, :class=>"btn btn-mini"
-        = link_to 'Take me to the homepage', '/', :class=>"btn btn-mini"
+        = link_to '<i class="icon-home"></i> Take me to the homepage'.html_safe, '/'
 

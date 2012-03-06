@@ -172,23 +172,25 @@ header {
 
   /* these are used for text content */
   .box {
-    margin-top: 20px;
-    margin-bottom: 20px;
-
     padding: 20px;
 
     // for spanning links
     position:relative;
 
-    @include box_style;
-
-    &:hover {
-      @include box_style_hover;
+    &.left-border {
+      border-left: 1px solid #efefef;
+    }
+    &.right-border {
+      border-right: 1px solid #efefef;
     }
 
-    &.height_150 {
-      height: 150px;
+    &.tight {
+      padding: 10px;
     }
+  }
+
+  .sidebar {
+    padding-top: 54px;
   }
 
   .ui-accordion-header {
@@ -214,7 +216,7 @@ header {
       color: $link_hover_color;
     }
     li.heading {
-      border-bottom: 1px solid #ccc;
+      border-bottom: 1px solid #efefef;
     }
   }
 }
@@ -227,10 +229,16 @@ footer {
   text-align: left;
   margin-left: auto;
   margin-right: auto;
-  margin-top: 10px;
+
+  .social {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 
   .menu {
+    border-top: 1px solid #555555;
     border-bottom: 1px solid #555555;
+    padding-top: 10px;
     padding-bottom: 10px;
   }
 
@@ -251,7 +259,7 @@ footer {
   ul {
     float:left;
     width: 13%;
-    padding-top: 30px;
+    padding-top: 10px;
     list-style-type: none;
     li.heading {
       font-weight: bold;
@@ -375,13 +383,6 @@ img.shadow {
 }
 
 .member-profile {
-  .avatar {
-    float: right;
-    @include box_shadow(#555, 0px, 0px, 6px);
-    height: 200px;
-    margin: 10px;
-  }
-
   .name {
     font-size: 1.3em;
     font-weight: bold;
@@ -391,6 +392,22 @@ img.shadow {
   .location {
     font-weight: normal;
     color: lighten($text_color,50%);
+  }
+
+  .sidebar {
+    font-size: 0.8em;
+    color: #555;
+    .joined {
+      text-align: center;
+    }
+    .avatar {
+      img {
+        @include box_shadow(#555, 0px, 0px, 6px);
+      }
+    }
+  }
+  .main {
+    padding-top: 30px;
   }
 }
 .member-profile-condensed {

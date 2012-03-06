@@ -1,29 +1,29 @@
 .blog
   .row
-    .span7
-      - if @heading
-        .box
-          .center
-            %h1
-              = @heading
-      - if will_paginate @posts
-        .center.pagination
-          = page_navigation_links @posts
-      - @posts.each do |post|
-        = render :partial => 'display_post', :locals => { :post => post, :teaser => true }
-
-      - if will_paginate @posts
-        .center.pagination
-          = page_navigation_links @posts
-    .span3.sidebar
-      .box
+    .span3
+      .sidebar.tight
         = render :partial => "rss"
-      .box
+        %hr
         = render :partial => "popular_posts"
-      .box
+        %hr
         = render :partial => "recommended_posts"
-      .box
+        %hr
         = render :partial => "authors"
-      .box
+        %hr
         = render :partial => "tag_cloud"
+ 
+    .span7
+      .box.left-border
+        - if @heading
+          .box
+            .page-header
+              %h1
+                = @heading
+        - @posts.each do |post|
+          = render :partial => 'display_post', :locals => { :post => post, :teaser => true }
 
+        - if will_paginate @posts
+          .box.tight
+            .center
+              = page_navigation_links @posts
+ 
