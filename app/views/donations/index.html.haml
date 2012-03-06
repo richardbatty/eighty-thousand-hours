@@ -1,0 +1,10 @@
+.page-header
+  %h2 Donations
+%p
+  So you want to make a donation? You've come to the right place.
+- if @donations
+  - @donations.each do |d|
+    %p
+      %h4
+        =d.charity.name
+      =number_to_currency(d.amount)

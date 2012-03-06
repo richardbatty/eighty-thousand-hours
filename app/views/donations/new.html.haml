@@ -1,0 +1,33 @@
+.row
+  .span3
+    Some common questions about the declaration are covered in the
+    <a href="/faq#declaration">declaration FAQ</a> page.
+  .span7
+    .box.left-border
+      .page-header
+        %h1 Make a donation
+      
+      - if @donation.errors.any?
+        %hr
+        .alert
+          %div.errorExplanation
+            %h2
+              = pluralize(@donation.errors.count, "error")
+              prohibited this donation from being processed!
+            %p
+              Please fill in all the required fields
+            %ul
+              - @donation.errors.reverse_each do |field,msg|
+                %li
+                  = msg
+      %hr
+      
+      = simple_form_for @donation, :html => { :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}} do |f|
+        = field_set_tag 'Donation details' do
+          = f.association :charity
+          = f.input :amount
+      
+        %hr
+        .center
+          = f.button :submit, "Submit donation", :class=> "btn btn-large"
+          
