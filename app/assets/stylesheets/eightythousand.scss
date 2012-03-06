@@ -129,14 +129,14 @@ header {
   color: #efefef;
 
   .slogan {
-    font-size: 30px;
+    font-size: 30px !important;
     text-align: left;
     font-weight: bold;
     margin-top: 10px;
     color: #fff;
   }
   .call-to-action {
-    font-size: 20px;
+    font-size: 20px !important;
     text-align: left;
     font-weight: normal;
     margin-top: 10px;
@@ -147,7 +147,7 @@ header {
 
 .fp-splash-find-out-more {
   a {
-    font-size: 30px;
+    font-size: 30px !important;
     margin-top: 35px;
   }
 }
