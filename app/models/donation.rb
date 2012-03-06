@@ -6,6 +6,8 @@ class Donation < ActiveRecord::Base
   belongs_to :user
   
   after_create :send_confirmation_email_to_user
+
+  attr_accessible :charity, :amount
   
   private
     def send_confirmation_email_to_user

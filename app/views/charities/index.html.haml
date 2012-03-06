@@ -1,10 +1,11 @@
-.page-header
-  %h2 Charities
-%p
-  This page lists all the charities that 80,000 Hours members have donated to.
-- if @charities
-  - @charities.each do |c|
-    %p
-      %h4
-        =link_to c.name, charity_path(c)
-      =c.website
+.box
+  .page-header
+    %h2 Charities
+  %p
+    This page lists all the charities that 80,000 Hours members have donated to.
+  - if @charities
+    - @charities.each do |c|
+      %p
+        %h4
+          =link_to c.name, charity_path(c)
+        =c.website

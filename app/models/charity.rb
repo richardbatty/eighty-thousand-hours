@@ -8,6 +8,8 @@ class Charity < ActiveRecord::Base
   validates :website, format: WEBSITE_REGEXP
   
   before_validation :format_website
+
+  attr_accessible :name, :website, :description
   
   has_many :donations
   

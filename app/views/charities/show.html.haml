@@ -1,5 +1,7 @@
-.page-header
-  %h2= @charity.name
-%p
-  Website: 
-  = @charity.website
+.box
+  .page-header
+    %h2= @charity.name
+    %h4
+      =link_to @charity.website, @charity.website
+  
+  =markdown @charity.description
