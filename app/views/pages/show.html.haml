@@ -1,5 +1,5 @@
 .row
-  .span8.offset1
+  .span8.offset2
     = render :partial => 'admin_box'
 .row
   .span3
@@ -16,6 +16,6 @@
           - else
             %li
               = c.get_menu_link
-  .span7
+  .span9
     %div{ :class => @page.show_box ? 'box left-border' : nil }
       = markdown @page.body

@@ -8,7 +8,7 @@ ActiveAdmin.register User do
   index do
     column :id
     column :avatar do |user|
-      image_tag user.avatar.url(:thumb)
+      image_tag user.avatar.url(:thumb), :style => "height: 50px"
     end
     column :name
     column :slug
