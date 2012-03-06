@@ -1,5 +1,6 @@
 ActiveAdmin.register User do
-  menu :if => proc{ can?(:manage, User) }
+  menu :if => proc{ can?(:manage, User) },
+       :label => "80k Members"
   controller.authorize_resource
 
   scope :confirmed

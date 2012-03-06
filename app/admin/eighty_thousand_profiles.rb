@@ -7,7 +7,7 @@ ActiveAdmin.register EightyThousandHoursProfile do
   index do
     column :id
     column :name do |p|
-      p.member.name
+      p.user.name
     end
     column :occupation
     column :career_plans
