@@ -6,6 +6,7 @@ class UsersController < ApplicationController
   def get_grouped_users
     @users = User.confirmed.alphabetical
     @grouped_users = @users.group_by{|user| user.name[0].upcase}
+    @newest_users = User.confirmed.newest.limit(8)
   end
 
   def show

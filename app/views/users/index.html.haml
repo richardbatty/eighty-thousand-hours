@@ -1,15 +1,26 @@
 .box
   .page-header
     %h1= "#{@users.size} member profiles"
-    %br
+  %br
   
-    = render :partial => 'search_form'
+  = render :partial => 'search_form'
   
-    Jump to:&nbsp;
-    - @grouped_users.each do |letter,users|
-      =link_to letter, "##{letter}"
-      &nbsp;|&nbsp;
+  Jump to:&nbsp;
+  - @grouped_users.each do |letter,users|
+    =link_to letter, "##{letter}"
+    &nbsp;|&nbsp;
   
+  %br
+  %br
+  %h3 Newest members
+  %br
+
+  - @newest_users.each do |u|
+    .span2
+      = render :partial => 'member_condensed', :locals => { :member => u }
+  .clearfix
+  %hr
+
   - count = 0
   - @grouped_users.each do |letter,users|
     .span3

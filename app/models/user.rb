@@ -65,6 +65,7 @@ class User < ActiveRecord::Base
   has_many :donations
 
   scope :alphabetical, order("name ASC")
+  scope :newest, order("created_at DESC")
   
   def has_role?(symbol)
     roles.map {|r| r.name.underscore.to_sym }
