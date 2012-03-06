@@ -18,13 +18,13 @@ class PagesController < ApplicationController
       # for profile photos on front page
       begin
         ids = [28, 27, 26, 24, 37, 42, 43, 44, 16, 25, 93, 84, 78, 45]
-        @members = User.find( (ids.shuffle)[0..3] ).shuffle
+        @members = User.find( (ids.shuffle)[0..2] ).shuffle
       rescue
-        @members = User.limit( 4 )
+        @members = User.limit( 3 )
       end
 
       careers = ["banker","doctor","scientist","train_driver","campaigner","teacher"]#,"worker"]
-      @careers = (careers.shuffle)[0..3]
+      @careers = (careers.shuffle)[0..2]
 
       @total_members = User.confirmed.size
 

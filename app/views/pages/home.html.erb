@@ -31,7 +31,7 @@ We have done research into some of the best careers for effective altruists.
 %>
 
 <%
-  posts = Post.published.limit(7)
+  posts = Post.published.limit(10)
   latest_blog_html = "<h2>Blog</h2>"
   posts.each do |p|
     # note: gets processed by markdown so can't have leading spaces
