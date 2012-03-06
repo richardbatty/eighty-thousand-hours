@@ -1,0 +1,44 @@
+.row
+  .span12
+    - if @supporter.errors.any?
+      .alert
+        #errorExplanation
+          %h2= pluralize(@supporter.errors.count, "error") + "stopped your signature from being accepted:"
+          %ul
+            - @supporter.errors.full_messages.each do |msg|
+              %li= msg
+
+    .page-header
+      %h1 Show your support for 80,000 Hours by signing our petition
+      %h2= link_to "#{@supporters.size} signatures so far", '#petition_signatures'
+
+    %p 
+      80,000 Hours aims at encouraging people to pursue a career with a high ethical
+      impact, using a significant portion of their time or resources towards helping
+      others as effectively as possible. Providing extensive research on career
+      choice and the best causes to work towards, 80,000 Hours ensures its members
+      think carefully about where and for whom their contribution can make the
+      greatest difference.
+   
+    %p
+      I agree with these objectives and hereby express my support for the 80,000
+      Hours community.  I endorse the idea of thinking rationally about how one can
+      make the most difference through one's career and support those who attempt to
+      put this idea into practice in their own life.
+  
+    .center
+    = simple_form_for @supporter, :html => { :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}} do |s|
+      = s.input :name
+      = s.input :email
+      = s.input :dont_email_me, :label => "I don't want to receive updates by email"
+      .form-actions
+        = s.button :submit, "Sign our petition", :class => 'btn btn-success'
+        = link_to "Cancel", "/", :class => 'btn'
+  
+  .span6.offset2
+    .petition#petition-signatures
+      %h2= @supporters.size.to_s + " signatures"
+      - @supporters.each_with_index do |s,idx|
+        .signature
+          = (idx+1).to_s + ")"
+          = s.name
