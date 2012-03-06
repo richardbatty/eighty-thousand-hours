@@ -2,16 +2,6 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, :use => :slugged
 
-  # dependent means 80k application gets destroyed when user is destroyed
-  has_one :eighty_thousand_hours_application, :dependent => :destroy
-  accepts_nested_attributes_for :eighty_thousand_hours_application
-
-  # dependent means 80k profile gets destroyed when user is destroyed
-  has_one :eighty_thousand_hours_profile, :dependent => :destroy
-  accepts_nested_attributes_for :eighty_thousand_hours_profile
-
-  #has_one :member
-
   devise :database_authenticatable, :registerable, :token_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
@@ -38,6 +28,14 @@ class User < ActiveRecord::Base
 
 
   delegate :public_profile, :to => :eighty_thousand_hours_application
+
+  # dependent means 80k application gets destroyed when user is destroyed
+  has_one :eighty_thousand_hours_application, :dependent => :destroy
+  accepts_nested_attributes_for :eighty_thousand_hours_application
+
+  # dependent means 80k profile gets destroyed when user is destroyed
+  has_one :eighty_thousand_hours_profile, :dependent => :destroy
+  accepts_nested_attributes_for :eighty_thousand_hours_profile
 
   # note that Devise handles the validation for email and password
   validates_presence_of   :name, :message => "You must tell us your name"
@@ -74,6 +72,10 @@ class User < ActiveRecord::Base
   
   def first_name
     name.split.first
+  end
+
+  def last_name
+    name.split.last
   end
 
   #useful nested scopes
