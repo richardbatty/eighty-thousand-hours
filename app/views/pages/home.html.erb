@@ -1,37 +1,45 @@
 <%
-  members_html = ""
+  members_html = "
+We have #{@total_members} members worldwide, you can see them all on <a href='/members'>the member list</a>.
+<ul class='thumbnails'>"
   @members.each do |m|
     if m.avatar
       # note: gets processed by markdown so can't have leading spaces
       members_html += "
-#{link_to image_tag(m.avatar.url(:small), :class=>"fp-profile-image"),"/members/#{m.slug}"}"
+<li class='span1'>
+#{link_to image_tag(m.avatar.url(:small), :class=>"thumbnail"),"/members/#{m.slug}"}
+</li>"
     end
   end
   members_html += "
-We have #{@total_members} members worldwide, you can see them all on <a href='/members'>the member list</a>." 
+</ul>"
 %>
 
 <%
-  careers_html = "" 
+  careers_html = "
+We have done research into some of the best careers for effective altruists.
+<ul class='thumbnails'>"
   @careers.each do |c|
     # note: gets processed by markdown so can't have leading spaces
     careers_html += "
-#{link_to image_tag( "career_icons/#{c}.jpg", :class=>"fp-profile-image", :alt=>"#{c.humanize}"),"/career-profiles##{c.gsub(/_/,'-')}"}"
+<li class='span1'>
+#{link_to image_tag( "career_icons/#{c}.jpg", :class=>"thumbnail", :alt=>"#{c.humanize}"),"/career-profiles##{c.gsub(/_/,'-')}"}
+</li>"
   end
+  careers_html += "
+</ul>"
 %>
 
 <%
-  posts = Post.published.limit(4)
-  latest_blog_html = "<p><h5>Latest blog posts:</h5></p>"
+  posts = Post.published.limit(7)
+  latest_blog_html = "<h2>Blog</h2>"
   posts.each do |p|
     # note: gets processed by markdown so can't have leading spaces
     latest_blog_html += "
-<p>
-<strong>#{p.created_at.strftime('%B %d, %Y')}</strong>
-<br/>
-<a href='#{post_path p}'>#{p.title}</a>
-<br/>by #{p.author}
-</p>
+<div class='blog-latest'>
+<a class='title' href='#{post_path p}'>#{p.title}</a>
+<br/><span class='author'>#{p.author},</span>  <span class='date'>#{p.created_at.strftime('%B %d, %Y')}</span>
+</div>
 "
   end
 %>

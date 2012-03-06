@@ -2,20 +2,27 @@
   .span8.offset2
     = render :partial => 'admin_box'
 .row
-  .span3
-    .box.sidebar
-      - top_level = @page.root
-      %ul.nav.nav-pills.nav-stacked
-        %li.heading
-          = top_level.get_menu_link
+  - if @page.sidebar?
+    .span3
+      .sidebar
+        - top_level = @page.root
+        %ul.nav.nav-pills.nav-stacked
+          %li.heading
+            = top_level.get_menu_link
 
-        - top_level.children.display_in_menu.each do |c|
-          - if c == @page
-            %li.active
-              = c.get_menu_link
-          - else
-            %li
-              = c.get_menu_link
-  .span9
-    %div{ :class => @page.show_box ? 'box left-border' : nil }
-      = markdown @page.body
+          - top_level.children.display_in_menu.each do |c|
+            - if c == @page
+              %li.active
+                = c.get_menu_link
+            - else
+              %li
+                = c.get_menu_link
+
+  - if @page.sidebar?
+    .span9
+      %div{ :class => @page.show_box ? 'left-border' : nil }
+        = markdown @page.body
+  -else
+    .span12
+      %div{ :class => @page.show_box ? 'left-border' : nil }
+        = markdown @page.body

@@ -24,6 +24,12 @@ class Page < ActiveRecord::Base
     parent.nil? ? self : parent.root
   end
 
+  def sidebar?
+    # if the page is in a hierarchical menu then 
+    # we display the menu in the sidebar, otherwise don't
+    root.children.size > 0
+  end
+
   def get_menu_link(active = false)
     # link that appears in menu structures.
     # if page is 'just_a_link' then we want to link to whatever is stored in
