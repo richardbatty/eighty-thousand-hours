@@ -1,23 +1,22 @@
-.span10.offset1
-  .box
-    .page-header
-      %h1= "#{@users.size} member profiles"
-      %br
+.box
+  .page-header
+    %h1= "#{@users.size} member profiles"
+    %br
   
-      = render :partial => 'search_form'
+    = render :partial => 'search_form'
   
-      Jump to:&nbsp;
-      - @grouped_users.each do |letter,users|
-        =link_to letter, "##{letter}"
-        &nbsp;|&nbsp;
-  
-    - count = 0
+    Jump to:&nbsp;
     - @grouped_users.each do |letter,users|
-      .span3
-        .page-header{:id => letter}
-          %h1=letter
-        - users.each do |user|
-          = render :partial => 'member_condensed', :locals => { :member => user }
-      - count += 1
-      = (count % 3 == 0) ? "<div class='clearfix'></div>".html_safe : ""
-    .clearfix
+      =link_to letter, "##{letter}"
+      &nbsp;|&nbsp;
+  
+  - count = 0
+  - @grouped_users.each do |letter,users|
+    .span3
+      .page-header{:id => letter}
+        %h1=letter
+      - users.each do |user|
+        = render :partial => 'member_condensed', :locals => { :member => user }
+    - count += 1
+    = (count % 3 == 0) ? "<div class='clearfix'></div>".html_safe : ""
+  .clearfix
