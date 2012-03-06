@@ -4,35 +4,35 @@
       .sidebar
         .avatar
           = link_to image_tag(member.avatar.url(:medium)), member.avatar.url
-        %hr
 
         - if member.location?
-          %h5 Location
-          = member.location
-          %hr
+          %p
+            %h5 Location
+            = member.location
 
-        %h5 Member since 
-        = profile.created_at.strftime "%B %Y"
+        %p
+          %h5 Member since 
+          = profile.created_at.strftime "%B %Y"
 
         -if member.external_links?
-          %hr
-          %h5 External links
+          %p
+            %h5 External links
 
-          - if member.external_twitter?
-            = link_to image_tag("social/twitter.png") + " Twitter".html_safe, member.external_twitter
-            %br
-          
-          - if member.external_facebook?
-            = link_to image_tag("social/facebook.png") + " Facebook".html_safe, member.external_facebook
-            %br
-          
-          - if member.external_linkedin?
-            = link_to image_tag("social/linkedin.png") + " LinkedIn".html_safe, member.external_linkedin
-            %br
+            - if member.external_twitter?
+              = link_to image_tag("social/twitter.png") + " Twitter".html_safe, member.external_twitter
+              %br
+            
+            - if member.external_facebook?
+              = link_to image_tag("social/facebook.png") + " Facebook".html_safe, member.external_facebook
+              %br
+            
+            - if member.external_linkedin?
+              = link_to image_tag("social/linkedin.png") + " LinkedIn".html_safe, member.external_linkedin
+              %br
 
-        %hr
-        %h5 Navigation
-        = link_to '<i class="icon-user"></i> member list'.html_safe, users_path
+        %p
+          %h5 Navigation
+          = link_to '<i class="icon-user"></i> member list'.html_safe, users_path
 
   .span10
     .member-profile

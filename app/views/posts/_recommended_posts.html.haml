@@ -2,4 +2,4 @@
 = markdown @recommended_posts.body
 - if can? :update, @recommended_posts
   .button
-    = link_to 'Edit', edit_page_path(@recommended_posts)
+    = link_to 'Edit', edit_page_path(@recommended_posts), :class => 'btn btn-mini'
