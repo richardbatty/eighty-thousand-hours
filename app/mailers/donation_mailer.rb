@@ -7,10 +7,10 @@ class DonationMailer < ActionMailer::Base
   #   en.donations.confirmed.subject
   #
   def confirmation(donation)
-    @first_name = donation.member.first_name
+    @first_name = donation.user.first_name
     @amount = donation.amount
     @charity = donation.charity.name
-    @member_page = user_url donation.member.user
-    mail to: donation.member.email, subject: "Donation Confirmed"
+    @member_page = user_url donation.user
+    mail to: donation.user.email, subject: "[80,000 Hours] Donation Confirmed"
   end
 end
