@@ -120,29 +120,11 @@ header {
 
 
 /* -------------- content ----------- */
-.fp-splash-container {
-  padding-top: 10px;
-  padding-bottom: 20px;
-}
-
 .fp-splash {
-  color: #efefef;
-
-  .slogan {
-    font-size: 30px !important;
-    text-align: left;
-    font-weight: bold;
-    margin-top: 10px;
-    color: #fff;
-  }
-  .call-to-action {
-    font-size: 20px !important;
-    text-align: left;
-    font-weight: normal;
-    margin-top: 10px;
-    line-height: 1.4em;
+  h1,h3 {
     color: #efefef;
   }
+  padding-bottom: 20px;
 }
 
 .fp-splash-find-out-more {
@@ -154,13 +136,6 @@ header {
 
 .right {
   float: right;
-}
-.fp-profile-image {
-  margin: 8px;
-  @include rounded_borders(#ccc, 1px, $dim_border_radius);
-  @include box_shadow(#ccc, 0px, 0px, 5px);
-  width: 64px;
-  height: 64px;
 }
 
 #content {
