@@ -6,8 +6,10 @@ class DonationsController < ApplicationController
   end
 
   def create
-    @donation = Donation.create(params[:donation])
-    @donation.user = current_user
+    @donation = Donation.new(params[:donation])
+    if !@donation.user_id
+      @donation.user_id = current_user.id
+    end
 
     if @donation.save
       flash[:"alert-success"] = "Thanks #{current_user.first_name}, your donation is being processed!"

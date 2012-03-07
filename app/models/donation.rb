@@ -1,5 +1,6 @@
 class Donation < ActiveRecord::Base
-  validates :user, :charity, presence: true
+  validates :user_id, presence: true
+  validates :charity_id, presence: true
   validates :amount, numericality: { greater_than_or_equal_to: 0.01 }
   
   belongs_to :charity
@@ -7,7 +8,7 @@ class Donation < ActiveRecord::Base
   
   after_create :send_confirmation_email_to_user
 
-  attr_accessible :charity, :charity_id, :amount, :receipt
+  attr_accessible :user_id, :charity_id, :amount, :receipt
   
   # paperclip gem for receipt uploads to s3
   has_attached_file :receipt,
