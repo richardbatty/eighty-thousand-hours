@@ -97,4 +97,8 @@ class User < ActiveRecord::Base
   def admin_permalink
     admin_user_path(self)
   end
+
+  def send_apply_email_to_80k_team
+    UserMailer.apply(self).deliver!
+  end
 end

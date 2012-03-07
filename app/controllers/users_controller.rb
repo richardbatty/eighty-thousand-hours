@@ -63,6 +63,9 @@ class UsersController < ApplicationController
     @user.build_eighty_thousand_hours_profile
     
     if @user.save
+      # fire off an email informing 80k team (join@80k..)
+      @user.send_apply_email_to_80k_team 
+
       # add name to 'show your support'
       @supporter = Supporter.new(:name => @user.name, :email => @user.email)
       @supporter.save
