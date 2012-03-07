@@ -15,6 +15,14 @@ ActiveAdmin.register Post do
     end
     default_actions
   end
+
+  show do
+    h1 post.title
+    h2 post.author
+    div do
+      markdown post.body
+    end
+  end
   
   form do |f|
     f.inputs "Details" do
