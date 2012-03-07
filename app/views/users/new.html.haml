@@ -38,22 +38,18 @@
         Please fill out the short form below in order to join.
       
       - if @user.errors.any?
-        %hr
-        .alert
-          %div.errorExplanation
-            %h2
-              = pluralize(@user.errors.count, "error")
-              prohibited this application from being accepted!
-            %p
-              Please fill in all the required fields, and make sure to accept the pledge!
-            %ul
-              - @user.errors.reverse_each do |field,msg|
-                -# only want to print field if coming from Devise (password, or email).
-                -# otherwise we print our custom error messges as defined in models user
-                %li
-                  = (field == :password || field == :email) ? field.to_s.humanize : '' 
-                  = msg
-      %hr
+        .alert.alert-error
+          <a class="close" data-dismiss="alert">×</a>
+          %h4.alert-heading 
+            = pluralize(@user.errors.count, "error")
+            prohibited this application from being accepted!
+          %ul
+            - @user.errors.reverse_each do |field,msg|
+              -# only want to print field if coming from Devise (password, or email).
+              -# otherwise we print our custom error messges as defined in models user
+              %li
+                = (field == :password || field == :email) ? field.to_s.humanize : '' 
+                = msg
       
       = simple_form_for @user, :url=>"/members#application_form", :html => { :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}} do |f|
         = field_set_tag 'Your details' do

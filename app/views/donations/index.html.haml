@@ -1,10 +1,18 @@
-.page-header
-  %h2 Donations
-%p
-  So you want to make a donation? You've come to the right place.
-- if @donations
-  - @donations.each do |d|
-    %p
-      %h4
-        =d.charity.name
-      =number_to_currency(d.amount)
+.box
+  .page-header
+    %h2 Donations
+  %p
+    If you're an 80,000 Hours member and would like your charity donations to be associated with
+    your account, then click through to the form:
+  
+  .center
+    = link_to 'Submit donation', new_donation_path, :class => 'btn btn-large'
+  
+  %hr
+  %h2 Some recent donations
+  - if @donations
+    - @donations.each do |d|
+      %p
+        %h4
+          =d.charity.name
+        =number_to_currency(d.amount)

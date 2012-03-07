@@ -1,33 +1,30 @@
-.row
-  .span3
-    Some common questions about the declaration are covered in the
-    <a href="/faq#declaration">declaration FAQ</a> page.
-  .span7
-    .box.left-border
-      .page-header
-        %h1 Make a donation
-      
-      - if @donation.errors.any?
-        %hr
-        .alert
-          %div.errorExplanation
-            %h2
-              = pluralize(@donation.errors.count, "error")
-              prohibited this donation from being processed!
-            %p
-              Please fill in all the required fields
-            %ul
-              - @donation.errors.reverse_each do |field,msg|
-                %li
-                  = msg
-      %hr
-      
-      = simple_form_for @donation, :html => { :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}} do |f|
-        = field_set_tag 'Donation details' do
-          = f.association :charity
-          = f.input :amount
-      
-        %hr
-        .center
-          = f.button :submit, "Submit donation", :class=> "btn btn-large"
+.box
+  .page-header
+    %h1 Make a donation
+  %p
+    %strong
+      Note:
+    If you prefer you can email <a href="mailto:donations@80000hours.org">donations@80000hours.org</a>
+    and attach a PDF donation receipt, or forward a receipt email to the same address.
+  
+  - if @donation.errors.any?
+    .alert.alert-error
+      <a class="close" data-dismiss="alert">×</a>
+      %h4.alert-heading 
+        = pluralize(@donation.errors.count, "error")
+        prohibited this donation from being processed!
+      %ul
+        - @donation.errors.reverse_each do |field,msg|
+          %li
+            = msg
+
+  = simple_form_for @donation, :html => { :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}} do |f|
+    = field_set_tag 'Donation details' do
+      = f.association :charity, :required => true
+      = f.input :amount, :required => true
+      = f.input :receipt, :required => true, :hint => "PDF donation receipt from charity"
+  
+    %hr
+    .center
+      = f.button :submit, "Submit donation", :class=> "btn btn-large"
           
