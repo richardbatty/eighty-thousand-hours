@@ -16,11 +16,18 @@ ActiveAdmin.register Post do
     default_actions
   end
 
-  show do
-    h1 post.title
-    h2 post.author
-    div do
-      markdown post.body
+  show do |post|
+    attributes_table do
+      row :title
+      row :author
+      row :attribution
+      row :created_at
+      row :draft do
+        post.draft? ? "<span class='status warn'>draft</span>".html_safe : "false"
+      end
+      row :body do
+        markdown post.body
+      end
     end
   end
   
