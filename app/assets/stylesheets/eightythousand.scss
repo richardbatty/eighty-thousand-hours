@@ -24,8 +24,8 @@ body {
   color: $text_color;
   background: $body_bg_color;
 
-  // for bootstrap nav bar
-  padding-top: 40px;
+  /*// for bootstrap nav bar*/
+  /*padding-top: 40px;*/
 }
 
 #wrapper {
@@ -34,23 +34,16 @@ body {
 }
 
 header {
-  padding-top: 10px;
-  margin-left:auto;
-  margin-right:auto;
-  height: auto;
-  font-size: 13px;
-
   background: $header_bg_color;
-
+  background: #222;
   border-bottom: $dim_top_and_tail_border_width solid $magenta_2;
+
+  .navbar {
+    font-size: 13px;
+  }
 
   #header-content
   {
-    width: $dim_page_width;
-    margin-left: auto;
-    margin-right: auto;
-    padding-top: $dim_page_padding_top;
-
     #header-logo-and-login {
       #header-logo { 
         float:left; clear: none;
