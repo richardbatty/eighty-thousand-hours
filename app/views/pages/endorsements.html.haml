@@ -1,10 +1,19 @@
-.center
-  <br/>
-  <h1>Endorsements for 80,000 Hours</h1>
-
+.row
+  .span10
+    .box
+      .page-header
+        %h1 Endorsements for 80,000 Hours
+    
 - @endorsements.each do |e|
-  .box
-    = markdown e.body
-    <hr/>
-    = e.author
-    = markdown e.position
+  .row
+    .span6
+      .endorsement
+        .body
+          = markdown e.body
+        .attribution
+          .author
+            = e.author
+          - if !e.position.nil?
+            .position
+              = e.position
+

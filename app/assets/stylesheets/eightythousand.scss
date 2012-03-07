@@ -190,6 +190,29 @@ header {
       color: #555;
     }
   }
+.endorsement {
+  border-left: 5px solid #efefef;
+  margin: 30px;
+  padding: 10px;
+  .body {
+    color: #262626;
+  }
+
+  .attribution {
+    .author {
+      font-weight: bold;
+      font-size: 13px;
+      color: #555;
+    }
+    .position {
+      color: #999;
+      font-size: 12px;
+    }
+    text-align: right;
+  }
+}
+
+
 }
 /* -------------- /content ----------- */
 
