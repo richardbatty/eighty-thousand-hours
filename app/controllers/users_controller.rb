@@ -3,6 +3,9 @@ class UsersController < ApplicationController
 
   def index
     get_grouped_users
+
+    @menu_root = "Our community"
+    @menu_current = "Our members"
   end
 
   def get_grouped_users
@@ -14,6 +17,9 @@ class UsersController < ApplicationController
   def show
     @user = User.confirmed.find(params[:id])
     @title = @user.name
+
+    @menu_root = "Our community"
+    @menu_current = "Our members"
   end
 
   def destroy
@@ -44,6 +50,9 @@ class UsersController < ApplicationController
     @user = User.new
     @user.build_eighty_thousand_hours_application
     @user.build_eighty_thousand_hours_profile
+
+    @menu_root = "Membership"
+    @menu_current = "Join now"
   end
 
   def search

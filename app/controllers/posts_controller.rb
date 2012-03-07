@@ -11,7 +11,8 @@ class PostsController < ApplicationController
   def index
     @posts = Post.published.paginate(:page => params[:page], :per_page => 10)
     @title = "Blog"
-
+    @menu_root = "Blog"
+    
     prepare_sidebar
   end
 
@@ -35,6 +36,8 @@ class PostsController < ApplicationController
       @og_type = "article"
       @title = "Blog: " + @post.title
       @tags = @post.tag_list
+
+      @menu_root = "Blog"
 
       prepare_sidebar
     end

@@ -30,11 +30,11 @@ class Page < ActiveRecord::Base
     root.children.size > 0
   end
 
-  def get_menu_link(active = false)
+  def get_menu_link(aclass = nil)
     # link that appears in menu structures.
     # if page is 'just_a_link' then we want to link to whatever is stored in
     # body field, otherwise we link to the page slug
-    ("<a"+ (active ? " class='active'" : "") + " href='#{(just_a_link? ? body : '/'+slug)}'>#{title}</a>").html_safe
+    ("<a " + (aclass ? "class='#{aclass}'" : "") + " href='#{(just_a_link? ? body : '/'+slug)}'>#{title}</a>").html_safe
   end
 
   # for active admin dashboard

@@ -38,35 +38,26 @@ header {
   background: #222;
   border-bottom: $dim_top_and_tail_border_width solid $magenta_2;
 
-  .navbar {
+  .navbar-top {
     font-size: 13px;
+    padding-bottom: 20px;
   }
 
-  #header-content
-  {
-    #header-logo-and-login {
-      #header-logo { 
-        float:left; clear: none;
-        padding-left: 5px;
-      }
-      clear: none;
-      width: $dim_page_width;
-      padding-bottom: 30px;
+  .navbar-menu {
+    @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
+    @include box_shadow(lighten($header_bg_color,20%), 0px, 0px, 5px);
 
-      img.social_image
-      {
-        padding:0px;
-        margin:0px;
-        width: 20px;
-        height: 20px;
-        padding-right: 3px;
-        text-align: middle;
-      }
-    }
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 13px;
 
-    a {
-      text-decoration: none;
-    }
+    ul li.active.top-level a.top-level{ background: none !important; }
+    ul li.active a.top-level:hover { background: none !important; }
+
+    ul.dropdown-menu { background: #2c2c2c !important;  border: 1px solid #555;}
+    ul.dropdown-menu a { color: #999; }
+    ul.dropdown-menu a:hover { color: #efefef; background: none; }
+    ul.dropdown-menu .divider { background: #333; border-bottom: 1px solid #555; }
   }
 
   .endorsement {
@@ -134,6 +125,7 @@ header {
 }
 
 #content {
+
   color: $text_color;
 
   /* these are used for text content */

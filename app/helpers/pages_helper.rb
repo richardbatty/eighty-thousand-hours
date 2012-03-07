@@ -15,19 +15,61 @@ module PagesHelper
 
   # for each menu item (which is set to be displayed in the menu)
   # we recursively display its link and any children it has
-  def draw_menu( menu_items, current_page = nil, outer_tag = "ul", inner_tag = "li" )
-    result = ""
-    if menu_items.size > 0
-      result += "\n<#{outer_tag}>\n"
-      menu_items.display_in_menu.each do |c|
-        active = (current_page == c)
-        result +=   "<#{inner_tag}>" \
-                  + c.get_menu_link(active) \
-                  + draw_menu(c.children, current_page, outer_tag, inner_tag) \
-                  + "</#{inner_tag}>\n"
+  #def draw_menu( menu_items, current_page = nil, outer_tag = "ul", inner_tag = "li" )
+  #  result = ""
+  #  if menu_items.size > 0
+  #    result += "\n<#{outer_tag}>\n"
+  #    menu_items.display_in_menu.each do |c|
+  #      active = (current_page == c)
+  #      result +=   "<#{inner_tag}>" \
+  #                + c.get_menu_link(active) \
+  #                + draw_menu(c.children, current_page, outer_tag, inner_tag) \
+  #                + "</#{inner_tag}>\n"
+  #    end
+  #    result += "\n</#{outer_tag}>\n"
+  #  end
+  #  result.html_safe
+  #end
+
+  # crippled version of previous recursive function
+  # we draw top level items and any children but that's it
+  def draw_menu( top_level_items, current_page = nil )
+    result = "
+    <div class='navbar navbar-menu'>
+    <div class='navbar-inner'>
+    <div class='container'>
+    <ul class='nav'>"
+    top_level_items.each do |t|
+      active = (@menu_root == t.title)
+      if t.children.size > 0
+        result += "<li class='dropdown #{ active ? "active" : "" } top-level' >"
+        result += "
+        <a href='#' class='dropdown-toggle top-level' data-toggle='dropdown'>
+          #{t.title} <b class='caret'></b>
+        </a>
+        <ul class='dropdown-menu'>"
+        result += "<li>#{t.get_menu_link(active)}</li>"
+        result += "<li class='divider'></li>"
+
+        t.children.each do |c| 
+          active = (@menu_current == c.title)
+          result += "<li #{ active ? "class='active'" : ""}>#{c.get_menu_link(active)}</li>"
+        end
+
+        result += "</ul>"
+        result += "</li>"
+      else 
+        result += "<li class='#{ active ? "active" : "" } top-level'>#{t.get_menu_link("top-level active #{active ? 'active' : ''} top-level")}</li>"
       end
-      result += "\n</#{outer_tag}>\n"
+      result += "</li>"
+      result += "<li class='divider-vertical'></li>"
     end
+
+    result += "
+    </ul>
+    </div>
+    </div>
+    </div>"
     result.html_safe
   end
 

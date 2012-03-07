@@ -14,6 +14,9 @@ class PagesController < ApplicationController
     # otherwise use the page title (which maps to the URL slug)
     @title = ((@page.header_title.to_s == '') ? @page.title : @page.header_title )
 
+    @menu_current = @page.title
+    @menu_root = @page.root.title
+
     if @page.title == "Home"
       # for profile photos on front page
       begin
@@ -70,7 +73,7 @@ class PagesController < ApplicationController
   
   def create
     @page = Page.new(params[:page])
-   
+     
     if @page.save
       flash[:"alert-success"] = 'Page was successfully created'
       redirect_to(@page)

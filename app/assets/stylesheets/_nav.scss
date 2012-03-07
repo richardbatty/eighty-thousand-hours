@@ -1,3 +1,6 @@
+#bootstrap-nav {
+}
+
 #nav {
   @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
   height: 32px;
