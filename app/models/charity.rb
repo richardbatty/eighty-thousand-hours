@@ -4,8 +4,10 @@ class Charity < ActiveRecord::Base
 
   WEBSITE_REGEXP = /^https?:\/\/([^\s:@]+:[^\s:@]*@)?[-[[:alnum:]]]+(\.[-[[:alnum:]]]+)+\.?(:\d{1,5})?([\/?]\S*)?$/iux
   
-  validates :name, :website, presence: true, uniqueness: true
-  validates :website, format: WEBSITE_REGEXP
+  validates_presence_of :name, :message => "Please enter a charity name"
+  validates_uniqueness_of :name, :message => "Charity already exists!"
+  validates_presence_of :website, :format => WEBSITE_REGEXP, :message => "Please enter a valid URL"
+  validates_presence_of :description, :message => "Please describe the work this charity does (can be brief)"
   
   before_validation :format_website
 

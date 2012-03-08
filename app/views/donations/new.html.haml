@@ -25,7 +25,7 @@
     
       = simple_form_for @donation, :html => { :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}} do |f|
         = field_set_tag 'Donation details' do
-          = f.association :charity, :required => true
+          = f.association :charity, :required => true, :hint => "charity not listed? #{link_to "add it here", new_charity_path }".html_safe
           = f.input :amount, :required => true
           = f.input :receipt, :required => true, :hint => "PDF donation receipt from charity"
       

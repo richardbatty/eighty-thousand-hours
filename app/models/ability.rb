@@ -67,6 +67,7 @@ class Ability
 
       if user.confirmed?
         can :manage, Donation, :user_id => user.id
+        can :create, Charity
       end
     end
 
