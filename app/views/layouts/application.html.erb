@@ -61,17 +61,20 @@
     </header>
 
     <div class="container">
-      <% if flash %>
-        <div class="row">
-          <div class="span6 offset3">
-            <% flash.each do |key,value| %>
-              <div class="alert <%= key %>">
-                <%= value %>
-                <a class="close" data-dismiss="alert">&times;</a>
-              </div>
-            <% end %>
+      <% if !flash.empty?  %>
+        <% count = 0 %>
+        <% flash.each do |key,value| %>
+          <div class="modal" id="flash-modal-<%= count %>">
+            <div class="modal-body alert <%= key %>">
+              <%= value %>
+            </div>
+            <div class="modal-footer">
+              <a class="btn" data-dismiss="modal">Ok</a>
+            </div>
           </div>
-        </div>
+          <script>$("#flash-modal-<%= count %>").modal('show');</script>
+          <% count += 1 %>
+        <% end %>
       <% end %>
 
       <section id="content">
