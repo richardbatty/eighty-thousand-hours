@@ -14,6 +14,11 @@
           %h5 Member since 
           = profile.created_at.strftime "%B %Y"
 
+        %p
+          %h5 Donations
+          = number_to_currency( member.donations.sum(:amount), :unit => '&pound;' )
+          = link_to 'view', "##{member.slug}-donations"
+
         -if member.external_links?
           %p
             %h5 External links
@@ -44,9 +49,6 @@
               = profile.organisation
             - elsif member.location?
               = member.location
-        .donations
-          %p
-            = member_donations member.donations.sum(:amount)
         
         - if profile.background?
           %h2 Background and interests
@@ -94,4 +96,17 @@
           %h2 Interesting fact
           = markdown profile.interesting_fact
           %hr
+
+        - if donations
+          .donations{:id => "#{member.slug}-donations"}
+            %h2
+              Donations totalling
+              = to_pounds( member.total_confirmed_donations )
+            %p
+              %ul
+                - donations.each do |donation|
+                  %li
+                    = member_donation_full( donation )
+          %hr
+
         
