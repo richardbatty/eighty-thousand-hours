@@ -62,8 +62,16 @@ class Ability
       can :manage, Page
     end
 
+    if user
+      can :update, User, :id => user.id
+
+      if user.confirmed?
+        can :manage, Donation, :user_id => user.id
+      end
+    end
+
+    # anyone can read posts or view pages
     can :read, Post, :published => true
     can :read, Page
-    can :update, User, :id => user.id
   end
 end

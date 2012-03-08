@@ -101,4 +101,8 @@ class User < ActiveRecord::Base
   def send_apply_email_to_80k_team
     UserMailer.apply(self).deliver!
   end
+
+  def total_confirmed_donations
+    donations.confirmed.sum(:amount)
+  end
 end

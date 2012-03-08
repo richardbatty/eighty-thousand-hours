@@ -12,6 +12,10 @@ class Charity < ActiveRecord::Base
   attr_accessible :name, :website, :description
   
   has_many :donations
+
+  def total_confirmed_donations
+    donations.confirmed.sum(:amount)
+  end
   
   private
     def format_website
