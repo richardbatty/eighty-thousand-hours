@@ -9,12 +9,12 @@
         %h2
           =link_to @charity.website, @charity.website
       
-      %h2 Description
+      %h3 Description
       =markdown @charity.description
     
       %hr
     
-      %h2
+      %h3
         80,000 Hours members have donated
         = to_pounds(@charity.total_confirmed_donations)
         to
