@@ -1,7 +1,24 @@
 .box
   .page-header
-    %h2= @charity.name
-    %h4
+    %h1= @charity.name
+    %h2
       =link_to @charity.website, @charity.website
   
+  %h2 Description
   =markdown @charity.description
+
+  %hr
+
+  %h2
+    80,000 Hours members have donated
+    = to_pounds(@charity.total_confirmed_donations)
+    to
+    = @charity.name
+
+  %p
+    %ul
+      - @charity.donations.confirmed.each do |d|
+        %li
+          = print_donation d
+  %hr
+

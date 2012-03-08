@@ -1,18 +1,25 @@
 .box
   .page-header
-    %h2 Donations
+    %h1 Donations
   %p
     If you're an 80,000 Hours member and would like your charity donations to be associated with
-    your account, then click through to the form:
+    your account, then please follow the steps:
+    %ol
+      %li Make a donation to a charity through <strong>their website</strong>
+      %li Click the button below to <strong>submit your donation receipt to us</strong>
   
-  .center
-    = link_to 'Submit donation', new_donation_path, :class => 'btn btn-large'
+    = link_to 'Submit donation', new_donation_path, :class => 'btn'
   
   %hr
   %h2 Some recent donations
   - if @donations
-    - @donations.each do |d|
-      %p
-        %h4
-          =d.charity.name
-        =number_to_currency(d.amount)
+    %p
+      %ul
+        - @donations.each do |d|
+          %li
+            = link_to d.user.name, user_path(d.user)
+            donated
+            %strong
+              = number_to_currency(d.amount, :unit => "&pound;")
+            to
+            = link_to d.charity.name, charity_path(d.charity)
