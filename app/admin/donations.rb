@@ -17,6 +17,13 @@ ActiveAdmin.register Donation do
         link_to 'View receipt', donation.receipt.url(:thumb)
       end
     end
+    column :confirmed do |donation|
+      if donation.confirmed?
+        "<span class='status ok'>YES</span>".html_safe
+      else
+        "<span class='status error'>No</span> (#{link_to "Confirm", confirm_admin_donation_path(donation), :method => :put})".html_safe
+      end
+    end
     default_actions
   end
 
@@ -38,10 +45,13 @@ ActiveAdmin.register Donation do
   end
 
   form do |f|
-    f.inputs :user,
-             :charity,
-             :amount,
-             :receipt
+    f.inputs "Details" do
+      f.input :user, :collection => User.order("name ASC").confirmed.all
+      f.input :charity, :collection => Charity.order("name ASC").all
+      f.input :amount, :label => "Amount in &pound; GBP"
+      f.input :receipt
+      f.input :confirmed
+    end
     f.buttons
   end
 
