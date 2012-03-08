@@ -1,8 +1,8 @@
 class DonationsController < ApplicationController
-  load_and_authorize_resource :only => [:new,:destroy,:edit,:update]
+  load_and_authorize_resource :only => [:destroy,:edit,:update]
 
   def index
-    @donations = Donation.all
+    @donations = Donation.confirmed
   end
 
   def create
@@ -12,7 +12,7 @@ class DonationsController < ApplicationController
     end
 
     if @donation.save
-      flash[:"alert-success"] = "Thanks #{current_user.first_name}, your donation is being processed!"
+      flash[:"alert-success"] = "Thanks #{current_user.first_name}, your donation is being processed! We'll send you an email once it's been added to your profile."
       redirect_to root_url 
     else
       render :new
@@ -21,5 +21,6 @@ class DonationsController < ApplicationController
 
   def new
     @donation = Donation.new( :user => current_user )
+    authorize! :create, Donation, :message => "You need to <a href='/accounts/sign_in'>sign in</a> or <a href='/join'>sign up</a> to make a donation!".html_safe
   end
 end
