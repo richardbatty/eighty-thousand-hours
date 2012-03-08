@@ -1,25 +1,31 @@
-.box
-  .page-header
-    %h1 Donations
-  %p
-    If you're an 80,000 Hours member and would like your charity donations to be associated with
-    your account, then please follow the steps:
-    %ol
-      %li Make a donation to a charity through <strong>their website</strong>
-      %li Click the button below to <strong>submit your donation receipt to us</strong>
-  
-    = link_to 'Submit donation', new_donation_path, :class => 'btn'
-  
-  %hr
-  %h2 Some recent donations
-  - if @donations
-    %p
-      %ul
-        - @donations.each do |d|
-          %li
-            = link_to d.user.name, user_path(d.user)
-            donated
-            %strong
-              = number_to_currency(d.amount, :unit => "&pound;")
-            to
-            = link_to d.charity.name, charity_path(d.charity)
+.row
+  .span2
+    .box.sidebar
+      = render :partial => "/shared/charity_donation_member_sidebar"
+
+  .span8
+    .box.left-border
+      .page-header
+        %h1 Donations
+      %p
+        If you're an 80,000 Hours member and would like your charity donations to be associated with
+        your account, then please follow the steps:
+        %ol
+          %li Make a donation to a charity through <strong>their website</strong>
+          %li Click the button below to <strong>submit your donation receipt to us</strong>
+      
+        = link_to 'Submit donation', new_donation_path, :class => 'btn'
+      
+      %hr
+      %h2 Some recent donations
+      - if @donations
+        %p
+          %ul
+            - @donations.each do |d|
+              %li
+                = link_to d.user.name, user_path(d.user)
+                donated
+                %strong
+                  = number_to_currency(d.amount, :unit => "&pound;")
+                to
+                = link_to d.charity.name, charity_path(d.charity)

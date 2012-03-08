@@ -1,13 +1,19 @@
-.box
-  .page-header
-    %h2 Charities
-  %p
-    This page lists all the charities that 80,000 Hours members have donated to.
-    Click on the charity name to learn more about how and why we support a particular charity.
-  - if @charities
-    %ul
-      - @charities.each do |c|
-        %li
-          %h3
-            =link_to c.name, charity_path(c)
-  %hr
+.row
+  .span2
+    .box.sidebar
+      = render :partial => "/shared/charity_donation_member_sidebar"
+
+  .span8
+    .box.left-border
+      .page-header
+        %h1 Charities
+      %p
+        This page lists all the charities that 80,000 Hours members have donated to.
+        Click on the charity name to learn more about how and why we support a particular charity.
+      - if @charities
+        %ul
+          - @charities.each do |c|
+            %li
+              %h3
+                =link_to c.name, charity_path(c)
+      %hr

@@ -1,29 +1,35 @@
-.box
-  .page-header
-    %h1 Make a donation
-  %p
-    %strong
-      Note:
-    If you prefer you can forward donation receipts to <a href="mailto:donations@80000hours.org">donations@80000hours.org</a>. Make sure to include your name!
-  
-  - if @donation.errors.any?
-    .alert.alert-error
-      <a class="close" data-dismiss="alert">×</a>
-      %h4.alert-heading 
-        = pluralize(@donation.errors.count, "error")
-        prohibited this donation from being processed!
-      %ul
-        - @donation.errors.reverse_each do |field,msg|
-          %li
-            = msg
+.row
+  .span2
+    .box.sidebar
+      = render :partial => "/shared/charity_donation_member_sidebar"
 
-  = simple_form_for @donation, :html => { :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}} do |f|
-    = field_set_tag 'Donation details' do
-      = f.association :charity, :required => true
-      = f.input :amount, :required => true
-      = f.input :receipt, :required => true, :hint => "PDF donation receipt from charity"
-  
-    %hr
-    .center
-      = f.button :submit, "Submit donation", :class=> "btn btn-large"
+  .span8
+    .box.left-border
+      .page-header
+        %h1 Make a donation
+      %p
+        %strong
+          Note:
+        If you prefer you can forward donation receipts to <a href="mailto:donations@80000hours.org">donations@80000hours.org</a>. Make sure to include your name!
+      
+      - if @donation.errors.any?
+        .alert.alert-error
+          <a class="close" data-dismiss="alert">×</a>
+          %h4.alert-heading 
+            = pluralize(@donation.errors.count, "error")
+            prohibited this donation from being processed!
+          %ul
+            - @donation.errors.reverse_each do |field,msg|
+              %li
+                = msg
+    
+      = simple_form_for @donation, :html => { :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}} do |f|
+        = field_set_tag 'Donation details' do
+          = f.association :charity, :required => true
+          = f.input :amount, :required => true
+          = f.input :receipt, :required => true, :hint => "PDF donation receipt from charity"
+      
+        %hr
+        .center
+          = f.button :submit, "Submit donation", :class=> "btn btn-large"
           
