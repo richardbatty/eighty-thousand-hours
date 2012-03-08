@@ -9,7 +9,8 @@
 
       <%= f.fields_for :member, :defaults=>{:input_html=>{:class=>'span4'}}  do |mf| %>
         <%= mf.fields_for :eighty_thousand_hours_profile, :defaults=>{:input_html=>{:class=>'span4'}}  do |ep| %>
-          <%= f.input :name, :required => true %>
+          <%= f.input :name, :required => true, :hint => 'This will be displayed publicly. Can be a pseudonym.' %>
+          <%= f.input :real_name, :hint => 'Never displayed publicly.' %>
           <%= f.input :email, :required => true %>
         <% end %>
       <% end %>

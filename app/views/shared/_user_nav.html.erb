@@ -29,7 +29,7 @@
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
-                  <li><a href="#">Account settings</a></li>
+                  <li><%= link_to "Account settings", '/accounts/edit' %></li>
                   <li><%= link_to "Edit profile", '/members/edit' %></li>
                   <li><%= link_to "View profile", user_path(current_user) %></li>
                   <% if can? :access, :admin %>
