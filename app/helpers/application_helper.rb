@@ -7,6 +7,10 @@ module ApplicationHelper
     end
   end
 
+  def to_pounds(value)
+    number_to_currency(value, :unit => "&pound;")
+  end
+
   def button_link( text, path, klass = nil )
     content_tag( :div, :class => "center" ) do
       link_to  text, path, :class => (klass ? "button " + klass : "button")
