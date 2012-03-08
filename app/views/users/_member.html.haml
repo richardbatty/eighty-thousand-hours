@@ -17,7 +17,8 @@
         %p
           %h5 Donations
           = number_to_currency( member.donations.sum(:amount), :unit => '&pound;' )
-          = link_to 'view', "##{member.slug}-donations"
+          - if member.donations.confirmed.size > 0
+            = link_to 'view', "##{member.slug}-donations"
 
         -if member.external_links?
           %p
@@ -97,7 +98,7 @@
           = markdown profile.interesting_fact
           %hr
 
-        - if donations
+        - if member.donations.confirmed.size > 0
           .donations{:id => "#{member.slug}-donations"}
             %h2
               Donations totalling
