@@ -64,5 +64,6 @@ class Ability
 
     can :read, Post, :published => true
     can :read, Page
+    can :update, User, :id => user.id
   end
 end
