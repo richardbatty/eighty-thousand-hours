@@ -18,7 +18,7 @@ class Donation < ActiveRecord::Base
                                          :bucket            => ENV['S3_BUCKET'] },
                     :path => "/donations/:id/:filename"
 
-  scope :confirmed, where(:confirmed => true)
+  scope :confirmed, where(:confirmed => true).order("created_at DESC")
 
   def confirm!
     self.confirmed = true
