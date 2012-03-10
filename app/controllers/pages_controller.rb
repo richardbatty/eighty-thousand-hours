@@ -37,12 +37,6 @@ class PagesController < ApplicationController
     #otherwise render show.html...
   end
 
-  def endorsements
-    @endorsements = Endorsement.order("created_at ASC")
-    @menu_current = 'Endorsements'
-    @menu_root = 'About Us'
-  end
-
   def meet_the_team
     @title = "Meet the team"
     team_roles = %w[president managing_director research community

@@ -20,6 +20,8 @@ EightyThousandHours::Application.routes.draw do
   resources :chat_requests, :only => [:new,:create], :path => 'chat-to-us'
   match 'chat-to-us' => 'chat_requests#new'
 
+  resources :endorsements, :only =>[:index]
+
   # override /members/new as /join
   match 'join'               => 'users#new', :as => :join
   match 'members/all'        => 'users#all', :as => :all
@@ -47,7 +49,6 @@ EightyThousandHours::Application.routes.draw do
   # all other pages are stored as Markdown in the database
   root :to => 'pages#show', :id => "home"
   match 'search'        => 'pages#search'
-  match 'endorsements'  => 'pages#endorsements'
   match 'mailing-list'  => 'pages#mailing_list'
   match 'meet-the-team' => 'pages#meet_the_team'
   match 'sitemap'       => 'pages#sitemap'

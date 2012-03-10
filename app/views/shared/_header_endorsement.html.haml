@@ -1,0 +1,11 @@
+- endorsement = Endorsement.front_page.shuffle.first
+- if endorsement
+  .endorsement
+    .endorsement-body
+      = markdown ('"' + endorsement.body + '"')
+    .attribution
+      %span.author
+        &#8213;
+        = endorsement.author
+      &nbsp;
+      = endorsement.position
