@@ -1,6 +1,10 @@
 class DonationsController < ApplicationController
   load_and_authorize_resource :only => [:destroy,:edit,:update]
 
+  rescue_from CanCan::AccessDenied do |exception|
+    redirect_to donations_path, :alert => exception.message
+  end
+
   def index
     @donations = Donation.confirmed
   end
@@ -13,7 +17,7 @@ class DonationsController < ApplicationController
 
     if @donation.save
       flash[:"alert-success"] = "Thanks #{current_user.first_name}, your donation is being processed! We'll send you an email once it's been added to your profile."
-      redirect_to root_url 
+      redirect_to donations_path
     else
       render :new
     end
