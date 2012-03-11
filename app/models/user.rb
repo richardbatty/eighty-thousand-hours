@@ -62,6 +62,9 @@ class User < ActiveRecord::Base
   # a User can create lots of donations
   has_many :donations
 
+  # a User can vote on lots of posts
+  has_many :votes
+
   scope :alphabetical, order("name ASC")
   scope :newest, order("created_at DESC")
   

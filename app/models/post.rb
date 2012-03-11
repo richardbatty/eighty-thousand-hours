@@ -1,19 +1,3 @@
-# == Schema Information
-#
-# Table name: posts
-#
-#  id          :integer         not null, primary key
-#  title       :string(255)
-#  body        :text
-#  draft       :boolean
-#  created_at  :datetime
-#  updated_at  :datetime
-#  attribution :string(255)
-#  slug        :string(255)
-#  teaser      :text
-#  author      :string(255)
-#
-
 class Post < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   extend FriendlyId
@@ -29,11 +13,43 @@ class Post < ActiveRecord::Base
   scope :published, where(:draft => false).order("created_at DESC")
   scope :popular, lambda{|n| where(:draft => false).order("facebook_likes DESC").limit(n)}
 
+
+  # a Post can have votes from many different users
+  has_many :votes
+
   # override to_param to specify format of URL
   # now we can call post_path(@post) and get
   # "/blog/8-today-show" returned for example
   def to_param
     "#{self.id}-#{self.friendly_id}"
+  end
+
+  def vote! (user, up )
+    user_votes = Vote.by_post(self).by_user(user)
+
+    # check if user has already voted for this post
+    if user_votes.empty?
+      vote = Vote.new( :user => user, :post => self, :positive => up )
+      vote.save
+    else
+      vote = user_votes.first
+      if (up && vote.positive) || (!up && !vote.positive)
+        # user already upvoted, and clicked up again
+        # so we destroy the vote
+        # and vice versa
+        vote.destroy
+      else
+        # we had an upvote, and user clicked Down
+        # so we change the upvote to a downvote
+        # or vice versa
+        vote.positive = !vote.positive
+        vote.save
+      end
+    end
+  end
+
+  def net_votes
+    self.facebook_likes + self.votes.upvotes.size - self.votes.downvotes.size
   end
 
   # first bit of the article -- used as
