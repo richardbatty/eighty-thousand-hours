@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120310230820) do
+ActiveRecord::Schema.define(:version => 20120311014612) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -249,5 +249,13 @@ ActiveRecord::Schema.define(:version => 20120310230820) do
   end
 
   add_index "versions", ["item_type", "item_id"], :name => "index_versions_on_item_type_and_item_id"
+
+  create_table "votes", :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "post_id"
+    t.boolean  "positive"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end

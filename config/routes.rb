@@ -8,6 +8,7 @@ EightyThousandHours::Application.routes.draw do
     collection do
       get :tag
       get :author
+      get :vote
     end
   end
 
