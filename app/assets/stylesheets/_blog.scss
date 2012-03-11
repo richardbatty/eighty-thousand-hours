@@ -1,11 +1,36 @@
 .blog {
-  .entry {
-    padding-left: 20px;
-    padding-right: 20px;
-    padding-top: 10px;
-    padding-bottom: 30px;
+  .voting {
+    margin-right: 10px;
+    width: 25px;
+    float: right;
+    text-align: center;
 
-    /*border-right: 1px solid #efefef;*/
+    .arrow {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .votes {
+      font-size: 1.0em;
+    }
+
+    .voted { 
+      border: 1px solid red;
+    }
+  }
+
+  .heading {
+    padding-bottom: 5px;
+    border-bottom: 1px solid #efefef;
+  }
+
+  .sidebar {
+    p {
+      font-size: 0.9em;
+    }
+  }
+  .entry {
+    padding-top: 10px;
 
     h1,h2,h3,h4,h5,h6 {
       font-weight: bold;
@@ -21,11 +46,10 @@
 
     }
 
-    .date {
-      color: #555;
-      padding-bottom: 5px;
-      border-bottom: 1px solid #ccc;
-
+    h1,h2,h3,h4,h5,h6 {
+      .date {
+        color: #999;
+      }
     }
 
     .content {
