@@ -59,6 +59,9 @@
           = f.input :password, :required => :true
       
         = field_set_tag 'Your plans' do
+          %p
+            %strong Note:
+            None of this information will ever be displayed publicly.
           = f.simple_fields_for :eighty_thousand_hours_application,:defaults=>{:input_html=>{:class=>'span4'}} do |e|
             %hr
             = e.input :career_plans, :placeholder => "How do you plan to use your career to fulfil the declaration?", :as => :text, :required => true, :input_html => {:rows=>'5'}
