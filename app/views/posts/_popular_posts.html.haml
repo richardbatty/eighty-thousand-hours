@@ -1,6 +1,12 @@
 %h3 Popular posts
-- @popular_posts.each do |p|
+- @popular_posts.each do |post|
   %p
-    = link_to p.title, post_path(p)
-    %br
-    = "by #{p.author}"
+    .link-to-post
+      %h5
+        %span.votes= post.net_votes
+        <i class='icon-arrow-up'></i>
+        = link_to post.title, post_path( post )
+      %h5
+        %span.author
+          =(link_to post.author, { :action => :author, :id => post.author })+", "
+        %span.date= post.created_at.strftime("%B %d, %Y") + ", "

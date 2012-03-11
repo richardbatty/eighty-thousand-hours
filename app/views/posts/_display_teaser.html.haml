@@ -1,7 +1,7 @@
 .entry
-  .heading
-    = render :partial => 'voting', :locals => { :post => post }
+  = render :partial => 'voting', :locals => { :post => post }
 
+  .heading
     %h3
       %a{:href => post_path(post)}
         = post.title

@@ -2,12 +2,13 @@
   .box.left-border
     = render :partial => 'voting', :locals => { :post => post }
 
-    %h1
-      = post.title
-    %h3
-      %span.author
-        =(link_to post.author, { :action => :author, :id => post.author })+", "
-      %span.date= post.created_at.strftime("%B %d, %Y")
+    .heading
+      %h3
+        = post.title
+      %h4
+        %span.author
+          =(link_to post.author, { :action => :author, :id => post.author })+", "
+        %span.date= post.created_at.strftime("%B %d, %Y")
     .content
       = markdown post.body
 

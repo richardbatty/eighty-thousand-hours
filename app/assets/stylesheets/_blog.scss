@@ -1,30 +1,58 @@
 .blog {
   .voting {
     margin-right: 10px;
-    width: 25px;
-    float: right;
+    width: 20px;
+    float: left;
     text-align: center;
 
     .arrow {
       margin-left: auto;
       margin-right: auto;
+
+      &:hover{
+        @include rounded_borders($magenta_3, 1px, 5px);
+      }
     }
 
     .votes {
-      font-size: 1.0em;
+      font-size: 0.8em;
     }
 
+    .notvoted {
+      background: #ffffff;
+      @include rounded_borders(#fff, 1px, 5px);
+    }
     .voted { 
-      border: 1px solid red;
+      @include rounded_borders($magenta_3, 1px, 5px);
     }
   }
 
   .heading {
-    padding-bottom: 5px;
+    padding-bottom: 10px;
     border-bottom: 1px solid #efefef;
   }
 
   .sidebar {
+    .link-to-post {
+      h5 {
+        font-weight: bold;
+
+        .author {
+          a {
+            color: $text_color !important;
+
+            &:hover {
+              color: $magenta_2 !important;
+            }
+          }
+        }
+
+        .date {
+          color: #999;
+        }
+      }
+    }
+
     p {
       font-size: 0.9em;
     }
@@ -43,7 +71,6 @@
           color: $magenta_2 !important;
         }
       }
-
     }
 
     h1,h2,h3,h4,h5,h6 {
