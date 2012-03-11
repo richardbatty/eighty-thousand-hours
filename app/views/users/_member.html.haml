@@ -20,6 +20,16 @@
           - if member.donations.confirmed.size > 0
             = link_to 'view', "##{member.slug}-donations"
 
+        - upvotes = member.votes.upvotes.recent
+        - if upvotes.size > 0
+          %p
+            %h5 Recent activity
+            - upvotes.each do |v|
+              liked blog post:
+              %br
+              =link_to v.post.title, post_path(v.post)
+              %br
+
         -if member.external_links?
           %p
             %h5 External links
@@ -109,5 +119,3 @@
                   %li
                     = member_donation_full( donation )
           %hr
-
-        

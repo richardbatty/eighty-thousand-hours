@@ -1,0 +1,26 @@
+.entry
+  .heading
+    = render :partial => 'voting', :locals => { :post => post }
+
+    %h3
+      %a{:href => post_path(post)}
+        = post.title
+    %h4
+      %span.author
+        =(link_to post.author, { :action => :author, :id => post.author })+", "
+      %span.date= post.created_at.strftime("%B %d, %Y")
+
+  .content
+    = markdown post.get_teaser
+
+    .read-more
+      %a{:href => post_path(post)}
+        <i class="icon-align-left"></i>
+        Read more...
+
+  .comments
+    %a{"href" => "#{post_url(post)}#disqus_thread",
+       "data-disqus-identifier" => "blog-post-#{post.id}" }
+    %div= render :partial => "disqus_count", :locals => { :post_id => post.id, :post_title => post.title }
+
+%hr

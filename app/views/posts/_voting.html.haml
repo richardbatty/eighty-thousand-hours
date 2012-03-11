@@ -1,0 +1,12 @@
+.voting
+  - vote = Vote.by_post(post).by_user(current_user).first
+  - upvoted   = vote.nil? ? false : vote.positive
+  - downvoted = vote.nil? ? false : !vote.positive
+  .arrow
+    = link_to "<i class='icon-arrow-up #{upvoted ? 'voted' : ''}'></i>".html_safe,
+      { :action => :vote, :up => true, :id => post.id }
+  .votes
+    = post.net_votes
+  .arrow
+    = link_to "<i class='icon-arrow-down #{downvoted ? 'voted' : ''}'></i>".html_safe, 
+      { :action => :vote, :up => false, :id => post.id }

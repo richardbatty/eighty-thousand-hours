@@ -1,6 +1,6 @@
 .blog
   .row
-    .span2
+    .span3
       .box.sidebar
         = link_to '<i class="icon-list"></i> Back to the blog'.html_safe, posts_path
         %hr
@@ -15,7 +15,7 @@
         %hr
         = render :partial => "tag_cloud"
 
-    .span8
-      .box.left-border
-        = render :partial => 'display_post', :locals => { :post => @post, :teaser => false }
+    .span7
+      = render :partial => 'display_post',
+               :locals => { :post => @post }
  
