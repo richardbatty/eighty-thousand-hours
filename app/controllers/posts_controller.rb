@@ -46,15 +46,30 @@ class PostsController < ApplicationController
   def author
     @heading = "Posts by #{params[:id]}"
     @posts = Post.published.where("author = ?", params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    @just_headings = true
 
     prepare_sidebar
 
     render :action => 'index'
   end
 
+  def vote
+    post = Post.find( params[:id] )
+    user = current_user
+    
+    if !user
+      flash[:"alert-warn"] = "You need to sign in or sign up to vote!"
+    else
+      post.vote!( user, (params[:up] == 'true') ? true : false )
+    end
+
+    redirect_to :action => 'index' 
+  end
+
   def tag
     @heading = "Posts tagged with '#{params[:id]}'"
     @posts = Post.tagged_with(params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    @just_headings = true
 
     prepare_sidebar
 
@@ -75,5 +90,11 @@ class PostsController < ApplicationController
     respond_to do |format|
       format.atom { render :layout => false } #views/posts/feed.atom.builder
     end
+  end
+
+
+  private
+  def can_vote_on_post? (user, post )
+    !user.nil?
   end
 end
