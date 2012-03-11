@@ -11,8 +11,10 @@ class Post < ActiveRecord::Base
 
   scope :draft,     where(:draft => true).order("created_at DESC")
   scope :published, where(:draft => false).order("created_at DESC")
-  scope :popular, lambda{|n| where(:draft => false).order("facebook_likes DESC").limit(n)}
-
+  def self.popular( n )
+    n = 1 if n < 1
+    where(:draft => false).sort_by{|p| p.net_votes}.reverse.slice(0..(n-1))
+  end
 
   # a Post can have votes from many different users
   has_many :votes
