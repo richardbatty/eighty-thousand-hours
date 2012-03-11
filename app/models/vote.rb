@@ -8,5 +8,5 @@ class Vote < ActiveRecord::Base
   scope :upvotes, where(:positive => true)
   scope :downvotes, where(:positive => false)
 
-  scope :recent, order("created_at ASC").limit(3)
+  scope :recent, order("created_at DESC").limit(3)
 end
