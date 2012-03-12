@@ -1,0 +1,16 @@
+- if donation.public?
+  = link_to donation.user.name, user_path(donation.user)
+- else
+  = "An anonymous 80,000 Hours member"
+
+donated
+
+- if donation.public_amount?
+  %strong
+    = to_pounds( donation.amount ) 
+
+to
+= link_to donation.charity.name, charity_path(donation.charity)
+
+on
+= donation.created_at.strftime('%d %B, %Y')
