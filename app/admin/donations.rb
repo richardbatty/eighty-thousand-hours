@@ -24,6 +24,12 @@ ActiveAdmin.register Donation do
         "<span class='status error'>No</span> (#{link_to "Confirm", confirm_admin_donation_path(donation), :method => :put})".html_safe
       end
     end
+    column :public do |donation|
+      donation.public? ? "yes" : "no"
+    end
+    column :public_amount do |donation|
+      donation.public_amount? ? "yes" : "no"
+    end
     default_actions
   end
 
@@ -41,6 +47,8 @@ ActiveAdmin.register Donation do
         end
       end
       row :confirmed
+      row :public
+      row :public_amount
     end
   end
 
@@ -51,6 +59,8 @@ ActiveAdmin.register Donation do
       f.input :amount, :label => "Amount in &pound; GBP"
       f.input :receipt
       f.input :confirmed
+      f.input :public
+      f.input :public_amount
     end
     f.buttons
   end
