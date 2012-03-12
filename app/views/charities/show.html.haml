@@ -24,6 +24,6 @@
         %ul
           - @charity.donations.confirmed.each do |d|
             %li
-              = print_donation d
+              = render :partial => 'shared/show_donation', :locals => { :donation => d}
       %hr
     

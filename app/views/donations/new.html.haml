@@ -33,6 +33,8 @@
             %strong
               Note:
             Instead of uploading a receipt, you can submit this form and then forward a donation receipt to <a href="mailto:donations@80000hours.org">donations@80000hours.org</a>. Please include your name in the email subject line.
+          = f.input :public, :label => 'Show donation on member profile'
+          = f.input :public_amount, :label => 'Show _amount_ donated on member profile'
 
         %hr
         .center

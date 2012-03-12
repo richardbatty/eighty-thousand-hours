@@ -23,9 +23,4 @@
           %ul
             - @donations.each do |d|
               %li
-                = link_to d.user.name, user_path(d.user)
-                donated
-                %strong
-                  = number_to_currency(d.amount, :unit => "&pound;")
-                to
-                = link_to d.charity.name, charity_path(d.charity)
+                = render :partial => 'shared/show_donation', :locals => { :donation => d }

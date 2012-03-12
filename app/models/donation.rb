@@ -8,7 +8,7 @@ class Donation < ActiveRecord::Base
   
   after_create :send_confirmation_email_to_user
 
-  attr_accessible :user_id, :charity_id, :amount, :receipt
+  attr_accessible :user_id, :charity_id, :amount, :receipt, :public, :public_amount
   
   # paperclip gem for receipt uploads to s3
   has_attached_file :receipt,
@@ -19,6 +19,8 @@ class Donation < ActiveRecord::Base
                     :path => "/donations/:id/:filename"
 
   scope :confirmed, where(:confirmed => true).order("created_at DESC")
+  scope :public, where(:public => true)
+  scope :public_amount, public.where(:public_amount => true)
 
   def confirm!
     self.confirmed = true

@@ -16,8 +16,10 @@
 
         %p
           %h5 Donations
-          = number_to_currency( member.donations.sum(:amount), :unit => '&pound;' )
-          - if member.donations.confirmed.size > 0
+          - total = member.donations.confirmed.public_amount.sum(:amount)
+          - if total > 0
+            = to_pounds( total )
+          - if member.donations.confirmed.public.size > 0
             = link_to 'view', "##{member.slug}-donations"
 
         - upvotes = member.votes.upvotes.recent
@@ -108,14 +110,15 @@
           = markdown profile.interesting_fact
           %hr
 
-        - if member.donations.confirmed.size > 0
+        - if member.donations.confirmed.public.size > 0
           .donations{:id => "#{member.slug}-donations"}
             %h2
-              Donations totalling
-              = to_pounds( member.total_confirmed_donations )
+              Donations
+              -#= to_pounds( member.total_confirmed_donations )
             %p
               %ul
-                - donations.each do |donation|
-                  %li
-                    = member_donation_full( donation )
+                - donations.each do |d|
+                  - if d.public
+                    %li
+                      = render :partial => 'shared/show_donation', :locals => { :donation => d }
           %hr
