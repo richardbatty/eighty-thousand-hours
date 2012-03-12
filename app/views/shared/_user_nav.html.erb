@@ -31,7 +31,9 @@
                 <ul class="dropdown-menu">
                   <li><%= link_to "Account settings", '/accounts/edit' %></li>
                   <li><%= link_to "Edit profile", '/members/edit' %></li>
-                  <li><%= link_to "View profile", user_path(current_user) %></li>
+                  <% if current_user.confirmed %>
+                    <li><%= link_to "View profile", user_path(current_user) %></li>
+                  <% end %>
                   <% if can? :access, :admin %>
                     <li><%= link_to "Admin", admin_dashboard_path %></li>
                   <% end %>
