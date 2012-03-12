@@ -10,6 +10,10 @@
       %p
         This page lists all the charities that 80,000 Hours members have donated to.
         Click on the charity name to learn more about how and why we support a particular charity.
+      %p
+        To make a donation visit the 
+        = link_to "donations page", donations_path
+      %hr
       - if @charities
         %ul
           - @charities.each do |c|
