@@ -3,6 +3,10 @@ ActiveAdmin.register User do
        :label => "80k Members"
   controller.authorize_resource
 
+  filter :name
+  filter :email
+  filter :location
+
   scope :confirmed
   scope :unconfirmed
 
