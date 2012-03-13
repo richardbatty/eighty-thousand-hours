@@ -1,0 +1,37 @@
+- if @donation.errors.any?
+  .alert.alert-error
+    <a class="close" data-dismiss="alert">×</a>
+    %h4.alert-heading 
+      = pluralize(@donation.errors.count, "error")
+      prohibited this donation from being processed!
+    %ul
+      - @donation.errors.reverse_each do |field,msg|
+        %li
+          = msg
+
+= simple_form_for @donation, :html => {:class => 'form-horizontal'},
+                             :defaults => {:input_html => {:class => 'span4'}} do |f|
+  = field_set_tag 'Donation details' do
+    - if( page == :edit )
+      = f.association :charity, :disabled => true, :required => false
+      = f.input :amount, :disabled => true
+    - else
+      = f.association :charity, :required => true,
+                      :hint => "charity not listed? #{link_to "add it here", new_charity_path }".html_safe
+      = f.input :amount, :required => true
+  = field_set_tag "#{ (page == :new ) ? 'Accountability' : 'Privacy' }" do
+    - if( page == :new )
+      = f.input :receipt, :hint => "PDF donation receipt from charity"
+      %p
+        %strong Note:
+        Instead of uploading a receipt, you can submit this form and then
+        forward a donation receipt to 
+        = link_to 'donations@80000hours.org', 'mailto:donations@80000hours.org'
+        Please include your name in the email subject line.
+    = f.input :public, :label => 'Display donation publicly?'
+    = f.input :public_amount, :label => 'Make amount donated public?'
+  %hr
+  .center
+    = f.button :submit, "Submit donation", :class=> "btn btn-large btn-primary"
+    -#- if ( page == :edit )
+      -#= link_to 'Cancel', donations_path( @donation ), :class => 'btn btn-large'

@@ -1,3 +1,6 @@
+- if donation.user == current_user
+  = link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_donation_path(donation), :class => 'edit'
+
 - if donation.public?
   = link_to donation.user.name, user_path(donation.user)
 - else

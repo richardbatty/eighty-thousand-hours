@@ -1,0 +1,22 @@
+.row
+  .span2
+    .box.sidebar
+      = render :partial => "/shared/charity_donation_member_sidebar"
+
+  .span8
+    .box.left-border
+      .page-header
+        %h1 Your donation
+      %p
+        You donated #{to_pounds @donation.amount} to #{@donation.charity.name}
+        on #{@donation.created_at.strftime('%d %B, %Y')}.
+      %hr
+      %p
+        %strong This donation will appear on your public profile as follows:
+      %p
+        = render :partial => 'shared/show_donation', :locals => { :donation => @donation }
+      %hr
+      %p
+        You can change the privacy settings of your donation by clicking the button below
+      %p
+        =link_to 'Edit donation', edit_donation_path(@donation), :class => 'btn'

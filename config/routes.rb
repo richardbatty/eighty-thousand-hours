@@ -11,10 +11,11 @@ EightyThousandHours::Application.routes.draw do
       get :vote
     end
   end
-  resources :charities, :only => [:new,:create,:show,:index]
-  resources :donations, :only => [:new,:create,:index]
 
-  resources :votes
+  resources :charities, :only => [:new,:create,:show,:index]
+  resources :donations, :only => [:new,:create,:update,:show,:index,:edit]
+
+  resources :votes, :only => [:new,:create,:delete]
 
   resources :supporters, :only => [:new, :create], :path => 'show-your-support'
   match 'show-your-support' => 'supporters#new'

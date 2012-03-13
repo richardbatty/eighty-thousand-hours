@@ -1,0 +1,13 @@
+.row
+  .span2
+    .box.sidebar
+      = render :partial => "/shared/charity_donation_member_sidebar"
+
+  .span8
+    .box.left-border
+      .page-header
+        %h1 Edit a donation
+      %p
+        You can change the privacy settings of your donation using the form below.
+
+      = render :partial => 'form', :locals => { :page => :edit }

@@ -7,6 +7,7 @@ class DonationsController < ApplicationController
 
   def index
     @donations = Donation.confirmed
+    @your_donations = current_user.donations if current_user
   end
 
   def create
@@ -26,5 +27,25 @@ class DonationsController < ApplicationController
   def new
     @donation = Donation.new( :user => current_user )
     authorize! :create, Donation, :message => "You need to <a href='/accounts/sign_in'>sign in</a> or <a href='/join'>sign up</a> to make a donation!".html_safe
+  end
+
+  def edit
+    @donation = current_user.donations.find( params[:id] )
+    authorize! :edit, Donation, :message => "You need to <a href='/accounts/sign_in'>sign in</a> or <a href='/join'>sign up</a> to edit a donation!".html_safe
+  end
+
+  def show
+    @donation = current_user.donations.find( params[:id] )
+    authorize! :view, Donation, :message => "You need to <a href='/accounts/sign_in'>sign in</a> or <a href='/join'>sign up</a> to view a donation!".html_safe
+  end
+
+  def update
+    @donation = current_user.donations.find(params[:id])
+    if @donation.update_attributes(params[:donation])
+      flash[:"alert-success"] = "Your privacy settings were updated successfully"
+      redirect_to(@donation)
+    else
+      render :action => "edit"
+    end
   end
 end

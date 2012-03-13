@@ -462,6 +462,12 @@ sup {
   @include rounded_borders(#b94a48, 1px, 3px);
 }
 
+a.edit
+{
+  color: #555;
+  padding-right: 5px;
+}
+
 @import "nav";
 @import "blog";
 

@@ -17,6 +17,14 @@
         = link_to 'Submit donation', new_donation_path, :class => 'btn'
       
       %hr
+      - if @your_donations
+        %h2 Your donations
+        %p
+          %ul
+            - @your_donations.each do |d|
+              %li
+                = render :partial => 'shared/show_donation', :locals => { :donation => d }
+        %hr
       %h2 Some recent donations
       - if @donations
         %p

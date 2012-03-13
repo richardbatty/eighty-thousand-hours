@@ -19,8 +19,8 @@ class Donation < ActiveRecord::Base
                     :path => "/donations/:id/:filename"
 
   scope :confirmed, where(:confirmed => true).order("created_at DESC")
-  scope :public, where(:public => true)
-  scope :public_amount, public.where(:public_amount => true)
+  scope :is_public, where(:public => true)
+  scope :is_public_amount, is_public.where(:public_amount => true)
 
   def confirm!
     self.confirmed = true
