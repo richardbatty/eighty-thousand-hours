@@ -13,7 +13,7 @@ class Post < ActiveRecord::Base
   scope :published, where(:draft => false).order("created_at DESC")
   def self.popular( n )
     n = 1 if n < 1
-    where(:draft => false).sort_by{|p| p.net_votes}.reverse.slice(0..(n-1))
+    where(:draft => false).sort_by{|p| p.popularity}.reverse.slice(0..(n-1))
   end
 
   # a Post can have votes from many different users
@@ -52,6 +52,16 @@ class Post < ActiveRecord::Base
 
   def net_votes
     self.facebook_likes + self.votes.upvotes.size - self.votes.downvotes.size
+  end
+
+  def popularity
+    fb_votes = 0.01 * self.facebook_likes
+    karma_votes = 0.0
+    self.votes.upvotes.each do |v|
+      karma_votes += 1.0/(1+(DateTime.now - Vote.first.created_at.to_datetime).to_i)
+    end
+
+    fb_votes + karma_votes
   end
 
   # first bit of the article -- used as
