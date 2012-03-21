@@ -14,13 +14,14 @@
           %h5 Member since 
           = profile.created_at.strftime "%B %Y"
 
-        %p
-          %h5 Donations
-          - total = member.donations.confirmed.is_public_amount.sum(:amount)
-          - if total > 0
-            = to_pounds( total )
-          - if member.donations.confirmed.is_public.size > 0
-            = link_to 'view', "##{member.slug}-donations"
+        - if member.donations.confirmed.is_public.size > 0
+          %p
+            %h5 Donations
+            - total = member.donations.confirmed.is_public_amount.sum(:amount)
+            - if total > 0
+              = to_pounds( total )
+            - if member.donations.confirmed.is_public.size > 0
+              = link_to 'view', "##{member.slug}-donations"
 
         - upvotes = member.votes.upvotes.recent
         - if upvotes.size > 0
@@ -36,7 +37,7 @@
           %p
             %h5 External links
             - if member.external_website?
-              = link_to " Personal website".html_safe, member.external_website
+              = link_to "<i class='icon-info-sign'></i> Personal website".html_safe, member.external_website
               %br
 
             - if member.external_twitter?
