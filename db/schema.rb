@@ -39,15 +39,6 @@ ActiveRecord::Schema.define(:version => 20120312170207) do
 
   add_index "charities", ["slug"], :name => "index_charities_on_slug", :unique => true
 
-  create_table "comments", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "post_id"
-    t.integer  "comment_id"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "donations", :force => true do |t|
     t.decimal  "amount",               :precision => 10, :scale => 2
     t.integer  "charity_id"
