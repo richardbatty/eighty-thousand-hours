@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120312170207) do
+ActiveRecord::Schema.define(:version => 20120321163857) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -234,6 +234,7 @@ ActiveRecord::Schema.define(:version => 20120312170207) do
     t.string   "external_facebook"
     t.string   "external_linkedin"
     t.string   "real_name"
+    t.string   "external_website"
   end
 
   add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
