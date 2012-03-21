@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120312170207) do
+ActiveRecord::Schema.define(:version => 20120321130222) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -28,6 +28,14 @@ ActiveRecord::Schema.define(:version => 20120312170207) do
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_active_admin_comments_on_resource_type_and_resource_id"
 
+  create_table "authentications", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "provider"
+    t.string   "uid"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "charities", :force => true do |t|
     t.string   "name"
     t.string   "website"
@@ -38,15 +46,6 @@ ActiveRecord::Schema.define(:version => 20120312170207) do
   end
 
   add_index "charities", ["slug"], :name => "index_charities_on_slug", :unique => true
-
-  create_table "comments", :force => true do |t|
-    t.integer  "user_id"
-    t.integer  "post_id"
-    t.integer  "comment_id"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
 
   create_table "donations", :force => true do |t|
     t.decimal  "amount",               :precision => 10, :scale => 2
