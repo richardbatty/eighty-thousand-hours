@@ -17,6 +17,7 @@ class User < ActiveRecord::Base
                   :on_team,
                   :team_role,
                   :team_role_id,
+                  :external_website,
                   :external_twitter,
                   :external_facebook,
                   :external_linkedin,
@@ -89,7 +90,7 @@ class User < ActiveRecord::Base
   scope :on_team, confirmed.where(:on_team => true).joins(:team_role)
 
   def external_links?
-    external_twitter? || external_linkedin? || external_facebook?
+    external_website? || external_twitter? || external_linkedin? || external_facebook?
   end
   
   def self.with_team_role(role)

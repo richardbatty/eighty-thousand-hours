@@ -35,6 +35,9 @@
         -if member.external_links?
           %p
             %h5 External links
+            - if member.external_website?
+              = link_to " Personal website".html_safe, member.external_website
+              %br
 
             - if member.external_twitter?
               = link_to image_tag("social/twitter.png") + " Twitter".html_safe, member.external_twitter
