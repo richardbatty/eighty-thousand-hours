@@ -11,7 +11,13 @@ class Post < ActiveRecord::Base
 
   scope :draft,     where(:draft => true).order("created_at DESC")
   scope :published, where(:draft => false).order("created_at DESC")
-  def self.popular( n )
+
+  def self.by_votes( n = Post.all.size )
+    n = 1 if n < 1
+    where(:draft => false).sort_by{|p| p.net_votes}.reverse.slice(0..(n-1))
+  end
+
+  def self.by_popularity( n = Post.all.size )
     n = 1 if n < 1
     where(:draft => false).sort_by{|p| p.popularity}.reverse.slice(0..(n-1))
   end
