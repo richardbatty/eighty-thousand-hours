@@ -12,6 +12,6 @@ secret_path = "#{ENV['HOME']}/.80000hours_secrets.rb"
 require secret_path if File.exists?( secret_path ) 
 
 task :run => [:set_development_environment] do
-    sh "rails server"
+    sh "rails server -u"
 end
 
