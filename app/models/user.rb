@@ -30,6 +30,9 @@ class User < ActiveRecord::Base
 
   delegate :public_profile, :to => :eighty_thousand_hours_application
 
+  # omniauth authentication
+  has_many :authentications
+
   # dependent means 80k application gets destroyed when user is destroyed
   has_one :eighty_thousand_hours_application, :dependent => :destroy
   accepts_nested_attributes_for :eighty_thousand_hours_application

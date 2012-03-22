@@ -1,6 +1,8 @@
 EightyThousandHours::Application.routes.draw do
   resources :authentications
 
+  match '/auth/:provider/callback' => 'authentications#create'
+
   ActiveAdmin.routes(self)
 
   devise_for :users, :path => 'accounts'
