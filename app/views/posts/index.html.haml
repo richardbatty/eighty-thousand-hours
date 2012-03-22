@@ -37,7 +37,7 @@
             = render :partial => 'display_teaser',
                      :locals => { :post => post }
 
-        -#- if will_paginate @posts
-          -#.box.tight
-            -#.center
-              -#= page_navigation_links @posts
+        - if (@sort == nil) && (will_paginate @posts)
+          .box.tight
+            .center
+              = page_navigation_links @posts
