@@ -11,16 +11,8 @@ Then /^I can see the authentication on my account settings page$/ do
   page.should have_content("Your account is linked to facebook")
 end
 
-Given /^I have an account$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
 Given /^I have an authentication$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
-Then /^I am logged in$/ do
-  pending # express the regexp above with the code you wish you had
+  @authentication ||= FactoryGirl.create :authentication
 end
 
 Given /^my Facebook email is the same as my account email$/ do

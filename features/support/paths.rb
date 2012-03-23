@@ -14,6 +14,8 @@ module NavigationHelpers
       user_path @user
     when /^my account settings page$/
       edit_user_registration_path @user
+    when /^the sign in page$/
+      new_user_session_path
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

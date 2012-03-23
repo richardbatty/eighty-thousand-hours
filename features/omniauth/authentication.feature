@@ -13,6 +13,7 @@ Feature: Authentication
   Scenario:
     Given I have an account
     And I have an authentication
+    And I am on the sign in page
     When I connect to Facebook
     Then I am logged in
 

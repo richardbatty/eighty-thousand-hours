@@ -15,8 +15,16 @@ Given /^(?:|I )am signed in$/i do
   sign_in
 end
 
+Then /^(?:|I )am logged in$/i do
+  defined? current_user
+end
+
 Given /^(?:|I )am signed out$/i do
   sign_out
+end
+
+Given /^I have an account$/ do
+  @user ||= FactoryGirl.create :user
 end
 
 When /^(?:|I )enter my details$/i do

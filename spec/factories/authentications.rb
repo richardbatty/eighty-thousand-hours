@@ -3,7 +3,7 @@
 FactoryGirl.define do
   factory :authentication do
     user_id 1
-    provider "MyString"
-    uid "MyString"
+    provider "facebook"
+    uid "1234"
   end
 end
