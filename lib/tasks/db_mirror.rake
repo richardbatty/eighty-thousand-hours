@@ -2,7 +2,7 @@ namespace :db do
   def local_db
     config_file = File.join Rails.root, 'config', 'database.yml'
     doc = YAML::load_file(config_file)
-    doc['development']['database']
+    doc[Rails.env]['database']
   end
 
   desc 'Copies production db into local development db'
