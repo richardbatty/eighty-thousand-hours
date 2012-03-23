@@ -13,11 +13,17 @@ class AuthenticationsController < ApplicationController
       current_user.authentications.find_or_create_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
       flash[:notice] = "Authentication successful!"
       redirect_to edit_user_registration_path current_user
-    else  
+    elsif user = User.where( email: omniauth['info']['email'] ).first
+      user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
+      user.save!
+      flash[:notice] = "Your account has been associated with your facebook account"  
+      sign_in_and_redirect(:user, user)  
+    else
       pwd = (0...16).map{ ('a'..'z').to_a[rand(26)] }.join
       user = User.new(:name => omniauth['info']['name'], :email => omniauth['info']['email'], :password => pwd, :password_confirmation =>pwd)  
       user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
-      user.save!  
+      user.save!
+      user.confirm! #maybe?
       flash[:notice] = "Signed in successfully."  
       sign_in_and_redirect(:user, user)  
     end  

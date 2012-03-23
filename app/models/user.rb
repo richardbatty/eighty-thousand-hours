@@ -27,7 +27,6 @@ class User < ActiveRecord::Base
                   :eighty_thousand_hours_application_attributes,
                   :eighty_thousand_hours_profile_attributes
 
-
   delegate :public_profile, :to => :eighty_thousand_hours_application
 
   # omniauth authentication
@@ -43,7 +42,6 @@ class User < ActiveRecord::Base
 
   # note that Devise handles the validation for email and password
   validates_presence_of   :name, :message => "You must tell us your name"
-  validates_uniqueness_of :name, case_sensitive: false, :message => "That name is already taken!"
 
   # paperclip avatars on S3
   has_attached_file :avatar, {
