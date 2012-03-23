@@ -1,7 +1,3 @@
-Given /^I am a logged in user$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
 When /^I connect to Facebook$/ do
   pending # express the regexp above with the code you wish you had
 end

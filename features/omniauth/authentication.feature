@@ -4,7 +4,7 @@ Feature: Authentication
   I want to authenticate with Facebook
 
   Scenario:
-    Given I am a logged in user
+    Given I am signed in
     When I connect to Facebook
     Then I have a new authentication
     And I can see the authentication on my account settings page
