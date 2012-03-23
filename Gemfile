@@ -58,6 +58,9 @@ gem 'simple_form'
 # twitter bootstrap for Rails 3.x
 gem "twitter-bootstrap-rails"
 
+# 3rd party authentication
+gem 'omniauth-facebook'
+
 group :development do
   gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'heroku' #included for rake db:mirror system calls

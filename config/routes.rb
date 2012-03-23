@@ -1,4 +1,6 @@
 EightyThousandHours::Application.routes.draw do
+  resources :authentications
+
   ActiveAdmin.routes(self)
 
   devise_for :users, :path => 'accounts'
