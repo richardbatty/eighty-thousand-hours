@@ -5,6 +5,7 @@ Feature: Authentication
 
   Scenario:
     Given I am signed in
+    And I am on my account settings page
     When I connect to Facebook
     Then I have a new authentication
     And I can see the authentication on my account settings page

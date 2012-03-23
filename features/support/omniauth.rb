@@ -1,31 +1,25 @@
 module OmniAuthHelper
   def set_omniauth(opts = {})
-    default = {:provider => :facebook,
-               :uuid     => "1234",
-               :facebook => {
-                              :email => "foobar@example.com",
-                              :gender => "Male",
-                              :first_name => "foo",
-                              :last_name => "bar"
-                            }
+    default = { :provider => :facebook,
+                :uid     => "1234",
+                :info => {
+                  :name       => 'Fake McName',
+                  :email      => "foobar@example.com",
+                  :first_name => "Fake",
+                  :last_name  => "McName"
+                }
               }
 
     credentials = default.merge(opts)
     provider = credentials[:provider]
-    user_hash = credentials[provider]
 
     OmniAuth.config.test_mode = true
 
     OmniAuth.config.mock_auth[provider] = {
-      'uid' => credentials[:uuid],
-      "extra" => {
-      "user_hash" => {
-        "email" => user_hash[:email],
-        "first_name" => user_hash[:first_name],
-        "last_name" => user_hash[:last_name],
-        "gender" => user_hash[:gender]
-        }
-      }
+      'uid'      => credentials[:uid],
+      'provider' => credentials[:provider],
+      'info'     => { 'name' => credentials[:info][:name],
+                      'email' => credentials[:info][:email] }
     }
   end
 

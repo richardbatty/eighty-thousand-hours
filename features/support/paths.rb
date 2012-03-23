@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /^my profile page$/
       user_path @user
+    when /^my account settings page$/
+      edit_user_registration_path @user
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

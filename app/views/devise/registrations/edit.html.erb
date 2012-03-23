@@ -15,6 +15,14 @@
         <% end %>
       <% end %>
 
+      <hr/>
+      <%= link_to 'Connect to Facebook', '/auth/facebook', id: 'fb-connect' %>
+      <% current_user.authentications.each do |a| %>
+        Your account is linked to <%= a.provider %>
+        <br/>
+      <% end %>
+      <hr/>
+
       <%= field_set_tag "Change password" do %>
         <%= f.input :password, :label => "New password", :placeholder => "optional" %>
         <%= f.input :password_confirmation, :label => "New password confirmation", :placeholder => "optional" %>

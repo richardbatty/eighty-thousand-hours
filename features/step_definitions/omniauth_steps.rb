@@ -1,13 +1,14 @@
 When /^I connect to Facebook$/ do
-  pending # express the regexp above with the code you wish you had
+  set_omniauth
+  click_link 'fb-connect'
 end
 
 Then /^I have a new authentication$/ do
-  pending # express the regexp above with the code you wish you had
+  @user.authentications.size.should eq 1
 end
 
 Then /^I can see the authentication on my account settings page$/ do
-  pending # express the regexp above with the code you wish you had
+  page.should have_content("Your account is linked to facebook")
 end
 
 Given /^I have an account$/ do
