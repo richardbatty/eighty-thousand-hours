@@ -29,6 +29,7 @@
                   <b class="caret"></b>
                 </a>
                 <ul class="dropdown-menu">
+                  <li><%= link_to "Donations", '/donations' %></li>
                   <li><%= link_to "Account settings", '/accounts/edit' %></li>
                   <li><%= link_to "Edit profile", '/members/edit' %></li>
                   <% if current_user.confirmed %>
