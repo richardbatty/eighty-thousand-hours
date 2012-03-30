@@ -79,7 +79,7 @@ EightyThousandHours::Application.configure do
     config.middleware.use ExceptionNotifier,
       :email_prefix => "[Error at 80000hours.org] ",
       :sender_address => %{"noreply80000" <eighty.thousand@gmail.com>},
-      :exception_recipients => %w{powermoveguru@gmail.com robbie.shade@gmail.com folcon@gmail.com}
+      :exception_recipients => %w{powermoveguru@gmail.com robbie.shade@gmail.com}
 
   PAPERCLIP_STORAGE_OPTIONS = {:storage => :s3, 
                                :s3_credentials => { :access_key_id     => ENV['S3_ACCESS'],
