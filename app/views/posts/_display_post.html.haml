@@ -1,7 +1,13 @@
 .entry
   .box.left-border
-    = render :partial => 'voting', :locals => { :post => post }
+    - if post.user == current_user
+      .controls
+        .user
+          = link_to "Edit post", edit_post_path, :class => 'btn btn-mini btn-warning'
 
+          = link_to 'Delete post', post_path, :confirm => "Are you sure you want to delete the post '#{post.title}'?", :method => :delete, :class => 'btn btn-mini btn-danger'
+
+    = render :partial => 'voting', :locals => { :post => post }
     .heading
       %h3
         = post.title
