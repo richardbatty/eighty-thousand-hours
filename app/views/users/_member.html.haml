@@ -23,17 +23,15 @@
             - if member.donations.confirmed.is_public.size > 0
               = link_to 'view', "##{member.slug}-donations"
 
-        - if member.posts.size > 0
-          %h5 Recent blog posts
-          - member.posts.published.limit(3).each do |post|
-            =link_to post.title, post
-            %br
-            %br
-              
         - upvotes = member.votes.upvotes.recent
         - if upvotes.size > 0
           %p
             %h5 Recent activity
+            - member.posts.published.limit(3).each do |post|
+              wrote blog post:
+              %br
+              =link_to post.title, post
+              %br
             - upvotes.each do |v|
               liked blog post:
               %br
