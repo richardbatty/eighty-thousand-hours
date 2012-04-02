@@ -38,7 +38,7 @@ We have done research into some of the best careers for effective altruists.
     latest_blog_html += "
 <div class='blog-latest'>
 <a class='title' href='#{post_path p}'>#{p.title}</a>
-<br/><span class='author'>#{p.author},</span>  <span class='date'>#{p.created_at.strftime('%B %d, %Y')}</span>
+<br/><span class='author'>#{(p.user ? p.user.name : p.author)},</span>  <span class='date'>#{p.created_at.strftime('%B %d, %Y')}</span>
 </div>
 "
   end
