@@ -192,6 +192,9 @@ header {
     padding-bottom: 15px;
     .author {
       font-weight: bold;
+      a { 
+        color: $text_color;
+      }
     }
     .date {
       padding-left: 5px;

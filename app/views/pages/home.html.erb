@@ -33,12 +33,13 @@ We have done research into some of the best careers for effective altruists.
 <%
   posts = Post.published.limit(5)
   latest_blog_html = ""
-  posts.each do |p|
+  posts.each do |post|
     # note: gets processed by markdown so can't have leading spaces
     latest_blog_html += "
 <div class='blog-latest'>
-<a class='title' href='#{post_path p}'>#{p.title}</a>
-<br/><span class='author'>#{(p.user ? p.user.name : p.author)},</span>  <span class='date'>#{p.created_at.strftime('%B %d, %Y')}</span>
+<a class='title' href='#{post_path post}'>#{post.title}</a>
+<br/>
+#{(render :partial => 'posts/author_link', :locals => { :post => post })}
 </div>
 "
   end
