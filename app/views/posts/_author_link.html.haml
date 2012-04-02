@@ -1,0 +1,4 @@
+- if post.user
+  =link_to post.user.name, post.user
+- else
+  =link_to post.author, { :action => :author, :id => post.author }

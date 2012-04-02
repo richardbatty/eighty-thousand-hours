@@ -7,20 +7,14 @@
         = post.title
       %h4
         %span.author
-          - if post.user
-            =link_to post.user.name, post.user
-          - else
-            =link_to post.author, { :action => :author, :id => post.author }
+          = render :partial => 'posts/author_link', :locals => { :post => post }
           ,
         %span.date= post.created_at.strftime("%B %d, %Y")
     .content
       = markdown post.body
 
-    .attribution= markdown post.attribution if post.attribution 
+    .attribution= markdown (post.attribution ? post.attribution : (post.user ? post.user.name : post.author ))
 
-    %p
-      more posts by 
-      =link_to post.author, { :action => :author, :id => post.author }
     %p
       = render :partial => "post_tags", :locals => { :post => post, :div_title => "tags:" }
     %p

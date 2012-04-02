@@ -1,6 +1,6 @@
 .row
-  .span2
-    .member-profile
+  .member-profile
+    .span2
       .sidebar
         .avatar
           = link_to image_tag(member.avatar.url(:medium)), member.avatar.url
@@ -23,6 +23,13 @@
             - if member.donations.confirmed.is_public.size > 0
               = link_to 'view', "##{member.slug}-donations"
 
+        - if member.posts.size > 0
+          %h5 Recent blog posts
+          - member.posts.published.limit(3).each do |post|
+            =link_to post.title, post
+            %br
+            %br
+              
         - upvotes = member.votes.upvotes.recent
         - if upvotes.size > 0
           %p
@@ -54,10 +61,9 @@
 
         %p
           %h5 Navigation
-          = link_to '<i class="icon-user"></i> member list'.html_safe, users_path
+          = link_to '<i class="icon-user"></i> view all members'.html_safe, users_path
 
-  .span8
-    .member-profile
+    .span8
       .main
         .page-header
           %h1= profile.name
@@ -126,3 +132,9 @@
                     %li
                       = render :partial => 'shared/show_donation', :locals => { :donation => d }
           %hr
+
+        - if member.posts.size > 0
+          .blog
+            %h2 Recent blog posts
+            - member.posts.published.limit(3).each do |post|
+              =render :partial => 'posts/display_heading', :locals => {:post => post}
