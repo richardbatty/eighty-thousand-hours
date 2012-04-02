@@ -38,6 +38,9 @@ class User < ActiveRecord::Base
   has_one :eighty_thousand_hours_profile, :dependent => :destroy
   accepts_nested_attributes_for :eighty_thousand_hours_profile
 
+  # a user can write many blog posts
+  has_many :posts
+
   # note that Devise handles the validation for email and password
   validates_presence_of   :name, :message => "You must tell us your name"
   validates_uniqueness_of :name, case_sensitive: false, :message => "That name is already taken!"

@@ -7,7 +7,7 @@
         = post.title
       %h4
         %span.author
-          =(link_to post.author, { :action => :author, :id => post.author })+", "
+          =(link_to post.user.name, post.user)+", "
         %span.date= post.created_at.strftime("%B %d, %Y")
     .content
       = markdown post.body

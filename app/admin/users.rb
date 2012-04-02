@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   menu :if => proc{ can?(:manage, User) },
-       :label => "80k Members"
+       :label => "Members"
   controller.authorize_resource
 
   filter :name

@@ -25,6 +25,9 @@ class Post < ActiveRecord::Base
   # a Post can have votes from many different users
   has_many :votes
 
+  # a User wrote this post
+  belongs_to :user
+
   # override to_param to specify format of URL
   # now we can call post_path(@post) and get
   # "/blog/8-today-show" returned for example
