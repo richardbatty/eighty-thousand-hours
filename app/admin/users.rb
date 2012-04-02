@@ -59,7 +59,10 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "Details" do
-      f.inputs :user,
+      f.inputs :name,
+               :email,
+               :password,
+               :password_confirmation,
                :real_name,
                :location,
                :phone,
