@@ -6,10 +6,8 @@
       %h3
         = post.title
       %h4
-        %span.author
-          = render :partial => 'posts/author_link', :locals => { :post => post }
-          ,
-        %span.date= post.created_at.strftime("%B %d, %Y")
+        = render :partial => 'posts/author_link', :locals => { :post => post }
+
     .content
       = markdown post.body
 
