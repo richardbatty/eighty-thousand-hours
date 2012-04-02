@@ -1,6 +1,6 @@
 %h3 Authors
 - if @authors
   %p
-    - @authors.each do |a|
-      =link_to a.author, { :action => :author, :id => a.author }
+    - @authors.each do |author|
+      =link_to author, { :action => :author, :id => author }
       %br

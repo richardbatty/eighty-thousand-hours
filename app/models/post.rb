@@ -22,6 +22,25 @@ class Post < ActiveRecord::Base
     where(:draft => false).sort_by{|p| p.popularity}.reverse.slice(0..(n-1))
   end
 
+  def self.by_author( author, page )
+    # see if we have a user with this name
+    user = User.find_by_name( author )
+    if user
+      query = user.posts.order("created_at DESC")
+    else
+      query = Post.published.where("author = ?", author ).order("created_at DESC")
+    end
+
+    query.paginate(:page => page, :per_page => 10)
+  end
+
+  def self.author_list
+    authors = where(:draft=>false).select('DISTINCT author').map{|p| p.author}
+    users   = where("user_id IS NOT NULL").select('DISTINCT user_id').map{|p| p.user.name}
+
+    (authors + users).sort
+  end
+
   # a Post can have votes from many different users
   has_many :votes
 

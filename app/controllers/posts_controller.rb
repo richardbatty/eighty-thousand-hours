@@ -3,9 +3,7 @@ class PostsController < ApplicationController
     @recommended_posts = Page.find('recommended-posts')
     @tag_cloud = Post.tag_counts_on(:tags) || []
     @popular_posts = Post.by_popularity(5)
-
-    # When we upgrade to Rails3.2 this becomes Post.select(:author).uniq...
-    @authors = Post.where(:draft=>false).select('DISTINCT author').order('author ASC')
+    @authors = Post.author_list
   end
 
   def index
@@ -74,7 +72,7 @@ class PostsController < ApplicationController
 
   def author
     @heading = "Posts by #{params[:id]}"
-    @posts = Post.published.where("author = ?", params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    @posts = Post.by_author(params[:id],params[:page])
     @condensed = true
 
     prepare_sidebar
