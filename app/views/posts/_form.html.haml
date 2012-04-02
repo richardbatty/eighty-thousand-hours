@@ -1,0 +1,15 @@
+%p
+  All fields can be formatted with Markdown
+
+= simple_form_for @post, :defaults => { :input_html => { :class => 'span10' } } do |f|
+  .form-inputs
+    = f.input :title,  :placeholder => "Title of the blog post..."
+    = f.input :body,   :placeholder => "Blog post body..."
+    = f.input :teaser, :placeholder => 'Usually just the first paragraph from the post...', :input_html => { :style => 'height:100px' }
+    = f.input :draft, :label => "Draft post"
+    %hr
+
+  .form-actions
+    = f.button :submit
+    or
+    = link_to 'cancel', :back

@@ -6,7 +6,7 @@ EightyThousandHours::Application.routes.draw do
   devise_for :users, :path => 'accounts'
 
   match '/blog/feed.atom' => 'posts#feed', :as => :feed, :defaults => { :format => 'atom' }
-  resources :posts, :path => 'blog', :only => [:index, :show] do
+  resources :posts, :path => 'blog' do
     collection do
       get :tag
       get :author

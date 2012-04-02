@@ -12,6 +12,10 @@ class Post < ActiveRecord::Base
   scope :draft,     where(:draft => true).order("created_at DESC")
   scope :published, where(:draft => false).order("created_at DESC")
 
+  validates_presence_of :title
+  validates_presence_of :body
+  validates_presence_of :teaser
+
   def self.by_votes( n = Post.all.size )
     n = 1 if n < 1
     where(:draft => false).sort_by{|p| p.net_votes}.reverse.slice(0..(n-1))
@@ -26,7 +30,7 @@ class Post < ActiveRecord::Base
     # see if we have a user with this name
     user = User.find_by_name( author )
     if user
-      query = user.posts.order("created_at DESC")
+      query = user.posts.where(:draft => false).order("created_at DESC")
     else
       query = Post.published.where("author = ?", author ).order("created_at DESC")
     end
@@ -35,7 +39,7 @@ class Post < ActiveRecord::Base
   end
 
   def self.author_list
-    authors = where(:draft=>false).select('DISTINCT author').map{|p| p.author}
+    authors = where(:draft => false).where("author IS NOT NULL").select('DISTINCT author').map{|p| p.author}
     users   = where("user_id IS NOT NULL").select('DISTINCT user_id').map{|p| p.user.name}
 
     (authors + users).sort

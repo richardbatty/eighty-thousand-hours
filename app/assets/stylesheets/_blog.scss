@@ -161,8 +161,8 @@
     }
   }
 
-  .sort-options {
-    .options {
+  .controls {
+    .sort {
       float:right;
       @include rounded_borders(#ccc, 1px, 5px);
       font-size: 0.9em;
@@ -172,6 +172,11 @@
     float:left;
     clear:both;
     padding: 5px;
+
+    .user {
+      float:right;
+      padding: 5px;
+    }
   }
 }
 

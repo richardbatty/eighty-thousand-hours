@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  load_and_authorize_resource :only => [:new,:update,:destroy]
+
   def prepare_sidebar
     @recommended_posts = Page.find('recommended-posts')
     @tag_cloud = Post.tag_counts_on(:tags) || []
@@ -119,6 +121,31 @@ class PostsController < ApplicationController
     end
   end
 
+  def edit
+    @post = current_user.posts.find( params[:id] )
+  end
+
+  def update
+    @post = current_user.posts.find( params[:id] )
+    if @post.update_attributes( params[:post] )
+      redirect_to @post, :notice => "Post updated!"
+    else
+      render :edit
+    end
+  end
+
+  def new
+    @post = Post.new
+  end
+
+  def create
+    @post = current_user.posts.new( params[:post] )
+    if @post.save
+      redirect_to @post, :notice => "Blog post created!"
+    else
+      render :new
+    end
+  end
 
   private
   def can_vote_on_post? (user, post )
