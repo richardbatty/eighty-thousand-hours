@@ -6,3 +6,5 @@
     .blog
       = render :partial => 'posts/display_heading',
                :locals => { :post => post }
+  %hr
+  = link_to '<i class="icon-user"></i> back to member profile'.html_safe, @user

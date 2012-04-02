@@ -131,8 +131,10 @@
                       = render :partial => 'shared/show_donation', :locals => { :donation => d }
           %hr
 
-        - if member.posts.size > 0
+        - if member.posts.published.size > 0
           .blog
             %h2 Recent blog posts
             - member.posts.published.limit(3).each do |post|
               =render :partial => 'posts/display_heading', :locals => {:post => post}
+            %br
+            = link_to "View all posts by #{member.name}", posts_user_path( member )
