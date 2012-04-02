@@ -1,6 +1,6 @@
 .entry
   .box.left-border
-    - if post.user == current_user
+    - if can? :manage, post
       .controls
         .user
           = link_to "Edit post", edit_post_path, :class => 'btn btn-mini btn-warning'
@@ -35,7 +35,7 @@
 
     .comments
       #disqus_thread
-        = render :partial => "disqus_embed", :locals => { :post_id => @post.id, :post_title => @post.title }
+        = render :partial => "disqus_embed", :locals => { :post_id => post.id, :post_title => post.title }
 
     %hr
     .center
