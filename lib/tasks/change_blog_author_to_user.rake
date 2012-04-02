@@ -3,25 +3,7 @@ task :change_blog_author_to_user => :environment do
   Post.all.each do |p|
     user = User.find_by_name(p.author)
     if user
-      # we already have a user, associate post with user
-      p.user = user
-    else
-      # need to create a new user
-      chars=('a'..'z').to_a+('A'..'Z').to_a+('0'..'9').to_a;
-      pw=''; 10.times{ pw += chars[rand(chars.length-1)] };
-      email = p.author.downcase.strip.gsub(' ', '-').gsub(/[^\w-]/, '')
-
-      user = User.new(:name => p.author, :email => "#{email}@example.com", :password => pw, :password_confirmation => pw)
-      begin
-        if user.save
-          puts "Created new user #{user.name} (#{user.id})"
-        else
-          puts "Failed to save new user #{user.name}: #{user.errors}"
-        end
-      rescue
-        puts "Rescued! Failed to save new user #{user.name}"
-      end
-
+      # we have a user with this name => associate post with user
       p.user = user
     end
 
