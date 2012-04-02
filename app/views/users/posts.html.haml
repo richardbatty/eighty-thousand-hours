@@ -1,0 +1,8 @@
+.box
+  .page-header
+    %h1 Blog posts by #{link_to @user.name, @user}
+  
+  - @posts.each do |post|
+    .blog
+      = render :partial => 'posts/display_heading',
+               :locals => { :post => post }

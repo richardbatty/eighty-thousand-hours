@@ -30,7 +30,7 @@ class Post < ActiveRecord::Base
     # see if we have a user with this name
     user = User.find_by_name( author )
     if user
-      query = user.posts.where(:draft => false).order("created_at DESC")
+      query = Post.published.where("user_id = ?", user.id ).order("created_at DESC")
     else
       query = Post.published.where("author = ?", author ).order("created_at DESC")
     end
@@ -42,7 +42,8 @@ class Post < ActiveRecord::Base
     authors = where(:draft => false).where("author IS NOT NULL").select('DISTINCT author').map{|p| p.author}
     users   = where("user_id IS NOT NULL").select('DISTINCT user_id').map{|p| p.user.name}
 
-    (authors + users).sort
+    #(authors + users).sort
+    users.sort
   end
 
   # a Post can have votes from many different users

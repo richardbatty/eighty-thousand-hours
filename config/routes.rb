@@ -33,7 +33,11 @@ EightyThousandHours::Application.routes.draw do
   match 'members/email-list' => 'users#email_list', :as => :all
   match 'members/search'     => 'users#search'
   match 'members/edit'       => 'users#edit'
-  resources :users, :path    => "members"
+  resources :users, :path    => "members" do
+    member do
+      get :posts
+    end
+  end
 
   # renamed pages which we don't want to break existing links to
   match 'banker-vs-aid-worker' => redirect('/professional-philanthropy')
