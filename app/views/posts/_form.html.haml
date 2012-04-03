@@ -16,8 +16,14 @@
             = asset.input :image, :label => "Add an image"
           - else
             .attached-image-thumb
-              To display, copy and paste into post:
-              %br
+              %h3= asset.object.image_file_name
+              .image
+                %ul.thumbnails
+                  %li
+                    = link_to( image_tag(asset.object.image.url(:small)), asset.object.image.url(:original), :class=>'thumbnail' )
+              Delete image: 
+              =asset.check_box :_destroy
+              %hr
               %strong small:
               .copy-paste
                 [![#{asset.object.image_file_name}](#{asset.object.image.url(:small)})](#{asset.object.image.url(:original)})
@@ -27,10 +33,6 @@
               %strong large:
               .copy-paste
                 [![#{asset.object.image_file_name}](#{asset.object.image.url(:large)})](#{asset.object.image.url(:original)})
-              .image
-                = link_to( image_tag(asset.object.image.url(:small)), asset.object.image.url(:original) )
-              Delete image: 
-              =asset.check_box :_destroy
     %hr
 
   .form-actions
