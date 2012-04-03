@@ -72,12 +72,12 @@
               %label
                 Which high impact activites do you intend to be involved in?
               .controls
-                = e.input :doing_good_inspiring,       :label => "Inspiring"
-                = e.input :doing_good_improving,       :label => "Improving"
-                = e.input :doing_good_philanthropy,    :label => "Philanthropy"
-                = e.input :doing_good_prophilanthropy, :label => "Professional philanthropy"
-                = e.input :doing_good_innovating,      :label => "Innovating"
-                = e.input :doing_good_research,        :label => "Research"
+                = e.input :doing_good_inspiring,       :label => ( link_to "Inspiring",                 '/high-impact-careers#inspiring-others', :target => '_blank' )
+                = e.input :doing_good_improving,       :label => ( link_to "Improving",                 '/high-impact-careers#improving',        :target => '_blank' )
+                = e.input :doing_good_philanthropy,    :label => ( link_to "Philanthropy",              '/high-impact-careers#philanthropy',     :target => '_blank' )
+                = e.input :doing_good_prophilanthropy, :label => ( link_to "Professional philanthropy", '/high-impact-careers#philanthropy',     :target => '_blank' )
+                = e.input :doing_good_innovating,      :label => ( link_to "Innovating",                '/high-impact-careers#innovating',       :target => '_blank' )
+                = e.input :doing_good_research,        :label => ( link_to "Research",                  '/high-impact-careers#research',         :target => '_blank' )
       
             %hr
       
