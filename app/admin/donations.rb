@@ -1,13 +1,13 @@
 ActiveAdmin.register Donation do
   menu :if => proc{ can?(:manage, Donation) },
-       :parent => "Charities"
+       :parent => "Causes"
 
   index do
     column :id
     column :created_at
     column :amount
-    column :charity do |donation|
-      donation.charity.name
+    column :cause do |donation|
+      donation.cause.name
     end
     column :member do |donation|
       donation.user.name if donation.user
@@ -38,7 +38,7 @@ ActiveAdmin.register Donation do
       row :id
       row :created_at
       row :updated_at
-      row :charity
+      row :cause
       row :amount
       row :user
       row :receipt do
@@ -55,7 +55,7 @@ ActiveAdmin.register Donation do
   form do |f|
     f.inputs "Details" do
       f.input :user, :collection => User.order("name ASC").confirmed.all
-      f.input :charity, :collection => Charity.order("name ASC").all
+      f.input :cause, :collection => Cause.order("name ASC").all
       f.input :amount, :label => "Amount in &pound; GBP"
       f.input :receipt
       f.input :confirmed

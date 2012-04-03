@@ -14,7 +14,7 @@ EightyThousandHours::Application.routes.draw do
     end
   end
 
-  resources :charities, :only => [:new,:create,:show,:index]
+  resources :causes, :only => [:new,:create,:show,:index]
   resources :donations, :only => [:new,:create,:update,:show,:index,:edit]
 
   resources :votes, :only => [:new,:create,:delete]

@@ -13,15 +13,16 @@
                              :defaults => {:input_html => {:class => 'span4'}} do |f|
   = field_set_tag 'Donation details' do
     - if( page == :edit )
-      = f.association :charity, :disabled => true, :required => false
+      = f.association :cause, :disabled => true, :required => false
       = f.input :amount, :disabled => true
     - else
-      = f.association :charity, :required => true,
-                      :hint => "charity not listed? #{link_to "add it here", new_charity_path }".html_safe
-      = f.input :amount, :required => true
+      = f.association :cause, :required => true,
+                      :hint => "cause not listed? #{link_to "add it here", new_cause_path }".html_safe
+      = f.input :amount, :required => true, :hint => 'Please convert to £GBP'
+    = f.input :date, :required => true
   = field_set_tag "#{ (page == :new ) ? 'Accountability' : 'Privacy' }" do
     - if( page == :new )
-      = f.input :receipt, :hint => "PDF donation receipt from charity"
+      = f.input :receipt, :hint => "PDF donation receipt from cause"
       %p
         %strong Note:
         Instead of uploading a receipt, you can submit this form and then
@@ -33,5 +34,3 @@
   %hr
   .center
     = f.button :submit, "Submit donation", :class=> "btn btn-large btn-primary"
-    -#- if ( page == :edit )
-      -#= link_to 'Cancel', donations_path( @donation ), :class => 'btn btn-large'

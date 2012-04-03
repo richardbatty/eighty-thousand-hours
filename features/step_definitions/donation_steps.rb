@@ -8,20 +8,20 @@ Given /^there is a member$/ do
   @member ||= FactoryGirl.create :member
 end
 
-Given /^there is a charity$/ do
-  @charity ||= FactoryGirl.create :charity
+Given /^there is a cause$/ do
+  @cause ||= FactoryGirl.create :cause
 end
 
 When /^I create a donation$/ do
   visit(new_admin_donation_path)
   fill_in("Amount", with: 10)
   select(@member.name, from: 'Member')
-  select(@charity.name, from: 'Charity')
+  select(@cause.name, from: 'cause')
   click_button('Create Donation')
 end
 
 Then /^(?:|I )should see the donation$/ do
-  page.should have_content(@charity.name)
+  page.should have_content(@cause.name)
   page.should have_content(@member.name)
   page.should have_content(10)
 end

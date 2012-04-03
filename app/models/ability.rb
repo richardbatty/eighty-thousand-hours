@@ -49,11 +49,11 @@ class Ability
       can :manage, Endorsement
     end
 
-    # a DonationAdmin manages donations and charities
+    # a DonationAdmin manages donations and causes
     if user.has_role? :donation_admin
       can :access, :admin
       can :manage, Donation
-      can :manage, Charity
+      can :manage, Cause
     end
 
     # a WebAdmin can edit and create site content pages
@@ -67,7 +67,7 @@ class Ability
 
       if user.confirmed?
         can :manage, Donation, :user_id => user.id
-        can :create, Charity
+        can :create, Cause
         can :create, Post
         can :manage, Post, :user_id => user.id
       end
