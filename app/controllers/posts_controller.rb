@@ -122,12 +122,12 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = posts.find( params[:id] )
+    @post = Post.find( params[:id] )
     2.times { @post.attached_images.build }
   end
 
   def update
-    @post = posts.find( params[:id] )
+    @post = Post.find( params[:id] )
     if @post.update_attributes( params[:post] )
       redirect_to @post, :notice => "Post updated!"
     else
@@ -150,7 +150,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = posts.find( params[:id] )
+    @post = Post.find( params[:id] )
     @post.destroy
     redirect_to posts_path, :notice => "Post permanently deleted"
   end
