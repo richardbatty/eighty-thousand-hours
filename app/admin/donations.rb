@@ -5,6 +5,7 @@ ActiveAdmin.register Donation do
   index do
     column :id
     column :created_at
+    column :currency
     column :amount
     column :cause do |donation|
       donation.cause.name
@@ -39,6 +40,7 @@ ActiveAdmin.register Donation do
       row :created_at
       row :updated_at
       row :cause
+      row :currency
       row :amount
       row :user
       row :receipt do
@@ -56,7 +58,8 @@ ActiveAdmin.register Donation do
     f.inputs "Details" do
       f.input :user, :collection => User.order("name ASC").confirmed.all
       f.input :cause, :collection => Cause.order("name ASC").all
-      f.input :amount, :label => "Amount in &pound; GBP"
+      f.input :currency, :collection => ['GBP','USD']
+      f.input :amount
       f.input :receipt
       f.input :confirmed
       f.input :public
