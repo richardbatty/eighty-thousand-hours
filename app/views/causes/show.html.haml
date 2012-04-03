@@ -20,10 +20,10 @@
         to
         = @cause.name
     
-      %p
-        %ul
-          - @cause.donations.confirmed.each do |d|
-            %li
-              = render :partial => 'shared/show_donation', :locals => { :donation => d}
+      -#%p
+        -#%ul
+          -#- @cause.donations.confirmed.each do |d|
+            -#%li
+              -#= render :partial => 'shared/show_donation', :locals => { :donation => d}
       %hr
     
