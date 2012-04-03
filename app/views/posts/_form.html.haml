@@ -26,13 +26,10 @@
               %hr
               %strong small:
               .copy-paste
-                [![#{asset.object.image_file_name}](#{asset.object.image.url(:small)})](#{asset.object.image.url(:original)})
-              %strong medium:
-              .copy-paste
-                [![#{asset.object.image_file_name}](#{asset.object.image.url(:medium)})](#{asset.object.image.url(:original)})
+                = h "<a href='#{asset.object.image.url(:original)}'>#{image_tag asset.object.image.url(:small), :class => 'image small'}</a>"
               %strong large:
               .copy-paste
-                [![#{asset.object.image_file_name}](#{asset.object.image.url(:large)})](#{asset.object.image.url(:original)})
+                = h "<a href='#{asset.object.image.url(:original)}'>#{image_tag asset.object.image.url(:large), :class => 'image large'}</a>"
     %hr
 
   .form-actions
