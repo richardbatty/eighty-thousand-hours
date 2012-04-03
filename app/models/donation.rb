@@ -4,8 +4,8 @@ class Donation < ActiveRecord::Base
   validates :user_id, presence: true
   validates :cause_id, presence: true
   validates :amount, numericality: { greater_than_or_equal_to: 0.01 }
-  validates :currency, :inclusion => { :in => %w(GBP USD),
-              :message => "Currency must be GBP or USD (%{value} given)" }
+  validates :currency, :inclusion => { :in => %w(GBP USD EUR),
+              :message => "Currency must be GBP, USD, or EUR (%{value} given)" }
 
   belongs_to :cause
   belongs_to :user
