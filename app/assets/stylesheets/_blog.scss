@@ -157,6 +157,10 @@
     @include box_shadow(#ccc, 0px, 0px, 2px);
     @include rounded_borders(#ccc, 1px, 3px);
 
+    &:hover {
+      @include box_shadow(#ccc, 0px, 0px, 8px);
+    }
+
     .caption {
       font-size: 0.9em;
     }
