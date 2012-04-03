@@ -148,9 +148,11 @@
   .image {
     margin-top: 10px;
     margin-bottom: 10px;
-    img {
+
+    &.large {
       width: 100%;
     }
+
     border: 1px solid #ccc;
     @include box_shadow(#ccc, 0px, 0px, 2px);
     @include rounded_borders(#ccc, 1px, 6px);
