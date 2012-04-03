@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  load_and_authorize_resource :only => [:new,:edit,:update,:destroy]
+  load_and_authorize_resource :only => [:new,:create,:edit,:update,:destroy]
 
   def prepare_sidebar
     @recommended_posts = Page.find('recommended-posts')
@@ -122,12 +122,12 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = current_user.posts.find( params[:id] )
+    @post = posts.find( params[:id] )
     2.times { @post.attached_images.build }
   end
 
   def update
-    @post = current_user.posts.find( params[:id] )
+    @post = posts.find( params[:id] )
     if @post.update_attributes( params[:post] )
       redirect_to @post, :notice => "Post updated!"
     else
@@ -150,7 +150,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = current_user.posts.find( params[:id] )
+    @post = posts.find( params[:id] )
     @post.destroy
     redirect_to posts_path, :notice => "Post permanently deleted"
   end
