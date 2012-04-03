@@ -56,7 +56,7 @@ ActiveAdmin.register Donation do
   form do |f|
     f.inputs "Details" do
       f.input :date
-      f.input :user, :collection => User.order("name ASC").confirmed.all
+      f.input :user, :collection => User.order("name ASC").all
       f.input :cause, :collection => Cause.order("name ASC").all
       f.input :currency, :collection => ['GBP','USD','EUR']
       f.input :amount
