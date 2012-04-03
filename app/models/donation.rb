@@ -4,13 +4,15 @@ class Donation < ActiveRecord::Base
   validates :user_id, presence: true
   validates :cause_id, presence: true
   validates :amount, numericality: { greater_than_or_equal_to: 0.01 }
-  
+  validates :currency, :inclusion => { :in => %w(GBP USD),
+              :message => "Currency must be GBP or USD (%{value} given)" }
+
   belongs_to :cause
   belongs_to :user
   
   after_create :send_confirmation_email_to_user
 
-  attr_accessible :user_id, :cause_id, :amount, :receipt, :public, :public_amount, :date
+  attr_accessible :user_id, :cause_id, :amount, :receipt, :public, :public_amount, :date, :currency
   
   # paperclip gem for receipt uploads to s3
   has_attached_file :receipt,
