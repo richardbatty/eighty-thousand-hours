@@ -180,3 +180,17 @@
   }
 }
 
+.attached-images {
+  padding-top: 10px;
+  .attached-image-thumb {
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+
+    .copy-paste {
+      padding: 10px;
+      font-size: 0.8em;
+    }
+  }
+}

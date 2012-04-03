@@ -52,6 +52,11 @@ class Post < ActiveRecord::Base
   # a User wrote this post
   belongs_to :user
 
+  # can have many uploaded images
+  has_many :attached_images, :dependent => :destroy
+  attr_accessible :title, :body, :teaser, :user_id, :draft, :attached_images_attributes
+  accepts_nested_attributes_for :attached_images, :allow_destroy => true 
+
   # override to_param to specify format of URL
   # now we can call post_path(@post) and get
   # "/blog/8-today-show" returned for example

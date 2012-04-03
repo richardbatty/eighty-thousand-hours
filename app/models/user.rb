@@ -48,7 +48,8 @@ class User < ActiveRecord::Base
   # paperclip avatars on S3
   has_attached_file :avatar, {
                       :styles => { :medium => "200x200", :small => "100x100>", :thumb => "64x64" },
-                      :default_url => "/assets/profiles/avatar_default_200x200.png"
+                      :default_url => "/assets/profiles/avatar_default_200x200.png",
+                      :path => "/avatars/:style/:id/:filename"
   }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
   validates_attachment_size :avatar, :less_than => 2.megabytes,

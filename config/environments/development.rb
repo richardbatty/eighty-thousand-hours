@@ -44,8 +44,7 @@ EightyThousandHours::Application.configure do
   end
   
   PAPERCLIP_STORAGE_OPTIONS = {:storage => :s3, 
-                               :s3_credentials => "#{Rails.root}/config/s3.yml",
-                               :path => "/avatars/:style/:id/:filename"}
+                               :s3_credentials => "#{Rails.root}/config/s3.yml"}
 end
 
 silence_warnings do

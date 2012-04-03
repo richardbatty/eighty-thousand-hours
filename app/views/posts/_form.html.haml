@@ -1,12 +1,28 @@
 %p
   All fields can be formatted with Markdown
 
-= simple_form_for @post, :defaults => { :input_html => { :class => 'span10' } } do |f|
+= simple_form_for @post, :defaults => { :input_html => { :class => 'span10' } }, :html => { :multipart => true } do |f|
   .form-inputs
     = f.input :title,  :placeholder => "Title of the blog post..."
     = f.input :body,   :placeholder => "Blog post body..."
     = f.input :teaser, :placeholder => 'Usually just the first paragraph from the post...', :input_html => { :style => 'height:100px' }
     = f.input :draft, :label => "Draft post"
+    
+
+    = field_set_tag 'Attached images' do
+      .attached-images
+        = f.simple_fields_for :attached_images do |asset|
+          - if asset.object.new_record?
+            = asset.input :image, :label => "Add an image"
+          - else
+            .attached-image-thumb
+              To display, copy and paste into post:
+              .copy-paste
+                ![#{asset.object.image_file_name}](#{asset.object.image.url(:original)})
+              .image
+                = link_to( image_tag(asset.object.image.url(:small)), asset.object.image.url(:original) )
+              Delete image: 
+              =asset.check_box :_destroy
     %hr
 
   .form-actions

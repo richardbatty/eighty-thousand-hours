@@ -84,7 +84,5 @@ EightyThousandHours::Application.configure do
   PAPERCLIP_STORAGE_OPTIONS = {:storage => :s3, 
                                :s3_credentials => { :access_key_id     => ENV['S3_ACCESS'],
                                                     :secret_access_key => ENV['S3_SECRET'],
-                                                    :bucket            => ENV['S3_BUCKET'] },
-                               :path => "/avatars/:style/:id/:filename"}
-
+                                                    :bucket            => ENV['S3_BUCKET'] } }
 end

@@ -123,6 +123,7 @@ class PostsController < ApplicationController
 
   def edit
     @post = current_user.posts.find( params[:id] )
+    2.times { @post.attached_images.build }
   end
 
   def update
@@ -136,6 +137,7 @@ class PostsController < ApplicationController
 
   def new
     @post = Post.new
+    2.times { @post.attached_images.build }
   end
 
   def create
