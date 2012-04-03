@@ -155,7 +155,7 @@
 
     border: 1px solid #ccc;
     @include box_shadow(#ccc, 0px, 0px, 2px);
-    @include rounded_borders(#ccc, 1px, 6px);
+    @include rounded_borders(#ccc, 1px, 3px);
 
     .caption {
       font-size: 0.9em;
