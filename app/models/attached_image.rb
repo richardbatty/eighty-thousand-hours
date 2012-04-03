@@ -1,7 +1,7 @@
 class AttachedImage < ActiveRecord::Base
   # paperclip uploads to on S3
   has_attached_file :image, {
-                      :styles => { :original => "1024x768", :large => "600x600", :small => "200x200>" },
+                      :styles => { :original => "1024x768", :large => "800x800", :medium => "500x500", :small => "200x200>" },
                       :path => "/posts/images/:id/:style/:filename"
   }.merge(PAPERCLIP_STORAGE_OPTIONS)
 

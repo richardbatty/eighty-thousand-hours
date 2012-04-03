@@ -17,6 +17,14 @@
           - else
             .attached-image-thumb
               To display, copy and paste into post:
+              %br
+              %strong small:
+              .copy-paste
+                [![#{asset.object.image_file_name}](#{asset.object.image.url(:small)})](#{asset.object.image.url(:original)})
+              %strong medium:
+              .copy-paste
+                [![#{asset.object.image_file_name}](#{asset.object.image.url(:medium)})](#{asset.object.image.url(:original)})
+              %strong large:
               .copy-paste
                 [![#{asset.object.image_file_name}](#{asset.object.image.url(:large)})](#{asset.object.image.url(:original)})
               .image
