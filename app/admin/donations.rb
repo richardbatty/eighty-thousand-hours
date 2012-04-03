@@ -4,7 +4,7 @@ ActiveAdmin.register Donation do
 
   index do
     column :id
-    column :created_at
+    column :date
     column :currency
     column :amount
     column :cause do |donation|
@@ -37,8 +37,7 @@ ActiveAdmin.register Donation do
   show do |donation|
     attributes_table do
       row :id
-      row :created_at
-      row :updated_at
+      row :date
       row :cause
       row :currency
       row :amount
@@ -56,6 +55,7 @@ ActiveAdmin.register Donation do
 
   form do |f|
     f.inputs "Details" do
+      f.input :date
       f.input :user, :collection => User.order("name ASC").confirmed.all
       f.input :cause, :collection => Cause.order("name ASC").all
       f.input :currency, :collection => ['GBP','USD','EUR']
