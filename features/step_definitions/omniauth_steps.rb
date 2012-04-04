@@ -1,5 +1,4 @@
 When /^I connect to Facebook$/ do
-  set_omniauth
   click_link 'fb-connect'
 end
 
@@ -16,7 +15,7 @@ Given /^I have an authentication$/ do
 end
 
 Given /^my Facebook email is the same as my account email$/ do
-  pending # express the regexp above with the code you wish you had
+  set_omniauth info: {email: @user.email}
 end
 
 When /^I merge my account$/ do
