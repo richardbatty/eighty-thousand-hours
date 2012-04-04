@@ -36,3 +36,7 @@ module OmniAuthHelper
 end
 
 include OmniAuthHelper
+
+Before('@omniauth') do
+  set_omniauth
+end

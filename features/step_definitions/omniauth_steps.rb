@@ -1,5 +1,4 @@
 When /^I connect to Facebook$/ do
-  set_omniauth
   click_link 'fb-connect'
 end
 

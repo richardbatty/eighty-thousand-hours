@@ -1,3 +1,4 @@
+@omniauth
 Feature: Authentication
   In order to login conveniently
   As a site visitor
