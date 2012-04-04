@@ -2,7 +2,7 @@
 
 FactoryGirl.define do
   factory :authentication do
-    user_id 1
+    user
     provider "facebook"
     uid "1234"
   end
