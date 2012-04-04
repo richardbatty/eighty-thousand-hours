@@ -21,6 +21,7 @@ Feature: Authentication
   Scenario:
     Given I have an account
     And my Facebook email is the same as my account email
+    And I am on the sign in page
     When I connect to Facebook
     Then I am logged in
 
