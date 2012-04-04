@@ -71,7 +71,7 @@ ActiveRecord::Schema.define(:version => 20120403194306) do
     t.boolean  "public",                                              :default => true
     t.boolean  "public_amount",                                       :default => false
     t.date     "date"
-    t.string   "currency",                                            :default => "GBP"
+    t.string   "currency"
   end
 
   add_index "donations", ["cause_id"], :name => "index_donations_on_charity_id"
