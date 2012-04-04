@@ -19,7 +19,7 @@ Given /^my Facebook email is the same as my account email$/ do
 end
 
 When /^I merge my account$/ do
-  pending # express the regexp above with the code you wish you had
+  click_button "Sign in"
 end
 
 Given /^I am an unknown visitor$/ do

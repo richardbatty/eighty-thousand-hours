@@ -19,14 +19,22 @@ class AuthenticationsController < ApplicationController
       flash[:notice] = "Your account has been associated with your facebook account"  
       sign_in_and_redirect(:user, user)  
     else
-      pwd = (0...16).map{ ('a'..'z').to_a[rand(26)] }.join
-      user = User.new(:name => omniauth['info']['name'], :email => omniauth['info']['email'], :password => pwd, :password_confirmation =>pwd)  
-      user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
-      user.save!
-      user.confirm! #maybe?
-      flash[:notice] = "We've linked your Facebook account!<br/>Your are signed in to 80,000 Hours with the name #{user.name}".html_safe
-      sign_in_and_redirect(:user, user)  
+      # store omniauth data in session
+      session[:omniauth] = omniauth
+      redirect_to accounts_merge_url #:action => 'merge', :controller => 'users'
     end  
+  end
+
+  def create_new_account
+    omniauth = session[:omniauth]
+    pwd = (0...16).map{ ('a'..'z').to_a[rand(26)] }.join
+    user = User.new(:name => omniauth['info']['name'], :email => omniauth['info']['email'], :password => pwd, :password_confirmation =>pwd)  
+    user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
+    user.save!
+    user.confirm! #maybe?
+    debugger
+    flash[:notice] = "We've linked your Facebook account!<br/>Your are signed in to 80,000 Hours with the name #{user.name}".html_safe
+    sign_in_and_redirect(:user, user)  
   end
 
   def destroy

@@ -1,0 +1,13 @@
+%h1 Sign in
+%p
+  Do you have an existing 80,000 Hours account?
+%p
+  If so, sign in before linking to Facebook:
+
+= render partial: 'devise/sessions/form', locals: {url: accounts_merge_url}
+
+%h2 Connect to Facebook
+%p
+  Otherwise create a new account by linking to Facebook:
+
+= link_to 'Connect to Facebook', {:action => 'create_new_account', :controller => 'authentications'}, :class => 'btn btn-large'

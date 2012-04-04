@@ -16,7 +16,7 @@ Given /^(?:|I )am signed in$/i do
 end
 
 Then /^(?:|I )am logged in$/i do
-  defined? current_user
+  (defined?(current_user) && !current_user.nil?).should be_true
 end
 
 Given /^(?:|I )am signed out$/i do

@@ -1,11 +1,14 @@
 EightyThousandHours::Application.routes.draw do
-  resources :authentications
+  resources :authentications do
+    get 'create_new_account', :on => :collection
+  end
 
   match '/auth/:provider/callback' => 'authentications#create'
 
   ActiveAdmin.routes(self)
 
   devise_for :users, :path => 'accounts'
+  match '/accounts/merge' => 'users#merge'
 
   match '/blog/feed.atom' => 'posts#feed', :as => :feed, :defaults => { :format => 'atom' }
   resources :posts, :path => 'blog' do

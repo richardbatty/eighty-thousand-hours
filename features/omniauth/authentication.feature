@@ -27,6 +27,7 @@ Feature: Authentication
 
   Scenario:
     Given I have an account
+    And I am on the sign in page
     When I connect to Facebook
     And I merge my account
     Then I am logged in

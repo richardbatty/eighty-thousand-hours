@@ -1,23 +1,8 @@
 <div class="box">
 
 <div class="profile-form">
-<%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
-  <p>
-  <h2>Login</h2>
-  </p>
-  <div><%= f.label :email %>
-  <%= f.email_field :email %></div>
-
-  <div><%= f.label :password %>
-  <%= f.password_field :password %></div>
-
-  <% if devise_mapping.rememberable? -%>
-    <div><label class="checkbox"><%= f.check_box :remember_me %> Remember me</label></div>
-  <% end -%>
-
-  <div><%= f.submit "Sign in", :class=>"btn" %></div>
-<% end %>
-<%= render :partial => "devise/shared/links" %>
+  <%= render partial: 'form', locals: {url: session_path(:user)} %>
+  <%= render partial: "devise/shared/links" %>
 </div>
 
 <hr/>
