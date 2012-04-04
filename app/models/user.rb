@@ -30,7 +30,7 @@ class User < ActiveRecord::Base
   delegate :public_profile, :to => :eighty_thousand_hours_application
 
   # omniauth authentication
-  has_many :authentications
+  has_many :authentications, :dependent => :destroy
 
   # dependent means 80k application gets destroyed when user is destroyed
   has_one :eighty_thousand_hours_application, :dependent => :destroy
