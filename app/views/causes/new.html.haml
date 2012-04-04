@@ -1,0 +1,29 @@
+.row
+  .span2
+    .box.sidebar
+      = render :partial => "/shared/cause_donation_member_sidebar"
+
+  .span8
+    .box.left-border
+      .page-header
+        %h1 Add a cause
+      - if @cause.errors.any?
+        .alert.alert-error
+          <a class="close" data-dismiss="alert">×</a>
+          %h4.alert-heading 
+            = pluralize(@cause.errors.count, "error")
+            prohibited this cause from being added
+          %ul
+            - @cause.errors.reverse_each do |field,msg|
+              %li
+                = msg
+    
+      = simple_form_for @cause, :html => { :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}} do |f|
+        = field_set_tag 'Cause details' do
+          = f.input :name
+          = f.input :website, :hint => "full url e.g. http://www.againstmalaria.com/"
+          = f.input :description, :placeholder => 'why is this an effective cause?', :input_html => {:rows=>'10'} 
+        %hr
+        .center
+          = f.button :submit, "Add cause", :class=> "btn btn-large"
+          

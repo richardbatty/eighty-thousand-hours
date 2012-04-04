@@ -1,6 +1,6 @@
 ActiveAdmin.register User do
   menu :if => proc{ can?(:manage, User) },
-       :label => "80k Members"
+       :label => "Members"
   controller.authorize_resource
 
   filter :name
@@ -59,7 +59,10 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "Details" do
-      f.inputs :user,
+      f.inputs :name,
+               :email,
+               :password,
+               :password_confirmation,
                :real_name,
                :location,
                :phone,
@@ -95,8 +98,8 @@ ActiveAdmin.register User do
     column ("Application: Donate to: Other domestic") { |user| user.eighty_thousand_hours_application[:causes_domestic] }
     column ("Application: Donate to: X-risk") { |user| user.eighty_thousand_hours_application[:causes_xrisk] }
     column ("Application: Donate to: Meta") { |user| user.eighty_thousand_hours_application[:causes_meta] }
-    column ("Application: Donate to: Animal charities") { |user| user.eighty_thousand_hours_application[:causes_animal] }
-    column ("Application: Donate to: Political charities") { |user| user.eighty_thousand_hours_application[:causes_political] }
+    column ("Application: Donate to: Animal causes") { |user| user.eighty_thousand_hours_application[:causes_animal] }
+    column ("Application: Donate to: Political causes") { |user| user.eighty_thousand_hours_application[:causes_political] }
     column ("Application: Doing Good Inspiring?") { |user| user.eighty_thousand_hours_application[:doing_good_inspiring] }
     column ("Application: Doing Good Research?") { |user| user.eighty_thousand_hours_application[:doing_good_research] }
     column ("Application: Doing Good Philanthropy?") { |user| user.eighty_thousand_hours_application[:doing_good_philanthropy] }

@@ -8,7 +8,7 @@ EightyThousandHours::Application.routes.draw do
   devise_for :users, :path => 'accounts'
 
   match '/blog/feed.atom' => 'posts#feed', :as => :feed, :defaults => { :format => 'atom' }
-  resources :posts, :path => 'blog', :only => [:index, :show] do
+  resources :posts, :path => 'blog' do
     collection do
       get :tag
       get :author
@@ -16,7 +16,7 @@ EightyThousandHours::Application.routes.draw do
     end
   end
 
-  resources :charities, :only => [:new,:create,:show,:index]
+  resources :causes, :only => [:new,:create,:show,:index]
   resources :donations, :only => [:new,:create,:update,:show,:index,:edit]
 
   resources :votes, :only => [:new,:create,:delete]
@@ -35,10 +35,11 @@ EightyThousandHours::Application.routes.draw do
   match 'members/email-list' => 'users#email_list', :as => :all
   match 'members/search'     => 'users#search'
   match 'members/edit'       => 'users#edit'
-  resources :users, :path    => "members"
-
-  # renamed pages which we don't want to break existing links to
-  match 'banker-vs-aid-worker' => redirect('/professional-philanthropy')
+  resources :users, :path    => "members" do
+    member do
+      get :posts
+    end
+  end
 
   # pages which don't live in the database as they can't be
   # converted to pure Markdown

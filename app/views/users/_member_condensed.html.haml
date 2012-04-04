@@ -3,8 +3,8 @@
     = link_to image_tag(member.avatar.url(:thumb)), user_path(member) 
   .text
     %span.name
-      = link_to member.name, user_path(member)
+      = link_to truncate( member.name, :length => 20 ), user_path(member)
     - if member.location?
       %br
       %span.location
-        = member.location
+        = truncate( member.location, :length => 20 )

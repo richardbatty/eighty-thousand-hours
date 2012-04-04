@@ -33,9 +33,9 @@
       %p
         In addition every member, in joining the 80,000 Hours community, agrees to report on
         their altruistic activities every year.
-      
-      %p{:id => "application_form"}
-        Please fill out the short form below in order to join.
+
+      .center
+        = link_to 'Questions?', '/faq#declaration', :class => 'btn'
       
       - if @user.errors.any?
         .alert.alert-error
@@ -61,7 +61,7 @@
         = field_set_tag 'Your plans' do
           %p
             %strong Note:
-            None of this information will ever be displayed publicly.
+            None of this information will ever be displayed publicly, but it will be used in aggregated data.
           = f.simple_fields_for :eighty_thousand_hours_application,:defaults=>{:input_html=>{:class=>'span4'}} do |e|
             %hr
             = e.input :career_plans, :placeholder => "How do you plan to use your career to fulfil the declaration?", :as => :text, :required => true, :input_html => {:rows=>'5'}
@@ -72,12 +72,12 @@
               %label
                 Which high impact activites do you intend to be involved in?
               .controls
-                = e.input :doing_good_inspiring,       :label => "Inspiring"
-                = e.input :doing_good_improving,       :label => "Improving"
-                = e.input :doing_good_philanthropy,    :label => "Philanthropy"
-                = e.input :doing_good_prophilanthropy, :label => "Professional philanthropy"
-                = e.input :doing_good_innovating,      :label => "Innovating"
-                = e.input :doing_good_research,        :label => "Research"
+                = e.input :doing_good_inspiring,       :label => ( link_to "Inspiring",                 '/high-impact-careers#inspiring-others', :target => '_blank' )
+                = e.input :doing_good_improving,       :label => ( link_to "Improving",                 '/high-impact-careers#improving',        :target => '_blank' )
+                = e.input :doing_good_philanthropy,    :label => ( link_to "Philanthropy",              '/high-impact-careers#philanthropy',     :target => '_blank' )
+                = e.input :doing_good_prophilanthropy, :label => ( link_to "Professional philanthropy", '/high-impact-careers#philanthropy',     :target => '_blank' )
+                = e.input :doing_good_innovating,      :label => ( link_to "Innovating",                '/high-impact-careers#innovating',       :target => '_blank' )
+                = e.input :doing_good_research,        :label => ( link_to "Research",                  '/high-impact-careers#research',         :target => '_blank' )
       
             %hr
       
@@ -87,7 +87,7 @@
               .slider-group
                 %p
                   %strong
-                    I intend to donate around <span class="slider_value emphasise"><span id="user_eighty_thousand_hours_application_attributes_donation_percentage_display"></span>%</span> of my salary each year.
+                    I intend to donate around <span class="slider_value emphasise"><span id="user_eighty_thousand_hours_application_attributes_donation_percentage_display"></span>%</span> of my pre-tax salary each year.
       
               .slider#user_eighty_thousand_hours_application_attributes_donation_percentage_slider
                 = e.input :donation_percentage, :as => :hidden

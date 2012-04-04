@@ -4,7 +4,7 @@ class DonationMailer < ActionMailer::Base
   def confirmation(donation)
     @first_name = donation.user.first_name
     @amount = donation.amount
-    @charity = donation.charity.name
+    @cause = donation.cause.name
     @member_page = user_url donation.user
     mail to: donation.user.email, subject: "[80,000 Hours] Donation being processed"
   end
@@ -12,7 +12,7 @@ class DonationMailer < ActionMailer::Base
   def accepted(donation)
     @first_name = donation.user.first_name
     @amount = donation.amount
-    @charity = donation.charity.name
+    @cause = donation.cause.name
     @member_page = user_url donation.user
     mail to: donation.user.email, subject: "[80,000 Hours] Donation accepted!"
   end

@@ -6,7 +6,7 @@ class DonationsController < ApplicationController
   end
 
   def index
-    @donations = Donation.confirmed
+    @donations = Donation.confirmed.limit(5)
     @your_donations = current_user.donations if current_user
   end
 
@@ -42,7 +42,7 @@ class DonationsController < ApplicationController
   def update
     @donation = current_user.donations.find(params[:id])
     if @donation.update_attributes(params[:donation])
-      flash[:"alert-success"] = "Your privacy settings were updated successfully"
+      flash[:"alert-success"] = "Your donation details were updated successfully"
       redirect_to(@donation)
     else
       render :action => "edit"

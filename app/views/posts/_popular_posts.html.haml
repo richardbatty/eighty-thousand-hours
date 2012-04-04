@@ -7,6 +7,4 @@
         <i class='icon-arrow-up'></i>
         = link_to post.title, post_path( post )
       %h5
-        %span.author
-          =(link_to post.author, { :action => :author, :id => post.author })+", "
-        %span.date= post.created_at.strftime("%B %d, %Y")
+        = render :partial => 'posts/author_link', :locals => { :post => post }

@@ -40,13 +40,17 @@ class User < ActiveRecord::Base
   has_one :eighty_thousand_hours_profile, :dependent => :destroy
   accepts_nested_attributes_for :eighty_thousand_hours_profile
 
+  # a user can write many blog posts
+  has_many :posts
+
   # note that Devise handles the validation for email and password
   validates_presence_of   :name, :message => "You must tell us your name"
 
   # paperclip avatars on S3
   has_attached_file :avatar, {
                       :styles => { :medium => "200x200", :small => "100x100>", :thumb => "64x64" },
-                      :default_url => "/assets/profiles/avatar_default_200x200.png"
+                      :default_url => "/assets/profiles/avatar_default_200x200.png",
+                      :path => "/avatars/:style/:id/:filename"
   }.merge(PAPERCLIP_STORAGE_OPTIONS)
 
   validates_attachment_size :avatar, :less_than => 2.megabytes,

@@ -1,0 +1,29 @@
+.row
+  .span2
+    .box.sidebar
+      = render :partial => "/shared/cause_donation_member_sidebar"
+  .span8
+    .box.left-border
+      .page-header
+        %h1= @cause.name
+        %h2
+          =link_to @cause.website, @cause.website
+      
+      %h3 Description
+      =markdown @cause.description
+    
+      %hr
+    
+      %h3
+        80,000 Hours members have donated
+        = to_pounds(@cause.total_confirmed_donations)
+        to
+        = @cause.name
+    
+      -#%p
+        -#%ul
+          -#- @cause.donations.confirmed.each do |d|
+            -#%li
+              -#= render :partial => 'shared/show_donation', :locals => { :donation => d}
+      %hr
+    

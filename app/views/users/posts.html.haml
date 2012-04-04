@@ -1,0 +1,10 @@
+.box
+  .page-header
+    %h1 Blog posts by #{link_to @user.name, @user}
+  
+  - @posts.each do |post|
+    .blog
+      = render :partial => 'posts/display_heading',
+               :locals => { :post => post }
+  %hr
+  = link_to '<i class="icon-user"></i> back to member profile'.html_safe, @user

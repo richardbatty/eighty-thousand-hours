@@ -10,6 +10,7 @@ ActiveAdmin.register Post do
     column :created_at
     column :title
     column :author
+    column :user
     column :draft do |p|
       p.draft? ? "<span class='status warn'>draft</span>".html_safe : ""
     end
@@ -20,6 +21,7 @@ ActiveAdmin.register Post do
     attributes_table do
       row :title
       row :author
+      row :user
       row :attribution
       row :created_at
       row :draft do
@@ -33,16 +35,17 @@ ActiveAdmin.register Post do
   
   form do |f|
     f.inputs "Details" do
-      f.inputs :title,
-               :body,
-               :teaser,
-               :author,
-               :attribution,
-               :created_at,
-               :draft,
-               :tag_list
-      f.buttons
+      f.input :title
+      f.input :body
+      f.input :teaser
+      f.input :author
+      f.input :user, :collection => User.order("name ASC")
+      f.input :attribution
+      f.input :created_at
+      f.input :draft
+      f.input :tag_list
     end
+    f.buttons
   end
 
   # for History sidebar in show view

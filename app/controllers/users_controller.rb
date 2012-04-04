@@ -14,6 +14,15 @@ class UsersController < ApplicationController
     @newest_users = User.confirmed.newest.limit(8)
   end
 
+  def posts
+    @user = User.find( params[:id] )
+    if @user == current_user
+      @posts = @user.posts
+    else
+      @posts = @user.posts.published
+    end
+  end
+
   def show
     @user = User.confirmed.find(params[:id])
     @title = @user.name

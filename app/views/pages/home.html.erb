@@ -7,7 +7,7 @@ We have #{@total_members} members worldwide, you can see them all on <a href='/m
       # note: gets processed by markdown so can't have leading spaces
       members_html += "
 <li class='span1'>
-#{link_to image_tag(m.avatar.url(:small), :class=>"thumbnail"),"/members/#{m.slug}"}
+#{link_to image_tag(m.avatar.url(:small)),"/members/#{m.slug}", :class=>"thumbnail"}
 </li>"
     end
   end
@@ -23,7 +23,7 @@ We have done research into some of the best careers for effective altruists.
     # note: gets processed by markdown so can't have leading spaces
     careers_html += "
 <li class='span1'>
-#{link_to image_tag( "career_icons/#{c}.jpg", :class=>"thumbnail", :alt=>"#{c.humanize}"),"/career-profiles##{c.gsub(/_/,'-')}"}
+#{link_to image_tag( "career_icons/#{c}.jpg", :alt=>"#{c.humanize}"),"/career-profiles##{c.gsub(/_/,'-')}", :class => 'thumbnail'}
 </li>"
   end
   careers_html += "
@@ -33,12 +33,13 @@ We have done research into some of the best careers for effective altruists.
 <%
   posts = Post.published.limit(5)
   latest_blog_html = ""
-  posts.each do |p|
+  posts.each do |post|
     # note: gets processed by markdown so can't have leading spaces
     latest_blog_html += "
 <div class='blog-latest'>
-<a class='title' href='#{post_path p}'>#{p.title}</a>
-<br/><span class='author'>#{p.author},</span>  <span class='date'>#{p.created_at.strftime('%B %d, %Y')}</span>
+<a class='title' href='#{post_path post}'>#{post.title}</a>
+<br/>
+#{(render :partial => 'posts/author_link', :locals => { :post => post })}
 </div>
 "
   end
