@@ -5,7 +5,7 @@ class AuthenticationsController < ApplicationController
 
   def create
     omniauth = request.env['omniauth.auth']
-    auth= Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])  
+    auth = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if auth
       flash[:notice] = "Signed in successfully."  
       sign_in_and_redirect(:user, auth.user)  
@@ -24,7 +24,7 @@ class AuthenticationsController < ApplicationController
       user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
       user.save!
       user.confirm! #maybe?
-      flash[:notice] = "Signed in successfully."  
+      flash[:notice] = "We've linked your Facebook account!<br/>Your are signed in to 80,000 Hours with the name #{user.name}".html_safe
       sign_in_and_redirect(:user, user)  
     end  
   end
