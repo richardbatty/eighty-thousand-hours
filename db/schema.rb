@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120321163857) do
+ActiveRecord::Schema.define(:version => 20120403194306) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -28,6 +28,16 @@ ActiveRecord::Schema.define(:version => 20120321163857) do
   add_index "active_admin_comments", ["namespace"], :name => "index_active_admin_comments_on_namespace"
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_active_admin_comments_on_resource_type_and_resource_id"
 
+  create_table "attached_images", :force => true do |t|
+    t.integer  "post_id"
+    t.string   "image_file_name"
+    t.string   "image_content_type"
+    t.integer  "image_file_size"
+    t.datetime "image_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "authentications", :force => true do |t|
     t.integer  "user_id"
     t.string   "provider"
@@ -36,7 +46,7 @@ ActiveRecord::Schema.define(:version => 20120321163857) do
     t.datetime "updated_at"
   end
 
-  create_table "charities", :force => true do |t|
+  create_table "causes", :force => true do |t|
     t.string   "name"
     t.string   "website"
     t.datetime "created_at"
@@ -45,11 +55,11 @@ ActiveRecord::Schema.define(:version => 20120321163857) do
     t.text     "description"
   end
 
-  add_index "charities", ["slug"], :name => "index_charities_on_slug", :unique => true
+  add_index "causes", ["slug"], :name => "index_charities_on_slug", :unique => true
 
   create_table "donations", :force => true do |t|
     t.decimal  "amount",               :precision => 10, :scale => 2
-    t.integer  "charity_id"
+    t.integer  "cause_id"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.integer  "user_id"
@@ -60,9 +70,11 @@ ActiveRecord::Schema.define(:version => 20120321163857) do
     t.boolean  "confirmed",                                           :default => false
     t.boolean  "public",                                              :default => true
     t.boolean  "public_amount",                                       :default => false
+    t.date     "date"
+    t.string   "currency",                                            :default => "GBP"
   end
 
-  add_index "donations", ["charity_id"], :name => "index_donations_on_charity_id"
+  add_index "donations", ["cause_id"], :name => "index_donations_on_charity_id"
   add_index "donations", ["user_id"], :name => "index_donations_on_user_id"
 
   create_table "eighty_thousand_hours_applications", :force => true do |t|
@@ -153,7 +165,7 @@ ActiveRecord::Schema.define(:version => 20120321163857) do
   create_table "posts", :force => true do |t|
     t.string   "title"
     t.text     "body"
-    t.boolean  "draft"
+    t.boolean  "draft",          :default => true
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "attribution"
@@ -161,6 +173,7 @@ ActiveRecord::Schema.define(:version => 20120321163857) do
     t.text     "teaser"
     t.string   "author"
     t.integer  "facebook_likes", :default => 0
+    t.integer  "user_id"
   end
 
   add_index "posts", ["slug"], :name => "index_posts_on_slug", :unique => true

@@ -14,8 +14,15 @@
  
     .span7
       .box.left-border
-        .sort-options
-          .options
+
+        .controls
+          - if can? :create, Post
+            .user
+              = link_to "New Post".html_safe, new_post_path, :class => 'btn btn-mini btn-success'
+              = link_to "My Posts", posts_user_path(current_user), :class => 'btn btn-mini'
+
+        .controls
+          .sort
             - icon = ' <i class="icon-chevron-down"></i>'
             sort by: 
             = link_to "default#{@sort == nil ? icon : ''}".html_safe, '/blog'

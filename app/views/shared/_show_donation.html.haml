@@ -13,7 +13,8 @@ donated
     = to_pounds( donation.amount ) 
 
 to
-= link_to donation.charity.name, charity_path(donation.charity)
+= link_to donation.cause.name, cause_path(donation.cause)
 
 on
-= donation.created_at.strftime('%d %B, %Y')
+- date = (donation.date ? donation.date : donation.created_at)
+= date.strftime('%d %B, %Y')

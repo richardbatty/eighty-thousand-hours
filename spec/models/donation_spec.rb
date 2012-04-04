@@ -14,8 +14,8 @@ describe Donation do
     @donation.should_not be_valid
   end
   
-  it "belongs to a charity" do
-    @donation.charity = nil
+  it "belongs to a cause" do
+    @donation.cause = nil
     @donation.should_not be_valid
   end
   
@@ -24,7 +24,7 @@ describe Donation do
     @donation.should be_invalid
   end
   
-  it "is greater than fuck all" do
+  it "is greater than zero" do
     @donation.amount = 0
     @donation.should be_invalid
   end

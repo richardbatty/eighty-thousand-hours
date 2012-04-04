@@ -1,11 +1,13 @@
 .entry
-  = render :partial => 'voting', :locals => { :post => post }
+  = render :partial => 'posts/voting', :locals => { :post => post }
 
   .heading
     %h3
       %a{:href => post_path(post)}
         = post.title
+      - if post.draft
+        %span.label.label-warning Draft post (not publicly visible)
+
     %h4
-      %span.author= post.author + ", "
-      %span.date= post.created_at.strftime("%B %d, %Y")
+      = render :partial => 'posts/author_link', :locals => { :post => post }
   .clearfix

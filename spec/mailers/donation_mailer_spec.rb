@@ -5,7 +5,7 @@ describe DonationMailer do
   describe "confirmation" do
     let(:donation) { FactoryGirl.create :donation }
     let(:member) { donation.member }
-    let(:charity) { donation.charity }
+    let(:cause) { donation.cause }
     let(:mail) { DonationMailer.confirmation(donation) }
     
     it "is from 80000hours.org" do
@@ -28,8 +28,8 @@ describe DonationMailer do
       mail.body.encoded.should match(/£\d+\.\d{2}/)
     end
     
-    it "displays the charity" do
-      mail.body.encoded.should match(charity.name)
+    it "displays the cause" do
+      mail.body.encoded.should match(cause.name)
     end
     
   end

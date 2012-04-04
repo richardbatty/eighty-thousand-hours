@@ -20,7 +20,7 @@ class PagesController < ApplicationController
     if @page.title == "Home"
       # for profile photos on front page
       begin
-        ids = [28, 27, 26, 24, 37, 42, 43, 44, 16, 25, 93, 84, 78, 45]
+        ids = [28, 27, 26, 24, 42, 43, 44, 16, 25, 93, 84, 78, 45]
         @members = User.find( (ids.shuffle)[0..2] ).shuffle
       rescue
         @members = User.limit( 3 )

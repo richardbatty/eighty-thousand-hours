@@ -146,23 +146,28 @@
   }
 
   .image {
-    padding: 10px;
     margin-top: 10px;
     margin-bottom: 10px;
-    img {
-      width: 100%;
-    }
+
+    &.small  { width: 25%; }
+    &.medium { width: 50%; }
+    &.large  { width: 100%; }
+
     border: 1px solid #ccc;
     @include box_shadow(#ccc, 0px, 0px, 2px);
-    @include rounded_borders(#ccc, 1px, 6px);
+    @include rounded_borders(#ccc, 1px, 3px);
+
+    &:hover {
+      @include box_shadow(#ccc, 0px, 0px, 8px);
+    }
 
     .caption {
       font-size: 0.9em;
     }
   }
 
-  .sort-options {
-    .options {
+  .controls {
+    .sort {
       float:right;
       @include rounded_borders(#ccc, 1px, 5px);
       font-size: 0.9em;
@@ -172,6 +177,27 @@
     float:left;
     clear:both;
     padding: 5px;
+
+    .user {
+      float:right;
+      padding: 5px;
+    }
   }
 }
 
+.attached-images {
+  padding-top: 10px;
+  .attached-image-thumb {
+    padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    border: 1px solid #ccc;
+
+    .image {
+    }
+    .copy-paste {
+      padding: 10px;
+      font-size: 0.8em;
+    }
+  }
+}

@@ -15,10 +15,11 @@
   %h3 Newest members
   %br
 
-  - @newest_users.each do |u|
-    .span2
-      = render :partial => 'member_condensed', :locals => { :member => u }
-  .clearfix
+  - @newest_users.in_groups_of(4) do |users|
+    - users.each do |user|
+      .span2
+        = render :partial => 'member_condensed', :locals => { :member => user }
+    .clearfix
   %hr
 
   - count = 0

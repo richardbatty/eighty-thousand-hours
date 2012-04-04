@@ -1,22 +1,26 @@
 .entry
   .box.left-border
-    = render :partial => 'voting', :locals => { :post => post }
+    - if can? :manage, post
+      .controls
+        .user
+          = link_to "Edit post", edit_post_path, :class => 'btn btn-mini btn-warning'
 
+          = link_to 'Delete post', post_path, :confirm => "Are you sure you want to delete the post '#{post.title}'?", :method => :delete, :class => 'btn btn-mini btn-danger'
+
+    = render :partial => 'voting', :locals => { :post => post }
     .heading
       %h3
         = post.title
+        - if post.draft
+          %span.label.label-warning Draft post (not publicly visible)
       %h4
-        %span.author
-          =(link_to post.author, { :action => :author, :id => post.author })+", "
-        %span.date= post.created_at.strftime("%B %d, %Y")
+        = render :partial => 'posts/author_link', :locals => { :post => post }
+
     .content
       = markdown post.body
 
-    .attribution= markdown post.attribution if post.attribution 
+    .attribution= markdown (post.attribution ? post.attribution : (post.user ? post.user.name : post.author ))
 
-    %p
-      more posts by 
-      =link_to post.author, { :action => :author, :id => post.author }
     %p
       = render :partial => "post_tags", :locals => { :post => post, :div_title => "tags:" }
     %p
@@ -31,7 +35,7 @@
 
     .comments
       #disqus_thread
-        = render :partial => "disqus_embed", :locals => { :post_id => @post.id, :post_title => @post.title }
+        = render :partial => "disqus_embed", :locals => { :post_id => post.id, :post_title => post.title }
 
     %hr
     .center

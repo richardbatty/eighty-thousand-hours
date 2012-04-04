@@ -12,6 +12,10 @@ class Post < ActiveRecord::Base
   scope :draft,     where(:draft => true).order("created_at DESC")
   scope :published, where(:draft => false).order("created_at DESC")
 
+  validates_presence_of :title
+  validates_presence_of :body
+  validates_presence_of :teaser
+
   def self.by_votes( n = Post.all.size )
     n = 1 if n < 1
     where(:draft => false).sort_by{|p| p.net_votes}.reverse.slice(0..(n-1))
@@ -22,8 +26,36 @@ class Post < ActiveRecord::Base
     where(:draft => false).sort_by{|p| p.popularity}.reverse.slice(0..(n-1))
   end
 
+  def self.by_author( author, page )
+    # see if we have a user with this name
+    user = User.find_by_name( author )
+    if user
+      query = Post.published.where("user_id = ?", user.id ).order("created_at DESC")
+    else
+      query = Post.published.where("author = ?", author ).order("created_at DESC")
+    end
+
+    query.paginate(:page => page, :per_page => 10)
+  end
+
+  def self.author_list
+    authors = where(:draft => false).where("author IS NOT NULL").select('DISTINCT author').map{|p| p.author}
+    users   = where("user_id IS NOT NULL").select('DISTINCT user_id').map{|p| p.user.name}
+
+    #(authors + users).sort
+    users.sort
+  end
+
   # a Post can have votes from many different users
   has_many :votes
+
+  # a User wrote this post
+  belongs_to :user
+
+  # can have many uploaded images
+  has_many :attached_images, :dependent => :destroy
+  attr_accessible :title, :body, :teaser, :user_id, :draft, :attached_images_attributes
+  accepts_nested_attributes_for :attached_images, :allow_destroy => true 
 
   # override to_param to specify format of URL
   # now we can call post_path(@post) and get

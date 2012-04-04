@@ -1,0 +1,23 @@
+.row
+  .span2
+    .box.sidebar
+      = render :partial => "/shared/cause_donation_member_sidebar"
+
+  .span8
+    .box.left-border
+      .page-header
+        %h1 Causes
+      %p
+        This page lists all the causes that 80,000 Hours members have donated to.
+        Click on the name to learn more about how and why we support a particular cause.
+      %p
+        To make a donation visit the 
+        = link_to "donations page", donations_path
+      %hr
+      - if @causes
+        %ul
+          - @causes.each do |c|
+            %li
+              %h3
+                =link_to c.name, cause_path(c)
+      %hr
