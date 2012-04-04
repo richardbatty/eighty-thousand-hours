@@ -62,7 +62,6 @@ gem "twitter-bootstrap-rails"
 gem 'omniauth-facebook'
 
 group :development do
-  gem 'ruby-debug19', :require => 'ruby-debug'
   gem 'heroku' #included for rake db:mirror system calls
 end
 
@@ -95,6 +94,7 @@ group :development, :test do
   gem 'guard-spork'
   gem "cucumber-rails"
   gem 'jasmine'
+  gem 'ruby-debug19', :require => 'ruby-debug'
 end
 
 group :test do
