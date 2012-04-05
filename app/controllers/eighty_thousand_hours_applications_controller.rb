@@ -19,7 +19,10 @@ class EightyThousandHoursApplicationsController < ApplicationController
       current_user.eighty_thousand_hours_application = @eighty_thousand_hours_application
 
       # fire off an email informing 80k team (join@80k..)
-      UserMailer.new_eighty_thousand_application(current_user).deliver!
+      EightyThousandHoursApplicationMailer.tell_team(current_user).deliver!
+
+      # send an email to the user
+      EightyThousandHoursApplicationMailer.thank_applicant(current_user).deliver!
 
       # add name to 'show your support'
       @supporter = Supporter.new(:name => current_user.name, :email => current_user.email)

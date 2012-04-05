@@ -7,12 +7,21 @@ Feature: Join 80,000 Hours
     Given I am signed out
     And I am on the home page
     When I click "Join"
-    Then I should be told to signup first
+    Then I should see the join page
+    And I should see "You need to create an account!"
 
   Scenario: Already signed in
     Given I am signed in
     And I am on the home page
     When I click "Join"
-    And I enter my details
+    And I fill in the application form
     Then I am sent an email
-    And I should see "Thanks for your application"
+    And I should see "Thank you for your interest in 80,000 Hours,"
+
+  Scenario: Already applied
+    Given I am signed in
+    And I have applied to join 80,000 Hours
+    And I am on the home page
+    When I click "Join"
+    Then I should see the join page
+    And I should see "You've already submitted an application!"
