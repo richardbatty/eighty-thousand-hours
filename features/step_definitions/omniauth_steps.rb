@@ -36,5 +36,5 @@ Given /^I am an unknown visitor$/ do
 end
 
 Then /^I get an email$/ do
-  pending # express the regexp above with the code you wish you had
+  ActionMailer::Base.deliveries.last.to.should include(@user.email)
 end

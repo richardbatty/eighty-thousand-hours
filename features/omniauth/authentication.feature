@@ -39,5 +39,4 @@ Feature: Authentication
     When I connect to Facebook
     And I create an account
     Then I am logged in
-    And I have a new authentication
     And I get an email

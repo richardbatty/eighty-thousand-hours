@@ -16,7 +16,8 @@ Given /^(?:|I )am signed in$/i do
 end
 
 Then /^(?:|I )am logged in$/i do
-  page.find('.navbar').find('.username').should have_content(@user.name)
+  #save_and_open_page
+  page.find('.navbar').find('.username')
 end
 
 Given /^(?:|I )am signed out$/i do
