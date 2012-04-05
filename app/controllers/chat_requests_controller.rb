@@ -9,7 +9,6 @@ class ChatRequestsController < ApplicationController
       flash[:"alert-success"] = "Thanks! We've received your contact details and we'll be in touch soon!"
       redirect_to('/')
     else
-      flash[:"alert-error"] = "You must fill all required fields."
       render 'new'
     end
   end

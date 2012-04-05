@@ -1,0 +1,30 @@
+.box
+  .page-header
+    %h1 Chat to us...
+  %p
+    We’re always happy to hear from people who are interested in 80,000 hours, and
+    we often find it’s the best way to explain our ideas. Feel free to contact us
+    with the form below, and we'll put you in touch with a current member.
+  = simple_form_for @chat_request, :url => { :action => "create" }, :html => { :class => 'form-horizontal' }  do |f|
+
+    = f.error_notification
+
+    = field_set_tag "Your contact details" do
+      = f.input :name
+      = f.input :email
+      = f.input :phone, placeholder: 'optional'
+      = f.input :skype, placeholder: 'optional'
+
+
+    = field_set_tag "What do you want to chat about?" do
+      .control-group.check_boxes
+        .controls
+          = f.input :options_career, label: "Your career", :as => :boolean
+          = f.input :options_joining, label: "Joining 80,000 Hours", :as => :boolean
+          = f.input :options_questions, label: "Questions about 80,000 Hours", :as => :boolean
+          = f.input :options_other, label: "Other", :as => :boolean
+
+      = f.input :other_text, label: "Details"
+
+    .form-actions
+      = f.button :submit, "Submit!"
