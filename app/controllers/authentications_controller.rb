@@ -32,7 +32,6 @@ class AuthenticationsController < ApplicationController
     user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
     user.save!
     user.confirm! #maybe?
-    debugger
     flash[:notice] = "We've linked your Facebook account!<br/>Your are signed in to 80,000 Hours with the name #{user.name}".html_safe
     sign_in_and_redirect(:user, user)  
   end

@@ -35,6 +35,7 @@ Feature: Authentication
 
   Scenario:
     Given I am an unknown visitor
+    And I am on the sign in page
     When I connect to Facebook
     And I create an account
     Then I am logged in

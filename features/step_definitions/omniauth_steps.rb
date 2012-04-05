@@ -28,12 +28,11 @@ When /^I merge my account$/ do
   click_link 'fb-connect'
 end
 
-Given /^I am an unknown visitor$/ do
-  pending # express the regexp above with the code you wish you had
+And /^I create an account$/ do
+  click_link 'Connect to Facebook'
 end
 
-When /^I create an account$/ do
-  pending # express the regexp above with the code you wish you had
+Given /^I am an unknown visitor$/ do
 end
 
 Then /^I get an email$/ do
