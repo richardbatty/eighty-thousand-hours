@@ -1,11 +1,27 @@
 .box
-  .profile-form
+  .alert.alert-info
+    %h1.alert-heading
+      Sign in to 80,000 Hours
+
+    %p
+      There are two ways to sign in to 80,000 Hours:
+
+    %p
+      %strong Option 1:
+      Log in using your username and password using the form below.
+
+    %p
+      %strong Option 2:
+      If you've linked your account to an external provider such as Facebook then you can click the appropriate button to login.
+
+.row
+  .span6
     = render partial: 'form', locals: {url: session_path(:user)}
-    = render partial: "devise/shared/links"
+  .span6
+    .page-header
+      %h1 Login with external provider
+    = link_to (image_tag 'auth/facebook.png', alt: "Connect to Facebook"), '/auth/facebook', id: 'fb-connect'
+
+.box
   %hr
-  = link_to 'Login with Facebook', '/auth/facebook', id: 'fb-connect'
-  %hr
-  %p
-  %h2 Not a member?
-  %a.btn.btn-large{:href => "/find-out-more"} Find out more
-  %a.btn.btn-large{:href => "/join"} Join now!
+  = render "links"

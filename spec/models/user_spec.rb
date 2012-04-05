@@ -31,18 +31,6 @@ describe User do
       no_name_user = FactoryGirl.build :user, name: ""
       no_name_user.should_not be_valid
     end
-    
-    it "should be unique" do
-      user = FactoryGirl.create :user, name: 'duplicate'
-      duplicate_user = FactoryGirl.build :user, name: user.name
-      duplicate_user.should_not be_valid
-    end
-    
-    it "should be unique regardless of case" do
-      user = FactoryGirl.create :user, name: 'duplicate'
-      duplicate_user = FactoryGirl.build :user, name: user.name.upcase
-      duplicate_user.should_not be_valid
-    end
   end
   
   describe "passwords" do

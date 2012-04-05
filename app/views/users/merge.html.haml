@@ -1,13 +1,20 @@
-%h1 Sign in
-%p
-  Do you have an existing 80,000 Hours account?
-%p
-  If so, sign in using the form below, before linking to Facebook:
+.box
+  .alert.alert-info
+    %h1.alert-heading
+      Do you have an existing 80,000 Hours account?
+    %strong YES:
+    Sign in using the form below, then link your account to Facebook on the account settings page
+    %br
+    %strong NO:
+    Click the connect to Facebook button below to create a new 80,000 Hours account
 
-= render partial: 'devise/sessions/form', locals: {url: new_session_path(:user)}
+.row
+  .span6
+    = render partial: 'devise/sessions/form', locals: {url: new_session_path(:user)}
 
-%h2 Connect to Facebook
-%p
-  Otherwise create a new account by linking to Facebook:
+  .span6
+    .page-header
+      %h1 Create new account
 
-= link_to 'Connect to Facebook', {:action => 'create_new_account', :controller => 'authentications'}, :class => 'btn btn-large'
+    .center
+      = link_to (image_tag 'auth/facebook.png', alt: "Connect to Facebook"), {:action => 'create_new_account', :controller => 'authentications'}

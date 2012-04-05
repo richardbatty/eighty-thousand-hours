@@ -1,17 +1,36 @@
-%h2 Sign up
-= simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f|
-  = f.error_notification
-  .inputs
-    = f.input :name, :required => true, :autofocus => true
-    = f.input :real_name, :required => true
-    = f.input :email, :required => true
-    = f.input :password, :required => true
-    = f.input :password_confirmation, :required => true
-  .actions
-    = f.button :submit, "Sign up"
+.box
+  .alert.alert-info
+    %h1.alert-heading
+      Sign up for an 80,000 Hours account
 
-%hr
-= link_to 'Login with Facebook', '/auth/facebook', id: 'fb-connect'
-%hr
+    %br
+    %p
+      %strong Option 1:
+      The easiest way to create an account is by linking to an external provider such as Facebook. You can do this by clicking the appropriate button below right.
 
-= render "links"
+    %p
+      %strong Option 2:
+      If you don't have an account with an external provider, or you just want to login to 80,000 Hours with a username and password, then you can fill in the form below left.
+
+.row
+  .span6
+    .page-header
+      %h2 Sign up
+    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal" }) do |f|
+      = f.error_notification
+      .form-inputs
+        = f.input :name,      :required => true, :autofocus => true, :hint => 'This will be displayed publicly. Can be a pseudonym.'
+        = f.input :real_name, :hint => 'Never displayed publicly.'
+        = f.input :email,     :required => true
+        = f.input :password, :required => true
+        = f.input :password_confirmation, :required => true
+      .form-actions
+        = f.button :submit, "Sign up"
+  .span6
+    .page-header
+      %h2 Signup with external provider
+    = link_to (image_tag 'auth/facebook.png', alt: "Connect to Facebook"), '/auth/facebook', id: 'fb-connect'
+
+.box
+  %hr
+  = render "links"
