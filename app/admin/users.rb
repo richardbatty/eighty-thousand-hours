@@ -7,8 +7,8 @@ ActiveAdmin.register User do
   filter :email
   filter :location
 
-  scope :confirmed
-  scope :unconfirmed
+  #scope :confirmed
+  #scope :unconfirmed
 
   index do
     column :id
@@ -19,7 +19,7 @@ ActiveAdmin.register User do
     column :slug
     column :last_sign_in_at
     column "Confirmed?" do |user|
-      user.confirmed ? "<span class='status ok'>YES</span>".html_safe : "<span class='status error'>No</span> (#{link_to "Confirm", confirm_admin_user_path(user), :method => :put})".html_safe
+      user.eighty_thousand_hours_member? ? "<span class='status ok'>YES</span>".html_safe : "<span class='status error'>No</span> (#{link_to "Confirm", confirm_admin_user_path(user), :method => :put})".html_safe
     end
     column :created_at
     column "80k application" do |user|
@@ -35,13 +35,13 @@ ActiveAdmin.register User do
   # Available at /admin/users/:id/confirm and #confirm_admin_post_path(user)
   member_action :confirm, :method => :put do
     user = User.find(params[:id])
-    user.confirmed = true
+    user.eighty_thousand_hours_profile = EightyThousandHoursProfile.new
     user.save
     redirect_to admin_user_path(user), :notice => "User confirmed!"
   end
   member_action :revoke, :method => :put do
     user = User.find(params[:id])
-    user.confirmed = false
+    user.eighty_thousand_hours_profile.destroy
     user.save
     redirect_to admin_user_path(user), :alert => "Membership confirmation revoked!"
   end
