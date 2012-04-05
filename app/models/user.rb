@@ -92,11 +92,11 @@ class User < ActiveRecord::Base
   end
 
   #useful nested scopes
-  scope :confirmed,   where(:confirmed => true)
+  scope :eighty_thousand_hours_members,   where(:confirmed => true)
   scope :unconfirmed, where(:confirmed => false)
   scope :contacted,   where({:confirmed => false}).where("contacted_date IS NOT NULL")
   scope :not_contacted, where({:confirmed => false, :contacted_date => nil})
-  scope :on_team, confirmed.where(:on_team => true).joins(:team_role)
+  scope :on_team, eighty_thousand_hours_members.where(:on_team => true).joins(:team_role)
 
   def external_links?
     external_website? || external_twitter? || external_linkedin? || external_facebook?

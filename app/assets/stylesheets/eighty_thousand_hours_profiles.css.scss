@@ -1,0 +1,64 @@
+@import "shared/partials";
+
+.eighty-thousand-hours-profile {
+  .name {
+    font-size: 1.3em;
+    font-weight: bold;
+    text-shadow: 0 1px 1px rgba(0.3,0.3,0.3,.3);
+    padding-bottom: 5px;
+  }
+  .location {
+    font-weight: normal;
+    color: lighten($text_color,50%);
+  }
+
+  .sidebar {
+    padding-top: 40px;
+    font-size: 0.8em;
+    color: #555;
+    .joined {
+      text-align: center;
+    }
+    .avatar {
+      img {
+        @include box_shadow(#555, 0px, 0px, 6px);
+      }
+    }
+  }
+  .main {
+    padding-top: 30px;
+  }
+}
+
+.eighty-thousand-hours-profile-condensed {
+  height: 64px;
+  padding: 0px;
+  margin: 0px;
+
+  .avatar {
+    float: left;
+    @include box_shadow(#555, 0px, 0px, 2px);
+    height: 32px;
+    width: 32px;
+    margin: 3px;
+
+    img {
+      height: 32px;
+      width: 32px;
+    }
+  }
+
+  .text {
+    padding:0px;
+    margin: 0px;
+    float: left;
+    padding-left: 10px;
+    font-size: 0.9em;
+    .name {
+      font-weight: bold;
+    }
+    .location {
+      color: lighten($text_color,50%);
+    }
+  }
+}

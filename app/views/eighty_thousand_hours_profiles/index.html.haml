@@ -18,7 +18,7 @@
   - @newest_users.in_groups_of(4) do |users|
     - users.each do |user|
       .span2
-        = render :partial => 'member_condensed', :locals => { :member => user }
+        = render :partial => 'member_condensed', :locals => { :user => user }
     .clearfix
   %hr
 
@@ -28,7 +28,7 @@
       .page-header{:id => letter}
         %h1=letter
       - users.each do |user|
-        = render :partial => 'member_condensed', :locals => { :member => user }
+        = render :partial => 'member_condensed', :locals => { :user => user }
     - count += 1
     = (count % 3 == 0) ? "<div class='clearfix'></div>".html_safe : ""
   .clearfix

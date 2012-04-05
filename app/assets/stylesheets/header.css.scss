@@ -1,0 +1,102 @@
+@import "shared/partials";
+
+header {
+  background: $header_bg_color;
+  background: #222;
+  border-bottom: $dim_top_and_tail_border_width solid $magenta_2;
+
+  .navbar-container {
+    padding-bottom: 20px;
+  }
+  .navbar-top {
+    font-size: 13px;
+    padding-bottom: 20px;
+  }
+
+  .navbar-menu {
+    @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
+    @include box_shadow(lighten($header_bg_color,20%), 0px, 0px, 5px);
+
+    margin-top: 20px;
+    margin-bottom: 20px;
+    font-size: 13px;
+
+    ul li.active.top-level a.top-level{ background: none !important; }
+    ul li.active a.top-level:hover { background: none !important; }
+
+    ul.dropdown-menu { background: #2c2c2c !important;  border: 1px solid #555;}
+    ul.dropdown-menu a { color: #999; }
+    ul.dropdown-menu a:hover { color: #efefef; background: none; }
+    ul.dropdown-menu .divider { background: #333; border-bottom: 1px solid #555; }
+  }
+
+  .endorsement {
+    padding-left: 20px;
+    p {
+      font-size: 13px;
+    }
+    .endorsement-body {
+      color: #efefef;
+    }
+
+    .attribution {
+      padding-right: 60px;
+      .author {
+        font-weight: bold;
+        font-size: 13px;
+      }
+      color: #ddd;
+      font-size: 11px;
+      text-align: right;
+    }
+
+    a {
+      text-shadow: 2px 0px 2px #000;
+      &:hover {
+        text-decoration: none;
+        text-shadow: 0px 0px 1px #555;
+      }
+    }
+  }
+
+  position: relative;
+
+  background: -webkit-radial-gradient( center 130%, #555, $header_bg_color 300px);
+  background: -moz-radial-gradient(    center 130%, #555, $header_bg_color 300px);
+  background: -o-radial-gradient(      center 130%, #555, $header_bg_color 300px);
+  background: -ms-radial-gradient(     center 130%, #555, $header_bg_color 300px);
+}
+
+// top right: user login, social buttons
+#interaction
+{
+  float: right;
+  text-align: right;
+  color: #efefef;
+  padding-right: 10px;
+  font-size: 12px;
+
+  .user-login{
+    padding-bottom: 5px;
+  }
+
+  a {
+    color: $nav_link_color;
+    margin-left: 1px;
+    white-space: nowrap;
+    text-decoration:none;
+  }
+  a:hover {
+    color: $nav_link_hover_color;
+    background: $nav_bar_color;
+    text-decoration:none;
+  }
+
+  .social {
+    float: right;
+    display:block;
+    height: 30px;
+  }
+}
+
+

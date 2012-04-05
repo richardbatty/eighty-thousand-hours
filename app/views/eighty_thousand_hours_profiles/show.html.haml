@@ -1,0 +1,7 @@
+= render :partial => 'member', :locals => { :member => @user,
+                                            :profile => @user.eighty_thousand_hours_profile,
+                                            :donations => @donations }
+
+.box
+  .center
+    = link_to '<i class="icon-user"></i> back to member list'.html_safe, eighty_thousand_hours_profiles_path

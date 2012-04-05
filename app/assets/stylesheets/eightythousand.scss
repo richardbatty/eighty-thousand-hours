@@ -1,18 +1,4 @@
-@import "colors";
-@import "rounded_borders";
-@import "box_shadow";
-@import "dimensions";
-
-@mixin box_style{
-  @include rounded_borders(#ccc, 1px, $dim_border_radius);
-  @include box_shadow(#ccc, 0px, 0px, 6px);
-  background: $box_color; 
-}
-
-@mixin box_style_hover{
-  @include box_shadow(#ccc, 0px, 0px, 10px);
-}
-
+@import "shared/partials";
 
 html, body {
   height: 100%;
@@ -23,9 +9,6 @@ body {
 
   color: $text_color;
   background: $body_bg_color;
-
-  /*// for bootstrap nav bar*/
-  /*padding-top: 40px;*/
 }
 
 #wrapper {
@@ -33,85 +16,11 @@ body {
   background: $body_bg_color;
 }
 
-header {
-  background: $header_bg_color;
-  background: #222;
-  border-bottom: $dim_top_and_tail_border_width solid $magenta_2;
-
-  .navbar-container {
-    padding-bottom: 20px;
-  }
-  .navbar-top {
-    font-size: 13px;
-    padding-bottom: 20px;
-  }
-
-  .navbar-menu {
-    @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
-    @include box_shadow(lighten($header_bg_color,20%), 0px, 0px, 5px);
-
-    margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 13px;
-
-    ul li.active.top-level a.top-level{ background: none !important; }
-    ul li.active a.top-level:hover { background: none !important; }
-
-    ul.dropdown-menu { background: #2c2c2c !important;  border: 1px solid #555;}
-    ul.dropdown-menu a { color: #999; }
-    ul.dropdown-menu a:hover { color: #efefef; background: none; }
-    ul.dropdown-menu .divider { background: #333; border-bottom: 1px solid #555; }
-  }
-
-  .endorsement {
-    padding-left: 20px;
-    p {
-      font-size: 13px;
-    }
-    .endorsement-body {
-      color: #efefef;
-    }
-
-    .attribution {
-      padding-right: 60px;
-      .author {
-        font-weight: bold;
-        font-size: 13px;
-      }
-      color: #ddd;
-      font-size: 11px;
-      text-align: right;
-    }
-
-    a {
-      text-shadow: 2px 0px 2px #000;
-      &:hover {
-        text-decoration: none;
-        text-shadow: 0px 0px 1px #555;
-      }
-    }
-  }
-
-  position: relative;
-
-  background: -webkit-radial-gradient( center 130%, #555, $header_bg_color 300px);
-  background: -moz-radial-gradient(    center 130%, #555, $header_bg_color 300px);
-  background: -o-radial-gradient(      center 130%, #555, $header_bg_color 300px);
-  background: -ms-radial-gradient(     center 130%, #555, $header_bg_color 300px);
-}
-
-
 .center {
   margin-left: auto;
   margin-right: auto;
   text-align: center;
 }
-
-/* -------------- rails notice ----------- */
-.alert { 
-  margin: 10px;
-}
-/* -------------- /rails notice ----------- */
 
 
 /* -------------- content ----------- */
@@ -204,109 +113,30 @@ header {
       color: #555;
     }
   }
-.endorsement {
-  border-left: 5px solid #efefef;
-  margin: 30px;
-  padding: 10px;
-  .body {
-    color: #262626;
-  }
 
-  .attribution {
-    .author {
-      font-weight: bold;
-      font-size: 13px;
-      color: #555;
+  .endorsement {
+    border-left: 5px solid #efefef;
+    margin: 30px;
+    padding: 10px;
+    .body {
+      color: #262626;
     }
-    .position {
-      color: #999;
-      font-size: 12px;
+  
+    .attribution {
+      .author {
+        font-weight: bold;
+        font-size: 13px;
+        color: #555;
+      }
+      .position {
+        color: #999;
+        font-size: 12px;
+      }
+      text-align: right;
     }
-    text-align: right;
   }
-}
-
-
 }
 /* -------------- /content ----------- */
-
-footer {
-  color: #fff;
-  background: $footer_bg_color;
-  border-top: $dim_top_and_tail_border_width solid $magenta_2;
-  text-align: left;
-  margin-left: auto;
-  margin-right: auto;
-
-  .social {
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .menu {
-    border-top: 1px solid #555555;
-    border-bottom: 1px solid #555555;
-    padding-top: 10px;
-    padding-bottom: 10px;
-  }
-
-  .logo { 
-       float:left; clear: none;
-       padding: 5px;
-       padding-right: 10px;
-       height: 40px;
-  }
-
-  a {
-    color: #cccccc;
-  }
-  a:hover {
-    color: $link_color;
-    text-decoration: none;
-  }
-  ul {
-    float:left;
-    width: 13%;
-    padding-top: 10px;
-    list-style-type: none;
-    li.heading {
-      font-weight: bold;
-      font-size: 1.0em;
-      padding-bottom: 10px;
-      color: white;
-    }
-    li {
-      font-size: 0.8em;
-    }
-  }
-
-  .charity {
-    p{ 
-      font-size: 0.8em;
-      color: #ccc;
-      margin: 0px;
-    }
-    margin-top: 10px;
-    margin-bottom: 30px;
-    a {
-      color: $link_color;
-    }
-    a:hover {
-      color: $link_hover_color;
-    }
-  }
-}
-
-.like_button_div{
-  margin-left: auto;
-  margin-right: auto;
-  width: 350px;
-  text-align: center; height: 50px; background: #fff;
-  .tr  {
-    margin-left: auto;
-    margin-right: auto;
-  }
-}
 
 
 img.shadow {
@@ -316,7 +146,6 @@ img.shadow {
 
 
 #video_image {
-  @include box_style;
   padding: 0px !important;
   margin: 0px !important;
   /*margin-top:    15px !important;*/
@@ -330,127 +159,6 @@ img.shadow {
   text-align: left;
 }
 
-
-// top right: user login, social buttons
-#interaction
-{
-  float: right;
-  text-align: right;
-  color: #efefef;
-  padding-right: 10px;
-  font-size: 12px;
-
-  .user-login{
-    padding-bottom: 5px;
-  }
-
-  a {
-    color: $nav_link_color;
-    margin-left: 1px;
-    white-space: nowrap;
-    text-decoration:none;
-  }
-  a:hover {
-    color: $nav_link_hover_color;
-    background: $nav_bar_color;
-    text-decoration:none;
-  }
-
-  .social {
-    float: right;
-    display:block;
-    height: 30px;
-  }
-}
-
-.footer-link
-{
-  padding: 10px;
-  padding-left: 20px;
-  padding-right: 20px;
-
-  a:hover {
-    color: $link_hover_color !important;
-  }
-}
-
-.fb-like-box-small
-{
-  height: 63px;
-}
-.fb-like-box-large
-{
-  /*height: 400px;*/
-  padding: 15px;
-  width: 292px;
-  margin: 20px;
-  margin-left:auto;
-  margin-right:auto;
-  @include rounded_borders(#ccc, 1px, 6px);
-  @include box_shadow(#ccc, 0px, 0px, 5px);
-}
-
-.member-profile {
-  .name {
-    font-size: 1.3em;
-    font-weight: bold;
-    text-shadow: 0 1px 1px rgba(0.3,0.3,0.3,.3);
-    padding-bottom: 5px;
-  }
-  .location {
-    font-weight: normal;
-    color: lighten($text_color,50%);
-  }
-
-  .sidebar {
-    padding-top: 40px;
-    font-size: 0.8em;
-    color: #555;
-    .joined {
-      text-align: center;
-    }
-    .avatar {
-      img {
-        @include box_shadow(#555, 0px, 0px, 6px);
-      }
-    }
-  }
-  .main {
-    padding-top: 30px;
-  }
-}
-.member-profile-condensed {
-  height: 64px;
-  padding: 0px;
-  margin: 0px;
-
-  .avatar {
-    float: left;
-    @include box_shadow(#555, 0px, 0px, 2px);
-    height: 32px;
-    width: 32px;
-    margin: 3px;
-
-    img {
-      height: 32px;
-      width: 32px;
-    }
-  }
-
-  .text {
-    padding:0px;
-    margin: 0px;
-    float: left;
-    padding-left: 10px;
-    font-size: 0.9em;
-    .name {
-      font-weight: bold;
-    }
-    .location {
-      color: lighten($text_color,50%);
-    }
-  }
-}
 
 sup {
   vertical-align: baseline;
@@ -473,7 +181,3 @@ a.edit
   color: #555;
   padding-right: 5px;
 }
-
-@import "nav";
-@import "blog";
-

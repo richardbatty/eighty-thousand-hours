@@ -33,11 +33,12 @@ EightyThousandHours::Application.routes.draw do
   resources :endorsements, :only =>[:index]
 
   resources :eighty_thousand_hours_applications, :only =>[:new,:create]
+  match 'join' => 'eighty_thousand_hours_applications#new'
 
-  # override /members/new as /join
-  match 'join'               => 'eighty_thousand_hours_applications#new', :as => :join
+  resources :eighty_thousand_hours_profiles, :path => "members"
+  match 'members/:user_slug' => 'eighty_thousand_hours_profiles#show'
 
-  resources :users, :path => "members" do
+  resources :users do
     member do
       get 'posts'
     end

@@ -1,9 +1,0 @@
-- if @user
-  = render :partial => 'member', :locals => { :member => @user, :profile => @user.eighty_thousand_hours_profile, :donations => @donations }
-- else
-  %p Sorry! That profile hasn't been completed yet... check back soon!
-  = button_link 'List of all members with profiles', users_path
-
-.box
-  .center
-    = link_to '<i class="icon-user"></i> back to member list'.html_safe, users_path

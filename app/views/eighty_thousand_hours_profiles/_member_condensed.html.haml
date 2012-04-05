@@ -1,0 +1,14 @@
+- profile = user.eighty_thousand_hours_profile
+
+.eighty-thousand-hours-profile-condensed
+  .avatar
+    = link_to image_tag(user.avatar.url(:thumb)), "/members/#{user.slug}"
+
+  .text
+    %span.name
+      = link_to truncate( user.name, :length => 20 ), "/members/#{user.slug}"
+
+    - if user.location?
+      %br
+      %span.location
+        = truncate( user.location, :length => 20 )

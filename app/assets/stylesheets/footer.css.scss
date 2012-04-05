@@ -1,0 +1,108 @@
+@import "shared/partials";
+
+footer {
+  color: #fff;
+  background: $footer_bg_color;
+  border-top: $dim_top_and_tail_border_width solid $magenta_2;
+  text-align: left;
+  margin-left: auto;
+  margin-right: auto;
+
+  .social {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .menu {
+    border-top: 1px solid #555555;
+    border-bottom: 1px solid #555555;
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
+
+  .logo { 
+       float:left; clear: none;
+       padding: 5px;
+       padding-right: 10px;
+       height: 40px;
+  }
+
+  a {
+    color: #cccccc;
+  }
+  a:hover {
+    color: $link_color;
+    text-decoration: none;
+  }
+  ul {
+    float:left;
+    width: 13%;
+    padding-top: 10px;
+    list-style-type: none;
+    li.heading {
+      font-weight: bold;
+      font-size: 1.0em;
+      padding-bottom: 10px;
+      color: white;
+    }
+    li {
+      font-size: 0.8em;
+    }
+  }
+
+  .charity {
+    p{ 
+      font-size: 0.8em;
+      color: #ccc;
+      margin: 0px;
+    }
+    margin-top: 10px;
+    margin-bottom: 30px;
+    a {
+      color: $link_color;
+    }
+    a:hover {
+      color: $link_hover_color;
+    }
+  }
+}
+
+.like_button_div{
+  margin-left: auto;
+  margin-right: auto;
+  width: 350px;
+  text-align: center; height: 50px; background: #fff;
+  .tr  {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.footer-link
+{
+  padding: 10px;
+  padding-left: 20px;
+  padding-right: 20px;
+
+  a:hover {
+    color: $link_hover_color !important;
+  }
+}
+
+.fb-like-box-small
+{
+  height: 63px;
+}
+.fb-like-box-large
+{
+  /*height: 400px;*/
+  padding: 15px;
+  width: 292px;
+  margin: 20px;
+  margin-left:auto;
+  margin-right:auto;
+  @include rounded_borders(#ccc, 1px, 6px);
+  @include box_shadow(#ccc, 0px, 0px, 5px);
+}
+
+
