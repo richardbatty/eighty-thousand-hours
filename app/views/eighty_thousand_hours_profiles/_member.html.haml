@@ -74,22 +74,18 @@
         - if profile.background?
           %h2 Background and interests
           = markdown profile.background
-          %hr
         
         - if profile.inspiration?
           %h2 My inspiration for joining 80,000 Hours
           = markdown profile.inspiration
-          %hr
         
         - if profile.occupation?
           %h2 Current job/occupation
           = markdown profile.occupation
-          %hr
         
         - if profile.career_plans?
           %h2 Career plans
           = markdown profile.career_plans
-          %hr
         
         - if profile.doing_good_inspiring? || profile.doing_good_research? || profile.doing_good_philanthropy? || profile.doing_good_prophilanthropy? || profile.doing_good_innovating? || profile.doing_good_improving
           %h2 Type of Career
@@ -106,17 +102,14 @@
               %li Innovating
             - if profile.doing_good_improving?
               %li Improving
-          %hr
         
         - if profile.organisation_role?
           %h2 Role in 80,000 Hours
           = markdown profile.organisation_role
-          %hr
         
         - if profile.interesting_fact?
           %h2 Interesting fact
           = markdown profile.interesting_fact
-          %hr
 
         - if member.donations.confirmed.is_public.size > 0
           .donations{:id => "#{member.slug}-donations"}
@@ -129,7 +122,6 @@
                   - if d.public
                     %li
                       = render :partial => 'shared/show_donation', :locals => { :donation => d }
-          %hr
 
         - if member.posts.published.size > 0
           .blog
