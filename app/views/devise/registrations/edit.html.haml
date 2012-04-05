@@ -1,0 +1,27 @@
+.box
+  .page-header
+    %h1 Account settings
+  .row
+    .span7.offset1
+      = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}}  ) do |f|
+        = devise_error_messages!
+        = f.fields_for :member, :defaults=>{:input_html=>{:class=>'span4'}}  do |mf|
+          = mf.fields_for :eighty_thousand_hours_profile, :defaults=>{:input_html=>{:class=>'span4'}}  do |ep|
+            = f.input :name, :required => true, :hint => 'This will be displayed publicly. Can be a pseudonym.'
+            = f.input :real_name, :hint => 'Never displayed publicly.'
+            = f.input :email, :required => true
+        %hr/
+        = link_to 'Connect to Facebook', '/auth/facebook', id: 'fb-connect'
+        - current_user.authentications.each do |a|
+          Your account is linked to #{a.provider}
+          %br/
+        %hr/
+        = field_set_tag "Change password" do
+          = f.input :password, :label => "New password", :placeholder => "optional"
+          = f.input :password_confirmation, :label => "New password confirmation", :placeholder => "optional"
+        %hr/
+        = f.input :current_password, :label => "Current password", :required => true, :placeholder => "required to update details"
+        .center
+          %div
+            = f.button :submit, "Save profile", :class=>'btn btn-success btn-large'
+            = link_to "Cancel", user_path(current_user), :class=>'btn btn-large'
