@@ -42,8 +42,7 @@ class Post < ActiveRecord::Base
     authors = where(:draft => false).where("author IS NOT NULL").select('DISTINCT author').map{|p| p.author}
     users   = where("user_id IS NOT NULL").select('DISTINCT user_id').map{|p| p.user.name}
 
-    #(authors + users).sort
-    users.sort
+    (authors + users).sort
   end
 
   # a Post can have votes from many different users
