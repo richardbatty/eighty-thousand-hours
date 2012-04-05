@@ -2,7 +2,7 @@
   .page-header
     %h1 Account settings
   .row
-    .span7.offset1
+    .span7
       = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}}  ) do |f|
         = devise_error_messages!
         = f.fields_for :member, :defaults=>{:input_html=>{:class=>'span4'}}  do |mf|

@@ -31,20 +31,20 @@
 
       <div class="container">
         <div class="row">
-          <div class="span10 offset1">
+          <div class="span12">
             <div class="row">
               <div class="span3">
                 <%= link_to image_tag( "header/80kh_rect_logo_no_border.png",
                                        :id => "header-logo" ), "/" %> 
               </div>
-              <div class="span7">
+              <div class="span9">
                 <%= render :partial => "/shared/header_endorsement"%>
               </div>
             </div>
           </div>
         </div>
         <div class="row">
-          <div class="span10 offset1">
+          <div class="span12">
             <div id='bootstrap-nav'>
               <nav class='clearfix'>
                 <%= draw_menu( Page.top_level_menu, @page ) %>
@@ -79,7 +79,7 @@
 
       <section id="content">
         <div class="row">
-          <div class="span10 offset1">
+          <div class="span12">
             <%= yield %>
           </div>
         </div>
@@ -89,17 +89,17 @@
     <footer>
       <div class="container">
         <div class="row">
-          <div class="span10 offset1 social">
+          <div class="span12 social">
             <%= render :partial => "/shared/social_media" %>
           </div>
         </div>
         <div class="row">
-          <div class="span10 offset1 menu">
+          <div class="span12 menu">
             <%= draw_footer_menu %>
           </div>
         </div>
         <div class="row">
-          <div class="span10 offset1 charity">
+          <div class="span12 charity">
             <%= link_to image_tag( "header/80kh_rect_logo_no_border.png",
                                    :class => "logo" ), "/" %>
             <p>

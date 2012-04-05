@@ -1,7 +1,7 @@
 %p
   All fields can be formatted with Markdown
 
-= simple_form_for @post, :defaults => { :input_html => { :class => 'span10' } }, :html => { :multipart => true } do |f|
+= simple_form_for @post, :defaults => { :input_html => { :class => 'span12' } }, :html => { :multipart => true } do |f|
   .form-inputs
     = f.input :title,  :placeholder => "Title of the blog post..."
     = f.input :body,   :placeholder => "Blog post body..."
