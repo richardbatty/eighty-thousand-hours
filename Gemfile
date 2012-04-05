@@ -82,17 +82,13 @@ gem 'jquery-rails'
 group :development, :test do
   gem 'pry'
   gem 'rspec-rails'
-  gem "capybara"
+  gem 'capybara'
   gem 'ruby_gntp'
   gem 'guard'
-  gem 'rb-inotify', :require => false
-  gem 'rb-fsevent', :require => false
-  gem 'rb-fchange', :require => false
-  gem "guard-rspec"
+  gem 'guard-rspec'
   gem 'guard-cucumber'
-  gem 'guard-livereload'
   gem 'guard-spork'
-  gem "cucumber-rails"
+  gem 'cucumber-rails'
   gem 'jasmine'
   gem 'ruby-debug19', :require => 'ruby-debug'
 end

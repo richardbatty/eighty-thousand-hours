@@ -61,15 +61,6 @@ class UsersController < ApplicationController
     end
   end
 
-  def new
-    @user = User.new
-    @user.build_eighty_thousand_hours_application
-    @user.build_eighty_thousand_hours_profile
-
-    @menu_root = "Membership"
-    @menu_current = "Join now"
-  end
-
   def search
     @user = User.find_by_name(params[:name])
     if @user
@@ -80,33 +71,6 @@ class UsersController < ApplicationController
     end
   end
   
-  def create
-    @user = User.new(params[:user])
-
-    # should we be building this now, here? or after we confirm?
-    @user.build_eighty_thousand_hours_profile
-    
-    if @user.save
-      # fire off an email informing 80k team (join@80k..)
-      UserMailer.new_eighty_thousand_application(@user).deliver!
-      @user.send_apply_email_to_80k_team 
-
-      # add name to 'show your support'
-      @supporter = Supporter.new(:name => @user.name, :email => @user.email)
-      @supporter.save
-
-      thanks_str = "Thank you for your interest in 80,000 Hours, " << @user.name << ". \
-        We've received your application and you'll hear from us soon. \
-        In the meantime please confirm your account by following the link \
-        in the email we sent to " << @user.email << "."
-      flash[:"alert-success"] = thanks_str
-
-      # redirects should be full url for browser compatibility
-      redirect_to root_url
-    else
-      render :new
-    end
-  end
 
   def email_list
     members = User.confirmed.order("name ASC")

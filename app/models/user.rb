@@ -78,6 +78,10 @@ class User < ActiveRecord::Base
     roles.map {|r| r.name.underscore.to_sym }
          .include? symbol.to_s.underscore.to_sym
   end
+
+  def is_eighty_thousand_hours_member
+    self.eighty_thousand_hours_profile
+  end
   
   def first_name
     name.split.first

@@ -1,0 +1,156 @@
+= javascript_include_tag "application-form.js"
+
+.row
+  .span3
+    .box.sidebar
+      %h3 Questions
+      %p
+        If you have questions about the application process please see the <a href="/faq#application">application FAQ</a>
+      %p
+        Some common questions about the declaration are covered in the
+        <a href="/faq#declaration">declaration FAQ</a> page.
+  .span7
+    .box.left-border
+      .page-header
+        %h1 80,000 Hours application
+      %p
+        All the members of 80,000 Hours publicly agree to a <em>declaration of intent</em>:
+        that is, we all agree to the general aim of pursuing a career as an effective
+        altruist, and we each say individually how we’re going to fulfill that aim. By
+        publicly declaring our intentions, we have an opportunity to think about our
+        altruistic goals, give ourselves a way to signal our aims to others, and a way
+        of ‘tying ourselves to the mast’ - helping us to live up to our ethical ideals
+        in our later life.
+      
+      %p
+        Our declaration of intent is as follows:
+      
+      %hr
+      = render :partial => 'shared/declaration'
+      %hr
+      
+      %h3 Reporting
+      %p
+        In addition every member, in joining the 80,000 Hours community, agrees to report on
+        their altruistic activities every year.
+
+      .center
+        = link_to 'Questions?', '/faq#declaration', :class => 'btn'
+      
+      - if @eighty_thousand_hours_application.errors.any?
+        .alert.alert-error
+          <a class="close" data-dismiss="alert">×</a>
+          %h4.alert-heading 
+            = pluralize(@eighty_thousand_hours_application.errors.count, "error")
+            prohibited this application from being accepted!
+          %ul
+            - @eighty_thousand_hours_application.errors.reverse_each do |field,msg|
+              -# only want to print field if coming from Devise (password, or email).
+              -# otherwise we print our custom error messges as defined in models user
+              %li
+                = (field == :password || field == :email) ? field.to_s.humanize : '' 
+                = msg
+      
+      = simple_form_for @eighty_thousand_hours_application, :html => { :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}} do |f|
+        = field_set_tag 'Your plans' do
+          %p
+          %strong Note:
+          None of this information will ever be displayed publicly, but it will be used in aggregated data.
+          %hr
+          = f.input :career_plans, :placeholder => "How do you plan to use your career to fulfil the declaration?", :as => :text, :required => true, :input_html => {:rows=>'5'}
+      
+          %hr
+      
+          .control-group.check_boxes
+            %label
+              Which high impact activites do you intend to be involved in?
+            .controls
+              = f.input :doing_good_inspiring,       :label => ( link_to "Inspiring",                 '/high-impact-careers#inspiring-others', :target => '_blank' )
+              = f.input :doing_good_improving,       :label => ( link_to "Improving",                 '/high-impact-careers#improving',        :target => '_blank' )
+              = f.input :doing_good_philanthropy,    :label => ( link_to "Philanthropy",              '/high-impact-careers#philanthropy',     :target => '_blank' )
+              = f.input :doing_good_prophilanthropy, :label => ( link_to "Professional philanthropy", '/high-impact-careers#philanthropy',     :target => '_blank' )
+              = f.input :doing_good_innovating,      :label => ( link_to "Innovating",                '/high-impact-careers#innovating',       :target => '_blank' )
+              = f.input :doing_good_research,        :label => ( link_to "Research",                  '/high-impact-careers#research',         :target => '_blank' )
+      
+          %hr
+      
+          .slider-container
+            %label
+              How much do you expect to donate to the highest impact causes?
+            .slider-group
+              %p
+                %strong
+                  I intend to donate around <span class="slider_value emphasise"><span id="user_eighty_thousand_hours_application_attributes_donation_percentage_display"></span>%</span> of my pre-tax salary each year.
+      
+            .slider#user_eighty_thousand_hours_application_attributes_donation_percentage_slider
+              = f.input :donation_percentage, :as => :hidden
+          %br
+          = f.input :donation_percentage_comment, :placeholder => "optional", :label => "Comments about donations", :required => false, :input_html => {:rows=>'5'}
+      
+          %hr
+      
+          .control-group.check_boxes
+            %label
+              Which causes do you intend to donate to?
+            .controls
+              = f.input :causes_givewell,      :label => "GiveWell recommended charities"
+              = f.input :causes_gwwc,          :label => "GWWC recommended charities"
+              = f.input :causes_political,     :label => "Political charities"
+              = f.input :causes_animal,        :label => "Animal charities"
+              = f.input :causes_xrisk,         :label => "X-risk charities"
+              = f.input :causes_meta,          :label => "Meta-philanthropy charities"
+              = f.input :causes_domestic,      :label => "Other domestic charities"
+              = f.input :causes_international, :label => "Other international charities"
+            = f.input :causes_comment, :placeholder => "optional", :label => "Comments about causes", :required => false, :input_html => {:rows=>'5'}
+      
+          %hr
+      
+          .slider-container
+            %label
+              How much do you expect to earn on average per year?
+            .slider-group
+              %p
+                %strong
+                  I expect to earn <span class="slider_value emphasise">£<span id="user_eighty_thousand_hours_application_attributes_average_income_display"></span></span> a year on average over my career.
+            .slider#user_eighty_thousand_hours_application_attributes_average_income_slider
+              = f.input :average_income, :as => :hidden
+          %br
+          = f.input :average_income_comment, :placeholder => "optional", :label => "Comments about earnings", :required => false, :input_html => {:rows=>'5'}
+      
+          %hr
+      
+          .slider-container
+            %label
+              How many hours a week do you expect to spend on high impact activities (excluding earning)?
+          .slider-group
+            %p
+              %strong
+                I intend to spend around <span class="slider_value emphasise"><span id="user_eighty_thousand_hours_application_attributes_hic_activity_hours_display"></span> hours</span> 
+                a week on high impact activities.
+          .slider#user_eighty_thousand_hours_application_attributes_hic_activity_hours_slider
+            = f.input :hic_activity_hours, :as => :hidden
+          %br
+          = f.input :hic_activity_hours_comment, :placeholder => "optional", :label => "Comments about activities", :required => false, :input_html => {:rows=>'5'}
+      
+          %hr
+      
+          = f.input :occupation, :label => "What do you currently do?", :as => :text, :required => true, :placeholder => "Already in a career? Student?", :input_html => {:rows=>'5'}
+      
+          %hr
+      
+          = f.input :spoken_to_existing_member, :label => "Have you spoken to an existing member about 80,000 Hours?", :placeholder => "If so, who?", :required => false, :input_html => {:rows=>'5'}
+      
+        %hr
+      
+        %h1 The Declaration
+        %p
+          = render :partial => 'shared/declaration'
+      
+        = f.simple_fields_for :eighty_thousand_hours_application do |e|
+          .control-group.check_boxes
+            .controls
+              = f.input :pledge, :label => "I agree to the declaration of intent"
+      
+        %hr
+        .center
+          = f.button :submit, "Apply to join 80,000 Hours", :class=> "btn btn-primary btn-large"
