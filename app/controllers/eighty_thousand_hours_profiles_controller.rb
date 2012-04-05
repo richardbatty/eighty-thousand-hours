@@ -2,22 +2,23 @@ class EightyThousandHoursProfilesController < ApplicationController
   load_and_authorize_resource :only => [:new,:create,:edit,:update,:destroy]
 
   def index
-    get_grouped_users
+    get_grouped_profiles
 
     @menu_root = "Our community"
     @menu_current = "Our members"
   end
 
-  def get_grouped_users
-    @users = User.eighty_thousand_hours_members.alphabetical
-    @grouped_users = @users.group_by{|user| user.name[0].upcase}
-    @newest_users = User.eighty_thousand_hours_members.newest.limit(8)
+  def get_grouped_profiles
+    @profiles = EightyThousandHoursProfile.all.to_a.sort_by{|p| p.user.name[0].upcase }
+    @grouped_profiles = @profiles.group_by{ |profile| profile.user.name[0].upcase }
+    @newest_profiles = EightyThousandHoursProfile.newest.limit(8)
   end
 
   def show
-    @user = User.eighty_thousand_hours_members.find(params[:id])
+    @user = User.find(params[:id])
     @title = @user.name
     @donations = @user.donations.confirmed
+    @profile = @user.eighty_thousand_hours_profile
 
     @menu_root = "Our community"
     @menu_current = "Our members"
@@ -39,8 +40,8 @@ class EightyThousandHoursProfilesController < ApplicationController
 
   def update
     if current_user.update_attributes(params[:user])
-      flash[:"alert-success"] = "Your profile was successfully updated"
-      redirect_to(current_user)
+      flash[:"alert-success"] = "Your profile was successfully updated #{ eighty_thousand_hours_profile_path( current_user ) }"
+      redirect_to( eighty_thousand_hours_profile_path( current_user ) )
     else
       render :action => "edit"
     end

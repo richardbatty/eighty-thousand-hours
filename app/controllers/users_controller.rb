@@ -29,7 +29,7 @@ class UsersController < ApplicationController
   end
 
   def show
-    @user = User.confirmed.find(params[:id])
+    @user = User.find(params[:id])
     @title = @user.name
     @donations = @user.donations.confirmed
 

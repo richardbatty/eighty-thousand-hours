@@ -1,6 +1,5 @@
 class EightyThousandHoursProfile < ActiveRecord::Base
   belongs_to :user
-  #belongs_to :member
 
   attr_accessible :background,
                   :career_plans,
@@ -24,4 +23,6 @@ class EightyThousandHoursProfile < ActiveRecord::Base
   delegate :name, :name=, 
            :location, :location=,
            :to => :user
+
+  scope :newest, order("created_at DESC")
 end

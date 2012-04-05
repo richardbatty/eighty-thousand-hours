@@ -28,31 +28,33 @@
         .box.left-border
           .page-header
             %h1= current_user.name
-          = simple_form_for(current_user, :html => { :method => :put, :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}}  ) do |f|
-            = f.fields_for :eighty_thousand_hours_profile, :defaults=>{:input_html=>{:class=>'span4'}}  do |ep|
+          = simple_form_for(current_user, url: user_eighty_thousand_hours_profile_url(current_user, current_user.eighty_thousand_hours_profile),
+                                          html: { class: 'form-horizontal' },
+                                          defaults: { input_html: { class: 'span4' } }  ) do |f|
+            = f.fields_for :eighty_thousand_hours_profile, defaults: { input_html: { class: 'span4' } } do |ep|
               = field_set_tag "Public profile fields: will be visible at 80000hours.org/members" do
                 = f.input :location
-                = ep.input :organisation, :label => "Your organization", :placeholder => "i.e. your current company or university"
-                = ep.input :background,   :label => "What is your background and what are your interests?", :input_html => {:rows=>'10'} 
-                = ep.input :inspiration,  :label => "What inspired you to join 80,000 Hours, and how has discovering 80,000 Hours changed your career decisions?", :input_html => {:rows=>'10'} 
-                = ep.input :occupation,   :label => "What do you currently do?", :input_html => {:rows=>'10'} 
-                = ep.input :career_plans, :label => "What are your plans for a high impact ethical career?", :input_html => {:rows=>'10'} 
+                = ep.input :organisation, label: "Your organization", :placeholder => "i.e. your current company or university"
+                = ep.input :background,   label: "What is your background and what are your interests?", :input_html => {:rows=>'10'} 
+                = ep.input :inspiration,  label: "What inspired you to join 80,000 Hours, and how has discovering 80,000 Hours changed your career decisions?", :input_html => {:rows=>'10'} 
+                = ep.input :occupation,   label: "What do you currently do?", :input_html => {:rows=>'10'} 
+                = ep.input :career_plans, label: "What are your plans for a high impact ethical career?", :input_html => {:rows=>'10'} 
 
                 %label What will be your main method(s) of doing good?
                 .check-group
-                  = ep.input :doing_good_inspiring,       :label => "Inspiring"
-                  = ep.input :doing_good_improving,       :label => "Improving"
-                  = ep.input :doing_good_philanthropy,    :label => "Philanthropy"
-                  = ep.input :doing_good_prophilanthropy, :label => "Professional philanthropy"
-                  = ep.input :doing_good_innovating,      :label => "Innovating"
-                  = ep.input :doing_good_research,        :label => "Research"
+                  = ep.input :doing_good_inspiring,       label: "Inspiring"
+                  = ep.input :doing_good_improving,       label: "Improving"
+                  = ep.input :doing_good_philanthropy,    label: "Philanthropy"
+                  = ep.input :doing_good_prophilanthropy, label: "Professional philanthropy"
+                  = ep.input :doing_good_innovating,      label: "Innovating"
+                  = ep.input :doing_good_research,        label: "Research"
 
-                = ep.input :organisation_role, :label => "What is your role in the 80,000 Hours team?", :input_html => {:rows=>'5'} 
-                = ep.input :interesting_fact,  :label => "Interesting fact (optional)", :input_html => {:rows=>'5'} 
-                = f.input :external_website,  :label => "Personal website (optional)", :hint => "full URL e.g. http://www.joebloggs.com/"
-                = f.input :external_twitter,  :label => "Twitter page (optional)", :hint => "full URL e.g. http://twitter.com/JoeBloggs"
-                = f.input :external_facebook, :label => "Facebook page (optional)", :hint => "full URL e.g. http://www.facebook.com/JoeBloggs"
-                = f.input :external_linkedin, :label => "LinkedIn page (optional)", :hint => "full URL e.g. http://www.linkedin.com/in/JoeBloggs"
+                = ep.input :organisation_role, label: "What is your role in the 80,000 Hours team?", :input_html => {:rows=>'5'} 
+                = ep.input :interesting_fact,  label: "Interesting fact (optional)", :input_html => {:rows=>'5'} 
+                = f.input :external_website,   label: "Personal website (optional)", :hint => "full URL e.g. http://www.joebloggs.com/"
+                = f.input :external_twitter,   label: "Twitter page (optional)", :hint => "full URL e.g. http://twitter.com/JoeBloggs"
+                = f.input :external_facebook,  label: "Facebook page (optional)", :hint => "full URL e.g. http://www.facebook.com/JoeBloggs"
+                = f.input :external_linkedin,  label: "LinkedIn page (optional)", :hint => "full URL e.g. http://www.linkedin.com/in/JoeBloggs"
 
                 = f.label "Profile picture"
                 - if current_user.avatar?
@@ -65,11 +67,17 @@
 
             = field_set_tag "Private profile fields: only visible to other 80,000 Hours members" do
               = f.fields_for :eighty_thousand_hours_profile, :defaults=>{:input_html=>{:class=>'span4'}}  do |ep|
-                = ep.input :skills_knowledge_share, :label => "What skills and knowledge would you be willing to share with other 80k members?", :placeholder => "this will not be publicy visible", :input_html => {:rows=>'10'} 
+                = ep.input :skills_knowledge_share,
+                           label: "What skills and knowledge would you be willing to share with other 80k members?",
+                           placeholder: "this will not be publicy visible",
+                           input_html: { rows: '10' } 
 
-                = ep.input :skills_knowledge_learn, :label => "What skills and knowledge would you like to gain from other 80k members?", :placeholder => "this will not be publicy visible", :input_html => {:rows=>'10'} 
+                = ep.input :skills_knowledge_learn,
+                           label: "What skills and knowledge would you like to gain from other 80k members?",
+                           placeholder: "this will not be publicy visible",
+                           input_html: { rows: '10' } 
 
             %hr
             .center
-              = f.button :submit, "Save profile", :class=>'btn btn-success btn-large'
-              = link_to "Cancel", user_path(current_user), :class=>'btn btn-large'
+              = f.button :submit, "Save profile", class: 'btn btn-success btn-large'
+              = link_to "Cancel", user_path(current_user), class: 'btn btn-large'

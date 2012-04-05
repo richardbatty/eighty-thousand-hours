@@ -35,17 +35,16 @@ EightyThousandHours::Application.routes.draw do
   resources :eighty_thousand_hours_applications, :only =>[:new,:create]
   match 'join' => 'eighty_thousand_hours_applications#new'
 
-  resources :eighty_thousand_hours_profiles, :path => "members"
-  match 'members/:user_slug' => 'eighty_thousand_hours_profiles#show'
+  resources :eighty_thousand_hours_profiles, :path => "members", :only => [:show,:index]
 
-  resources :users do
+  resources :users, :path => 'accounts' do
+    resources :eighty_thousand_hours_profiles 
     member do
       get 'posts'
     end
     collection do
       get 'all'
       get 'email_list'
-      get 'edit'
     end
   end
 

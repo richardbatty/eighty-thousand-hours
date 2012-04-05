@@ -1,33 +1,35 @@
+- user = profile.user
+
 .row
   .eighty-thousand-hours-profile
     .span3
       .sidebar
         .avatar
-          = link_to image_tag(member.avatar.url(:medium)), member.avatar.url
+          = link_to image_tag(user.avatar.url(:medium)), user.avatar.url
 
-        - if member.location?
+        - if user.location?
           %p
             %h5 Location
-            = member.location
+            = user.location
 
         %p
           %h5 Member since 
           = profile.created_at.strftime "%B %Y"
 
-        - if member.donations.confirmed.is_public.size > 0
+        - if user.donations.confirmed.is_public.size > 0
           %p
             %h5 Donations
-            - total = member.donations.confirmed.is_public_amount.sum(:amount)
+            - total = user.donations.confirmed.is_public_amount.sum(:amount)
             - if total > 0
               = to_pounds( total )
-            - if member.donations.confirmed.is_public.size > 0
-              = link_to 'view', "##{member.slug}-donations"
+            - if user.donations.confirmed.is_public.size > 0
+              = link_to 'view', "##{user.slug}-donations"
 
-        - upvotes = member.votes.upvotes.recent
+        - upvotes = user.votes.upvotes.recent
         - if upvotes.size > 0
           %p
             %h5 Recent activity
-            - member.posts.published.limit(3).each do |post|
+            - user.posts.published.limit(3).each do |post|
               wrote blog post:
               %br
               =link_to post.title, post
@@ -38,28 +40,28 @@
               =link_to v.post.title, post_path(v.post)
               %br
 
-        -if member.external_links?
+        -if user.external_links?
           %p
             %h5 External links
-            - if member.external_website?
-              = link_to "<i class='icon-info-sign'></i> Personal website".html_safe, member.external_website
+            - if user.external_website?
+              = link_to "<i class='icon-info-sign'></i> Personal website".html_safe, user.external_website
               %br
 
-            - if member.external_twitter?
-              = link_to image_tag("social/twitter.png") + " Twitter".html_safe, member.external_twitter
+            - if user.external_twitter?
+              = link_to image_tag("social/twitter.png") + " Twitter".html_safe, user.external_twitter
               %br
             
-            - if member.external_facebook?
-              = link_to image_tag("social/facebook.png") + " Facebook".html_safe, member.external_facebook
+            - if user.external_facebook?
+              = link_to image_tag("social/facebook.png") + " Facebook".html_safe, user.external_facebook
               %br
             
-            - if member.external_linkedin?
-              = link_to image_tag("social/linkedin.png") + " LinkedIn".html_safe, member.external_linkedin
+            - if user.external_linkedin?
+              = link_to image_tag("social/linkedin.png") + " LinkedIn".html_safe, user.external_linkedin
               %br
 
         %p
           %h5 Navigation
-          = link_to '<i class="icon-user"></i> view all members'.html_safe, users_path
+          = link_to '<i class="icon-user"></i> view all users'.html_safe, users_path
 
     .span9
       .main
@@ -68,8 +70,8 @@
           %h2.location
             - if profile.organisation?
               = profile.organisation
-            - elsif member.location?
-              = member.location
+            - elsif user.location?
+              = user.location
         
         - if profile.background?
           %h2 Background and interests
@@ -111,11 +113,11 @@
           %h2 Interesting fact
           = markdown profile.interesting_fact
 
-        - if member.donations.confirmed.is_public.size > 0
-          .donations{:id => "#{member.slug}-donations"}
+        - if user.donations.confirmed.is_public.size > 0
+          .donations{:id => "#{user.slug}-donations"}
             %h2
               Donations
-              -#= to_pounds( member.total_confirmed_donations )
+              -#= to_pounds( user.total_confirmed_donations )
             %p
               %ul
                 - donations.each do |d|
@@ -123,10 +125,10 @@
                     %li
                       = render :partial => 'shared/show_donation', :locals => { :donation => d }
 
-        - if member.posts.published.size > 0
+        - if user.posts.published.size > 0
           .blog
             %h2 Recent blog posts
-            - member.posts.published.limit(3).each do |post|
+            - user.posts.published.limit(3).each do |post|
               =render :partial => 'posts/display_heading', :locals => {:post => post}
             %br
-            = link_to "View all posts by #{member.name}", posts_user_path( member )
+            = link_to "View all posts by #{user.name}", posts_user_path( user )

@@ -79,8 +79,8 @@ class User < ActiveRecord::Base
          .include? symbol.to_s.underscore.to_sym
   end
 
-  def is_eighty_thousand_hours_member
-    self.eighty_thousand_hours_profile
+  def eighty_thousand_hours_member?
+    !self.eighty_thousand_hours_profile.nil?
   end
   
   def first_name
@@ -90,13 +90,6 @@ class User < ActiveRecord::Base
   def last_name
     name.split.last
   end
-
-  #useful nested scopes
-  scope :eighty_thousand_hours_members,   where(:confirmed => true)
-  scope :unconfirmed, where(:confirmed => false)
-  scope :contacted,   where({:confirmed => false}).where("contacted_date IS NOT NULL")
-  scope :not_contacted, where({:confirmed => false, :contacted_date => nil})
-  scope :on_team, eighty_thousand_hours_members.where(:on_team => true).joins(:team_role)
 
   def external_links?
     external_website? || external_twitter? || external_linkedin? || external_facebook?

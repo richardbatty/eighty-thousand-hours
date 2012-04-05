@@ -64,8 +64,12 @@ class Ability
 
     if user.confirmed?
       can :update, User, :id => user.id
+    end
+    
+    if user.eighty_thousand_hours_member?
       can :manage, Donation, :user_id => user.id
       can :create, Cause
+      can :manage, EightyThousandHoursProfile, :user_id => user.id
     end
 
     # anyone can read posts or view pages

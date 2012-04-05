@@ -1,31 +1,32 @@
 .box
   .page-header
-    %h1= "#{@users.size} member profiles"
+    %h1= "#{@profiles.size} member profiles"
   
   = render :partial => 'search_form'
   
   Jump to:&nbsp;
-  - @grouped_users.each do |letter,users|
+  - @grouped_profiles.each do |letter,profiles|
     =link_to letter, "##{letter}"
     &nbsp;|&nbsp;
   
   .page-header
     %h3 Newest members
 
-  - @newest_users.in_groups_of(4) do |users|
-    - users.each do |user|
-      .span2
-        = render :partial => 'member_condensed', :locals => { :user => user }
-    .clearfix
+  - @newest_profiles.in_groups_of(4) do |profiles|
+    .row
+      - profiles.each do |profile|
+        .span3
+          = render :partial => 'profile_condensed', :locals => { :profile => profile }
+      .clearfix
   %hr
 
-  - @grouped_users.to_a.in_groups_of(4) do |groups|
+  - @grouped_profiles.to_a.in_groups_of(4) do |groups|
     .row
-      - groups.each do |users|
-        - if users
+      - groups.each do |profiles|
+        - if profiles
           .span3
-            .page-header{:id => users[0]}
-              %h1= users[0]
-            - users[1].each do |user|
-              = render :partial => 'member_condensed', :locals => { :user => user }
+            .page-header{:id => profiles[0]}
+              %h1= profiles[0]
+            - profiles[1].each do |profile|
+              = render :partial => 'profile_condensed', :locals => { :profile => profile }
 .clearfix
