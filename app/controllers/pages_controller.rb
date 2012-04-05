@@ -29,7 +29,7 @@ class PagesController < ApplicationController
       careers = ["banker","doctor","scientist","train_driver","campaigner","teacher"]#,"worker"]
       @careers = (careers.shuffle)[0..2]
 
-      @total_members = User.confirmed.size
+      @total_members = User.eighty_thousand_hours_members.size
 
       render :home
     end

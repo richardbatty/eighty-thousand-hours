@@ -9,4 +9,9 @@
     = f.input :password_confirmation, :required => true
   .actions
     = f.button :submit, "Sign up"
+
+%hr
+= link_to 'Login with Facebook', '/auth/facebook', id: 'fb-connect'
+%hr
+
 = render "links"

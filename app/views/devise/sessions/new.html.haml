@@ -2,9 +2,9 @@
   .profile-form
     = render partial: 'form', locals: {url: session_path(:user)}
     = render partial: "devise/shared/links"
-  %hr/
+  %hr
   = link_to 'Login with Facebook', '/auth/facebook', id: 'fb-connect'
-  %hr/
+  %hr
   %p
   %h2 Not a member?
   %a.btn.btn-large{:href => "/find-out-more"} Find out more
