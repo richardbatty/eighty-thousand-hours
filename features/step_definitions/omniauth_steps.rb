@@ -36,5 +36,6 @@ Given /^I am an unknown visitor$/ do
 end
 
 Then /^I get an email$/ do
-  ActionMailer::Base.deliveries.last.to.should include(@user.email)
+  # email address from set_omniauth defaults
+  ActionMailer::Base.deliveries.last.to.should include('foobar@example.com')
 end
