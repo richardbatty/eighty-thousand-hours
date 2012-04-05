@@ -7,21 +7,21 @@ class AuthenticationsController < ApplicationController
     omniauth = request.env['omniauth.auth']
     auth = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if auth
-      flash[:notice] = "Signed in successfully."  
+      flash[:notice] = "You are now signed in as #{auth.user.name}."  
       sign_in_and_redirect(:user, auth.user)  
     elsif current_user
       current_user.authentications.find_or_create_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
-      flash[:notice] = "Authentication successful!"
+      flash[:notice] = "Authentication successful! You can now login using your Facebook account."
       redirect_to edit_user_registration_path current_user
     elsif user = User.where( email: omniauth['info']['email'] ).first
       user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
       user.save!
-      flash[:notice] = "Your account has been associated with your facebook account"  
+      flash[:notice] = "Your 80,000 Hours account is now linked to your Facebook account, and you have been logged in."  
       sign_in_and_redirect(:user, user)  
     else
       # store omniauth data in session
       session[:omniauth] = omniauth
-      redirect_to accounts_merge_url #:action => 'merge', :controller => 'users'
+      redirect_to accounts_merge_url
     end  
   end
 

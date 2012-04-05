@@ -11,7 +11,7 @@ Then /^I can see the authentication on my account settings page$/ do
 end
 
 Given /^I have an authentication$/ do
-  @authentication ||= FactoryGirl.create :authentication
+  @authentication ||= FactoryGirl.create( :authentication, user: @user )
 end
 
 Given /^my Facebook email is the same as my account email$/ do
@@ -19,7 +19,13 @@ Given /^my Facebook email is the same as my account email$/ do
 end
 
 When /^I merge my account$/ do
+  fill_in("user_email",    with: @user.email)
+  fill_in("user_password", with: @user.password)
   click_button "Sign in"
+
+  # should now be on account settings page
+  page.should have_content('Account settings')
+  click_link 'fb-connect'
 end
 
 Given /^I am an unknown visitor$/ do

@@ -8,6 +8,11 @@ class UsersController < ApplicationController
     @menu_current = "Our members"
   end
 
+  def merge
+    # want the user to be redirected to account edit page on sign-in
+    session[:user_return_to] = edit_registration_path :user
+  end
+
   def get_grouped_users
     @users = User.confirmed.alphabetical
     @grouped_users = @users.group_by{|user| user.name[0].upcase}

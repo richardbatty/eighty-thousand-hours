@@ -2,9 +2,9 @@
 %p
   Do you have an existing 80,000 Hours account?
 %p
-  If so, sign in before linking to Facebook:
+  If so, sign in using the form below, before linking to Facebook:
 
-= render partial: 'devise/sessions/form', locals: {url: accounts_merge_url}
+= render partial: 'devise/sessions/form', locals: {url: new_session_path(:user)}
 
 %h2 Connect to Facebook
 %p

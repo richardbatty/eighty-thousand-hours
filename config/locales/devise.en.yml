@@ -1,6 +1,6 @@
 # Additional translations at http://github.com/plataformatec/devise/wiki/I18n
 
-en-GB:
+en:
   errors:
     messages:
       expired: "has expired, please request a new one"
@@ -22,7 +22,7 @@ en-GB:
       timeout: 'Your session expired, please sign in again to continue.'
       inactive: 'Your account was not activated yet.'
     sessions:
-      signed_in: 'Signed in successfully. You can edit your profile by following the link at the top right.'
+      signed_in: 'Signed in successfully.'
       signed_out: 'Signed out successfully.'
     passwords:
       send_instructions: 'You will receive an email with instructions about how to reset your password in a few minutes.'
