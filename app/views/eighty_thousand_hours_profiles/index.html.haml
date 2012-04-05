@@ -1,7 +1,6 @@
 .box
   .page-header
     %h1= "#{@users.size} member profiles"
-  %br
   
   = render :partial => 'search_form'
   
@@ -10,10 +9,8 @@
     =link_to letter, "##{letter}"
     &nbsp;|&nbsp;
   
-  %br
-  %br
-  %h3 Newest members
-  %br
+  .page-header
+    %h3 Newest members
 
   - @newest_users.in_groups_of(4) do |users|
     - users.each do |user|
@@ -22,13 +19,13 @@
     .clearfix
   %hr
 
-  - count = 0
-  - @grouped_users.each do |letter,users|
-    .span3
-      .page-header{:id => letter}
-        %h1=letter
-      - users.each do |user|
-        = render :partial => 'member_condensed', :locals => { :user => user }
-    - count += 1
-    = (count % 3 == 0) ? "<div class='clearfix'></div>".html_safe : ""
-  .clearfix
+  - @grouped_users.to_a.in_groups_of(4) do |groups|
+    .row
+      - groups.each do |users|
+        - if users
+          .span3
+            .page-header{:id => users[0]}
+              %h1= users[0]
+            - users[1].each do |user|
+              = render :partial => 'member_condensed', :locals => { :user => user }
+.clearfix
