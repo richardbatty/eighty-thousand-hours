@@ -40,7 +40,7 @@ class EightyThousandHoursProfilesController < ApplicationController
 
   def update
     if current_user.update_attributes(params[:user])
-      flash[:"alert-success"] = "Your profile was successfully updated #{ eighty_thousand_hours_profile_path( current_user ) }"
+      flash[:"alert-success"] = "Your profile was successfully updated."
       redirect_to( eighty_thousand_hours_profile_path( current_user ) )
     else
       render :action => "edit"
