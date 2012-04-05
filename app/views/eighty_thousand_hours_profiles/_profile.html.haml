@@ -1,4 +1,5 @@
 - user = profile.user
+- donations = user.donations
 
 .row
   .eighty-thousand-hours-profile
@@ -16,13 +17,13 @@
           %h5 Member since 
           = profile.created_at.strftime "%B %Y"
 
-        - if user.donations.confirmed.is_public.size > 0
+        - if donations.confirmed.is_public.size > 0
           %p
             %h5 Donations
-            - total = user.donations.confirmed.is_public_amount.sum(:amount)
+            - total = donations.confirmed.is_public_amount.sum(:amount)
             - if total > 0
               = to_pounds( total )
-            - if user.donations.confirmed.is_public.size > 0
+            - if donations.confirmed.is_public.size > 0
               = link_to 'view', "##{user.slug}-donations"
 
         - upvotes = user.votes.upvotes.recent
@@ -113,11 +114,10 @@
           %h2 Interesting fact
           = markdown profile.interesting_fact
 
-        - if user.donations.confirmed.is_public.size > 0
+        - if donations.confirmed.is_public.size > 0
           .donations{:id => "#{user.slug}-donations"}
             %h2
               Donations
-              -#= to_pounds( user.total_confirmed_donations )
             %p
               %ul
                 - donations.each do |d|
