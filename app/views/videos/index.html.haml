@@ -1,0 +1,16 @@
+.row
+  .span12
+    .page-header
+      %h1 80,000 Hours videos
+- @videos.each do |video|
+  .video
+    .row
+      .span12
+        .page-header
+          %h3= video.title
+    .row
+      .span6.embed
+        = video.embed_html_with_width(500).html_safe
+      .span6.meta
+        = video.description
+  %hr

@@ -62,6 +62,9 @@ gem "twitter-bootstrap-rails"
 gem 'omniauth-facebook'
 gem 'omniauth-google-oauth2'
 
+# talk to the YouTube API
+gem 'youtube_it'
+
 group :development do
   gem 'heroku' #included for rake db:mirror system calls
 end

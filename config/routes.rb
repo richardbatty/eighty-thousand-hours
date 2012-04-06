@@ -32,6 +32,7 @@ EightyThousandHours::Application.routes.draw do
   match 'chat-to-us' => 'chat_requests#new'
 
   resources :endorsements, :only =>[:index]
+  resources :videos, :only =>[:index]
 
   resources :eighty_thousand_hours_applications, :only =>[:new,:create]
   match 'join' => 'eighty_thousand_hours_applications#new'
