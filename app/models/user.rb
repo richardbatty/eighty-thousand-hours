@@ -100,7 +100,7 @@ class User < ActiveRecord::Base
   end
   
   def self.with_team_role(role)
-    on_team.where(team_roles: {name: role.to_s.humanize.titleize})
+    where(on_team: true).find_all{|u| (u.team_role.name == role)}
   end
 
   # for active admin dashboard

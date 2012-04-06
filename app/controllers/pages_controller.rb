@@ -40,10 +40,10 @@ class PagesController < ApplicationController
   def meet_the_team
     @title = "Meet the team"
     team_roles = %w[president managing_director research community
-                    communications fundraising tech strategy other]
+                    communications fundraising tech strategy]
     @team_profiles = team_roles.inject({}) do |profiles, role|
       role = role.humanize.titleize
-      profiles[role] = User.with_team_role(role)#.where( :public_profile => :true )
+      profiles[role] = User.with_team_role(role)
       profiles
     end
   end

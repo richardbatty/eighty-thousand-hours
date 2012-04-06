@@ -15,8 +15,7 @@
 
       - team_members.each do |member|
         .box
-          = render :partial => 'users/member', :locals => { :member => member, :profile => member.eighty_thousand_hours_profile, :donations => member.donations }
+          = render :partial => 'eighty_thousand_hours_profiles/profile', :locals => { :profile => member.eighty_thousand_hours_profile }
 
       .center
-        = link_to 'Interested in becoming a member?', '/why-join', :class => 'btn'
-        = link_to '^ back to top', '#content', :class => 'btn'
+        = link_to 'back to top', '#content'
