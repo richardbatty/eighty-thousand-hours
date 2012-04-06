@@ -12,7 +12,7 @@
   .span9
     .box.left-border
       .page-header
-        %h1 80,000 Hours application
+        %h1 Joining 80,000 Hours
       %p
         All the members of 80,000 Hours publicly agree to a <em>declaration of intent</em>:
         that is, we all agree to the general aim of pursuing a career as an effective
@@ -58,13 +58,13 @@
                 = msg
       
       .page-header
-        %h3 Application form
+        %h3 #{ disabled ? "Step 2: " : "" }Fill in the application form below
       = simple_form_for @eighty_thousand_hours_application, :html => { :class => "form-horizontal" }, :defaults=>{:input_html=>{:class=>'span6'}, :disabled => disabled} do |f|
         %p
         %strong Note:
         None of this information will ever be displayed publicly, but it will be used in aggregated data.
         %hr
-        = f.input :career_plans, :placeholder => "How do you plan to use your career to fulfil the declaration?", :as => :text, :required => true, :input_html => {:rows=>'5'}
+        = f.input :career_plans, :placeholder => "How do you plan to use your career to fulfil the declaration?", :as => :text, :input_html => {:rows=>'5'}
       
         %hr
       
@@ -141,7 +141,7 @@
       
         %hr
       
-        = f.input :occupation, :label => "What do you currently do?", :as => :text, :required => true, :placeholder => "Already in a career? Student?", :input_html => {:rows=>'5'}
+        = f.input :occupation, :label => "What do you currently do?", :as => :text, :required => false, :placeholder => "Already in a career? Student?", :input_html => {:rows=>'5'}
       
         %hr
       
@@ -156,7 +156,7 @@
         = f.simple_fields_for :eighty_thousand_hours_application do |e|
           .control-group.check_boxes
             .controls
-              = f.input :pledge, :label => "I agree to the declaration of intent"
+              = f.input :pledge, :label => "I agree to the declaration of intent", :required => false
       
         - if disabled
           = render 'disabled_warning'
