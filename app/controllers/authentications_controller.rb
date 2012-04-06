@@ -11,12 +11,12 @@ class AuthenticationsController < ApplicationController
       sign_in_and_redirect(:user, auth.user)  
     elsif current_user
       current_user.authentications.find_or_create_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
-      flash[:"alert-success"] = "Authentication successful! You can now login using your Facebook account."
+      flash[:"alert-success"] = "Authentication successful! You can now login using your #{omniauth['provider'].titleize} account."
       redirect_to edit_user_registration_path current_user
     elsif user = User.where( email: omniauth['info']['email'] ).first
       user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
       user.save!
-      flash[:"alert-success"] = "Your 80,000 Hours account is now linked to your Facebook account, and you have been logged in."
+      flash[:"alert-success"] = "Your 80,000 Hours account is now linked to your #{omniauth['provider'].titleize} account, and you have been logged in."
       sign_in_and_redirect(:user, user)  
     else
       # store omniauth data in session
