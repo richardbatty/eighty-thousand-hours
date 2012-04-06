@@ -1,0 +1,19 @@
+.authentication {
+  img{ float:left; padding-right: 10px;}
+
+  width: 200px;
+  height: 64px;
+  margin: 10px;
+  border: 1px solid #ccc;
+  padding: 5px;
+
+  .provider {
+    padding: 10px;
+    font-weight: bold;
+  }
+  .delete {
+  }
+}
+
+.auth-options {
+}

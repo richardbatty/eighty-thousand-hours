@@ -60,6 +60,7 @@ gem "twitter-bootstrap-rails"
 
 # 3rd party authentication
 gem 'omniauth-facebook'
+gem 'omniauth-google-oauth2'
 
 group :development do
   gem 'heroku' #included for rake db:mirror system calls

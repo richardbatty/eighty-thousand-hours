@@ -46,7 +46,7 @@ class AuthenticationsController < ApplicationController
     flash[:notice] = "Your account is no longer linked to #{@authentication.provider}."
 
     @authentication.destroy
-    redirect_to edit_user_registration_path(current_user)
+    redirect_to edit_user_registration_path
   end
 
   def failure
