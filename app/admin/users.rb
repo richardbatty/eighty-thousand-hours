@@ -53,12 +53,12 @@ ActiveAdmin.register User do
   end
 
   action_item :only => :show do
-    if !user.confirmed
+    if !user.eighty_thousand_hours_member?
       link_to "Confirm member", confirm_admin_user_path(user), :method => :put
     end
   end
   action_item :only => :show do
-    if user.confirmed
+    if user.eighty_thousand_hours_member?
       link_to "Revoke member", revoke_admin_user_path(user), :method => :put
     end
   end
