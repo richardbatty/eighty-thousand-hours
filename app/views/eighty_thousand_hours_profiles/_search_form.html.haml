@@ -1,6 +1,7 @@
 = form_tag('/members/search', :class => 'form-horizontal') do
-  .controls
-    .input-prepend
-      %span.add-on
-        %i.icon-search
-      = text_field_tag 'name', '', :placeholder => 'search by name', :id => 'prependedInput', :"data-provide"=>"typeahead", :"data-source"=>"#{@profiles.map{|p| p.user.name}}"
+  .control-group
+    %label.control-label{ for: 'prependedInput'}
+      Search by name
+    .controls
+      .input-prepend
+        = '<span class="add-on"><i class="icon-search"></i></span>'.html_safe + (text_field_tag 'name', '', :placeholder => 'search by name', :id => 'prependedInput', :"data-provide"=>"typeahead", :"data-source"=>"#{@profiles.map{|p| p.user.name}}").html_safe
