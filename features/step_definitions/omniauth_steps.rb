@@ -7,7 +7,7 @@ Then /^I have a new authentication$/ do
 end
 
 Then /^I can see the authentication on my account settings page$/ do
-  page.should have_content("Your account is linked to facebook")
+  page.find('.authentication').find('.provider').should have_content("Facebook")
 end
 
 Given /^I have an authentication$/ do
