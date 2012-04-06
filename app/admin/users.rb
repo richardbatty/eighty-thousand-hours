@@ -18,9 +18,14 @@ ActiveAdmin.register User do
     column :name
     column :slug
     column :last_sign_in_at
-    column :confirmed
     column "Confirmed?" do |user|
-      user.eighty_thousand_hours_member? ? "<span class='status ok'>YES</span>".html_safe : "<span class='status error'>No</span> (#{link_to "Confirm", confirm_admin_user_path(user), :method => :put})".html_safe
+      if user.eighty_thousand_hours_member?
+        "<span class='status ok'>YES</span>".html_safe
+      else
+        if user.eighty_thousand_hours_applicant?
+          "<span class='status error'>No</span> (#{link_to "Confirm", confirm_admin_user_path(user), :method => :put})".html_safe
+        end
+      end
     end
     column :created_at
     column "80k application" do |user|
@@ -58,6 +63,25 @@ ActiveAdmin.register User do
     end
   end
 
+  show do |user|
+    attributes_table do
+      row :name
+      row :real_name
+      row :slug
+      row :location
+      row :eighty_thousand_hours_profile
+      row :eighty_thousand_hours_application
+      row :sign_in_count
+      row :last_sign_in_at
+      row :updated_at
+      row :phone
+      row :external_twitter
+      row :external_linkedin
+      row :external_facebook
+      row :external_website
+    end
+  end
+
   form do |f|
     f.inputs "Details" do
       f.inputs :name,
@@ -67,7 +91,6 @@ ActiveAdmin.register User do
                :real_name,
                :location,
                :phone,
-               :confirmed,
                :on_team,
                :team_role,
                :avatar,
@@ -81,7 +104,6 @@ ActiveAdmin.register User do
   csv do
     column :id
     column :created_at
-    column :confirmed
     column :name
 
     column ("Application: Occupation") { |user| user.eighty_thousand_hours_application[:occupation] }

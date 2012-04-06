@@ -80,7 +80,11 @@ class User < ActiveRecord::Base
   end
 
   def eighty_thousand_hours_member?
-    !self.eighty_thousand_hours_profile.nil?
+    self.eighty_thousand_hours_profile
+  end
+
+  def eighty_thousand_hours_applicant?
+    self.eighty_thousand_hours_application
   end
   
   def first_name
