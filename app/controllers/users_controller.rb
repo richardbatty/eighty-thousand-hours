@@ -9,8 +9,13 @@ class UsersController < ApplicationController
   end
 
   def merge
-    # want the user to be redirected to account edit page on sign-in
-    session[:user_return_to] = edit_registration_path :user
+    if session[:omniauth]
+      # want the user to be redirected to account edit page on sign-in
+      session[:user_return_to] = edit_registration_path :user
+      render 'merge'
+    else
+      redirect_to new_user_registration_path
+    end
   end
 
   def get_grouped_users

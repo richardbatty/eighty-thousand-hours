@@ -1,20 +1,20 @@
-.box
-  .alert.alert-info
-    %h1.alert-heading
-      Do you have an existing 80,000 Hours account?
-    %strong YES:
-    Sign in using the form below, then link your account to Facebook on the account settings page
-    %br
-    %strong NO:
-    Click the connect to Facebook button below to create a new 80,000 Hours account
+.page-header
+  %h1 Do you have an existing 80,000 Hours account?
+.row
+  .span6
+    .alert.alert-info
+      %h1.alert-heading YES
+      Sign in using the form below, then link your account to an external provider on the account settings page.
+  .span6
+    .alert.alert-info
+      %h1.alert-heading NO
+      Click a button below to create a new 80,000 Hours account by linking to an external account.
 
 .row
   .span6
     = render partial: 'devise/sessions/form', locals: {url: new_session_path(:user)}
 
   .span6
-    .page-header
-      %h1 Create new account
-
-    .center
-      = link_to (image_tag 'auth/facebook.png', alt: "Connect to Facebook"), {:action => 'create_new_account', :controller => 'authentications'}
+    -#= render partial: 'authentications/options'
+    = link_to (image_tag 'auth/facebook_64.png', alt: "Connect to Facebook"), {:action => 'create_new_account', :controller => 'authentications'}
+    = link_to (image_tag 'auth/google_oauth2_64.png', alt: "Connect to Google"), {:action => 'create_new_account', :controller => 'authentications'}

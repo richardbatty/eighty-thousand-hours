@@ -1,21 +1,24 @@
-.box
-  .alert.alert-info
-    %h1.alert-heading
-      Sign up for an 80,000 Hours account
+.page-header
+  %h1 Sign up for an 80,000 Hours account
 
-    %br
-    %p
-      %strong Option 1:
-      The easiest way to create an account is by linking to an external provider such as Facebook. You can do this by clicking the appropriate button below right.
-
-    %p
-      %strong Option 2:
-      If you don't have an account with an external provider, or you just want to login to 80,000 Hours with a username and password, then you can fill in the form below left.
+%p There are two ways to create an 80,000 Hours account
 
 .row
   .span6
-    .page-header
-      %h2 Sign up
+    .alert.alert-info
+      %h1.alert-heading External provider
+      The easiest way to create an account is by linking to an external provider such as Facebook. You can do this by clicking the appropriate button.
+
+  .span6
+    .alert.alert-info
+      %h1.alert-heading Email and password
+      If you don't have an account with an external provider, or you just want to login to 80,000 Hours with a username and password, then you can fill in the form.
+
+.row
+  .span6
+    = render partial: 'authentications/options'
+
+  .span6
     = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal" }) do |f|
       = f.error_notification
       .form-inputs
@@ -26,10 +29,6 @@
         = f.input :password_confirmation, :required => true
       .form-actions
         = f.button :submit, "Sign up"
-  .span6
-    .page-header
-      %h2 Signup with external provider
-    = link_to (image_tag 'auth/facebook_connect_button.png', alt: "Connect to Facebook"), '/auth/facebook', id: 'fb-connect'
 
 .box
   %hr

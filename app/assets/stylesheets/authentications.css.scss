@@ -1,10 +1,14 @@
+@import "shared/partials";
 .authentication {
   img{ float:left; padding-right: 10px;}
 
   width: 200px;
   height: 64px;
   margin: 10px;
-  border: 1px solid #ccc;
+
+  @include rounded_borders(#ccc, 1px, 5px);
+  @include box_shadow(#ccc, 0px, 0px, 2px);
+
   padding: 5px;
 
   .provider {

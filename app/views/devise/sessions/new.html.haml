@@ -1,27 +1,24 @@
-.box
-  .alert.alert-info
-    %h1.alert-heading
-      Sign in to 80,000 Hours
+.page-header
+  %h1 Sign in to 80,000 Hours
 
-    %p
-      There are two ways to sign in to 80,000 Hours:
+%p There are two ways to sign in to 80,000 Hours:
 
-    %p
-      %strong Option 1:
-      Log in using your username and password using the form below.
+.row
+  .span6
+    .alert.alert-info
+      %h1.alert-heading Email and password
+      Log in using your email and password using the form below. Only use this option if you originally entered these details when registering!
 
-    %p
-      %strong Option 2:
-      If you've linked your account to an external provider such as Facebook then you can click the appropriate button to login.
+  .span6
+    .alert.alert-info
+      %h1.alert-heading External account
+      If you've linked your account to an external provider such as Facebook or Google, then you can click the appropriate button to login.
 
 .row
   .span6
     = render partial: 'form', locals: {url: session_path(:user)}
   .span6
-    .page-header
-      %h1 Login with external provider
-    = link_to (image_tag 'auth/facebook_connect_button.png', alt: "Connect to Facebook"), '/auth/facebook', id: 'fb-connect'
-
+    = render partial: 'authentications/options'
 .box
   %hr
   = render "links"

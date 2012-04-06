@@ -29,16 +29,20 @@ class AuthenticationsController < ApplicationController
 
   def create_new_account
     omniauth = session[:omniauth]
-    pwd = (0...16).map{ ('a'..'z').to_a[rand(26)] }.join
-    user = User.new(:name => omniauth['info']['name'], :email => omniauth['info']['email'], :password => pwd, :password_confirmation =>pwd)  
-    user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
-    user.save
-    user.confirm!
+    if omniauth
+      pwd = (0...16).map{ ('a'..'z').to_a[rand(26)] }.join
+      user = User.new(:name => omniauth['info']['name'], :email => omniauth['info']['email'], :password => pwd, :password_confirmation =>pwd)  
+      user.authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])  
+      user.save
+      user.confirm!
 
-    UserMailer.welcome_email(user).deliver!
+      UserMailer.welcome_email(user).deliver!
 
-    flash[:"alert-success"] = "We've linked your Facebook account!<br/>Your are signed in to 80,000 Hours with the name #{user.name}".html_safe
-    sign_in_and_redirect(:user, user) # devise helper method
+      flash[:"alert-success"] = "We've linked your #{omniauth['provider']} account!<br/>Your are signed in to 80,000 Hours with the name #{user.name}".html_safe
+      sign_in_and_redirect(:user, user) # devise helper method
+    else
+      redirect_to new_user_registration_path
+    end
   end
 
   def destroy
