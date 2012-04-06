@@ -6,7 +6,7 @@ class DonationsController < ApplicationController
   end
 
   def index
-    @donations = Donation.confirmed.limit(5)
+    @donations = Donation.confirmed
     @your_donations = current_user.donations if current_user
   end
 

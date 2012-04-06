@@ -22,6 +22,7 @@
                     - if current_user.eighty_thousand_hours_member?
                       %li= link_to "Edit profile", edit_user_eighty_thousand_hours_profile_path(current_user, current_user.eighty_thousand_hours_profile)
                       %li= link_to "View profile", eighty_thousand_hours_profile_path(current_user)
+                      %li= link_to "Donations", donations_path
                     - if can? :access, :admin
                       %li= link_to "Admin", admin_dashboard_path
                     %li.divider
