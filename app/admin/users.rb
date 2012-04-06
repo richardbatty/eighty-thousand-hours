@@ -18,6 +18,7 @@ ActiveAdmin.register User do
     column :name
     column :slug
     column :last_sign_in_at
+    column :confirmed
     column "Confirmed?" do |user|
       user.eighty_thousand_hours_member? ? "<span class='status ok'>YES</span>".html_safe : "<span class='status error'>No</span> (#{link_to "Confirm", confirm_admin_user_path(user), :method => :put})".html_safe
     end
