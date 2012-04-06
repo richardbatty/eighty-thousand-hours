@@ -1,6 +1,6 @@
 And /^I should see the join page$/ do
   page.should have_content("I declare that I aim to pursue a career as an effective altruist.")
-  page.should have_content("Application form")
+  page.should have_content("Joining 80,000 Hours")
 end
 
 When /^I fill in the application form$/ do
