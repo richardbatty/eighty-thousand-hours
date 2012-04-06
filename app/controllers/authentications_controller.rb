@@ -20,7 +20,9 @@ class AuthenticationsController < ApplicationController
       sign_in_and_redirect(:user, user)  
     else
       # store omniauth data in session
-      session[:omniauth] = omniauth
+      # the 'extra' field can be too big to fit in the session so we drop it
+      # https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema
+      session[:omniauth] = omniauth.except('extra')
       redirect_to accounts_merge_url
     end  
   end
