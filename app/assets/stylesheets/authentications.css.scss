@@ -1,23 +1,55 @@
 @import "shared/partials";
-.authentication {
-  img{ float:left; padding-right: 10px;}
+.authentications {
+  .authentication {
+    float: left;
+    width: 200px;
+    height: 64px;
+    padding: 5px 10px;
+    position: relative;
+    margin-right: 10px;
+    margin-bottom: 30px;
 
-  width: 200px;
-  height: 64px;
-  margin: 10px;
+    @include rounded_borders(#ccc, 1px, 5px);
+    @include box_shadow(#ccc, 0px, 0px, 2px);
 
-  @include rounded_borders(#ccc, 1px, 5px);
-  @include box_shadow(#ccc, 0px, 0px, 2px);
+    .provider {
+      padding: 10px;
+      font-weight: bold;
+    }
 
-  padding: 5px;
+    .remove {
+      text-decoration: none;
+      position: absolute;
+      top: 3px;
+      right: 5px;
+      padding: 2px 4px;
+      @include rounded_borders(#fff, 1px, 5px);
+    }
 
-  .provider {
-    padding: 10px;
-    font-weight: bold;
-  }
-  .delete {
+    .remove:hover {
+      color: $magenta_2;
+      cursor: pointer;
+      @include rounded_borders(#ccc, 1px, 5px);
+      background-color: #efefef;
+    }
+
+    img {
+      float: left;
+      margin-right: 10px;
+    }
   }
 }
 
-.auth-options {
+.auth-providers {
+  .auth-provider {
+    float: left;
+    text-decoration: none;
+    margin-right: 20px;
+    text-align: center;
+    margin-bottom: 10px;
+
+    img {
+      display: block;
+    }
+  }
 }

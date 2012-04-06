@@ -15,14 +15,16 @@
           %p
             %strong Your account is linked to the following services:
 
-          - authentications.each do |authentication|
-            .authentication
-              =image_tag "auth/#{authentication.provider}_64.png"
-              .provider
-                = authentication.provider.titleize
-              .delete
-                = link_to "remove &times;".html_safe, authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove"
+          .authentications
+            - authentications.each do |authentication|
+              .authentication
+                =image_tag "auth/#{authentication.provider}_64.png"
+                .provider
+                  = authentication.provider.titleize
+                .delete
+                  = link_to "&times;".html_safe, authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove"
 
+          .clearfix
           %p
             %strong Add another service to sign in with:
         - else
@@ -30,9 +32,9 @@
           %p
             %strong Sign in through one of these services:
 
-        .auth-options
-          = link_to (image_tag 'auth/facebook_32.png',      alt: "Sign in with Facebook"), '/auth/facebook',      id: 'fb-connect'
-          = link_to (image_tag 'auth/google_oauth2_32.png', alt: "Sign in with Google"),   '/auth/google_oauth2', id: 'google-connect'
+        .auth-providers
+          = link_to ((image_tag 'auth/facebook_64.png', alt: "Sign in with Facebook") + " Facebook"), '/auth/facebook',      id: 'fb-connect', class: 'auth-provider'
+          = link_to ((image_tag 'auth/google_oauth2_64.png', alt: "Sign in with Google") + "Google"),   '/auth/google_oauth2', id: 'google-connect', class: 'auth-provider'
 
       = field_set_tag "Change password" do
         = f.input :password,              :label => "New password", :placeholder => "optional"
