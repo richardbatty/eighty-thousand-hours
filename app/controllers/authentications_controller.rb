@@ -47,7 +47,7 @@ class AuthenticationsController < ApplicationController
 
   def destroy
     @authentication = current_user.authentications.find(params[:id])
-    flash[:notice] = "Your account is no longer linked to #{@authentication.provider}."
+    flash[:notice] = "Your account is no longer linked to #{@authentication.provider.titleize}."
 
     @authentication.destroy
     redirect_to edit_user_registration_path
