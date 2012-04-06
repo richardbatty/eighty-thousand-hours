@@ -7,7 +7,7 @@ class AuthenticationsController < ApplicationController
     omniauth = request.env['omniauth.auth']
     auth = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if auth
-      flash[:"alert-success"] = "You are now signed in as #{auth.user.name}."
+      flash[:"alert-success"] = "You are now signed in."
       sign_in_and_redirect(:user, auth.user)  
     elsif current_user
       current_user.authentications.find_or_create_by_provider_and_uid(omniauth['provider'], omniauth['uid'])

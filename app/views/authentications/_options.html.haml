@@ -1,2 +1,9 @@
-= link_to (image_tag 'auth/facebook_64.png',      alt: "Connect to Facebook"), '/auth/facebook',      id: 'fb-connect'
-= link_to (image_tag 'auth/google_oauth2_64.png', alt: "Connect to Google"),   '/auth/google_oauth2', id: 'google-connect'
+.center
+  %div
+    = link_to (image_tag 'auth/facebook_64.png', alt: "Connect to Facebook"), '/auth/facebook', id: 'fb-connect'
+    = link_to "Connect to Facebook", '/auth/facebook', :class => 'btn btn-large'
+  
+  %div
+    = link_to (image_tag 'auth/google_oauth2_64.png', alt: "Connect to Google"), '/auth/google_oauth2', id: 'google-connect'
+    = link_to "Connect to Google", '/auth/google_oauth2', :class => 'btn btn-large'
+  
