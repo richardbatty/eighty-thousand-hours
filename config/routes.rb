@@ -42,7 +42,7 @@ EightyThousandHours::Application.routes.draw do
     end
   end
 
-  resources :users, :path => 'accounts' do
+  resources :users, :path => 'accounts', :only => [:edit,:update,:destroy] do
     resources :eighty_thousand_hours_profiles 
     member do
       get 'posts'
