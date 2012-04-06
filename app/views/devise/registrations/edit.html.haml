@@ -9,11 +9,11 @@
       = f.input :email,     :required => true
 
       = field_set_tag "Authentications" do
-        = link_to (image_tag 'auth/facebook.png', alt: "Connect to Facebook"), '/auth/facebook', id: 'fb-connect'
         - current_user.authentications.each do |a|
           %p
             Your account is linked to #{a.provider}
           %br/
+        = link_to (image_tag 'auth/facebook.png', alt: "Connect to Facebook"), '/auth/facebook', id: 'fb-connect'
 
       = field_set_tag "Change password" do
         = f.input :password,              :label => "New password", :placeholder => "optional"
