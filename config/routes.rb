@@ -35,7 +35,11 @@ EightyThousandHours::Application.routes.draw do
   resources :eighty_thousand_hours_applications, :only =>[:new,:create]
   match 'join' => 'eighty_thousand_hours_applications#new'
 
-  resources :eighty_thousand_hours_profiles, :path => "members", :only => [:show,:index]
+  resources :eighty_thousand_hours_profiles, :path => "members", :only => [:show,:index] do
+    collection do
+      post 'search'
+    end
+  end
 
   resources :users, :path => 'accounts' do
     resources :eighty_thousand_hours_profiles 

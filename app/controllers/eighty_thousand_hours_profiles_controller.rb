@@ -50,7 +50,7 @@ class EightyThousandHoursProfilesController < ApplicationController
   def search
     @user = User.find_by_name(params[:name])
     if @user
-      redirect_to user_path(@user)
+      redirect_to eighty_thousand_hours_profile_path(@user)
     else
       flash[:"alert-error"] = "Couldn't find #{params[:name]}!"
       redirect_to :action => :index
