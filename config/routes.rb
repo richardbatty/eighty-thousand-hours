@@ -4,6 +4,7 @@ EightyThousandHours::Application.routes.draw do
   end
 
   match '/auth/:provider/callback' => 'authentications#create'
+  match '/auth/failure' => 'authentications#failure'
 
   ActiveAdmin.routes(self)
 

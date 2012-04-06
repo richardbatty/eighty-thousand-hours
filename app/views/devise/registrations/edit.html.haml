@@ -9,11 +9,22 @@
       = f.input :email,     :required => true
 
       = field_set_tag "Authentications" do
-        - current_user.authentications.each do |a|
-          %p
-            Your account is linked to #{a.provider}
-          %br/
-        = link_to (image_tag 'auth/facebook.png', alt: "Connect to Facebook"), '/auth/facebook', id: 'fb-connect'
+        - authentications = current_user.authentications
+        - unless authentications.empty?
+          - authentications.each do |authentication|
+            .authentication
+              =image_tag "auth/#{authentication.provider}_32.png"
+              .provider= authentication.provider.titleize
+              .uid= authentication.uid
+              = link_to "&times;", authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove"
+
+          %strong Add another service to sign in with:
+        - else
+          %strong Sign in through one of these services:
+
+        .auth-options
+          = link_to (image_tag 'auth/facebook_32.png', alt: "Sign in with Facebook"), '/auth/facebook', id: 'fb-connect'
+          = link_to (image_tag 'auth/google_32.png', alt: "Sign in with Google"), '/auth/google_apps', id: 'google-connect'
 
       = field_set_tag "Change password" do
         = f.input :password,              :label => "New password", :placeholder => "optional"

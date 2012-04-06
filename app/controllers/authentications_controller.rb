@@ -43,8 +43,14 @@ class AuthenticationsController < ApplicationController
 
   def destroy
     @authentication = current_user.authentications.find(params[:id])
+    flash[:notice] = "Your account is no longer linked to #{@authentication.provider}."
+
     @authentication.destroy
-    flash[:notice] = "Successfully destroyed authentication"
-    redirect_to authentications_url
+    redirect_to edit_user_registration_path(current_user)
+  end
+
+  def failure
+    flash[:notice] = "Failed to authenticate! Message was: '#{params[:message]}'"
+    redirect_to edit_user_registration_path
   end
 end
