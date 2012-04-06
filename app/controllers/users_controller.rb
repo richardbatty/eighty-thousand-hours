@@ -1,13 +1,6 @@
 class UsersController < ApplicationController
   load_and_authorize_resource :only => [:edit,:update,:destroy]
 
-  def index
-    get_grouped_users
-
-    @menu_root = "Our community"
-    @menu_current = "Our members"
-  end
-
   def merge
     if session[:omniauth]
       # want the user to be redirected to account edit page on sign-in
@@ -16,12 +9,6 @@ class UsersController < ApplicationController
     else
       redirect_to new_user_registration_path
     end
-  end
-
-  def get_grouped_users
-    @users = User.confirmed.alphabetical
-    @grouped_users = @users.group_by{|user| user.name[0].upcase}
-    @newest_users = User.confirmed.newest.limit(8)
   end
 
   def posts
@@ -65,17 +52,6 @@ class UsersController < ApplicationController
       render :action => "edit"
     end
   end
-
-  def search
-    @user = User.find_by_name(params[:name])
-    if @user
-      redirect_to user_path(@user)
-    else
-      flash[:"alert-error"] = "Couldn't find #{params[:name]}!"
-      redirect_to :action => :index
-    end
-  end
-  
 
   def email_list
     members = User.confirmed.order("name ASC")
