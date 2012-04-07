@@ -53,7 +53,7 @@ class Post < ActiveRecord::Base
 
   # can have many uploaded images
   has_many :attached_images, :dependent => :destroy
-  attr_accessible :title, :body, :teaser, :user_id, :draft, :attached_images_attributes
+  attr_accessible :title, :body, :teaser, :user_id, :draft, :attached_images_attributes, :tags, :author, :attribution
   accepts_nested_attributes_for :attached_images, :allow_destroy => true 
 
   # override to_param to specify format of URL
