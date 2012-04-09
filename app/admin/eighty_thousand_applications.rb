@@ -12,12 +12,10 @@ ActiveAdmin.register EightyThousandHoursApplication do
 
   index do
     column :id
-    column :name do |e|
-      e.user.name
-    end
+    column :user
+    column :updated_at
     column :occupation
     column :career_plans
-    column :reasons_for_joining
 
     column "Confirmed?" do |e|
       if e.user.eighty_thousand_hours_member?
@@ -31,5 +29,36 @@ ActiveAdmin.register EightyThousandHoursApplication do
     end
 
     default_actions
+  end
+
+  show do |user|
+    attributes_table do
+      row :user
+      row :updated_at
+      row :occupation
+      row :career_plans
+      row :spoken_to_existing_member
+      row :doing_good_inspiring
+      row :doing_good_research
+      row :doing_good_philanthropy
+      row :doing_good_innovating
+      row :doing_good_improving
+      row :doing_good_prophilanthropy
+      row :donation_percentage
+      row :donation_percentage_comment
+      row :average_income
+      row :average_income_comment
+      row :hic_activity_hours
+      row :hic_activity_hours_comment
+      row :causes_givewell
+      row :causes_gwwc
+      row :causes_international
+      row :causes_xrisk
+      row :causes_meta
+      row :causes_domestic
+      row :causes_animal
+      row :causes_political
+      row :causes_comment
+    end
   end
 end

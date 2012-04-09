@@ -3,7 +3,6 @@ class EightyThousandHoursApplication < ActiveRecord::Base
 
   attr_accessible :occupation,
                   :career_plans,
-                  :reasons_for_joining,
                   :spoken_to_existing_member,
                   :doing_good_inspiring,
                   :doing_good_research,
