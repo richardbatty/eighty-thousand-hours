@@ -5,7 +5,7 @@ class DonationMailer < ActionMailer::Base
     @first_name = donation.user.first_name
     @amount = donation.amount
     @cause = donation.cause.name
-    @member_page = user_url donation.user
+    @member_page = eighty_thousand_hours_profile_url(donation.user)
     mail to: donation.user.email, subject: "[80,000 Hours] Donation being processed"
   end
 
@@ -13,7 +13,7 @@ class DonationMailer < ActionMailer::Base
     @first_name = donation.user.first_name
     @amount = donation.amount
     @cause = donation.cause.name
-    @member_page = user_url donation.user
+    @member_page = eighty_thousand_hours_profile_url(donation.user)
     mail to: donation.user.email, subject: "[80,000 Hours] Donation accepted!"
   end
 end
