@@ -35,4 +35,6 @@
     = f.input :public_amount, :label => 'Make amount donated public?'
   %hr
   .center
-    = f.button :submit, "Submit donation", :class=> "btn btn-large btn-primary"
+    = f.button :submit, "Submit donation",
+               :class=> "btn form btn-large btn-primary",
+               :"data-loading-text" => "Submitting... please wait"
