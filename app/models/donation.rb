@@ -32,6 +32,10 @@ class Donation < ActiveRecord::Base
     send_acceptance_email_to_user
   end
 
+  def with_currency
+    "#{self.currency} #{self.amount}"
+  end
+
   private
     def send_confirmation_email_to_user
       DonationMailer.confirmation(self).deliver!
