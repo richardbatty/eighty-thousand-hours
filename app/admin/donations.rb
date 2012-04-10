@@ -11,7 +11,7 @@ ActiveAdmin.register Donation do
       donation.cause.name
     end
     column :member do |donation|
-      donation.user if donation.user
+      (link_to donation.user.name, admin_user_path(donation.user)) if donation.user
     end
     column :receipt do |donation|
       if donation.receipt?
