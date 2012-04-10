@@ -16,6 +16,7 @@ ActiveAdmin.register User do
       image_tag user.avatar.url(:thumb), :style => "height: 50px"
     end
     column :name
+    column :email
     column :slug
     column :last_sign_in_at
     column "Confirmed?" do |user|
@@ -66,6 +67,7 @@ ActiveAdmin.register User do
   show do |user|
     attributes_table do
       row :name
+      row :email
       row :real_name
       row :slug
       row :location
