@@ -44,6 +44,7 @@ FactoryGirl.define do
     body "Some content"
     teaser "Teaser content"
     author "Anon"
+    draft false
     id 1
   end
 
@@ -63,5 +64,11 @@ FactoryGirl.define do
     factory :donation_manager do
       roles {|roles| [roles.association(:donation_admin)] }
     end
+  end
+
+  factory :comment do
+    user
+    post
+    body "comment body"
   end
 end
