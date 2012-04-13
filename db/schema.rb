@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120409103857) do
+ActiveRecord::Schema.define(:version => 20120413171845) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -56,6 +56,14 @@ ActiveRecord::Schema.define(:version => 20120409103857) do
   end
 
   add_index "causes", ["slug"], :name => "index_charities_on_slug", :unique => true
+
+  create_table "comments", :force => true do |t|
+    t.integer  "post_id"
+    t.integer  "user_id"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "donations", :force => true do |t|
     t.decimal  "amount",               :precision => 10, :scale => 2
