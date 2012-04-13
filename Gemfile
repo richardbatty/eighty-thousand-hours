@@ -65,6 +65,9 @@ gem 'omniauth-google-oauth2'
 # talk to the YouTube API
 gem 'youtube_it'
 
+# nested set gem for comment trees
+gem 'ancestry'
+
 group :development do
   gem 'heroku' #included for rake db:mirror system calls
 end
