@@ -1,0 +1,15 @@
+.comments {
+  .comment {
+    border: 1px solid #ccc;
+    margin-bottom: 10px;
+
+    .header {
+      padding: 5px;
+      border-bottom: 1px solid #efefef;
+    }
+
+    .body {
+      padding: 5px;
+    }
+  }
+}
