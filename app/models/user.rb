@@ -2,6 +2,9 @@ class User < ActiveRecord::Base
   extend FriendlyId
   friendly_id :name, :use => :slugged
 
+  # votes are independent from users so destroy associated votes here
+  before_destroy { |user| Vote.destroy_all "user_id = #{post.id}" }
+
   devise :database_authenticatable, :registerable, :token_authenticatable,
          :recoverable, :rememberable, :trackable, :validatable,
          :confirmable
