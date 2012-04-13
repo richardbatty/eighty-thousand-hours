@@ -5,4 +5,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :post
+
+  # nested comments with Ancestry gem
+  has_ancestry
 end

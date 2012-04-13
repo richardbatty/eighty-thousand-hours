@@ -40,8 +40,8 @@
       .new-comment
         - if can? :create, Comment
           = simple_form_for( Comment.new ) do |f|
-            = f.input :post_id, :as => :hidden, :input_html => { :value => post.id }
             = f.input :body, label: "Comment body"
+            = f.input :post_id, :as => :hidden, :input_html => { :value => post.id }
             = f.button :submit
         - else
           %p Sign in or sign up to post a comment
