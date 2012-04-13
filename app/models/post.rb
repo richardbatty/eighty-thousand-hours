@@ -3,6 +3,9 @@ class Post < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, :use => :slugged
 
+  # votes are independent from posts so destroy associated votes here
+  before_destroy { |post| Vote.destroy_all "post_id = #{post.id}" }
+
   # for versioning with paper_trail
   has_paper_trail
 
