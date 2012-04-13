@@ -34,8 +34,17 @@
         <fb:like href="#{post_url(post)}" send="false" width="450" show_faces="false"></fb:like>
 
     .comments
-      #disqus_thread
-        = render :partial => "disqus_embed", :locals => { :post_id => post.id, :post_title => post.title }
+      - post.comments.each do |comment|
+        .comment
+          .header
+            = comment.user.name
+            at
+            = comment.created_at.strftime('%d %b %y')
+          .body
+            = comment.body
+
+      -##disqus_thread
+        -#= render :partial => "disqus_embed", :locals => { :post_id => post.id, :post_title => post.title }
 
     %hr
     .center
