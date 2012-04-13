@@ -20,6 +20,8 @@ EightyThousandHours::Application.routes.draw do
     end
   end
 
+  resources :comments
+
   resources :causes, :only => [:new,:create,:show,:index]
   resources :donations, :only => [:new,:create,:update,:show,:index,:edit]
 
@@ -76,5 +78,4 @@ EightyThousandHours::Application.routes.draw do
   match 'survey_test'   => 'pages#survey_test'
   resources :pages
   resources :pages, :path => '/', :only => [:show]
-
 end

@@ -1,0 +1,7 @@
+.comment
+  .header
+    = comment.user.name
+    at
+    = comment.created_at.strftime('%d %b %y')
+  .body
+    = comment.body

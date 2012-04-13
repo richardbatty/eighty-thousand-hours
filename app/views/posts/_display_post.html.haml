@@ -35,16 +35,16 @@
 
     .comments
       - post.comments.each do |comment|
-        .comment
-          .header
-            = comment.user.name
-            at
-            = comment.created_at.strftime('%d %b %y')
-          .body
-            = comment.body
+        = render partial: 'comments/show', locals: { comment: comment }
 
-      -##disqus_thread
-        -#= render :partial => "disqus_embed", :locals => { :post_id => post.id, :post_title => post.title }
+      .new-comment
+        - if can? :create, Comment
+          = simple_form_for( Comment.new ) do |f|
+            = f.input :post_id, :as => :hidden, :input_html => { :value => post.id }
+            = f.input :body, label: "Comment body"
+            = f.button :submit
+        - else
+          %p Sign in or sign up to post a comment
 
     %hr
     .center

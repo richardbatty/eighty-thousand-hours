@@ -64,6 +64,7 @@ class Ability
 
     if user.confirmed?
       can :update, User, :id => user.id
+      can :manage, Comment, :user_id => user.id
     end
     
     if user.eighty_thousand_hours_member?
