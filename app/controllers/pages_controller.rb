@@ -97,4 +97,10 @@ class PagesController < ApplicationController
   def get_user
     @current_user = current_user
   end
+
+  def survey_test
+    if !current_user
+      redirect_to :root
+    end
+  end
 end

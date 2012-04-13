@@ -1,0 +1,75 @@
+.box
+  .page-header
+    %h1 Example of Google Docs embedding
+
+  %p
+    Pros:
+    %ul
+      %li Free for unlimited number of forms, unlimited entries
+      %li All form responses stored in Google Doc Spreadsheet
+      %li We can share forms as a shared Google Doc so easy for people to collaborate on creating forms
+
+  %p
+    Cons:
+    %ul
+      %li Limited input selection (text, checkboxes, scales from 1 - 10)
+      %li Doesn't allow hidden inputs (so we would need to warn and then trust people not to modify fields which we've prepopulated with their identifying user id
+
+  %hr
+  = "<iframe src='https://docs.google.com/spreadsheet/embeddedform?formkey=dHpndFZzV2lNT1RKRi1qRjg3ck1GdkE6MQ&entry_2=#{current_user.name}&entry_4=#{current_user.email}' width='760' height='841' frameborder='0' marginheight='0' marginwidth='0'>Loading...</iframe>".html_safe
+  %hr
+
+  .page-header
+    %h1 Example of JotForm embedding
+  %p
+    Pros:
+    %ul
+      %li Nice editing interface
+      %li Customisable themes
+      %li Has support for loads of interface elements (sliders etc.)
+
+  %p
+    Cons:
+    %ul
+      %li Limited to 100 entries / month
+      %li $9.95 / month to upgrade (but they seem happy to let you do this for just one month at a time if needed)
+
+  %hr
+  <script type="text/javascript" src="http://form.jotformeu.com/jsform/21032564074344"></script>
+  %hr
+
+  .page-header
+    %h1 Example of Wufoo embedding
+  %p
+    Pros:
+    %ul
+      %li Nice editing interface
+      %li Customisable themes
+
+  %p
+    Cons:
+    %ul
+      %li Limited to 100 entries / month
+      %li $14.95 / month to upgrade but still limited to 500 entries / month
+      %li $29.95 / month to upgrade and get 3000 entries / month
+      %li Not as many options as JotForm (no sliders for example)
+  %hr
+
+  <div id="wufoo-z7x3x5">
+  Fill out my <a href="http://rjshade.wufoo.com/forms/z7x3x5">online form</a>.
+  </div>
+  <script type="text/javascript">var z7x3x5;(function(d, t) {
+  var s = d.createElement(t), options = {
+  'userName':'rjshade', 
+  'formHash':'z7x3x5', 
+  'autoResize':true,
+  'height':'400',
+  'async':true,
+  'header':'show'};
+  s.src = ('https:' == d.location.protocol ? 'https://' : 'http://') + 'wufoo.com/scripts/embed/form.js';
+  s.onload = s.onreadystatechange = function() {
+  var rs = this.readyState; if (rs) if (rs != 'complete') if (rs != 'loaded') return;
+  try { z7x3x5 = new WufooForm();z7x3x5.initialize(options);z7x3x5.display(); } catch (e) {}};
+  var scr = d.getElementsByTagName(t)[0], par = scr.parentNode; par.insertBefore(s, scr);
+  })(document, 'script');</script>
+  </div>

@@ -73,6 +73,8 @@ EightyThousandHours::Application.routes.draw do
   match 'mailing-list'  => 'pages#mailing_list'
   match 'meet-the-team' => 'pages#meet_the_team'
   match 'sitemap'       => 'pages#sitemap'
+  match 'survey_test'   => 'pages#survey_test'
   resources :pages
   resources :pages, :path => '/', :only => [:show]
+
 end
