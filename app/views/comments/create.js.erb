@@ -1,32 +1,10 @@
-console.log('create comment');
-var comment_ele;
-var new_top_level = false;
-<%- if @comment.parent_id.nil? %>
-  // this is a new top level comment
-  new_top_level = true;
-  comment_elem = $('#comments-container').find('#comment-new')
-<%- else %>
-  // then we are replying to an existing comment
-  comment_elem = $('#comments').find('#comment-<%= @comment.parent_id %>')
-<%- end %>
-console.log('top level: ' + new_top_level);
-
 <%- if @comment.errors.any? %>
-  console.log('errors in form!')
-  comment_elem.find('.errors').html("<%= escape_javascript render 'errors' %>");  
-  comment_elem.find('.errors').show()
+  $('#comments').children('#new-comment').find('.errors').html("<%= escape_javascript render 'errors' %>");  
+  $('#comments').children('#new-comment').find('.errors').show()
 <%- else %>
-  comment_elem.find('.errors').hide()
-  if( new_top_level ) {
-    var html = "<div class='comment' id='comment-<%= @comment.id %>'><%= escape_javascript render @comment %><div class='nested-comments'></div></div>";
-    var where = $('#comments-container').children('#comments');
-    $(html).hide().appendTo(where).fadeIn(1000);
-  } else {
-    var vlah;
-    var html = "<div class='comment' id='comment-<%= @comment.id %>'><%= escape_javascript render @comment %><div class='nested-comments'></div></div>";
-    var where = comment_elem.children('.nested-comments');
-    $(html).hide().prependTo(where).fadeIn(1000);
-    comment_elem.children('.content').children('.actions').show()
-    comment_elem.children('.content').children('.form').hide()
-  }
+  $('#comments').children('#new-comment').find('.errors').hide()
+  $('#comments').children('#new-comment').find('textarea').val('')
+  var html = "<%= escape_javascript render @comment %>";
+  var where = $('#comments').children('#display-comments');
+  $(html).hide().appendTo(where).fadeIn();
 <%- end %>

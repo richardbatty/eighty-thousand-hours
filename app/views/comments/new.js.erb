@@ -1,8 +1,0 @@
-console.log('new comment');
-
-var comment_content = $('#comments').find('#comment-<%= @comment.parent_id %>').children('.content')
-
-comment_content.children('.actions').hide()
-
-comment_content.children('.form').html("<%= escape_javascript render 'form' %>")
-comment_content.children('.form').fadeIn()
