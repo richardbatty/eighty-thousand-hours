@@ -17,8 +17,5 @@
         Read more...
 
   .comments
-    %a{"href" => "#{post_url(post)}#disqus_thread",
-       "data-disqus-identifier" => "blog-post-#{post.id}" }
-    %div= render :partial => "disqus_count", :locals => { :post_id => post.id, :post_title => post.title }
-
+    = link_to pluralize(post.comments.size, 'comment'), post_path(post) + "#comments"
 %hr
