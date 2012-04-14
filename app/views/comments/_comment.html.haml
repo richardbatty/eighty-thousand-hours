@@ -10,6 +10,7 @@
         - if can? :manage, comment
           = link_to '&times; delete'.html_safe, comment, :method => :delete,
                                                          :class => 'delete-comment',
+                                                         :confirm => 'Are you sure?',
                                                          :remote => true 
     .clearfix
     .body
