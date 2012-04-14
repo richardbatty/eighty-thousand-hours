@@ -95,6 +95,11 @@ group :development, :test do
   gem 'cucumber-rails'
   gem 'jasmine'
   gem 'ruby-debug19', :require => 'ruby-debug'
+
+  # guard prompt on osx
+  platforms :ruby do
+    gem 'rb-readline'
+  end
 end
 
 group :test do

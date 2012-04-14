@@ -51,6 +51,9 @@ class Post < ActiveRecord::Base
   # a Post can have votes from many different users
   has_many :votes
 
+  # comments on posts
+  has_many :comments, :dependent => :destroy
+
   # a User wrote this post
   belongs_to :user
 

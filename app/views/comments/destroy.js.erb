@@ -1,0 +1,5 @@
+<%- if @comment.destroyed? %>
+  $('#comment-<%= @comment.id %>').fadeOut('fast')
+<%- else %>
+  $('#comment-<%= @comment.id %>').prepend("<div class='alert alert-danger'>Sorry, something went wrong!</div>")
+<%- end %>

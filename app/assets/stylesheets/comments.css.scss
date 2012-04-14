@@ -1,0 +1,52 @@
+@import "shared/partials";
+
+#comments{
+  .comment {
+    .avatar {
+      img {
+        float: left;
+        width:  48px;
+        height: 48px;
+        @include rounded_borders(#ccc, 1px, 3px);
+        @include box_shadow(#ccc, 0px, 0px, 5px);
+        vertical-align: middle;
+      }
+    }
+
+    .content {
+      margin-left: 60px;
+      .header {
+        padding-bottom: 10px;
+        border-bottom: 1px solid #efefef;
+        .name {
+          font-weight: bold;
+        }
+        .date {
+          color: #999;
+        }
+        .actions {
+          font-size: 0.9em;
+          font-style: italic;
+          float:right;
+        }
+      }
+
+      .body {
+        padding-top: 10px;
+        padding-bottom: 10px;
+      }
+
+    }
+
+    /*@include rounded_borders(#ccc, 1px, 3px);*/
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  }
+
+  .errors { display: none; }
+
+  .email_confirmation {
+    display: none;
+  }
+}

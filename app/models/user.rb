@@ -35,6 +35,9 @@ class User < ActiveRecord::Base
   # omniauth authentication
   has_many :authentications, :dependent => :destroy
 
+  # comments on posts
+  has_many :comments, :dependent => :destroy
+
   # dependent means 80k application gets destroyed when user is destroyed
   has_one :eighty_thousand_hours_application, :dependent => :destroy
   accepts_nested_attributes_for :eighty_thousand_hours_application

@@ -64,6 +64,8 @@ class Ability
 
     if user.confirmed?
       can :update, User, :id => user.id
+      can :create, EightyThousandHoursApplication
+      can :manage, Comment, :user_id => user.id
     end
     
     if user.eighty_thousand_hours_member?
@@ -75,6 +77,6 @@ class Ability
     # anyone can read posts or view pages
     can :read, Post, :published => true
     can :read, Page
-    can :create, EightyThousandHoursApplication
+    can :create, Comment
   end
 end
