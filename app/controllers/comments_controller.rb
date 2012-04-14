@@ -10,4 +10,9 @@ class CommentsController < ApplicationController
     @comment.user = current_user
     @comment.save
   end
+
+  def destroy
+    @comment = Comment.find(params[:id])
+    @comment.destroy
+  end
 end

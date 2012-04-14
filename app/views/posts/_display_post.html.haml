@@ -35,7 +35,7 @@
 
     #comments-container
       #comments
-        = nested_comments post.comments.arrange(:order => :created_at)
+        = render post.comments
 
       - if can? :create, Comment
         .comment#comment-new

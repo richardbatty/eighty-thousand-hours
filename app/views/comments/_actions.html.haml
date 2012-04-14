@@ -1,5 +1,11 @@
 - if can? :create, Comment
   = link_to "Reply", {action: 'new', controller: 'comments', parent_id: comment.id, post_id: comment.post_id}, remote: true
+  - if can? :manage, comment
+    |
+    = link_to 'Delete'.html_safe, comment, :method => :delete,
+                                           :class => 'delete-comment',
+                                           :remote => true
+ 
 - else
   <a href="javascript:void(0)" class="toggleLink">Reply</a>
 
