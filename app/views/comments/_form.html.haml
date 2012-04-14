@@ -1,0 +1,6 @@
+= simple_form_for( @comment ) do |f|
+  = f.error_notification
+  = f.input :body, label: "Comment body"
+  = f.input :post_id
+  = f.input :parent_id
+  = f.button :submit

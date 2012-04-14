@@ -1,7 +1,6 @@
 .page-header
-  %h1 New comment
+  %h1 Reply
 
-= simple_form_for( @comment ) do |f|
-  = f.error_notification
-  = f.input :body
-  = f.button :submit
+= render @comment.parent if @comment.parent
+
+= render 'form'

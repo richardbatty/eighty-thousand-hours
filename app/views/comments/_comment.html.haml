@@ -5,3 +5,5 @@
     = comment.created_at.strftime('%d %b %y')
   .body
     = comment.body
+  .actions
+    = link_to "Reply", new_comment_path(:parent_id => comment, :post_id => comment.post_id)
