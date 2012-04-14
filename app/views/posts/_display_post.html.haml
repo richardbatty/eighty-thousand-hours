@@ -33,15 +33,18 @@
       .fblike
         <fb:like href="#{post_url(post)}" send="false" width="450" show_faces="false"></fb:like>
 
-    .comments
-      = nested_comments post.comments.arrange(:order => :created_at)
+    #comments-container
+      #comments
+        = nested_comments post.comments.arrange(:order => :created_at)
 
-      .new-comment
-        - if can? :create, Comment
+      - if can? :create, Comment
+        .comment#comment-new
           - @comment = Comment.new( post_id: post.id )
-          = render 'comments/form'
-        - else
-          %p Sign in or sign up to post a comment
+          .errors.alert.alert-danger
+          .form
+            = render 'comments/form'
+      - else
+        = render 'comments/sign_in'
 
     %hr
     .center

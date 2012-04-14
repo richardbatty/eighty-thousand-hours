@@ -1,18 +1,39 @@
-.comments {
-  .nested_comments {
-    margin-left: 20px;
-  }
-  .comment {
-    border: 1px solid #ccc;
-    margin-bottom: 10px;
+@import "shared/partials";
 
-    .header {
-      padding: 5px;
-      border-bottom: 1px solid #efefef;
+#comments-container {
+  #comments {
+    .comment {
+      @include rounded_borders(#ccc, 1px, 5px);
     }
+  }
 
-    .body {
-      padding: 5px;
+  .comment {
+    .errors {
+      display: none;
+    }
+    padding: 5px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+  
+    .nested-comments {
+      margin-left: 10px;
+      margin-right: 10px;
+    }
+    .content {
+  
+      padding: 10px;
+      .header {
+        padding: 5px;
+        border-bottom: 1px solid #efefef;
+      }
+  
+      .body {
+        padding: 5px;
+      }
+
+      .form{ 
+        display: none;
+      }
     }
   }
 }

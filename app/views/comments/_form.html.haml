@@ -1,6 +1,6 @@
-= simple_form_for( @comment ) do |f|
+= simple_form_for( @comment, remote: true ) do |f|
   = f.error_notification
-  = f.input :body, label: "Comment body"
-  = f.input :post_id
-  = f.input :parent_id
-  = f.button :submit
+  = f.input :body, label: false, input_html: { style: 'height:100px;width:80%' }
+  = f.button :submit, "Post reply"
+  = f.input :post_id, :as => :hidden
+  = f.input :parent_id, :as => :hidden

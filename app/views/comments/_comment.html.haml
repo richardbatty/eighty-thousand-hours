@@ -1,9 +1,11 @@
-.comment
+.content
   .header
-    = comment.user.name
+    = comment.get_user_name
     at
     = comment.created_at.strftime('%d %b %y')
   .body
     = comment.body
   .actions
-    = link_to "Reply", new_comment_path(:parent_id => comment, :post_id => comment.post_id)
+    = render partial: 'comments/actions', locals: { comment: comment }
+  .form
+    .errors.alert.alert-danger

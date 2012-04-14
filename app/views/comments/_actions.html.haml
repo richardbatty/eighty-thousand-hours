@@ -1,0 +1,8 @@
+- if can? :create, Comment
+  = link_to "Reply", {action: 'new', controller: 'comments', parent_id: comment.id, post_id: comment.post_id}, remote: true
+- else
+  <a href="javascript:void(0)" class="toggleLink">Reply</a>
+
+  <div class="toggle_div" style="display:none">
+  = render partial: 'comments/sign_in'
+  </div>
