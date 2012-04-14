@@ -35,7 +35,7 @@
 
     #comments
       #display-comments
-        = render post.comments.order("created_at DESC")
+        = render post.comments.order("created_at ASC")
 
       #new-comment
         - @comment = Comment.new( post_id: post.id )
