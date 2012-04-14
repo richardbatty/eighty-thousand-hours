@@ -38,15 +38,19 @@
         = render post.comments
 
       #new-comment
-        - if can? :create, Comment
-          - @comment = Comment.new( post_id: post.id )
-          .center
-            = render 'comments/form'
-        - else
-          %p
-            #{link_to 'Sign up', new_user_registration_path} or
-            #{link_to 'Sign in', new_user_session_path} to post a comment.
+        - @comment = Comment.new( post_id: post.id )
+        - if !current_user
+          .alert.alert-info
+            .alert-heading
+              %h4 Hello!
+            .alert-body
+              %p
+                If you'd like to comment then please
+                #{link_to 'sign up', new_user_registration_path},
+                #{link_to 'sign in', new_user_session_path}, or fill in your name and email below.
 
+        .center
+          = render 'comments/form'
     %hr
     .center
       %p

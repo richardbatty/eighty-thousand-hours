@@ -1,6 +1,12 @@
 = simple_form_for( @comment, remote: true ) do |f|
   .errors.alert.alert-danger
   = f.input :body, placeholder: "Add a comment...", label: false, input_html: { style: 'height:100px;width:90%' }
+  - if !current_user
+    / display fields for non-registered users
+    = f.input :name
+    = f.input :email
+    = f.input :email_confirmation, label: 'Only fill this in if you are a robot...', input_html: { class: 'email_confirmation' }, label_html: { class: 'email_confirmation' }
+
   = f.button :submit, "Post comment", class: 'btn btn-large'
 
   = f.input :post_id, :as => :hidden
