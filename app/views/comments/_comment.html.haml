@@ -10,7 +10,6 @@
           = link_to '&times; delete'.html_safe, comment, :method => :delete,
                                                          :class => 'delete-comment',
                                                          :remote => true 
-
     .clearfix
     .body
-      = comment.body
+      = markdown comment.body
