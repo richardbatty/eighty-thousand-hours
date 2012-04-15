@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120415113457) do
+ActiveRecord::Schema.define(:version => 20120415115631) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -149,7 +149,7 @@ ActiveRecord::Schema.define(:version => 20120415113457) do
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.boolean  "front_page",       :default => false
+    t.boolean  "header",           :default => false
     t.boolean  "endorsement_page", :default => true
     t.integer  "weight",           :default => 1
   end

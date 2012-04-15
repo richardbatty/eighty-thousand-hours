@@ -6,7 +6,7 @@ ActiveAdmin.register Endorsement do
       f.inputs :author,
                :position,
                :body,
-               :front_page,
+               :header,
                :endorsement_page,
                :weight
       f.buttons
