@@ -32,7 +32,7 @@ class PagesController < ApplicationController
       @total_members = EightyThousandHoursProfile.all.size
 
       # for sidebar
-      @latest_comments = Comment.order("created_at DESC").limit(5)
+      @latest_comments = Comment.order("created_at DESC").limit(4)
 
       # for sidebar
       @latest_profiles = EightyThousandHoursProfile.order("created_at DESC").limit(4)
