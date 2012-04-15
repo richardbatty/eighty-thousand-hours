@@ -7,7 +7,8 @@ ActiveAdmin.register Endorsement do
                :position,
                :body,
                :front_page,
-               :endorsement_page
+               :endorsement_page,
+               :weight
       f.buttons
   end
 end
