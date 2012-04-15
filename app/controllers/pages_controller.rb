@@ -31,6 +31,15 @@ class PagesController < ApplicationController
 
       @total_members = EightyThousandHoursProfile.all.size
 
+      # for sidebar
+      @latest_comments = Comment.order("created_at DESC").limit(5)
+
+      # for sidebar
+      @latest_profiles = EightyThousandHoursProfile.order("created_at DESC").limit(4)
+
+      # for sidebar
+      @latest_posts = Post.published.limit(4)
+
       render :home
     end
 

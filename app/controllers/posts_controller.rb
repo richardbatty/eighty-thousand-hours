@@ -6,6 +6,7 @@ class PostsController < ApplicationController
     @tag_cloud = Post.tag_counts_on(:tags) || []
     @popular_posts = Post.by_popularity(5)
     @authors = Post.author_list
+    @latest_comments = Comment.order("created_at DESC").limit(4)
   end
 
   def index

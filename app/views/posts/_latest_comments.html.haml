@@ -1,0 +1,7 @@
+%h3 Latest comments
+- @latest_comments.each do |comment|
+  .sidebar-item
+    .title= link_to truncate(comment.post.title, length: 35), (post_path(comment.post)+"#comments")
+    .author
+      %span.author= comment.user.name
+      %span.date= comment.created_at.strftime("%B %d, %Y")

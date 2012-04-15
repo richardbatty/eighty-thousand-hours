@@ -30,39 +30,15 @@ We have done research into some of the best careers for effective altruists.
 </ul>"
 %>
 
-<%
-  posts = Post.published.limit(3)
-  latest_blog_html = "<h3>Latest posts</h3>"
-  posts.each do |post|
-    # note: gets processed by markdown so can't have leading spaces
-    latest_blog_html += "
-<div class='blog-latest'>
-<a class='title' href='#{post_path post}'>#{post.title}</a>
-<br/>
-#{(render :partial => 'posts/author_link', :locals => { :post => post })}
-</div>
-"
-  end
-%>
-
-<%
-  comments = Comment.order("created_at DESC").limit(3)
-  latest_blog_html += "<h3>Latest comments</h3>"
-  comments.each do |comment|
-    latest_blog_html += "
-<div class='blog-latest-comment'>
-<a class='title' href='#{post_path comment.post}#comments'>#{comment.post.title}</a>
-<br/>
-<span class='author'>#{comment.user.name}</span>
-<span class='date'>#{comment.created_at.strftime("%B %d, %Y")}</span>
-</div>
-"
-  end
+<% 
+  latest_html = ""
+  latest_html += "#{ render partial: "posts/latest_posts" }"
+  latest_html += "#{ render partial: "posts/latest_comments" }"
+  latest_html += "#{ render partial: "eighty_thousand_hours_profiles/latest_profiles"}"
 %>
 
 <% content = @page.body %>
 <% content = content.gsub(/\|\*MEMBERS\*\|/, members_html) %>
 <% content = content.gsub(/\|\*CAREERS\*\|/, careers_html) %>
-<% content = content.gsub(/\|\*LATEST_BLOG\*\|/, latest_blog_html) %>
+<% content = content.gsub(/\|\*LATEST\*\|/,  latest_html)  %>
 <%= markdown content %>
-

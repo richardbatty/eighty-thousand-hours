@@ -33,31 +33,6 @@
     border-bottom: 1px solid #efefef;
   }
 
-  .sidebar {
-    .link-to-post {
-      h5 {
-        font-weight: bold;
-
-        .author {
-          a {
-            color: $text_color !important;
-
-            &:hover {
-              color: $magenta_2 !important;
-            }
-          }
-        }
-
-        .date {
-          color: #999;
-        }
-      }
-    }
-
-    p {
-      font-size: 0.9em;
-    }
-  }
   .entry {
     padding-top: 10px;
 

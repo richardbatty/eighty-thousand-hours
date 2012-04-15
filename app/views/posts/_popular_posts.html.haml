@@ -1,10 +1,9 @@
 %h3 Popular posts
 - @popular_posts.each do |post|
-  %p
-    .link-to-post
-      %h5
-        %span.votes= post.net_votes
-        <i class='icon-arrow-up'></i>
-        = link_to post.title, post_path( post )
-      %h5
-        = render :partial => 'posts/author_link', :locals => { :post => post }
+  .sidebar-item
+    .title
+      %span.votes= post.net_votes
+      <i class='icon-arrow-up'></i>
+      = link_to post.title, post_path( post )
+    .author
+      = render :partial => 'posts/author_link', :locals => { :post => post }

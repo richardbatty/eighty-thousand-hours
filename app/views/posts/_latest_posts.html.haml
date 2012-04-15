@@ -1,0 +1,7 @@
+%h3 Latest posts
+- @latest_posts.each do |post|
+  .sidebar-item
+    .title
+      = link_to truncate(post.title, length: 35), post_path( post )
+    .attribution
+      = render :partial => 'posts/author_link', :locals => { :post => post }
