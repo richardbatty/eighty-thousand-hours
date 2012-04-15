@@ -5,6 +5,9 @@ class CommentsController < ApplicationController
     @comment = Comment.new( params[:comment] )
     @comment.user = current_user if current_user
     if @comment.save
+      # let the post author know about this comment
+      PostMailer.new_comment(@comment).deliver!
+
       render 'create'
     else
       render 'create'
