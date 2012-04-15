@@ -31,8 +31,8 @@ We have done research into some of the best careers for effective altruists.
 %>
 
 <%
-  posts = Post.published.limit(5)
-  latest_blog_html = ""
+  posts = Post.published.limit(3)
+  latest_blog_html = "<h3>Latest posts</h3>"
   posts.each do |post|
     # note: gets processed by markdown so can't have leading spaces
     latest_blog_html += "
@@ -40,6 +40,21 @@ We have done research into some of the best careers for effective altruists.
 <a class='title' href='#{post_path post}'>#{post.title}</a>
 <br/>
 #{(render :partial => 'posts/author_link', :locals => { :post => post })}
+</div>
+"
+  end
+%>
+
+<%
+  comments = Comment.order("created_at DESC").limit(3)
+  latest_blog_html += "<h3>Latest comments</h3>"
+  comments.each do |comment|
+    latest_blog_html += "
+<div class='blog-latest-comment'>
+<a class='title' href='#{post_path comment.post}#comments'>#{comment.post.title}</a>
+<br/>
+<span class='author'>#{comment.user.name}</span>
+<span class='date'>#{comment.created_at.strftime("%B %d, %Y")}</span>
 </div>
 "
   end
