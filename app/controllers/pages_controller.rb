@@ -32,13 +32,13 @@ class PagesController < ApplicationController
       @total_members = EtkhProfile.all.size
 
       # for sidebar
-      @latest_comments = Comment.order("created_at DESC").limit(4)
+      @latest_comments = Comment.order("created_at DESC").limit(5)
 
       # for sidebar
-      @latest_profiles = EtkhProfile.order("created_at DESC").limit(4)
+      @latest_profiles = EtkhProfile.order("created_at DESC").limit(5)
 
       # for sidebar
-      @latest_posts = Post.published.limit(4)
+      @latest_posts = Post.published.limit(5)
 
       render :home
     end
