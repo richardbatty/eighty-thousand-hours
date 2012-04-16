@@ -8,7 +8,10 @@ EightyThousandHours::Application.routes.draw do
 
   ActiveAdmin.routes(self)
 
-  devise_for :users, :path => 'accounts'
+  devise_for :users, :path => 'accounts',
+                     :controllers => { :sessions => 'sessions',
+                                       :registrations => 'registrations' }
+
   match '/accounts/merge' => 'users#merge'
 
   match '/blog/feed.atom' => 'posts#feed', :as => :feed, :defaults => { :format => 'atom' }

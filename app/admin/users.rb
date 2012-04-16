@@ -17,6 +17,7 @@ ActiveAdmin.register User do
     end
     column :name
     column :email
+    column :omniauth_signup
     column :slug
     column :last_sign_in_at
     column "Confirmed?" do |user|
@@ -68,6 +69,7 @@ ActiveAdmin.register User do
     attributes_table do
       row :name
       row :email
+      row :omniauth_signup
       row :real_name
       row :slug
       row :location
@@ -87,6 +89,7 @@ ActiveAdmin.register User do
   form do |f|
     f.inputs "Details" do
       f.inputs :name,
+               :omniauth_signup,
                :email,
                :password,
                :password_confirmation,

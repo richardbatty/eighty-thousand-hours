@@ -36,13 +36,15 @@
           = link_to ((image_tag 'auth/facebook_64.png', alt: "Sign in with Facebook") + " Facebook"), '/auth/facebook',      id: 'fb-connect', class: 'auth-provider'
           = link_to ((image_tag 'auth/google_oauth2_64.png', alt: "Sign in with Google") + "Google"),   '/auth/google_oauth2', id: 'google-connect', class: 'auth-provider'
 
-      = field_set_tag "Change password" do
-        = f.input :password,              :label => "New password", :placeholder => "optional"
-        = f.input :password_confirmation, :label => "New password confirmation", :placeholder => "optional"
+      - if !(current_user.omniauth_signup)
+        = field_set_tag "Change password" do
+          = f.input :password,              :label => "New password", :placeholder => "optional"
+          = f.input :password_confirmation, :label => "New password confirmation", :placeholder => "optional"
 
     %hr
 
-    = f.input :current_password, :label => "Current password", :required => true, :placeholder => "required to update details"
+    - if !(current_user.omniauth_signup)
+      = f.input :current_password, :label => "Current password", :required => true, :placeholder => "required to update details"
 
     .form-actions
       = f.button :submit, "Save profile", :class=>'btn btn-success btn-large'
