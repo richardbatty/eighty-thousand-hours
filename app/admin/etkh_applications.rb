@@ -1,12 +1,12 @@
-ActiveAdmin.register EightyThousandHoursApplication do
-  menu :if => proc{ can?(:manage, EightyThousandHoursApplication) },
+ActiveAdmin.register EtkhApplication do
+  menu :if => proc{ can?(:manage, EtkhApplication) },
        :label => "80k Applications",
        :parent => "Members"
   controller.authorize_resource
 
   action_item :only => :show do
-    if !eighty_thousand_hours_application.user.eighty_thousand_hours_member?
-      link_to "Confirm member", confirm_admin_user_path(eighty_thousand_hours_application.user), :method => :put
+    if !etkh_application.user.eighty_thousand_hours_member?
+      link_to "Confirm member", confirm_admin_user_path(etkh_application.user), :method => :put
     end
   end
 

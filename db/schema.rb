@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120415115631) do
+ActiveRecord::Schema.define(:version => 20120416095029) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -87,7 +87,18 @@ ActiveRecord::Schema.define(:version => 20120415115631) do
   add_index "donations", ["cause_id"], :name => "index_donations_on_charity_id"
   add_index "donations", ["user_id"], :name => "index_donations_on_user_id"
 
-  create_table "eighty_thousand_hours_applications", :force => true do |t|
+  create_table "endorsements", :force => true do |t|
+    t.string   "author"
+    t.string   "position"
+    t.text     "body"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "header",           :default => false
+    t.boolean  "endorsement_page", :default => true
+    t.integer  "weight",           :default => 1
+  end
+
+  create_table "etkh_applications", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "occupation"
@@ -118,7 +129,7 @@ ActiveRecord::Schema.define(:version => 20120415115631) do
     t.integer  "user_id"
   end
 
-  create_table "eighty_thousand_hours_profiles", :force => true do |t|
+  create_table "etkh_profiles", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "inspiration"
@@ -141,17 +152,6 @@ ActiveRecord::Schema.define(:version => 20120415115631) do
     t.text     "skills_knowledge_share"
     t.text     "skills_knowledge_learn"
     t.integer  "user_id"
-  end
-
-  create_table "endorsements", :force => true do |t|
-    t.string   "author"
-    t.string   "position"
-    t.text     "body"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.boolean  "header",           :default => false
-    t.boolean  "endorsement_page", :default => true
-    t.integer  "weight",           :default => 1
   end
 
   create_table "pages", :force => true do |t|

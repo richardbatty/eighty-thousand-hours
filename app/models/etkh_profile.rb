@@ -1,4 +1,4 @@
-class EightyThousandHoursProfile < ActiveRecord::Base
+class EtkhProfile < ActiveRecord::Base
   belongs_to :user
 
   attr_accessible :background,
@@ -19,7 +19,7 @@ class EightyThousandHoursProfile < ActiveRecord::Base
                   :skills_knowledge_share,
                   :skills_knowledge_learn
 
-  # now we can access @eighty_thousand_hours_profile.name etc.
+  # now we can access @etkh_profile.name etc.
   delegate :name, :name=, 
            :location, :location=,
            :to => :user

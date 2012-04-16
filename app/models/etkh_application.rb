@@ -1,4 +1,4 @@
-class EightyThousandHoursApplication < ActiveRecord::Base
+class EtkhApplication < ActiveRecord::Base
   belongs_to :user
 
   attr_accessible :occupation,

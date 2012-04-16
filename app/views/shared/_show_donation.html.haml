@@ -2,7 +2,7 @@
   = link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_donation_path(donation), :class => 'edit'
 
 - if donation.public?
-  = link_to donation.user.name, eighty_thousand_hours_profile_path(donation.user)
+  = link_to donation.user.name, etkh_profile_path(donation.user)
 - else
   = "An anonymous member"
 

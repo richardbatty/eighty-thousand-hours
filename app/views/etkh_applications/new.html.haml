@@ -36,18 +36,18 @@
 
 
       =# If user isn't signed in, already has made an application, or already has a profile, then we don't let them make another application
-      - disabled = (!current_user || !current_user.eighty_thousand_hours_application.nil? || !current_user.eighty_thousand_hours_profile.nil?)
+      - disabled = (!current_user || !current_user.etkh_application.nil? || !current_user.etkh_profile.nil?)
       - if disabled
         = render 'disabled_warning'
 
-      - if @eighty_thousand_hours_application.errors.any?
+      - if @etkh_application.errors.any?
         .alert.alert-error
           <a class="close" data-dismiss="alert">×</a>
           %h4.alert-heading 
-            = pluralize(@eighty_thousand_hours_application.errors.count, "error")
+            = pluralize(@etkh_application.errors.count, "error")
             prohibited this application from being accepted!
           %ul
-            - @eighty_thousand_hours_application.errors.reverse_each do |field,msg|
+            - @etkh_application.errors.reverse_each do |field,msg|
               -# only want to print field if coming from Devise (password, or email).
               -# otherwise we print our custom error messges as defined in models user
               %li
@@ -56,7 +56,7 @@
       
       .page-header
         %h3 #{ disabled ? "Step 2: " : "" }Fill in the application form below
-      = simple_form_for @eighty_thousand_hours_application, :html => { :class => "form-horizontal" }, :defaults=>{:input_html=>{:class=>'span6'}, :disabled => disabled} do |f|
+      = simple_form_for @etkh_application, :html => { :class => "form-horizontal" }, :defaults=>{:input_html=>{:class=>'span6'}, :disabled => disabled} do |f|
         %p
         %strong Note:
         None of this information will ever be displayed publicly, but it will be used in aggregated data.
@@ -84,9 +84,9 @@
           .slider-group
             %p
               %strong
-                I intend to donate around <span class="slider_value emphasise"><span id="eighty_thousand_hours_application_donation_percentage_display"></span>%</span> of my pre-tax salary each year.
+                I intend to donate around <span class="slider_value emphasise"><span id="etkh_application_donation_percentage_display"></span>%</span> of my pre-tax salary each year.
       
-          .slider#eighty_thousand_hours_application_donation_percentage_slider
+          .slider#etkh_application_donation_percentage_slider
             = f.input :donation_percentage, :as => :hidden
         %br
         = f.input :donation_percentage_comment, :placeholder => "optional", :label => "Comments about donations", :required => false, :input_html => {:rows=>'5'}
@@ -115,8 +115,8 @@
           .slider-group
             %p
               %strong
-                I expect to earn <span class="slider_value emphasise">£<span id="eighty_thousand_hours_application_average_income_display"></span></span> a year on average over my career.
-          .slider#eighty_thousand_hours_application_average_income_slider
+                I expect to earn <span class="slider_value emphasise">£<span id="etkh_application_average_income_display"></span></span> a year on average over my career.
+          .slider#etkh_application_average_income_slider
             = f.input :average_income, :as => :hidden
         %br
         = f.input :average_income_comment, :placeholder => "optional", :label => "Comments about earnings", :required => false, :input_html => {:rows=>'5'}
@@ -129,9 +129,9 @@
         .slider-group
           %p
             %strong
-              I intend to spend around <span class="slider_value emphasise"><span id="eighty_thousand_hours_application__hic_activity_hours_display"></span> hours</span> 
+              I intend to spend around <span class="slider_value emphasise"><span id="etkh_application__hic_activity_hours_display"></span> hours</span> 
               a week on high impact activities.
-        .slider#eighty_thousand_hours_application_hic_activity_hours_slider
+        .slider#etkh_application_hic_activity_hours_slider
           = f.input :hic_activity_hours, :as => :hidden
         %br
         = f.input :hic_activity_hours_comment, :placeholder => "optional", :label => "Comments about activities", :required => false, :input_html => {:rows=>'5'}
@@ -150,7 +150,7 @@
         %p
           = render :partial => 'shared/declaration'
       
-        = f.simple_fields_for :eighty_thousand_hours_application do |e|
+        = f.simple_fields_for :etkh_application do |e|
           .control-group.check_boxes
             .controls
               = f.input :pledge, :label => "I agree to the declaration of intent", :required => false

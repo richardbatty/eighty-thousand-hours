@@ -29,13 +29,13 @@ class PagesController < ApplicationController
       careers = ["banker","doctor","scientist","train_driver","campaigner","teacher"]#,"worker"]
       @careers = (careers.shuffle)[0..3]
 
-      @total_members = EightyThousandHoursProfile.all.size
+      @total_members = EtkhProfile.all.size
 
       # for sidebar
       @latest_comments = Comment.order("created_at DESC").limit(4)
 
       # for sidebar
-      @latest_profiles = EightyThousandHoursProfile.order("created_at DESC").limit(4)
+      @latest_profiles = EtkhProfile.order("created_at DESC").limit(4)
 
       # for sidebar
       @latest_posts = Post.published.limit(4)

@@ -1,5 +1,5 @@
-ActiveAdmin.register EightyThousandHoursProfile do
-  menu :if => proc{ can?(:manage, EightyThousandHoursProfile) },
+ActiveAdmin.register EtkhProfile do
+  menu :if => proc{ can?(:manage, EtkhProfile) },
        :label => "80k Profiles",
        :parent => "Members"
   controller.authorize_resource

@@ -27,7 +27,7 @@ class Ability
     if user.has_role? :member_admin
       can :access, :admin
       can :manage, User
-      can :manage, EightyThousandHoursApplication
+      can :manage, EtkhApplication
     end
 
     # a MemberViewer can read all member profiles
@@ -64,14 +64,14 @@ class Ability
 
     if user.confirmed?
       can :update, User, :id => user.id
-      can :create, EightyThousandHoursApplication
+      can :create, EtkhApplication
       can :manage, Comment, :user_id => user.id
     end
     
     if user.eighty_thousand_hours_member?
       can :manage, Donation, :user_id => user.id
       can :create, Cause
-      can :manage, EightyThousandHoursProfile, :user_id => user.id
+      can :manage, EtkhProfile, :user_id => user.id
     end
 
     # anyone can read posts or view pages

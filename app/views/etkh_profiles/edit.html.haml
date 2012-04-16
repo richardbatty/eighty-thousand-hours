@@ -20,10 +20,10 @@
         .box.left-border
           .page-header
             %h1= current_user.name
-          = simple_form_for(current_user, url: user_eighty_thousand_hours_profile_url(current_user, current_user.eighty_thousand_hours_profile),
+          = simple_form_for(current_user, url: user_etkh_profile_url(current_user, current_user.etkh_profile),
                                           html: { class: 'form-horizontal' },
                                           defaults: { input_html: { class: 'span4' } }  ) do |f|
-            = f.fields_for :eighty_thousand_hours_profile, defaults: { input_html: { class: 'span4' } } do |ep|
+            = f.fields_for :etkh_profile, defaults: { input_html: { class: 'span4' } } do |ep|
               = field_set_tag "Public profile fields: will be visible at 80000hours.org/members" do
                 = f.input :location
                 = ep.input :organisation, label: "Your organization", :placeholder => "i.e. your current company or university"
@@ -58,7 +58,7 @@
             %hr
 
             = field_set_tag "Private profile fields: only visible to other 80,000 Hours members" do
-              = f.fields_for :eighty_thousand_hours_profile, :defaults=>{:input_html=>{:class=>'span4'}}  do |ep|
+              = f.fields_for :etkh_profile, :defaults=>{:input_html=>{:class=>'span4'}}  do |ep|
                 = ep.input :skills_knowledge_share,
                            label: "What skills and knowledge would you be willing to share with other 80k members?",
                            placeholder: "this will not be publicy visible",

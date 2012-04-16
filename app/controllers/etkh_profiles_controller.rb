@@ -1,4 +1,4 @@
-class EightyThousandHoursProfilesController < ApplicationController
+class EtkhProfilesController < ApplicationController
   load_and_authorize_resource :only => [:new,:create,:edit,:update,:destroy]
 
   def index
@@ -9,23 +9,23 @@ class EightyThousandHoursProfilesController < ApplicationController
   end
 
   def get_grouped_profiles
-    @profiles = EightyThousandHoursProfile.all.to_a.sort_by{|p| p.user.name[0].upcase }
+    @profiles = EtkhProfile.all.to_a.sort_by{|p| p.user.name[0].upcase }
     @grouped_profiles = @profiles.group_by{ |profile| profile.user.name[0].upcase }
-    @newest_profiles = EightyThousandHoursProfile.newest.limit(8)
+    @newest_profiles = EtkhProfile.newest.limit(8)
   end
 
   def show
     @user = User.find(params[:id])
     @title = @user.name
     @donations = @user.donations.confirmed
-    @profile = @user.eighty_thousand_hours_profile
+    @profile = @user.etkh_profile
 
     @menu_root = "Our community"
     @menu_current = "Our members"
   end
 
   def destroy
-    profile = EightyThousandHoursProfiles.find( params[:id] )
+    profile = EtkhProfiles.find( params[:id] )
     if profile.destroy
       flash[:"alert-success"] = "Deleted profile"
     else
@@ -35,13 +35,13 @@ class EightyThousandHoursProfilesController < ApplicationController
   end
 
   def edit
-    @eighty_thousand_hours_profile = current_user.eighty_thousand_hours_profile
+    @etkh_profile = current_user.etkh_profile
   end
 
   def update
     if current_user.update_attributes(params[:user])
       flash[:"alert-success"] = "Your profile was successfully updated."
-      redirect_to( eighty_thousand_hours_profile_path( current_user ) )
+      redirect_to( etkh_profile_path( current_user ) )
     else
       render :action => "edit"
     end
@@ -50,7 +50,7 @@ class EightyThousandHoursProfilesController < ApplicationController
   def search
     @user = User.find_by_name(params[:name])
     if @user
-      redirect_to eighty_thousand_hours_profile_path(@user)
+      redirect_to etkh_profile_path(@user)
     else
       flash[:"alert-error"] = "Couldn't find #{params[:name]}!"
       redirect_to :action => :index

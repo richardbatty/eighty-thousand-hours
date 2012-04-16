@@ -15,7 +15,7 @@
 
       - team_members.each do |member|
         .box
-          = render :partial => 'eighty_thousand_hours_profiles/profile', :locals => { :profile => member.eighty_thousand_hours_profile }
+          = render :partial => 'etkh_profiles/profile', :locals => { :profile => member.etkh_profile }
 
       .center
         = link_to 'back to top', '#content'

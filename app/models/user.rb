@@ -27,10 +27,10 @@ class User < ActiveRecord::Base
                   :real_name,
                   :contacted_date,
                   :contacted_by,
-                  :eighty_thousand_hours_application_attributes,
-                  :eighty_thousand_hours_profile_attributes
+                  :etkh_application_attributes,
+                  :etkh_profile_attributes
 
-  delegate :public_profile, :to => :eighty_thousand_hours_application
+  delegate :public_profile, :to => :etkh_application
 
   # omniauth authentication
   has_many :authentications, :dependent => :destroy
@@ -39,12 +39,12 @@ class User < ActiveRecord::Base
   has_many :comments, :dependent => :destroy
 
   # dependent means 80k application gets destroyed when user is destroyed
-  has_one :eighty_thousand_hours_application, :dependent => :destroy
-  accepts_nested_attributes_for :eighty_thousand_hours_application
+  has_one :etkh_application, :dependent => :destroy
+  accepts_nested_attributes_for :etkh_application
 
   # dependent means 80k profile gets destroyed when user is destroyed
-  has_one :eighty_thousand_hours_profile, :dependent => :destroy
-  accepts_nested_attributes_for :eighty_thousand_hours_profile
+  has_one :etkh_profile, :dependent => :destroy
+  accepts_nested_attributes_for :etkh_profile
 
   # a user can write many blog posts
   has_many :posts
@@ -86,11 +86,11 @@ class User < ActiveRecord::Base
   end
 
   def eighty_thousand_hours_member?
-    self.eighty_thousand_hours_profile
+    self.etkh_profile
   end
 
   def eighty_thousand_hours_applicant?
-    self.eighty_thousand_hours_application
+    self.etkh_application
   end
   
   def first_name

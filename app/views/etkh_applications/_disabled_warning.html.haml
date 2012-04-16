@@ -7,11 +7,11 @@
         Before you can fill in the membership form, you need to be signed in to an 80000hours.org account. You can sign in if you have an existing account, or quickly create a new account, then return here and fill in the membership form.
       .center
         #{link_to "sign in", new_user_session_path, :class => 'btn'} or #{link_to "create an account", new_user_registration_path, :class=> 'btn'}
-  - elsif current_user.eighty_thousand_hours_profile
+  - elsif current_user.etkh_profile
     .alert.alert-error
       %h3.alert-heading You're already an 80,000 Hours member!
       You can't submit another application.
-  - elsif current_user.eighty_thousand_hours_application
+  - elsif current_user.etkh_application
     .alert.alert-error
       %h3.alert-heading You've already submitted an application!
       Please contact #{link_to 'join@80000hours.org', 'mailto:join@80000hours.org'} if you have any questions.

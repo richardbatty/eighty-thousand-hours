@@ -36,17 +36,17 @@ EightyThousandHours::Application.routes.draw do
   resources :endorsements, :only =>[:index]
   resources :videos, :only =>[:index]
 
-  resources :eighty_thousand_hours_applications, :only =>[:new,:create]
-  match 'join' => 'eighty_thousand_hours_applications#new'
+  resources :etkh_applications, :only =>[:new,:create]
+  match 'join' => 'etkh_applications#new'
 
-  resources :eighty_thousand_hours_profiles, :path => "members", :only => [:show,:index] do
+  resources :etkh_profiles, :path => "members", :only => [:show,:index] do
     collection do
       post 'search'
     end
   end
 
   resources :users, :path => 'accounts', :only => [:edit,:update,:destroy] do
-    resources :eighty_thousand_hours_profiles 
+    resources :etkh_profiles 
     member do
       get 'posts'
     end

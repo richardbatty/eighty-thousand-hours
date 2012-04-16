@@ -2,5 +2,5 @@
 - @latest_profiles.each do |profile|
   .sidebar-item
     = image_tag profile.user.avatar(:thumb), class: 'avatar'
-    = link_to profile.user.name, eighty_thousand_hours_profile_path(profile.user)
+    = link_to profile.user.name, etkh_profile_path(profile.user)
     %span.date= profile.created_at.strftime("%B %d, %Y")

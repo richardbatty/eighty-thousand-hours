@@ -1,28 +1,28 @@
-class EightyThousandHoursApplicationsController < ApplicationController
+class EtkhApplicationsController < ApplicationController
   # people who aren't logged in should still be able to see the signup form
   load_and_authorize_resource :only => [:create]
 
   def new
-    @eighty_thousand_hours_application = EightyThousandHoursApplication.new
+    @etkh_application = EtkhApplication.new
     @menu_root = "Membership"
     @menu_current = "Join now"
   end
 
   def create
     if current_user.nil?
-      raise CanCan::AccessDenied.new("You need to create an account first!", :create, EightyThousandHoursApplication)
+      raise CanCan::AccessDenied.new("You need to create an account first!", :create, EtkhApplication)
     end
 
-    @eighty_thousand_hours_application = EightyThousandHoursApplication.new(params[:eighty_thousand_hours_application])
+    @etkh_application = EtkhApplication.new(params[:etkh_application])
     
-    if @eighty_thousand_hours_application.save
-      current_user.eighty_thousand_hours_application = @eighty_thousand_hours_application
+    if @etkh_application.save
+      current_user.etkh_application = @etkh_application
 
       # fire off an email informing 80k team (join@80k..)
-      EightyThousandHoursApplicationMailer.tell_team(current_user).deliver!
+      EtkhApplicationMailer.tell_team(current_user).deliver!
 
       # send an email to the user
-      EightyThousandHoursApplicationMailer.thank_applicant(current_user).deliver!
+      EtkhApplicationMailer.thank_applicant(current_user).deliver!
 
       # add name to 'show your support'
       @supporter = Supporter.new(:name => current_user.name, :email => current_user.email)
