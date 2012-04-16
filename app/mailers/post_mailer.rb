@@ -3,7 +3,8 @@ class PostMailer < ActionMailer::Base
 
   def new_comment(comment)
     # only try and send an email if a User owns the post
-    if comment.post.user
+    # and don't email if author commenting on their own post
+    if comment.post.user && (comment.post.user != comment.user)
       @post_author = comment.post.user.name
       @post_author_email = comment.post.user.email
 
