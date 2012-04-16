@@ -1,25 +1,29 @@
 .page-header
   %h1 Sign up for an 80,000 Hours account
 
-%p There are two ways to create an 80,000 Hours account
+.alert.alert-info
+  The easiest way to create an 80,000 Hours account is to link to an existing account from Facebook or Google. This means you don't have yet another password to remember.
+  You can do this by clicking the appropriate button.
+  %br
+  %br
+  %strong Note:
+  We only request the most limited data from Facebook or Google: just your name and email address.
+  We will 
+  %strong never
+  post to your Facebook wall without your permission.
 
-.row
-  .span6
-    .alert.alert-info
-      %h1.alert-heading Use an existing account
-      The easiest way to create an 80,000 Hours account is to link to an existing account from Facebook or Google. You can do this by clicking the appropriate button.
+= render partial: 'authentications/options'
 
-  .span6
-    .alert.alert-info
-      %h1.alert-heading Email and password
-      If you don't have an account with an external provider, or you just want to login to 80,000 Hours with a username and password, then you can fill in the form below.
+%hr
 
-.row
-  .span6
-    = render partial: 'authentications/options'
+If you don't have an account with an external provider, or you just want to login to 80,000 Hours with an email and password, then #{link_to 'fill in the form below', nil, id: 'toggle-signup-form'}.
 
-  .span6
-    = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal" }) do |f|
+
+#signup-form
+  %br
+  = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :class => "form-horizontal" }) do |f|
+    = field_set_tag "Signup with email and password" do
+      %br
       = f.error_notification
       .form-inputs
         = f.input :name, :required => false, :label => "Display name", :autofocus => true, :hint => 'This will be displayed publicly. Can be a pseudonym.'
@@ -33,3 +37,17 @@
 .box
   %hr
   = render "links"
+
+<script>
+$(document).ready( function() {
+// hide the signup form
+$('#signup-form').css('display', 'none');
+
+// change the link text to 'click here'
+$('#toggle-signup-form').html( 'click here' );
+
+// show signup form on click
+$('#toggle-signup-form').attr( 'href', null );
+$('#toggle-signup-form').click( function(){$('#signup-form').fadeIn();} )
+});
+</script>

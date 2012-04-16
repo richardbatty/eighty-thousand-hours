@@ -1,24 +1,33 @@
 .page-header
   %h1 Sign in to 80,000 Hours
 
-%p There are two ways to sign in to 80,000 Hours:
+.alert.alert-info
+  If you've linked your account to an external provider such as Facebook or Google, then you can click the appropriate button to login.
 
-.row
-  .span6
-    .alert.alert-info
-      %h1.alert-heading Email and password
-      Log in using your email and password using the form below. Only use this option if you originally entered these details when registering!
+= render partial: 'authentications/options'
 
-  .span6
-    .alert.alert-info
-      %h1.alert-heading External account
-      If you've linked your account to an external provider such as Facebook or Google, then you can click the appropriate button to login.
+%hr
 
-.row
-  .span6
-    = render partial: 'form', locals: {url: session_path(:user)}
-  .span6
-    = render partial: 'authentications/options'
+If you haven't linked your account then #{link_to 'enter your email and password below', nil, id: 'toggle-signin-form'}.
+
+#signin-form
+  %br
+  = render partial: 'form', locals: {url: session_path(:user)}
+
 .box
   %hr
   = render "links"
+
+<script>
+$(document).ready( function() {
+// hide the signin form
+$('#signin-form').css('display', 'none');
+
+// change the link text to 'click here'
+$('#toggle-signin-form').html( 'click here to login' );
+
+// show signup form on click
+$('#toggle-signin-form').attr( 'href', null );
+$('#toggle-signin-form').click( function(){$('#signin-form').fadeIn();} )
+});
+</script>
