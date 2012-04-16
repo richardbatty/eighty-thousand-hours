@@ -1,7 +1,7 @@
-= "Hi #{@name},"
+= "Hi #{@post_author},"
 :plain
 
-= "#{@comment.user.name} just made a comment on your post: #{@comment.post.title} ( #{post_url @comment.post} )"
+= "#{@commenter_name} just made a comment on your post: #{@comment.post.title} ( #{post_url @comment.post} )"
 :plain
 
 Best regards,
