@@ -8,6 +8,7 @@ class AuthenticationsController < ApplicationController
     auth = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if auth
       flash[:"alert-success"] = "You are now signed in."
+      remember_me(user) # set the remember_me cookie
       sign_in_and_redirect(:user, auth.user)  
     elsif current_user
       current_user.authentications.find_or_create_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
@@ -17,6 +18,7 @@ class AuthenticationsController < ApplicationController
       user.authentications.create(:provider => omniauth['provider'], :uid => omniauth['uid'])
       user.save!
       flash[:"alert-success"] = "Your 80,000 Hours account is now linked to your #{omniauth['provider'].to_s.titleize} account, and you have been logged in."
+      remember_me(user) # set the remember_me cookie
       sign_in_and_redirect(:user, user)  
     else
       # store omniauth data in session
@@ -40,6 +42,8 @@ class AuthenticationsController < ApplicationController
       UserMailer.welcome_email(user).deliver!
 
       flash[:"alert-success"] = "We've linked your #{omniauth['provider'].to_s.titleize} account!<br/>Your are signed in to 80,000 Hours with the name #{user.name}".html_safe
+
+      remember_me(user) # set the remember_me cookie
       sign_in_and_redirect(:user, user) # devise helper method
     else
       redirect_to new_user_registration_path
