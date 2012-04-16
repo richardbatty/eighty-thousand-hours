@@ -1,0 +1,26 @@
+.box
+  .page-header
+    %h1= @user.name
+
+  - if @user.etkh_profile
+    #{@user.name} is an 80,000 Hours member. #{link_to 'View their profile here', (etkh_profile_path @user)}.
+
+
+  - if @user.posts.any?
+    .page-header
+      %h2 Blog posts
+    
+    - @user.posts.each do |post|
+      .blog
+        = render :partial => 'posts/display_heading',
+                 :locals => { :post => post }
+
+  - if @user.comments.any?
+    .page-header
+      %h2 Comments
+    
+    #comments
+      - @user.comments.each do |comment|
+        .comment
+          %h4 Posted a comment in #{link_to comment.post.title, comment.post}:
+          = render comment

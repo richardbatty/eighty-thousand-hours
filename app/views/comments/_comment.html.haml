@@ -1,10 +1,13 @@
 .comment{id: "comment-#{comment.id}"}
   .avatar
     - if comment.user
-      = image_tag comment.user.avatar(:thumb)
+      = link_to (image_tag comment.user.avatar(:thumb)), user_path( comment.user )
   .content
     .header
-      %span.name= comment.get_name
+      - if comment.user
+        %span.name= link_to comment.get_name, user_path( comment.user )
+      - else
+        %span.name= comment.get_name
       %span.date= comment.created_at.day.ordinalize + ' ' + comment.created_at.strftime('%B %Y')
       .actions
         - if can? :manage, comment
