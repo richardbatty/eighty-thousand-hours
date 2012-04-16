@@ -8,7 +8,7 @@ class AuthenticationsController < ApplicationController
     auth = Authentication.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
     if auth
       flash[:"alert-success"] = "You are now signed in."
-      remember_me(user) # set the remember_me cookie
+      remember_me(auth.user) # set the remember_me cookie
       sign_in_and_redirect(:user, auth.user)  
     elsif current_user
       current_user.authentications.find_or_create_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
