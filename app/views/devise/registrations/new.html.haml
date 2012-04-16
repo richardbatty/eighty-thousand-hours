@@ -40,8 +40,9 @@ If you don't have an account with an external provider, or you just want to logi
 
 <script>
 $(document).ready( function() {
-// hide the signup form
-$('#signup-form').css('display', 'none');
+// hide the signup form unless errors
+- if resource.errors.empty?
+  $('#signup-form').css('display', 'none');
 
 // change the link text to 'click here'
 $('#toggle-signup-form').html( 'click here' );
