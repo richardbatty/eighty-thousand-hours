@@ -59,6 +59,8 @@ EightyThousandHours::Application.routes.draw do
     end
   end
 
+  resources :surveys, :only => [:show]
+
   # pages which don't live in the database as they can't be
   # converted to pure Markdown
   match 'events'             => 'info#events'

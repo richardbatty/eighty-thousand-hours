@@ -1,0 +1,10 @@
+@import "shared/partials";
+.survey {
+  padding-top: 30px;
+  padding-bottom: 30px;
+  iframe {
+    padding: 20px;
+    border: 1px solid #ccc;
+    @include rounded_borders(#ccc, 1px, 5px);
+  }
+}
