@@ -58,9 +58,7 @@ class EtkhProfilesController < ApplicationController
   end
 
   def email_list
-    members = EtkhProfiles.order("created_at ASC")
-    @emails = ""
-    members.each{|m| @emails << "\"" + m.user.name + "\" <" + m.user.email + ">, "};
+    @members = EtkhProfile.order("created_at ASC")
 
     authorize! :read, EtkhProfile
   end

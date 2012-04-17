@@ -45,6 +45,7 @@ EightyThousandHours::Application.routes.draw do
   resources :etkh_profiles, :path => "members", :only => [:show,:index] do
     collection do
       post 'search'
+      get 'email_list'
     end
   end
 
@@ -55,7 +56,6 @@ EightyThousandHours::Application.routes.draw do
     end
     collection do
       get 'all'
-      get 'email_list'
     end
   end
 
