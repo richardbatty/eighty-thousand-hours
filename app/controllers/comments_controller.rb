@@ -14,7 +14,7 @@ class CommentsController < ApplicationController
 
       render 'create'
     else
-      render 'create'
+      render 'error'
     end
   end
 

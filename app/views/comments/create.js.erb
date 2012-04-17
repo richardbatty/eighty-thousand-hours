@@ -1,10 +1,10 @@
-<%- if @comment.errors.any? %>
-  $('#comments').children('#new-comment').find('.errors').html("<%= escape_javascript render 'errors' %>");  
-  $('#comments').children('#new-comment').find('.errors').show()
-<%- elsif @comment.valid? %>
-    $('#comments').children('#new-comment').find('.errors').hide()
-    $('#comments').children('#new-comment').find('textarea').val('')
-    var html = "<%= escape_javascript render @comment %>";
-    var where = $('#comments').children('#display-comments');
-    $(html).hide().appendTo(where).fadeIn();
-<%- end %>
+$('#comments').children('#new-comment').find('.errors').hide()
+$('#comments').children('#new-comment').find('textarea').val('')
+var html = "<%= escape_javascript render @comment %>";
+var where = $('#comments').children('#display-comments');
+$(html).hide().appendTo(where).fadeIn();
+
+// re-enable submit button
+var submitBtn = $('#comments').children('#new-comment').children('form').children('input[type=submit]')
+submitBtn.val('Post comment');
+submitBtn.attr('disabled',false);

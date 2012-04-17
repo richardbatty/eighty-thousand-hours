@@ -1,0 +1,12 @@
+var elem = $('#comments').children('#new-comment').find('.errors');
+var html = "<h1>Sorry! Something went wrong.</h1>";
+<%- if @comment.errors.any? %>
+  html += "<%= escape_javascript render 'errors' %>";  
+<%- end %>
+elem.html(html);
+elem.show();
+
+// re-enable submit button
+var submitBtn = $('#comments').children('#new-comment').children('form').children('input[type=submit]')
+submitBtn.val('Post comment');
+submitBtn.attr('disabled',false);

@@ -1,4 +1,4 @@
-= simple_form_for( @comment, remote: true ) do |f|
+= simple_form_for( @comment, remote: true, html: { class: 'comment-form' } ) do |f|
   .errors.alert.alert-danger
   = f.input :body, placeholder: "Add a comment...", label: false, input_html: { style: 'height:100px;width:90%' }
   - if !current_user
@@ -10,3 +10,4 @@
   = f.button :submit, "Post comment", class: 'btn btn-large'
 
   = f.input :post_id, :as => :hidden
+.comment-form-message
