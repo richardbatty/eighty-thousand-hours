@@ -76,7 +76,7 @@ EightyThousandHours::Application.configure do
     :authentication       => 'plain',
     :enable_starttls_auto => true  }
     
-    config.middleware.use ExceptionNotifier,
+  config.middleware.use ExceptionNotifier,
       :email_prefix => "[Error at 80000hours.org] ",
       :sender_address => %{"noreply80000" <eighty.thousand@gmail.com>},
       :exception_recipients => %w{powermoveguru@gmail.com robbie.shade@gmail.com}
