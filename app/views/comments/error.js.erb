@@ -5,8 +5,3 @@ var html = "<h1>Sorry! Something went wrong.</h1>";
 <%- end %>
 elem.html(html);
 elem.show();
-
-// re-enable submit button
-var submitBtn = $('#comments').children('#new-comment').children('form').children('input[type=submit]')
-submitBtn.val('Post comment');
-submitBtn.attr('disabled',false);

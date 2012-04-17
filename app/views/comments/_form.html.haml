@@ -7,7 +7,7 @@
     = f.input :email
     = f.input :email_confirmation, label: 'Only fill this in if you are a robot...', input_html: { class: 'email_confirmation' }, label_html: { class: 'email_confirmation' }
 
-  = f.button :submit, "Post comment", class: 'btn btn-large'
+  = button_tag "Post comment", :disable_with => "Please wait...", :class => 'btn btn-large'
 
   = f.input :post_id, :as => :hidden
 .comment-form-message
