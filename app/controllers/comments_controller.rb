@@ -3,6 +3,7 @@ class CommentsController < ApplicationController
 
   def create
     @comment = Comment.new( params[:comment] )
+    @comment.post = Post.find(params[:comment][:post_id])
     @comment.user = current_user if current_user
     if @comment.save
       # let the post author know about this comment

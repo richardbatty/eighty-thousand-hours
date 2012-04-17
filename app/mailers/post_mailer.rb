@@ -1,6 +1,4 @@
 class PostMailer < ActionMailer::Base
-  default from: "admin@80000hours.org"
-
   def new_comment(comment)
     # only try and send an email if a User owns the post
     # and don't email if author commenting on their own post
@@ -14,7 +12,7 @@ class PostMailer < ActionMailer::Base
       @comment_post_title = comment.post.title
       @comment_post_url = post_url(comment.post)
 
-      mail to: [@post_author_email, 'admin@80000hours.org'], subject: "[80,000 Hours] New comment on #{comment.post.title}"
+      mail( to: @post_author_email, from: 'admin@80000hours.org', subject: "[80,000 Hours] New comment on #{comment.post.title}" )
     end
   end
 end
