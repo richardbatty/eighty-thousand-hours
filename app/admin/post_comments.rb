@@ -8,6 +8,7 @@ ActiveAdmin.register Comment, :as => "PostComment" do
     column :name
     column :email
     column :user
+    column :post
     column :body
     column :created_at
     default_actions
