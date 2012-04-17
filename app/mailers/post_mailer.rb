@@ -12,7 +12,11 @@ class PostMailer < ActionMailer::Base
       @comment_post_title = comment.post.title
       @comment_post_url = post_url(comment.post)
 
-      mail( to: @post_author_email, from: 'admin@80000hours.org', subject: "[80,000 Hours] New comment on #{comment.post.title}" )
+      mail( 
+           from: "admin@80000hours.org",
+           to: @post_author_email,
+           subject: "[80,000 Hours] New comment on #{comment.post.title}"
+      )
     end
   end
 end
