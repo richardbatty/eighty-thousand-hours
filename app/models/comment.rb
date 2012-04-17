@@ -16,19 +16,17 @@ class Comment < ActiveRecord::Base
 
   private
   def check_honeypot
-    if email_confirmation
-      email_confirmation.empty?
-    end
+    email_confirmation.blank?
   end
 
   def either_user_or_email
     result = true
     if self.user.nil?
-      if self.name.empty?
+      if self.name.blank?
         errors.add(:name, "can't be blank" )
         result = false
       end
-      if self.email.empty?
+      if self.email.blank?
         errors.add(:email, "can't be blank" )
         result = false
       end
