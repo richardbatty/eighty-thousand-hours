@@ -52,16 +52,4 @@ class UsersController < ApplicationController
       render :action => "edit"
     end
   end
-
-  def email_list
-    members = User.confirmed.order("name ASC")
-    @confirmed = ""
-    members.each{|m| @confirmed << "\"" + m.name + "\" <" + m.email + ">, "};
-
-    members = User.unconfirmed.order("name ASC")
-    @unconfirmed = ""
-    members.each{|m| @unconfirmed << "\"" + m.name + "\" <" + m.email + ">, "};
-
-    authorize! :read, User
-  end
 end

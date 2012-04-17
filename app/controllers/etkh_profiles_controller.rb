@@ -56,4 +56,12 @@ class EtkhProfilesController < ApplicationController
       redirect_to :action => :index
     end
   end
+
+  def email_list
+    members = EtkhProfiles.order("created_at ASC")
+    @emails = ""
+    members.each{|m| @emails << "\"" + m.user.name + "\" <" + m.user.email + ">, "};
+
+    authorize! :read, EtkhProfile
+  end
 end
