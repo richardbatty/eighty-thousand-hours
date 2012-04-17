@@ -6,8 +6,11 @@ class CommentsController < ApplicationController
     @comment.post = Post.find(params[:comment][:post_id])
     @comment.user = current_user if current_user
     if @comment.save
-      # let the post author know about this comment
-      PostMailer.new_comment(@comment).deliver!
+      # only try and send an email if a User owns the post
+      # and don't email if author commenting on their own post
+      if @comment.post.user && (@comment.post.user != @comment.user)
+        PostMailer.new_comment(@comment).deliver!
+      end
 
       render 'create'
     else
