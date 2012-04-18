@@ -7,9 +7,7 @@ ActiveAdmin.register Donation do
     column :date
     column :currency
     column :amount
-    column :cause do |donation|
-      donation.cause.name
-    end
+    column :cause
     column :member do |donation|
       (link_to donation.user.name, admin_user_path(donation.user)) if donation.user
     end
