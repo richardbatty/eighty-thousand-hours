@@ -43,11 +43,11 @@ class Donation < ActiveRecord::Base
   end
 
   def with_currency
-    "#{amount.currency.symbol}#{amount.dollars}"
+    "#{amount.currency.symbol}#{ "%g" % amount.dollars }"
   end
 
   def with_currency_word
-    "#{amount.currency.iso_code} #{amount.dollars}"
+    "#{amount.currency.iso_code} #{ "%g" % amount.dollars }"
   end
 
   private
