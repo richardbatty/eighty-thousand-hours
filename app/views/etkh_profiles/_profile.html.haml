@@ -112,10 +112,10 @@
               Donations
             %p
               %ul
-                - donations.each do |d|
+                - donations.each do |donation|
                   - if d.public
                     %li
-                      = render :partial => 'shared/show_donation', :locals => { :donation => d }
+                      = render donation
 
         - if user.posts.published.size > 0
           .blog
