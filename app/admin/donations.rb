@@ -15,7 +15,7 @@ ActiveAdmin.register Donation do
     end
     column :receipt do |donation|
       if donation.receipt?
-        link_to 'View receipt', donation.receipt.url(:thumb)
+        link_to 'View receipt', donation.receipt.url
       end
     end
     column :confirmed do |donation|
@@ -44,7 +44,7 @@ ActiveAdmin.register Donation do
       row :user
       row :receipt do
         if donation.receipt?
-          link_to 'View receipt', donation.receipt.url(:thumb)
+          link_to 'View receipt', donation.receipt.url
         end
       end
       row :confirmed
@@ -58,8 +58,8 @@ ActiveAdmin.register Donation do
       f.input :date
       f.input :user, :collection => User.order("name ASC").all
       f.input :cause, :collection => Cause.order("name ASC").all
-      f.input :currency, :collection => ['GBP','USD','EUR']
       f.input :amount
+      f.input :currency, :collection => ["GBP","USD","EUR","YEN"]
       f.input :receipt
       f.input :confirmed
       f.input :public

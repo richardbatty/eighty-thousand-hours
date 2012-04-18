@@ -12,9 +12,7 @@ class DonationsController < ApplicationController
 
   def create
     @donation = Donation.new(params[:donation])
-
-    # form value is in dollars
-    @donation.amount_cents = @donation.amount_cents * 100;
+    @donation.currency = params[:donation][:currency]
 
     if !@donation.user_id
       @donation.user_id = current_user.id
