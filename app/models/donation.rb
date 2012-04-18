@@ -28,6 +28,14 @@ class Donation < ActiveRecord::Base
   scope :is_public, where(:public => true)
   scope :is_public_amount, is_public.where(:public_amount => true)
 
+  def self.total( currency )
+    donations = Donation.confirmed.all
+    if donations.any?
+      total = Donation.confirmed.all.map{|d| d.amount.exchange_to(currency).dollars}.sum
+      "#{Donation.last.amount.exchange_to(currency).symbol}#{sprintf '%.0f', total}"
+    end
+  end
+
   def confirm!
     self.confirmed = true
     self.save

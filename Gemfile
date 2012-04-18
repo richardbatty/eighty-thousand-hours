@@ -68,6 +68,9 @@ gem 'youtube_it'
 # handle money values
 gem 'money-rails'
 
+# exchange rates
+gem 'google_currency'
+
 group :development do
   gem 'heroku' #included for rake db:mirror system calls
 end
