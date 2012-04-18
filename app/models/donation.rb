@@ -46,6 +46,10 @@ class Donation < ActiveRecord::Base
     "#{amount.currency.symbol}#{amount.dollars}"
   end
 
+  def with_currency_word
+    "#{amount.currency.iso_code}#{amount.dollars}"
+  end
+
   private
     def send_confirmation_email_to_user
       if self.confirmed
