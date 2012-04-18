@@ -9,5 +9,5 @@
         %span.label.label-warning Draft post (not publicly visible)
 
     %h4
-      = render :partial => 'posts/author_link', :locals => { :post => post }
+      = link_to_post_author( post )
   .clearfix
