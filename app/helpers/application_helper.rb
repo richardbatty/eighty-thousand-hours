@@ -7,8 +7,8 @@ module ApplicationHelper
     end
   end
 
-  def to_pounds(value)
-    number_to_currency(value, :unit => "&pound;")
+  def format_date( date )
+    date.strftime('%B') + ' ' + date.day.ordinalize + ', ' + date.strftime('%Y')
   end
 
   def button_link( text, path, klass = nil )

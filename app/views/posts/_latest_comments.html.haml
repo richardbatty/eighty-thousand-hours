@@ -1,10 +1,6 @@
 %h3 Latest comments
 - @latest_comments.each do |comment|
-  .sidebar-item
-    .title= link_to truncate(comment.post.title, length: 35), (post_path(comment.post)+"#comments")
-    .author
-      - if comment.user
-        %span.author= comment.user.name
-      - else
-        %span.author= comment.name
-      %span.date= comment.created_at.strftime("%B %d, %Y")
+  = render partial: 'shared/sidebar_item',
+           locals: { date: comment.created_at, 
+                       content: link_to_comment_contents( comment, 80 ), 
+                     attribution: link_to_comment_author( comment ) }

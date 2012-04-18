@@ -1,10 +1,11 @@
 - if donation.user == current_user
   = link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_donation_path(donation), :class => 'edit'
 
-- if donation.public?
-  = link_to donation.user.name, etkh_profile_path(donation.user)
-- else
-  = "An anonymous member"
+%span.attribution
+  - if donation.public?
+    = link_to donation.user.name, etkh_profile_path(donation.user)
+  - else
+    = "An anonymous member"
 
 donated
 
@@ -17,4 +18,4 @@ to
 
 on
 - date = (donation.date ? donation.date : donation.created_at)
-= date.strftime('%d %B, %Y')
+%span.date= format_date(date)

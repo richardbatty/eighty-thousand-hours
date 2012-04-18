@@ -1,0 +1,4 @@
+%h3 Latest donations
+- @latest_donations.each do |donation|
+  = render partial: 'shared/sidebar_item',
+           locals: { content: render( donation ) }

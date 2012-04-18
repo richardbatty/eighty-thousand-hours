@@ -72,6 +72,20 @@
       padding-top: 5px;
       padding-bottom: 5px;
     }
+    .attribution {
+      margin-top: 10px;
+      margin-bottom: 10px;
+      border-top: 1px solid #ccc;
+      border-bottom: 1px solid #ccc;
+      font-style: italic;
+
+      p {
+        padding:0px;
+        margin:0px;
+        padding-top: 5px;
+        padding-bottom: 5px;
+      }
+    }
   }
 
   .rss {
@@ -85,20 +99,6 @@
     }
   }
 
-  .attribution {
-    margin-top: 10px;
-    margin-bottom: 10px;
-    border-top: 1px solid #ccc;
-    border-bottom: 1px solid #ccc;
-    font-style: italic;
-
-    p {
-      padding:0px;
-      margin:0px;
-      padding-top: 5px;
-      padding-bottom: 5px;
-    }
-  }
   .bold {
     font-weight: bold;
   }

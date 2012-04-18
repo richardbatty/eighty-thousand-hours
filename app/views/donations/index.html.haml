@@ -22,9 +22,9 @@
         %h2 Your donations
         %p
           %ul
-            - @your_donations.each do |d|
+            - @your_donations.each do |donation|
               %li
-                = render :partial => 'shared/show_donation', :locals => { :donation => d }
+                = render donation
         %hr
       %h2 80,000 Hours members have donated over #{Donation.total(:GBP)}
       %hr
@@ -33,6 +33,6 @@
       - if @donations
         %p
           %ul
-            - @donations.each do |d|
+            - @donations.each do |donation|
               %li
-                = render :partial => 'shared/show_donation', :locals => { :donation => d }
+                = render donation

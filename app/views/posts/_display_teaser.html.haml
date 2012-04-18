@@ -6,7 +6,7 @@
       %a{:href => post_path(post)}
         = post.title
     %h4
-      = render :partial => 'posts/author_link', :locals => { :post => post }
+      = link_to_post_author( post )
 
   .content
     = markdown post.get_teaser

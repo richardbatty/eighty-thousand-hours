@@ -105,7 +105,7 @@ body {
 
   /* front page blog latest snippets */
   .sidebar {
-    font-size: 0.9em;
+    font-size: 0.8em;
     .sidebar-item {
       padding-top: 2px;
       padding-bottom: 5px;
@@ -116,8 +116,11 @@ body {
         }
       }
       .date {
-        padding-left: 5px;
-        color: #777;
+        font-weight: 500;
+      }
+
+      .attribution, .attribution a{
+        color: $text_color;
       }
       img.avatar {
         width: 16px;

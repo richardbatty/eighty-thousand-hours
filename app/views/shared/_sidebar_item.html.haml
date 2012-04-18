@@ -1,0 +1,9 @@
+.sidebar-item
+  - if defined? content
+    .content= content
+  .attribution
+    - if defined? attribution
+      = "by ".html_safe + attribution
+    - if defined? date
+      on
+      %span.date= format_date(date)

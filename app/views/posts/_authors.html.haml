@@ -1,6 +1,5 @@
 %h3 Authors
 - if @authors
-  %p
-    - @authors.each do |author|
-      =link_to author, { :controller => :posts, :action => :author, :id => author }
-      %br
+  - @authors.each do |author|
+    .sidebar-item
+    =link_to author, { :controller => :posts, :action => :author, :id => author }

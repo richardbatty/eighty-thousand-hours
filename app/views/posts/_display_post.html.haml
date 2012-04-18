@@ -14,12 +14,12 @@
         - if post.draft
           %span.label.label-warning Draft post (not publicly visible)
       %h4
-        = render :partial => 'posts/author_link', :locals => { :post => post }
+        = link_to_post_author( post )
 
     .content
       = markdown post.body
 
-    .attribution= markdown (post.attribution ? post.attribution : (post.user ? post.user.name : post.author ))
+    .attribution= markdown (post.attribution.blank? ? (post.user ? post.user.name : post.author ) : post.attribution )
 
     %p
       = render :partial => "post_tags", :locals => { :post => post, :div_title => "tags:" }
