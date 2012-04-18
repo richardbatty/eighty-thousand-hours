@@ -6,6 +6,7 @@
 //= require jquery.scrollTo-1.4.2-min
 //= require jquery.easing
 //= require fancybox
+//= require highcharts
 //= require fancybox_video
 //= require accordion
 //= require_tree .
