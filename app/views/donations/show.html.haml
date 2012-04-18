@@ -6,17 +6,14 @@
   .span8
     .box.left-border
       .page-header
-        %h1 Your donation
-      %p
-        You donated #{@donation.with_currency} to #{@donation.cause.name}
-        on #{@donation.created_at.strftime('%d %B, %Y')}.
-      %hr
-      %p
-        %strong This donation will appear on your public profile as follows:
+        %h1 Donation to #{@donation.cause.name}
       %p
         = render @donation
-      %hr
-      %p
-        You can change the privacy settings of your donation by clicking the button below
-      %p
-        =link_to 'Edit donation', edit_donation_path(@donation), :class => 'btn'
+
+      - if current_user && current_user == @donation.user
+        %hr
+        %h2 This is your donation
+        %p
+          You can change the privacy settings of your donation by clicking the button below
+        %p
+          =link_to 'Edit donation', edit_donation_path(@donation), :class => 'btn'

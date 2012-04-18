@@ -37,8 +37,7 @@ class DonationsController < ApplicationController
   end
 
   def show
-    @donation = current_user.donations.find( params[:id] )
-    authorize! :view, Donation, :message => "You need to <a href='/accounts/sign_in'>sign in</a> or <a href='/join'>sign up</a> to view a donation!".html_safe
+    @donation = Donation.find(params[:id])
   end
 
   def update
