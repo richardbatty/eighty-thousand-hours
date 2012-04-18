@@ -113,7 +113,7 @@
             %p
               %ul
                 - donations.each do |donation|
-                  - if d.public
+                  - if donation.public
                     %li
                       = render donation
 
