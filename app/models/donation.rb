@@ -35,11 +35,11 @@ class Donation < ActiveRecord::Base
   def with_currency
     case self.currency
     when 'GBP'
-      "£#{self.amount}"
+      "&pound;#{self.amount}".html_safe
     when 'USD'
-      "$#{self.amount}"
+      "&#36;#{self.amount}".html_safe
     when 'EUR'
-      "€#{self.amount}"
+      "&euro;#{self.amount}".html_safe
     else
       "#{self.currency} #{self.amount}"
     end
