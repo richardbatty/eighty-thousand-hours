@@ -17,14 +17,14 @@
           %h5 Member since 
           = profile.created_at.strftime "%B %Y"
 
-        - if donations.confirmed.is_public.size > 0
-          %p
-            %h5 Donations
-            - total = donations.confirmed.is_public_amount.sum(:amount)
-            - if total > 0
-              = to_pounds( total )
-            - if donations.confirmed.is_public.size > 0
-              = link_to 'view', "##{user.slug}-donations"
+        -#- if donations.confirmed.is_public.size > 0
+          -#%p
+            -#%h5 Donations
+            -#- total = donations.confirmed.is_public_amount.sum(:amount)
+            -#- if total > 0
+              -#= to_pounds( total )
+            -#- if donations.confirmed.is_public.size > 0
+              -#= link_to 'view', "##{user.slug}-donations"
 
         - upvotes = user.votes.upvotes.recent
         - if upvotes.size > 0

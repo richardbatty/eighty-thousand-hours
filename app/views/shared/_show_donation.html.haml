@@ -10,7 +10,7 @@ donated
 
 - if donation.public_amount?
   %strong
-    = to_pounds( donation.amount ) 
+    = donation.with_currency
 
 to
 = link_to donation.cause.name, cause_path(donation.cause)
