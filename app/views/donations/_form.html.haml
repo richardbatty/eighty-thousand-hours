@@ -15,12 +15,12 @@
       = f.association :cause, :disabled => true, :required => false
       = f.input :currency, :disabled => true
       = f.input :currency, :disabled => true, :collection => ['GBP','USD','EUR'], :as => :radio_buttons, :input_html => {:style => 'text-align: left'}
-      = f.input :amount, :disabled => true
+      = f.input :amount_cents, :disabled => true, :label => "Amount"
     - else
       = f.association :cause, :required => true,
                       :hint => "cause not listed? #{link_to "add it here", new_cause_path }".html_safe
       = f.input :currency, :collection => ['GBP','USD','EUR'], :as => :radio_buttons, :input_html => {:style => 'text-align: left'}
-      = f.input :amount, :required => true
+      = f.input :amount_cents, :required => true, :label => "Amount"
     = f.input :date, :required => true, :input_html => { :class => 'span1' }
   = field_set_tag "#{ (page == :new ) ? 'Accountability' : 'Privacy' }" do
     - if( page == :new )

@@ -3,18 +3,18 @@ class Donation < ActiveRecord::Base
 
   validates :user_id, presence: true
   validates :cause_id, presence: true
-  validates :amount, numericality: { greater_than_or_equal_to: 0.01 }
+  validates :amount_cents, numericality: { greater_than_or_equal_to: 1 }
   validates :currency, :inclusion => { :in => %w(GBP USD EUR),
               :message => "Currency must be GBP, USD, or EUR (%{value} given)" }
 
-  monetize :amount
+  monetize :amount_cents
 
   belongs_to :cause
   belongs_to :user
   
   after_create :send_confirmation_email_to_user
 
-  attr_accessible :user_id, :cause_id, :amount, :receipt, :public, :public_amount, :date, :currency
+  attr_accessible :user_id, :cause_id, :amount_cents, :receipt, :public, :public_amount, :date, :currency
   
   # paperclip gem for receipt uploads to s3
   has_attached_file :receipt,
@@ -35,16 +35,7 @@ class Donation < ActiveRecord::Base
   end
 
   def with_currency
-    case self.currency
-    when 'GBP'
-      "&pound;#{self.amount}".html_safe
-    when 'USD'
-      "&#36;#{self.amount}".html_safe
-    when 'EUR'
-      "&euro;#{self.amount}".html_safe
-    else
-      "#{self.currency} #{self.amount}"
-    end
+    "#{amount.currency.symbol}#{amount.dollars}"
   end
 
   private
@@ -56,8 +47,8 @@ class Donation < ActiveRecord::Base
     end
 
     def ensure_date_filled
-      if self.date.nil?
-        self.date = self.created_at.to_date
+      if self.date.blank?
+        self.date = DateTime.now
       end
     end
 end

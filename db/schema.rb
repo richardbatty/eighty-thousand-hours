@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120417103519) do
+ActiveRecord::Schema.define(:version => 20120418111315) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -68,7 +68,7 @@ ActiveRecord::Schema.define(:version => 20120417103519) do
   end
 
   create_table "donations", :force => true do |t|
-    t.decimal  "amount",               :precision => 10, :scale => 2
+    t.integer  "amount_cents",         :default => 0
     t.integer  "cause_id"
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -77,9 +77,9 @@ ActiveRecord::Schema.define(:version => 20120417103519) do
     t.string   "receipt_content_type"
     t.integer  "receipt_file_size"
     t.datetime "receipt_updated_at"
-    t.boolean  "confirmed",                                           :default => false
-    t.boolean  "public",                                              :default => true
-    t.boolean  "public_amount",                                       :default => false
+    t.boolean  "confirmed",            :default => false
+    t.boolean  "public",               :default => true
+    t.boolean  "public_amount",        :default => false
     t.date     "date"
     t.string   "currency"
   end
