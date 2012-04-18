@@ -7,6 +7,8 @@ class Donation < ActiveRecord::Base
   validates :currency, :inclusion => { :in => %w(GBP USD EUR),
               :message => "Currency must be GBP, USD, or EUR (%{value} given)" }
 
+  monetize :amount
+
   belongs_to :cause
   belongs_to :user
   

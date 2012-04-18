@@ -5,7 +5,8 @@ Given /^I am a donation admin$/ do
 end
 
 Given /^there is a member$/ do
-  @member ||= FactoryGirl.create :member
+  @user ||= FactoryGirl.create :user
+  @user.etkh_profile ||= FactoryGirl.create :etkh_profile
 end
 
 Given /^there is a cause$/ do
@@ -15,14 +16,14 @@ end
 When /^I create a donation$/ do
   visit(new_admin_donation_path)
   fill_in("Amount", with: 10)
-  select(@member.name, from: 'Member')
+  select(@user.name, from: 'Member')
   select(@cause.name, from: 'cause')
   click_button('Create Donation')
 end
 
 Then /^(?:|I )should see the donation$/ do
   page.should have_content(@cause.name)
-  page.should have_content(@member.name)
+  page.should have_content(@user.name)
   page.should have_content(10)
 end
 
