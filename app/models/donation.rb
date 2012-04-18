@@ -33,7 +33,16 @@ class Donation < ActiveRecord::Base
   end
 
   def with_currency
-    "#{self.currency} #{self.amount}"
+    case self.currency
+    when 'GBP'
+      "£#{self.amount}"
+    when 'USD'
+      "$#{self.amount}"
+    when 'EUR'
+      "€#{self.amount}"
+    else
+      "#{self.currency} #{self.amount}"
+    end
   end
 
   private
