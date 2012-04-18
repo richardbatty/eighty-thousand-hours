@@ -1,5 +1,4 @@
 - user = profile.user
-- donations = user.donations
 
 .row
   .eighty-thousand-hours-profile
@@ -106,6 +105,7 @@
           %h2 Interesting fact
           = markdown profile.interesting_fact
 
+        - donations = user.donations.order("date DESC")
         - if donations.confirmed.is_public.size > 0
           .donations{:id => "#{user.slug}-donations"}
             %h2
