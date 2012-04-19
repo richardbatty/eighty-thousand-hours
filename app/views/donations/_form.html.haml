@@ -19,11 +19,9 @@
     - else
       = f.association :cause, :required => true,
                       :hint => "cause not listed? #{link_to "add it here", new_cause_path }".html_safe
-      = f.input :currency, :collection => ['GBP','USD','EUR'], :as => :radio_buttons, :input_html => {:style => 'text-align: left'}
+      = f.input :currency, :collection => ['GBP','USD','EUR'], :as => :radio_buttons, :input_html => {:style => 'text-align: left'}, :checked => 'GBP'
       = f.input :amount, :required => true
-    = f.input :date, :as => :string, :placeholder => 'mm/dd/yyyy', :required => true, :input_html => { id: 'datepicker' }
-
-    <script>$(document).ready(function(){$('#datepicker').datepicker({format: 'mm/dd/yyyy'});});</script>
+    = f.input :date, :as => :string, :placeholder => 'yyyy-mm-dd', :hint => 'only add donations made after you joined 80,000 Hours', :required => true, :input_html => { id: 'datepicker' }
   = field_set_tag "#{ (page == :new ) ? 'Accountability' : 'Privacy' }" do
     - if( page == :new )
       = f.input :receipt, :hint => "PDF donation receipt from cause"
