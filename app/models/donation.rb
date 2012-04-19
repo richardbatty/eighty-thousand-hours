@@ -14,7 +14,16 @@ class Donation < ActiveRecord::Base
 
   after_create :send_confirmation_email_to_user
 
-  attr_accessible :user_id, :cause_id, :amount, :amount_cents, :receipt, :public, :public_amount, :date, :currency, :confirmed
+  attr_accessible :user_id,
+                  :cause_id,
+                  :amount,
+                  :amount_cents,
+                  :receipt,
+                  :public,
+                  :public_amount,
+                  :date,
+                  :currency,
+                  :confirmed
   
   # paperclip gem for receipt uploads to s3
   has_attached_file :receipt,
