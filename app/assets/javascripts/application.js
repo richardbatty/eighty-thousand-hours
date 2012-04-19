@@ -9,4 +9,5 @@
 //= require highcharts
 //= require fancybox_video
 //= require accordion
+//= require bootstrap-datepicker
 //= require_tree .
