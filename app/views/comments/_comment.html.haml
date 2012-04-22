@@ -8,7 +8,7 @@
         %span.name= link_to comment.get_name, user_path( comment.user )
       - else
         %span.name= comment.get_name
-      %span.date= comment.created_at.day.ordinalize + ' ' + comment.created_at.strftime('%B %Y')
+      %span.date= format_date(comment.created_at)
       .actions
         - if can? :manage, comment
           = link_to '&times; delete'.html_safe, comment, :method => :delete,
@@ -18,3 +18,6 @@
     .clearfix
     .body
       = markdown comment.body
+    .reply
+      = link_to 'reply', '#comment-form', class: "reply"
+      .replytext= "in reply to [#{comment.get_name}, #{format_date(comment.created_at)}](#comment-#{comment.id})";
