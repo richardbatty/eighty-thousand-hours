@@ -5,8 +5,8 @@ $(document).ready( function() {
   });
 
   $('a.reply').bind('click', function(event) {
-    var replytext = $(this).siblings('.replytext').html();
+    //var commentid = $(this).siblings('.commentid').html();
+    //$('#comment-parent').val(commentid);
     $('#comment-body').focus();
-    $('#comment-body').val(replytext + "\n\n----\n\n")
   });
 });

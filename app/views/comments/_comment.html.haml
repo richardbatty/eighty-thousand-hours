@@ -20,4 +20,5 @@
       = markdown comment.body
     .reply
       = link_to 'reply', '#comment-form', class: "reply"
-      .replytext= "in reply to [#{comment.get_name}, #{format_date(comment.created_at)}](#comment-#{comment.id})";
+      .commentid= comment.id
+      -#.replytext= "in reply to [#{comment.get_name}, #{format_date(comment.created_at)}](#comment-#{comment.id})";
