@@ -1,0 +1,5 @@
+%h1 Discussion
+
+.blog
+  - @posts.each do |post|
+    = render partial: 'posts/discussion_header', locals: { post: post }

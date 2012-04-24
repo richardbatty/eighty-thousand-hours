@@ -85,5 +85,6 @@ class Ability
     can :read, Post, :published => true
     can :read, Page
     can :create, Comment
+    can :read, :discussion
   end
 end

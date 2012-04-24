@@ -14,10 +14,14 @@ class Post < ActiveRecord::Base
 
   scope :draft,     where(:draft => true).order("created_at DESC")
   scope :published, where(:draft => false).order("created_at DESC")
+  scope :blog, where(:category => "blog")
 
   validates_presence_of :title
   validates_presence_of :body
   validates_presence_of :teaser
+  validates_presence_of :category
+  validates :category, :inclusion => { :in => %w(blog discussion),
+            :message => "Post category must be 'blog' or 'discussion' (%{value} given)" }
 
   def self.by_votes( n = Post.all.size )
     n = 1 if n < 1
@@ -59,7 +63,7 @@ class Post < ActiveRecord::Base
 
   # can have many uploaded images
   has_many :attached_images, :dependent => :destroy
-  attr_accessible :title, :body, :teaser, :user_id, :draft, :attached_images_attributes, :tag_list, :author, :attribution
+  attr_accessible :title, :body, :teaser, :user_id, :draft, :attached_images_attributes, :tag_list, :author, :attribution, :category
   accepts_nested_attributes_for :attached_images, :allow_destroy => true 
 
   # override to_param to specify format of URL
