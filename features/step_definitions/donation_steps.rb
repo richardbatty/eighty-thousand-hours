@@ -1,24 +1,13 @@
-Given /^I am a donation admin$/ do
-  @user ||= FactoryGirl.create :donation_manager
-  FactoryGirl.create :page # dummy home page to make views work
-  sign_in
-end
-
-Given /^there is a member$/ do
-  @user ||= FactoryGirl.create :user
-  @user.etkh_profile ||= FactoryGirl.create :etkh_profile
-end
-
 Given /^there is a cause$/ do
   @cause ||= FactoryGirl.create :cause
 end
 
 When /^I create a donation$/ do
-  visit(new_admin_donation_path)
+  visit(new_donation_path)
+  select(@cause.name, from: 'Cause')
   fill_in("Amount", with: 10)
-  select(@user.name, from: 'Member')
-  select(@cause.name, from: 'cause')
-  click_button('Create Donation')
+  fill_in("Date", with: "01/02/03")
+  click_button('Submit donation')
 end
 
 Then /^(?:|I )should see the donation$/ do
