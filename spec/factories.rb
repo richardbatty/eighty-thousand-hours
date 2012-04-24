@@ -8,6 +8,7 @@ FactoryGirl.define do
   factory :cause do
     name "Pirates for Peace"
     website "http://piratesforpeace.com"
+    description "Roaming the high seas for great good."
   end
 
   factory :donation do
@@ -21,6 +22,7 @@ FactoryGirl.define do
   end
 
   factory :etkh_profile do
+    background "I'm a lumberjack and I'm ok"
   end
 
   factory :page do

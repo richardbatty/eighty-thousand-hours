@@ -54,3 +54,9 @@ Then /^(?:|I )see my information$/ do
   page.should have_content("Bio: #{@user[:bio]}")
 end
 
+Given /^(?:|I )am an 80,000 Hours member$/ do
+  @user ||= FactoryGirl.build :user
+  @etkh_profile ||= FactoryGirl.build :etkh_profile
+  @user.etkh_profile = @etkh_profile
+  @user.save
+end

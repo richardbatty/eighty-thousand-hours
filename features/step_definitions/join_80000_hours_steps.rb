@@ -11,7 +11,7 @@ When /^I fill in the application form$/ do
 end
 
 And /^I have applied to join 80,000 Hours$/ do
-  @eighty_thousand_hours_application ||= FactoryGirl.create :eighty_thousand_hours_application
-  @user.eighty_thousand_hours_application = @eighty_thousand_hours_application
+  @etkh_application ||= FactoryGirl.create :etkh_application
+  @user.etkh_application = @etkh_application
   @user.save
 end
