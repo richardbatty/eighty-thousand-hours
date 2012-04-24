@@ -3,9 +3,9 @@ class PostsController < ApplicationController
 
   def prepare_sidebar
     @recommended_posts = Page.find('recommended-posts')
-    @tag_cloud = Post.tag_counts_on(:tags) || []
-    @popular_posts = Post.by_popularity(5)
-    @authors = Post.author_list
+    @tag_cloud = Post.blog.tag_counts_on(:tags) || []
+    @popular_posts = Post.blog.by_popularity(5)
+    @authors = Post.blog.author_list
     @latest_comments = Comment.order("created_at DESC").limit(4)
   end
 
@@ -13,19 +13,19 @@ class PostsController < ApplicationController
     @sort = params[:order]
     case @sort
     when 'popularity'
-      @posts = Post.by_popularity
+      @posts = Post.blog.by_popularity
       @condensed = true
       @heading = "Most popular posts"
     when 'votes'
-      @posts = Post.by_votes
+      @posts = Post.blog.by_votes
       @condensed = true
       @heading = "Highest voted posts"
     when 'date'
-      @posts = Post.published
+      @posts = Post.blog.published
       @condensed = true
       @heading = "All posts by date"
     else
-      @posts = Post.published.paginate(:page => params[:page], :per_page => 10)
+      @posts = Post.blog.published.paginate(:page => params[:page], :per_page => 10)
       @condensed = false
       @heading = "80,000 Hours blog"
     end
@@ -36,8 +36,18 @@ class PostsController < ApplicationController
     prepare_sidebar
   end
 
+  def discussion_index
+    @posts = Post.published
+    authorize! :access, :discussion
+  end
+
+  def discussion_view
+    @post = Post.find(params[:id])
+    authorize! :access, :discussion
+  end
+
   def sorted
-    @posts = Post.by_votes
+    @posts = Post.blog.by_votes
 
     @title = "Most popluar posts of all time"
     @menu_root = "Blog"
@@ -47,7 +57,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by_id(params[:id])
+    @post = Post.blog.find_by_id(params[:id])
     if @post.nil?
       flash[:"alert-error"] = "Sorry! You've followed a bad link, please <a href='contact-us'>contact support</a> and report the following:<br/> #{params[:controller]} => '#{params[:id]}'".html_safe
       redirect_to :action => 'index'
@@ -75,7 +85,7 @@ class PostsController < ApplicationController
 
   def author
     @heading = "Posts by #{params[:id]}"
-    @posts = Post.by_author(params[:id],params[:page])
+    @posts = Post.blog.by_author(params[:id],params[:page])
     @condensed = true
 
     prepare_sidebar
@@ -98,7 +108,7 @@ class PostsController < ApplicationController
 
   def tag
     @heading = "Posts tagged with '#{params[:id]}'"
-    @posts = Post.tagged_with(params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    @posts = Post.blog.tagged_with(params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     @condensed = true
 
     prepare_sidebar
@@ -112,7 +122,7 @@ class PostsController < ApplicationController
     @title = "80,000 Hours - Blog"
 
     # the blog posts
-    @posts = Post.published
+    @posts = Post.blog.published
 
     # this will be our feed's update timestamp
     @updated = @posts.first.updated_at unless @posts.empty?

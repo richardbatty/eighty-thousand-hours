@@ -10,4 +10,6 @@
 
     %h4
       = link_to_post_author( post )
+      &nbsp;
+      %span.comments-link= link_to pluralize(post.comments.size, 'comment'), post_path(post) + "#comments"
   .clearfix

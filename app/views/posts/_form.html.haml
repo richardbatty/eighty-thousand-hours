@@ -1,13 +1,15 @@
+.alert.alert-info
+  This post will appear in the Discussion section of the site. If it is intended as a blog post then please contact #{link_to 'editor@80000hours.org', 'mailto:editor@80000hours.org'} after you've added the post.
+
 %p
   All fields can be formatted with Markdown
 
 = simple_form_for @post, :defaults => { :input_html => { :class => 'span12' } }, :html => { :multipart => true } do |f|
   .form-inputs
-    = f.input :title,  :placeholder => "Title of the blog post..."
-    = f.input :body,   :placeholder => "Blog post body..."
+    = f.input :title,  :placeholder => "Title of the post..."
+    = f.input :body,   :placeholder => "Post body..."
     = f.input :teaser, :placeholder => 'Usually just the first paragraph from the post...', :input_html => { :style => 'height:100px' }
-    = f.input :draft, :label => "Draft post"
-    
+    = f.input :draft,  :label => "Draft post?"
 
     = field_set_tag 'Attached images' do
       .attached-images

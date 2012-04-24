@@ -11,6 +11,7 @@ ActiveAdmin.register Post do
     column :title
     column :author
     column :user
+    column :category
     column :draft do |p|
       p.draft? ? "<span class='status warn'>draft</span>".html_safe : ""
     end
@@ -24,6 +25,7 @@ ActiveAdmin.register Post do
       row :user
       row :attribution
       row :created_at
+      row :category
       row :draft do
         post.draft? ? "<span class='status warn'>draft</span>".html_safe : "false"
       end
@@ -40,6 +42,7 @@ ActiveAdmin.register Post do
       f.input :teaser
       f.input :author
       f.input :user, :collection => User.order("name ASC")
+      f.input :category, :collection => ["blog","discussion"]
       f.input :attribution
       f.input :created_at
       f.input :draft
