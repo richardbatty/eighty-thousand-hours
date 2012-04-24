@@ -11,7 +11,13 @@ ActiveAdmin.register Post do
     column :title
     column :author
     column :user
-    column :category
+    column :category do |p|
+      if (p.category == "blog")
+        "<span class='status complete'>blog</span>".html_safe
+      else
+        "<span class='status'>discussion</span>".html_safe
+      end
+    end
     column :draft do |p|
       p.draft? ? "<span class='status warn'>draft</span>".html_safe : ""
     end

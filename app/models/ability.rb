@@ -72,6 +72,8 @@ class Ability
       can :update, User, :id => user.id
       can :create, EtkhApplication
       can :manage, Comment, :user_id => user.id
+      can :create, Post
+      can :manage, Post, :user_id => user.id
     end
     
     if user.eighty_thousand_hours_member?

@@ -38,12 +38,12 @@ class PostsController < ApplicationController
 
   def discussion_index
     @posts = Post.published
-    authorize! :access, :discussion
+    authorize! :read, :discussion
   end
 
   def discussion_view
     @post = Post.find(params[:id])
-    authorize! :access, :discussion
+    authorize! :read, :discussion
   end
 
   def sorted
@@ -154,7 +154,7 @@ class PostsController < ApplicationController
   def create
     @post = current_user.posts.new( params[:post] )
     if @post.save
-      redirect_to @post, :notice => "Blog post created!"
+      redirect_to discussion_path, :notice => "Post created!"
     else
       render :new
     end
