@@ -29,16 +29,19 @@ We have #{@total_members} members worldwide, you can see them all on <a href='/m
 </ul>"
 %>
 
+<% donations_html = render('donations/thermometer.html.haml') %>
+
 <% 
   latest_html = ""
-  latest_html += "#{ render partial: "posts/latest_posts" }"
-  latest_html += "#{ render partial: "posts/latest_comments" }"
-  latest_html += "#{ render partial: "etkh_profiles/latest_profiles"}"
-  latest_html += "#{ render partial: "donations/latest_donations"}"
+  latest_html += "#{ render "posts/latest_posts" }"
+  latest_html += "#{ render "posts/latest_comments" }"
+  latest_html += "#{ render "etkh_profiles/latest_profiles"}"
+  latest_html += "#{ render "donations/latest_donations"}"
 %>
 
 <% content = @page.body %>
 <% content = content.gsub(/\|\*MEMBERS\*\|/, members_html) %>
 <% content = content.gsub(/\|\*CAREERS\*\|/, careers_html) %>
 <% content = content.gsub(/\|\*LATEST\*\|/,  latest_html)  %>
+<% content = content.gsub(/\|\*DONATIONS\*\|/, donations_html)  %>
 <%= markdown content %>

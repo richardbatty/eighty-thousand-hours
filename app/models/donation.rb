@@ -37,12 +37,24 @@ class Donation < ActiveRecord::Base
   scope :is_public, where(:public => true)
   scope :is_public_amount, is_public.where(:public_amount => true)
 
-  def self.total( currency )
+  def self.total( currency = "GBP", with_symbol = false )
     donations = Donation.confirmed.all
     if donations.any?
       total = Donation.confirmed.all.map{|d| d.amount.exchange_to(currency).dollars}.sum
-      "#{Donation.last.amount.exchange_to(currency).symbol}#{sprintf '%.0f', total}"
+      if with_symbol
+        "#{ActionController::Base.helpers.number_to_currency(total, unit: "&pound;", precision: 0)}"
+      else
+        sprintf '%.0f', total
+      end
     end
+  end
+
+  def self.target
+    "&pound;80,000".html_safe
+  end
+
+  def self.target_percentage
+    (100 * Donation.total(:GBP,false).to_f / 80000.0).to_i
   end
 
   def confirm!

@@ -8,6 +8,7 @@
       .page-header
         %h1 Donations
 
+
       %p
         If you're an 80,000 Hours member and would like your charitable donations to be associated with
         your account, then please follow the steps:
@@ -26,7 +27,9 @@
               %li
                 = render donation
         %hr
-      %h2 80,000 Hours members have donated over #{Donation.total(:GBP)}
+
+      = render 'donations/thermometer'
+
       %hr
 
       %h2 Here are some recent donations
