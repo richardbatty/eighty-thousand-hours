@@ -1,0 +1,11 @@
+.donations-thermometer.well
+  .text
+    %p 
+      Our members have #{link_to 'donated', donations_path} 
+      %strong= Donation.total(:GBP,true).html_safe
+      to the #{link_to 'best causes', causes_path}.
+    %p The next milestone: #{Donation.target} by the end of 2012.
+  .bar-container
+    .target= Donation.target
+    .progress.progress-striped.progress-danger
+      .bar{:"data-percentage" => Donation.target_percentage}
