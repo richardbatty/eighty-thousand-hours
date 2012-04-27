@@ -10,4 +10,5 @@
 //= require fancybox_video
 //= require accordion
 //= require bootstrap-datepicker
+//= require bootstrap-progressbar
 //= require_tree .
