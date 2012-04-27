@@ -1,4 +1,4 @@
-%h3 Latest posts
+%h3= link_to "Latest posts", posts_path
 - @latest_posts.each do |post|
   = render partial: 'shared/sidebar_item',
            locals: { date: post.created_at, 

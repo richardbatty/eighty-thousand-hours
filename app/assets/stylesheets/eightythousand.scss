@@ -105,6 +105,12 @@ body {
 
   /* front page blog latest snippets */
   .sidebar {
+    h3{
+      a {
+        color: $text_color;
+      }
+    }
+
     font-size: 0.8em;
     .sidebar-item {
       padding-top: 2px;

@@ -1,4 +1,4 @@
-%h3 Latest profiles
+%h3= link_to 'Latest profiles', etkh_profiles_path
 - @latest_profiles.each do |profile|
   .sidebar-item
     = image_tag profile.user.avatar(:thumb), class: 'avatar'
