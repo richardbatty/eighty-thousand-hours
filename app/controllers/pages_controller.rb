@@ -35,13 +35,13 @@ class PagesController < ApplicationController
       @latest_comments = Comment.order("created_at DESC").limit(3)
 
       # for sidebar
-      @latest_profiles = EtkhProfile.order("created_at DESC").limit(6)
+      @latest_profiles = EtkhProfile.order("created_at DESC").limit(4)
 
       # for sidebar
       @latest_posts = Post.blog.published.limit(3)
 
       # for sidebar
-      @latest_donations = Donation.confirmed.limit(4)
+      @latest_donations = Donation.confirmed.limit(3)
 
       render :home
     end
