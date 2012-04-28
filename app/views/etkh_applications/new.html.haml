@@ -67,7 +67,7 @@
       
         .control-group.check_boxes
           %label
-            Which high impact activites do you intend to be involved in?
+            Which #{link_to 'high impact activities', '/faq#activities', :target => '_blank' } do you intend to be involved in?
           .controls
             = f.input :doing_good_inspiring,       :label => ( link_to "Inspiring",                 '/high-impact-careers#inspiring-others', :target => '_blank' )
             = f.input :doing_good_improving,       :label => ( link_to "Improving",                 '/high-impact-careers#improving',        :target => '_blank' )
@@ -125,7 +125,7 @@
       
         .slider-container
           %label
-            How many hours a week do you expect to spend on high impact activities (excluding earning)?
+            How many hours a week do you expect to spend on #{link_to 'high impact activities', '/faq#activities', :target => '_blank' } (excluding earning)?
         .slider-group
           %p
             %strong
