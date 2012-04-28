@@ -11,9 +11,10 @@
       %h2 Blog posts
     
     - @user.posts.each do |post|
-      .blog
-        = render :partial => 'posts/display_heading',
-                 :locals => { :post => post }
+      - if !post.draft || post.user == current_user
+        .blog
+          = render :partial => 'posts/display_heading',
+                   :locals => { :post => post }
 
   - if @user.comments.any?
     .page-header
