@@ -1,5 +1,5 @@
 - if donation.user == current_user
-  = link_to '<i class="icon-edit"></i> Edit'.html_safe, edit_donation_path(donation), :class => 'edit'
+  = link_to '(edit)'.html_safe, edit_donation_path(donation), :class => 'edit'
 
 %span.attribution
   - if donation.public?
