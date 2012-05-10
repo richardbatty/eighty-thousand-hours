@@ -27,7 +27,7 @@ If you don't have an account with an external provider, or you just want to logi
       = f.error_notification
       .form-inputs
         = f.input :name, :required => false, :label => "Display name", :autofocus => true, :hint => "If you don't want your name to appear publicly, please enter a pseudonym here. We prefer our members to use their real names, because it enhances the credibility of the community, but we can understand that it may be better to remain anonymous. If you would like to use a pseudonym, please enter one which looks like a real name, rather than an acronym or single word."
-        = f.input :real_name, :hint => 'Never displayed publicly.'
+        = f.input :real_name, :hint => "Never displayed publicly. Only required if you haven't used your real name above."
         = f.input :email
         = f.input :password
         = f.input :password_confirmation

@@ -4,8 +4,8 @@
   = simple_form_for(resource, :as => resource_name, :url => registration_path(resource_name), :html => { :method => :put, :class => 'form-horizontal' } ) do |f|
     = f.error_notification
     .form-inputs
-      = f.input :name,      :required => true, :hint => 'This will be displayed publicly. Can be a pseudonym.'
-      = f.input :real_name, :hint => 'Never displayed publicly.'
+      = f.input :name,      :required => true, :hint => "If you don't want your name to appear publicly, please enter a pseudonym here. We prefer our members to use their real names, because it enhances the credibility of the community, but we can understand that it may be better to remain anonymous. If you would like to use a pseudonym, please enter one which looks like a real name, rather than an acronym or single word."
+      = f.input :real_name, :hint => 'Never displayed publicly. Only required if not using your real name above.'
       = f.input :email,     :required => true
 
       = field_set_tag "Authentications" do
