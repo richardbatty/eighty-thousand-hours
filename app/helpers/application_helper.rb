@@ -8,7 +8,9 @@ module ApplicationHelper
   end
 
   def format_date( date )
-    date.strftime('%B') + ' ' + date.day.ordinalize + ', ' + date.strftime('%Y')
+    if date
+      date.strftime('%B') + ' ' + date.day.ordinalize + ', ' + date.strftime('%Y')
+    end
   end
 
   def button_link( text, path, klass = nil )
