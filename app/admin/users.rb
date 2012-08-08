@@ -110,6 +110,7 @@ ActiveAdmin.register User do
     column :id
     column :created_at
     column :name
+    column :email
 
     column ("Application: Occupation")                      { |user| user.etkh_application.nil? ? nil : user.etkh_application[:occupation] }
     column ("Application: Career Plans")                    { |user| user.etkh_application.nil? ? nil : user.etkh_application[:career_plans] }
