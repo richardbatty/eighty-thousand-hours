@@ -11,6 +11,9 @@ ActiveAdmin.register Donation do
     column :member do |donation|
       (link_to donation.user.name, admin_user_path(donation.user)) if donation.user
     end
+    column :email do |donation|
+      donation.user.email if donation.user
+    end
     column :receipt do |donation|
       if donation.receipt?
         link_to 'View receipt', donation.receipt.url
