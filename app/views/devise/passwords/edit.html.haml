@@ -3,7 +3,7 @@
     %h1 Change your password
   = simple_form_for(resource, :as => resource_name, :url => password_path(resource_name), :html => { :class => "form-horizontal" }) do |f|
     = f.error_notification
-    = f.hidden :reset_password_token
+    = f.input :reset_password_token, :as => :hidden
     = f.input :password, label: "New password"
     = f.input :password_confirmation
     .form-actions
