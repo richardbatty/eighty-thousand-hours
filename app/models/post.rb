@@ -102,7 +102,8 @@ class Post < ActiveRecord::Base
   end
 
   def popularity
-    fb_votes = 0.01 * self.facebook_likes
+    # magic scaling factors in here...
+    fb_votes = 0.01*self.facebook_likes * 1.0/(1 + (DateTime.now - self.created_at.to_datetime).to_i)
     karma_votes = 0.0
     self.votes.upvotes.each do |v|
       karma_votes += 1.0/(1+(DateTime.now - Vote.first.created_at.to_datetime).to_i)
