@@ -2,7 +2,7 @@ class CausesController < ApplicationController
   load_and_authorize_resource :only => [:destroy,:edit,:update]
 
   def index
-    @causes = Cause.all
+    @causes = Cause.order("name ASC")
   end
 
   def show
