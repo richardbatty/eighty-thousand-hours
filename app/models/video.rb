@@ -4,6 +4,6 @@ class Video
   end
 
   def self.all
-    yt_session.videos_by(:query => 'eightythousandhours').videos
+    yt_session.videos_by(:user => 'eightythousandhours').videos
   end
 end
