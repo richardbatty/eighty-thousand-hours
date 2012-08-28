@@ -12,7 +12,7 @@
     = field_set_tag "Title" do |s|
       = f.input :title, :required => true, :hint => 'changing this will break existing links to this page'
       - if !@page.just_a_link
-        = f.input :header_title, :placeholder => 'optional', :hint => "used in <title> tag"
+        = f.input :header_title, :placeholder => 'optional', :hint => "used in &lt;title&gt; tag".html_safe
 
     = field_set_tag "Content" do |s|
       = f.input :just_a_link, :label => "Just a link?", :as => :boolean
