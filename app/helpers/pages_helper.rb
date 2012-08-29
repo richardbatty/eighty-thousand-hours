@@ -35,7 +35,7 @@ module PagesHelper
   # we draw top level items and any children but that's it
   def draw_menu( top_level_items, current_page = nil )
     result = "
-    <div class='navbar navbar-menu'>
+    <div class='navbar navbar-menu navbar-inverse'>
     <div class='navbar-inner'>
     <div class='container'>
     <ul class='nav'>"
