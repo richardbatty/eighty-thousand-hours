@@ -2,8 +2,6 @@
 //= require jquery-ui-1.8.17.custom.min
 //= require jquery_ujs
 //= require twitter/bootstrap
-//= require jquery.localscroll-1.2.7-min
-//= require jquery.scrollTo-1.4.2-min
 //= require jquery.easing
 //= require fancybox
 //= require highcharts
