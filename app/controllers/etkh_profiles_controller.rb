@@ -1,6 +1,43 @@
 class EtkhProfilesController < ApplicationController
   load_and_authorize_resource :only => [:new,:create,:edit,:update,:destroy]
 
+  def new
+    @etkh_profile = EtkhProfile.new
+    @menu_root = "Membership"
+    @menu_current = "Join now"
+  end
+
+  def create
+    if current_user.nil?
+      raise CanCan::AccessDenied.new("You need to create an account first!", :create, EtkhProfile)
+    end
+
+    @etkh_profile = EtkhProfile.new(params[:etkh_profile])
+    
+    if @etkh_profile.save
+      current_user.etkh_profile = @etkh_profile
+
+      # fire off an email informing 80k team (join@80k..)
+      EtkhProfileMailer.tell_team(current_user).deliver!
+
+      # send an email to the user
+      EtkhProfileMailer.thank_applicant(current_user).deliver!
+
+      # add name to 'show your support'
+      @supporter = Supporter.new(:name => current_user.name, :email => current_user.email)
+      @supporter.save
+
+      thanks_str = "Thank you for your interest in 80,000 Hours, " << current_user.first_name << ". \
+        We've received your application and you'll hear from us soon!"
+      flash[:"alert-success"] = thanks_str
+
+      # redirects should be full url for browser compatibility
+      redirect_to root_url
+    else
+      render :new
+    end
+  end
+
   def index
     get_grouped_profiles
 

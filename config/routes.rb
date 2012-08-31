@@ -45,7 +45,7 @@ EightyThousandHours::Application.routes.draw do
   resources :etkh_applications, :only =>[:new,:create]
   match 'join' => 'etkh_applications#new'
 
-  resources :etkh_profiles, :path => "members", :only => [:show,:index] do
+  resources :etkh_profiles, :path => "members", :only => [:new,:create,:show,:index] do
     collection do
       post 'search'
       get 'email_list'
