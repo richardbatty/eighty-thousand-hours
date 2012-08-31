@@ -27,20 +27,15 @@ class User < ActiveRecord::Base
                   :real_name,
                   :contacted_date,
                   :contacted_by,
-                  :etkh_application_attributes,
                   :etkh_profile_attributes
 
-  delegate :public_profile, :to => :etkh_application
+  delegate :public_profile, :to => :etkh_profile
 
   # omniauth authentication
   has_many :authentications, :dependent => :destroy
 
   # comments on posts
   has_many :comments, :dependent => :destroy
-
-  # dependent means 80k application gets destroyed when user is destroyed
-  has_one :etkh_application, :dependent => :destroy
-  accepts_nested_attributes_for :etkh_application
 
   # dependent means 80k profile gets destroyed when user is destroyed
   has_one :etkh_profile, :dependent => :destroy
