@@ -70,7 +70,7 @@ class Ability
 
     if user.confirmed?
       can :update, User, :id => user.id
-      can :create, EtkhApplication
+      can :create, EtkhProfile
       can :manage, Comment, :user_id => user.id
       can :create, Post
       can :manage, Post, :user_id => user.id

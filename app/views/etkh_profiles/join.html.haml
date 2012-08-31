@@ -1,0 +1,51 @@
+= javascript_include_tag "application-form.js"
+
+.row
+  .span3
+    .box.sidebar
+      %h3 Questions
+      %p
+        If you have questions about the application process please see the <a href="/faq">FAQ</a>
+  .span9
+    .box.left-border
+      .page-header
+        %h1 Become a member of 80,000 Hours
+      
+      %p Members of 80,000 Hours all want to use their careers effectively to make the world a better place. If that sounds like you, then join now below!
+      
+      %h2 Why join?
+      
+      %p
+        %ul
+          %li Meet other people who want to make the world a better place
+          %li Help each other with career plans and get mentoring from more experienced members
+          %li Collaborate on new projects
+          %li Be first in line for our unique high-impact careers advice
+          %li Stay energised by our active community
+          %li Show your support for effective altruism
+      
+      %p The only thing we ask from members is that they tell us what they are doing to make a difference once per year. This enables 80,000 Hours to demonstrate its impact, enables better communication within the network, and provides you with a chance to reflect on your goals.
+      
+      .accordion
+        %h3#effectively
+          <a href="#effectively">What does it mean to make the world a better place “effectively”?</a>
+        %div
+          If you care about doing things effectively, then you make sure to think about the best way to do them. You try to make choices that will make the biggest difference. For example, when you donate to charities, you work out which charity can do the most with your donation. If you’d like to be a researcher, you think about which project will let you have the biggest impact. You might even think about whether there are other jobs where you could make an even bigger difference. We’ll all have our own answers. What unites us is our desire to take these questions seriously.
+      
+        %h3#using-career
+          <a href="#using-career">What do you mean by “using your career”?</a>
+        %div
+          Your career is the time you spend on productive activities, including training and volunteering as well as your job. We also see donating some of your income as part of your career. So by ‘using your career’ we just mean that you dedicate some of your resources (whether time or money) to making the world a better place.
+      
+        %h3#better-place
+          <a href="#using-career">What do you mean “make the world a better place?”</a>
+        %div
+          Our members have a variety of ideas about what it means to make the world a better place. 80,000 Hours is about an approach to your career, rather than a certain notion of what’s valuable or good. It's about really thinking through what matters, and then using evidence to discover the best way to make more of that. In practice, many members of 80,000 Hours are interested in improving *human welfare and saving lives*, others are also interested in improving *animal welfare* and some care about *helping future generations* by reducing the risk of global catastrophes.
+
+      =# If user isn't signed in, already has made an application, or already has a profile, then we don't let them make another application
+      - disabled = (!current_user || !current_user.etkh_profile.nil?)
+      - if disabled
+        = render 'disabled_warning'
+      - else
+        .center
+          = f.button :submit, "Apply to join 80,000 Hours", :class => 'btn btn-large btn-primary'

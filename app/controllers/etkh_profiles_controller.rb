@@ -7,6 +7,11 @@ class EtkhProfilesController < ApplicationController
     @menu_current = "Join now"
   end
 
+  def join
+    @menu_root = "Membership"
+    @menu_current = "Join now"
+  end
+
   def create
     if current_user.nil?
       raise CanCan::AccessDenied.new("You need to create an account first!", :create, EtkhProfile)

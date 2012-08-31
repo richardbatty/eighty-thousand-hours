@@ -42,15 +42,13 @@ EightyThousandHours::Application.routes.draw do
   resources :endorsements, :only =>[:index]
   resources :videos, :only =>[:index]
 
-  resources :etkh_applications, :only =>[:new,:create]
-  match 'join' => 'etkh_applications#new'
-
   resources :etkh_profiles, :path => "members", :only => [:new,:create,:show,:index] do
     collection do
       post 'search'
       get 'email_list'
     end
   end
+  match 'join' => 'etkh_profiles#join'
 
   resources :users, :path => 'accounts', :only => [:show,:edit,:update,:destroy] do
     resources :etkh_profiles 
