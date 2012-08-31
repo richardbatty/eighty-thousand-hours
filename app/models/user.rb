@@ -84,10 +84,6 @@ class User < ActiveRecord::Base
     self.etkh_profile
   end
 
-  def eighty_thousand_hours_applicant?
-    self.etkh_application
-  end
-  
   def first_name
     name.split.first
   end

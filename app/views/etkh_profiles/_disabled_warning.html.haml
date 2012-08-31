@@ -10,8 +10,4 @@
   - elsif current_user.etkh_profile
     .alert.alert-error
       %h3.alert-heading You're already an 80,000 Hours member!
-      You can't submit another application.
-  - elsif current_user.etkh_application
-    .alert.alert-error
-      %h3.alert-heading You've already submitted an application!
       Please contact #{link_to 'join@80000hours.org', 'mailto:join@80000hours.org'} if you have any questions.
