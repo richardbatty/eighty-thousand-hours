@@ -188,7 +188,8 @@ Devise.setup do |config|
 
   # The default HTTP method used to sign out a resource. Default is :delete.
   # Cucumber doesn't understand delete, so have to use get.
-  config.sign_out_via = Rails.env.test? ? :get : :delete
+  #config.sign_out_via = Rails.env.test? ? :get : :delete
+  config.sign_out_via = :get #workaround for Bootstrap dropdown
 
   # ==> OmniAuth
   # Add a new OmniAuth provider. Check the wiki for more information on setting

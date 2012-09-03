@@ -1,6 +1,7 @@
-//= require jquery-1.7.1.min
-//= require jquery-ui-1.8.17.custom.min
+//= require_tree .
+//= require jquery
 //= require jquery_ujs
+//= require jquery-ui
 //= require twitter/bootstrap
 //= require jquery.easing
 //= require fancybox
@@ -9,4 +10,3 @@
 //= require accordion
 //= require bootstrap-datepicker
 //= require bootstrap-progressbar
-//= require_tree .
