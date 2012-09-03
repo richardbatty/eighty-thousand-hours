@@ -1,0 +1,98 @@
+= javascript_include_tag "application-form.js"
+= simple_form_for(current_user, url: user_etkh_profile_url(current_user, current_user.etkh_profile),
+                                html: { class: 'form-horizontal' },
+                                defaults: { input_html: { class: 'span4' } }  ) do |f|
+  = f.fields_for :etkh_profile, defaults: { input_html: { class: 'span4' } } do |ep|
+    = field_set_tag "Public profile fields: will be visible at 80000hours.org/members" do
+      = f.input :location
+      = ep.input :organisation, label: "Your organisations, separated by commas", :placeholder => "i.e. universities and companies you’re a member of"
+      = ep.input :background,   label: "Tell the other members of 80,000 Hours a little about yourself. What are you career plans, and how have they changed? What do you currently do? Why did you join 80,000 Hours?", :input_html => {:rows=>'10'} 
+
+      %label
+        Which #{link_to 'high impact activities', '/faq#activities', :target => '_blank' } do you intend to be involved in?
+      .check-group
+        = ep.input :doing_good_inspiring,       :label => ( link_to "Inspiring",                 '/high-impact-careers#inspiring-others', :target => '_blank' )
+        = ep.input :doing_good_improving,       :label => ( link_to "Improving",                 '/high-impact-careers#improving',        :target => '_blank' )
+        = ep.input :doing_good_philanthropy,    :label => ( link_to "Philanthropy",              '/high-impact-careers#philanthropy',     :target => '_blank' )
+        = ep.input :doing_good_prophilanthropy, :label => ( link_to "Professional philanthropy", '/high-impact-careers#philanthropy',     :target => '_blank' )
+        = ep.input :doing_good_innovating,      :label => ( link_to "Innovating",                '/high-impact-careers#innovating',       :target => '_blank' )
+        = ep.input :doing_good_research,        :label => ( link_to "Research",                  '/high-impact-careers#research',         :target => '_blank' )
+      
+        %hr
+      %label
+        Which causes do you intend to donate to?
+      .check-group
+        = ep.input :causes_givewell,      :label => "GiveWell recommended charities"
+        = ep.input :causes_gwwc,          :label => "GWWC recommended charities"
+        = ep.input :causes_political,     :label => "Political charities"
+        = ep.input :causes_animal,        :label => "Animal charities"
+        = ep.input :causes_xrisk,         :label => "X-risk charities"
+        = ep.input :causes_meta,          :label => "Meta-philanthropy charities"
+        = ep.input :causes_domestic,      :label => "Other domestic charities"
+        = ep.input :causes_international, :label => "Other international charities"
+      = f.input :causes_comment, :placeholder => "optional", :label => "Comments about causes", :required => false, :input_html => {:rows=>'5'}
+ 
+      = f.input :external_website,   label: "Personal website (optional)", :hint => "full URL e.g. http://www.joebloggs.com/"
+      = f.input :external_twitter,   label: "Twitter page (optional)", :hint => "full URL e.g. http://twitter.com/JoeBloggs"
+      = f.input :external_facebook,  label: "Facebook page (optional)", :hint => "full URL e.g. http://www.facebook.com/JoeBloggs"
+      = f.input :external_linkedin,  label: "LinkedIn page (optional)", :hint => "full URL e.g. http://www.linkedin.com/in/JoeBloggs"
+
+      = f.label "Profile picture"
+      - if current_user.avatar?
+        = link_to image_tag(current_user.avatar.url(:small), :class=>"shadow", :style=>"margin-left:20px;"), current_user.avatar.url
+      - else
+        = image_tag("profiles/avatar_default_96x96.png", :class=>"shadow")
+      = f.input :avatar, :label => "Change photo"
+
+  %hr
+
+  = field_set_tag "Private profile fields: only visible to other 80,000 Hours members" do
+    = f.fields_for :etkh_profile, :defaults=>{:input_html=>{:class=>'span4'}}  do |ep|
+      = ep.input :skills_knowledge_share,
+                 label: "What skills and knowledge would you be willing to share with other 80k members?",
+                 placeholder: "this will not be publicy visible",
+                 input_html: { rows: '10' } 
+
+      = ep.input :skills_knowledge_learn,
+                 label: "What skills and knowledge would you like to gain from other 80k members?",
+                 placeholder: "this will not be publicy visible",
+                 input_html: { rows: '10' } 
+
+  %hr
+  .center
+    = f.button :submit, "Save profile", class: 'btn btn-success btn-large'
+    = link_to "Cancel", user_path(current_user), class: 'btn btn-large'
+
+
+
+
+      - if @etkh_profile.errors.any?
+        .alert.alert-error
+          <a class="close" data-dismiss="alert">×</a>
+          %h4.alert-heading 
+            = pluralize(@etkh_profile.errors.count, "error")
+            prohibited this application from being accepted!
+          %ul
+            - @etkh_profile.errors.reverse_each do |field,msg|
+              -# only want to print field if coming from Devise (password, or email).
+              -# otherwise we print our custom error messges as defined in models user
+              %li
+                = (field == :password || field == :email) ? field.to_s.humanize : '' 
+                = msg
+      
+        .slider-container
+          %label
+            How much do you expect to donate to the highest impact causes?
+          .slider-group
+            %p
+              %strong
+                I intend to donate around <span class="slider_value emphasise"><span id="etkh_profile_donation_percentage_display"></span>%</span> of my pre-tax income each year.
+      
+          .slider#etkh_profile_donation_percentage_slider
+            = f.input :donation_percentage, :as => :hidden
+        %br
+        = f.input :donation_percentage_comment, :placeholder => "optional", :label => "Comments about donations", :required => false, :input_html => {:rows=>'5'}
+      
+        %hr
+      
+
