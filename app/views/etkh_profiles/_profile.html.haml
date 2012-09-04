@@ -69,53 +69,19 @@
           %h2 Background and interests
           = markdown profile.background
         
-        - if profile.inspiration?
-          %h2 My inspiration for joining 80,000 Hours
-          = markdown profile.inspiration
-        
-        - if profile.occupation?
-          %h2 Current job/occupation
-          = markdown profile.occupation
-        
-        - if profile.career_plans?
-          %h2 Career plans
-          = markdown profile.career_plans
-        
-        - if profile.doing_good_inspiring? || profile.doing_good_research? || profile.doing_good_philanthropy? || profile.doing_good_prophilanthropy? || profile.doing_good_innovating? || profile.doing_good_improving
-          %h2 Type of Career
-          %ul 
-            - if profile.doing_good_inspiring?
-              %li Inspiring others
-            - if profile.doing_good_research?
-              %li High impact research
-            - if profile.doing_good_philanthropy?
-              %li Philanthropy
-            - if profile.doing_good_prophilanthropy?
-              %li Professional philanthropy
-            - if profile.doing_good_innovating?
-              %li Innovating
-            - if profile.doing_good_improving?
-              %li Improving
-        
-        - if profile.organisation_role?
-          %h2 Role in 80,000 Hours
-          = markdown profile.organisation_role
-        
-        - if profile.interesting_fact?
-          %h2 Interesting fact
-          = markdown profile.interesting_fact
-
-        - donations = user.donations.order("date DESC")
-        - if donations.confirmed.is_public.size > 0
-          .donations{:id => "#{user.slug}-donations"}
-            %h2
-              Donations
-            %p
-              %ul
-                - donations.each do |donation|
-                  - if donation.public
-                    %li
-                      = render donation
+        // only show donations to members
+        - if current_user.etkh_profile?
+          - donations = user.donations.order("date DESC")
+          - if donations.confirmed.is_public.size > 0
+            .donations{:id => "#{user.slug}-donations"}
+              %h2
+                Donations
+              %p
+                %ul
+                  - donations.each do |donation|
+                    - if donation.public
+                      %li
+                        = render donation
 
         - if user.posts.published.size > 0
           .blog
