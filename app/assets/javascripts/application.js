@@ -1,4 +1,3 @@
-//= require_tree .
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
@@ -10,3 +9,4 @@
 //= require accordion
 //= require bootstrap-datepicker
 //= require bootstrap-progressbar
+//= require_tree .
