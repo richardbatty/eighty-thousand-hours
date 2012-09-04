@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120424130619) do
+ActiveRecord::Schema.define(:version => 20120904113052) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -65,10 +65,7 @@ ActiveRecord::Schema.define(:version => 20120424130619) do
     t.datetime "updated_at"
     t.string   "name"
     t.string   "email"
-    t.string   "ancestry"
   end
-
-  add_index "comments", ["ancestry"], :name => "index_comments_on_ancestry"
 
   create_table "donations", :force => true do |t|
     t.integer  "amount_cents",         :default => 0
@@ -101,37 +98,6 @@ ActiveRecord::Schema.define(:version => 20120424130619) do
     t.integer  "weight",           :default => 1
   end
 
-  create_table "etkh_applications", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "occupation"
-    t.text     "career_plans"
-    t.text     "spoken_to_existing_member"
-    t.boolean  "doing_good_inspiring"
-    t.boolean  "doing_good_research"
-    t.boolean  "doing_good_philanthropy"
-    t.boolean  "doing_good_innovating"
-    t.boolean  "doing_good_improving"
-    t.string   "donation_percentage"
-    t.text     "donation_percentage_comment"
-    t.string   "average_income"
-    t.text     "average_income_comment"
-    t.string   "hic_activity_hours"
-    t.text     "hic_activity_hours_comment"
-    t.boolean  "causes_givewell"
-    t.boolean  "causes_gwwc"
-    t.boolean  "causes_international"
-    t.boolean  "causes_xrisk"
-    t.boolean  "causes_meta"
-    t.boolean  "causes_domestic"
-    t.boolean  "causes_animal"
-    t.boolean  "causes_political"
-    t.text     "causes_comment"
-    t.boolean  "pledge",                      :default => false
-    t.boolean  "doing_good_prophilanthropy"
-    t.integer  "user_id"
-  end
-
   create_table "etkh_profiles", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -155,6 +121,16 @@ ActiveRecord::Schema.define(:version => 20120424130619) do
     t.text     "skills_knowledge_share"
     t.text     "skills_knowledge_learn"
     t.integer  "user_id"
+  end
+
+  create_table "etkh_profiles_profile_option_activities", :id => false, :force => true do |t|
+    t.integer "etkh_profile_id"
+    t.integer "profile_option_activity_id"
+  end
+
+  create_table "etkh_profiles_profile_option_causes", :id => false, :force => true do |t|
+    t.integer "etkh_profile_id"
+    t.integer "profile_option_cause_id"
   end
 
   create_table "pages", :force => true do |t|
@@ -187,10 +163,18 @@ ActiveRecord::Schema.define(:version => 20120424130619) do
     t.string   "author"
     t.integer  "facebook_likes", :default => 0
     t.integer  "user_id"
-    t.string   "category"
+    t.string   "category",       :default => "discussion"
   end
 
   add_index "posts", ["slug"], :name => "index_posts_on_slug", :unique => true
+
+  create_table "profile_option_activities", :force => true do |t|
+    t.string "title"
+  end
+
+  create_table "profile_option_causes", :force => true do |t|
+    t.string "title"
+  end
 
   create_table "roles", :force => true do |t|
     t.string   "name"
