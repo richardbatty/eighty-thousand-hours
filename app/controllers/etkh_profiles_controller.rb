@@ -3,6 +3,7 @@ class EtkhProfilesController < ApplicationController
 
   def new
     @etkh_profile = EtkhProfile.new
+    current_user.etkh_profile = @etkh_profile
     @menu_root = "Membership"
     @menu_current = "Join now"
   end

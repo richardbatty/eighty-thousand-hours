@@ -5,10 +5,8 @@
   = f.fields_for :etkh_profile, defaults: { input_html: { class: 'span4' } } do |ep|
     = ep.association :profile_option_causes, :as => :check_boxes
     = ep.association :profile_option_activities, :as => :check_boxes
-
-
-
     = ep.input :organisation, label: "Your organisations, separated by commas", :placeholder => "i.e. universities and companies you’re a member of"
+
   = f.input :external_website,   label: "Personal website (optional)", :hint => "full URL e.g. http://www.joebloggs.com/"
   = f.input :external_twitter,   label: "Twitter page (optional)", :hint => "full URL e.g. http://twitter.com/JoeBloggs"
   = f.input :external_facebook,  label: "Facebook page (optional)", :hint => "full URL e.g. http://www.facebook.com/JoeBloggs"
