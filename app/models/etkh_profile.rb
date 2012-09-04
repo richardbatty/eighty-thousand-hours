@@ -25,4 +25,7 @@ class EtkhProfile < ActiveRecord::Base
            :to => :user
 
   scope :newest, order("created_at DESC")
+
+  has_and_belongs_to_many :profile_option_causes
+  has_and_belongs_to_many :profile_option_activities
 end
