@@ -68,6 +68,15 @@
         - if profile.background?
           %h2 Background and interests
           = markdown profile.background
+
+        // only show skills to other members
+        - if current_user.etkh_profile?
+          - if profile.skills_knowledge_share?
+            %h2 Skills and knowledge I can share with other members
+            %p= profile.skills_knowledge_share
+          - if profile.skills_knowledge_learn?
+            %h2 Skills and knowledge I would like to learn from other members
+            %p= profile.skills_knowledge_learn
         
         // only show donations to members
         - if current_user.etkh_profile?

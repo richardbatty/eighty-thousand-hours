@@ -10,13 +10,13 @@
     = image_tag("profiles/avatar_default_96x96.png", :class=>"shadow")
   = f.input :avatar, :label => "Change photo"
 
+  %hr
 
   = f.fields_for :etkh_profile, defaults: { input_html: { class: 'span4' } } do |ep|
     = ep.association :profile_option_causes,
                      :as => :check_boxes,
                      :label => "Given what you know now, which causes do you think you are most likely to promote, give money to and work within in order to help others?"
     = ep.input :causes_comment, label: "Comments about causes", input_html: {rows: '2'}
-    %hr
 
     = ep.association :profile_option_activities,
                      :as => :check_boxes,
@@ -24,6 +24,8 @@
     = ep.input :activities_comment, label: "Comments about high impact activities", input_html: {rows: '2'}
 
     %hr
+    %h2 A bit about you
+    = f.input :location
 
     = ep.input :organisation,
                label: "Organisations you are a member of, separated by commas",
@@ -33,10 +35,12 @@
                label: "Tell the other members of 80,000 Hours a little about yourself. What are you career plans, and how have they changed? What do you currently do? Why did you join 80,000 Hours?"
 
     %hr
+    %h2 Privacy
     = ep.input :public_profile,
                label: "Public profile",
                hint: "if unchecked your profile is still visible to 80,000 Hours members"
     %hr
+    %h2 Knowledge sharing
     = ep.input :skills_knowledge_share,
                label: "What skills and knowledge would you be willing to share with other 80k members?",
                placeholder: "this will only be visible to 80,000 Hours members",
@@ -48,14 +52,15 @@
                input_html: { rows: '10' } 
 
   %hr
-
+  %h2 External websites
 
   = f.input :external_website,   label: "Personal website", placeholder: "e.g. http://www.joebloggs.com/"
   = f.input :external_twitter,   label: "Twitter page",     placeholder: "e.g. http://twitter.com/JoeBloggs"
   = f.input :external_facebook,  label: "Facebook page",    placeholder: "e.g. http://www.facebook.com/JoeBloggs"
   = f.input :external_linkedin,  label: "LinkedIn page",    placeholder: "e.g. http://www.linkedin.com/in/JoeBloggs"
 
-  %h1 Declare your intention to give 
+  %hr
+  %h2 Declare your intention to give 
   %p
     Many of our members make a declaration of their intent to give a certain
     percentage of their pre-tax income to cost-effective causes over their
