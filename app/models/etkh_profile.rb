@@ -18,9 +18,7 @@ class EtkhProfile < ActiveRecord::Base
                   :public_profile,
                   :skills_knowledge_share,
                   :skills_knowledge_learn,
-                  :profile_option_causes,
                   :profile_option_cause_ids,
-                  :profile_option_activities,
                   :profile_option_activity_ids
 
   # now we can access @etkh_profile.name etc.

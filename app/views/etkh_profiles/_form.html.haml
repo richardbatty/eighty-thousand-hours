@@ -6,6 +6,7 @@
     = ep.association :profile_option_causes, :as => :check_boxes
     = ep.association :profile_option_activities, :as => :check_boxes
     = ep.input :organisation, label: "Your organisations, separated by commas", :placeholder => "i.e. universities and companies you’re a member of"
+    = ep.input :public_profile, label: "Public profile", :hint => "if unchecked your profile is still visible to 80,000 Hours members"
 
   = f.input :external_website,   label: "Personal website (optional)", :hint => "full URL e.g. http://www.joebloggs.com/"
   = f.input :external_twitter,   label: "Twitter page (optional)", :hint => "full URL e.g. http://twitter.com/JoeBloggs"
