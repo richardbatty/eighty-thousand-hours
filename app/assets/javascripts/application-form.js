@@ -28,7 +28,9 @@ function initialise_slider( name, range, min, max, step, start, display )
 }
 
 $(document).ready(function() {
-  initialise_slider("#etkh_profile_donation_percentage", "min", 10, 100, 5, 30);
-  initialise_slider("#etkh_profile_hic_activity_hours", "min", 0, 168, 5, 10);
-  initialise_slider("#etkh_profile_average_income", "min", 10000, 5000000, 10000, 100000, function(x){ return x.formatMoney(0,'.',','); } );
+  // get current value from hidden element
+  init_val = $('#user_etkh_profile_attributes_donation_percentage').val();
+  initialise_slider("#user_etkh_profile_attributes_donation_percentage", "min", 0, 100, 5, init_val);
+  //initialise_slider("#etkh_profile_hic_activity_hours", "min", 0, 168, 5, 10);
+  //initialise_slider("#etkh_profile_average_income", "min", 10000, 5000000, 10000, 100000, function(x){ return x.formatMoney(0,'.',','); } );
 });

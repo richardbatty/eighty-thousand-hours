@@ -2,16 +2,6 @@
 = simple_form_for(current_user, url: user_etkh_profile_url(current_user, current_user.etkh_profile),
                                 html: { class: 'form-horizontal' },
                                 defaults: { input_html: { class: 'span4' } }  ) do |f|
-  = f.fields_for :etkh_profile, defaults: { input_html: { class: 'span4' } } do |ep|
-    = ep.association :profile_option_causes, :as => :check_boxes
-    = ep.association :profile_option_activities, :as => :check_boxes
-    = ep.input :organisation, label: "Your organisations, separated by commas", :placeholder => "i.e. universities and companies you’re a member of"
-    = ep.input :public_profile, label: "Public profile", :hint => "if unchecked your profile is still visible to 80,000 Hours members"
-
-  = f.input :external_website,   label: "Personal website (optional)", :hint => "full URL e.g. http://www.joebloggs.com/"
-  = f.input :external_twitter,   label: "Twitter page (optional)", :hint => "full URL e.g. http://twitter.com/JoeBloggs"
-  = f.input :external_facebook,  label: "Facebook page (optional)", :hint => "full URL e.g. http://www.facebook.com/JoeBloggs"
-  = f.input :external_linkedin,  label: "LinkedIn page (optional)", :hint => "full URL e.g. http://www.linkedin.com/in/JoeBloggs"
 
   = f.label "Profile picture"
   - if current_user.avatar?
@@ -19,6 +9,66 @@
   - else
     = image_tag("profiles/avatar_default_96x96.png", :class=>"shadow")
   = f.input :avatar, :label => "Change photo"
+
+
+  = f.fields_for :etkh_profile, defaults: { input_html: { class: 'span4' } } do |ep|
+    = ep.association :profile_option_causes,
+                     :as => :check_boxes,
+                     :label => "Given what you know now, which causes do you think you are most likely to promote, give money to and work within in order to help others?"
+    = ep.input :causes_comment, label: "Comments about causes", input_html: {rows: '2'}
+    %hr
+
+    = ep.association :profile_option_activities,
+                     :as => :check_boxes,
+                     :label => "Which high impact activities do you intend to get involved in?"
+    = ep.input :activities_comment, label: "Comments about high impact activities", input_html: {rows: '2'}
+
+    %hr
+
+    = ep.input :organisation,
+               label: "Organisations you are a member of, separated by commas",
+               placeholder: "e.g. universities and companies"
+
+    = ep.input :background,
+               label: "Tell the other members of 80,000 Hours a little about yourself. What are you career plans, and how have they changed? What do you currently do? Why did you join 80,000 Hours?"
+
+    %hr
+    = ep.input :public_profile,
+               label: "Public profile",
+               hint: "if unchecked your profile is still visible to 80,000 Hours members"
+    %hr
+    = ep.input :skills_knowledge_share,
+               label: "What skills and knowledge would you be willing to share with other 80k members?",
+               placeholder: "this will only be visible to 80,000 Hours members",
+               input_html: { rows: '10' } 
+
+    = ep.input :skills_knowledge_learn,
+               label: "What skills and knowledge would you like to gain from other 80k members?",
+               placeholder: "this will only be visible to 80,000 Hours members",
+               input_html: { rows: '10' } 
+
+  %hr
+
+
+  = f.input :external_website,   label: "Personal website", placeholder: "e.g. http://www.joebloggs.com/"
+  = f.input :external_twitter,   label: "Twitter page",     placeholder: "e.g. http://twitter.com/JoeBloggs"
+  = f.input :external_facebook,  label: "Facebook page",    placeholder: "e.g. http://www.facebook.com/JoeBloggs"
+  = f.input :external_linkedin,  label: "LinkedIn page",    placeholder: "e.g. http://www.linkedin.com/in/JoeBloggs"
+
+  %h1 Declare your intention to give 
+  %p
+    Many of our members make a declaration of their intent to give a certain
+    percentage of their pre-tax income to cost-effective causes over their
+    lifetime. They find this helps them to stay true to their aims to give money
+    and encourages others to do the same.
+
+  = f.fields_for :etkh_profile, defaults: { input_html: { class: 'span4' } } do |ep|
+    I intend to donate around <span class="slider_value emphasise"><span id="user_etkh_profile_attributes_donation_percentage_display"></span>%</span> of my pre-tax income each year.
+    .slider#user_etkh_profile_attributes_donation_percentage_slider
+      = ep.input :donation_percentage, :as => :hidden
+    = ep.input :donation_percentage_optout, label: "I don't want to make a declaration"
+
+
 
   .center
     = f.button :submit, "Save profile", class: 'btn btn-success btn-large'
