@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120904113052) do
+ActiveRecord::Schema.define(:version => 20120904140440) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -121,6 +121,10 @@ ActiveRecord::Schema.define(:version => 20120904113052) do
     t.text     "skills_knowledge_share"
     t.text     "skills_knowledge_learn"
     t.integer  "user_id"
+    t.text     "causes_comment"
+    t.text     "activities_comment"
+    t.integer  "donation_percentage",        :default => 30
+    t.boolean  "donation_percentage_optout", :default => false
   end
 
   create_table "etkh_profiles_profile_option_activities", :id => false, :force => true do |t|
