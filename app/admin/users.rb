@@ -7,9 +7,6 @@ ActiveAdmin.register User do
   filter :email
   filter :location
 
-  #scope :confirmed
-  #scope :unconfirmed
-
   index do
     column :id
     column :avatar do |user|
@@ -20,13 +17,9 @@ ActiveAdmin.register User do
     column :omniauth_signup
     column :slug
     column :last_sign_in_at
-    column "Confirmed?" do |user|
+    column "80,000 Hours member?" do |user|
       if user.eighty_thousand_hours_member?
         "<span class='status ok'>YES</span>".html_safe
-      else
-        if user.eighty_thousand_hours_applicant?
-          "<span class='status error'>No</span> (#{link_to "Confirm", confirm_admin_user_path(user), :method => :put})".html_safe
-        end
       end
     end
     column :created_at
@@ -35,31 +28,6 @@ ActiveAdmin.register User do
     end
 
     default_actions
-  end
-
-  # Available at /admin/users/:id/confirm and #confirm_admin_post_path(user)
-  member_action :confirm, :method => :put do
-    user = User.find(params[:id])
-    user.etkh_profile = EtkhProfile.new
-    user.save
-    redirect_to admin_user_path(user), :notice => "User confirmed!"
-  end
-  member_action :revoke, :method => :put do
-    user = User.find(params[:id])
-    user.etkh_profile.destroy
-    user.save
-    redirect_to admin_user_path(user), :alert => "Membership confirmation revoked!"
-  end
-
-  action_item :only => :show do
-    if !user.eighty_thousand_hours_member?
-      link_to "Confirm member", confirm_admin_user_path(user), :method => :put
-    end
-  end
-  action_item :only => :show do
-    if user.eighty_thousand_hours_member?
-      link_to "Revoke member", revoke_admin_user_path(user), :method => :put
-    end
   end
 
   show do |user|
