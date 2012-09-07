@@ -6,7 +6,12 @@
       %a{:href => post_path(post)}
         = post.title
     %h4
+      %span.date
+        by
       = link_to_post_author( post )
+      %span.date
+        on
+        = format_date( post.created_at )
 
   .content
     = markdown post.get_teaser

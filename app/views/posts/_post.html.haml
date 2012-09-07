@@ -14,7 +14,12 @@
         - if post.draft
           %span.label.label-warning Draft post (not publicly visible)
       %h4
+        %span.date
+          by
         = link_to_post_author( post )
+        %span.date
+          on
+          = format_date( post.created_at )
 
     .content
       = markdown post.body
