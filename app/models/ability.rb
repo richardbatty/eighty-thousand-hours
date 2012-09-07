@@ -41,6 +41,7 @@ class Ability
       can :access, :admin
       can :manage, Post
       can :manage, Page, :slug => "recommended-posts"
+      can :manage, Page, :slug => "career-research"
     end
 
     # a BlogAdmin can manage all blog posts
