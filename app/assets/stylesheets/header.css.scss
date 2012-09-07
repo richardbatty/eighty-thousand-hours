@@ -6,16 +6,16 @@ header {
   border-bottom: $dim_top_and_tail_border_width solid $magenta_2;
 
   .navbar-container {
-    padding-bottom: 20px;
+    padding-bottom: 0px;
   }
   .navbar-top {
     font-size: 13px;
-    padding-bottom: 20px;
+    padding-bottom: 10px;
   }
 
   .navbar-menu {
-    @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
-    @include box_shadow(lighten($header_bg_color,20%), 0px, 0px, 5px);
+    /*@include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);*/
+    /*@include box_shadow(lighten($header_bg_color,20%), 0px, 0px, 5px);*/
 
     margin-top: 20px;
     margin-bottom: 20px;
@@ -28,6 +28,18 @@ header {
     ul.dropdown-menu a { color: #999; }
     ul.dropdown-menu a:hover { color: #efefef; background: none; }
     ul.dropdown-menu .divider { background: #333; border-bottom: 1px solid #555; }
+  }
+
+  a#header-logo {
+    font-size: 36px;
+    font-family: $museo_slab_900;
+    font-weight: bold;
+    display:block;
+    margin-top: 10px;
+
+    &:hover {
+      text-decoration: none;
+    }
   }
 
   .endorsement {
@@ -99,4 +111,14 @@ header {
   }
 }
 
+.search-query {
+  border: 5px green;
+  -moz-border-radius: 1px 1px !important;
+  -webkit-border-radius: 1px 1px !important;
+  -khtml-border-radius: 1px 1px !important;
+  -o-border-radius: 1px 1px !important;
+  border-radius: 1px 1px !important;
+  border: 1px $header_bg_color solid;
 
+  width: 120px;
+}
