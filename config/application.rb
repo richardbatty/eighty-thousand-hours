@@ -54,6 +54,9 @@ module EightyThousandHours
     
     # devise instructions said maybe want to do this for Rails 3.1 on Heroku...
     config.assets.initialize_on_precompile = false
+
+    # serve up our own custom fonts
+    config.assets.paths << "#{Rails.root}/app/assets/fonts"
     
     # generators
     config.generators do |g|
