@@ -67,7 +67,7 @@ module PagesHelper
     </ul>
 
     <form class='navbar-search pull-right' action='/search' method='get'>
-      <input class='search-query' name='q' placeholder='search...' type='text' />
+      <input class='search-query span2' name='q' placeholder='search...' type='text' />
     </form>
     </div>
     </div>
