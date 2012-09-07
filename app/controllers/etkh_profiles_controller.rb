@@ -2,8 +2,12 @@ class EtkhProfilesController < ApplicationController
   load_and_authorize_resource :only => [:new,:create,:edit,:update,:destroy]
 
   def new
-    @etkh_profile = EtkhProfile.new
-    current_user.etkh_profile = @etkh_profile
+    if current_user.etkh_profile.nil?
+      @etkh_profile = EtkhProfile.new
+      current_user.etkh_profile = @etkh_profile
+    else
+      render 'edit'
+    end
     @menu_root = "Membership"
     @menu_current = "Join now"
   end
