@@ -4,7 +4,7 @@
 /*$pf: #ff2400; // scarlet*/
 /*$pf: #ffaa00; // gold*/
 
-$magenta_2: #f30064;
+$magenta_2: #e30068;
 $magenta_1: darken($magenta_2,5%);
 $magenta_0: darken($magenta_2,10%);
 $magenta_3: lighten($magenta_2,10%);
@@ -22,8 +22,13 @@ $content_bg_color:   $white;
 
 $box_color: $white;
 
-$header_bg_color: $grey_1;
-$footer_bg_color: $header_bg_color;
+$header_bg_color: #333;
+$header_gradient_start: #444;
+$header_gradient_end: #333;
+
+$footer_bg_color: #333;
+$footer_gradient_start: #444;
+$footer_gradient_end: #333;
 
 $text_color: $grey_2; 
 

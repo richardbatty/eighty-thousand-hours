@@ -49,7 +49,6 @@ module PagesHelper
         </a>
         <ul class='dropdown-menu'>"
         result += "<li>#{t.get_menu_link(active)}</li>"
-        result += "<li class='divider'></li>"
 
         t.children.each do |c| 
           active = (@menu_current == c.title)
@@ -62,13 +61,12 @@ module PagesHelper
         result += "<li class='#{ active ? "active" : "" } top-level'>#{t.get_menu_link("top-level active #{active ? 'active' : ''} top-level")}</li>"
       end
       result += "</li>"
-      result += "<li class='divider-vertical'></li>"
     end
 
     result += "
     </ul>
 
-    <form class='navbar-search' action='/search' method='get'>
+    <form class='navbar-search pull-right' action='/search' method='get'>
       <input class='search-query' name='q' placeholder='search...' type='text' />
     </form>
     </div>

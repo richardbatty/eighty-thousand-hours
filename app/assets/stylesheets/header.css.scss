@@ -1,9 +1,15 @@
 @import "shared/partials";
+@import "shared/colors";
+
+.navbar-inverse .nav li.dropdown.open > .dropdown-toggle, .navbar-inverse .nav li.dropdown.active > .dropdown-toggle, .navbar-inverse .nav li.dropdown.open.active > .dropdown-toggle {
+ background: transparent !important; 
+}
 
 header {
   background: $header_bg_color;
+
   background: #222;
-  border-bottom: $dim_top_and_tail_border_width solid $magenta_2;
+  /*border-bottom: $dim_top_and_tail_border_width solid $magenta_2;*/
 
   .navbar-container {
     padding-bottom: 0px;
@@ -13,21 +19,52 @@ header {
     padding-bottom: 10px;
   }
 
+  .navbar-inner {
+    background-color: transparent !important;
+    background-image: none !important;
+    border: none !important;
+    @include box_shadow(lighten($header_bg_color,20%), 0px, 0px, 0px);
+  }
+
   .navbar-menu {
-    @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
-    @include box_shadow(lighten($header_bg_color,20%), 0px, 0px, 5px);
+    /*@include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);*/
+    /*@include box_shadow(lighten($header_bg_color,20%), 0px, 0px, 5px);*/
+
+    .navbar-inner {
+      background-color: transparent !important;
+      background-image: none !important;
+      border: none !important;
+      padding-left: 0px !important;
+
+      a.top-level{ 
+        color: #ffffff !important;
+
+        &:hover {
+          color: $magenta_2 !important;
+        }
+      }
+
+      ul li.active.top-level a.top-level{ 
+        color: $magenta_2 !important;
+        padding-left:0px !important;
+        background-color: transparent !important;
+        background-image: none !important;
+        @include box_shadow(lighten($header_bg_color,20%), 0px, 0px, 0px);
+      }
+      ul li.active a.top-level:hover { background: none !important; }
+  
+      li.dropdown.top-level.open { background: transparent !important; color: green !important }
+
+      ul.dropdown-menu { background: #2c2c2c !important;  border: 1px solid #555;}
+      ul.dropdown-menu a { color: #999; }
+      ul.dropdown-menu a:hover { color: #efefef; background: none; }
+      ul.dropdown-menu .divider { background: #333; border-bottom: 1px solid #555; }
+    }
 
     margin-top: 20px;
-    margin-bottom: 20px;
-    font-size: 13px;
-
-    ul li.active.top-level a.top-level{ background: none !important; }
-    ul li.active a.top-level:hover { background: none !important; }
-
-    ul.dropdown-menu { background: #2c2c2c !important;  border: 1px solid #555;}
-    ul.dropdown-menu a { color: #999; }
-    ul.dropdown-menu a:hover { color: #efefef; background: none; }
-    ul.dropdown-menu .divider { background: #333; border-bottom: 1px solid #555; }
+    margin-bottom: 10px;
+    /*font-size: 13px;*/
+    background: none !important;
   }
 
   a#header-logo {
@@ -73,10 +110,12 @@ header {
 
   position: relative;
 
-  background: -webkit-radial-gradient( center 130%, #555, $header_bg_color 300px);
-  background: -moz-radial-gradient(    center 130%, #555, $header_bg_color 300px);
-  background: -o-radial-gradient(      center 130%, #555, $header_bg_color 300px);
-  background: -ms-radial-gradient(     center 130%, #555, $header_bg_color 300px);
+  background-color: $header_gradient_start; 
+  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($header_gradient_start), to($header_gradient_end));
+  background-image: -webkit-linear-gradient(top, $header_gradient_start, $header_gradient_end); 
+  background-image:    -moz-linear-gradient(top, $header_gradient_start, $header_gradient_end);
+  background-image:     -ms-linear-gradient(top, $header_gradient_start, $header_gradient_end);
+  background-image:      -o-linear-gradient(top, $header_gradient_start, $header_gradient_end);
 }
 
 // top right: user login, social buttons
@@ -120,5 +159,5 @@ header {
   border-radius: 1px 1px !important;
   border: 1px $header_bg_color solid;
 
-  width: 120px;
+  width: 150px;
 }

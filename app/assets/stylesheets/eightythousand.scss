@@ -36,7 +36,8 @@ body {
   h1 {
   }
   h3 {
-    font-family: $museo_sans_500;
+    font-family: $museo_sans_500 !important;
+    font-weight: normal;
     font-size: 24px;
   }
   padding-bottom: 20px;
@@ -44,8 +45,10 @@ body {
 
 a.fp-splash-find-out-more {
   /*float: right;*/
-  padding: 20px;
-  font-size: 30px !important;
+  padding: 10px;
+  padding-left: 30px;
+  padding-right: 30px;
+  font-size: 1.5em !important;
   margin-top: 35px;
 
   @include rounded_borders(#ccc, 0px, $dim_border_radius);
@@ -69,8 +72,11 @@ a.fp-splash-find-out-more {
 
 #content {
 
-  h1,h2,h3,h4,h5,h6 {
+  h1 {
     font-family: $museo_slab_700;
+  }
+  h2,h3,h4,h5,h6 {
+    font-family: $museo_slab_500;
   }
 
   color: $text_color;
