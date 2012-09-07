@@ -2,7 +2,9 @@
 
 html, body {
   height: 100%;
-  font-family: "MuseoSans-500"
+  font-family: $museo_sans_500;
+  font-size: 100%;
+  line-height: 1.5em;
 }
 
 body {
@@ -32,18 +34,33 @@ body {
 /* -------------- content ----------- */
 .fp-splash {
   h1 {
-    color: #ffffff;
   }
   h3 {
-    color: #efefef;
+    font-family: $museo_sans_500;
+    font-size: 24px;
   }
   padding-bottom: 20px;
 }
 
-.fp-splash-find-out-more {
-  float: right;
+a.fp-splash-find-out-more {
+  /*float: right;*/
+  padding: 20px;
   font-size: 30px !important;
   margin-top: 35px;
+
+  @include rounded_borders(#ccc, 0px, $dim_border_radius);
+  color: #fff;
+  background: $link_color !important;
+
+  font-family: $museo_sans_500;
+
+  display: block;
+  width: 170px;
+
+  &:hover {
+    text-decoration: none;
+    color: $text_color;
+  }
 }
 
 .right {
@@ -51,6 +68,10 @@ body {
 }
 
 #content {
+
+  h1,h2,h3,h4,h5,h6 {
+    font-family: $museo_slab_700;
+  }
 
   color: $text_color;
 

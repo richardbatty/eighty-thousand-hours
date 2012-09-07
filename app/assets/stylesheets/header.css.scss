@@ -14,8 +14,8 @@ header {
   }
 
   .navbar-menu {
-    /*@include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);*/
-    /*@include box_shadow(lighten($header_bg_color,20%), 0px, 0px, 5px);*/
+    @include rounded_borders(lighten($header_bg_color,20%), 1px, 6px);
+    @include box_shadow(lighten($header_bg_color,20%), 0px, 0px, 5px);
 
     margin-top: 20px;
     margin-bottom: 20px;
