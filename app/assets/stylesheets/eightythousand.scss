@@ -5,7 +5,9 @@ html, body {
   font-family: $museo_sans_500;
   font-size: 100%;
   line-height: 1.5em;
+
 }
+
 
 body {
   margin: 0 auto;
@@ -64,6 +66,9 @@ a.fp-splash-find-out-more {
     text-decoration: none;
     color: $text_color;
   }
+  &:visited {
+    color: #fff !important;
+  }
 }
 
 .right {
@@ -80,6 +85,11 @@ a.fp-splash-find-out-more {
   }
 
   color: $text_color;
+  a {
+    &:visited {
+      color: #e30068;
+    }
+  }
 
   /* these are used for text content */
   .box {
