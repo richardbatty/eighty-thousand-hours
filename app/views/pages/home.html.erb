@@ -29,6 +29,18 @@ We have #{@total_members} members worldwide, you can see them all on <a href='/m
 </ul>"
 %>
 
+<%
+  mailing_list_html = "
+<div id='mc_embed_signup'>
+<form action='http://eightythousand.us2.list-manage.com/subscribe/post?u=aba12f58bbe8075560abdc5b7&amp;id=43bc1ae55c' method='post' id='mc-embedded-subscribe-form' name='mc-embedded-subscribe-form' class='validate' target='_blank'>
+<input style='' type='email' value='' name='EMAIL' class='email' id='mce-EMAIL' placeholder='email address' required>
+<input type='submit' value='Join' name='subscribe' id='mc-embedded-subscribe' class='btn btn-primary' style='margin-bottom: 8px'>
+</form>
+</div>
+"
+%>
+
+
 <% donations_html = render('donations/thermometer.html.haml') %>
 
 <% 
@@ -44,4 +56,4 @@ We have #{@total_members} members worldwide, you can see them all on <a href='/m
 <% content = content.gsub(/\|\*CAREERS\*\|/, careers_html) %>
 <% content = content.gsub(/\|\*LATEST\*\|/,  latest_html)  %>
 <% content = content.gsub(/\|\*DONATIONS\*\|/, donations_html)  %>
-<%= markdown content %>
+<%= (markdown content).gsub(/MAILING_LIST/, mailing_list_html).html_safe  %>
