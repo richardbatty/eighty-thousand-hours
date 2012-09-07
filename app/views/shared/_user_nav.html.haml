@@ -10,8 +10,6 @@
             %span.icon-bar
           .nav-collapse
             %ul.nav.pull-right
-              %form.navbar-search{:action => "/search", :method => "get"}
-                %input.search-query{:name => "q", :placeholder => "Search", :type => "text"}/
               - if user_signed_in?
                 %li.dropdown
                   %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}

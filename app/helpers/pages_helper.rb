@@ -67,6 +67,10 @@ module PagesHelper
 
     result += "
     </ul>
+
+    <form class='navbar-search' action='/search' method='get'>
+      <input class='search-query' name='q' placeholder='search...' type='text' />
+    </form>
     </div>
     </div>
     </div>"
