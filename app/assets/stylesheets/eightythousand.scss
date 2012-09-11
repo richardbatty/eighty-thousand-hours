@@ -278,3 +278,13 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 .social-btn-reddit-light { @include social-btn('/assets/icons/reddit.png', 64px); }
 .social-btn-twitter-light { @include social-btn('/assets/icons/twitter.png', 64px); }
 .social-btn-rss-light { @include social-btn('/assets/icons/rss.png', 64px); }
+
+
+
+// make links in sidebar pills be white if on pink background
+.nav-pills.nav-stacked > li:last-child > a {
+  color: #fff !important;
+  &:visited {
+    color: #fff !important;
+  }
+}
