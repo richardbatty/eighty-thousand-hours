@@ -252,3 +252,28 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 .btn-primary {
   @include rounded_borders(#ccc, 1px, 0px);
 }
+
+
+@mixin social-btn($img_path, $offset: 0px, $hover: 32px) { 
+	display: block;
+	width: 32px;
+	height: 32px;
+	background: url($img_path) bottom;
+	text-indent: -99999px;
+  background-position: 0px $offset;
+  &:hover {
+  	background-position: 0px $hover;
+  }
+  float: left;
+  margin-right: 15px;
+}
+
+.social-btn-facebook { @include social-btn('/assets/icons/facebook.png'); }
+.social-btn-reddit { @include social-btn('/assets/icons/reddit.png'); }
+.social-btn-twitter { @include social-btn('/assets/icons/twitter.png'); }
+.social-btn-rss { @include social-btn('/assets/icons/rss.png'); }
+
+.social-btn-facebook-light { @include social-btn('/assets/icons/facebook.png', 64px); }
+.social-btn-reddit-light { @include social-btn('/assets/icons/reddit.png', 64px); }
+.social-btn-twitter-light { @include social-btn('/assets/icons/twitter.png', 64px); }
+.social-btn-rss-light { @include social-btn('/assets/icons/rss.png', 64px); }

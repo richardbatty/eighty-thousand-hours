@@ -6,10 +6,14 @@
 }
 
 header {
-  background: $header_bg_color;
-
-  background: #222;
-  /*border-bottom: $dim_top_and_tail_border_width solid $magenta_2;*/
+  background: $header_gradient_end;
+  background-image: url('/assets/bg/noise.png'); /* fallback */
+  background-image: url('/assets/bg/noise.png'), -webkit-gradient(linear, left top, left bottom, from($header_gradient_start), to($header_gradient_end)); /* Saf4+, Chrome */
+  background-image: url('/assets/bg/noise.png'), -webkit-linear-gradient(top, $header_gradient_start, $header_gradient_end); /* Chrome 10+, Saf5.1+ */
+  background-image: url('/assets/bg/noise.png'),    -moz-linear-gradient(top, $header_gradient_start, $header_gradient_end); /* FF3.6+ */
+  background-image: url('/assets/bg/noise.png'),     -ms-linear-gradient(top, $header_gradient_start, $header_gradient_end); /* IE10 */
+  background-image: url('/assets/bg/noise.png'),      -o-linear-gradient(top, $header_gradient_start, $header_gradient_end); /* Opera 11.10+ */
+  background-image: url('/assets/bg/noise.png'),         linear-gradient(top, $header_gradient_start, $header_gradient_end);
 
   .navbar-container {
     padding-bottom: 0px;
@@ -115,15 +119,6 @@ header {
       }
     }
   }
-
-  position: relative;
-
-  background-color: $header_gradient_start; 
-  background-image: -webkit-gradient(linear, 0% 0%, 0% 100%, from($header_gradient_start), to($header_gradient_end));
-  background-image: -webkit-linear-gradient(top, $header_gradient_start, $header_gradient_end); 
-  background-image:    -moz-linear-gradient(top, $header_gradient_start, $header_gradient_end);
-  background-image:     -ms-linear-gradient(top, $header_gradient_start, $header_gradient_end);
-  background-image:      -o-linear-gradient(top, $header_gradient_start, $header_gradient_end);
 }
 
 // top right: user login, social buttons
