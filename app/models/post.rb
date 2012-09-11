@@ -47,7 +47,7 @@ class Post < ActiveRecord::Base
 
   def self.author_list
     authors = where(:draft => false).where("author IS NOT NULL").select('DISTINCT author').map{|p| p.author}
-    users   = where("user_id IS NOT NULL").select('DISTINCT user_id').map{|p| p.user.name}
+    users   = where(:draft => false).where("user_id IS NOT NULL").select('DISTINCT user_id').map{|p| p.user.name}
 
     (authors + users).sort
   end
