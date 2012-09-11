@@ -2,6 +2,8 @@
   .avatar
     - if comment.user
       = link_to (image_tag comment.user.avatar(:thumb)), user_path( comment.user )
+    - else
+      = image_tag "/assets/profiles/avatar_default_48x48.png"
   .content
     .header
       - if comment.user
