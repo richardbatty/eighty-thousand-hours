@@ -3,16 +3,15 @@
 #comments{
   .comment {
     .avatar {
+      float: left;
+      @include rounded_borders(#ccc, 1px, 3px);
+      @include box_shadow(#ccc, 0px, 0px, 5px);
       width:  48px;
       height: 48px;
-      position: relative;
       img {
-        float: left;
-        @include rounded_borders(#ccc, 1px, 3px);
-        @include box_shadow(#ccc, 0px, 0px, 5px);
         vertical-align: middle;
-        position:absolute;
-        clip:rect(0px,32px,32px,0px);
+        position: absolute;
+        clip:rect(0px,48px,48px,0px);
       }
     }
 
