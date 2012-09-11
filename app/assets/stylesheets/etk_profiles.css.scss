@@ -42,12 +42,12 @@
     height: 32px;
     width: 32px;
 
-    // in case non-square photos
-    /*position:absolute;*/
-
     margin: 3px;
+    position: relative;
 
     img {
+      // in case non-square photos
+      position:absolute;
       clip:rect(0px,32px,32px,0px);
     }
   }
