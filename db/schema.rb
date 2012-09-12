@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120904140440) do
+ActiveRecord::Schema.define(:version => 20120912130237) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -98,6 +98,37 @@ ActiveRecord::Schema.define(:version => 20120904140440) do
     t.integer  "weight",           :default => 1
   end
 
+  create_table "etkh_applications", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.text     "occupation"
+    t.text     "career_plans"
+    t.text     "spoken_to_existing_member"
+    t.boolean  "doing_good_inspiring"
+    t.boolean  "doing_good_research"
+    t.boolean  "doing_good_philanthropy"
+    t.boolean  "doing_good_innovating"
+    t.boolean  "doing_good_improving"
+    t.string   "donation_percentage"
+    t.text     "donation_percentage_comment"
+    t.string   "average_income"
+    t.text     "average_income_comment"
+    t.string   "hic_activity_hours"
+    t.text     "hic_activity_hours_comment"
+    t.boolean  "causes_givewell"
+    t.boolean  "causes_gwwc"
+    t.boolean  "causes_international"
+    t.boolean  "causes_xrisk"
+    t.boolean  "causes_meta"
+    t.boolean  "causes_domestic"
+    t.boolean  "causes_animal"
+    t.boolean  "causes_political"
+    t.text     "causes_comment"
+    t.boolean  "pledge",                      :default => false
+    t.boolean  "doing_good_prophilanthropy"
+    t.integer  "user_id"
+  end
+
   create_table "etkh_profiles", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -151,6 +182,7 @@ ActiveRecord::Schema.define(:version => 20120904140440) do
     t.boolean  "just_a_link",            :default => false
     t.integer  "parent_id"
     t.boolean  "menu_display_in_footer", :default => true
+    t.boolean  "menu_sidebar",           :default => false
   end
 
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true

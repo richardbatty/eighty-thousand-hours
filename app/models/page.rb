@@ -11,7 +11,7 @@ class Page < ActiveRecord::Base
   has_paper_trail
 
   attr_accessible :title,:header_title,:body,:show_box,:just_a_link,
-                  :menu_top_level,:menu_display,:menu_priority,:parent_id,:menu_display_in_footer
+                  :menu_top_level,:menu_display,:menu_priority,:parent_id,:menu_display_in_footer,:menu_sidebar
 
   scope :display_in_menu, where(:menu_display => true)
   scope :display_in_menu_footer, display_in_menu.where(:menu_display_in_footer => true)
@@ -27,7 +27,8 @@ class Page < ActiveRecord::Base
   def sidebar?
     # if the page is in a hierarchical menu then 
     # we display the menu in the sidebar, otherwise don't
-    root.children.size > 0
+    # additionally can turn off sidebar in page options
+    root.children.size > 0 and menu_sidebar
   end
 
   def get_menu_link(aclass = nil)
