@@ -6,14 +6,14 @@
     #{@user.name} is an 80,000 Hours member. #{link_to 'View their profile here', (etkh_profile_path @user)}.
 
 
-  - if @user.posts.any?
+  - if @user.blog_posts.any?
     .page-header
       %h2 Blog posts
     
-    - @user.posts.each do |post|
+    - @user.blog_posts.each do |post|
       - if !post.draft || post.user == current_user
         .blog
-          = render :partial => 'posts/display_heading',
+          = render :partial => 'blog_posts/display_heading',
                    :locals => { :post => post }
 
   - if @user.comments.any?
@@ -23,5 +23,5 @@
     #comments
       - @user.comments.each do |comment|
         .comment
-          %h4 Posted a comment in #{link_to comment.post.title, comment.post}:
+          %h4 Posted a comment in #{link_to comment.blog_post.title, comment.blog_post}:
           = render comment
