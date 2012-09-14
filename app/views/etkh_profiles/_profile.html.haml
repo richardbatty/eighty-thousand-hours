@@ -97,5 +97,3 @@
             %h2 Recent blog posts
             - user.blog_posts.published.limit(3).each do |post|
               =render :partial => 'blog_posts/display_heading', :locals => {:post => post}
-            %br
-            = link_to "View all posts by #{user.name}", blog_posts_user_path( user )
