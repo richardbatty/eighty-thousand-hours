@@ -39,6 +39,9 @@ EightyThousandHours::Application.routes.draw do
   resources :chat_requests, :only => [:new,:create], :path => 'chat-to-us'
   match 'chat-to-us' => 'chat_requests#new'
 
+  resources :career_advice_requests, :only => [:new,:create], :path => 'career-advice-sessions'
+  match 'career-advice-sessions' => 'career_advice_requests#new'
+
   resources :endorsements, :only =>[:index]
   resources :videos, :only =>[:index]
 
