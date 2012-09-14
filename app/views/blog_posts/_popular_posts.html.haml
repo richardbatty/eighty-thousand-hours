@@ -3,8 +3,8 @@
 
   = render partial: 'shared/sidebar_item',
            locals: { date: post.created_at,
-                     content: "<span class='votes'>#{post.net_votes}</span><i class='icon-arrow-up'></i>#{link_to post.title, post_path( post )}".html_safe,
-                     attribution: link_to_post_author( post ) }
+                     content: "<span class='votes'>#{post.net_votes}</span><i class='icon-arrow-up'></i>#{link_to post.title, blog_post_path( post )}".html_safe,
+                     attribution: link_to_blog_post_author( post ) }
 
 = link_to "View all popular posts <i class='icon-circle-arrow-right'></i>".html_safe, "/blog?order=popularity"
 %br

@@ -1,5 +1,5 @@
 ActiveAdmin.register Comment, :as => "PostComment" do
-  menu :if => proc{ can?(:manage, Post) },
+  menu :if => proc{ can?(:manage, BlogPost) },
        :label => "Comments",
        :parent => "Posts"
 

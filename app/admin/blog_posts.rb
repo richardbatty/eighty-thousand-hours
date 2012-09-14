@@ -1,5 +1,5 @@
-ActiveAdmin.register Post do
-  menu :if => proc{ can?(:manage, Post) }
+ActiveAdmin.register BlogPost do
+  menu :if => proc{ can?(:manage, BlogPost) }
 
   controller.authorize_resource
   
@@ -51,7 +51,7 @@ ActiveAdmin.register Post do
   # for History sidebar in show view
   controller do
     def show
-        @post = Post.find(params[:id])
+        @post = BlogPost.find(params[:id])
         @versions = @post.versions 
         @post = @post.versions[params[:version].to_i].reify if params[:version]
         show! #it seems to need this
@@ -60,7 +60,7 @@ ActiveAdmin.register Post do
   sidebar :versions, :partial => "admin/version_sidebar", :only => :show
 
   sidebar :view_on_site, :only => :show do
-    @post = Post.find(params[:id])
+    @post = BlogPost.find(params[:id])
     link_to "View live on site", post_path(@post)
   end
 end

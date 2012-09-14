@@ -39,7 +39,7 @@ class Ability
     # a BlogAdmin can manage all blog posts
     if user.has_role? :blog_admin
       can :access, :admin
-      can :manage, Post
+      can :manage, BlogPost
       can :manage, Page, :slug => "recommended-posts"
       can :manage, Page, :slug => "career-research"
     end
@@ -73,8 +73,9 @@ class Ability
       can :update, User, :id => user.id
       can :create, EtkhProfile
       can :manage, Comment, :user_id => user.id
-      can :create, Post
-      can :manage, Post, :user_id => user.id
+      can :create, DiscussionPost
+      can :manage, DiscussionPost, :user_id => user.id
+      can :manage, BlogPost, :user_id => user.id
     end
     
     if user.eighty_thousand_hours_member?
@@ -85,9 +86,9 @@ class Ability
     end
 
     # anyone can read posts or view pages
-    can :read, Post, :published => true
+    can :read, BlogPost, :published => true
+    can :read, DiscussionPost, :published => true
     can :read, Page
     can :create, Comment
-    can :read, :discussion
   end
 end

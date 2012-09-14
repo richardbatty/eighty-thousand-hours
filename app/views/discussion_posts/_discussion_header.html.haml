@@ -4,7 +4,7 @@
       %a{:href => discussion_post_path(post)}
         = post.title
     %h4
-      = link_to_post_author( post )
+      = post.user.name
       &nbsp;
       %span.comments-link= link_to pluralize(post.comments.size, 'comment'), discussion_post_path(post) + "#comments"
   .clearfix

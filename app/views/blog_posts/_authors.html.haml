@@ -2,4 +2,4 @@
 - if @authors
   - @authors.each do |author|
     .sidebar-item
-    =link_to author, { :controller => :posts, :action => :author, :id => author }
+    =link_to author, { :controller => :blog_posts, :action => :author, :id => author }

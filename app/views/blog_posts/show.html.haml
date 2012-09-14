@@ -2,9 +2,9 @@
   .row
     .span3
       .box.sidebar
-        = link_to '<i class="icon-list"></i> Back to the blog'.html_safe, posts_path
+        = link_to '<i class="icon-list"></i> Back to the blog'.html_safe, blog_posts_path
         %hr
-        <fb:like href="#{post_url(@post)}" send="false" width="250" show_faces="false"></fb:like>
+        <fb:like href="#{blog_post_url(@post)}" send="false" width="250" show_faces="false"></fb:like>
         = render :partial => "rss"
         %hr
         = render :partial => "popular_posts"

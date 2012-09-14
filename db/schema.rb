@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120914155315) do
+ActiveRecord::Schema.define(:version => 20120914160449) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20120914155315) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "attached_images", :force => true do |t|
-    t.integer  "post_id"
+    t.integer  "blog_post_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -75,7 +75,7 @@ ActiveRecord::Schema.define(:version => 20120914155315) do
   add_index "causes", ["slug"], :name => "index_charities_on_slug", :unique => true
 
   create_table "comments", :force => true do |t|
-    t.integer  "post_id"
+    t.integer  "blog_post_id"
     t.integer  "user_id"
     t.text     "body"
     t.datetime "created_at"
@@ -337,7 +337,7 @@ ActiveRecord::Schema.define(:version => 20120914155315) do
 
   create_table "votes", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "post_id"
+    t.integer  "blog_post_id"
     t.boolean  "positive"
     t.datetime "created_at"
     t.datetime "updated_at"

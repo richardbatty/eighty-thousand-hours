@@ -22,7 +22,7 @@ class DiscussionPostsController < ApplicationController
         end
       end
 
-      @og_url = post_url( @post )
+      @og_url = discussion_post_url( @post )
       @og_type = "article"
       @title = "Discussion: " + @post.title
       @tags = @post.tag_list
@@ -83,6 +83,6 @@ class DiscussionPostsController < ApplicationController
   def destroy
     @post = DiscussionPost.find( params[:id] )
     @post.destroy
-    redirect_to posts_path, :notice => "Post permanently deleted"
+    redirect_to discussion_posts_path, :notice => "Post permanently deleted"
   end
 end

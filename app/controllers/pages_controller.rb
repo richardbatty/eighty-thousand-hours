@@ -38,7 +38,7 @@ class PagesController < ApplicationController
       @latest_profiles = EtkhProfile.order("created_at DESC").limit(4)
 
       # for sidebar
-      @latest_posts = Post.published.limit(3)
+      @latest_posts = BlogPost.published.limit(3)
 
       # for sidebar
       @latest_donations = Donation.confirmed.limit(3)

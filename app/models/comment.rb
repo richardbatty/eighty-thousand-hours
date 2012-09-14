@@ -1,5 +1,7 @@
 class Comment < ActiveRecord::Base
   validates_presence_of :body,    message: "can't be blank"
+
+  # should check we have either blog_post_id *OR* discussion_post_id
   #validates_presence_of :post_id
 
   attr_accessor :email_confirmation
@@ -8,7 +10,7 @@ class Comment < ActiveRecord::Base
   before_validation :check_honeypot
 
   belongs_to :user
-  belongs_to :post
+  belongs_to :blog_post
   belongs_to :discussion_post
 
   scope :blog, where(:post_id != nil)

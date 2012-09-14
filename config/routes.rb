@@ -14,8 +14,8 @@ EightyThousandHours::Application.routes.draw do
 
   match '/accounts/merge' => 'users#merge'
 
-  match '/blog/feed.atom' => 'posts#feed', :as => :feed, :defaults => { :format => 'atom' }
-  resources :posts, :path => 'blog' do
+  match '/blog/feed.atom' => 'blog_posts#feed', :as => :feed, :defaults => { :format => 'atom' }
+  resources :blog_posts, :path => 'blog' do
     collection do
       get :tag
       get :author

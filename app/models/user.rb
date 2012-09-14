@@ -42,7 +42,7 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :etkh_profile
 
   # a user can write many blog posts
-  has_many :posts
+  has_many :blog_posts
 
   # a user can write many discussion posts
   has_many :discussion_posts

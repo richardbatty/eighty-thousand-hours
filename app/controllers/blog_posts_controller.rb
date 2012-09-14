@@ -1,4 +1,4 @@
-class BlogBlogPostsController < ApplicationController
+class BlogPostsController < ApplicationController
   load_and_authorize_resource :only => [:new,:create,:edit,:update,:destroy]
 
   def prepare_sidebar
@@ -36,16 +36,6 @@ class BlogBlogPostsController < ApplicationController
     prepare_sidebar
   end
 
-  def discussion_index
-    @posts = BlogPost.published
-    authorize! :read, :discussion
-  end
-
-  def discussion_view
-    @post = BlogPost.find(params[:id])
-    authorize! :read, :discussion
-  end
-
   def sorted
     @posts = BlogPost.by_votes
 
@@ -71,7 +61,7 @@ class BlogBlogPostsController < ApplicationController
         end
       end
 
-      @og_url = post_url( @post )
+      @og_url = blog_post_url( @post )
       @og_desc = @post.get_teaser
       @og_type = "article"
       @title = "Blog: " + @post.title
@@ -139,7 +129,7 @@ class BlogBlogPostsController < ApplicationController
 
   def update
     @post = BlogPost.find( params[:id] )
-    if @post.update_attributes( params[:post] )
+    if @post.update_attributes( params[:blog_post] )
       redirect_to @post, :notice => "Post updated!"
     else
       render :edit
@@ -152,9 +142,9 @@ class BlogBlogPostsController < ApplicationController
   end
 
   def create
-    @post = current_user.posts.new( params[:post] )
+    @post = current_user.blog_posts.new( params[:blog_post] )
     if @post.save
-      redirect_to discussion_path, :notice => "Post created!"
+      redirect_to blog_post_path(@post), :notice => "Post created!"
     else
       render :new
     end
