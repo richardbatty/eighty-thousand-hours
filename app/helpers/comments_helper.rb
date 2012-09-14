@@ -1,9 +1,9 @@
 module CommentsHelper
   def comment_post_path(comment)
-    if comment.post.category == "blog"
-      post_path( comment.post )
+    if comment.post_id.nil?
+      discussion_post_path( comment.discussion_post )
     else
-      "/discussion/#{comment.post.slug}"
+      post_path( comment.post )
     end
   end
 

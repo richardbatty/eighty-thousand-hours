@@ -11,6 +11,8 @@ class Comment < ActiveRecord::Base
   belongs_to :post
   belongs_to :discussion_post
 
+  scope :blog, where(:post_id != nil)
+
   def get_name
     user ? user.name : name
   end

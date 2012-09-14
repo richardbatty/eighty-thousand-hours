@@ -29,10 +29,7 @@
     %p
       = render :partial => "post_tags", :locals => { :post => post, :div_title => "tags:" }
     %p
-      - if post.category == "blog"
-        = link_to '<i class="icon-list"></i> Take me back to the blog'.html_safe, posts_path
-      - else
-        = link_to '<i class="icon-list"></i> Take me back to the discussion page'.html_safe, discussion_path
+      = link_to '<i class="icon-list"></i> Take me back to the blog'.html_safe, posts_path
     %p
       = link_to '<i class="icon-home"></i> Take me to the homepage'.html_safe, '/'
     %p
@@ -43,7 +40,7 @@
 
     #comments
       .page-header
-        %h2 Comments
+        %h4 Comments
       #display-comments
         = render post.comments.order("created_at ASC")
 
@@ -63,9 +60,6 @@
     %hr
     .center
       %p
-        - if post.category == "blog"
-          = link_to '<i class="icon-list"></i> Take me back to the blog'.html_safe, posts_path
-        - else
-          = link_to '<i class="icon-list"></i> Take me back to the discussion page'.html_safe, discussion_path
+        = link_to '<i class="icon-list"></i> Take me back to the blog'.html_safe, posts_path
       %p
         = link_to '<i class="icon-home"></i> Take me to the homepage'.html_safe, '/'
