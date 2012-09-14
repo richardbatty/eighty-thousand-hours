@@ -61,6 +61,6 @@ ActiveAdmin.register BlogPost do
 
   sidebar :view_on_site, :only => :show do
     @post = BlogPost.find(params[:id])
-    link_to "View live on site", post_path(@post)
+    link_to "View live on site", blog_post_path(@post)
   end
 end

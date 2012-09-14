@@ -1,14 +1,11 @@
 ActiveAdmin.register Comment, :as => "PostComment" do
-  menu :if => proc{ can?(:manage, BlogPost) },
-       :label => "Comments",
-       :parent => "Posts"
-
   index do
     column :id
     column :name
     column :email
     column :user
-    column :post
+    column :blog_post
+    column :discussion_post
     column :body
     column :created_at
     default_actions
