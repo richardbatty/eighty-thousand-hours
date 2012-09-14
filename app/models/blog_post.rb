@@ -1,4 +1,4 @@
-class Post < ActiveRecord::Base
+class BlogPost < ActiveRecord::Base
   include Rails.application.routes.url_helpers
   extend FriendlyId
   friendly_id :title, :use => :slugged
@@ -19,16 +19,16 @@ class Post < ActiveRecord::Base
   validates_presence_of :body
   validates_presence_of :teaser
 
-  def self.by_votes( n = Post.all.size )
+  def self.by_votes( n = BlogPost.all.size )
     n = 1 if n < 1
     where(:draft => false).sort_by{|p| p.net_votes}.reverse.slice(0..(n-1))
   end
 
   def self.recent(n)
-    Post.last(n)
+    BlogPost.last(n)
   end
 
-  def self.by_popularity( n = Post.all.size )
+  def self.by_popularity( n = BlogPost.all.size )
     n = 1 if n < 1
     where(:draft => false).sort_by{|p| p.popularity}.reverse.slice(0..(n-1))
   end
@@ -37,9 +37,9 @@ class Post < ActiveRecord::Base
     # see if we have a user with this name
     user = User.find_by_name( author )
     if user
-      query = Post.published.where("user_id = ?", user.id ).order("created_at DESC")
+      query = BlogPost.published.where("user_id = ?", user.id ).order("created_at DESC")
     else
-      query = Post.published.where("author = ?", author ).order("created_at DESC")
+      query = BlogPost.published.where("author = ?", author ).order("created_at DESC")
     end
 
     query.paginate(:page => page, :per_page => 10)
@@ -52,7 +52,7 @@ class Post < ActiveRecord::Base
     (authors + users).sort
   end
 
-  # a Post can have votes from many different users
+  # a BlogPost can have votes from many different users
   has_many :votes
 
   # comments on posts
@@ -136,7 +136,7 @@ class Post < ActiveRecord::Base
 
   # this is called by Heroku scheduler on a regular basis
   def self.update_facebook_likes
-    Post.all.each do |p|
+    BlogPost.all.each do |p|
       num_likes = get_facebook_likes p
       p.facebook_likes = num_likes
       p.save
