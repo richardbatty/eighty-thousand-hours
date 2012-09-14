@@ -1,11 +1,11 @@
-class PostsController < ApplicationController
+class BlogBlogPostsController < ApplicationController
   load_and_authorize_resource :only => [:new,:create,:edit,:update,:destroy]
 
   def prepare_sidebar
     @recommended_posts = Page.find('recommended-posts')
-    @tag_cloud = Post.tag_counts_on(:tags) || []
-    @popular_posts = Post.by_popularity(5)
-    @authors = Post.author_list
+    @tag_cloud = BlogPost.tag_counts_on(:tags) || []
+    @popular_posts = BlogPost.by_popularity(5)
+    @authors = BlogPost.author_list
     @latest_comments = Comment.blog.order("created_at DESC").limit(4)
   end
 
@@ -13,19 +13,19 @@ class PostsController < ApplicationController
     @sort = params[:order]
     case @sort
     when 'popularity'
-      @posts = Post.by_popularity
+      @posts = BlogPost.by_popularity
       @condensed = true
       @heading = "Most popular posts"
     when 'votes'
-      @posts = Post.by_votes
+      @posts = BlogPost.by_votes
       @condensed = true
       @heading = "Highest voted posts"
     when 'date'
-      @posts = Post.published
+      @posts = BlogPost.published
       @condensed = true
       @heading = "All posts by date"
     else
-      @posts = Post.published.paginate(:page => params[:page], :per_page => 10)
+      @posts = BlogPost.published.paginate(:page => params[:page], :per_page => 10)
       @condensed = false
       @heading = "80,000 Hours blog"
     end
@@ -37,17 +37,17 @@ class PostsController < ApplicationController
   end
 
   def discussion_index
-    @posts = Post.published
+    @posts = BlogPost.published
     authorize! :read, :discussion
   end
 
   def discussion_view
-    @post = Post.find(params[:id])
+    @post = BlogPost.find(params[:id])
     authorize! :read, :discussion
   end
 
   def sorted
-    @posts = Post.by_votes
+    @posts = BlogPost.by_votes
 
     @title = "Most popluar posts of all time"
     @menu_root = "Blog"
@@ -57,13 +57,13 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post = Post.find_by_id(params[:id])
+    @post = BlogPost.find_by_id(params[:id])
     if @post.nil?
       flash[:"alert-error"] = "Sorry! You've followed a bad link, please <a href='contact-us'>contact support</a> and report the following:<br/> #{params[:controller]} => '#{params[:id]}'".html_safe
       redirect_to :action => 'index'
     else
       if @post.draft
-        if cannot? :manage, Post
+        if cannot? :manage, BlogPost
           # user is not allowed to view drafts
           # so we redirect to the index
           flash[:"alert-error"] = "Sorry! You've followed a bad link, please <a href='contact-us'>contact support</a>!".html_safe
@@ -84,8 +84,8 @@ class PostsController < ApplicationController
   end
 
   def author
-    @heading = "Posts by #{params[:id]}"
-    @posts = Post.by_author(params[:id],params[:page])
+    @heading = "BlogPosts by #{params[:id]}"
+    @posts = BlogPost.by_author(params[:id],params[:page])
     @condensed = true
 
     prepare_sidebar
@@ -94,7 +94,7 @@ class PostsController < ApplicationController
   end
 
   def vote
-    post = Post.find( params[:id] )
+    post = BlogPost.find( params[:id] )
     user = current_user
     
     if !user
@@ -107,8 +107,8 @@ class PostsController < ApplicationController
   end
 
   def tag
-    @heading = "Posts tagged with '#{params[:id]}'"
-    @posts = Post.tagged_with(params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    @heading = "BlogPosts tagged with '#{params[:id]}'"
+    @posts = BlogPost.tagged_with(params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     @condensed = true
 
     prepare_sidebar
@@ -122,7 +122,7 @@ class PostsController < ApplicationController
     @title = "80,000 Hours - Blog"
 
     # the blog posts
-    @posts = Post.published
+    @posts = BlogPost.published
 
     # this will be our feed's update timestamp
     @updated = @posts.first.updated_at unless @posts.empty?
@@ -133,12 +133,12 @@ class PostsController < ApplicationController
   end
 
   def edit
-    @post = Post.find( params[:id] )
+    @post = BlogPost.find( params[:id] )
     3.times { @post.attached_images.build }
   end
 
   def update
-    @post = Post.find( params[:id] )
+    @post = BlogPost.find( params[:id] )
     if @post.update_attributes( params[:post] )
       redirect_to @post, :notice => "Post updated!"
     else
@@ -147,7 +147,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = Post.new
+    @post = BlogPost.new
     3.times { @post.attached_images.build }
   end
 
@@ -161,9 +161,9 @@ class PostsController < ApplicationController
   end
 
   def destroy
-    @post = Post.find( params[:id] )
+    @post = BlogPost.find( params[:id] )
     @post.destroy
-    redirect_to posts_path, :notice => "Post permanently deleted"
+    redirect_to blog_posts_path, :notice => "Post permanently deleted"
   end
 
   private

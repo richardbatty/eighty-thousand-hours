@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120914151234) do
+ActiveRecord::Schema.define(:version => 20120914155315) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -45,6 +45,23 @@ ActiveRecord::Schema.define(:version => 20120914151234) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "blog_posts", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.boolean  "draft",          :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attribution"
+    t.string   "slug"
+    t.text     "teaser"
+    t.string   "author"
+    t.integer  "facebook_likes", :default => 0
+    t.integer  "user_id"
+    t.string   "category",       :default => "discussion"
+  end
+
+  add_index "blog_posts", ["slug"], :name => "index_posts_on_slug", :unique => true
 
   create_table "causes", :force => true do |t|
     t.string   "name"
@@ -199,23 +216,6 @@ ActiveRecord::Schema.define(:version => 20120914151234) do
   end
 
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
-
-  create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.boolean  "draft",          :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "attribution"
-    t.string   "slug"
-    t.text     "teaser"
-    t.string   "author"
-    t.integer  "facebook_likes", :default => 0
-    t.integer  "user_id"
-    t.string   "category",       :default => "discussion"
-  end
-
-  add_index "posts", ["slug"], :name => "index_posts_on_slug", :unique => true
 
   create_table "profile_option_activities", :force => true do |t|
     t.string "title"
