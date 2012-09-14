@@ -252,6 +252,9 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
   @include rounded_borders(#ccc, 1px, 0px);
 }
 
+input[type="email"] {
+  width: 180px;
+}
 
 @mixin social-btn($img_path, $offset: 0px, $hover: 32px) { 
 	display: block;
