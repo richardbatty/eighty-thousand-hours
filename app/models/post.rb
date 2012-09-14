@@ -28,6 +28,10 @@ class Post < ActiveRecord::Base
     where(:draft => false).sort_by{|p| p.net_votes}.reverse.slice(0..(n-1))
   end
 
+  def self.recent(n)
+    Post.last(n)
+  end
+
   def self.by_popularity( n = Post.all.size )
     n = 1 if n < 1
     where(:draft => false).sort_by{|p| p.popularity}.reverse.slice(0..(n-1))
