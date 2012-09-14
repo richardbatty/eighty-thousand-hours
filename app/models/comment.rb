@@ -1,6 +1,6 @@
 class Comment < ActiveRecord::Base
   validates_presence_of :body,    message: "can't be blank"
-  validates_presence_of :post_id
+  #validates_presence_of :post_id
 
   attr_accessor :email_confirmation
 
@@ -9,6 +9,7 @@ class Comment < ActiveRecord::Base
 
   belongs_to :user
   belongs_to :post
+  belongs_to :discussion_post
 
   def get_name
     user ? user.name : name

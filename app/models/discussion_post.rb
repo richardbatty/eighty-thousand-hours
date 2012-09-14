@@ -3,9 +3,6 @@ class DiscussionPost < ActiveRecord::Base
   extend FriendlyId
   friendly_id :title, :use => :slugged
 
-  # votes are independent from posts so destroy associated votes here
-  before_destroy { |post| Vote.destroy_all "post_id = #{post.id}" }
-
   # for versioning with paper_trail
   has_paper_trail
 
@@ -18,33 +15,20 @@ class DiscussionPost < ActiveRecord::Base
   validates_presence_of :title
   validates_presence_of :body
 
-  def self.by_votes( n = Post.all.size )
-    n = 1 if n < 1
-    where(:draft => false).sort_by{|p| p.net_votes}.reverse.slice(0..(n-1))
-  end
-
   def self.recent(n)
-    Post.last(n)
-  end
-
-  def self.by_popularity( n = Post.all.size )
-    n = 1 if n < 1
-    where(:draft => false).sort_by{|p| p.popularity}.reverse.slice(0..(n-1))
+    DiscussionPost.last(n)
   end
 
   def self.by_author( author, page )
     user = User.find_by_name( author )
-    query = Post.published.where("user_id = ?", user.id ).order("created_at DESC")
+    query = DiscussionPost.published.where("user_id = ?", user.id ).order("created_at DESC")
     query.paginate(:page => page, :per_page => 10)
   end
 
   def self.author_list
-    users   = where(:draft => false).where("user_id IS NOT NULL").select('DISTINCT user_id').map{|p| p.user.name}
+    users = where(:draft => false).where("user_id IS NOT NULL").select('DISTINCT user_id').map{|p| p.user.name}
     users.sort
   end
-
-  # a Post can have votes from many different users
-  has_many :votes
 
   # comments on posts
   has_many :comments, :dependent => :destroy
@@ -52,49 +36,12 @@ class DiscussionPost < ActiveRecord::Base
   # a User wrote this post
   belongs_to :user
 
-  # can have many uploaded images
-  has_many :attached_images, :dependent => :destroy
-
-  attr_accessible :title, :body, :user_id, :draft, :attached_images_attributes, :tag_list, :created_at
-  accepts_nested_attributes_for :attached_images, :allow_destroy => true 
+  attr_accessible :title, :body, :user_id, :draft, :tag_list, :created_at
 
   # override to_param to specify format of URL
   # now we can call post_path(@post) and get
   # "/discussion/8-today-show" returned for example
   def to_param
     "#{self.id}-#{self.friendly_id}"
-  end
-
-  def vote! (user, up )
-    user_votes = Vote.by_post(self).by_user(user)
-
-    # check if user has already voted for this post
-    if user_votes.empty?
-      vote = Vote.new( :user => user, :post => self, :positive => up )
-      vote.save
-    else
-      vote = user_votes.first
-      if (up && vote.positive) || (!up && !vote.positive)
-        # user already upvoted, and clicked up again
-        # so we destroy the vote
-        # and vice versa
-        vote.destroy
-      else
-        # we had an upvote, and user clicked Down
-        # so we change the upvote to a downvote
-        # or vice versa
-        vote.positive = !vote.positive
-        vote.save
-      end
-    end
-  end
-
-  def popularity
-    # magic scaling factors in here...
-    karma_votes = 0.0
-    self.votes.upvotes.each do |v|
-      karma_votes += 1.0/(1+(DateTime.now - Vote.first.created_at.to_datetime).to_i)
-    end
-    karma_votes
   end
 end

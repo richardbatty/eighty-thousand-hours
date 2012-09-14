@@ -10,30 +10,6 @@
     = f.input :body,   :placeholder => "Post body..."
     = f.input :draft,  :label => "Draft post?"
 
-    = field_set_tag 'Attached images' do
-      .attached-images
-        = f.simple_fields_for :attached_images do |asset|
-          - if asset.object.new_record?
-            = asset.input :image, :label => "Add an image"
-          - else
-            .attached-image-thumb
-              %h3= asset.object.image_file_name
-              .image
-                %ul.thumbnails
-                  %li
-                    = link_to( image_tag(asset.object.image.url(:small)), asset.object.image.url(:original), :class=>'thumbnail' )
-              Delete image: 
-              =asset.check_box :_destroy
-              %hr
-              %strong small:
-              .copy-paste
-                = h "<a href='#{asset.object.image.url(:original)}'>#{image_tag asset.object.image.url(:small), :class => 'image small'}</a>"
-              %strong medium:
-              .copy-paste
-                = h "<a href='#{asset.object.image.url(:original)}'>#{image_tag asset.object.image.url(:medium), :class => 'image medium'}</a>"
-              %strong large:
-              .copy-paste
-                = h "<a href='#{asset.object.image.url(:original)}'>#{image_tag asset.object.image.url(:large), :class => 'image large'}</a>"
     %hr
 
   .form-actions

@@ -9,14 +9,14 @@
 
 %hr
 
-- if can? :create, Post
+- if can? :create, DiscussionPost
   .center.controls
     .user
       = link_to "New Post".html_safe, new_discussion_post_path, :class => 'btn btn-large btn-success'
-      = link_to "My Posts", discussion_posts_user_path(current_user), :class => 'btn btn-large'
+      -#= link_to "My Posts", discussion_posts_user_path(current_user), :class => 'btn btn-large'
  
   %hr
 
 .blog
   - @posts.each do |post|
-    = render partial: 'posts/discussion_header', locals: { post: post }
+    = render partial: 'discussion_header', locals: { post: post }

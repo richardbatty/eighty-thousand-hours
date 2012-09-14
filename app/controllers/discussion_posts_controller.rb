@@ -3,10 +3,9 @@ class DiscussionPostsController < ApplicationController
 
   def index
     @posts = DiscussionPost.published.paginate(:page => params[:page], :per_page => 10)
-    @title = "Blog"
-    @menu_root = "Blog"
+    @title = "Discussion"
+    @menu_root = "Discussion"
   end
-
 
   def show
     @post = DiscussionPost.find_by_id(params[:id])
@@ -24,26 +23,12 @@ class DiscussionPostsController < ApplicationController
       end
 
       @og_url = post_url( @post )
-      @og_desc = @post.get_teaser
       @og_type = "article"
-      @title = "Blog: " + @post.title
+      @title = "Discussion: " + @post.title
       @tags = @post.tag_list
 
-      @menu_root = "Blog"
+      @menu_root = "Discussion"
     end
-  end
-
-  def vote
-    post = DiscussionPost.find( params[:id] )
-    user = current_user
-    
-    if !user
-      flash[:"alert-warn"] = "You need to sign in or sign up to vote!"
-    else
-      post.vote!( user, (params[:up] == 'true') ? true : false )
-    end
-
-    redirect_to :action => 'index' 
   end
 
   def tag
@@ -71,7 +56,6 @@ class DiscussionPostsController < ApplicationController
 
   def edit
     @post = DiscussionPost.find( params[:id] )
-    3.times { @post.attached_images.build }
   end
 
   def update
@@ -85,13 +69,12 @@ class DiscussionPostsController < ApplicationController
 
   def new
     @post = DiscussionPost.new
-    3.times { @post.attached_images.build }
   end
 
   def create
     @post = current_user.discussion_posts.new( params[:discussion_post] )
     if @post.save
-      redirect_to discussion_path, :notice => "Post created!"
+      redirect_to discussion_posts_path, :notice => "Post created!"
     else
       render :new
     end
@@ -101,10 +84,5 @@ class DiscussionPostsController < ApplicationController
     @post = DiscussionPost.find( params[:id] )
     @post.destroy
     redirect_to posts_path, :notice => "Post permanently deleted"
-  end
-
-  private
-  def can_vote_on_post? (user, post )
-    !user.nil?
   end
 end
