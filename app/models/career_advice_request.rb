@@ -4,7 +4,7 @@ class CareerAdviceRequest
   validates_presence_of :name, :email
 
   # to deal with form, you must have an id attribute
-  attr_accessor :id, :name, :email, :skype, :background, :thoughts, :questions, :mailing_list
+  attr_accessor :id, :name, :email, :skype, :background, :thoughts, :questions, :mailing_list, :upload_cv
 
   def initialize(attributes = {})
     attributes.each do |key, value|
@@ -22,7 +22,7 @@ class CareerAdviceRequest
 
   def save
     if self.valid?
-      CareerAdviceRequestMailer.career_advice_request_email(name,email,skype,background,thoughts,questions,mailing_list).deliver!
+      CareerAdviceRequestMailer.career_advice_request_email(name,email,skype,background,thoughts,questions,mailing_list,upload_cv).deliver!
       return true
     end
     return false

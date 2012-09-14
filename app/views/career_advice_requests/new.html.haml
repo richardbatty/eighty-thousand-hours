@@ -19,7 +19,7 @@
     One thing this means is that we sometimes run out of capacity, and we won’t
     always be able to give you a session.
 
-  = simple_form_for @career_advice_request, :url => { :action => "create" }, :html => { :class => 'form-horizontal' }  do |f|
+  = simple_form_for @career_advice_request, :url => { :action => "create" }, :html => { :multipart => true, :class => 'form-horizontal' }  do |f|
 
     = f.error_notification
 
@@ -32,7 +32,7 @@
       = f.input :background, :as => :text, placeholder: 'Briefly describe your background, what you currently do, and your interests.'
       = f.input :thoughts, :as => :text, label: 'What are your thoughts on how you could make a difference?'
       = f.input :questions, :as => :text, label: 'What questions do you have for our advisor?'
-      -#= f.input :upload_cv, label: 'If you have a CV (even an old one) it would be helpful for us to have a look so that we can tailor our advice to you.'
+      = f.input :upload_cv, :as => :file, label: 'If you have a CV (even an old one) it would be helpful for us to have a look so that we can tailor our advice to you.'
       = f.input :mailing_list, :as => :boolean, :input_html => { :checked => true }, label: 'Would you like to receive our emails summarising our latest advice content?'
     .form-actions
       %p
