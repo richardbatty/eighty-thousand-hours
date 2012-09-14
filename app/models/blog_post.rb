@@ -53,7 +53,7 @@ class BlogPost < ActiveRecord::Base
   end
 
   # a BlogPost can have votes from many different users
-  has_many :votes
+  has_many :votes, :dependent => :destroy
 
   # comments on posts
   has_many :comments, :dependent => :destroy
