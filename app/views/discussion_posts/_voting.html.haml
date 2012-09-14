@@ -1,0 +1,15 @@
+.voting
+  - vote = Vote.by_post(post).by_user(current_user).first
+  - upvoted   = vote.nil? ? false : vote.positive
+  - downvoted = vote.nil? ? false : !vote.positive
+  .arrow{ :id => "up-vote-#{post.id}", :class => (upvoted ? 'voted' : 'notvoted') }
+    = link_to "<i class='icon-arrow-up'></i>".html_safe,
+              { :controller => :votes, :action => :new, :up => true, :post => post.id },
+              :remote => true
+  .votes{ :id => "total-votes-#{post.id}" }
+    = post.net_votes
+  .arrow{ :id => "down-vote-#{post.id}", :class => (downvoted ? 'voted' : 'notvoted') }
+    = link_to "<i class='icon-arrow-down'></i>".html_safe,
+              { :controller => :votes, :action => :new, :up => false, :post => post.id },
+              :remote => true
+.error{ :id => "vote-error-#{post.id}" }

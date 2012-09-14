@@ -23,8 +23,7 @@ EightyThousandHours::Application.routes.draw do
     end
   end
 
-  match '/discussion' => 'posts#discussion_index'
-  match '/discussion/:id' => 'posts#discussion_view'
+  resources :discussion_posts, :path => 'discussion'
 
   resources :comments
 

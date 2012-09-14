@@ -1,0 +1,20 @@
+.entry
+  = render :partial => 'posts/voting', :locals => { :post => post }
+
+  .heading
+    %h3
+      %a{:href => post_path(post)}
+        = post.title
+      - if post.draft
+        %span.label.label-warning Draft post (not publicly visible)
+
+    %h4
+      %span.date
+        by
+      = link_to_post_author( post )
+      %span.date
+        on
+        = format_date( post.created_at )
+      &nbsp;
+      %span.comments-link= link_to pluralize(post.comments.size, 'comment'), post_path(post) + "#comments"
+  .clearfix
