@@ -2,7 +2,7 @@
 require 'net/http'
 require 'rexml/document'
 
-url = 'https://www.google.com/calendar/feeds/eighty.thousand%40gmail.com/private-a850c51dfb2777551c79e31a11025a08/basic' + @gcal_params
+url = 'http://www.google.com/calendar/feeds/eighty.thousand%40gmail.com/private-a850c51dfb2777551c79e31a11025a08/basic' + @gcal_params
 
 xml_data = Net::HTTP.get_response(URI.parse(url)).body
 
