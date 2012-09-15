@@ -4,7 +4,8 @@
   
   - @posts.each do |post|
     .blog
-      = render :partial => 'posts/display_heading',
+      = render :partial => 'blog_posts/display_heading',
                :locals => { :post => post }
-  %hr
+
+  %br
   = link_to '<i class="icon-user"></i> back to member profile'.html_safe, @user
