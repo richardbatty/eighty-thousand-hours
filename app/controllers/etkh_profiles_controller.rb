@@ -2,29 +2,13 @@ class EtkhProfilesController < ApplicationController
   load_and_authorize_resource :only => [:new,:create,:edit,:update,:destroy]
 
   def new
-    if current_user.etkh_profile.nil?
-      @etkh_profile = EtkhProfile.new
-      current_user.etkh_profile = @etkh_profile
-    else
-      render 'edit'
-    end
-    @menu_root = "Membership"
-    @menu_current = "Join now"
-  end
-
-  def join
-    @menu_root = "Membership"
-    @menu_current = "Join now"
-  end
-
-  def create
     if current_user.nil?
       raise CanCan::AccessDenied.new("You need to create an account first!", :create, EtkhProfile)
     end
 
-    @etkh_profile = EtkhProfile.new(params[:etkh_profile])
-    
-    if @etkh_profile.save
+    if current_user.etkh_profile.nil?
+      # create a new profile for the user
+      @etkh_profile = EtkhProfile.new
       current_user.etkh_profile = @etkh_profile
 
       # fire off an email informing 80k team (join@80k..)
@@ -36,9 +20,20 @@ class EtkhProfilesController < ApplicationController
       # add name to 'show your support'
       @supporter = Supporter.new(:name => current_user.name, :email => current_user.email)
       @supporter.save
+
+      # new profile should redirect here when done
+      session[:next_page] = '/surveys/members-survey'
     else
-      render :new
+      # user already has a profile but has visited /members/new
+      render 'edit'
     end
+    @menu_root = "Membership"
+    @menu_current = "Join now"
+  end
+
+  def join
+    @menu_root = "Membership"
+    @menu_current = "Join now"
   end
 
   def index
@@ -81,7 +76,13 @@ class EtkhProfilesController < ApplicationController
   def update
     if current_user.update_attributes(params[:user])
       flash[:"alert-success"] = "Your profile was successfully updated."
-      redirect_to( etkh_profile_path( current_user ) )
+      if session[:next_page]
+        next_page = session[:next_page]
+        session[:next_page] = nil
+        redirect_to( next_page )
+      else
+        redirect_to( etkh_profile_path( current_user ) )
+      end
     else
       render :action => "edit"
     end
