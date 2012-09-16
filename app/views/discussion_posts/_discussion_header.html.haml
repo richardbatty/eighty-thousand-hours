@@ -1,0 +1,12 @@
+.entry
+  .heading
+    %h3
+      %a{:href => discussion_post_path(post)}
+        = post.title
+      - if post.draft
+        %span.label.label-warning draft
+    %h4
+      = post.user.name
+      &nbsp;
+      %span.comments-link= link_to pluralize(post.comments.size, 'comment'), discussion_post_path(post) + "#comments"
+  .clearfix

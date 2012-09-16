@@ -1,40 +1,9 @@
 <%
-  members_html = "
-We have #{@total_members} members worldwide, you can see them all on <a href='/members'>the member list</a>.
-<ul class='thumbnails'>"
-  @members.each do |m|
-    if m.avatar
-      # note: gets processed by markdown so can't have leading spaces
-      members_html += "
-<li class='span1'>
-#{link_to image_tag(m.avatar.url(:small)),"/members/#{m.slug}", :class=>"thumbnail"}
-</li>"
-    end
-  end
-  members_html += "
-</ul>"
-%>
-
-<%
-  careers_html = "
-<ul class='thumbnails'>"
-  @careers.each do |c|
-    # note: gets processed by markdown so can't have leading spaces
-    careers_html += "
-<li class='span1'>
-#{link_to image_tag( "career_icons/#{c}.jpg", :alt=>"#{c.humanize}"),"/career-profiles##{c.gsub(/_/,'-')}", :class => 'thumbnail'}
-</li>"
-  end
-  careers_html += "
-</ul>"
-%>
-
-<%
   mailing_list_html = "
 <div id='mc_embed_signup'>
 <form action='http://eightythousand.us2.list-manage.com/subscribe/post?u=aba12f58bbe8075560abdc5b7&amp;id=43bc1ae55c' method='post' id='mc-embedded-subscribe-form' name='mc-embedded-subscribe-form' class='validate' target='_blank'>
 <input style='' type='email' value='' name='EMAIL' class='email' id='mce-EMAIL' placeholder='email address' required>
-<input type='submit' value='Join' name='subscribe' id='mc-embedded-subscribe' class='btn btn-primary' style='margin-bottom: 8px'>
+<input type='submit' value='Signup' name='subscribe' id='mc-embedded-subscribe' class='btn btn-primary' style='margin-bottom: 8px'>
 </form>
 <a class='social-btn-facebook' href='http://www.facebook.com/80000Hours'>Facebook</a>
 <a class='social-btn-twitter' href='http://www.twitter.com/80000Hours'>Twitter</a>
@@ -44,20 +13,5 @@ We have #{@total_members} members worldwide, you can see them all on <a href='/m
 "
 %>
 
-
-<% donations_html = render('donations/thermometer.html.haml') %>
-
-<% 
-  latest_html = ""
-  latest_html += "#{ render "posts/latest_posts" }"
-  latest_html += "#{ render "posts/latest_comments" }"
-  latest_html += "#{ render "etkh_profiles/latest_profiles"}"
-  latest_html += "#{ render "donations/latest_donations"}"
-%>
-
 <% content = @page.body %>
-<% content = content.gsub(/\|\*MEMBERS\*\|/, members_html) %>
-<% content = content.gsub(/\|\*CAREERS\*\|/, careers_html) %>
-<% content = content.gsub(/\|\*LATEST\*\|/,  latest_html)  %>
-<% content = content.gsub(/\|\*DONATIONS\*\|/, donations_html)  %>
 <%= (markdown content).gsub(/MAILING_LIST/, mailing_list_html).html_safe  %>

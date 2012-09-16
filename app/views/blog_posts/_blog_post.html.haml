@@ -1,0 +1,65 @@
+.entry
+  .box.left-border
+    - if can? :manage, blog_post
+      .controls
+        .user
+          = link_to "Edit post", edit_blog_post_path, :class => 'btn btn-mini btn-warning'
+
+          = link_to 'Delete post', blog_post_path, :confirm => "Are you sure you want to delete the post '#{blog_post.title}'?", :method => :delete, :class => 'btn btn-mini btn-danger'
+
+    = render :partial => 'voting', :locals => { :post => blog_post }
+    .heading
+      %h3
+        = blog_post.title
+        - if blog_post.draft
+          %span.label.label-warning Draft post (not publicly visible)
+      %h4
+        %span.date
+          by
+        = link_to_blog_post_author( blog_post )
+        %span.date
+          on
+          = format_date( blog_post.created_at )
+
+    .content
+      = markdown blog_post.body
+
+    .attribution= markdown (blog_post.attribution.blank? ? (blog_post.user ? blog_post.user.name : blog_post.author ) : blog_post.attribution )
+
+    %p
+      = render :partial => "post_tags", :locals => { :post => blog_post, :div_title => "tags:" }
+    %p
+      = link_to '<i class="icon-list"></i> Take me back to the blog'.html_safe, blog_posts_path
+    %p
+      = link_to '<i class="icon-home"></i> Take me to the homepage'.html_safe, '/'
+    %p
+      = render :partial => "rss"
+    %p
+      .fblike
+        <fb:like href="#{blog_post_url(blog_post)}" send="false" width="450" show_faces="false"></fb:like>
+
+    #comments
+      .page-header
+        %h4 Comments
+      #display-comments
+        = render blog_post.comments.order("created_at ASC")
+
+      #new-comment
+        - @comment = Comment.new( blog_post_id: blog_post.id )
+        - if !current_user
+          .alert.alert-info
+            .alert-heading
+              %h4 Hello!
+            .alert-body
+              %p
+                If you'd like to comment then please
+                #{link_to 'sign up', new_user_registration_path},
+                #{link_to 'sign in', new_user_session_path}, or fill in your name and email below.
+
+        = render 'comments/form'
+    %hr
+    .center
+      %p
+        = link_to '<i class="icon-list"></i> Take me back to the blog'.html_safe, blog_posts_path
+      %p
+        = link_to '<i class="icon-home"></i> Take me to the homepage'.html_safe, '/'

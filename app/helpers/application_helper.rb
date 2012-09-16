@@ -13,6 +13,12 @@ module ApplicationHelper
     end
   end
 
+  def format_date_with_day( date )
+    if date
+      date.strftime('%A') + ' ' + date.day.ordinalize + date.strftime(' of %B') + ', ' + date.strftime('%Y')
+    end
+  end
+
   def button_link( text, path, klass = nil )
     content_tag( :div, :class => "center" ) do
       link_to  text, path, :class => (klass ? "button " + klass : "button")

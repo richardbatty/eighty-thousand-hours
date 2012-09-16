@@ -14,8 +14,8 @@ EightyThousandHours::Application.routes.draw do
 
   match '/accounts/merge' => 'users#merge'
 
-  match '/blog/feed.atom' => 'posts#feed', :as => :feed, :defaults => { :format => 'atom' }
-  resources :posts, :path => 'blog' do
+  match '/blog/feed.atom' => 'blog_posts#feed', :as => :feed, :defaults => { :format => 'atom' }
+  resources :blog_posts, :path => 'blog' do
     collection do
       get :tag
       get :author
@@ -23,8 +23,11 @@ EightyThousandHours::Application.routes.draw do
     end
   end
 
-  match '/discussion' => 'posts#discussion_index'
-  match '/discussion/:id' => 'posts#discussion_view'
+  resources :discussion_posts, :path => 'discussion' do
+    collection do
+      get 'drafts'
+    end
+  end
 
   resources :comments
 
@@ -38,6 +41,9 @@ EightyThousandHours::Application.routes.draw do
 
   resources :chat_requests, :only => [:new,:create], :path => 'chat-to-us'
   match 'chat-to-us' => 'chat_requests#new'
+
+  resources :career_advice_requests, :only => [:new,:create], :path => 'request-a-career-advice-session'
+  match 'request-a-career-advice-session' => 'career_advice_requests#new'
 
   resources :endorsements, :only =>[:index]
   resources :videos, :only =>[:index]

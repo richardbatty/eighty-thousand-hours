@@ -1,0 +1,26 @@
+.entry
+  = render :partial => 'voting', :locals => { :post => post }
+
+  .heading
+    %h3
+      %a{:href => blog_post_path(post)}
+        = post.title
+    %h4
+      %span.date
+        by
+      = link_to_blog_post_author( post )
+      %span.date
+        on
+        = format_date( post.created_at )
+
+  .content
+    = markdown post.get_teaser
+
+    .read-more
+      %a{:href => blog_post_path(post)}
+        <i class="icon-align-left"></i>
+        Read more...
+
+  .comments
+    = link_to pluralize(post.comments.size, 'comment'), blog_post_path(post) + "#comments"
+%hr

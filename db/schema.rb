@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120912130237) do
+ActiveRecord::Schema.define(:version => 20120916202218) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -29,7 +29,7 @@ ActiveRecord::Schema.define(:version => 20120912130237) do
   add_index "active_admin_comments", ["resource_type", "resource_id"], :name => "index_active_admin_comments_on_resource_type_and_resource_id"
 
   create_table "attached_images", :force => true do |t|
-    t.integer  "post_id"
+    t.integer  "blog_post_id"
     t.string   "image_file_name"
     t.string   "image_content_type"
     t.integer  "image_file_size"
@@ -46,6 +46,23 @@ ActiveRecord::Schema.define(:version => 20120912130237) do
     t.datetime "updated_at"
   end
 
+  create_table "blog_posts", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.boolean  "draft",          :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attribution"
+    t.string   "slug"
+    t.text     "teaser"
+    t.string   "author"
+    t.integer  "facebook_likes", :default => 0
+    t.integer  "user_id"
+    t.string   "category",       :default => "discussion"
+  end
+
+  add_index "blog_posts", ["slug"], :name => "index_posts_on_slug", :unique => true
+
   create_table "causes", :force => true do |t|
     t.string   "name"
     t.string   "website"
@@ -58,14 +75,27 @@ ActiveRecord::Schema.define(:version => 20120912130237) do
   add_index "causes", ["slug"], :name => "index_charities_on_slug", :unique => true
 
   create_table "comments", :force => true do |t|
-    t.integer  "post_id"
+    t.integer  "blog_post_id"
     t.integer  "user_id"
     t.text     "body"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
     t.string   "email"
+    t.integer  "discussion_post_id"
   end
+
+  create_table "discussion_posts", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.boolean  "draft",      :default => false
+    t.integer  "user_id"
+    t.string   "slug"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "discussion_posts", ["slug"], :name => "index_discussion_posts_on_slug", :unique => true
 
   create_table "donations", :force => true do |t|
     t.integer  "amount_cents",         :default => 0
@@ -98,37 +128,6 @@ ActiveRecord::Schema.define(:version => 20120912130237) do
     t.integer  "weight",           :default => 1
   end
 
-  create_table "etkh_applications", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "occupation"
-    t.text     "career_plans"
-    t.text     "spoken_to_existing_member"
-    t.boolean  "doing_good_inspiring"
-    t.boolean  "doing_good_research"
-    t.boolean  "doing_good_philanthropy"
-    t.boolean  "doing_good_innovating"
-    t.boolean  "doing_good_improving"
-    t.string   "donation_percentage"
-    t.text     "donation_percentage_comment"
-    t.string   "average_income"
-    t.text     "average_income_comment"
-    t.string   "hic_activity_hours"
-    t.text     "hic_activity_hours_comment"
-    t.boolean  "causes_givewell"
-    t.boolean  "causes_gwwc"
-    t.boolean  "causes_international"
-    t.boolean  "causes_xrisk"
-    t.boolean  "causes_meta"
-    t.boolean  "causes_domestic"
-    t.boolean  "causes_animal"
-    t.boolean  "causes_political"
-    t.text     "causes_comment"
-    t.boolean  "pledge",                      :default => false
-    t.boolean  "doing_good_prophilanthropy"
-    t.integer  "user_id"
-  end
-
   create_table "etkh_profiles", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -143,12 +142,6 @@ ActiveRecord::Schema.define(:version => 20120912130237) do
     t.datetime "contacted_date"
     t.string   "contacted_by"
     t.boolean  "confirmed",                  :default => false
-    t.boolean  "doing_good_inspiring",       :default => false
-    t.boolean  "doing_good_research",        :default => false
-    t.boolean  "doing_good_philanthropy",    :default => false
-    t.boolean  "doing_good_innovating",      :default => false
-    t.boolean  "doing_good_improving",       :default => false
-    t.boolean  "doing_good_prophilanthropy", :default => false
     t.text     "skills_knowledge_share"
     t.text     "skills_knowledge_learn"
     t.integer  "user_id"
@@ -186,23 +179,6 @@ ActiveRecord::Schema.define(:version => 20120912130237) do
   end
 
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
-
-  create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.boolean  "draft",          :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "attribution"
-    t.string   "slug"
-    t.text     "teaser"
-    t.string   "author"
-    t.integer  "facebook_likes", :default => 0
-    t.integer  "user_id"
-    t.string   "category",       :default => "discussion"
-  end
-
-  add_index "posts", ["slug"], :name => "index_posts_on_slug", :unique => true
 
   create_table "profile_option_activities", :force => true do |t|
     t.string "title"
@@ -323,7 +299,7 @@ ActiveRecord::Schema.define(:version => 20120912130237) do
 
   create_table "votes", :force => true do |t|
     t.integer  "user_id"
-    t.integer  "post_id"
+    t.integer  "blog_post_id"
     t.boolean  "positive"
     t.datetime "created_at"
     t.datetime "updated_at"

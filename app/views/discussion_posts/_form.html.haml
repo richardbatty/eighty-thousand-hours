@@ -1,0 +1,18 @@
+.alert.alert-info
+  This post will appear in the #{link_to 'Discussion', '/discussion/'} section of the site.
+
+.alert.alert-info
+  All fields can be formatted with Markdown
+
+= simple_form_for @post, :defaults => { :input_html => { :class => 'span12' } }, :html => { :multipart => true } do |f|
+  .form-inputs
+    = f.input :title,  :placeholder => "Title of the post..."
+    = f.input :body,   :placeholder => "Post body..."
+    = f.input :draft,  :label => "Draft post?"
+
+    %hr
+
+  .form-actions
+    = f.button :submit
+    or
+    = link_to 'cancel', :back

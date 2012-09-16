@@ -14,9 +14,9 @@ class UsersController < ApplicationController
   def posts
     @user = User.find( params[:id] )
     if @user == current_user
-      @posts = @user.posts
+      @posts = @user.blog_posts
     else
-      @posts = @user.posts.published
+      @posts = @user.blog_posts.published
     end
   end
 

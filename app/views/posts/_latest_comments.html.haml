@@ -1,6 +1,0 @@
-%h3= link_to 'Latest comments', posts_path
-- @latest_comments.each do |comment|
-  = render partial: 'shared/sidebar_item',
-           locals: { date: comment.created_at, 
-                     content: link_to_comment_contents( comment, 80 ), 
-                     attribution: link_to_comment_author( comment ) }

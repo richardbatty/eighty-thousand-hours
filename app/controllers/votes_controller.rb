@@ -1,15 +1,15 @@
 class VotesController < ApplicationController
   def new
     user = current_user
-    post = Post.find(params[:post])
+    post = BlogPost.find(params[:blog_post])
 
     if user
       up   = (params[:up] == 'true')
-      user_votes = Vote.by_post(post).by_user(user)
+      user_votes = Vote.by_blog_post(post).by_user(user)
 
       # check if user has already voted for this post
       if user_votes.empty?
-        post.votes << Vote.new( :user => user, :post => post, :positive => up )
+        post.votes << Vote.new( :user => user, :blog_post => post, :positive => up )
       else
         vote = user_votes.first
         if (up && vote.positive) || (!up && !vote.positive)

@@ -76,35 +76,6 @@ ActiveAdmin.register User do
     column :name
     column :email
 
-    column ("Application: Occupation")                      { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:occupation] }
-    column ("Application: Career Plans")                    { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:career_plans] }
-    column ("Application: Spoken to existing user?")        { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:spoken_to_existing_member] }
-    column ("Application: Donation percentage")             { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:donation_percentage] }
-    column ("Application: Donation comment")                { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:donation_comment] }
-    column ("Application: Average income")                  { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:average_income] }
-    column ("Application: Income comment")                  { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:average_income_percentage] }
-    column ("Application: HIC activity hours")              { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:hic_activity_hours] }
-    column ("Application: HIC activity hours comment")      { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:hic_activity_hours_comment] }
-    column ("Application: Donate to: GiveWell recommended") { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:causes_givewell] }
-    column ("Application: Donate to: GWWC recommended")     { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:causes_gwwc] }
-    column ("Application: Donate to: Other international")  { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:causes_international] }
-    column ("Application: Donate to: Other domestic")       { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:causes_domestic] }
-    column ("Application: Donate to: X-risk")               { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:causes_xrisk] }
-    column ("Application: Donate to: Meta")                 { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:causes_meta] }
-    column ("Application: Donate to: Animal causes")        { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:causes_animal] }
-    column ("Application: Donate to: Political causes")     { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:causes_political] }
-
-    column ("Profile: Inspiration")                         { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:inspiration] }
-    column ("Profile: Occupation")                          { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:occupation] }
-    column ("Profile: Organisation")                        { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:organisation] }
     column ("Profile: Background")                          { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:background] }
-    column ("Profile: Career Plans")                        { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:career_plans] }
-    column ("Profile: Organisation")                        { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:organisation] }
-    column ("Profile: Organisation role")                   { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:organisation_role] }
-    column ("Profile: Doing Good Inspiring?")               { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:doing_good_inspiring] }
-    column ("Profile: Doing Good Research?")                { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:doing_good_research] }
-    column ("Profile: Doing Good Philanthropy?")            { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:doing_good_philanthropy] }
-    column ("Profile: Doing Good ProPhilanthropy??")        { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:doing_good_prophilanthropy] }
-    column ("Profile: Doing Good Improving?")               { |user| user.etkh_profile.nil? ? nil : user.etkh_profile[:doing_good_improving] }
   end
 end

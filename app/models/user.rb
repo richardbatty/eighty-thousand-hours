@@ -42,7 +42,10 @@ class User < ActiveRecord::Base
   accepts_nested_attributes_for :etkh_profile
 
   # a user can write many blog posts
-  has_many :posts
+  has_many :blog_posts
+
+  # a user can write many discussion posts
+  has_many :discussion_posts
 
   # note that Devise handles the validation for email and password
   validates_presence_of   :name, :message => "You must tell us your name"

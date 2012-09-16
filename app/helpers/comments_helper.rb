@@ -1,9 +1,9 @@
 module CommentsHelper
   def comment_post_path(comment)
-    if comment.post.category == "blog"
-      post_path( comment.post )
+    if comment.blog_post_id.nil?
+      discussion_post_path( comment.discussion_post )
     else
-      "/discussion/#{comment.post.slug}"
+      blog_post_path( comment.blog_post )
     end
   end
 
@@ -16,7 +16,7 @@ module CommentsHelper
   end
 
   def link_to_comment_author_and_title( comment )
-    link_to_comment_author( comment ) + "<br/>in ".html_safe + link_to_post_contents( comment.post )
+    link_to_comment_author( comment ) + "<br/>in ".html_safe + link_to_blog_post_contents( comment.blog_post )
   end
 
   def link_to_comment_contents(comment,length=35)

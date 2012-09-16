@@ -1,0 +1,44 @@
+.entry
+  .box.left-border
+    - if can? :manage, @post
+      .controls
+        .user
+          = link_to "Edit post", edit_discussion_post_path, :class => 'btn btn-mini btn-warning'
+
+          = link_to 'Delete post', discussion_post_path, :confirm => "Are you sure you want to delete the post '#{@post.title}'?", :method => :delete, :class => 'btn btn-mini btn-danger'
+
+    .heading
+      %h2
+        = @post.title
+        - if @post.draft
+          %span.label.label-warning Draft post (not publicly visible)
+      %h4
+        %span.date
+          by
+        = link_to @post.user.name, user_path( @post.user )
+        %span.date
+          on
+          = format_date( @post.created_at )
+
+    .content
+      = markdown @post.body
+
+    #comments
+      .page-header
+        %h4 Comments
+      #display-comments
+        = render @post.comments.order("created_at ASC")
+
+      #new-comment
+        - @comment = Comment.new( discussion_post_id: @post.id )
+        - if !current_user
+          .alert.alert-info
+            .alert-heading
+              %h4 Hello!
+            .alert-body
+              %p
+                If you'd like to comment then please
+                #{link_to 'sign up', new_user_registration_path},
+                #{link_to 'sign in', new_user_session_path}, or fill in your name and email below.
+
+        = render 'comments/form'

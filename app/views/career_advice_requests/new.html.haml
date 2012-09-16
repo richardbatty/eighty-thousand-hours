@@ -1,0 +1,53 @@
+.box
+  .page-header
+    %h1 Career advice session
+  %p 
+    In an advice session, you’ll have a chance to talk to a member of the 80k
+    Careers Research team. The session will start with the advisor aiming to
+    understand your situation, after which they will suggest how to apply
+    <a href="/career-research">our research</a> to your choices. They may also
+    be able to introduce you to people with similar interests in the
+    community or do follow up work.
+    
+  %p 
+    Please glance at the <a href="/your-career">basic ideas</a> behind our
+    approach and <a href="/how-are-we-different">how our advice is
+    different</a> before attending the session.
+    
+  %p 
+    Please also note that our advice service is currently in a trial phase.
+    One thing this means is that we sometimes run out of capacity, and we won’t
+    always be able to give you a session.
+
+  = simple_form_for @career_advice_request, :url => { :action => "create" }, :html => { :multipart => true, :class => 'form-horizontal' }  do |f|
+
+    = f.error_notification
+
+    = field_set_tag "Your contact details" do
+      = f.input :name
+      = f.input :email
+      = f.input :skype, placeholder: 'optional',
+        hint: 'required if you are unable to come to our office in Oxford'
+
+      = f.input :background, :as => :text, placeholder: 'Briefly describe your background, what you currently do, and your interests.'
+      = f.input :thoughts, :as => :text, label: 'What are your thoughts on how you could make a difference?'
+      = f.input :questions, :as => :text, label: 'What questions do you have for our advisor?'
+      = f.input :upload_cv, :as => :file, label: 'If you have a CV (even an old one) it would be helpful for us to have a look so that we can tailor our advice to you.'
+      = f.input :mailing_list, :as => :boolean, :input_html => { :checked => true }, label: 'Would you like to receive our emails summarising our latest advice content?'
+    .form-actions
+      %p
+        The session is provided for information purposes only, and should not be
+        construed as a recommendation or advice. 80,000 Hours does not accept
+        responsibility for the results of decisions that result from this session. Note
+        that the staff of 80,000 Hours are not professionally qualified careers
+        counselors. We recommend that you use our content with the help of a
+        professionally qualified counselor.
+        
+      %p
+        We aim to keep the contents of guidance sessions confidential within the staff
+        of 80,000 Hours who are involved in careers guidance, though we don't take
+        responsibility for any damage that might occur as the result of sharing
+        information with us. You can also request for the information to be kept
+        confidential between you and the 80k representative you speak to.
+
+      = f.button :submit, "Request session", :"data-loading-text" => "Please wait..."
