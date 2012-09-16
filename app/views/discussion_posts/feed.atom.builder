@@ -11,7 +11,7 @@ atom_feed :language => 'en-GB' do |feed|
       entry.content (markdown post.body), :type => 'html'
 
       entry.author do |author|
-        author.name ( post.author? ? post.author : post.user.name )
+        author.name post.user.name
       end
     end
   end

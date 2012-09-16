@@ -7,6 +7,12 @@ class DiscussionPostsController < ApplicationController
     @menu_root = "Discussion"
   end
 
+  def drafts
+    @posts = DiscussionPost.by_author_drafts(current_user)
+    @title = "Discussion"
+    @menu_root = "Discussion"
+  end
+
   def show
     @post = DiscussionPost.find_by_id(params[:id])
     if @post.nil?

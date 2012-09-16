@@ -23,7 +23,11 @@ EightyThousandHours::Application.routes.draw do
     end
   end
 
-  resources :discussion_posts, :path => 'discussion'
+  resources :discussion_posts, :path => 'discussion' do
+    collection do
+      get 'drafts'
+    end
+  end
 
   resources :comments
 

@@ -25,6 +25,11 @@ class DiscussionPost < ActiveRecord::Base
     query.paginate(:page => page, :per_page => 10)
   end
 
+  def self.by_author_drafts( user_id )
+    user = User.find( user_id )
+    query = DiscussionPost.draft.where("user_id = ?", user.id ).order("created_at DESC")
+  end
+
   def self.author_list
     users = where(:draft => false).where("user_id IS NOT NULL").select('DISTINCT user_id').map{|p| p.user.name}
     users.sort
