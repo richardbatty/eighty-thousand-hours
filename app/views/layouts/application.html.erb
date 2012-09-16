@@ -30,26 +30,21 @@
       <%= render :partial => "/shared/user_nav"%>
 
       <div class="container">
-        <div class="row">
+        <!--<div class="row">-->
           <div class="span12">
             <div class="row">
-              <div class="span4">
+              <div class="span2">
                 <%= link_to '80,000 Hours', '/', id: 'header-logo' %>
               </div>
-              <div class="span8">
-                <%= render :partial => "/shared/header_endorsement"%>
+                <!--<%= render :partial => "/shared/header_endorsement"%>-->
+			  <div id='bootstrap-nav'>
+                <nav class='clearfix'>
+                  <%= draw_menu( Page.top_level_menu, @page ) %>
+                </nav>
               </div>
             </div>
-          </div>
+          <!--</div>-->
         </div>
-        <div class="row">
-          <div class="span12">
-            <div id='bootstrap-nav'>
-              <nav class='clearfix'>
-                <%= draw_menu( Page.top_level_menu, @page ) %>
-              </nav>
-            </div>
-          </div>
         </div>
       </div>
     </header>

@@ -6,7 +6,7 @@ namespace :db do
   end
 
   desc 'Copies production db into local development db'
-  app = "eighty-thousand-hours"
+  app = "eighty-thousand-hours-dev"
   task :mirror do
     system(%Q{
       heroku pgbackups:capture --expire --app #{app} && \
