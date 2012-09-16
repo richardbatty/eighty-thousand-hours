@@ -2,7 +2,7 @@
 require 'net/http'
 require 'rexml/document'
 
-url = 'http://www.google.com/calendar/feeds/eighty.thousand%40gmail.com/private-a850c51dfb2777551c79e31a11025a08/basic' + @gcal_params
+url = 'http://www.google.com/calendar/feeds/eighty.thousand%40gmail.com/public/full?' + @gcal_params
 
 xml_data = Net::HTTP.get_response(URI.parse(url)).body
 
@@ -31,13 +31,16 @@ endTimes = endTimes.reverse
 
 %>
 
+<%= xml_data %>
+
 <% if titles.size > 0 %>
   <% titles.each_with_index do |title, idx| %>
-    <div class="box event">
-      <div class="title"><%= raw title %></div>
+    <div class="event">
+      <h1><%= raw title %></h1>
+      <h2><%= raw where[idx] %>, <%= format_date_with_day(startTimes[idx])%></h2>
       <%= markdown content[idx] %>
-      <p><span class="bold">When:</span> <%= startTimes[idx].strftime("%A %d of %B, %H:%M")  + endTimes[idx].strftime(" - %H:%M") %></p>
-      <p><span class="bold">Where:</span> <%= raw where[idx] %></p>
+      <p><strong>When:</strong> <%= format_date_with_day(startTimes[idx]) + startTimes[idx].strftime(", %H:%M")  + endTimes[idx].strftime(" - %H:%M") %></p>
+      <p><strong>Where:</strong> <%= raw where[idx] %></p>
     </div>
   <% end %>
 <% else %>
