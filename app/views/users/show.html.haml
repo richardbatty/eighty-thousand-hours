@@ -5,6 +5,15 @@
   - if @user.etkh_profile
     #{@user.name} is an 80,000 Hours member. #{link_to 'View their profile here', (etkh_profile_path @user)}.
 
+  - if @user.discussion_posts.any?
+    .page-header
+      %h2 Discussion posts
+
+    - @user.discussion_posts.each do |post|
+      - if !post.draft || post.user == current_user
+        .blog
+          = render :partial => 'discussion_posts/display_heading',
+                   :locals => { :post => post }
 
   - if @user.blog_posts.any?
     .page-header
