@@ -74,7 +74,7 @@ class DiscussionPostsController < ApplicationController
   def create
     @post = current_user.discussion_posts.new( params[:discussion_post] )
     if @post.save
-      redirect_to discussion_posts_path, :notice => "Post created!"
+      redirect_to discussion_post_path(@post), :notice => "Post created!"
     else
       render :new
     end
