@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120914160449) do
+ActiveRecord::Schema.define(:version => 20120916202218) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -128,37 +128,6 @@ ActiveRecord::Schema.define(:version => 20120914160449) do
     t.integer  "weight",           :default => 1
   end
 
-  create_table "etkh_applications", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.text     "occupation"
-    t.text     "career_plans"
-    t.text     "spoken_to_existing_member"
-    t.boolean  "doing_good_inspiring"
-    t.boolean  "doing_good_research"
-    t.boolean  "doing_good_philanthropy"
-    t.boolean  "doing_good_innovating"
-    t.boolean  "doing_good_improving"
-    t.string   "donation_percentage"
-    t.text     "donation_percentage_comment"
-    t.string   "average_income"
-    t.text     "average_income_comment"
-    t.string   "hic_activity_hours"
-    t.text     "hic_activity_hours_comment"
-    t.boolean  "causes_givewell"
-    t.boolean  "causes_gwwc"
-    t.boolean  "causes_international"
-    t.boolean  "causes_xrisk"
-    t.boolean  "causes_meta"
-    t.boolean  "causes_domestic"
-    t.boolean  "causes_animal"
-    t.boolean  "causes_political"
-    t.text     "causes_comment"
-    t.boolean  "pledge",                      :default => false
-    t.boolean  "doing_good_prophilanthropy"
-    t.integer  "user_id"
-  end
-
   create_table "etkh_profiles", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
@@ -173,12 +142,6 @@ ActiveRecord::Schema.define(:version => 20120914160449) do
     t.datetime "contacted_date"
     t.string   "contacted_by"
     t.boolean  "confirmed",                  :default => false
-    t.boolean  "doing_good_inspiring",       :default => false
-    t.boolean  "doing_good_research",        :default => false
-    t.boolean  "doing_good_philanthropy",    :default => false
-    t.boolean  "doing_good_innovating",      :default => false
-    t.boolean  "doing_good_improving",       :default => false
-    t.boolean  "doing_good_prophilanthropy", :default => false
     t.text     "skills_knowledge_share"
     t.text     "skills_knowledge_learn"
     t.integer  "user_id"
