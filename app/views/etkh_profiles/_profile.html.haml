@@ -61,9 +61,8 @@
           %h1= profile.name
           %h2.location
             - if profile.organisation?
-              = profile.organisation
+              = profile.organisation + (', ' if user.location)
             - if user.location?
-              = ', ' if profile.organisation?
               = user.location
         
         - if profile.background?
