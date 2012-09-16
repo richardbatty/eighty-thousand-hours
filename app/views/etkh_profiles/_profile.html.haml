@@ -62,12 +62,39 @@
           %h2.location
             - if profile.organisation?
               = profile.organisation
-            - elsif user.location?
+            - if user.location?
+              = ', ' if profile.organisation?
               = user.location
         
         - if profile.background?
           %h2 Background and interests
           = markdown profile.background
+
+        - if profile.profile_option_causes.any?
+          %h2 Causes I support
+          %ul
+            - profile.profile_option_causes.each do |cause|
+              %li= cause.title
+          - if profile.causes_comment
+            = markdown profile.causes_comment
+
+        - if profile.profile_option_activities.any?
+          %h2 My high impact activities
+          %ul
+            - profile.profile_option_activities.each do |activity|
+              %li= activity.title
+          - if profile.activities_comment
+            = markdown profile.activities_comment
+
+        - if !profile.donation_percentage_optout
+          %h2 Donation pledge
+          .donations-thermometer.well
+            .text
+              %p 
+                I have pledged to donate #{profile.donation_percentage}% of my pre-tax income to cost-effective causes.
+            .bar-container
+              .progress.progress-striped.progress-danger
+                .bar{:"data-percentage" => profile.donation_percentage}
 
         // only show skills to other members
         - if current_user and current_user.eighty_thousand_hours_member?
