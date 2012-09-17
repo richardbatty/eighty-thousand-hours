@@ -42,7 +42,10 @@ body {
     font-weight: normal;
     font-size: 18px;
   }
-  padding-bottom: 20px;
+  padding-bottom: 0px;
+  strong {
+    color: #d4346f;
+}
 }
 
 a.fp-splash-find-out-more {
@@ -73,6 +76,12 @@ a.fp-splash-find-out-more {
 
 .right {
   float: right;
+}
+
+#mc-embedded-subscribe {
+  background: none;
+  background-color: #d4346f;
+  border-color: #d4346f;
 }
 
 #content {
