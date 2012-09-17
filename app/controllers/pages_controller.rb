@@ -56,11 +56,12 @@ class PagesController < ApplicationController
   def update
     @page = Page.find(params[:id])
    
-    if @page.update_attributes(params[:page])
+    @page.attributes = params[:page]
+    if params[:preview_button] or !@page.save
+      render :action => 'edit'
+    else
       flash[:"alert-success"] = "Page was successfully updated"
       redirect_to(@page)
-    else
-      render :action => "edit"
     end
   end
 
