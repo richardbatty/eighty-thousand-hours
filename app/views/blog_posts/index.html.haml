@@ -27,10 +27,18 @@
             = link_to "votes#{@sort == 'votes' ? icon : ''}".html_safe, '?order=votes'
             |
             = link_to "popularity#{@sort == 'popularity' ? icon : ''}".html_safe, '?order=popularity'
+
+        - if can? :manage, BlogPost
+          .controls
+            .user
+              = link_to "New post", new_blog_post_path, :class => 'btn btn-success'
+
+              = link_to 'My drafts', '/blog/drafts', :class => 'btn'
         - if @heading
           .page-header
             %h1
               = @heading
+
         - @posts.each do |post|
           - if @condensed
             = render :partial => 'display_heading',

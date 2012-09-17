@@ -3,14 +3,13 @@
 
 .alert.alert-info
   This is a place for having public discussions. If you are signed in you can
-  create a new post and others can comment on it. If a post is deemed suitable
-  for promotion to the blog then an admin can do this. Please contact
+  create a new post and others can comment on it. Please contact
   #{link_to 'editor@80000hours.org', 'mailto:editor@80000hours.org'} with any questions.
 
 %hr
 
 - if can? :create, DiscussionPost
-  .center.controls
+  .controls
     .user
       = link_to "New Post".html_safe, new_discussion_post_path, :class => 'btn btn-large btn-success'
       = link_to "My Drafts", '/discussion/drafts', :class => 'btn btn-large'

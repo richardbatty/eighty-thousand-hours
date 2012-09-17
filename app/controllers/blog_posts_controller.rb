@@ -36,6 +36,12 @@ class BlogPostsController < ApplicationController
     prepare_sidebar
   end
 
+  def drafts
+    @posts = BlogPost.by_author_drafts(current_user)
+    @title = "Blog"
+    @menu_root = "Blog"
+  end
+
   def sorted
     @posts = BlogPost.by_votes
 
