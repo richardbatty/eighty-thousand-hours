@@ -7,16 +7,20 @@
 
 header {
   background: $header_gradient_end;
-  background-image: url('/assets/bg/noise.png'); /* fallback */
-  background-image: url('/assets/bg/noise.png'), -webkit-gradient(linear, left top, left bottom, from($header_gradient_start), to($header_gradient_end)); /* Saf4+, Chrome */
-  background-image: url('/assets/bg/noise.png'), -webkit-linear-gradient(top, $header_gradient_start, $header_gradient_end); /* Chrome 10+, Saf5.1+ */
-  background-image: url('/assets/bg/noise.png'),    -moz-linear-gradient(top, $header_gradient_start, $header_gradient_end); /* FF3.6+ */
-  background-image: url('/assets/bg/noise.png'),     -ms-linear-gradient(top, $header_gradient_start, $header_gradient_end); /* IE10 */
-  background-image: url('/assets/bg/noise.png'),      -o-linear-gradient(top, $header_gradient_start, $header_gradient_end); /* Opera 11.10+ */
-  background-image: url('/assets/bg/noise.png'),         linear-gradient(top, $header_gradient_start, $header_gradient_end);
+  /*background-image: url('/assets/bg/noise.png'); /* fallback */
+  /*background-image: url('/assets/bg/noise.png'), -webkit-gradient(linear, left top, left bottom, from($header_gradient_start), to($header_gradient_end));*/ /* Saf4+, Chrome */
+  /*background-image: url('/assets/bg/noise.png'), -webkit-linear-gradient(top, $header_gradient_start, $header_gradient_end);*/ /* Chrome 10+, Saf5.1+ */
+  /*background-image: url('/assets/bg/noise.png'),    -moz-linear-gradient(top, $header_gradient_start, $header_gradient_end);*/ /* FF3.6+ */
+  /*background-image: url('/assets/bg/noise.png'),     -ms-linear-gradient(top, $header_gradient_start, $header_gradient_end);*/ /* IE10 */
+  /*background-image: url('/assets/bg/noise.png'),      -o-linear-gradient(top, $header_gradient_start, $header_gradient_end);*/ /* Opera 11.10+ */
+  /*background-image: url('/assets/bg/noise.png'),         linear-gradient(top, $header_gradient_start, $header_gradient_end);*/
 
   .navbar-container {
     padding-bottom: 0px;
+	
+	.row .span12 {
+	  height: 25px;
+	}
   }
   .navbar-top {
     font-size: 13px;
@@ -29,6 +33,7 @@ header {
     background-image: none !important;
     border: none !important;
     @include box_shadow(lighten($header_bg_color,20%), 0px, 0px, 0px);
+    font-size: 12pt;
   }
 
   .navbar {
@@ -45,6 +50,7 @@ header {
       background-image: none !important;
       border: none !important;
       padding-left: 0px !important;
+	  padding-bottom: 20px;
 
       a.top-level{ 
         color: #ffffff !important;
@@ -75,16 +81,17 @@ header {
       ul.dropdown-menu .divider { background: #333; border-bottom: 1px solid #555; }
     }
 
-    margin-top: 10px;
+    margin-top: 0px;
     background: none !important;
   }
 
   a#header-logo {
-    font-size: 36px;
-    font-family: $museo_slab_900;
+    font-size: 18px;
+    font-family: $museo_slab_500;
     /*font-weight: bold;*/
+	font-color: white;
     display:block;
-    margin-top: 10px;
+    padding-top: 7px;
 
     &:hover {
       text-decoration: none;
@@ -153,14 +160,14 @@ header {
   }
 }
 
-.search-query {
+#bootstrap-nav .search-query {
   -moz-border-radius: 1px 1px !important;
   -webkit-border-radius: 1px 1px !important;
   -khtml-border-radius: 1px 1px !important;
   -o-border-radius: 1px 1px !important;
   border-radius: 1px 1px !important;
   border: 1px $header_bg_color solid;
-
+  padding: 0 0 0 5px;
   width: 170px;
 }
 .search-query-icon {
@@ -171,4 +178,26 @@ header {
 
 .navbar-inverse .navbar-search .search-query {
   background-color: #666666;
+}
+
+.navbar-search {
+    line-height: 24px;
+}
+.navbar-inner .container .nav {
+  margin: 0;
+}
+
+#header-logo {
+  color: white;
+  padding-top: 3px;
+  line-height: 24px
+}
+
+.navbar-inner .pull-right {
+  font-size: 72%;
+  padding-right: 0;
+}
+
+.noise .span12 {
+  margin-left: 0;
 }

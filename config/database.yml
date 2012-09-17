@@ -2,6 +2,7 @@ shared: &shared
   adapter: postgresql
   encoding: unicode
   pool: 5
+  host: localhost
   
 development:
   <<: *shared
