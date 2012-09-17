@@ -1,0 +1,17 @@
+.page-header
+  %h1 My draft blog posts
+
+.alert.alert-info
+  = markdown "These posts are drafts and are **not** publicly viewable."
+
+%hr
+
+- if can? :create, BlogPost
+  .controls
+    .user
+      = link_to "New Post".html_safe, new_blog_post_path, :class => 'btn btn-large btn-success'
+  %hr
+
+.blog
+  - @posts.each do |post|
+    = render partial: 'display_heading', locals: { post: post }

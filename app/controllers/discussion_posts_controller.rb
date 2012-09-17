@@ -1,5 +1,5 @@
 class DiscussionPostsController < ApplicationController
-  load_and_authorize_resource :only => [:new,:create,:edit,:update,:destroy]
+  load_and_authorize_resource :only => [:new,:create,:drafts,:edit,:update,:destroy]
 
   def index
     @posts = DiscussionPost.published.paginate(:page => params[:page], :per_page => 10)
