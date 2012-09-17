@@ -15,6 +15,13 @@ header {
   /*background-image: url('/assets/bg/noise.png'),      -o-linear-gradient(top, $header_gradient_start, $header_gradient_end);*/ /* Opera 11.10+ */
   /*background-image: url('/assets/bg/noise.png'),         linear-gradient(top, $header_gradient_start, $header_gradient_end);*/
 
+  background-image: -webkit-gradient(linear, left top, left bottom, from($header_gradient_start), to($header_gradient_end)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, $header_gradient_start, $header_gradient_end); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient(top, $header_gradient_start, $header_gradient_end); /* FF3.6+ */
+  background-image:     -ms-linear-gradient(top, $header_gradient_start, $header_gradient_end); /* IE10 */
+  background-image:      -o-linear-gradient(top, $header_gradient_start, $header_gradient_end); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, $header_gradient_start, $header_gradient_end);
+
   .navbar-container {
     padding-bottom: 0px;
 	

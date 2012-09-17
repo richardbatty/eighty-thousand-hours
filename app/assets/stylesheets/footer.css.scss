@@ -13,6 +13,13 @@ footer {
   /*background-image: url('/assets/bg/noise.png'),      -o-linear-gradient(top, $footer_gradient_start, $footer_gradient_end);*/ /* Opera 11.10+ */
   /*background-image: url('/assets/bg/noise.png'),         linear-gradient(top, $footer_gradient_start, $footer_gradient_end);*/
 
+  background-image: -webkit-gradient(linear, left top, left bottom, from($footer_gradient_start), to($footer_gradient_end)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, $footer_gradient_start, $footer_gradient_end); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient(top, $footer_gradient_start, $footer_gradient_end); /* FF3.6+ */
+  background-image:     -ms-linear-gradient(top, $footer_gradient_start, $footer_gradient_end); /* IE10 */
+  background-image:      -o-linear-gradient(top, $footer_gradient_start, $footer_gradient_end); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, $footer_gradient_start, $footer_gradient_end);
+
   text-align: left;
   margin-left: auto;
   margin-right: auto;
