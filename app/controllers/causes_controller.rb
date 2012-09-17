@@ -1,5 +1,5 @@
 class CausesController < ApplicationController
-  load_and_authorize_resource :only => [:destroy,:edit,:update]
+  load_and_authorize_resource
 
   def index
     @causes = Cause.order("name ASC")
