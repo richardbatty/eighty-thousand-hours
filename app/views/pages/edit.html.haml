@@ -2,4 +2,14 @@
   .page-header
     %h1 Editing #{@page.title}
 
+  - if params[:preview_button]
+    .alert.alert-danger
+      %h1 PREVIEW
+      %p This is a preview of your changes. The page has not been saved yet.
+
+      .center
+        = link_to 'Continue editing', '#edit-form', class: 'btn btn-large'
+    .page-edit-preview
+      = markdown @page.body
+
   = render 'form'

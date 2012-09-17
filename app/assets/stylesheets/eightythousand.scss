@@ -288,3 +288,10 @@ input[type="email"] {
 .social-btn-reddit-light { @include social-btn('/assets/icons/reddit.png', 64px); }
 .social-btn-twitter-light { @include social-btn('/assets/icons/twitter.png', 64px); }
 .social-btn-rss-light { @include social-btn('/assets/icons/rss.png', 64px); }
+
+
+.page-edit-preview {
+  margin-top: 30px;
+  margin-bottom: 30px;
+  @include box_shadow(#ff0000, 0px, 0px, 10px);
+}

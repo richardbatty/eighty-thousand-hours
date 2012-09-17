@@ -1,5 +1,8 @@
-= markdown "Use [Markdown syntax](http://daringfireball.net/projects/markdown/syntax) to format text"
-%hr
+.alert.alert-danger#edit-form
+  %h1 Edit form
+  %p Make changes below. Press Preview to check your changes before saving.
+  = markdown "Use [Markdown syntax](http://daringfireball.net/projects/markdown/syntax) to format text"
+
 = simple_form_for @page, :html => { :class => 'form-horizontal' }, :defaults=>{:input_html=>{:class=>'span4'}}  do |f|
   -if @page.errors.any?
     #error_explanation
@@ -33,4 +36,5 @@
 
     .center
       = f.button :submit, "Save page", :class => 'btn btn-large btn-success'
+      = f.button :submit, "Preview", :name => 'preview_button', :class => 'btn btn-large btn-warning'
       = link_to "Cancel", pages_path, :class => 'btn btn-large'

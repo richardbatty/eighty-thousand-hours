@@ -1,9 +1,5 @@
 class DonationsController < ApplicationController
-  load_and_authorize_resource :only => [:destroy,:edit,:update]
-
-  rescue_from CanCan::AccessDenied do |exception|
-    redirect_to donations_path, :alert => exception.message
-  end
+  load_and_authorize_resource
 
   def index
     @donations = Donation.confirmed
