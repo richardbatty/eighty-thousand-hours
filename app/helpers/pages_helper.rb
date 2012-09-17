@@ -91,13 +91,4 @@ module PagesHelper
     end
     result.html_safe
   end
-
-  def draw_sidebar_menu( current_page )
-    result = ""
-    if current_page
-      result += "<ul><li><a href='#'>blah</a></li></ul>"
-    end
-    result.html_safe
-  end
 end
-
