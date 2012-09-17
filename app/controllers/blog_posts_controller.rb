@@ -1,5 +1,5 @@
 class BlogPostsController < ApplicationController
-  load_and_authorize_resource :only => [:new,:create,:edit,:update,:destroy]
+  load_and_authorize_resource :only => [:new,:create,:drafts,:edit,:update,:destroy]
 
   def prepare_sidebar
     @recommended_posts = Page.find('recommended-posts')

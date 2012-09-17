@@ -11,8 +11,8 @@
 - if can? :create, DiscussionPost
   .controls
     .user
-      = link_to "New Post".html_safe, new_discussion_post_path, :class => 'btn btn-large btn-success'
-      = link_to "My Drafts", '/discussion/drafts', :class => 'btn btn-large'
+      = link_to "New Post".html_safe, new_discussion_post_path, :class => 'btn btn-success'
+      = link_to "My Drafts", drafts_discussion_posts_path, :class => 'btn'
  
   %hr
 

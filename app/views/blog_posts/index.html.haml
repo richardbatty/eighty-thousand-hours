@@ -33,7 +33,7 @@
             .user
               = link_to "New post", new_blog_post_path, :class => 'btn btn-success'
 
-              = link_to 'My drafts', '/blog/drafts', :class => 'btn'
+              = link_to 'My drafts', drafts_blog_posts_path, :class => 'btn'
         - if @heading
           .page-header
             %h1
