@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120916202218) do
+ActiveRecord::Schema.define(:version => 20120919172530) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -131,17 +131,9 @@ ActiveRecord::Schema.define(:version => 20120916202218) do
   create_table "etkh_profiles", :force => true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.text     "inspiration"
-    t.text     "interesting_fact"
     t.text     "background"
-    t.text     "career_plans"
-    t.text     "occupation"
-    t.text     "organisation_role"
     t.string   "organisation"
     t.boolean  "public_profile",             :default => true
-    t.datetime "contacted_date"
-    t.string   "contacted_by"
-    t.boolean  "confirmed",                  :default => false
     t.text     "skills_knowledge_share"
     t.text     "skills_knowledge_learn"
     t.integer  "user_id"
