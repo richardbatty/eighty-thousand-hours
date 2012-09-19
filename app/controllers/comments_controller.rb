@@ -20,9 +20,9 @@ class CommentsController < ApplicationController
         #end
       #end
 
-      render 'create'
+      render 'comments/create'
     else
-      render 'error'
+      render 'comments/error'
     end
   end
 
