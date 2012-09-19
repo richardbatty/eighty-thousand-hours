@@ -1,6 +1,5 @@
 ActiveAdmin.register Page do
-  menu :if => proc{ can?(:manage, Page) },
-       :label => "80k site content"
+  menu :if => proc{ can?(:manage, Page) }
   controller.authorize_resource
   
   index do

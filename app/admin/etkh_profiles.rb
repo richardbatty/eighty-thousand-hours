@@ -1,7 +1,7 @@
 ActiveAdmin.register EtkhProfile do
   menu :if => proc{ can?(:manage, EtkhProfile) },
        :label => "80k Profiles",
-       :parent => "Members"
+       :parent => "Users"
   controller.authorize_resource
 
   index do
