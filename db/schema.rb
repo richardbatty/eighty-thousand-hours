@@ -46,7 +46,8 @@ ActiveRecord::Schema.define(:version => 20120916202218) do
     t.datetime "updated_at"
   end
 
-  create_table "blog_posts", :force => true do |t|
+  create_table "blog_posts", :id => false, :force => true do |t|
+    t.integer  "id",                                       :null => false
     t.string   "title"
     t.text     "body"
     t.boolean  "draft",          :default => false
@@ -179,6 +180,21 @@ ActiveRecord::Schema.define(:version => 20120916202218) do
   end
 
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
+
+  create_table "posts", :force => true do |t|
+    t.string   "title"
+    t.text     "body"
+    t.boolean  "draft",          :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.string   "attribution"
+    t.string   "slug"
+    t.text     "teaser"
+    t.string   "author"
+    t.integer  "facebook_likes", :default => 0
+    t.integer  "user_id"
+    t.string   "category",       :default => "discussion"
+  end
 
   create_table "profile_option_activities", :force => true do |t|
     t.string "title"

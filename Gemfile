@@ -56,7 +56,7 @@ gem 'twitter'
 gem 'simple_form'
 
 # twitter bootstrap for Rails 3.x
-gem "twitter-bootstrap-rails"
+# gem "twitter-bootstrap-rails"
 
 # 3rd party authentication
 gem 'omniauth-facebook'
