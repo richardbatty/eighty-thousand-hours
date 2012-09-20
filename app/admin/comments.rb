@@ -1,4 +1,4 @@
-ActiveAdmin.register Comment, :as => "PostComment" do
+ActiveAdmin.register Comment, :as => "Blog/Discussion Comments" do
   index do
     column :id
     column :name

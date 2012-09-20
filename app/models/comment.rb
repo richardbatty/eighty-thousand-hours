@@ -13,10 +13,23 @@ class Comment < ActiveRecord::Base
   belongs_to :blog_post
   belongs_to :discussion_post
 
-  scope :blog, where(:post_id != nil)
+  scope :blog, where(:blog_post_id != nil)
 
   def get_name
     user ? user.name : name
+  end
+
+  def post_author_email
+    if discussion_post
+      discussion_post.user.email
+    else
+      if blog_post.user
+        blog_post.user.email
+      else
+        # blog post is by guest w. no email
+        nil
+      end
+    end
   end
 
   private
