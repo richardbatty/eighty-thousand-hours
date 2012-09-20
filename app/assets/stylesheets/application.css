@@ -8,8 +8,8 @@
  *= require active_admin
  *= require authentications
  *= require blog
+ *= require eightythousand 
  *= require donations
- *= require eightythousand
  *= require etk_applications
  *= require etk_profiles
  *= require events

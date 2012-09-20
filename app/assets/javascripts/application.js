@@ -6,6 +6,7 @@
 //= require highcharts
 //= require fancybox_video
 //= require accordion
+//= require bootstrap
 //= require bootstrap-datepicker
 //= require bootstrap-progressbar
 //= require_tree .

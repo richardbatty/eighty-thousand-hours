@@ -28,6 +28,11 @@ a, li {
   line-height: 1.5;
 }
 
+strong {
+  font-weight: normal;
+  font-family: $museo_sans_700;
+}
+
 #wrapper {
   background: $box_color; 
   background: $body_bg_color;
@@ -151,6 +156,7 @@ a.fp-splash-find-out-more {
     &.left-border {
       border-left: 1px solid #efefef;
       padding-left: 20px;
+      background-color: black;
     }
     &.right-border {
       border-right: 1px solid #efefef;
