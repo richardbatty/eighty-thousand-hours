@@ -62,8 +62,6 @@ ActiveRecord::Schema.define(:version => 20120919172530) do
     t.string   "category",       :default => "discussion"
   end
 
-  add_index "blog_posts", ["slug"], :name => "index_posts_on_slug", :unique => true
-
   create_table "causes", :force => true do |t|
     t.string   "name"
     t.string   "website"
