@@ -98,7 +98,12 @@ h6 {
 .fp-splash {
   strong {
     color: #d4346f;
-}
+  }
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.125em;
+  }
 }
 
 a.fp-splash-find-out-more {
@@ -156,7 +161,6 @@ a.fp-splash-find-out-more {
     &.left-border {
       border-left: 1px solid #efefef;
       padding-left: 20px;
-      background-color: black;
     }
     &.right-border {
       border-right: 1px solid #efefef;

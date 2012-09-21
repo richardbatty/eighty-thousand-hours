@@ -218,7 +218,11 @@ header {
 
 .navbar-inner .pull-right {
   font-size: 72%;
-  padding-right: 0;
+  padding-left: 0;
+}
+
+.nav-collapse .pull-right a {
+  margin-left: 20px;
 }
 
 .noise .span12 {
