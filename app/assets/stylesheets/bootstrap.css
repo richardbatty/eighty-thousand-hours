@@ -2548,7 +2548,7 @@ button.close {
 .btn-primary {
   color: #ffffff;
   text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.25);
-  background-color: #d4345a;
+  /*background-color: #d4345a;
   background-image: -moz-linear-gradient(top, #d4346f, #d4343a);
   background-image: -webkit-gradient(linear, 0 0, 0 100%, from(#d4346f), to(#d4343a));
   background-image: -webkit-linear-gradient(top, #d4346f, #d4343a);
@@ -2561,16 +2561,16 @@ button.close {
   *background-color: #d4343a;
   /* Darken IE7 buttons by default so they stand out more given they won't have borders */
 
-  filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);
+  /*filter: progid:DXImageTransform.Microsoft.gradient(enabled = false);*/
 }
 .btn-primary:hover,
 .btn-primary:active,
 .btn-primary.active,
 .btn-primary.disabled,
 .btn-primary[disabled] {
-  color: #ffffff;
-  background-color: #d4343a;
-  *background-color: #d4343a;
+  color: #333333;
+  background-color: #d4346f;
+  *background-color: #d4346f;
 }
 .btn-primary:active,
 .btn-primary.active {
