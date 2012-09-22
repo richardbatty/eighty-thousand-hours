@@ -1,9 +1,7 @@
-[![Build Status](https://secure.travis-ci.org/rjshade/eighty-thousand-hours.png)](http://travis-ci.org/rjshade/eighty-thousand-hours)
-
 80,000 Hours
 ============
 This is the Ruby on Rails application which runs the
-http://www.80000hours.org/ website.
+http://80000hours.org/ website.
 
 80,000 Hours is an organisation which encourages and supports people who
 are pursuing careers which they believe will do the *most good*.  When most
@@ -13,7 +11,7 @@ most effective charities you can do a lot more good than you could do as a
 doctor working in the developing world. Other possibilities include becoming a
 high impact influencer, or doing high impact research.
 
-Find out more at http://www.80000hours.org/
+Find out more at http://80000hours.org/
 
 Attributions
 ============
