@@ -1,12 +1,12 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
-//= require twitter/bootstrap
 //= require jquery.easing
 //= require fancybox
 //= require highcharts
 //= require fancybox_video
 //= require accordion
+//= require bootstrap
 //= require bootstrap-datepicker
 //= require bootstrap-progressbar
 //= require_tree .

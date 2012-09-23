@@ -4,9 +4,23 @@
  * the top of the compiled file, but it's generally better to create a new file per style scope.
  *= require_self
  *= require reset
- *= require bootstrap_and_overrides
+ *= require bootstrap
+ *= require active_admin
+ *= require authentications
+ *= require blog
+ *= require eightythousand 
+ *= require donations
+ *= require etk_applications
+ *= require etk_profiles
+ *= require events
+ *= require fonts
+ *= require footer
+ *= require header
+ *= require header
+ *= require surveys
+ *= require videos
  *= require jquery-ui-1.8.17.custom
  *= require fancybox 
  *= require datepicker
- *= require_tree .
+ *= require_tree ./shared
 */

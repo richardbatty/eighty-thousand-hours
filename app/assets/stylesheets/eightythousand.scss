@@ -1,18 +1,36 @@
 @import "shared/partials";
 
+/*--- Define constants --- */
+
+$line_height: 1.5em;
+
 html, body {
   height: 100%;
   font-family: $museo_sans_500;
   font-size: 100%;
-  line-height: 1.5em;
+  line-height: $line_height;
 }
 
 body {
   margin: 0 auto;
-
+  min-width: 940px;
   color: $text_color;
   background: $body_bg_color;
-  min-width: 940px;
+}
+
+p {
+  font-size: 1em;
+  margin-top: 0;
+  margin-bottom: 1.5em;
+}
+
+a, li {
+  line-height: 1.5;
+}
+
+strong {
+  font-weight: normal;
+  font-family: $museo_sans_700;
 }
 
 #wrapper {
@@ -30,31 +48,70 @@ body {
   margin: 10px;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+  color: inherit;
+  text-rendering: optimizelegibility;
+}
+
+h1 {
+  font-size: 225%;
+  font-family: $museo_slab_700;
+  line-height: 1.3333em;
+  margin-top: 0.6667em;
+  margin-bottom: 0.6667em;
+}
+h2 {
+  font-size: 150%;
+  font-family: $museo_slab_700;
+  line-height: 1em;
+  margin-top: 2em;
+  margin-bottom: 1em;
+}
+h3 {
+  font-size: 112.5%;
+  font-family: $museo_slab_700;
+  line-height: 1.3333em;
+  /*The following h3 margin-top should be 1em, but because h3s are used in boxes */
+  /*margin collapse doesn't work. I'm assuming this will be ok because any other element */
+  /*above an h3 will have at least a 1*line_height margin-bottom */
+  margin-top: 0;
+  margin-bottom: 0;
+}
+h4 {
+  font-size: 100%;
+}
+h5 {
+  font-size: 100%;
+}
+h6 {
+  font-size: 100%;
+}
+
 
 /* -------------- content ----------- */
 .fp-splash {
-  h1 {
-    font-family: $museo_slab_700 !important;
+
+  h2 {
+    margin-top: 0;
+    margin-bottom: 0;
+    line-height: 1.125em;
   }
-  h3 {
-    font-family: $museo_slab_500 !important;
-    font-weight: normal;
-    font-size: 18px;
-  }
-  padding-bottom: 0px;
-  strong {
-    color: #d4346f;
-}
 }
 
 a.fp-splash-find-out-more {
   /*float: right;*/
-  padding: 10px;
-  padding-left: 30px;
-  padding-right: 30px;
-  font-size: 24px !important;
-  margin-top: 35px;
-
+/*  padding: 10px;
+  *padding-left: 30px;
+  *padding-right: 30px;
+  *font-size: 24px !important;
+  *margin-top: 35px;
+/
   @include rounded_borders(#ccc, 0px, $dim_border_radius);
   color: #fff;
   background: $link_color !important;
@@ -85,12 +142,6 @@ a.fp-splash-find-out-more {
 
 #content {
 
-  h1 {
-    font-family: $museo_slab_700;
-  }
-  h2,h3,h4,h5,h6 {
-    font-family: $museo_slab_500;
-  }
 
   color: $text_color;
   //a {
@@ -256,11 +307,6 @@ ul {
   list-style: disc;
 }
 
-p {
-  line-height: 1.5em;
-}
-
-
 
 textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"], .uneditable-input {
 
@@ -269,6 +315,17 @@ textarea, input[type="text"], input[type="password"], input[type="datetime"], in
 }
 .btn-primary {
   @include rounded_borders(#ccc, 1px, 0px);
+}
+
+body .btn-primary {
+  color: white;
+  background-color: #d4346f;
+  :hover {
+    background-color: #d4346f;
+  }
+  :active {
+    background-color: #d4346f;
+}    
 }
 
 input[type="email"] {

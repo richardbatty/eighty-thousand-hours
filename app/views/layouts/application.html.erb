@@ -32,20 +32,16 @@
       <div class="container">
         <!--<div class="row">-->
           <div class="span12">
-            <div class="row">
-              <div class="span2">
-                <%= link_to '80,000 Hours', '/', id: 'header-logo' %>
-              </div>
-                <!--<%= render :partial => "/shared/header_endorsement"%>-->
-			  <div id='bootstrap-nav'>
-                <nav class='clearfix'>
-                  <%= draw_menu( Page.top_level_menu, @page ) %>
-                </nav>
-              </div>
+              <!--<%= render :partial => "/shared/header_endorsement"%>-->
+			      <div id='bootstrap-nav'>
+			        <%= link_to '80,000 Hours', '/', id: 'header-logo' %>
+              <nav class='clearfix'>
+                <%= draw_menu( Page.top_level_menu, @page ) %>
+              </nav>
             </div>
           <!--</div>-->
-        </div>
-        </div>
+          </div>
+        <!--></div>-->
       </div>
     </header>
 

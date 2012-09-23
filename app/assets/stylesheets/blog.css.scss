@@ -34,10 +34,10 @@
   }
 
   .entry {
-    padding-top: 10px;
 
     h1,h2,h3,h4,h5,h6 {
-      font-weight: bold;
+      font-weight: normal;
+      font-family: $museo_sans_700;
       margin-bottom: 5px;
 
       a {
@@ -183,4 +183,32 @@
       font-size: 0.8em;
     }
   }
+}
+
+#content {
+ .box {
+    padding-top: 20px;
+    padding-bottom: 20px;
+
+    // for spanning links
+    position:relative;
+
+    &.left-border {
+      border-left: 1px solid #efefef;
+      padding-left: 20px;
+    }
+    &.right-border {
+      border-right: 1px solid #efefef;
+      padding-right: 20px;
+    }
+
+    &.tight {
+      padding-top: 10px;
+      padding-bottom: 10px;
+    }
+    }
+  }
+  
+.sidebar-item {
+  font-size: 87.5%;
 }
