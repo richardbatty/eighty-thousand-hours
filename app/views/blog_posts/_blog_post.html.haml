@@ -9,7 +9,7 @@
 
     = render :partial => 'voting', :locals => { :post => blog_post }
     .heading
-      %h3
+      %h1
         = blog_post.title
         - if blog_post.draft
           %span.label.label-warning Draft post (not publicly visible)

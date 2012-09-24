@@ -38,7 +38,7 @@
     h1,h2,h3,h4,h5,h6 {
       font-weight: normal;
       font-family: $museo_sans_700;
-      margin-bottom: 5px;
+      /*margin-bottom: 5px;*/
 
       a {
         color: $text_color !important;
@@ -55,6 +55,12 @@
       }
     }
 
+    h1 {
+      font-size: 150%;
+      line-height: 1em;
+      margin-top: 2em;
+    }
+    
     .content {
       padding-top: 10px;
       padding-bottom: 10px;
@@ -185,10 +191,10 @@
   }
 }
 
-#content {
+/*#content {*/
  .box {
-    padding-top: 20px;
-    padding-bottom: 20px;
+    /* padding-top: 20px; */
+    /* padding-bottom: 20px; */
 
     // for spanning links
     position:relative;
@@ -207,7 +213,7 @@
       padding-bottom: 10px;
     }
     }
-  }
+/*  }*/
   
 .sidebar-item {
   font-size: 87.5%;
