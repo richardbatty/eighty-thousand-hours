@@ -83,6 +83,7 @@ h3 {
   /*above an h3 will have at least a 1*line_height margin-bottom */
   margin-top: 0;
   margin-bottom: 0;
+  height: 1.3333em;
 }
 h4 {
   font-size: 100%;
@@ -360,12 +361,32 @@ input[type="email"] {
 
 /* Hack to get faux columns by creating a very long column but hiding overflow */
 /* that is outside the content box */
-.page-sidebar {
-  background-color: #dddddd;
-  margin-bottom: -99999px;
-  padding-bottom: 99999px;
+#content {
+  .page-sidebar {
+    background-color: #dddddd;
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+  
+    ul {
+      padding-top: 6.75em;
+    }  
+  
+    li {
+      margin-top: 0;
+      margin-bottom: 0;
+      .heading {
+        border-bottom: 1px solid red;
+      }
+    }
+  
+    a {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 0.75em;
+      padding-bottom: 0.75em;
+    }
+  }
 }
-
 #content {
   overflow:hidden;
 }
