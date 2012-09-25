@@ -3,9 +3,12 @@
     = render :partial => 'admin_box'
 .row
   - if @page.sidebar?
-    .span8
+    .span7
       %div{ :class => @page.show_box ? 'box' : nil }
         = markdown @page.body
+    .span1
+      &nbsp;
+      
   -else
     .span12
       = markdown @page.body

@@ -1,6 +1,8 @@
 @import "shared/partials";
 .blog {
   .voting {
+    position:relative;
+    left: -5px;
     margin-right: 10px;
     width: 20px;
     float: left;
@@ -16,7 +18,7 @@
     }
 
     .votes {
-      font-size: 0.8em;
+      font-size: 0.875em;
     }
 
     .notvoted {
@@ -30,14 +32,15 @@
 
   .heading {
     padding-bottom: 10px;
-    border-bottom: 1px solid #efefef;
+    /* border-bottom: 1px solid #efefef; */
   }
 
   .entry {
+    margin-top: 1.5em;
 
     h1,h2,h3,h4,h5,h6 {
       font-weight: normal;
-      font-family: $museo_sans_700;
+      font-family: $museo_slab_700;
       /*margin-bottom: 5px;*/
 
       a {
@@ -58,7 +61,27 @@
     h1 {
       font-size: 150%;
       line-height: 1em;
-      margin-top: 2em;
+      margin-top: 0.5em;
+      margin-bottom: 0.5em;
+    }
+    
+    h2 {
+      font-size: 112.5%;
+      margin-top: 0;
+      margin-bottom: 0;
+    }
+    
+    h4 {
+      font-family: $museo_sans_700;
+    }
+    
+    /* Display-inline to stop overlapping between title and attribution */
+    .heading {
+      overflow:hidden;
+      width:100%;
+      h3 {
+      display: inline;
+      }
     }
     
     .content {
@@ -168,7 +191,7 @@
     padding: 5px;
 
     .user {
-      float:right;
+      float:left;
       padding: 5px;
     }
   }
@@ -214,7 +237,15 @@
     }
     }
 /*  }*/
-  
-.sidebar-item {
-  font-size: 87.5%;
+
+.blog {
+  .blog-sidebar {
+    margin-top: 1.5em;
+  }
+  .sidebar-item {
+    font-size: 87.5%;
+    margin-top: 1.7143em;
+    
+    margin-bottom: 1.7143em;
+  }
 }

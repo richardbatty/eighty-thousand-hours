@@ -4,6 +4,7 @@
   .attribution
     - if defined? attribution
       = "by ".html_safe + attribution
-    - if defined? date
-      on
-      %span.date= format_date(date)
+  -# Commented out dates to remove clutter    
+  -# - if defined? date
+  -#    on
+  -#    %span.date= format_date(date)
