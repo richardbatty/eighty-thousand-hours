@@ -2,6 +2,7 @@
 
 .endorsements-container {
   color: #aaa;
+  border-bottom: 1px solid black;
 
   background: $footer_gradient_end;
   /*background-image: url('/assets/bg/noise.png');*/ /* fallback */
@@ -23,6 +24,7 @@
 .footer-noise {
   color: #fff;
   padding-top: 1.5em;
+  border-top: 1px solid #aaa;
 
   background: $footer_gradient_end;
   /*background-image: url('/assets/bg/noise.png');*/ /* fallback */
