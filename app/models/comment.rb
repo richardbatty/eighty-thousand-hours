@@ -32,6 +32,22 @@ class Comment < ActiveRecord::Base
     end
   end
 
+  def title
+    if discussion_post
+      discussion_post.title
+    else
+      blog_post.title
+    end
+  end
+
+  def post
+    if discussion_post
+      discussion_post
+    else
+      blog_post
+    end
+  end
+
   private
   def check_honeypot
     email_confirmation.blank?

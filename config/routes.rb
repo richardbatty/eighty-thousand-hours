@@ -32,7 +32,7 @@ EightyThousandHours::Application.routes.draw do
 
   resources :comments
 
-  resources :causes, :only => [:new,:create,:show,:index]
+  resources :causes, :only => [:new,:create,:show,:index], :path => 'donations/causes'
   resources :donations, :only => [:new,:create,:update,:show,:index,:edit]
 
   resources :votes, :only => [:new,:create,:delete]
