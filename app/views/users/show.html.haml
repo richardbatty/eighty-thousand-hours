@@ -32,5 +32,5 @@
     #comments
       - @user.comments.each do |comment|
         .comment
-          %h4 Posted a comment in #{link_to comment.blog_post.title, comment.blog_post}:
+          %h4 Posted a comment in #{link_to comment.post.title, comment.post}:
           = render comment
