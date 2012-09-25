@@ -21,6 +21,8 @@ header {
   background-image:     -ms-linear-gradient(top, $header_gradient_start, $header_gradient_end); /* IE10 */
   background-image:      -o-linear-gradient(top, $header_gradient_start, $header_gradient_end); /* Opera 11.10+ */
   background-image:         linear-gradient(top, $header_gradient_start, $header_gradient_end);
+  
+  border-bottom: 1px solid black;
 
   .navbar-container {
     padding-bottom: 0px;
@@ -61,7 +63,7 @@ header {
 
       a.top-level{ 
         color: #ffffff !important;
-        margin-right: 20px;
+        margin-right: 30px;
 
         &:hover {
           color: $magenta_2 !important;
