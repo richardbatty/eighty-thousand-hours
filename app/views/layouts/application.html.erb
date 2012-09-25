@@ -32,7 +32,6 @@
       <div class="container">
         <!--<div class="row">-->
           <div class="span12">
-              <!--<%= render :partial => "/shared/header_endorsement"%>-->
 			      <div id='bootstrap-nav'>
 			        <%= link_to '80,000 Hours', '/', id: 'header-logo' %>
               <nav class='clearfix'>
@@ -71,7 +70,13 @@
       </section>
     </div>
 
-    <footer class='noise'>
+    <footer>
+      <div class="endorsements-container">
+      <div class="container">
+        <%= render :partial => "/shared/header_endorsement"%>
+      </div>
+      </div>
+      <div class="footer-noise">
       <div class="container ">
         <div class="row">
           <div class="span8 social">
@@ -99,6 +104,7 @@
             </p>
           </div>
         </div>
+      </div>
       </div>
     </footer>
   </body>

@@ -1,8 +1,28 @@
 @import "shared/partials";
 
-footer {
+.endorsements-container {
+  color: #aaa;
+
+  background: $footer_gradient_end;
+  /*background-image: url('/assets/bg/noise.png');*/ /* fallback */
+  /*background-image: url('/assets/bg/noise.png'), -webkit-gradient(linear, left top, left bottom, from($footer_gradient_start), to($footer_gradient_end));*/ /* Saf4+, Chrome */
+  /*background-image: url('/assets/bg/noise.png'), -webkit-linear-gradient(top, $footer_gradient_start, $footer_gradient_end);*/ /* Chrome 10+, Saf5.1+ */
+  /*background-image: url('/assets/bg/noise.png'),    -moz-linear-gradient(top, $footer_gradient_start, $footer_gradient_end);*/ /* FF3.6+ */
+  /*background-image: url('/assets/bg/noise.png'),     -ms-linear-gradient(top, $footer_gradient_start, $footer_gradient_end);*/ /* IE10 */
+  /*background-image: url('/assets/bg/noise.png'),      -o-linear-gradient(top, $footer_gradient_start, $footer_gradient_end);*/ /* Opera 11.10+ */
+  /*background-image: url('/assets/bg/noise.png'),         linear-gradient(top, $footer_gradient_start, $footer_gradient_end);*/
+
+  background-image: -webkit-gradient(linear, left top, left bottom, from($footer_gradient_start), to($footer_gradient_end)); /* Saf4+, Chrome */
+  background-image: -webkit-linear-gradient(top, $endorsement_gradient_start, $endorsement_gradient_end); /* Chrome 10+, Saf5.1+ */
+  background-image:    -moz-linear-gradient(top, $endorsement_gradient_start, $endorsement_gradient_end); /* FF3.6+ */
+  background-image:     -ms-linear-gradient(top, $endorsement_gradient_start, $endorsement_gradient_end); /* IE10 */
+  background-image:      -o-linear-gradient(top, $endorsement_gradient_start, $endorsement_gradient_end); /* Opera 11.10+ */
+  background-image:         linear-gradient(top, $endorsement_gradient_start, $endorsement_gradient_end);
+}
+
+.footer-noise {
   color: #fff;
-  padding-top: 30px;
+  padding-top: 1.5em;
 
   background: $footer_gradient_end;
   /*background-image: url('/assets/bg/noise.png');*/ /* fallback */
@@ -123,6 +143,31 @@ footer {
   margin-right:auto;
   @include rounded_borders(#ccc, 1px, 6px);
   @include box_shadow(#ccc, 0px, 0px, 5px);
+}
+
+.endorsement {
+  text-align: center;
+  margin-bottom: 1.5em;
+  margin-top: 1.5em;
+  .endorsement-body {
+    color: #ffffff;
+  }
+  
+  .attribution {
+    /*margin-left: 60px;*/
+    color: $white;
+    font-decoration: none;
+    .author {
+      font-family: $museo_sans_700;
+    }
+  }
+
+  a {
+    &:hover {
+      text-decoration: none;
+      text-shadow: 0px 0px 1px #555;
+    }
+  }
 }
 
 
