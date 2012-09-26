@@ -71,7 +71,7 @@ h2 {
   font-size: 150%;
   font-family: $museo_slab_700;
   line-height: 1em;
-  margin-top: 2em;
+  margin-top: 1em;
   margin-bottom: 1em;
 }
 h3 {
@@ -81,9 +81,9 @@ h3 {
   /*The following h3 margin-top should be 1em, but because h3s are used in boxes */
   /*margin collapse doesn't work. I'm assuming this will be ok because any other element */
   /*above an h3 will have at least a 1*line_height margin-bottom */
-  margin-top: 0;
-  margin-bottom: 0;
-  height: 1.3333em;
+  /*margin-top: 0;*/
+  /*margin-bottom: 0;*/
+  /*height: 1.3333em;*/
 }
 h4 {
   font-size: 100%;
@@ -351,12 +351,9 @@ input[type="email"] {
 #content {
   .page-sidebar {
     background-color: #dddddd;
-    margin-bottom: -99999px;
-    padding-bottom: 99999px;
-  
-    ul {
-      padding-top: 6.75em;
-    }  
+    /*margin-bottom: -99999px;*/
+    /*padding-bottom: 99999px;*/
+    margin-top: 3em;
   
     li {
       margin-top: 0;
@@ -377,4 +374,15 @@ input[type="email"] {
 }
 #content {
   overflow:hidden;
+}
+
+#content {
+  .endorsement {
+    margin-bottom: 1.5em;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid #efefef;
+    .author {
+      font-family: $museo_sans_700;
+    }
+  }
 }

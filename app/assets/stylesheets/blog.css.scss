@@ -75,10 +75,11 @@
       font-family: $museo_sans_700;
     }
     
-    /* Display-inline to stop overlapping between title and attribution */
     .heading {
+      /* clearfix */
       overflow:hidden;
       width:100%;
+      /* Display-inline to stop overlapping between title and attribution */
       h3 {
       display: inline;
       }
