@@ -1,5 +1,6 @@
 .entry
-  .box.left-border
+  .box
+
     - if can? :manage, blog_post
       .controls
         .user
@@ -7,9 +8,9 @@
 
           = link_to 'Delete post', blog_post_path, :confirm => "Are you sure you want to delete the post '#{blog_post.title}'?", :method => :delete, :class => 'btn btn-mini btn-danger'
 
-    = render :partial => 'voting', :locals => { :post => blog_post }
     .heading
-      %h3
+      = render :partial => 'voting', :locals => { :post => blog_post }
+      %h1
         = blog_post.title
         - if blog_post.draft
           %span.label.label-warning Draft post (not publicly visible)

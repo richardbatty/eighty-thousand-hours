@@ -32,20 +32,15 @@
       <div class="container">
         <!--<div class="row">-->
           <div class="span12">
-            <div class="row">
-              <div class="span2">
-                <%= link_to '80,000 Hours', '/', id: 'header-logo' %>
-              </div>
-                <!--<%= render :partial => "/shared/header_endorsement"%>-->
-			  <div id='bootstrap-nav'>
-                <nav class='clearfix'>
-                  <%= draw_menu( Page.top_level_menu, @page ) %>
-                </nav>
-              </div>
+			      <div id='bootstrap-nav'>
+			        <%= link_to '80,000 Hours', '/', id: 'header-logo' %>
+              <nav class='clearfix'>
+                <%= draw_menu( Page.top_level_menu, @page ) %>
+              </nav>
             </div>
           <!--</div>-->
-        </div>
-        </div>
+          </div>
+        <!--></div>-->
       </div>
     </header>
 
@@ -75,7 +70,13 @@
       </section>
     </div>
 
-    <footer class='noise'>
+    <footer>
+      <div class="endorsements-container">
+      <div class="container">
+        <%= render :partial => "/shared/header_endorsement"%>
+      </div>
+      </div>
+      <div class="footer-noise">
       <div class="container ">
         <div class="row">
           <div class="span8 social">
@@ -103,6 +104,7 @@
             </p>
           </div>
         </div>
+      </div>
       </div>
     </footer>
   </body>

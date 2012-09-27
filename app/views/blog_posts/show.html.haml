@@ -1,8 +1,12 @@
 .blog
   .row
-    .span3
+    .span7
+      = link_to '<i class="icon-list"></i> Back to the blog'.html_safe, blog_posts_path
+      = render @post
+    .span1
+      &nbsp;
+    .span4
       .box.sidebar
-        = link_to '<i class="icon-list"></i> Back to the blog'.html_safe, blog_posts_path
         %hr
         <fb:like href="#{blog_post_url(@post)}" send="false" width="250" show_faces="false"></fb:like>
         = render :partial => "rss"
@@ -17,5 +21,4 @@
         %hr
         = render :partial => "tag_cloud"
 
-    .span9
-      = render @post
+
