@@ -52,7 +52,6 @@ EightyThousandHours::Application.routes.draw do
   resources :etkh_profiles, :path => "members", :only => [:new,:create,:show,:index] do
     collection do
       post 'search'
-      get 'email_list'
     end
   end
   match 'join' => 'etkh_profiles#join'
@@ -64,6 +63,7 @@ EightyThousandHours::Application.routes.draw do
     end
     collection do
       get 'all'
+      get 'email_list'
     end
   end
 

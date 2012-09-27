@@ -98,9 +98,4 @@ class EtkhProfilesController < ApplicationController
     end
   end
 
-  def email_list
-    @members = EtkhProfile.order("created_at ASC")
-
-    authorize! :read, EtkhProfile
-  end
 end

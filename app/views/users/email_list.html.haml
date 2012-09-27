@@ -1,0 +1,22 @@
+.box
+  .page-header
+    %h2 Confirmed member email list
+  %p Showing all #{@members.size} member emails. Ready to be copy/pasted into an email client.
+
+  %hr
+
+  .tiny
+    - @members.each do |user|
+      = '"' + user.name + '" <' + user.email +  '>, '
+
+  %hr
+
+  .page-header
+    %h2 Non-members email list
+  %p Showing all #{@non_members.size} non-member emails. Ready to be copy/pasted into an email client.
+
+  %hr
+
+  .tiny
+    - @non_members.each do |user|
+      = '"' + user.name + '" <' + user.email +  '>, '

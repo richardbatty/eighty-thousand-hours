@@ -52,4 +52,11 @@ class UsersController < ApplicationController
       render :action => "edit"
     end
   end
+
+  def email_list
+    @members = User.etkh_members
+    @non_members = User.non_etkh_members
+
+    authorize! :read, User
+  end
 end
