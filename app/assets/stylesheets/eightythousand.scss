@@ -65,12 +65,13 @@ h1 {
   line-height: 1.3333em;
   margin-top: 0.6667em;
   margin-bottom: 0.6667em;
+  
 }
 h2 {
   font-size: 150%;
   font-family: $museo_slab_700;
   line-height: 1em;
-  margin-top: 2em;
+  margin-top: 1em;
   margin-bottom: 1em;
 }
 h3 {
@@ -80,8 +81,9 @@ h3 {
   /*The following h3 margin-top should be 1em, but because h3s are used in boxes */
   /*margin collapse doesn't work. I'm assuming this will be ok because any other element */
   /*above an h3 will have at least a 1*line_height margin-bottom */
-  margin-top: 0;
-  margin-bottom: 0;
+  /*margin-top: 0;*/
+  /*margin-bottom: 0;*/
+  /*height: 1.3333em;*/
 }
 h4 {
   font-size: 100%;
@@ -134,12 +136,6 @@ a.fp-splash-find-out-more {
   float: right;
 }
 
-#mc-embedded-subscribe {
-  background: none;
-  background-color: #d4346f;
-  border-color: #d4346f;
-}
-
 #content {
 
 
@@ -183,19 +179,6 @@ a.fp-splash-find-out-more {
   }
   .ui-accordion-content {
     a{ color: $link_color; }
-  }
-
-  ul.nav.nav-pills.nav-stacked {
-    padding-top: 35px;
-    li.heading, li.heading a{
-      font-weight: bold;
-    }
-    li.heading a:hover {
-      color: $link_hover_color;
-    }
-    li.heading {
-      border-bottom: 1px solid #efefef;
-    }
   }
 
   /* front page blog latest snippets */
@@ -361,4 +344,45 @@ input[type="email"] {
   margin-top: 30px;
   margin-bottom: 30px;
   @include box_shadow(#ff0000, 0px, 0px, 10px);
+}
+
+/* Hack to get faux columns by creating a very long column but hiding overflow */
+/* that is outside the content box */
+#content {
+  .page-sidebar {
+    background-color: #dddddd;
+    /*margin-bottom: -99999px;*/
+    /*padding-bottom: 99999px;*/
+    margin-top: 3em;
+  
+    li {
+      margin-top: 0;
+      margin-bottom: 0;
+      .heading {
+        border-bottom: 1px solid red;
+      }
+    }
+  
+    a {
+      margin-top: 0;
+      margin-bottom: 0;
+      padding-top: 0.75em;
+      padding-bottom: 0.75em;
+      border-radius: 0;
+    }
+  }
+}
+#content {
+  overflow:hidden;
+}
+
+#content {
+  .endorsement {
+    margin-bottom: 1.5em;
+    padding-bottom: 1.5em;
+    border-bottom: 1px solid #efefef;
+    .author {
+      font-family: $museo_sans_700;
+    }
+  }
 }

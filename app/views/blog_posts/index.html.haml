@@ -1,23 +1,10 @@
 .blog
   .row
-    .span3
-      .box.sidebar
-        = render :partial => "rss"
-        %hr
-        = render :partial => "popular_posts"
-        %hr
-        = render :partial => "disclaimer"
-        %hr
-        = render :partial => "latest_comments"
-        %hr
-        = render :partial => "authors"
-        %hr
-        = render :partial => "tag_cloud"
- 
-    .span9
-      .box.left-border
+    .span7
+      .box
         .controls
-          .sort
+          -#
+            .sort
             - icon = ' <i class="icon-chevron-down"></i>'
             sort by: 
             = link_to "default#{@sort == nil ? icon : ''}".html_safe, '/blog'
@@ -34,10 +21,10 @@
               = link_to "New post", new_blog_post_path, :class => 'btn btn-success'
 
               = link_to 'My drafts', drafts_blog_posts_path, :class => 'btn'
-        - if @heading
-          .page-header
-            %h1
-              = @heading
+        -#- if @heading
+        -#   .page-header
+        -#    %h1
+        -#      = @heading
 
         - @posts.each do |post|
           - if @condensed
@@ -51,3 +38,18 @@
           .box.tight
             .center
               = page_navigation_links @posts
+    .span1
+      &nbsp;
+    .span4
+      .box.sidebar.blog-sidebar
+        = render :partial => "rss"
+        %hr
+        = render :partial => "popular_posts"
+        %hr
+        = render :partial => "disclaimer"
+        %hr
+        = render :partial => "latest_comments"
+        %hr
+        = render :partial => "authors"
+        %hr
+        = render :partial => "tag_cloud"

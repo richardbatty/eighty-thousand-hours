@@ -1,8 +1,9 @@
 .entry
-  = render :partial => 'voting', :locals => { :post => post }
+  
 
   .heading
-    %h3
+    = render :partial => 'voting', :locals => { :post => post }
+    %h2
       %a{:href => blog_post_path(post)}
         = post.title
     %h4
@@ -20,7 +21,7 @@
       %a{:href => blog_post_path(post)}
         <i class="icon-align-left"></i>
         Read more...
-
-  .comments
-    = link_to pluralize(post.comments.size, 'comment'), blog_post_path(post) + "#comments"
+  -# Commenting these out as we don't have impressive comment number and it clutters up the page
+  -# .comments
+  -#  = link_to pluralize(post.comments.size, 'comment'), blog_post_path(post) + "#comments"
 %hr
