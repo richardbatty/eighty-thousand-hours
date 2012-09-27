@@ -46,8 +46,7 @@ ActiveRecord::Schema.define(:version => 20120919172530) do
     t.datetime "updated_at"
   end
 
-  create_table "blog_posts", :id => false, :force => true do |t|
-    t.integer  "id",                                       :null => false
+  create_table "blog_posts", :force => true do |t|
     t.string   "title"
     t.text     "body"
     t.boolean  "draft",          :default => false
@@ -61,6 +60,8 @@ ActiveRecord::Schema.define(:version => 20120919172530) do
     t.integer  "user_id"
     t.string   "category",       :default => "discussion"
   end
+
+  add_index "blog_posts", ["slug"], :name => "index_posts_on_slug", :unique => true
 
   create_table "causes", :force => true do |t|
     t.string   "name"
@@ -171,21 +172,6 @@ ActiveRecord::Schema.define(:version => 20120919172530) do
 
   add_index "pages", ["slug"], :name => "index_pages_on_slug", :unique => true
 
-  create_table "posts", :force => true do |t|
-    t.string   "title"
-    t.text     "body"
-    t.boolean  "draft",          :default => false
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.string   "attribution"
-    t.string   "slug"
-    t.text     "teaser"
-    t.string   "author"
-    t.integer  "facebook_likes", :default => 0
-    t.integer  "user_id"
-    t.string   "category",       :default => "discussion"
-  end
-
   create_table "profile_option_activities", :force => true do |t|
     t.string "title"
   end
@@ -254,11 +240,11 @@ ActiveRecord::Schema.define(:version => 20120919172530) do
 
   create_table "users", :force => true do |t|
     t.string   "email"
-    t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
+    t.string   "encrypted_password",     :default => "",    :null => false
     t.string   "reset_password_token"
     t.datetime "reset_password_sent_at"
     t.datetime "remember_created_at"
-    t.integer  "sign_in_count",                         :default => 0
+    t.integer  "sign_in_count",          :default => 0
     t.datetime "current_sign_in_at"
     t.datetime "last_sign_in_at"
     t.string   "current_sign_in_ip"
@@ -266,7 +252,7 @@ ActiveRecord::Schema.define(:version => 20120919172530) do
     t.string   "confirmation_token"
     t.datetime "confirmed_at"
     t.datetime "confirmation_sent_at"
-    t.string   "authentication_token"
+    t.string   "unconfirmed_email"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "name"
@@ -277,17 +263,16 @@ ActiveRecord::Schema.define(:version => 20120919172530) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "phone"
-    t.boolean  "on_team",                               :default => false
+    t.boolean  "on_team",                :default => false
     t.integer  "team_role_id"
     t.string   "external_twitter"
     t.string   "external_facebook"
     t.string   "external_linkedin"
     t.string   "real_name"
     t.string   "external_website"
-    t.boolean  "omniauth_signup",                       :default => false
+    t.boolean  "omniauth_signup",        :default => false
   end
 
-  add_index "users", ["authentication_token"], :name => "index_users_on_authentication_token", :unique => true
   add_index "users", ["confirmation_token"], :name => "index_users_on_confirmation_token", :unique => true
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true
   add_index "users", ["reset_password_token"], :name => "index_users_on_reset_password_token", :unique => true
