@@ -305,3 +305,5 @@ input[type="email"] {
   margin-bottom: 30px;
   @include box_shadow(#ff0000, 0px, 0px, 10px);
 }
+
+.hidden-opengraph-image { display: none; }
