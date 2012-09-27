@@ -10,7 +10,7 @@
     <meta property="og:site_name" content="80,000 Hours" />
     <meta property="fb:admins" content="36804805"/>
     <% if @og_desc %>
-      <meta property="og:description" content="<%= @og_desc %>"/>
+      <meta property="og:description" content="<%= strip_tags(strip_links(sanitize(markdown @og_desc))) %>"/>
     <% else %>
       <meta property="og:description" content="80,000 Hours is an organisation which supports and guides people who are pursuing careers which will allow them to do the most good in the world."/>
     <% end %>
