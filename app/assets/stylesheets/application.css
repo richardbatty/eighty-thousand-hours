@@ -22,5 +22,6 @@
  *= require jquery-ui-1.8.17.custom
  *= require fancybox 
  *= require datepicker
+ *= require comments
  *= require_tree ./shared
 */
