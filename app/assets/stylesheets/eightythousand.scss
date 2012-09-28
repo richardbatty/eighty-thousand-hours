@@ -366,6 +366,9 @@ input[type="email"] {
   @include box_shadow(#ff0000, 0px, 0px, 10px);
 }
 
+.hidden-opengraph-image { display: none; }
+.tiny { font-size: 0.7em; }
+
 /* Hack to get faux columns by creating a very long column but hiding overflow */
 /* that is outside the content box */
 #content {

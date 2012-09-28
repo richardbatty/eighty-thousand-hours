@@ -83,6 +83,9 @@ class User < ActiveRecord::Base
          .include? symbol.to_s.underscore.to_sym
   end
 
+  scope :etkh_members, joins(:etkh_profile)
+  scope :non_etkh_members, lambda { includes(:etkh_profile).where('etkh_profiles.id is null') }
+
   def eighty_thousand_hours_member?
     self.etkh_profile
   end

@@ -27,7 +27,6 @@ class Ability
     if user.has_role? :member_admin
       can :access, :admin
       can :manage, User
-      can :manage, EtkhApplication
     end
 
     # a MemberViewer can read all member profiles
