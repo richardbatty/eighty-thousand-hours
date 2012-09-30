@@ -66,7 +66,7 @@ class DiscussionPostsController < ApplicationController
 
   def update
     @post = DiscussionPost.find( params[:id] )
-    if @post.update_attributes( params[:post] )
+    if @post.update_attributes( params[:discussion_post] )
       redirect_to @post, :notice => "Post updated!"
     else
       render :edit
