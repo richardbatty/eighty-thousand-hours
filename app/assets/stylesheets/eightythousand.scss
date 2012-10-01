@@ -116,16 +116,6 @@ h6 {
   }
 }
 
-.home_icon_grid {
-  margin-top: 1.5em;
-}
-
-.home_icon {
-  height: 60px;
-  margin-bottom: 1.5em;
-  fill: red;
-}
-
 a.fp-splash-find-out-more {
   /*float: right;*/
 /*  padding: 10px;
@@ -407,5 +397,11 @@ input[type="email"] {
     .author {
       font-family: $museo_sans_700;
     }
+  }
+}
+
+.floated-paragraph {
+  p {
+    margin-bottom: 0;
   }
 }
