@@ -32,8 +32,8 @@ en:
     confirmations:
       send_instructions: 'You will receive an email with instructions about how to confirm your account in a few minutes.'
       send_paranoid_instructions: 'If your e-mail exists on our database, you will receive an email with instructions about how to confirm your account in a few minutes.'
-      confirmed: 'Your account was successfully confirmed. You are now signed in.<br/><br/>
-                  If you want to become an 80,000 Hours member visit the <a href="/join">join page</a>'
+      confirmed: 'Your now have an account that you can use for commenting on the blog and posting on the discussion forum.<br/><br/>
+                  You are not yet a member of 80,000 Hours though. If you would like to join, Go to the <a href="/join">join page</a>'
     registrations:
       signed_up: 'Welcome! You have signed up successfully.'
       updated: 'You updated your account successfully.'
