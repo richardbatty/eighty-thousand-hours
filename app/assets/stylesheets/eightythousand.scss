@@ -29,6 +29,10 @@ p {
   margin-bottom: 1.5em;
 }
 
+.no-bottom-margin p {
+  margin-bottom: 0;
+}
+
 a, li {
   line-height: 1.5;
 }
@@ -67,6 +71,9 @@ h6 {
   margin: 0;
   color: inherit;
   text-rendering: optimizelegibility;
+  a {
+    color: $grey_3;
+  }
 }
 
 h1 {
@@ -405,6 +412,13 @@ input[type="email"] {
     margin-bottom: 0;
   }
 }
+
+.floated-header {
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+  }
+}
+
 
 .icon img {
   width: 60px;
