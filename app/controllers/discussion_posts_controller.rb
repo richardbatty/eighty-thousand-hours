@@ -39,7 +39,7 @@ class DiscussionPostsController < ApplicationController
 
   def tag
     @heading = "Posts tagged with '#{params[:id]}'"
-    @posts = DiscussionPost.blog.tagged_with(params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
+    @posts = DiscussionPost.published.tagged_with(params[:id]).order("created_at DESC").paginate(:page => params[:page], :per_page => 10)
     @condensed = true
 
     render :action => 'index'
@@ -66,7 +66,7 @@ class DiscussionPostsController < ApplicationController
 
   def update
     @post = DiscussionPost.find( params[:id] )
-    if @post.update_attributes( params[:post] )
+    if @post.update_attributes( params[:discussion_post] )
       redirect_to @post, :notice => "Post updated!"
     else
       render :edit
