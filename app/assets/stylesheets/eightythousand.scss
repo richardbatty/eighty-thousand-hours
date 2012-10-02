@@ -405,3 +405,32 @@ input[type="email"] {
     margin-bottom: 0;
   }
 }
+
+.icon img {
+  width: 60px;
+  height: 60px;
+}
+
+.onelife {
+  width: 10px;
+  height: 10px;
+  background: #d4346f;
+  margin-bottom: 1.5em;
+}
+
+.fivehundredlives {
+  width: 223px;
+  height: 223px;
+  background: #d4346f;
+  p {
+    color: white;
+    padding-top: 1.5em;
+    padding-left: 1.5em;
+  }
+}
+
+#media_education {
+  margin-left: 111px;
+}
+
+
