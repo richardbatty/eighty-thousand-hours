@@ -42,9 +42,10 @@ strong {
   font-family: $museo_sans_700;
 }
 
+/*For some reason the following doesn't work*/
 em {
-  font-weight: normal;
-  font-family: $museo_sans_500_italic;
+  font-style: normal !important;
+  font-family: 'MuseoSans-500Italic';
 }
 
 #wrapper {

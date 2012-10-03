@@ -1,7 +1,8 @@
 .box
-  .page-header
-    %h1 80,000 Hours survey: #{@survey.title}
+  %h1 80,000 Hours survey: #{@survey.title}
   .survey
-    .center
-      %iframe{ src: "#{@url}", width:"800", height: "500", frameborder: "0", marginheight: "0", marginwidth: "0" }
-        Loading...
+    %iframe{ src: "#{@url}", width:"800", height: "500", frameborder: "0", marginheight: "0", marginwidth: "0" }
+      Loading...
+  %p
+    Continue to <a href="/career-advice">read our career advice</a>, <a href="/our-community">learn more about our community</a>, or <a href="/blog">read our blog</a>.
+  
