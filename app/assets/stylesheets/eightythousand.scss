@@ -9,6 +9,11 @@ html, body {
   font-family: $museo_sans_500;
   font-size: 100%;
   line-height: $line_height;
+  -moz-font-feature-settings: "liga=1, dlig=1";
+  -ms-font-feature-settings: "liga", "dlig";
+  -webkit-font-feature-settings: "liga", "dlig";
+  -o-font-feature-settings: "liga", "dlig";
+  font-feature-settings: "liga", "dlig";
 }
 
 body {
@@ -24,6 +29,10 @@ p {
   margin-bottom: 1.5em;
 }
 
+.no-bottom-margin p {
+  margin-bottom: 0;
+}
+
 a, li {
   line-height: 1.5;
 }
@@ -31,6 +40,12 @@ a, li {
 strong {
   font-weight: normal;
   font-family: $museo_sans_700;
+}
+
+/*For some reason the following doesn't work*/
+em {
+  font-style: normal !important;
+  font-family: 'MuseoSans-500Italic';
 }
 
 #wrapper {
@@ -57,6 +72,9 @@ h6 {
   margin: 0;
   color: inherit;
   text-rendering: optimizelegibility;
+  a {
+    color: $grey_3;
+  }
 }
 
 h1 {
@@ -389,3 +407,45 @@ input[type="email"] {
     }
   }
 }
+
+.floated-paragraph {
+  p {
+    margin-bottom: 0;
+  }
+}
+
+.floated-header {
+  h1, h2, h3, h4, h5, h6 {
+    margin-top: 0;
+  }
+}
+
+
+.icon img {
+  width: 60px;
+  height: 60px;
+}
+
+.onelife {
+  width: 10px;
+  height: 10px;
+  background: #d4346f;
+  margin-bottom: 1.5em;
+}
+
+.fivehundredlives {
+  width: 223px;
+  height: 223px;
+  background: #d4346f;
+  p {
+    color: white;
+    padding-top: 1.5em;
+    padding-left: 1.5em;
+  }
+}
+
+#media_education {
+  margin-left: 111px;
+}
+
+

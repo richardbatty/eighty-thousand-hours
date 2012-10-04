@@ -9,7 +9,7 @@ class PagesController < ApplicationController
 
   def show
     @page = Page.find(params[:id])
-    
+
     # if we have set a custon header_title then we should use that
     # otherwise use the page title (which maps to the URL slug)
     @title = ((@page.header_title.to_s == '') ? @page.title : @page.header_title )
@@ -18,34 +18,8 @@ class PagesController < ApplicationController
     @menu_root = @page.root.title
 
     if @page.title == "Home"
-      # for profile photos on front page
-      begin
-        ids = [28, 27, 26, 24, 42, 43, 44, 16, 25, 93, 84, 78, 45]
-        @members = User.find( (ids.shuffle)[0..3] ).shuffle
-      rescue
-        @members = User.limit( 3 )
-      end
-
-      careers = ["banker","doctor","scientist","train_driver","campaigner","teacher"]#,"worker"]
-      @careers = (careers.shuffle)[0..3]
-
-      @total_members = EtkhProfile.all.size
-
-      # for sidebar
-      @latest_comments = Comment.order("created_at DESC").limit(3)
-
-      # for sidebar
-      @latest_profiles = EtkhProfile.order("created_at DESC").limit(4)
-
-      # for sidebar
-      @latest_posts = BlogPost.published.limit(3)
-
-      # for sidebar
-      @latest_donations = Donation.confirmed.limit(3)
-
       render :home
     end
-
     #otherwise render show.html...
   end
 
