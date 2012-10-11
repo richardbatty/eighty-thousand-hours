@@ -8,7 +8,7 @@
     .span4
       .box.sidebar
         %hr
-        <fb:like href="#{blog_post_url(@post)}" send="false" width="250" show_faces="false"></fb:like>
+        <div class="fb-like" data-href="#{blog_post_url{@post}" data-colorscheme="dark" data-send="true" data-width="430" data-show-faces="false"></div>
         = render :partial => "rss"
         %hr
         = render :partial => "popular_posts"
