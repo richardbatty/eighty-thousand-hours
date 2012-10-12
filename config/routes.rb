@@ -79,7 +79,6 @@ EightyThousandHours::Application.routes.draw do
   match 'old-ethical-career'            => 'info#ethical_career'
   match 'what-you-can-do'               => 'info#what_you_can_do'
   match 'what-you-can-do/my-donations'  => 'info#my_donations'
-  match 'what-you-can-do/my-career'     => 'info#my_career'
   match 'what-we-do'                    => 'info#what_we_do'
 
   # all other pages are stored as Markdown in the database
