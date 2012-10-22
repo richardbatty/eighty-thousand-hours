@@ -1,6 +1,6 @@
 module PagesHelper
   def title
-    "80,000 Hours" + ( (@title.to_s == '') ? "" : " | #{@title}" )
+     ( (@title.to_s == '') ? "" : "#{@title}" ) + " | 80,000 Hours"
   end
 
   def page_title(tag=true)
