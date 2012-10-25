@@ -24,9 +24,8 @@
 
     .content
       = markdown blog_post.body
-
-    .attribution= markdown (blog_post.attribution.blank? ? (blog_post.user ? blog_post.user.name : blog_post.author ) : blog_post.attribution )
-
+    -#.attribution= markdown (blog_post.attribution.blank? ? (blog_post.user ? blog_post.user.name : blog_post.author ) : blog_post.attribution )
+    %hr
     %p
       = render :partial => "post_tags", :locals => { :post => blog_post, :div_title => "tags:" }
     %p
