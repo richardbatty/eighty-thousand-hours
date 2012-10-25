@@ -1,7 +1,8 @@
 .blog
   .row
     .span7
-      = link_to '<i class="icon-list"></i> Back to the blog'.html_safe, blog_posts_path
+      %br
+      = link_to '<i class="icon-arrow-left"></i> Back to the blog'.html_safe, blog_posts_path
       = render @post
     .span1
       &nbsp;
