@@ -1,0 +1,6 @@
+%h3= link_to 'Latest discussion posts', discussion_posts_path
+- @latest_discussion_posts.each do |post|
+  = render partial: 'shared/sidebar_item',
+           locals: { date: post.created_at, 
+             content: "#{link_to post.title, discussion_post_path( post )}".html_safe,
+             attribution: link_to_discussion_post_author( post )}

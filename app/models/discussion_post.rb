@@ -16,7 +16,7 @@ class DiscussionPost < ActiveRecord::Base
   validates_presence_of :body
 
   def self.recent(n)
-    DiscussionPost.last(n)
+    DiscussionPost.first(n)
   end
 
   def self.by_author( author, page )
