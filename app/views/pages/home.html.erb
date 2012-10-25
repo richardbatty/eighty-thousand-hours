@@ -1,9 +1,16 @@
+<%
+  community_html = "
+  <p>
+  Find out more about <a href ='http://80000hours.org/our-community'>our community</a> of enthusiastic people who all want to make the world a better place or <a href ='http://80000hours.org/join'>join now</a> as our #{(EtkhProfile.all.size + 1).ordinalize} member.
+  </p>
+"
+%>
 
 <%
   mailing_list_html = "
   <div id='mc_embed_signup'>
   <div>
-  <a href='http://80000hours.us2.list-manage.com/subscribe?u=aba12f58bbe8075560abdc5b7&id=43bc1ae55c' class='btn btn-primary'>Join mailing list</a>
+  <a href='http://80000hours.org' class='btn btn-primary'>Join mailing list</a>
   </div>
   <a class='social-btn-facebook' href='http://www.facebook.com/80000Hours'>Facebook</a>
   <a class='social-btn-twitter' href='http://www.twitter.com/80000Hours'>Twitter</a>
@@ -14,4 +21,6 @@
 %>
 
 <% content = @page.body %>
-<%= (markdown content).gsub(/MAILING_LIST/, mailing_list_html).html_safe  %>
+<% content = content.gsub(/COMMUNITY/, community_html) %>
+<% content = content.gsub(/MAILING_LIST/, mailing_list_html) %>
+<%= markdown content %>
