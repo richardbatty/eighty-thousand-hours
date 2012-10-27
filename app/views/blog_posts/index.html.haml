@@ -15,7 +15,7 @@
             |
             = link_to "popularity#{@sort == 'popularity' ? icon : ''}".html_safe, '?order=popularity'
 
-        - if can? :manage, BlogPost
+        - if can? :create, BlogPost
           .controls
             .user
               = link_to "New post", new_blog_post_path, :class => 'btn btn-success'
