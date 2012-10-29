@@ -1,5 +1,9 @@
 module CommentsHelper
   def comment_post_path(comment)
+    if comment.blog_post_id.nil? and comment.discussion_post_id.nil?
+      return
+    end
+
     if comment.blog_post_id.nil?
       discussion_post_path( comment.discussion_post )
     else

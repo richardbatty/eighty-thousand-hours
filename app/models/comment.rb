@@ -6,7 +6,7 @@ class Comment < ActiveRecord::Base
 
   attr_accessor :email_confirmation
 
-  before_save :either_user_or_email
+  before_save :check_valid
   before_validation :check_honeypot
 
   belongs_to :user
@@ -53,7 +53,7 @@ class Comment < ActiveRecord::Base
     email_confirmation.blank?
   end
 
-  def either_user_or_email
+  def check_valid
     result = true
     if self.user.nil?
       if self.name.blank?
@@ -65,6 +65,13 @@ class Comment < ActiveRecord::Base
         result = false
       end
     end
+
+
+    # also check that it has either a discussion post id or a blog post id
+    if self.discussion_post_id.nil? and self.blog_post_id.nil?
+      result = false
+    end
+
     result
   end
 end
