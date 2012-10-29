@@ -7,10 +7,9 @@
     .span1
       &nbsp;
     .span4
-      .box.sidebar
-        %hr
-        <div class="fb-like" data-href="#{blog_post_url @post}" data-colorscheme="light" data-send="false" data-width="430" data-show-faces="false"></div>
-        = render :partial => "rss"
+      .box.sidebar.blog-sidebar
+        <!--<div class="fb-like" data-href="#{blog_post_url @post}" data-colorscheme="light" data-send="false" data-width="430" data-show-faces="false"></div>-->
+        = render :partial => "subscribe"
         %hr
         = render :partial => "popular_posts"        
         %hr
@@ -22,8 +21,7 @@
         %hr
         = render :partial => "tag_cloud"
         %hr
-        = render :partial => "authors"
-        %hr
+
         
 
 

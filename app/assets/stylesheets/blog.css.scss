@@ -86,8 +86,8 @@
     }
  
     .content {
-      padding-top: 10px;
-      padding-bottom: 10px;
+      padding-top: 0em;
+      padding-bottom: 0em;
     }
 
     .tags {
@@ -242,11 +242,29 @@
 .blog {
   .blog-sidebar {
     margin-top: 1.5em;
+    .subscribe {
+      h3 {
+        margin-bottom: 1.333em;
+      }
+      .subscribe-option {
+        margin-top: 1em;
+        .social-btn-rss {
+          margin: 0;
+          margin-right:20px;
+        }
+        .social-btn-email {
+          margin: 0;
+          margin-right:20px;
+        }
+        .subscribe-text {
+          padding-top: 5px;
+        }
+      }
+    }
   }
   .sidebar-item {
     font-size: 87.5%;
     margin-top: 1.7143em;
-    
     margin-bottom: 1.7143em;
   }
 }
