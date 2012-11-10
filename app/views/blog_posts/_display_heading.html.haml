@@ -1,7 +1,7 @@
 .entry
-  = render :partial => 'blog_posts/voting', :locals => { :post => post }
-
   .heading
+    = render :partial => 'blog_posts/voting', :locals => { :post => post }
+
     %h3
       %a{:href => blog_post_path(post)}
         = post.title
@@ -15,6 +15,6 @@
       %span.date
         on
         = format_date( post.created_at )
-      &nbsp;
+    %h4
       %span.comments-link= link_to pluralize(post.comments.size, 'comment'), blog_post_path(post) + "#comments"
   .clearfix

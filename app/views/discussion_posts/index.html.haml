@@ -17,6 +17,19 @@
  
   %hr
 
-.blog
-  - @posts.each do |post|
-    = render partial: 'discussion_header', locals: { post: post }
+.row
+  .span6.blog
+    .page-header
+      %h2 Discussion posts
+    - @posts.each do |post|
+      = render partial: 'discussion_header', locals: { post: post }
+    - if (@sort.nil?) && (will_paginate @posts)
+      .box.tight
+        .center
+          = page_navigation_links @posts
+  .span6.blog
+    .page-header
+      %h2 Blog posts
+    - @blog_posts.each do |post|
+      = render partial: 'blog_posts/display_heading', locals: { post: post }
+    =link_to 'more blog posts...', '/blog/'
