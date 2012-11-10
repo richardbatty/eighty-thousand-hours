@@ -36,6 +36,7 @@ class EtkhProfilesController < ApplicationController
 
     @menu_root = "Our community"
     @menu_current = "Our members"
+    @title = "Members"
   end
 
   def get_grouped_profiles

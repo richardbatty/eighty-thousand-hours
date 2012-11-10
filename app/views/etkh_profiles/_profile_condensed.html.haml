@@ -6,9 +6,8 @@
 
   .text
     %span.name
-      = link_to truncate( user.name, :length => 20 ), "/members/#{user.slug}"
-
+      = link_to user.name, "/members/#{user.slug}"
+    %br
     - if user.location?
-      %br
       %span.location
         = truncate( user.location, :length => 20 )
