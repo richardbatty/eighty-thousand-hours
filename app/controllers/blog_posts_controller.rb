@@ -7,6 +7,7 @@ class BlogPostsController < ApplicationController
     @popular_posts = BlogPost.by_popularity(5)
     @authors = BlogPost.author_list
     @latest_comments = Comment.blog.order("created_at DESC").limit(4)
+    @latest_discussion_posts = DiscussionPost.published.recent(4)
   end
 
   def index

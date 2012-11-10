@@ -1,24 +1,27 @@
 .blog
   .row
     .span7
-      = link_to '<i class="icon-list"></i> Back to the blog'.html_safe, blog_posts_path
+      %br
+      = link_to '<i class="icon-arrow-left"></i> Back to the blog'.html_safe, blog_posts_path
       = render @post
     .span1
       &nbsp;
     .span4
-      .box.sidebar
+      .box.sidebar.blog-sidebar
+        <!--<div class="fb-like" data-href="#{blog_post_url @post}" data-colorscheme="light" data-send="false" data-width="430" data-show-faces="false"></div>-->
+        = render :partial => "subscribe"
         %hr
-        <div class="fb-like" data-href="#{blog_post_url @post}" data-colorscheme="light" data-send="false" data-width="430" data-show-faces="false"></div>
-        = render :partial => "rss"
+        = render :partial => "popular_posts"        
         %hr
-        = render :partial => "popular_posts"
-        %hr        
+        = render :partial => "latest_discussion_posts"
+        %hr
         = render :partial => "disclaimer"
         %hr
         = render :partial => "latest_comments"
         %hr
-        = render :partial => "authors"
-        %hr
         = render :partial => "tag_cloud"
+        %hr
+
+        
 
 

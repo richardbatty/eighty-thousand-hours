@@ -2,5 +2,4 @@
 - @latest_posts.each do |post|
   = render partial: 'shared/sidebar_item',
            locals: { date: post.created_at, 
-                     content: link_to_post_contents( post ), 
-                     attribution: link_to_post_author( post ) }
+                     content: post.title }

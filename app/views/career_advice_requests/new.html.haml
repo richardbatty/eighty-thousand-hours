@@ -1,6 +1,5 @@
 .box
-  .page-header
-    %h1 Career advice session
+  %h1 Career advice session
   %p 
     In an advice session, you’ll have a chance to talk to a member of the 80k
     Careers Research team. The session will start with the advisor aiming to
@@ -36,19 +35,9 @@
       = f.input :mailing_list, :as => :boolean, :input_html => { :checked => true }, label: 'Would you like to receive our emails summarising our latest advice content?'
     .form-actions
       %p
-        We think our advice is pretty good, after all, we based our career
-        decisions on it, and our many members have found it helpful. But, at
-        the end of the day, how you choose to use this information is up to
-        you. We can't take responsibility for the outcomes of your choices.
-        Our advisors are not professionally qualified career counsellors. We
-        recommend you use our advice alongside that of a professionally
-        qualified counsellor.
-        
-      %p
-        As far as possible, what you talk about in your advice session is
-        between you and the career advice team, *but we can't take
-        responsibility for possible damages that could result from sharing
-        information with us.* On request, we can make the session confidential 
-        between you and the advisor.
+        We can give you information about your career options that we hope is useful. But, at the end of the day, how you choose to use this information is up to you. 
+        %strong
+          We can't take responsibility for the outcomes of your choices.
+        Our advisors are not professionally qualified career counsellors or advisors. We recommend you use our advice alongside someone professionally qualified.
 
       = f.button :submit, "Request session", :"data-loading-text" => "Please wait..."

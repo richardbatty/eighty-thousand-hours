@@ -345,13 +345,14 @@ input[type="email"] {
   }
   float: left;
   margin-right: 15px;
-  margin-top: 1.5em;
+  margin-top: 0em;
 }
 
 .social-btn-facebook { @include social-btn('/assets/icons/facebook.png'); }
 .social-btn-reddit { @include social-btn('/assets/icons/reddit.png'); }
 .social-btn-twitter { @include social-btn('/assets/icons/twitter.png'); }
 .social-btn-rss { @include social-btn('/assets/icons/rss.png'); }
+.social-btn-email { @include social-btn('/assets/icons/email.png'); }
 
 .social-btn-facebook-light { @include social-btn('/assets/icons/facebook.png', 64px); }
 .social-btn-reddit-light { @include social-btn('/assets/icons/reddit.png', 64px); }
@@ -373,9 +374,9 @@ input[type="email"] {
 #content {
   .page-sidebar {
     background-color: #dddddd;
-    /*margin-bottom: -99999px;*/
-    /*padding-bottom: 99999px;*/
-    margin-top: 3em;
+    margin-bottom: -99999px;
+    padding-bottom: 99999px;
+    padding-top: 5.25em;
   
     li {
       margin-top: 0;
@@ -388,6 +389,7 @@ input[type="email"] {
     a {
       margin-top: 0;
       margin-bottom: 0;
+      margin-left: 0px;
       padding-top: 0.75em;
       padding-bottom: 0.75em;
       border-radius: 0;
@@ -449,4 +451,13 @@ input[type="email"] {
   margin-left: 111px;
 }
 
+.photo_attribution {
+  font-size: 0.6em;
+  font-style: italic;
+  font-color: #ddd;
+}
+
+.icon-arrow-left {
+  vertical-align: center;
+}
 

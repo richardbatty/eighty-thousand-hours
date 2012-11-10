@@ -25,7 +25,7 @@ class BlogPost < ActiveRecord::Base
   end
 
   def self.recent(n)
-    BlogPost.last(n)
+    BlogPost.first(n)
   end
 
   def self.by_popularity( n = BlogPost.all.size )

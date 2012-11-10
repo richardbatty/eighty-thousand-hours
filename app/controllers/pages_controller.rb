@@ -19,6 +19,8 @@ class PagesController < ApplicationController
 
     if @page.title == "Home"
       render :home
+      
+      @total_members = EtkhProfile.all.size
     end
     #otherwise render show.html...
   end

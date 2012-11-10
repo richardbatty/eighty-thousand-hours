@@ -54,5 +54,9 @@
         %hr
         = render :partial => "tag_cloud"
         %hr
+<<<<<<< HEAD
 
         
+=======
+        = render :partial => "tag_cloud"
+>>>>>>> 2bcaab7f6d037019436e2a49d986d1610c403f6f
