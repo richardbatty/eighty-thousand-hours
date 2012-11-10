@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20121110210855) do
+ActiveRecord::Schema.define(:version => 20121110215147) do
 
   create_table "active_admin_comments", :force => true do |t|
     t.integer  "resource_id",   :null => false
@@ -232,12 +232,6 @@ ActiveRecord::Schema.define(:version => 20121110210855) do
     t.string "name"
   end
 
-  create_table "team_roles", :force => true do |t|
-    t.string   "name"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "users", :force => true do |t|
     t.string   "email"
     t.string   "encrypted_password",     :limit => 128, :default => "",    :null => false
@@ -263,8 +257,6 @@ ActiveRecord::Schema.define(:version => 20121110210855) do
     t.integer  "avatar_file_size"
     t.datetime "avatar_updated_at"
     t.string   "phone"
-    t.boolean  "on_team",                               :default => false
-    t.integer  "team_role_id"
     t.string   "external_twitter"
     t.string   "external_facebook"
     t.string   "external_linkedin"
