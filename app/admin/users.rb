@@ -16,7 +16,6 @@ ActiveAdmin.register User do
     column :omniauth_signup
     column :slug
     column :last_sign_in_at
-    column :roles
     column "80,000 Hours member?" do |user|
       if user.eighty_thousand_hours_member?
         "<span class='status ok'>YES</span>".html_safe
