@@ -38,7 +38,8 @@
             .alert-body
               %p
                 If you'd like to comment then please
-                #{link_to 'sign up', new_user_registration_path},
-                #{link_to 'sign in', new_user_session_path}, or fill in your name and email below.
+                #{link_to 'sign in', new_user_session_path}
+                if you are an 80,000 Hours member,
+                or fill in your name and email below.
 
         = render 'comments/form'
