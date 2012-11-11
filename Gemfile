@@ -26,7 +26,7 @@ gem "maruku", "~> 0.6.0"
 gem 'thin'
 
 # emails us when the production app fails
-gem 'exception_notification'
+gem 'exception_notification', "2.6.1"
 
 # sweet templating language
 gem "haml"
