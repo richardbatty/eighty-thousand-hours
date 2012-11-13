@@ -54,7 +54,6 @@ EightyThousandHours::Application.routes.draw do
       post 'search'
     end
   end
-  match 'join' => 'etkh_profiles#join'
 
   resources :users, :path => 'accounts', :only => [:show,:edit,:update,:destroy] do
     resources :etkh_profiles 

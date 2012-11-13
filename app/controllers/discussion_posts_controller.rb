@@ -3,6 +3,7 @@ class DiscussionPostsController < ApplicationController
 
   def index
     @posts = DiscussionPost.published.paginate(:page => params[:page], :per_page => 10)
+    @blog_posts = BlogPost.published.limit(5)
     @title = "Discussion"
     @menu_root = "Discussion"
   end

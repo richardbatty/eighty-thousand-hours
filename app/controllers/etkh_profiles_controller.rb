@@ -31,16 +31,12 @@ class EtkhProfilesController < ApplicationController
     @menu_current = "Join now"
   end
 
-  def join
-    @menu_root = "Membership"
-    @menu_current = "Join now"
-  end
-
   def index
     get_grouped_profiles
 
     @menu_root = "Our community"
     @menu_current = "Our members"
+    @title = "Members"
   end
 
   def get_grouped_profiles

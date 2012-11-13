@@ -43,6 +43,7 @@
     width: 32px;
 
     margin: 3px;
+    margin-right: 10px;
     position: relative;
 
     img {
@@ -55,8 +56,6 @@
   .text {
     padding:0px;
     margin: 0px;
-    float: left;
-    padding-left: 10px;
     font-size: 0.9em;
     .name {
       font-weight: bold;

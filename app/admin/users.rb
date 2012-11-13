@@ -51,20 +51,18 @@ ActiveAdmin.register User do
 
   form do |f|
     f.inputs "Details" do
-      f.inputs :name,
-               :omniauth_signup,
-               :email,
-               :password,
-               :password_confirmation,
-               :real_name,
-               :location,
-               :phone,
-               :on_team,
-               :team_role,
-               :avatar,
-               :external_twitter,
-               :external_facebook,
-               :external_linkedin
+      f.input :name
+      f.input :omniauth_signup
+      f.input :email
+      f.input :password
+      f.input :password_confirmation
+      f.input :real_name
+      f.input :location
+      f.input :phone
+      f.input :avatar
+      f.input :external_twitter
+      f.input :external_facebook
+      f.input :external_linkedin
       f.buttons
     end
   end
