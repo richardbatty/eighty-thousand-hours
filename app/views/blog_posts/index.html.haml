@@ -2,14 +2,6 @@
   .row
     .span7
       .box
-        .controls
-        - if can? :create, BlogPost
-          .controls
-            .user
-              = link_to "New post", new_blog_post_path, :class => 'btn btn-success'
-
-              = link_to 'My drafts', drafts_blog_posts_path, :class => 'btn'
-
         - @posts.each do |post|
           - if @condensed
             = render :partial => 'display_heading',
