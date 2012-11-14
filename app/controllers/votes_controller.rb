@@ -6,18 +6,18 @@ class VotesController < ApplicationController
       type = :discussion
     end
 
+    post = ''
+    user_votes = ''
+    if type == :blog
+      post = BlogPost.find(params[:blog_post])
+      user_votes = Vote.by_blog_post(post).by_user(user)
+    else
+      post = DiscussionPost.find(params[:discussion_post])
+      user_votes = Vote.by_discussion_post(post).by_user(user)
+    end
+
     if user
       up   = (params[:up] == 'true')
-
-      post = ''
-      user_votes = ''
-      if type == :blog
-        post = BlogPost.find(params[:blog_post])
-        user_votes = Vote.by_blog_post(post).by_user(user)
-      else
-        post = DiscussionPost.find(params[:discussion_post])
-        user_votes = Vote.by_discussion_post(post).by_user(user)
-      end
 
       # check if user has already voted for this post
       if user_votes.empty?
