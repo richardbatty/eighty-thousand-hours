@@ -9,20 +9,6 @@
   - else
     = image_tag("profiles/avatar_default_96x96.png", :class=>"shadow")
   = f.input :avatar, :label => "Change photo"
-  %hr
-
-  %h2 Declare your intention to give 
-  %p
-    Many of our members make a declaration of their intent to give a certain
-    percentage of their pre-tax income to cost-effective causes over their
-    lifetime. They find this helps them to stay true to their aims to give money
-    and encourages others to do the same.
-
-  = f.fields_for :etkh_profile, defaults: { input_html: { class: 'span4' } } do |ep|
-    I intend to donate around <span class="slider_value emphasise"><span id="user_etkh_profile_attributes_donation_percentage_display"></span>%</span> of my pre-tax income each year.
-    .slider#user_etkh_profile_attributes_donation_percentage_slider
-      = ep.input :donation_percentage, :as => :hidden
-    = ep.input :donation_percentage_optout, label: "I don't want to make a declaration"
 
   %hr
 
@@ -51,7 +37,20 @@
                label: "What skills and knowledge would you like to gain from other 80k members?",
                placeholder: "this will only be visible to 80,000 Hours members",
                input_html: { rows: '10' } 
+    %hr
+               
+    %h2 Declare your intention to give 
+    %p
+    Many of our members make a declaration of their intent to give a certain
+    percentage of their pre-tax income to cost-effective causes over their
+    lifetime. They find this helps them to stay true to their aims to give money
+    and encourages others to do the same.
 
+    = f.fields_for :etkh_profile, defaults: { input_html: { class: 'span4' } } do |ep|
+      I intend to donate around <span class="slider_value emphasise"><span id="user_etkh_profile_attributes_donation_percentage_display"></span>%</span> of my pre-tax income each year.
+      .slider#user_etkh_profile_attributes_donation_percentage_slider
+    = ep.input :donation_percentage, :as => :hidden
+    = ep.input :donation_percentage_optout, label: "I don't want to make a declaration"
 
   %hr
   = f.fields_for :etkh_profile do |ep|
