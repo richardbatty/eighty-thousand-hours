@@ -41,6 +41,7 @@ ActiveAdmin.register EtkhProfile do
 
   csv do
     # These first few fields refer to the User that owns this EtkhProfile
+    column ("Id") {|profile| profile.user.id}
     column ("Name")     { |profile| profile.user.name }
     column ("Real name"){ |profile| profile.user.real_name }
     column ("Email")    { |profile| profile.user.email }
